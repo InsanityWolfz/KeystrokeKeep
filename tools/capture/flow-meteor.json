@@ -1,0 +1,9 @@
+{ "seed": 7, "cues": [
+  { "t": 0, "do": "warp", "v": 20 },
+  { "t": 0.2, "do": "floor", "v": 12 },
+  { "t": 1.5, "do": "warp", "v": 1 },
+  { "t": 1.6, "do": "sparks", "v": "full" },
+  { "t": 1.7, "do": "flow" },
+  { "t": 1.8, "do": "autotype", "v": true },
+  { "t": 2.0, "do": "mark", "v": "FLOW-METEOR START" }
+] }

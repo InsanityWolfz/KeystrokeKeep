@@ -293,7 +293,7 @@
     FX.pillar(h.x, milestone ? '#ffd76a' : '#fff6c9', milestone ? 1.2 : 0.6, milestone ? 14 : 8);
     FX.burst(h.x, h.y - 8, milestone ? 30 : 8, ['#ffd76a', '#ffffff'], { spd: milestone ? 110 : 50, grav: -50, life: 0.8 });
     FX.text(h.x, h.y - 24, to - from > 1 ? `LV ${to} (+${to - from})` : 'LV ' + to, '#ffd76a', 1, { life: 1.0, vy: -18 });
-    if (milestone && performance.now() - (FX.lastMilestone || -1e9) > 180000) {
+    if (milestone && !W.boss && performance.now() - (FX.lastMilestone || -1e9) > 180000) {
       FX.lastMilestone = performance.now();
       FX.banner(KK.DATA.HEROES[id].name.toUpperCase() + ' LV ' + Math.floor(to / 10) * 10, 'x' + KK.BAL.dmgMile + ' DAMAGE!', '#ffd76a', 2, { slot: 'lvl', subCol: '#fff' });
       FX.flash('#ffd76a', 0.25);
@@ -332,10 +332,10 @@
     FX.burst(x, W.GROUND - 30, 4, ['#ffd76a', '#fff'], { spd: 30, life: 0.4 });
   });
   KK.on('royalSummons', ({ e }) => FX.moveAlert('summon', e, 'SQUEAK! THE RAT KING SUMMONS', '#ffd76a', 1.2));
-  KK.on('webShot', ({ e }) => FX.moveAlert('web', e, 'WEB SHOT! TYPE TO TEAR IT', '#f2f2f2', 1.2));
+  KK.on('webShot', ({ e }) => FX.moveAlert('web', e, 'WEB SHOT! TYPE: AN ULTIMATE TEARS IT', '#f2f2f2', 1.2));
   KK.on('webbed', ({ h }) => FX.text(h.x, h.y - 22, 'WEBBED', '#f2f2f2', 1, { life: 1.2, vy: -8 }));
   KK.on('webTorn', ({ h }) => { FX.text(h.x, h.y - 22, 'WEB TORN!', '#7ee8f6', 1, { life: 1.0, vy: -12 }); FX.burst(h.x, h.y - 8, 10, ['#f2f2f2', '#7ee8f6'], { spd: 60, life: 0.4 }); });
-  KK.on('magmaShell', ({ e }) => FX.moveAlert('shell', e, 'MAGMA SHELL: AN ULTIMATE CRACKS IT', '#ffb070', 1.4));
+  KK.on('magmaShell', ({ e }) => FX.moveAlert('shell', e, 'MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT', '#ffb070', 1.4));
   KK.on('shellCrack', ({ e }) => { FX.moveAlert('crack', e, 'SHELL CRACKED!', '#7ee8f6', 1.0); FX.burst(e.x, e.y - e.def.h / 2, 30, ['#8a8a8a', '#ff7a2e', '#ffe08a'], { spd: 120, up: -40, life: 0.8, floor: true }); FX.shake(2, 0.2); });
   KK.on('lavaRain', ({ e }) => FX.moveAlert('lava', e, 'LAVA RAIN!', '#ff7a2e', 1.0));
   KK.on('lavaMark', ({ x, t }) => { FX.light(x, W.GROUND, 14, t, '#ff5a2e', 0.8); FX.ring(x, W.GROUND, 2, 8, '#ff5a2e', t, 1); });
@@ -360,7 +360,7 @@
     FX.ring(W.partyX - 20, W.GROUND, 3, 110, '#c472ff', 0.6, 2);
     FX.burst(W.partyX - 20, W.GROUND - 4, 30, ['#c472ff', '#6a2cff', '#ffffff'], { spd: 120, up: -50, life: 0.8, floor: true });
   });
-  KK.on('bossEnrage', ({ e }) => { FX.alert(`ENRAGED! RETREAT. IT KEEPS ITS WOUNDS (${Math.round(100 * e.hp / e.maxHp)}%)`, '#ff9a9a', 2.6); FX.flash('#5a0010', 0.3); });
+  KK.on('bossEnrage', ({ e }) => { FX.alert(`ENRAGED! FALL BACK - BOSS STAYS AT ${Math.round(100 * e.hp / e.maxHp)}% HP`, '#ff9a9a', 2.6); FX.flash('#5a0010', 0.3); });
   KK.on('regroup', () => FX.alert('THE PARTY REGROUPS (10 MIN)', '#ffb4a0', 2.4));
   KK.on('trophy', ({ floor }) => {
     const x = W.partyX - 20;

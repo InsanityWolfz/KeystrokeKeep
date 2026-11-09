@@ -13,7 +13,7 @@ let hook = null; // uIOhook instance once loaded
 let hookRunning = false;
 let desiredH = 192;
 // mirrored from the game's saved settings (the renderer is the source of truth)
-const state = { countInput: true, sound: true, onTop: true, displayId: null, autoHideFullscreen: true };
+const state = { countInput: true, sound: true, onTop: true, displayId: null, autoHideFullscreen: !(process.env.KK_CAPTURE === '1') };
 // what the OS is doing: the strip only draws/plays when someone can actually see it
 const sys = { userShown: true, locked: false, suspended: false, fullscreen: false };
 let pkg = {};
@@ -21,7 +21,19 @@ try { pkg = require('../package.json'); } catch (e) { /* ignore */ }
 // Demo builds are baked at package time (electron-builder --config.extraMetadata.kkDemo=true);
 // the env var / flag only exist for development.
 const IS_DEMO = pkg.kkDemo === true || process.env.KK_DEMO === '1' || process.argv.includes('--kk-demo');
-const HIDE_HOTKEY = 'Control+Shift+Alt+K'; // not Ctrl+Alt+K: that is AltGr+K, which types a letter on some layouts
+const HIDE_HOTKEY = 'Control+Shift+Alt+K';
+// Capture mode (store screenshots / GIFs / trailer): own profile and saves, fixed 60 fps, cue scripts.
+const CAPTURE = process.env.KK_CAPTURE === '1';
+function captureConfig() {
+  const env = process.env;
+  let script = null;
+  if (env.KK_CAPTURE_SCRIPT) { try { script = JSON.parse(fs.readFileSync(env.KK_CAPTURE_SCRIPT, 'utf8')); } catch (e) { console.warn('[capture] bad script', e.message); } }
+  return {
+    seed: +(env.KK_CAPTURE_SEED || (script && script.seed) || 1), size: env.KK_CAPTURE_SIZE || 'L', fps: +(env.KK_CAPTURE_FPS || 60),
+    juice: env.KK_CAPTURE_JUICE || 'full', audio: env.KK_CAPTURE_AUDIO || 'sfx', toasts: env.KK_CAPTURE_TOASTS === '1',
+    bg: env.KK_CAPTURE_BG || '', script,
+  };
+} // not Ctrl+Alt+K: that is AltGr+K, which types a letter on some layouts
 let hotkeyOk = false;
 // one strip per Windows user (pipe names are machine-wide)
 const PIPE = '\\\\.\\pipe\\keystroke-keep-' + String((() => { try { return require('os').userInfo().username; } catch (e) { return 'user'; } })()).split('').map((ch) => /[A-Za-z0-9_-]/.test(ch) ? ch : '~' + ch.charCodeAt(0).toString(16)).join('');
@@ -54,14 +66,14 @@ function createWindow() {
     hasShadow: false,
     skipTaskbar: true, // lives in the tray
     show: false,
-    backgroundColor: '#00000000',
+    backgroundColor: CAPTURE && process.env.KK_CAPTURE_BG ? process.env.KK_CAPTURE_BG : '#00000000',
     title: 'Keystroke Keep',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
       backgroundThrottling: false,
-      additionalArguments: IS_DEMO ? ['--kk-demo'] : [],
+      additionalArguments: [...(IS_DEMO ? ['--kk-demo'] : []), ...(CAPTURE ? ['--kk-capture=' + encodeURIComponent(JSON.stringify(captureConfig()))] : [])],
     },
   });
   applyOnTop();
@@ -253,7 +265,7 @@ ipcMain.on('kk:openStore', (_e, url) => {
 // 3 backups rotated at most every 10 minutes. Loading falls back through the backups.
 // Explicit folder names (not the package name), so dev, packaged, demo and full builds agree:
 // %APPDATA%/Keystroke Keep/saves and %APPDATA%/Keystroke Keep Demo/saves. Self-tests use their own.
-const saveDir = () => process.env.KK_SNAPSHOT
+const saveDir = () => process.env.KK_SNAPSHOT || CAPTURE
   ? path.join(app.getPath('userData'), 'saves')
   : path.join(app.getPath('appData'), IS_DEMO ? 'Keystroke Keep Demo' : 'Keystroke Keep', 'saves');
 const demoSavePath = () => path.join(app.getPath('appData'), 'Keystroke Keep Demo', 'saves', 'keystroke-keep.json');
@@ -326,7 +338,7 @@ function readSave() {
     if (i === 0) { try { renameRetry(p, path.join(saveDir(), `keystroke-keep.corrupt-${Date.now()}.json`)); } catch (e) { /* ignore */ } }
   }
   // the full game imports a demo save once, and only when it has never had a save of its own
-  if (!IS_DEMO && !process.env.KK_SNAPSHOT && !fs.existsSync(importMarker())) {
+  if (!IS_DEMO && !process.env.KK_SNAPSHOT && !CAPTURE && !fs.existsSync(importMarker())) {
     try {
       const t = fs.readFileSync(demoSavePath(), 'utf8');
       if (validSave(t)) {
@@ -358,7 +370,7 @@ ipcMain.on('kk:settings', (_e, s) => {
   state.countInput = s.countInput !== false;
   state.sound = s.sound !== false;
   if (typeof s.onTop === 'boolean' && s.onTop !== state.onTop) { state.onTop = s.onTop; applyOnTop(); }
-  if (typeof s.autoHideFullscreen === 'boolean') state.autoHideFullscreen = s.autoHideFullscreen;
+  if (typeof s.autoHideFullscreen === 'boolean' && !CAPTURE) state.autoHideFullscreen = s.autoHideFullscreen;
   if (s.hideNoticeShown) hideNoticeShown = true;
   if (s.displayId !== undefined && s.displayId !== state.displayId) { state.displayId = s.displayId; redock(); }
   syncHook();
@@ -367,6 +379,13 @@ ipcMain.on('kk:settings', (_e, s) => {
 
 // self-test runs use their own profile so they never touch the player's real save
 if (process.env.KK_SNAPSHOT) app.setPath('userData', app.getPath('userData') + '-selftest');
+if (CAPTURE) {
+  app.setPath('userData', app.getPath('userData') + '-capture');
+  // a staged save for the shot replaces the capture profile's save
+  if (process.env.KK_CAPTURE_SAVE) {
+    try { const d = path.join(app.getPath('userData'), 'saves'); fs.mkdirSync(d, { recursive: true }); fs.copyFileSync(process.env.KK_CAPTURE_SAVE, path.join(d, 'keystroke-keep.json')); } catch (e) { console.warn('[capture] staged save failed', e.message); }
+  }
+}
 
 // Low-GPU mode: DirectComposition off measured 5% -> 0% GPU while typing, but about 2x CPU on
 // laptop-class cores. 'auto' (default) = on for machines without a battery, off for laptops.
@@ -383,7 +402,7 @@ function hasBattery() {
 }
 if (process.platform === 'win32') {
   let pref = 'auto';
-  if (process.env.KK_SNAPSHOT) pref = process.env.KK_LOWGPU === '1' ? true : process.env.KK_LOWGPU === '0' ? false : 'auto';
+  if (process.env.KK_SNAPSHOT || CAPTURE) pref = process.env.KK_LOWGPU === '1' ? true : process.env.KK_LOWGPU === '0' ? false : (CAPTURE ? false : 'auto');
   else {
     try {
       const t = fs.readFileSync(path.join(app.getPath('appData'), IS_DEMO ? 'Keystroke Keep Demo' : 'Keystroke Keep', 'saves', 'keystroke-keep.json'), 'utf8');
@@ -397,13 +416,13 @@ if (process.platform === 'win32') {
 }
 if (process.platform === 'win32') app.setAppUserModelId('com.keystrokekeep.game');
 
-const gotLock = process.env.KK_SNAPSHOT ? true : app.requestSingleInstanceLock();
+const gotLock = process.env.KK_SNAPSHOT || CAPTURE ? true : app.requestSingleInstanceLock();
 if (!gotLock) app.quit();
 else {
   app.whenReady().then(async () => {
     // One strip per PC, across the demo and the full game (their single-instance locks are
     // separate because their folders differ): a named pipe both builds try to own.
-    if (!process.env.KK_SNAPSHOT && process.platform === 'win32') {
+    if (!process.env.KK_SNAPSHOT && !CAPTURE && process.platform === 'win32') {
       const owned = await new Promise((resolve) => {
         const srv = require('net').createServer((c) => {
           c.on('data', (d) => { if (String(d).trim() === 'quit') { try { srv.close(); } catch (e) { /* ignore */ } flushSave(); app.quit(); } });
@@ -453,6 +472,11 @@ else {
     win.webContents.on('did-finish-load', () => { battery(); lastActive = null; applyVisibility(); });
     startFullscreenWatch();
     try { hotkeyOk = globalShortcut.register(HIDE_HOTKEY, toggleVisible); } catch (e) { hotkeyOk = false; }
+    if (CAPTURE) {
+      for (let d = 0; d <= 9; d++) { try { globalShortcut.register('Control+Shift+Alt+' + d, () => send('kk:capture', d)); } catch (e) { /* taken */ } }
+      ipcMain.on('kk:mark', (_e, v) => console.log(`[capture] MARK ${new Date().toISOString()} ${String(v)}`));
+      win.webContents.on('console-message', (e, _l, msg) => { const m = e && e.message !== undefined ? e.message : msg; if (String(m).startsWith('[capture]')) console.log(m); });
+    }
     if (!hotkeyOk) console.warn('[KK] hide hotkey unavailable (taken by another app)');
     app.on('will-quit', () => globalShortcut.unregisterAll());
 

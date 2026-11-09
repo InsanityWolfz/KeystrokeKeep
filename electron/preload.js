@@ -1,7 +1,14 @@
 // Exposes a tiny, explicit bridge to the page. No Node access leaks into the renderer.
 const { contextBridge, ipcRenderer } = require('electron');
 
+const capArg = process.argv.find((x) => x.startsWith('--kk-capture='));
+let capture = null;
+try { if (capArg) capture = JSON.parse(decodeURIComponent(capArg.slice(13))); } catch (e) { capture = null; }
+
 contextBridge.exposeInMainWorld('kkNative', {
+  capture,
+  onCapture: (cb) => ipcRenderer.on('kk:capture', (_e, d) => cb(+d)),
+  mark: (v) => ipcRenderer.send('kk:mark', String(v)),
   demo: process.argv.includes('--kk-demo'),
   onActivity: (cb) => ipcRenderer.on('kk:activity', (_e, kind) => cb(kind === 'click' ? 'click' : 'key')),
   onSetting: (cb) => ipcRenderer.on('kk:setting', (_e, s) => cb(s && typeof s.k === 'string' ? { k: s.k, v: s.v } : null)),

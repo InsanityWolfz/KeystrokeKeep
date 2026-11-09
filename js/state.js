@@ -312,7 +312,7 @@
     const gain = A.renownGain();
     if (gain <= 0 && !A.canRedelve()) return false;
     S.renown += gain; S.renownLifetime += gain; S.retires++;
-    S.runTime = 0; S.runCapCleared = false; S.bossWounds = {}; S.bossLosses = 0; S.campUntil = 0; S.campFloor = 0; S.campLevels = 0; S.slain = {}; S.graceSaves = {};
+    S.runTime = 0; S.runCapCleared = false; S.bossWounds = {}; S.bossLosses = 0; S.campUntil = 0; S.campFloor = 0; S.campLevels = 0; S.slain = {}; S.graceSaves = {}; S.regroupUntil = 0;
     S.incomeRate = 0; S.incomeAvg = 0; // a fresh delve doesn't keep the old run's income
     // Delve Omens: from the 2nd retire on, the next delve offers 3 omens (not in the demo)
     S.omen = null;
@@ -375,6 +375,7 @@
       }
       if (!fresh.settings.lowGpuMigrated) { if (fresh.settings.lowGpu === true) fresh.settings.lowGpu = 'auto'; fresh.settings.lowGpuMigrated = true; }
       if (!fresh.settings.calmMigrated) { if (fresh.settings.volume === 0.3) fresh.settings.volume = 0.2; fresh.settings.calmMigrated = true; }
+      if ((fresh.workshop.dynamo || 0) > 6) { for (let l = 6; l < fresh.workshop.dynamo; l++) fresh.embers = (fresh.embers || 0) + Math.ceil(150 * Math.pow(1.6, l)); fresh.workshop.dynamo = 6; }
       if (fresh.workshop.jar) {
         let refund = 0;
         for (let l = 0; l < fresh.workshop.jar; l++) refund += Math.ceil(60 * Math.pow(1.4, l));

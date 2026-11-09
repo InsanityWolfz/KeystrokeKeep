@@ -449,3 +449,6 @@ body.native #panel { border-bottom: 0; }
 .codexbox .pips i.on { background: #c472ff; }
 
 .omen .new.star { display: block; background: #ffd76a; margin: 3px 0 0; font-size: 10px; }
+
+.farm-tag.calm { color: #c9b8ea; box-shadow: inset 0 0 0 1px #3a2f4f; }
+.res.spark.callout { animation: none; box-shadow: inset 0 0 0 1px var(--spark), 0 0 10px var(--spark); }

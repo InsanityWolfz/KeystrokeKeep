@@ -62,6 +62,7 @@
     setText('#hud-spark .val', S.settings.countInput ? Math.floor(S.sparks) + '/' + m.sparkCap : 'PAUSED');
     $('#hud-spark').classList.toggle('paused', !S.settings.countInput);
     setText('#hud-embers', fmt(Math.floor(S.embers || 0)));
+    $('#hud-spark').classList.toggle('callout', W.heroes.some((h) => h.webbed > 0) || !!(W.boss && W.boss.shell > 0));
     $('#hud-spark .sparkbar i').style.width = (100 * S.sparks / m.sparkCap).toFixed(1) + '%';
     const t = KK.fervorTier();
     const fv = $('#hud-fervor');
@@ -83,15 +84,18 @@
     const stalled = !(KK.DEMO_CAP && S.demoDone) && S.stats.playTime - (UI._lastMaxT || 0) > 300 && A.renownGain() >= 10;
     const blocked = !!(S.bossBlock && S.floor < S.bossBlock) || stalled;
     const g = A.renownGain();
-    const camp = (S.campUntil || 0) - S.stats.playTime;
-    setText('#hud-farm', blocked && g >= 10 ? `Stuck? ♛ Retire: +${g} Renown` : camp > 0 ? `Regrouping: next try in ${Math.ceil(camp / 60)}m. Level up!` : '⚠ Boss too strong: farming. Level up!');
-    $('#hud-farm').classList.toggle('hidden', !blocked || KK.fx.banners.length > 0);
+    const regroup = (S.regroupUntil || 0) - S.stats.playTime, camp = (S.campUntil || 0) - S.stats.playTime;
+    const lvls = D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0);
+    const calmLine = W.cautious ? `Training on floor ${S.floor}: gathering strength` : (camp > 0 && S.campFloor) ? `Regrouping below floor ${S.campFloor}${S.campLevels > lvls ? ` · +${S.campLevels - lvls} levels to go` : ''}` : '';
+    setText('#hud-farm', blocked && g >= 10 ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Regrouping: next try in ${Math.ceil(regroup / 60)}m. Level up!` : blocked ? '⚠ Boss too strong: farming. Level up!' : calmLine);
+    $('#hud-farm').classList.toggle('hidden', (!blocked && !calmLine) || KK.fx.banners.length > 0);
+    $('#hud-farm').classList.toggle('calm', !blocked && !!calmLine);
     const pill = $('#hud-demo');
     if (pill) {
       const om = S.omen && D.OMENS.find((o) => o.id === S.omen);
       const starOn = om && S.omen === S.omenStar && A.dailyOpen();
       setText(pill, KK.DEMO_CAP ? 'DEMO · ENDS AT FLOOR 40' + (S.demoLaps ? ` · BEST ${U.fmtTime(S.bestCapTime)} · ${S.demoLaps} CLEAR${S.demoLaps > 1 ? 'S' : ''}` : '') : om ? (starOn ? '★ ' : '◆ ') + om.name.toUpperCase() + (starOn ? ` · ★ FLOOR ${A.sealFloor()}` : '') : '');
-      pill.classList.toggle('hidden', (!KK.DEMO_CAP && !om) || KK.fx.banners.length > 0);
+      pill.classList.toggle('hidden', (!KK.DEMO_CAP && !om) || KK.fx.banners.length > 0 || KK.fx.alerts.length > 0);
       pill.title = om ? om.desc + (starOn ? ` Omen of the Day: reach floor ${A.sealFloor()} for +10 Renown.` : '') : '';
       pill.classList.toggle('omen', !KK.DEMO_CAP);
     }
@@ -199,6 +203,8 @@
       }
     }
     if (UI.tab === 'legacy') {
+      const rk = A.canRetire() + '|' + S.maxFloorRun;
+      if (UI._retireKey !== rk) { UI._retireKey = rk; UI.dirty = true; }
       setText('#retire-gain', '+' + A.renownGain());
       setText('#retire-worth', renownWorth());
       setText('#legacy-renown', '♛ ' + S.renown);
@@ -452,7 +458,10 @@
   UI.modal = function (html, onBind) {
     const root = $('#modal-root');
     root.innerHTML = `<div class="modal-back"><div class="modal">${html}</div></div>`;
-    const close = () => { root.innerHTML = ''; };
+    const close = () => { root.innerHTML = ''; document.removeEventListener('keydown', onKey); KK.paused = false; };
+    const onKey = (e) => { if (e.key === 'Escape' && !root.querySelector('.omens')) close(); };
+    document.addEventListener('keydown', onKey);
+    root.querySelector('.modal-back').addEventListener('click', (e) => { if (e.target.classList.contains('modal-back') && !root.querySelector('.omens')) close(); });
     if (onBind) onBind(root.querySelector('.modal'), close);
     return close;
   };
@@ -460,10 +469,10 @@
     const gain = A.renownGain();
     const redelve = gain <= 0;
     const best = KK.S.bestCapTime ? U.fmtTime(KK.S.bestCapTime) : null;
-    UI.modal(redelve ? `<h2>♛ RE-DELVE?</h2>
+    UI.modal((redelve ? `<h2>♛ RE-DELVE?</h2>
       <p>A fresh run with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
       <p>Sir Clank and friends hang up their swords. A new generation starts the delve, stronger for it.</p>
-      <div class="bigval">+${gain} RENOWN</div>
+      <div class="bigval">+${gain} RENOWN</div>`) + `
       ${KK.S.relicOffer ? `<p style="color:#ff9a9a">You have ${1 + (KK.S.relicQueue || []).length} unopened relic chest${(KK.S.relicQueue || []).length ? 's' : ''}. ${(KK.S.relicQueue || []).length ? 'They' : 'It'} will be lost.</p>` : ''}
       <p style="font-size:12px;color:var(--muted)">Resets: gold, hero levels, recruits, Forge, relics, floor.<br>Keeps: Renown, Legacy, Workshop upgrades, Embers.</p>
       <div class="row"><button class="buy" data-x="no" style="background:#3a2f4f;color:#fff;box-shadow:none">NOT YET</button><button class="buy renown" data-x="yes">${redelve ? 'RE-DELVE' : 'RETIRE'}</button></div>`,
@@ -474,7 +483,7 @@
         const g = A.retire();
         if (g) {
           W.partyX = W.partyX + 0; W.reset();
-          KK.fx.flash('#ffffff', 1); KK.fx.banner(typeof g === 'number' ? 'A NEW GENERATION RISES' : 'A NEW DELVE BEGINS', typeof g === 'number' ? '+' + g + ' RENOWN' + (KK.DEMO_CAP && KK.S.bestCapTime ? ' · BEAT ' + U.fmtTime(KK.S.bestCapTime) : '') : (KK.S.bestCapTime ? 'BEAT ' + U.fmtTime(KK.S.bestCapTime) : 'NEW RUN'), '#e9a2ff', 3, { subCol: '#fff' });
+          KK.fx.flash('#ffffff', 1); KK.fx.banner(typeof g === 'number' ? 'A NEW GENERATION RISES' : 'A NEW DELVE BEGINS', typeof g === 'number' ? '+' + g + ' RENOWN' + (KK.DEMO_CAP && KK.S.bestCapTime ? ' - BEAT ' + U.fmtTime(KK.S.bestCapTime) : '') : (KK.S.bestCapTime ? 'BEAT ' + U.fmtTime(KK.S.bestCapTime) : 'NEW RUN'), '#e9a2ff', 3, { subCol: '#fff' });
           if (KK.S.omenOffer) setTimeout(UI.chooseOmen, 1200);
           else { UI.toast('Spend your Renown in the Hall of Legends!', 'crown', 'epic'); setTimeout(() => UI.open('legacy'), 900); }
           KK.save();

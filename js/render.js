@@ -287,11 +287,11 @@
       b.fillStyle = '#3a0a14'; b.fillRect(bx, by, bw, 3);
       b.fillStyle = '#e04848'; b.fillRect(bx, by, Math.ceil(bw * W.boss.hp / W.boss.maxHp), 3);
       b.fillStyle = '#ff9a9a'; b.fillRect(bx, by, Math.ceil(bw * W.boss.hp / W.boss.maxHp), 1);
-      const bs = W.boss, mv = bs.shell > 0 ? ' · SHELLED' : bs.chPhase ? ' · CHARGING' : bs.pile > 0 ? ' · REASSEMBLING' : bs.voidWarn ? ' · VOID SLAM' : '';
+      const bs = W.boss, mv = bs.shell > 0 ? ' - SHELLED' : bs.chPhase ? ' - CHARGING' : bs.pile > 0 ? ' - REASSEMBLING' : bs.voidWarn ? ' - VOID SLAM' : '';
       KK.font.draw(b, bs.def.name.toUpperCase() + (bs.wounded ? ' (WOUNDED)' : '') + mv, bx + bw / 2, by + 6, '#ffb4b4');
       // enrage timer: a thin bar that fills toward the 3-minute retreat
       const ek = Math.min(1, (W.boss.fightT || 0) / 180);
-      if (ek > 0.33) { b.fillStyle = '#000'; b.fillRect(bx - 1, by + 3, bw + 2, 2); b.fillStyle = ek > 0.85 ? '#ff6b6b' : '#ffb070'; b.fillRect(bx, by + 3, Math.ceil(bw * ek), 1); }
+      if (ek > 0.33) { b.fillStyle = '#000'; b.fillRect(bx - 1, by - 3, bw + 2, 2); b.fillStyle = ek > 0.85 ? '#ff6b6b' : '#ffb070'; b.fillRect(bx, by - 3, Math.ceil(bw * ek), 1); }
       if (ek >= 0.66) KK.font.draw(b, 'ENRAGE ' + Math.max(0, Math.ceil(180 - W.boss.fightT)) + 'S', bx + bw / 2, by + 12, ek > 0.9 ? '#ff6b6b' : '#ffb070');
     }
 

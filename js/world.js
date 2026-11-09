@@ -156,6 +156,7 @@
   W.damageHero = function (h, dmg, src) {
     if (h.dead) return;
     h.hp -= dmg;
+    { let hp = 0, mx = 0; for (const o of W.heroes) { mx += o.maxHp; if (!o.dead) hp += Math.max(0, o.hp); } if (mx) W.floorLow = Math.min(W.floorLow === undefined ? 1 : W.floorLow, hp / mx); }
     // onboarding grace: no knockouts before the first boss falls or 10 minutes of play
     const S0 = KK.S;
     if (h.hp <= 0 && (S0.stats.bossKills === 0 || S0.stats.playTime < 600)) {
@@ -208,7 +209,7 @@
     if (F.isBossFloor(S.floor)) {
       S.bossBlock = S.floor;
       S.bossLosses = (S.bossLosses || 0) + 1;
-      if (S.bossLosses >= 3) { S.bossLosses = 0; S.campUntil = S.stats.playTime + 600; KK.emit('regroup', { floor: S.floor }); }
+      if (S.bossLosses >= 3) { S.bossLosses = 0; S.regroupUntil = S.stats.playTime + 600; KK.emit('regroup', { floor: S.floor }); }
     }
     KK.emit('wipe', { floor: S.floor, reason });
   };
@@ -222,7 +223,7 @@
     W.ultTurn = ids[(i + 1) % ids.length];
   };
   W.castUlt = function (h, free) {
-    if (h.webbed > 0) { h.webbed = 0; KK.emit('webTorn', { h }); }
+    if (h.id !== 'cleric') for (const o of W.heroes) if (o.webbed > 0) { o.webbed = 0; KK.emit('webTorn', { h: o }); }
     const S = KK.S, m = KK.mods();
     const def = D.HEROES[h.id];
     if (!free) {
@@ -468,6 +469,7 @@
     const S = KK.S;
     if (e.sigT === undefined) e.sigT = { ratking: 0.8, broodmother: 1.0, embergolem: 0, magmalord: 1.0 }[e.key];
     if (e.sigT === undefined) return;
+    if (KK.fx && KK.fx.banners && KK.fx.banners.length) { e.sigT = Math.max(e.sigT, 0.5); return; }
     e.sigT -= dt;
     if (e.voidT !== undefined && e.voidT < 2.4 && e.sigT < 0.5) e.sigT = 0.5;
     const living = W.heroes.filter((h) => !h.dead);
@@ -657,6 +659,18 @@
 
   W.nextFloor = function () {
     const S = KK.S;
+    // Caution: with nobody typing for 30 s, a battered party replays the floor (or steps back)
+    // instead of marching into the next wall; it also wants to be healthy before a boss.
+    const low = W.floorLow === undefined ? 1 : W.floorLow;
+    W.floorLow = 1;
+    const holding = (S.campUntil || 0) > S.stats.playTime || (S.regroupUntil || 0) > S.stats.playTime;
+    if (!holding && KK.lastInputAgo() >= 30 && !F.isBossFloor(S.floor) && !(KK.DEMO_CAP && S.runCapCleared) && S.floor > KK.mods().startFloor) {
+      let back = 0;
+      if (low < 0.35 && !F.isBossFloor(S.floor - 1)) back = 2;
+      else if (low < 0.6 || (F.isBossFloor(S.floor + 1) && low < 0.85)) back = 1;
+      if (back) { S.floor = Math.max(KK.mods().startFloor - 1, S.floor - back); W.cautious = S.floor + back; }
+      else W.cautious = 0;
+    } else W.cautious = 0;
     // demo: every delve ends on the floor-40 boss. Once it falls this run, the party farms 37-39
     // (the depths are sealed) until you re-delve. Best time to floor 40 is the demo's score.
     if (KK.DEMO_CAP && S.floor >= KK.DEMO_CAP) {
@@ -672,7 +686,8 @@
     // regrouping after repeated losses: keep farming the floor below the wall for a while
     if (S.campFloor && S.campLevels && D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0) >= S.campLevels) { S.campFloor = 0; S.campLevels = 0; S.campUntil = 0; }
     const wall = Math.max(S.bossBlock || 0, S.campFloor || 0);
-    if (wall && S.floor + 1 >= wall && (S.campUntil || 0) > S.stats.playTime) S.floor--;
+    if (S.bossBlock && S.floor + 1 >= S.bossBlock && (S.regroupUntil || 0) > S.stats.playTime) S.floor--;
+    else if (S.campFloor && S.floor + 1 >= S.campFloor && (S.campUntil || 0) > S.stats.playTime) S.floor--;
     S.floor++;
     if (S.floor > S.maxFloorRun) S.maxFloorRun = S.floor;
     if (S.omen && S.omen === S.omenStar && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
@@ -700,7 +715,7 @@
     W.wave = 0; W.door = null; W.chest = null; W.boss = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
     for (const h of W.heroes) { h.dead = false; h.hp = h.maxHp; h.webbed = 0; }
-    W.wipeT = 0;
+    W.wipeT = 0; W.floorLow = 1;
     KK.emit('recovered', { floor: S.floor });
   };
 
@@ -742,8 +757,9 @@
   function autoBuy() {
     const S = KK.S, A = KK.actions;
     if (S.settings.autoLevel === false) return;
-    // saving up for a hero you can already recruit? leave the gold alone
-    if (D.PARTY_ORDER.some((id) => A.canRecruit(id) && S.gold < A.recruitCost(id))) return;
+    for (const id of D.PARTY_ORDER) if (A.canRecruit(id) && S.gold >= A.recruitCost(id)) A.recruit(id);
+    // close to affording a recruit (within ~2 minutes of income)? save for it
+    if (D.PARTY_ORDER.some((id) => A.canRecruit(id) && S.gold < A.recruitCost(id) && S.gold + S.incomeRate * 120 >= A.recruitCost(id))) return;
     // frugal: only levels that cost at most 10% of current gold, cheapest first
     for (let i = 0; i < 20; i++) {
       let best = null, bestC = Infinity;

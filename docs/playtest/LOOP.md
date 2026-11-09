@@ -25,6 +25,8 @@ Each round lives in `docs/playtest/round-NN/` (one report per tester + `SUMMARY.
 * Demo mode: `?demo` in the browser, `KK_DEMO=1` for Electron, `--demo` for playtest.js. `playtest.js --retire nudge` retires like the in-game nudge; `--omen first|none|random`.
 * Market probe (T3): `npx electron docs/playtest/round-04/market_probe` (modes in its README/probe.js; uses its own %APPDATA%/kk-market-probe-r4 folders).
 * Packaged build: `npm run dist` / `npm run dist:demo` → `dist/*/win-unpacked/*.exe`.
+* Capture mode for store shots: `KK_CAPTURE=1 [KK_CAPTURE_SAVE=…] [KK_CAPTURE_SCRIPT=…] npx electron .` (tools/capture/README.md).
+* Idle first-hour gate: `for s in 1 2 3 4 5; do node tools/playtest.js --min 60 --profile idle --demo --seed $s; done` (target <=4 retreats each, also with `--glance 300`).
 * Source: `js/*.js` (data in `js/data.js`, economy in `js/state.js`, combat in `js/world.js`, UI in `js/ui.js`), desktop shell in `electron/`, design in `docs/GDD.md`.
 * Tester 4 only: the browser pane at http://127.0.0.1:5173 (fake desktop + dev tools: autotype, time warp, +gold, +floors, rat). Fresh start: run `KK.resetting = true; localStorage.clear(); location.reload()` (a plain `localStorage.clear()` gets re-saved by the unload handler). Asset URLs carry `?v=rNN`; the lead bumps it each round so the browser never runs stale code. Dev server: `python tools/serve.py` (no-cache). The page blocks all fetches by CSP, so don't probe with `fetch()`.
 
@@ -107,6 +109,9 @@ Format: `- [round found] [severity] item: status/reason`
 ### Fixed in R6
 - Enrage bug + wound carry-over + regroup, all 4 remaining signature moves, Reassemble visibility, Codex cadence, Dynamo, Blitz, digit font, achievements list open state, re-delve wording, false stall hint, omen pill tooltip/width.
 
+### Fixed in R7
+- Strip noise (sound/visual/toast caps, calm default), idle first-hour gate (caution rule, Quartermaster v2), Dynamo cap, boss re-kill farm, re-delve softlock, web/shell typing callouts, moves under banners, week-2 layer, Codex box, capture mode.
+
 ### Open (ranked)
 - [R4] [check] Measure GPU/CPU with low-GPU mode on (default) incl. an iGPU laptop if possible; fullscreen filter vs real overlays; save edge cases on the packaged build (market probe in docs/playtest/round-04/market_probe).
 - [R3] [blocker, owner: user] Steamworks onboarding (fee/tax/bank), app id, Coming Soon page (~Nov 23), trailer (Jan 8), demo + page review submission (~Jan 12, deadline Jan 18). Set `KK.STORE_URL`.
@@ -114,10 +119,9 @@ Format: `- [round found] [severity] item: status/reason`
 - [R3] [blocker, owner: user] Code-signing certificate (Azure Artifact Signing or OV); then `win.azureSignOptions`/certificate config; VirusTotal + Microsoft submissions.
 - [R5] [check] R5 market report arrived after the write-up: fold its findings in (power low-GPU on/off, fullscreen filters, save hardening, packaged build, store checklist + trailer shot list in round-05/market.md).
 - [R6] [blocker, owner: user] Steamworks onboarding NOW (tax up to 30 days); app id + Desktop Companion tag by ~Dec 1 for Desktop Companion Fest (Jan 14-18, opt-in ~Dec 3); Coming Soon page submit Dec 7; demo build review Dec 18; dated plan in round-06/market.md.
-- [R6] [major] Idle first hour still ~10 quiet retreats (target <=4); consider a softer f11-30 curve for parties without the Cleric.
-- [R6] [major] KK_CAPTURE mode (60 fps, no idle drop, fixed crop, no dev UI) for store GIFs/trailer; shot list in round-06/market.md.
-- [R6] [major] Week-2 layer: Omen of the Day + Void Lantern + trophies at 160-200 (final numbers and code locations in round-06/auditor.md; prototype: typist beats after 8 h 22-28 -> 40-45).
-- [R6] [minor] Alert priority (only the newest alert draws); Codex progress line in Legacy; achievement progress counters; chests/wipes in the stat box.
+- [R7] [major] Demo: "Glimpse of the Depths" (first f40 clear or 40 min: one sealed Magma floor ending at a shelled Ember Colossus, then the wishlist card) - spec in round-07/auditor.md F2. Also make the DEMO pill clickable (store link).
+- [R7] [major, owner: user] Record store screenshots/GIFs with capture mode (tools/capture/README.md; shot list in round-07/market.md) once the Steam page exists; store copy v2 is in round-07/market.md.
+- [R6] [minor] Alert priority (only the newest alert draws); achievement progress counters (goal/cur, spec in round-07/auditor.md F7).
 - [R5] [minor] Demo card: hold floor 40 in a victory pose until dismissed; sprite teasers; move the DEMO pill to .hud-right.
 - [R5] [minor] Progress display for counter achievements; chests/wipes in the stat box.
 - [R4] [minor] Mouse-move events wake the main process ~650 Hz (uiohook); post-fest Raw Input or a fork that drops moves.
@@ -136,4 +140,5 @@ Format: `- [round found] [severity] item: status/reason`
 | R3 | 2026-11-09 | Demo re-delve loop + card, Delve Omens, Sanctuary reaction, ligature fix, file saves, per-monitor fullscreen, baked demo flag, 24 fps, bar transitions removed | 220510d |
 | R4 | 2026-11-09 | Packaging + fuses, achievements, depth trophies, demo Renown cap, omen rebalance + modal, Vigil + void slam, low-GPU mode, save hardening | 40214c3, d42bbc9 |
 | R5 | 2026-11-09 | Heal cap, Dynamo, Hollow Codex, War Charge + Reassemble, alert channel, Heart of the Keep, achievement fixes, demo cap 120, cross-build instance lock | 44379dd, 89f4651 |
-| R6 | 2026-11-09 | Enrage keeps wounds + regroup, all six boss signature moves, Codex per 8 kills, Dynamo 10%, digit font, achievements open state, quiet first-hour retreats, handoff/save hardening | ce6b6d1, 3adcda5 + (this round) |
+| R6 | 2026-11-09 | Enrage keeps wounds + regroup, all six boss signature moves, Codex per 8 kills, Dynamo 10%, digit font, achievements open state, quiet first-hour retreats, handoff/save hardening | ce6b6d1, 3adcda5, 4eb20cb |
+| R7 | 2026-11-09 | Calm strip (combat sfx off, rationed booms/alerts/toasts), caution rule (idle hour 1: 7.9 -> 1.8 retreats), week-2 layer (Omen of the Day, Seals, Void Lantern, trophies to 200), capture mode, re-delve softlock fix | 056ad04 + (this round) |

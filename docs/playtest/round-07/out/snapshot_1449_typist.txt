@@ -1,0 +1,4 @@
+=== typist 180 min --demo  seeds 1-10 ===
+variant                   h1 retreats (N/B/E)        first  <10  maxEver  card   bestLap  renown  total
+base                       2.7 [1,3,3,2,3,4,2,3,2,4] (1.5/1.2/0.0)  10.1    0     40.0     33.0     4.1   120.0    2.7
+c60b35pb85i30              2.9 [2,3,4,2,2,4,2,3,2,5] (1.5/1.4/0.0)  10.0    0     40.0     32.4     4.2   120.0    2.9

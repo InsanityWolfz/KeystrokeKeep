@@ -19,6 +19,7 @@ Method:
 - **Variants:** `r7patch.js` applies every variant in memory, named in `variants.js`.
 - **Aggregation and checks:** `agg7.js` aggregates. Code-bug checks are in `dbg_regroup.js`, `dbg_recover.js` and `dbg_dynamo.js`.
 - **Raw output** is in `out/` (`gate_*.txt`, `cand_*.txt`, `full8_*.txt`, `e8_*.jsonl`, `e40*.jsonl`, `pt_*.txt`).
+- **Build:** every number is from the build as it stood before 14:47, except the `snapshot_1449_*` gate re-run in F1. `js/` changed on disk during the round.
 
 ## Findings (ranked, max 8)
 
@@ -87,6 +88,14 @@ Method:
   4. **The grace debt goes away by itself.** Grace saves pin heroes at 1 HP, which counts as a beating, so the party stops advancing during the grace instead of overreaching.
 
   With the 30 s guard, typing means "the party charges" and idling means "the party plays it safe". The typist demo is byte-identical at 60 s and differs by noise at 30 s.
+- **Snapshot of the in-flight build.** `js/world.js`, `state.js` and `data.js` changed on disk at 14:47–14:48, after all of the runs above. The new code has a grace-camp, a camp exit at +4 levels per hero, `S.slain` and a camp reset on retire. Re-running the gate on it (`out/snapshot_1449_*.txt`, 10 seeds):
+
+  | | Idle, glance 60 | First | Idle, glance 300 | Typist demo |
+  |---|---|---|---|---|
+  | In-flight build | **5.4 [3–8]** | 10.2 | 8.9 [6–12] | 2.7 retreats, card 33.0, lap 4.1 |
+  | The same + the 30 s caution rule | **1.6 [0–3]** | 16.4 | **1.8 [0–3]** | 2.9 retreats, card 32.4, lap 4.2 |
+
+  The in-flight build halves the problem but still fails the gate (seeds with 8, first wipe still at 10:12). The caution rule on top passes at both glance rates on all 10 seeds.
 
 ### F2 [severity: major] Quartermaster freezes all leveling whenever a hero is unlocked but unaffordable, which makes idle wipes worse
 - **Evidence:**
@@ -143,6 +152,7 @@ Method:
   - `A.retire`: add `S.campFloor = 0; S.campLevels = 0;`.
   - Give the boss regroup its own `S.regroupUntil`. In `nextFloor`, the wall is `regroupUntil > now ? bossBlock : (campUntil > now ? campFloor : 0)`.
   - The camp's level exit clears only `campFloor`, `campLevels` and `campUntil`.
+- **Status in the in-flight build (14:48):** `A.retire` now resets `campFloor` and `campLevels`, which fixes the 27-of-35 case. The shared `campUntil` (8 of 35) is still open. Not re-measured at 40 h.
 
 ### F5 [severity: minor] A retreat from floor x1 lands on the cleared boss floor: a forced boss rematch, a second wipe, and a free relic
 - **Evidence:**
@@ -151,6 +161,7 @@ Method:
   - At glance 300, 11 of 158 hour-1 retreats are on x1 floors. Each costs a likely boss wipe after it, and **1–5 repeat boss kills per 3 h**, each worth a relic offer, 10 Embers and 14x gold.
   - Glance 60: 0–0.6 per 8 h. Rare for attentive players, common for the true idler.
 - **Proposed fix:** in `W.recover`, if the new floor is a boss floor below `maxFloorRun`, play it without the boss: `W.bossCleared = true` skips the boss wave, or land on x9 (`S.floor -= 1`). F1's step-back rule already avoids boss floors.
+- **Status in the in-flight build (14:48):** `S.slain[f]` skips a boss that already fell this delve (`world.js:77`). That is this fix; it still needs a verification run.
 
 ### F6 [severity: minor, info] The six signature moves are economy-neutral. The "ultimate breaks it" rewards fire for typists but don't widen the gap
 - **Evidence:** 8 h, 5 seeds, each move switched off in memory.
