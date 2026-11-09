@@ -1,0 +1,32 @@
+
+typist: total embers earned (avg 3 seeds) and workshop levels (seed 1)
+  0h10: earned    328  ws {"jar":3} bank 63
+  0h30: earned    942  ws {"jar":3,"overcharge":2,"kindling":2,"static":1} bank 86
+  1h00: earned   1985  ws {"jar":5,"overcharge":3,"kindling":3,"static":1} bank 254
+  2h00: earned   4014  ws {"jar":7,"overcharge":4,"kindling":4,"static":3} bank 160
+  4h00: earned   7998  ws {"jar":8,"overcharge":6,"kindling":6,"static":4} bank 178
+  8h00: earned  15979  ws {"jar":10,"overcharge":8,"kindling":7,"static":5} bank 709
+
+heavy: total embers earned (avg 3 seeds) and workshop levels (seed 1)
+  0h10: earned    637  ws {"jar":3,"overcharge":1,"kindling":1} bank 189
+  0h30: earned   1879  ws {"jar":5,"overcharge":3,"kindling":3,"static":1} bank 134
+  1h00: earned   3738  ws {"jar":7,"overcharge":4,"kindling":4,"static":2} bank 329
+  2h00: earned   7408  ws {"jar":8,"overcharge":6,"kindling":5,"static":4} bank 444
+  4h00: earned  14771  ws {"jar":10,"overcharge":7,"kindling":7,"static":5} bank 1081
+  8h00: earned  29529  ws {"jar":12,"overcharge":9,"kindling":9,"static":6} bank 55
+
+burst: total embers earned (avg 3 seeds) and workshop levels (seed 1)
+  0h10: earned     70  ws {"jar":1} bank 28
+  0h30: earned    206  ws {"jar":2} bank 72
+  1h00: earned    390  ws {"jar":2,"overcharge":1,"kindling":1} bank 52
+  2h00: earned    756  ws {"jar":3,"overcharge":1,"kindling":2} bank 122
+  4h00: earned   1447  ws {"jar":4,"overcharge":2,"kindling":3,"static":1} bank 188
+  8h00: earned   2892  ws {"jar":6,"overcharge":4,"kindling":3,"static":2} bank 330
+
+idle: total embers earned (avg 3 seeds) and workshop levels (seed 1)
+  0h10: earned     19  ws {} bank 14
+  0h30: earned     38  ws {} bank 28
+  1h00: earned     89  ws {} bank 60
+  2h00: earned    154  ws {"jar":1} bank 75
+  4h00: earned    294  ws {"jar":2,"kindling":1} bank 81
+  8h00: earned    623  ws {"jar":3,"kindling":2,"overcharge":1} bank 35

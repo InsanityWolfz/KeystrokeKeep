@@ -1,0 +1,21 @@
+=== R1 F1: retire spam with Head Start ===
+headstart 0: first retire from f20 +3; start floor 1; canRetire after = false; 100 more clicks = +0
+headstart 4: first retire from f20 +3; start floor 21; canRetire after = false; 100 more clicks = +1
+headstart 8: first retire from f20 +3; start floor 41; canRetire after = false; 100 more clicks = +29
+
+=== R1 F7: Idle Battery is a floor ===
+battery 5: fervor 0 -> 1.40, fervor 30 -> 1.40, fervor 70 -> 1.60, fervor 95 -> 2.20
+
+=== R1 F2: prestige policies (lifetime renown, deepest floor), 3 seeds ===
+typist stall 2          4h: renown  189 deepest 90 | 8h: renown  224 deepest 96
+typist stall 4          4h: renown  197 deepest 91 | 8h: renown  239 deepest 99
+typist stall 8          4h: renown  179 deepest 94 | 8h: renown  261 deepest 105
+typist stall 15         4h: renown  139 deepest 89 | 8h: renown  242 deepest 103
+typist +10 floors farm  4h: renown   87 deepest 63 | 8h: renown  164 deepest 84
+typist +20 floors farm  4h: renown   90 deepest 63 | 8h: renown  164 deepest 83
+idle   stall 2          4h: renown  122 deepest 73 | 8h: renown  156 deepest 81
+idle   stall 4          4h: renown  119 deepest 73 | 8h: renown  161 deepest 84
+idle   stall 8          4h: renown  125 deepest 77 | 8h: renown  186 deepest 88
+idle   stall 15         4h: renown   81 deepest 71 | 8h: renown  165 deepest 87
+idle   +10 floors farm  4h: renown   21 deepest 35 | 8h: renown   50 deepest 49
+idle   +20 floors farm  4h: renown   22 deepest 36 | 8h: renown   58 deepest 53

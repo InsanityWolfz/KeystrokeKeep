@@ -12,7 +12,7 @@
   const TABS = [
     { id: 'party', label: 'Party', icon: 'sword' },
     { id: 'forge', label: 'Forge', icon: 'hammer' },
-    { id: 'workshop', label: 'Sparks', icon: 'spark' },
+    { id: 'workshop', label: 'Workshop', icon: 'candle' },
     { id: 'relics', label: 'Relics', icon: 'gem' },
     { id: 'legacy', label: 'Legacy', icon: 'crown' },
     { id: 'settings', label: '', icon: 'gear' },
@@ -59,6 +59,7 @@
     setText('#hud-gold .val', fmt(shownGold));
     setText('#hud-spark .val', S.settings.countInput ? Math.floor(S.sparks) + '/' + m.sparkCap : 'PAUSED');
     $('#hud-spark').classList.toggle('paused', !S.settings.countInput);
+    setText('#hud-embers', fmt(Math.floor(S.embers || 0)));
     $('#hud-spark .sparkbar i').style.width = (100 * S.sparks / m.sparkCap).toFixed(1) + '%';
     const t = KK.fervorTier();
     const fv = $('#hud-fervor');
@@ -67,8 +68,11 @@
     setText('#fv-tier', D.FERVOR_TIERS[t].name);
     setText('#fv-mult', 'x' + KK.powerMult().toFixed(2).replace(/0$/, ''));
   };
+  let blinkT = 0;
   UI.slowUpdate = function () {
     const S = KK.S;
+    blinkT ^= 1;
+    document.documentElement.classList.toggle('blink', !!blinkT);
     setText('#hud-floor', 'FLOOR ' + S.floor);
     setText('#hud-biome', F.biomeOf(S.floor).name);
     setText('#hud-rate', S.incomeRate > 0.05 ? fmt(S.incomeRate) + '/s' : '');
@@ -110,7 +114,8 @@
     };
     const aff = anyAffordable();
     set('party', aff === 'recruit' ? 'NEW' : aff ? '!' : null, aff ? 'gold' : '');
-    set('relics', S.relicOffer ? '!' : null, S.relicOffer ? 'epic' : '');
+    const offers = S.relicOffer ? 1 + (S.relicQueue || []).length : 0;
+    set('relics', offers ? (offers > 1 ? String(offers) : '!') : null, offers ? 'epic glow' : '');
     const legacyAff = D.LEGACY.some((d) => (S.legacy[d.id] || 0) < d.max && d.cost(S.legacy[d.id] || 0) <= S.renown);
     set('legacy', legacyAff ? '!' : A.canRetire() && S.retires === 0 ? '♛' : null, 'epic');
     const wsAff = D.WORKSHOP.some((d) => (S.workshop[d.id] || 0) < d.max && F.upCost(d, S.workshop[d.id] || 0) <= (S.embers || 0));
@@ -177,6 +182,7 @@
     }
     if (UI.tab === 'legacy') {
       setText('#retire-gain', '+' + A.renownGain());
+      setText('#retire-worth', renownWorth());
       setText('#legacy-renown', '♛ ' + S.renown);
     }
     if (UI.tab === 'workshop') setText('#ws-embers', fmt(Math.floor(S.embers || 0)));
@@ -244,7 +250,8 @@
     const S = KK.S;
     const counts = {};
     for (const r of S.relics) counts[r] = (counts[r] || 0) + 1;
-    const offer = S.relicOffer ? `<button class="buy big" data-action="showoffer" style="margin-bottom:10px">◆ A RELIC IS WAITING. OPEN THE CHEST</button>` : '';
+    const waiting = S.relicOffer ? 1 + (S.relicQueue || []).length : 0;
+    const offer = waiting ? `<button class="buy big" data-action="showoffer" style="margin-bottom:10px">◆ ${waiting > 1 ? waiting + ' RELIC CHESTS ARE' : 'A RELIC IS'} WAITING. OPEN THE CHEST</button>` : '';
     return `<div class="ph"><div><h3>RELICS</h3><div class="sub">Bosses drop a choice of relics every 10 floors. They last until you retire.</div></div></div>
       ${offer}
       ${S.relics.length ? `<div class="relic-list">${Object.keys(counts).map((id) => relicCard(id, counts[id])).join('')}</div>` : '<div class="empty">No relics yet. Defeat the boss on floor 10!</div>'}`;
@@ -256,10 +263,10 @@
     return `<div class="legacy-top">
       <div class="retire-box">
         <h4>♛ RETIRE THE PARTY</h4>
-        <p>Your heroes retire to the tavern. Gold, levels, Forge and relics reset. You keep <b>Renown</b>, Legacy upgrades and all Workshop upgrades. Renown is paid for <b>beating your deepest record</b> (floor ${S.renownFloor || 0}).</p>
+        <p>Your heroes retire to the tavern. Gold, levels, Forge and relics reset. You keep <b>Renown</b>, Legacy upgrades and all Workshop upgrades. Renown is paid for <b>beating your deepest record</b> (${S.renownFloor ? 'floor ' + S.renownFloor : 'no record yet'}).</p>
         <p>Deepest floor this delve: <b>${S.maxFloorRun}</b> · Renown: <b style="color:#e9a2ff">${S.renown}</b> (lifetime ${S.renownLifetime}, +${Math.round(S.renownLifetime * 3)}% dmg &amp; gold)</p>
         <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
-          <div class="gain" id="retire-gain">+${gain}</div>
+          <div><div class="gain" id="retire-gain">+${gain}</div><div class="worth" id="retire-worth">${renownWorth()}</div></div>
           <button class="buy renown big" data-action="retire" ${gain > 0 ? '' : 'disabled'} style="flex:1">${gain > 0 ? 'RETIRE FOR RENOWN' : 'REACH FLOOR ' + A.retireTarget() + ' TO EARN RENOWN'}</button>
         </div>
       </div>
@@ -272,6 +279,14 @@
       </div></div>
       <div class="ph"><div><h3>HALL OF LEGENDS</h3><div class="sub">Permanent upgrades bought with Renown.</div></div><div class="res-pill renown" id="legacy-renown">♛ ${S.renown}</div></div>
       <div class="grid">${D.LEGACY.map((d) => upCard(d, S.legacy[d.id] || 0, 'renown', 'legacy')).join('')}</div>`;
+  }
+  /** "+X% damage & gold" that the pending Renown would add (Fame), for the retire button. */
+  function renownWorth() {
+    const S = KK.S, g = A.renownGain();
+    if (g <= 0) return '';
+    const fame = (R) => (1 + 0.03 * R) * Math.pow(1.004, R);
+    const pct = Math.round((fame(S.renownLifetime + g) / fame(S.renownLifetime) - 1) * 100);
+    return `+${pct}% DMG & GOLD FOREVER`;
   }
   function settingsHTML() {
     const s = KK.S.settings;
@@ -348,7 +363,8 @@
     const S = KK.S, off = $('#relic-offer');
     if (!S.relicOffer) { off.classList.add('hidden'); return; }
     offerOpenedAt = performance.now(); offerSel = null;
-    off.innerHTML = `<div class="offer-title">◆ THE BOSS DROPPED A RELIC! CHOOSE ONE ◆</div>
+    const more = (S.relicQueue || []).length;
+    off.innerHTML = `<div class="offer-title">◆ THE BOSS DROPPED A RELIC! CHOOSE ONE ◆${more ? ` <span style="opacity:.7">(${more} more waiting)</span>` : ''}</div>
       <div class="offer-cards">${S.relicOffer.map((id) => {
         const r = D.RELICS.find((x) => x.id === id);
         return `<div class="ocard ${r.rar}" data-relic="${id}"><img src="${r.rar === 'epic' && r.icon === 'gem' ? KK.SPR.iconURL.gemEpic : KK.SPR.iconURL[r.icon]}" alt="">
@@ -381,7 +397,7 @@
       $$('.ocard').forEach((c) => { if (c !== card) c.style.opacity = '0.2'; });
       const r = D.RELICS.find((x) => x.id === id);
       UI.toast(`Relic acquired: ${r.name}`, r.icon, r.rar === 'epic' ? 'epic' : 'gold');
-      setTimeout(() => $('#relic-offer').classList.add('hidden'), 520);
+      setTimeout(() => { if (KK.S.relicOffer) UI.showOffer(); else $('#relic-offer').classList.add('hidden'); }, 520);
     }
   }
 
@@ -398,7 +414,7 @@
     UI.modal(`<h2>♛ RETIRE THE PARTY?</h2>
       <p>Sir Clank and friends hang up their swords. A new generation starts the delve, stronger for it.</p>
       <div class="bigval">+${gain} RENOWN</div>
-      <p style="font-size:12px;color:var(--muted)">Resets: gold, hero levels, recruits, Forge, relics, floor.<br>Keeps: Renown, Legacy, Spark Workshop, Sparks.</p>
+      <p style="font-size:12px;color:var(--muted)">Resets: gold, hero levels, recruits, Forge, relics, floor.<br>Keeps: Renown, Legacy, Workshop upgrades, Embers.</p>
       <div class="row"><button class="buy" data-x="no" style="background:#3a2f4f;color:#fff;box-shadow:none">NOT YET</button><button class="buy renown" data-x="yes">RETIRE</button></div>`,
     (m, close) => {
       m.querySelector('[data-x=no]').onclick = close;
@@ -435,6 +451,14 @@
       <div class="row"><button class="buy" data-x="ok">COLLECT</button></div>`,
     (m, close) => { m.querySelector('[data-x=ok]').onclick = () => { close(); KK.audio.init(); KK.fx.coinBurst(W.partyX, 30, 30); KK.audio.play('chest'); }; });
   };
+  KK.on('demoComplete', () => setTimeout(() => {
+    UI.modal(`<h2>DEMO COMPLETE!</h2>
+      <p>Your party conquered the Mossy Caverns. <b style="color:#ff7a2e">The Magma Depths</b>, <b style="color:#c472ff">The Hollow Void</b> and their bosses wait in the full game.</p>
+      <p>The strip keeps running: farm gold, retire for Renown and try new relic builds. Your save carries over to the full game.</p>
+      <p style="font-size:12px;color:var(--muted)">Wishlist Keystroke Keep on Steam to get pinged at launch.</p>
+      <div class="row"><button class="buy big" data-x="ok">KEEP DELVING</button></div>`,
+    (m, close) => { m.querySelector('[data-x=ok]').onclick = close; });
+  }, 2500));
   UI.welcome = function (onStart) {
     UI.modal(`<h2>KEYSTROKE KEEP</h2>
       <p style="font-size:15px"><i>Your work is their adventure.</i></p>
@@ -465,6 +489,16 @@
       for (const id of D.PARTY_ORDER) if (D.HEROES[id].unlockFloor === floor && !KK.S.heroes[id]) UI.toast(`${D.HEROES[id].name} the ${D.HEROES[id].cls} can be recruited in ⚔ Party!`, 'heart', 'gold', 5);
       if (floor === 20 && KK.S.retires === 0) once('retire', () => UI.toast('You can now ♛ Retire for permanent Renown (when you get stuck).', 'crown', 'epic', 6));
     });
+    // the first time a retire is clearly worth it, say so once (players don't know they lose nothing)
+    let runStartT = performance.now();
+    KK.on('retired', () => { runStartT = performance.now(); });
+    setInterval(() => {
+      const g = A.renownGain();
+      const key = 'retireNudge' + KK.S.retires;
+      if (g >= 30 && !T()[key] && (performance.now() - runStartT) / 1000 * (KK.warp || 1) > 25 * 60 || (g >= 30 && KK.S.retires === 0 && !T()[key] && KK.S.maxFloorRun >= 40)) {
+        once(key, () => UI.toast(`Retiring now earns +${g} Renown (${renownWorth().toLowerCase()}). Your next party gets back here fast. Open ♛ Legacy.`, 'crown', 'epic', 9));
+      }
+    }, 3000);
     KK.on('ratSpawn', () => once('rat', () => UI.toast('A GOLDEN RAT! Click it before it escapes!', 'coin', 'gold', 5)));
     setInterval(() => {
       if (anyAffordable() && !T().lvl) once('lvl', () => UI.toast('You can afford an upgrade. Open ⚔ Party!', 'sword', 'gold', 5));

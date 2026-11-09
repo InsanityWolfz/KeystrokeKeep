@@ -1,0 +1,9 @@
+=== first-retire timing, idle, 4 seeds; later retires on 8-min stall ===
+stall 8 (harness)  1st retire 71min f38 +30 | run2 back to record in 16.5min | deepest 2h/4h/8h 52/77/89 | renown 2h/4h/8h 42/113/187
+first at f30       1st retire 41min f30 +13 | run2 back to record in 17.3min | deepest 2h/4h/8h 53/76/87 | renown 2h/4h/8h 32/124/176
+first at f35       1st retire 54min f35 +21 | run2 back to record in 16.8min | deepest 2h/4h/8h 57/77/89 | renown 2h/4h/8h 21/134/189
+first at f40       1st retire 65min f40 +30 | run2 back to record in 17.8min | deepest 2h/4h/8h 58/72/85 | renown 2h/4h/8h 42/118/171
+first at f45       1st retire 80min f45 +40 | run2 back to record in 22.4min | deepest 2h/4h/8h 53/70/84 | renown 2h/4h/8h 40/112/161
+first at f50       1st retire 103min f50 +51 | run2 back to record in 21.6min | deepest 2h/4h/8h 51/74/89 | renown 2h/4h/8h 38/112/187
+first at f55       1st retire 151min f55 +65 | run2 back to record in 23.7min | deepest 2h/4h/8h 51/70/83 | renown 2h/4h/8h 0/100/156
+first at f60       1st retire 200min f60 +79 | run2 back to record in 27.1min | deepest 2h/4h/8h 51/65/81 | renown 2h/4h/8h 0/87/153

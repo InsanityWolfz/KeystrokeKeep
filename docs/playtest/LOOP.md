@@ -20,6 +20,9 @@ Each round lives in `docs/playtest/round-NN/` (one report per tester + `SUMMARY.
   Plays the real sim as a scripted player and prints a timeline, key events, prestige runs, pacing (stalls, droughts, purchases/10 min), fervor-tier time, spark waste, **content coverage** (first affordable / first bought per upgrade), relic offer/pick counts, biomes reached and monsters never seen.
 * `require('./tools/headless')({ seed, bal })` returns a live `KK` in node, for custom scenario scripts. Put scratch scripts in your round folder, never in `js/`.
 * `node tools/sim.js` (older, simpler balance sim).
+* `npx electron docs/playtest/round-02/market_probe` (T3): measures GPU/DWM/fps of the real Electron shell under its own profile; briefly opens a fullscreen test window.
+* Desktop self-test: `KK_SNAPSHOT=out.png [KK_SNAPSHOT_JS=...] [KK_DEMO=1] npx electron .` uses a separate `-selftest` profile (never touches the real save).
+* Demo mode: `?demo` in the browser, `KK_DEMO=1` for Electron, `--demo` for playtest.js.
 * Source: `js/*.js` (data in `js/data.js`, economy in `js/state.js`, combat in `js/world.js`, UI in `js/ui.js`), desktop shell in `electron/`, design in `docs/GDD.md`.
 * Tester 4 only: the browser pane at http://127.0.0.1:5173 (fake desktop + dev tools: autotype, time warp, +gold, +floors, rat). Fresh start: run `KK.resetting = true; localStorage.clear(); location.reload()` (a plain `localStorage.clear()` gets re-saved by the unload handler). Asset URLs carry `?v=rNN`; the lead bumps it each round so the browser never runs stale code. Dev server: `python tools/serve.py` (no-cache). The page blocks all fetches by CSP, so don't probe with `fetch()`.
 
@@ -87,24 +90,27 @@ Format: `- [round found] [severity] item: status/reason`
 - [R1] Content ends at The Hollow → Hollowed bosses cycle from floor 70 (R1, partial: see finale below).
 - [R1] 160 fps render, audio never suspends, focus stealing, Google Fonts, relic misclicks, offline modal, FLOW spam → fixed (R1).
 
+### Fixed in R2
+- Spark Jar dead → Ember Crucible; Overcharge multiplicative; idle Embers from bosses/rats; Fame compounds; offline uses 10-min avg; relic queue; disabled-button styling; boss bar/crit readability; screen-space rat; fullscreen auto-hide; CSS-animation GPU drain; sleeping frame loop; muted audio leak; hook removed on pause; hotkey Ctrl+Shift+Alt+K; demo mode (cap 40).
+
 ### Open (ranked)
-- [R1] [major] Economy check: first retire for typists drifted to ~1h50 (8-min-stall policy); the typist/idle Renown gap widened (108 vs 13). Verify the prestige hook timing and fairness.
-- [R1] [major] Auto-hide when a fullscreen app/game is in front (Windows `SHQueryUserNotificationState` via a tiny native call, e.g. koffi). Market T3 F2.
-- [R1] [major] Saves to a JSON file in userData (atomic write + backups), same format for demo → full game; later Steam Cloud + achievements (~40) + rich presence. Market T3 F7.
-- [R1] [major] Code signing + VirusTotal check + store FAQ about the input hook; an in-game "what we count" panel. Market T3 F3.
-- [R1] [major] Endgame: floor-100 finale ("Heart of the Keep"), then Depth II loop with one affix per cycle; Legacy tier 2 at 150 lifetime Renown. Auditor F1/F8.
-- [R1] [major] Make the typing → power link readable in 5 seconds: ult charge pips over heroes, "YOUR TYPING → METEOR!" callouts on first ults, "FLOW today" HUD stat, shareable end-of-day card. Market F8, auditor ideas.
-- [R1] [minor] Boss signature moves (e.g. The Hollow drains Fervor); Golem/Ember Colossus need a second animation frame. Auditor F7.
-- [R1] [minor] Typing relics give idle players nothing: give them an idle fallback (e.g. Caps Lock: "Fervor never drops below 25"); rework Backspace Boots. Auditor F5.
-- [R1] [minor] Demo scope: cap at floor 40 + 1 retire? decide before Next Fest build. Auditor F4.
-- [R1] [minor] Compact single-row HUD at size S; enemy outlines for contrast in Magma/Void. Player F6/F7.
-- [R1] [minor] Content protection toggle (hide from screen capture/Teams) and an AppBar mode that reserves screen space. Market F2 (post-fest).
-- [R1] [minor] Retire flow could be Retire → Spend Renown → Begin delve (Legacy now applies immediately, so lower priority). Player F8.
-- [R1] [info] Next Fest dates per market tester (from Valve's Feb 2027 page, unverified by the lead): Jan 10 = registration deadline; demo + public store page due ~Jan 18 for press preview; Feb 1 final; fest Feb 22 – Mar 1. Verify in Steamworks.
+- [R2] [blocker-check] Re-measure GPU/DWM at idle, hidden, locked with `docs/playtest/round-02/market_probe` (target <3% GPU idle) and confirm fullscreen auto-hide works with a real fullscreen video/game.
+- [R1] [major] Saves to a JSON file in userData (atomic write + 3 backups), same format demo → full game; Steam Cloud, ~40 achievements (top 5 in round-02/market.md), rich presence.
+- [R1] [major] Code signing + VirusTotal + WDSI submission before Jan 18; store FAQ about the input hook; in-game "What we can see" panel.
+- [R2] [major] Store page + capsule + trailer plan (round-02/market.md F5): lead with "typing fires the spells", no taskbar in capsule; capture mode (60 fps, no idle drop, fixed crop) for GIFs/trailer. Public Coming Soon page by ~Dec 1.
+- [R1] [major] Endgame: floor-100 finale boss, Depth II loop/affixes, "Delve Omens" (pick 1 of 3 run modifiers at retire), depth trophies 75/100/110/120, Legacy tier 2 at 150 lifetime Renown.
+- [R2] [minor] Sanctuary rare (~9 casts in 4 h for typists): consider a guaranteed cast at boss start or on boss slam.
+- [R1] [minor] Boss signature moves; Golem/Ember Colossus second frame; real boss sprites + capsule art (artist).
+- [R1] [minor] Typing relics give idle players nothing (idle fallbacks); Backspace Boots rework ("Tab Dash").
+- [R2] [minor] Burst/light typists no better than idle; try a longer Fervor grace below 60 (3 s → 8 s).
+- [R1] [minor] Compact single-row HUD at size S; enemy outlines in Magma/Void; pixel-art mute icon (no OS emoji); "slow fight" hint for >60 s non-boss fights.
+- [R1] [minor] Content-protection toggle; AppBar mode; auto-hidden-taskbar edge; Esc-to-close text vs focusable:false.
+- [R2] [minor] Strip AUTO size picks S (128 px) on 1080p; player found boss fights cramped. Revisit after HUD compaction.
 
 ## Round history
 
 | Round | Date | Headline changes | Commit |
 |---|---|---|---|
 | R0 | 2026-11-09 | Prototype v0.1 + playtest harness | 6e4709e, 2c070ea |
-| R1 | 2026-11-09 | Record-based Renown, Embers, offline cap, ult rotation, Hollowed bosses, 30 fps cap + power/audio suspend, no network, calm mode, two-step relic pick | (this round) |
+| R1 | 2026-11-09 | Record-based Renown, Embers, offline cap, ult rotation, Hollowed bosses, 30 fps cap + power/audio suspend, no network, calm mode, two-step relic pick | eedfe92 |
+| R2 | 2026-11-09 | Ember Crucible, ult buff, compounding Fame, relic queue, charge bar, retire nudge, demo mode, fullscreen auto-hide, sleeping loop, CSS-animation GPU fix, hook off on pause | (this round) |

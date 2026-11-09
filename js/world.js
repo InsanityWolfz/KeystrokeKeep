@@ -76,7 +76,7 @@
     if (F.isBossFloor(f) && W.wave === W.waves - 1) {
       const key = F.bossFor(f);
       const boss = makeEnemy(key, x0 + 20, f);
-      if (f >= 70 && key !== 'hollow') { boss.def = Object.assign({}, boss.def, { name: 'Hollowed ' + boss.def.name }); boss.hollowed = true; }
+      if (f >= 70 && key !== 'hollow') { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
       W.boss = boss;
       const minions = Math.min(2, Math.floor(f / 20));
       for (let i = 0; i < minions; i++) makeEnemy(U.pick(b.monsters), x0 - 14 - i * 14, f);
@@ -124,6 +124,7 @@
     S.stats.kills++;
     if (e.boss) {
       S.stats.bossKills++;
+      KK.gainEmbers(10);
       W.boss = null;
       S.bossBlock = 0;
       KK.actions.rollRelics();
@@ -173,7 +174,7 @@
     if (!free) {
       const cost = Math.ceil(def.ult.cost * m.ultCost);
       S.sparks -= cost;
-      S.embers = (S.embers || 0) + cost * 0.25; // every 4 Sparks spent bank 1 permanent Ember (Workshop currency)
+      KK.gainEmbers(cost * 0.25); // every 4 Sparks spent bank 1 permanent Ember (Workshop currency)
       h.ultCd = def.ult.cd;
       W.ultGap = 1.1;
     }
@@ -188,13 +189,13 @@
         for (let i = 0; i < 8; i++) {
           const tgt = targets.length ? U.pick(targets) : null;
           const tx = tgt ? tgt.x + U.rand(-3, 3) : h.x + U.rand(40, 90);
-          W.shots.push({ type: 'skyarrow', x: tx - 30, y: -10, tx, ty: GROUND - 4, delay: i * 0.09, speed: 260, src: h, pow, mult: 1.5 });
+          W.shots.push({ type: 'skyarrow', x: tx - 30, y: -10, tx, ty: GROUND - 4, delay: i * 0.09, speed: 260, src: h, pow, mult: 2.25 });
         }
       } else if (h.id === 'mage') {
         let best = targets[0], bestN = -1;
         for (const t of targets) { const n = targets.filter((o) => Math.abs(o.x - t.x) < 30).length; if (n > bestN) { bestN = n; best = t; } }
         const tx = best ? best.x : h.x + 80;
-        W.shots.push({ type: 'meteor', x: tx + 70, y: -30, tx, ty: GROUND - 3, delay: 0.25, speed: 170, src: h, pow, mult: 8 });
+        W.shots.push({ type: 'meteor', x: tx + 70, y: -30, tx, ty: GROUND - 3, delay: 0.25, speed: 170, src: h, pow, mult: 12 });
       } else if (h.id === 'cleric') {
         for (const o of W.heroes) {
           if (o.dead) { o.dead = false; o.hp = o.maxHp * 0.6; KK.emit('revive', { h: o }); }
@@ -212,8 +213,8 @@
   };
 
   KK.on('hotkey', () => {
-    const living = W.heroes.filter((h) => !h.dead);
-    if (living.length && W.enemies.some((e) => !e.dead && e.active)) W.castUlt(U.pick(living), true);
+    const h = W.heroes.find((x) => x.id === W.ultTurn && !x.dead) || W.heroes.find((x) => !x.dead);
+    if (h && W.enemies.some((e) => !e.dead && e.active)) { W.castUlt(h, true); W.passUlt(); }
   });
 
   // ---------------------------------------------------------------- main update
@@ -236,7 +237,10 @@
     W.nextRat -= dt;
     if (W.nextRat <= 0 && !W.rat) { W.spawnRat(); W.nextRat = U.rand(180, 340); }
     if (W.rat) {
-      W.rat.x -= W.rat.speed * dt; W.rat.t += dt;
+      // the rat runs across the *screen*, so the camera following the party can't drag it away
+      if (W.rat.screen && KK.view) { W.rat.sx = (W.rat.sx !== undefined ? W.rat.sx : W.rat.x - KK.view.left) - W.rat.speed * dt; W.rat.x = KK.view.left + W.rat.sx; }
+      else W.rat.x -= W.rat.speed * dt;
+      W.rat.t += dt;
       if (W.rat.t > W.rat.life) W.rat = null;
     }
 
@@ -313,7 +317,7 @@
       if (W.ultGap <= 0 && W.ultTurn === h.id) {
         const cost = Math.ceil(def.ult.cost * m.ultCost);
         let want = false;
-        if (h.id === 'cleric') want = W.heroes.some((o) => o.dead || o.hp / o.maxHp < 0.55);
+        if (h.id === 'cleric') want = W.heroes.some((o) => o.dead || o.hp / o.maxHp < (W.boss && !W.boss.dead ? 0.8 : 0.55));
         else want = W.enemies.some((e) => !e.dead && e.active && e.x - h.x <= Math.max(def.range, 60));
         if (!want || h.ultCd > 0) W.passUlt();
         else if (S.sparks >= cost) { W.castUlt(h); W.passUlt(); }
@@ -440,7 +444,7 @@
         s.t -= dt;
         if (s.t <= 0) {
           for (const e of W.enemies) if (!e.dead && e.active && Math.abs(e.x - s.x) < 70) {
-            const { dmg, crit } = heroDamage(s.src, 4 * s.pow);
+            const { dmg, crit } = heroDamage(s.src, 6 * s.pow);
             e.stun = 1.0;
             W.damageEnemy(e, dmg, { crit, ult: true, src: s.src, kb: 4 });
           }
@@ -493,6 +497,11 @@
 
   W.nextFloor = function () {
     const S = KK.S;
+    // demo: after the cap boss falls, the party keeps farming the floors just before it
+    if (KK.DEMO_CAP && S.floor >= KK.DEMO_CAP) {
+      if (!S.demoDone) { S.demoDone = true; KK.emit('demoComplete'); }
+      S.floor = KK.DEMO_CAP - 4;
+    } else if (KK.DEMO_CAP && S.demoDone && S.floor >= KK.DEMO_CAP - 1) S.floor = KK.DEMO_CAP - 4;
     S.floor++;
     if (S.floor > S.maxFloorRun) S.maxFloorRun = S.floor;
     if (S.floor > S.maxFloorEver) S.maxFloorEver = S.floor;
@@ -504,6 +513,7 @@
 
   // a Head Start bought at the very start of a delve moves the party down right away
   KK.on('jumpFloor', ({ floor }) => {
+    W.trans = 0; W.transFloorDone = true;
     W.wave = 0; W.door = null; W.chest = null; W.chestRolled = false; W.boss = null;
     W.enemies = []; W.shots = [];
     KK.emit('floor', { floor, biomeChange: true, boss: F.isBossFloor(floor) });
@@ -520,7 +530,7 @@
 
   W.spawnRat = function () {
     const view = KK.view ? KK.view : { left: W.partyX - 200, right: W.partyX + 400 };
-    W.rat = { x: view.right + 20, y: GROUND + 2, speed: 28, t: 0, life: ((view.right - view.left) + 60) / 28 };
+    W.rat = { x: view.right + 20, y: GROUND - 2, speed: 22, t: 0, life: ((view.right - view.left) + 60) / 22, screen: true };
     KK.emit('ratSpawn');
   };
   W.catchRat = function () {
@@ -531,6 +541,7 @@
     KK.gainGold(gold, 'rat');
     S.sparks += Math.max(0, sparks);
     S.stats.rats++;
+    KK.gainEmbers(25);
     KK.emit('ratCaught', { x: W.rat.x, y: W.rat.y, gold, sparks });
     W.rat = null;
     return true;

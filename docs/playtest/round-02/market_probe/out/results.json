@@ -1,0 +1,307 @@
+{
+  "phases": {
+    "idle_default": {
+      "rafPerSec": 160,
+      "drawPerSec": 15.2,
+      "targetFps": 12,
+      "hidden": false,
+      "vis": "visible",
+      "power": "on",
+      "battery": false,
+      "audio": "running",
+      "nodesRun": 124,
+      "nodesSusp": 0,
+      "lastInputAgo": 52.3,
+      "fervorTier": 0,
+      "boss": false,
+      "fxBusy": false,
+      "infiniteAnims": [
+        "blink@cur ",
+        "bob@badge gold"
+      ],
+      "gpu": "kk/dwm 11.17/27.27 11.55/28.67 10.74/26.62 11.02/27.01 10.76/26.25"
+    },
+    "idle_cssAnimationsOff": {
+      "rafPerSec": 160,
+      "drawPerSec": 14.8,
+      "targetFps": 12,
+      "hidden": false,
+      "vis": "visible",
+      "power": "on",
+      "battery": false,
+      "audio": "running",
+      "nodesRun": 137,
+      "nodesSusp": 0,
+      "lastInputAgo": 57.9,
+      "fervorTier": 0,
+      "boss": false,
+      "fxBusy": false,
+      "infiniteAnims": [],
+      "gpu": "kk/dwm 2.82/14.91 2.27/15.38 1.89/15.00 1.79/15.55 1.96/17.06"
+    },
+    "active_typing_30": {
+      "rafPerSec": 160.4,
+      "drawPerSec": 27,
+      "targetFps": 30,
+      "hidden": false,
+      "vis": "visible",
+      "power": "on",
+      "battery": false,
+      "audio": "running",
+      "nodesRun": 156,
+      "nodesSusp": 0,
+      "lastInputAgo": 0.2,
+      "fervorTier": 1,
+      "boss": false,
+      "fxBusy": true,
+      "infiniteAnims": [
+        "blink@cur ",
+        "bob@badge gold"
+      ],
+      "gpu": "kk/dwm 10.07/27.01 11.02/28.20 10.82/28.81 11.65/31.09 11.31/28.32"
+    },
+    "active_onBattery": {
+      "rafPerSec": 159.6,
+      "drawPerSec": 20,
+      "targetFps": 20,
+      "hidden": false,
+      "vis": "visible",
+      "power": "on",
+      "battery": true,
+      "audio": "running",
+      "nodesRun": 182,
+      "nodesSusp": 0,
+      "lastInputAgo": 0,
+      "fervorTier": 3,
+      "boss": false,
+      "fxBusy": true,
+      "infiniteAnims": [
+        "blink@cur ",
+        "flowtxt@fv-tier",
+        "bob@badge gold"
+      ],
+      "gpu": ""
+    },
+    "muted_typing_warp5": {
+      "rafPerSec": 160.4,
+      "drawPerSec": 27,
+      "targetFps": 30,
+      "hidden": false,
+      "vis": "visible",
+      "power": "on",
+      "battery": false,
+      "audio": "suspended",
+      "nodesRun": 0,
+      "nodesSusp": 78,
+      "lastInputAgo": 0.2,
+      "fervorTier": 3,
+      "boss": false,
+      "fxBusy": true,
+      "infiniteAnims": [
+        "blink@cur ",
+        "flowtxt@fv-tier",
+        "bob@badge gold"
+      ],
+      "gpu": ""
+    },
+    "hidden": {
+      "rafPerSec": 160,
+      "drawPerSec": 0,
+      "targetFps": 0,
+      "hidden": false,
+      "vis": "visible",
+      "power": "off",
+      "battery": false,
+      "audio": "suspended",
+      "nodesRun": 2,
+      "nodesSusp": 79,
+      "lastInputAgo": 0.1,
+      "fervorTier": 3,
+      "boss": false,
+      "fxBusy": true,
+      "infiniteAnims": [
+        "blink@cur ",
+        "flowtxt@fv-tier",
+        "bob@badge gold"
+      ],
+      "gpu": "kk/dwm 11.02/8.27 13.32/11.12 14.03/11.28 14.02/11.80 15.06/11.93"
+    },
+    "hidden_after_lock_unlock": {
+      "rafPerSec": 159.9,
+      "drawPerSec": 26.8,
+      "targetFps": 30,
+      "hidden": false,
+      "vis": "visible",
+      "power": "on",
+      "battery": false,
+      "audio": "running",
+      "nodesRun": 23,
+      "nodesSusp": 79,
+      "lastInputAgo": 5.9,
+      "fervorTier": 3,
+      "boss": false,
+      "fxBusy": false,
+      "infiniteAnims": [
+        "blink@cur ",
+        "flowtxt@fv-tier",
+        "bob@badge gold"
+      ],
+      "gpu": "kk/dwm 18.27/13.68 19.48/12.22 19.30/13.55 19.05/13.22 19.33/13.69"
+    }
+  },
+  "metrics": [
+    {
+      "pid": 28228,
+      "type": "Browser",
+      "cpu": 0,
+      "memKB": 97116
+    },
+    {
+      "pid": 11008,
+      "type": "GPU",
+      "cpu": 0,
+      "memKB": 121436
+    },
+    {
+      "pid": 20948,
+      "type": "Utility",
+      "cpu": 0,
+      "memKB": 47244
+    },
+    {
+      "pid": 5688,
+      "type": "Tab",
+      "cpu": 0,
+      "memKB": 111368
+    }
+  ],
+  "window": {
+    "bounds": {
+      "x": 0,
+      "y": 760,
+      "width": 2560,
+      "height": 632
+    },
+    "isAlwaysOnTop": true,
+    "isFocusable": false,
+    "hotkeyRegistered": true,
+    "displays": [
+      {
+        "id": 3462733201,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2560,
+          "height": 1440
+        },
+        "workArea": {
+          "x": 0,
+          "y": 0,
+          "width": 2560,
+          "height": 1392
+        },
+        "scale": 1.5
+      },
+      {
+        "id": 44500887,
+        "bounds": {
+          "x": -1920,
+          "y": 340,
+          "width": 1920,
+          "height": 1080
+        },
+        "workArea": {
+          "x": -1920,
+          "y": 340,
+          "width": 1920,
+          "height": 1032
+        },
+        "scale": 1
+      },
+      {
+        "id": 2904106817,
+        "bounds": {
+          "x": 2560,
+          "y": 331,
+          "width": 1920,
+          "height": 1080
+        },
+        "workArea": {
+          "x": 2560,
+          "y": 331,
+          "width": 1920,
+          "height": 1032
+        },
+        "scale": 1
+      }
+    ],
+    "exstyle": "exstyle=0x8280028 TOPMOST=True NOACTIVATE=True TOOLWINDOW=False LAYERED=True APPWINDOW=False"
+  },
+  "setup": {
+    "welcomeClicked": true,
+    "settings": {
+      "sound": true,
+      "music": false,
+      "volume": 0.3,
+      "keySound": false,
+      "calm": false,
+      "fps": 30,
+      "size": "auto",
+      "countInput": true
+    },
+    "fonts": [
+      "Pixelify Sans 400 loaded",
+      "Pixelify Sans 500 unloaded",
+      "Pixelify Sans 600 unloaded",
+      "Pixelify Sans 700 loaded",
+      "Silkscreen 400 loaded",
+      "Silkscreen 700 unloaded"
+    ],
+    "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'"
+  },
+  "net": "blocked",
+  "tcp": "no TCP connections owned by electron pids\r\nudp endpoints: 0",
+  "audioAfterMute": {
+    "state": "suspended",
+    "susp": 78
+  },
+  "audioAfterUnmute": {
+    "state": "running",
+    "t": 69.22133333333333
+  },
+  "fullscreen": {
+    "fsIsFullScreen": true,
+    "fsIsAlwaysOnTop": false,
+    "capture": {
+      "width": 2560,
+      "height": 1440
+    },
+    "topCenter": [
+      0,
+      253,
+      0
+    ],
+    "stripRow": [
+      29,
+      24,
+      42
+    ],
+    "stripLeft": [
+      47,
+      35,
+      48
+    ]
+  },
+  "offline": {
+    "modal": false,
+    "toasts": [
+      "Welcome back! While you were away (3h 0m) your heroes earned 2.83K gold."
+    ],
+    "windowBounds": {
+      "x": 0,
+      "y": 1146,
+      "width": 2560,
+      "height": 246
+    }
+  }
+}

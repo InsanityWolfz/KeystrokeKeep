@@ -138,7 +138,7 @@
   }
   KK.on('hit', ({ e, dmg, crit, ult }) => {
     if (crit) {
-      dmgText(e, dmg, '#ffd34a', 2, 'c');
+      dmgText(e, dmg, '#ffd34a', 1, 'c');
       FX.stop(0.035);
       FX.burst(e.x - e.def.w / 2, e.y - e.def.h / 2, 6, ['#fff', '#ffd34a'], { spd: 90, grav: 60, life: 0.35 });
     } else if (ult) {
@@ -158,8 +158,8 @@
     if (e.boss) {
       FX.text(e.x, headY(e) - 6, '+' + fmt(gold), '#fbd14b', 1, { life: 1.6, vy: -22 });
       FX.slowmo(0.25, 0.9);
-      FX.flash('#ffffff', 0.85);
-      FX.shake(6, 0.8);
+      FX.flash('#ffffff', 0.4);
+      FX.shake(4, 0.6);
       FX.ring(e.x, e.y - e.def.h / 2, 4, 120, '#ffd76a', 0.8, 2);
       FX.ring(e.x, e.y - e.def.h / 2, 2, 70, '#ffffff', 0.5, 1);
       FX.light(e.x, e.y - 10, 160, 1.4, '#ffd76a');

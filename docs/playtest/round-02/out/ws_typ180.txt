@@ -1,0 +1,8 @@
+=== Workshop value: typist, fresh save, 180 min, no retire, 4 seeds ===
+none       floor 70.3  goldEarned 175.92M  unspent embers 6072  ws(seed1) {}
+default    floor 73.3  goldEarned 715.14M  unspent embers 472  ws(seed1) {"jar":8,"overcharge":5,"kindling":5,"static":3}
+jarOnly    floor 70.3  goldEarned 175.92M  unspent embers 144  ws(seed1) {"jar":11}
+overOnly   floor 70.0  goldEarned 214.73M  unspent embers 1054  ws(seed1) {"overcharge":8}
+kindOnly   floor 72.0  goldEarned 266.99M  unspent embers 723  ws(seed1) {"kindling":8}
+staticOnly floor 72.3  goldEarned 757.97M  unspent embers 881  ws(seed1) {"static":6}
+noJar      floor 72.8  goldEarned 593.20M  unspent embers 199  ws(seed1) {"overcharge":6,"kindling":6,"static":4}

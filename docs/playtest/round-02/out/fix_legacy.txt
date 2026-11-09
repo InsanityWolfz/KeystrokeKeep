@@ -1,0 +1,42 @@
+
+=== CURRENT Legacy: 108 Renown, record f69, run 2, typist, 3 seeds: floor at 15/30/60 min ===
+buyAll          f65.3 / f75.3 / f83.7  (10/10 kinds) {"lineage":2,"treasury":2,"quartermaster":1,"veterans":2,"headstart":2,"zeal":2,"recruiter":1,"campfire":2,"battery":2,"collector":1}
+lineageOnly     f62.3 / f76.7 / f86.7  {"lineage":9}
+lin+tre         f68.7 / f79.7 / f89.3  {"lineage":7,"treasury":6}
+vet+lin         f58.7 / f71.3 / f80.7  {"veterans":7,"lineage":3}
+head+lin        f55.0 / f70.3 / f80.0  {"headstart":5,"lineage":2}
+head2+vet2+lin  f64.0 / f76.0 / f84.7  {"headstart":2,"veterans":2,"lineage":8}
+nothing         f51.7 / f67.7 / f77.0  {}
+
+=== CURRENT Legacy: 30 Renown, record f40, run 2, idle, 3 seeds: floor at 15/30/60 min ===
+buyAll          f35.3 / f48.3 / f57.7  (7/10 kinds) {"lineage":1,"treasury":1,"quartermaster":1,"veterans":1,"headstart":1,"zeal":1,"campfire":1}
+lineageOnly     f36.7 / f51.0 / f64.7  {"lineage":5}
+lin+tre         f37.7 / f51.0 / f62.3  {"lineage":3,"treasury":3}
+vet+lin         f35.3 / f47.0 / f55.7  {"veterans":3,"lineage":2}
+head+lin        f31.0 / f47.0 / f56.7  {"headstart":2,"lineage":2}
+head2+vet2+lin  f31.0 / f45.0 / f56.7  {"headstart":2,"veterans":1,"lineage":1}
+nothing         f26.7 / f38.3 / f51.3  {}
+
+=== PROPOSED Legacy: 108 Renown, record f69, run 2, typist, 3 seeds: floor at 15/30/60 min ===
+buyAll          f64.0 / f74.7 / f82.3  (10/10 kinds) {"lineage":2,"treasury":2,"quartermaster":1,"veterans":2,"headstart":2,"zeal":2,"recruiter":1,"campfire":1,"battery":1,"collector":1}
+lineageOnly     f63.7 / f77.7 / f87.3  {"lineage":8}
+lin+tre         f66.0 / f79.0 / f87.7  {"lineage":6,"treasury":5}
+vet+lin         f65.3 / f74.0 / f80.3  {"veterans":9,"lineage":2}
+head+lin        f55.7 / f72.0 / f81.7  {"headstart":5,"lineage":4}
+head2+vet2+lin  f64.7 / f76.3 / f85.0  {"headstart":2,"veterans":2,"lineage":7}
+nothing         f51.7 / f67.7 / f77.0  {}
+
+=== PROPOSED Legacy: 30 Renown, record f40, run 2, idle, 3 seeds: floor at 15/30/60 min ===
+buyAll          f38.3 / f49.7 / f58.7  (6/10 kinds) {"lineage":1,"treasury":1,"quartermaster":1,"veterans":1,"headstart":1,"zeal":1}
+lineageOnly     f31.7 / f48.0 / f58.3  {"lineage":4}
+lin+tre         f36.7 / f51.3 / f62.7  {"lineage":3,"treasury":2}
+vet+lin         f40.7 / f50.0 / f57.7  {"veterans":4,"lineage":1}
+head+lin        f26.3 / f39.7 / f53.0  {"headstart":3}
+head2+vet2+lin  f37.7 / f48.0 / f56.3  {"headstart":2,"veterans":2,"lineage":1}
+nothing         f26.7 / f38.3 / f51.3  {}
+
+=== 8 h stall-8 with CURRENT vs PROPOSED Legacy (3 seeds): deepest & renown at 2/4/8 h ===
+typist current : 2h f69 R88 | 4h f91 R194 | 8h f105 R253
+typist proposed: 2h f68 R88 | 4h f90 R192 | 8h f102 R242
+idle   current : 2h f51 R44 | 4h f76 R122 | 8h f86 R174
+idle   proposed: 2h f51 R44 | 4h f73 R110 | 8h f87 R170

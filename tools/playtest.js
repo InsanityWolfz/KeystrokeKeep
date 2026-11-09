@@ -14,7 +14,7 @@ for (let i = 2; i < process.argv.length; i++) {
 const MIN = +args.min || 120, PROFILE = args.profile || 'typist', GLANCE = +args.glance || 60;
 const STRAT = args.strategy || 'smart', STUCK = (+args.stuck || 8) * 60, SEED = +args.seed || 1;
 const SESSIONS = +args.sessions || 1, OFFLINE_H = +args.offline || 0;
-const KK = load({ seed: SEED, bal: args.bal ? JSON.parse(args.bal) : undefined });
+const KK = load({ seed: SEED, bal: args.bal ? JSON.parse(args.bal) : undefined, demo: !!args.demo });
 const S = () => KK.S, A = KK.actions, D = KK.DATA, F = KK.F, U = KK.U;
 KK.world.reset();
 const rnd = KK.rng; // seeded: same --seed, same run
@@ -182,7 +182,8 @@ for (let sess = 0; sess < SESSIONS; sess++) {
   if (sess < SESSIONS - 1 && OFFLINE_H > 0) {
     const secs = Math.min(12 * 3600, OFFLINE_H * 3600);
     const m = KK.mods();
-    const rate = Math.max(S().incomeRate, F.enemyGold(S().floor) * 0.3);
+    const s0 = S(), avg = s0.incomeAvg || 0;
+    const rate = s0.incomeRate > 0 ? (avg > 0 ? Math.min(s0.incomeRate, avg) : s0.incomeRate) : F.enemyGold(s0.floor) * 0.3;
     const gold = rate * secs * m.offline;
     const goldBefore = S().gold;
     KK.gainGold(gold, 'offline');

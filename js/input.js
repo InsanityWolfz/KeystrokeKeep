@@ -37,7 +37,7 @@
     cvs.addEventListener('mousedown', (e) => {
       const p = KK.render.toWorld(e.clientX, e.clientY);
       const W = KK.world;
-      if (W.rat && Math.abs(p.x - W.rat.x) < 14 && Math.abs(p.y - (W.rat.y - 4)) < 14) { W.catchRat(); return; }
+      if (W.rat && Math.abs(p.x - W.rat.x) < 18 && Math.abs(p.y - (W.rat.y - 4)) < 18) { W.catchRat(); return; }
       W.poke(p.x, p.y);
     });
 

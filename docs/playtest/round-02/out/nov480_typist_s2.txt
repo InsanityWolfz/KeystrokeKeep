@@ -1,0 +1,103 @@
+=== NOVELTY2 profile=typist seed=2 480m stuck=8m  maxFloorEver=104 retires=5 renownLife=263 maxSparks=117 sparksAtCap 0.0% (in combat 0.0% of combat)
+0h00m  minor  monster Cellar Rat
+0h00m  minor  first ultimate Earthshatter
+0h00m  MAJOR  first FLOW STATE
+0h00m  MAJOR  biome The Crypt (floor 2)
+0h00m  minor  monster Crypt Bat
+0h01m  minor  first chest
+0h02m  MAJOR  recruit archer
+0h02m  minor  first buy workshop:jar
+0h02m  minor  first ultimate Arrow Storm
+0h02m  minor  monster Skeleton
+0h03m  MAJOR  boss The Rat King (floor 10)
+0h03m  minor  sprite ratking
+0h03m  MAJOR  first relic offer
+0h03m  minor  relic seen Treasure Map [rare]
+0h03m  minor  relic seen Bottomless Coffee [common]
+0h03m  minor  relic seen Giant's Belt [common]
+0h03m  MAJOR  first golden rat
+0h04m  minor  first buy forge:armor
+0h05m  minor  first buy forge:blades
+0h07m  MAJOR  retire unlocked
+0h07m  MAJOR  boss The Bone King (floor 20)
+0h07m  minor  sprite boneking
+0h08m  minor  first buy workshop:kindling
+0h08m  minor  relic seen Critic's Lens [rare]
+0h08m  minor  relic seen Echo Rune [epic]
+0h08m  MAJOR  first EPIC offered (Echo Rune)
+0h08m  MAJOR  biome Mossy Caverns (floor 21)
+0h08m  minor  monster Moss Slime
+0h09m  MAJOR  recruit mage
+0h09m  minor  first buy forge:swift
+0h09m  minor  first ECHO
+0h09m  minor  first ultimate Meteor
+0h09m  minor  monster Cave Spider
+0h10m  minor  first buy workshop:overcharge
+0h11m  minor  first buy forge:purse
+0h11m  minor  monster Goblin
+0h18m  minor  first buy forge:keen
+0h20m  MAJOR  boss Brood Mother (floor 30)
+0h20m  minor  sprite broodmother
+0h21m  MAJOR  recruit cleric
+0h22m  minor  first buy workshop:static
+0h22m  minor  first key coin
+0h22m  minor  relic seen Glass Cannon [epic]
+0h30m  minor  first ultimate Sanctuary
+0h32m  MAJOR  boss Goblin Warlord (floor 40)
+0h32m  minor  sprite warlord
+0h34m  minor  relic seen Whetstone [common]
+0h34m  minor  relic seen Flow Pendant [epic]
+0h34m  minor  relic seen Backspace Boots [common]
+0h34m  MAJOR  biome Magma Depths (floor 41)
+0h34m  minor  monster Fire Imp
+0h37m  minor  monster Magma Slime
+0h45m  minor  monster Rock Golem
+0h54m  depth  reached floor 50
+0h57m  MAJOR  boss Ember Colossus (floor 50)
+0h57m  minor  sprite embergolem
+1h02m  MAJOR  first RETIRE
+1h03m  minor  first buy legacy:lineage
+1h03m  minor  first buy legacy:treasury
+1h03m  minor  first buy legacy:quartermaster
+1h03m  minor  first buy legacy:veterans
+1h03m  minor  first buy legacy:headstart
+1h03m  minor  first buy legacy:zeal
+1h03m  minor  first buy legacy:recruiter
+1h03m  minor  first buy legacy:campfire
+1h03m  minor  first buy legacy:battery
+1h03m  minor  relic seen Vampire Fang [rare]
+1h03m  minor  relic seen Clacky Keycap [rare]
+1h05m  minor  relic seen Lucky Coin [common]
+1h07m  minor  relic seen Spacebar Shield [common]
+1h07m  minor  relic seen Enter Amulet [rare]
+1h07m  minor  relic seen Midnight Oil [rare]
+1h22m  MAJOR  boss Magma Lord (floor 60)
+1h22m  minor  sprite magmalord
+1h24m  MAJOR  biome The Hollow Void (floor 61)
+1h24m  minor  monster Watcher
+1h26m  minor  monster Wraith
+1h30m  minor  monster Void Knight
+1h38m  MAJOR  boss The Hollow (floor 70)
+1h38m  minor  sprite hollow
+1h53m  depth  reached floor 75
+2h19m  MAJOR  boss Hollowed The Rat King (floor 80)
+2h24m  minor  first buy legacy:collector
+2h25m  minor  relic seen Hotkey Ring [epic]
+2h54m  minor  relic seen Caps Lock Crown [rare]
+3h29m  MAJOR  boss Hollowed The Bone King (floor 90)
+4h46m  depth  reached floor 100
+4h51m  MAJOR  boss Hollowed Brood Mother (floor 100)
+ults per owned-minute: knight 1.25 (602)  archer 2.35 (1118)  mage 1.44 (671)  cleric 0.01 (5)
+first ult after recruit (s): archer 3  mage 41  cleric 580
+novelty (any)   per 10 min, hour 1:  33 4 6 9 1 3
+novelty (MAJOR) per 10 min, hour 1:  11 0 2 2 0 1
+novelty (any)   per 30 min, h1-end: 21 4 3 1 1 0 0 2 0 0 0 0 0 0
+novelty (MAJOR) per 30 min, h1-end: 3 1 1 0 1 0 0 1 0 0 0 0 0 0
+longest gap NO novelty after h1: 189 min (from 4h51m); no MAJOR after h1: 189 min (from 4h51m); no MAJOR in h1-h5: 82 min
+last MAJOR: 4h51m (boss Hollowed Brood Mother (floor 100)); total 88 firsts, 23 major
+recurring moments per 30 min: 17 10 23 8 20 14 8 25 9 20 14 7 9 26 8 8
+never appeared: hotkey
+maxed: quartermaster@1h03m, recruiter@1h03m, collector@2h24m
+bosses after floor 60: 1h38m f70 The Hollow | 2h19m f80 Hollowed The Rat King | 2h38m f70 The Hollow | 2h52m f80 Hollowed The Rat King | 3h29m f90 Hollowed The Bone King | 3h43m f70 The Hollow | 3h49m f80 Hollowed The Rat King | 4h05m f90 Hollowed The Bone King | 4h51m f100 Hollowed Brood Mother | 5h02m f70 The Hollow | 5h07m f80 Hollowed The Rat King | 5h21m f90 Hollowed The Bone King | 6h00m f100 Hollowed Brood Mother | 6h44m f70 The Hollow | 6h48m f80 Hollowed The Rat King | 7h01m f90 Hollowed The Bone King | 7h35m f100 Hollowed Brood Mother
+embers/workshop: 0h00m f1 emb0 ws[jar0 overcharge0 kindling0 static0] ren0/0 || 0h30m f39 emb125 ws[jar4 overcharge1 kindling2 static1] ren0/0 || 1h00m f50 emb236 ws[jar5 overcharge3 kindling3 static1] ren0/0 || 1h30m f66 emb322 ws[jar6 overcharge4 kindling3 static2] ren2/51 || 2h00m f77 emb134 ws[jar7 overcharge4 kindling4 static3] ren2/51 || 2h30m f49 emb137 ws[jar7 overcharge5 kindling5 static3] ren5/150 || 3h00m f83 emb450 ws[jar8 overcharge5 kindling5 static3] ren5/150 || 3h30m f90 emb699 ws[jar8 overcharge6 kindling5 static3] ren5/150 || 4h00m f88 emb111 ws[jar8 overcharge6 kindling6 static4] ren0/194 || 4h30m f96 emb195 ws[jar9 overcharge6 kindling6 static4] ren0/194 || 5h00m f56 emb86 ws[jar9 overcharge7 kindling6 static4] ren1/242 || 5h30m f92 emb1112 ws[jar9 overcharge7 kindling6 static4] ren1/242 || 6h00m f100 emb820 ws[jar10 overcharge7 kindling6 static4] ren1/242 || 6h30m f104 emb667 ws[jar10 overcharge7 kindling7 static4] ren1/242 || 7h00m f90 emb341 ws[jar10 overcharge7 kindling7 static5] ren8/263 || 7h30m f99 emb1326 ws[jar10 overcharge7 kindling7 static5] ren8/263 || 8h00m f103 emb555 ws[jar10 overcharge8 kindling7 static5] ren8/263
+final legacy: {"lineage":7,"treasury":6,"quartermaster":1,"veterans":5,"headstart":2,"zeal":3,"recruiter":1,"campfire":3,"battery":3,"collector":1} workshop: {"jar":10,"kindling":7,"overcharge":8,"static":5}

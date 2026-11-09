@@ -34,26 +34,29 @@
       if (KK.lastInputAgo() > 45 && !W.boss && KK.fervorTier() === 0 && !KK.fx.busy()) fps = Math.min(fps, 12);
       return fps;
     };
-    function frame(now) {
-      requestAnimationFrame(frame);
+    // A sleeping timer loop (not requestAnimationFrame, which wakes at the monitor's refresh
+    // rate even when we skip the frame). While locked / asleep / hidden we freeze entirely and
+    // awayCheck pays offline gold on return.
+    let frozen = false;
+    function frame() {
+      const now = performance.now();
       const fps = KK.targetFps();
-      // locked / asleep / hidden from the tray: freeze entirely; awayCheck pays offline gold on return
-      if (fps === 0) { last = now; return; }
-      const hidden = document.hidden;
-      const minGap = hidden ? 250 : 1000 / fps - 2;
-      if (now - last < minGap) return;
-      let dt = Math.min(0.25, (now - last) / 1000);
+      const off = fps === 0 || document.hidden;
+      document.documentElement.classList.toggle('kk-paused', off); // also pauses CSS animations
+      if (off) { if (!frozen) { frozen = true; KK.save(); } last = now; setTimeout(frame, 500); return; }
+      frozen = false;
+      const dt = Math.min(0.25, (now - last) / 1000);
       last = now;
       FX.update(dt);
       const simDt = dt * FX.timeScale() * KK.warp;
       // fixed-ish substeps keep the sim stable at high warp / low fps
       const steps = Math.max(1, Math.ceil(simDt / (1 / 30)));
       for (let i = 0; i < steps; i++) W.update(simDt / steps);
-      if (hidden) return; // keep simulating, skip all drawing
       KK.render.draw(dt);
       KK.ui.update(dt);
+      setTimeout(frame, Math.max(1, 1000 / fps - (performance.now() - now)));
     }
-    requestAnimationFrame(frame);
+    setTimeout(frame, 16);
 
     setInterval(KK.save, 10000);
     window.addEventListener('beforeunload', () => { if (!KK.resetting) KK.save(); });
@@ -77,7 +80,8 @@
       return;
     }
     const m = KK.mods();
-    const rate = KK.S.incomeRate > 0 ? KK.S.incomeRate : KK.F.enemyGold(KK.S.floor) * 0.3;
+    const S = KK.S, avg = S.incomeAvg || 0;
+    const rate = S.incomeRate > 0 ? (avg > 0 ? Math.min(S.incomeRate, avg) : S.incomeRate) : KK.F.enemyGold(S.floor) * 0.3;
     const gold = rate * secs * m.offline;
     KK.gainGold(gold, 'offline');
     KK.ui.offline(secs, gold);

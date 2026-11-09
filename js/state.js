@@ -8,11 +8,11 @@
   KK.newState = function () {
     return {
       v: 1,
-      gold: 0, sparks: 0, embers: 0, renown: 0, renownLifetime: 0, retires: 0, renownFloor: 0,
+      gold: 0, sparks: 0, embers: 0, incomeAvg: 0, renown: 0, renownLifetime: 0, retires: 0, renownFloor: 0,
       floor: 1, maxFloorRun: 1, maxFloorEver: 1, bossBlock: 0,
       heroes: { knight: 1, archer: 0, mage: 0, cleric: 0 },
       forge: {}, workshop: {}, legacy: {},
-      relics: [], relicOffer: null,
+      relics: [], relicOffer: null, relicQueue: [],
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
       stats: { kills: 0, bossKills: 0, keys: 0, clicks: 0, ults: 0, goldEarned: 0, playTime: 0, chests: 0, rats: 0, flowTime: 0, wipes: 0 },
@@ -25,11 +25,20 @@
 
   KK.S = KK.newState();
 
+  // Next Fest demo mode: ?demo in the browser, --kk-demo / KK_DEMO=1 for the desktop build.
+  KK.DEMO_CAP = (function () {
+    try {
+      if (root.kkNative && root.kkNative.demo) return 40;
+      if (root.location && /[?&]demo\b/.test(root.location.search)) return 40;
+    } catch (e) { /* ignore */ }
+    return root.KK_DEMO_CAP || 0;
+  })();
+
   // ---------------------------------------------------------------- formulas
   // Balance knobs (tools/sim.js can override these with BAL='{"hpG":1.2}')
   const B = KK.BAL = Object.assign({
     dmgLin: 0.45, dmgMile: 1.5, hpLin: 0.35, hpMile: 1.4, costG: 1.11,
-    eHp: 28, eHpG: 1.27, eAtk: 2.2, eAtkG: 1.14, eGold: 1.6, eGoldG: 1.185,
+    eHp: 28, eHpG: 1.275, eAtk: 2.2, eAtkG: 1.14, eGold: 1.6, eGoldG: 1.185,
   }, root.BAL_OVERRIDE || {});
   const F = KK.F = {
     heroDmg: (id, lvl) => D.HEROES[id].atk * (1 + B.dmgLin * (lvl - 1)) * Math.pow(B.dmgMile, Math.floor(lvl / 10)),
@@ -48,7 +57,7 @@
     isBossFloor: (f) => f % 10 === 0,
     bossFor: (f) => {
       // past the Hollow, the Void throws every old boss back at you, hollowed out
-      if (f >= 70) { const all = ['hollow', 'ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; return all[Math.floor((f - 70) / 10) % all.length]; }
+      if (f >= 70) { const all = ['hollow', 'ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; return all[(Math.floor((f - 70) / 10) + 3 * (KK.S.retires || 0)) % all.length]; }
       const b = F.biomeOf(f);
       const idx = Math.floor(((f - b.from) % 20) / 10);
       return b.bosses[Math.min(idx, b.bosses.length - 1)];
@@ -63,7 +72,7 @@
     const S = KK.S;
     const m = {
       dmg: 1, hp: 1, gold: 1, walk: 1, aspd: 1, ultCost: 1, ultPow: 1, fervDecay: 1, fervGain: 1,
-      sparkCap: 150, chest: 0.08, offline: 0.4, crit: 0.06, critMult: 2, lifesteal: 0, echo: 0, flowBonus: 0,
+      sparkCap: 150, chest: 0.08, offline: 0.4, offlineCap: 0.8, emberGain: 1, crit: 0.06, critMult: 2, lifesteal: 0, echo: 0, flowBonus: 0,
       keyCoin: 0, hotkey: false, knightHp: 1, knightDmg: 1, heroCost: 1, startLvl: 0, startFloor: 1,
       relicChoices: 3, auto: false, idlePow: 0,
     };
@@ -71,8 +80,9 @@
     for (const def of D.FORGE) { const l = S.forge[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.WORKSHOP) { const l = S.workshop[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.LEGACY) { const l = S.legacy[def.id] || 0; if (l) def.apply(m, l); }
-    m.offline = Math.min(0.8, m.offline); // closing the game must never beat running it
-    const fame = 1 + 0.03 * S.renownLifetime;
+    m.offline = Math.min(m.offlineCap, m.offline); // closing the game must never beat running it
+    // Fame: +3% per lifetime Renown, compounding gently so late retires still push the wall
+    const fame = (1 + 0.03 * S.renownLifetime) * Math.pow(1.004, S.renownLifetime);
     m.dmg *= fame; m.gold *= fame;
     m.fame = fame;
     modsCache = m;
@@ -119,7 +129,7 @@
       KK.gainGold(g, 'keycoin');
       KK.emit('keycoin', { amount: g });
     }
-    if (m.hotkey && kind === 'key' && S.keyCounter % 150 === 0) KK.emit('hotkey');
+    if (m.hotkey && kind === 'key' && S.keyCounter % 60 === 0) KK.emit('hotkey');
     const after = KK.fervorTier();
     if (after !== before) KK.emit('fervorTier', { from: before, to: after });
     KK.emit('activity', { kind });
@@ -147,6 +157,7 @@
   KK.tickIncome = function () {
     const S = KK.S;
     S.incomeRate = S.incomeRate * 0.97 + goldWindow * 0.03;
+    S.incomeAvg = (S.incomeAvg || 0) * (599 / 600) + goldWindow / 600; // ~10-minute average, for offline pay
     goldWindow = 0;
   };
 
@@ -199,6 +210,8 @@
   }
   A.buyForge = (id) => buyUp(D.FORGE, 'forge', id, 'gold');
   A.buyWorkshop = (id) => buyUp(D.WORKSHOP, 'workshop', id, 'embers');
+  /** Embers come from Sparks spent on ultimates, plus golden rats and bosses (so idle players get some too). */
+  KK.gainEmbers = (n) => { KK.S.embers = (KK.S.embers || 0) + n * KK.mods().emberGain; };
   A.legacyCost = (id) => { const def = D.LEGACY.find((d) => d.id === id); return def.cost(KK.S.legacy[id] || 0); };
   A.buyLegacy = (id) => {
     const S = KK.S, def = D.LEGACY.find((d) => d.id === id);
@@ -221,19 +234,24 @@
     const S = KK.S, m = KK.mods();
     const pool = D.RELICS.filter((r) => !(r.unique && S.relics.includes(r.id)));
     const out = [];
+    if (S.retires === 0 && S.floor === 30) {
+      const epics = pool.filter((r) => r.rar === 'epic');
+      if (epics.length) { const e = U.pick(epics); out.push(e.id); pool.splice(pool.indexOf(e), 1); }
+    }
     while (out.length < m.relicChoices && pool.length) {
       const pick = U.weighted(pool, (r) => D.RARITY[r.rar].w);
       out.push(pick.id);
       pool.splice(pool.indexOf(pick), 1);
     }
-    S.relicOffer = out;
+    if (S.relicOffer) (S.relicQueue = S.relicQueue || []).push(out); // a postponed choice is never lost
+    else S.relicOffer = out;
     KK.emit('relicOffer', { ids: out });
   };
   A.pickRelic = (id) => {
     const S = KK.S;
     if (!S.relicOffer || !S.relicOffer.includes(id)) return false;
     S.relics.push(id);
-    S.relicOffer = null;
+    S.relicOffer = (S.relicQueue && S.relicQueue.shift()) || null;
     KK.dirty();
     KK.emit('relicPicked', { id });
     return true;
@@ -248,7 +266,7 @@
     if (gain <= 0) return false;
     S.renown += gain; S.renownLifetime += gain; S.retires++;
     S.renownFloor = Math.max(S.renownFloor || 0, S.maxFloorRun);
-    S.gold = 0; S.forge = {}; S.relics = []; S.relicOffer = null; S.bossBlock = 0;
+    S.gold = 0; S.forge = {}; S.relics = []; S.relicOffer = null; S.relicQueue = []; S.bossBlock = 0;
     KK.dirty();
     const m = KK.mods();
     S.heroes = { knight: 1 + m.startLvl, archer: 0, mage: 0, cleric: 0 };
@@ -279,6 +297,13 @@
         if (fresh[k] && typeof fresh[k] === 'object' && !Array.isArray(fresh[k])) fresh[k] = Object.assign(fresh[k], data[k]);
         else fresh[k] = data[k];
       }
+      if (fresh.workshop.jar) {
+        let refund = 0;
+        for (let l = 0; l < fresh.workshop.jar; l++) refund += Math.ceil(60 * Math.pow(1.4, l));
+        fresh.embers = (fresh.embers || 0) + refund; delete fresh.workshop.jar;
+      }
+      if (fresh.workshop.battery) delete fresh.workshop.battery;
+      if ((fresh.legacy.battery || 0) > 3) { fresh.renown += (fresh.legacy.battery - 3) * 9; fresh.legacy.battery = 3; }
       KK.S = fresh;
       KK.dirty();
       return true;

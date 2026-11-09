@@ -15,6 +15,7 @@
     "electron": "^45.2.3"
   },
   "dependencies": {
+    "koffi": "^3.3.7",
     "uiohook-napi": "^1.5.5"
   }
 }

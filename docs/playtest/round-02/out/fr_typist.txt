@@ -1,0 +1,9 @@
+=== first-retire timing, typist, 4 seeds; later retires on 8-min stall ===
+stall 8 (harness)  1st retire 95min f62 +86 | run2 back to record in 13.5min | deepest 2h/4h/8h 73/96/106 | renown 2h/4h/8h 86/195/266
+first at f30       1st retire 18min f30 +13 | run2 back to record in 10.2min | deepest 2h/4h/8h 75/96/106 | renown 2h/4h/8h 112/193/273
+first at f35       1st retire 24min f35 +21 | run2 back to record in 9.6min | deepest 2h/4h/8h 77/96/105 | renown 2h/4h/8h 112/202/266
+first at f40       1st retire 29min f40 +30 | run2 back to record in 10.0min | deepest 2h/4h/8h 79/97/103 | renown 2h/4h/8h 71/183/259
+first at f45       1st retire 37min f45 +41 | run2 back to record in 10.9min | deepest 2h/4h/8h 79/92/105 | renown 2h/4h/8h 86/194/267
+first at f50       1st retire 46min f50 +51 | run2 back to record in 10.3min | deepest 2h/4h/8h 81/95/105 | renown 2h/4h/8h 101/194/266
+first at f55       1st retire 63min f55 +65 | run2 back to record in 11.9min | deepest 2h/4h/8h 80/93/105 | renown 2h/4h/8h 65/193/269
+first at f60       1st retire 80min f60 +79 | run2 back to record in 13.1min | deepest 2h/4h/8h 78/95/106 | renown 2h/4h/8h 79/183/271

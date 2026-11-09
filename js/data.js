@@ -19,7 +19,7 @@
     },
     mage: {
       name: 'Mortimer', cls: 'Mage', role: 'caster', hp: 30, atk: 15, spd: 1.7, range: 110, splash: 0.5,
-      recruit: 1500, unlockFloor: 10, lvlCost: 200,
+      recruit: 1500, unlockFloor: 10, lvlCost: 80,
       ult: { name: 'Meteor', cost: 50, cd: 9, desc: 'Calls down a meteor: 800% damage to everything it lands near.' },
       blurb: 'Slow, old, and extremely explosive.',
     },
@@ -91,13 +91,13 @@
     { id: 'capslock', name: 'Caps Lock Crown', rar: 'rare', icon: 'crown', desc: 'Fervor drains 35% slower.', apply: (m) => { m.fervDecay *= 0.65; } },
     { id: 'enter', name: 'Enter Amulet', rar: 'rare', icon: 'amulet', desc: 'Ultimates cost 40% fewer Sparks.', apply: (m) => { m.ultCost *= 0.6; } },
     { id: 'fang', name: 'Vampire Fang', rar: 'rare', icon: 'fang', desc: 'Heroes heal for 4% of the damage they deal.', apply: (m) => { m.lifesteal += 0.04; } },
-    { id: 'oil', name: 'Midnight Oil', rar: 'rare', icon: 'candle', desc: 'Offline earnings +20 points, and treasure chests are 50% more common.', apply: (m) => { m.offline += 0.2; m.chest *= 1.5; } },
+    { id: 'oil', name: 'Midnight Oil', rar: 'rare', icon: 'candle', desc: 'Offline earnings +20 points (and their cap rises to 100%). Treasure chests are 50% more common.', apply: (m) => { m.offline += 0.2; m.offlineCap = 1; m.chest *= 1.5; } },
     { id: 'map', name: 'Treasure Map', rar: 'rare', icon: 'map', desc: 'Treasure chests appear twice as often.', apply: (m) => { m.chest *= 2; } },
     { id: 'lens', name: "Critic's Lens", rar: 'rare', icon: 'lens', desc: '+10% crit chance. Crits deal 3x.', unique: true, apply: (m) => { m.crit += 0.1; m.critMult = Math.max(m.critMult, 3); } },
-    { id: 'echo', name: 'Echo Rune', rar: 'epic', icon: 'rune', desc: 'Ultimates have a 60% chance to cast twice.', unique: true, apply: (m) => { m.echo += 0.6; } },
+    { id: 'echo', name: 'Echo Rune', rar: 'epic', icon: 'rune', desc: 'Every ultimate casts twice.', unique: true, apply: (m) => { m.echo += 1; } },
     { id: 'glass', name: 'Glass Cannon', rar: 'epic', icon: 'gem', desc: '+75% damage, but -25% max HP.', unique: true, apply: (m) => { m.dmg *= 1.75; m.hp *= 0.75; } },
     { id: 'flowpend', name: 'Flow Pendant', rar: 'epic', icon: 'pendant', desc: 'FLOW STATE grants an extra +100% power.', unique: true, apply: (m) => { m.flowBonus += 1; } },
-    { id: 'hotkey', name: 'Hotkey Ring', rar: 'epic', icon: 'ring', desc: 'Every 150th keystroke casts a random ultimate for free.', unique: true, apply: (m) => { m.hotkey = true; } },
+    { id: 'hotkey', name: 'Hotkey Ring', rar: 'epic', icon: 'ring', desc: 'Every 60th keystroke fires the next hero\'s ultimate for free.', unique: true, apply: (m) => { m.hotkey = true; } },
   ];
 
   // Gold upgrades (reset on retire)
@@ -111,8 +111,8 @@
 
   // Ember upgrades (never reset). Every Spark spent on an ultimate also banks 1 Ember.
   const WORKSHOP = [
-    { id: 'jar', name: 'Spark Jar', icon: 'spark', base: 60, growth: 1.4, max: 25, desc: (l) => `+100 Spark capacity per level (cap ${150 + 100 * l})`, apply: (m, l) => { m.sparkCap += 100 * l; } },
-    { id: 'overcharge', name: 'Overcharge', icon: 'gem', base: 100, growth: 1.5, max: 999, desc: (l) => `+25% ultimate damage per level (now +${25 * l}%)`, apply: (m, l) => { m.ultPow *= 1 + 0.25 * l; } },
+    { id: 'crucible', name: 'Ember Crucible', icon: 'spark', base: 60, growth: 1.6, max: 10, desc: (l) => `+15% Embers from every source per level (now +${15 * l}%)`, apply: (m, l) => { m.emberGain *= 1 + 0.15 * l; } },
+    { id: 'overcharge', name: 'Overcharge', icon: 'gem', base: 100, growth: 1.5, max: 999, desc: (l) => `Ultimate damage x1.3 per level (now x${Math.pow(1.3, l).toFixed(2)})`, apply: (m, l) => { m.ultPow *= Math.pow(1.3, l); } },
     { id: 'kindling', name: 'Kindling', icon: 'candle', base: 90, growth: 1.55, max: 10, desc: (l) => `+12% Fervor gain per level (now +${12 * l}%)`, apply: (m, l) => { m.fervGain *= 1 + 0.12 * l; } },
     { id: 'static', name: 'Static Coins', icon: 'keycap', base: 140, growth: 1.75, max: 8, desc: (l) => `Each keystroke: +1% chance per level to mint a coin (now ${l}%)`, apply: (m, l) => { m.keyCoin += 0.01 * l; } },
   ];
@@ -122,12 +122,12 @@
     { id: 'lineage', name: 'Heroic Lineage', icon: 'sword', max: 999, cost: (l) => 2 + 2 * l, desc: (l) => `+25% damage per level (now +${25 * l}%)`, apply: (m, l) => { m.dmg *= 1 + 0.25 * l; } },
     { id: 'treasury', name: 'Royal Treasury', icon: 'coin', max: 999, cost: (l) => 2 + 2 * l, desc: (l) => `+25% gold per level (now +${25 * l}%)`, apply: (m, l) => { m.gold *= 1 + 0.25 * l; } },
     { id: 'quartermaster', name: 'Quartermaster', icon: 'hammer', max: 1, cost: () => 6, desc: () => 'Automatically levels your heroes with spare gold (toggle in Settings).', apply: (m, l) => { if (l) m.auto = true; } },
-    { id: 'veterans', name: 'Veteran Recruits', icon: 'shield', max: 10, cost: (l) => 4 + 3 * l, desc: (l) => `Heroes join at +5 levels per rank (now +${5 * l})`, apply: (m, l) => { m.startLvl += 5 * l; } },
-    { id: 'headstart', name: 'Head Start', icon: 'boots', max: 8, cost: (l) => 8 + 6 * l, desc: (l) => `Begin each delve 5 floors deeper (now floor ${1 + 5 * l})`, apply: (m, l) => { m.startFloor += 5 * l; } },
+    { id: 'veterans', name: 'Veteran Recruits', icon: 'shield', max: 10, cost: (l) => 3 + 2 * l, desc: (l) => `Heroes join at +10 levels per rank (now +${10 * l})`, apply: (m, l) => { m.startLvl += 10 * l; } },
+    { id: 'headstart', name: 'Head Start', icon: 'boots', max: 8, cost: (l) => 3 + 2 * l, desc: (l) => `Begin each delve 5 floors deeper (now floor ${1 + 5 * l})`, apply: (m, l) => { m.startFloor += 5 * (KK.DEMO_CAP ? Math.min(l, 2) : l); } },
     { id: 'zeal', name: 'Zealous Spirit', icon: 'candle', max: 5, cost: (l) => 4 + 2 * l, desc: (l) => `Fervor drains 12% slower per rank (now -${Math.round((1 - Math.pow(0.88, l)) * 100)}%)`, apply: (m, l) => { m.fervDecay *= Math.pow(0.88, l); } },
     { id: 'recruiter', name: 'Recruiter', icon: 'heart', max: 1, cost: () => 8, desc: () => 'Recruiting heroes costs 75% less.', apply: (m, l) => { if (l) m.heroCost *= 0.25; } },
     { id: 'campfire', name: 'Warm Campfire', icon: 'clock', max: 4, cost: (l) => 4 + 2 * l, desc: (l) => `Offline earnings +10 points per rank (now ${40 + 10 * l}% of online, max 80%)`, apply: (m, l) => { m.offline += 0.1 * l; } },
-    { id: 'battery', name: 'Idle Battery', icon: 'clock', max: 5, cost: (l) => 3 + 2 * l, desc: (l) => `+8% power while you're not typing, per rank (now +${8 * l}%)`, apply: (m, l) => { m.idlePow += 0.08 * l; } },
+    { id: 'battery', name: 'Idle Battery', icon: 'clock', max: 3, cost: (l) => 3 + 2 * l, desc: (l) => `+8% power while you're not typing, per rank (now +${8 * l}%)`, apply: (m, l) => { m.idlePow += 0.08 * l; } },
     { id: 'collector', name: 'Relic Collector', icon: 'gem', max: 1, cost: () => 20, desc: () => 'Bosses offer 4 relics to choose from.', apply: (m, l) => { if (l) m.relicChoices = 4; } },
   ];
 

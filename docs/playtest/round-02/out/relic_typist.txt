@@ -1,0 +1,20 @@
+=== RELIC IMPACT profile=typist 45 min, 5 seeds, only the forced relic held
+relic        rarity  maxFloor  dFloor  min-to-F30  dT30%   goldEarned  dGold%  ults  wipes
+glass        epic       48.2 +  8.0       16.5    -22%       823K    385%   181  10.2
+flowpend     epic       47.2 +  7.0       16.3    -23%       641K    278%   187  9.2
+keycap       rare       46.4 +  6.2       18.4    -13%       780K    360%   185  6.0
+lens         rare       45.6 +  5.4       18.7    -12%       482K    185%   186  8.6
+luckycoin    common     45.2 +  5.0       18.2    -14%       611K    260%   183  7.0
+whetstone    common     43.6 +  3.4       18.9    -11%       379K    124%   190  9.8
+belt         common     43.2 +  3.0       18.0    -15%       350K    106%   183  6.4
+map          rare       43.0 +  2.8       18.8    -11%       340K    101%   192  8.2
+enter        rare       42.2 +  2.0       19.3     -9%       262K     55%   310  10.8
+fang         rare       42.2 +  2.0       19.9     -6%       272K     61%   192  6.0
+capslock     rare       42.2 +  2.0       20.0     -6%       276K     63%   180  10.2
+echo         epic       42.0 +  1.8       21.1     -0%       272K     61%   299  10.8
+spacebar     common     41.4 +  1.2       20.3     -4%       260K     53%   188  8.0
+coffee       common     41.4 +  1.2       22.4      5%       235K     39%   188  11.4
+boots        common     41.0 +  0.8       21.1     -1%       242K     43%   193  12.2
+hotkey       epic       41.0 +  0.8       21.1     -0%       224K     32%   221  11.2  hotkeyProcs 38
+oil          rare       41.0 +  0.8       21.8      3%       218K     29%   181  10.0
+(none)                  40.2 +  0.0       21.2      0%       169K      0%   188  11.2

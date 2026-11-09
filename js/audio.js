@@ -49,7 +49,7 @@
   }
 
   function tone(freq, dur, o = {}) {
-    if (!A.ready) return;
+    if (!A.ready || A.ctx.state !== 'running') return;
     const ctx = A.ctx, t = ctx.currentTime + (o.delay || 0);
     const osc = ctx.createOscillator();
     const g = ctx.createGain();
@@ -67,7 +67,7 @@
     osc.start(t); osc.stop(t + dur + 0.05);
   }
   function noise(dur, o = {}) {
-    if (!A.ready) return;
+    if (!A.ready || A.ctx.state !== 'running') return;
     const ctx = A.ctx, t = ctx.currentTime + (o.delay || 0);
     const src = ctx.createBufferSource();
     src.buffer = noiseBuf;
@@ -121,7 +121,7 @@
     retire: () => { arp([262, 330, 392, 523, 659, 784, 1047], 0.12, { dur: 0.6, vol: 0.04, type: 'triangle' }); },
     slam: () => { tone(70, 0.35, { slide: 30, vol: 0.12, type: 'sine' }); noise(0.3, { freq: 400, sweep: 80, vol: 0.1 }); },
   };
-  A.play = (name) => { if (A.ready && SFX[name]) SFX[name](); };
+  A.play = (name) => { if (A.ready && A.ctx.state === 'running' && SFX[name]) SFX[name](); };
 
   // ---------------------------------------------------------------- music
   // A-minor dungeon loop: Am - F - C - G, 8th-note arpeggio, layers react to Fervor.

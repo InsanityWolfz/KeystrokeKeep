@@ -1,0 +1,8 @@
+=== autoclicker at the input cap vs typists, fresh save, 120 min, no retire, 2 seeds ===
+idle           inputs      0  floor 50.0  workshop lv 2 {"jar":1}
+burst          inputs   2304  floor 52.0  workshop lv 7 {"jar":3,"overcharge":2,"kindling":2}
+typist         inputs  15209  floor 66.5  workshop lv 18 {"jar":7,"overcharge":4,"kindling":4,"static":3}
+heavy          inputs  28958  floor 76.5  workshop lv 23 {"jar":8,"overcharge":6,"kindling":5,"static":4}
+autoclick@6/s  inputs  43200  floor 70.0  workshop lv 26 {"jar":9,"overcharge":7,"kindling":6,"static":4}
+autoclick@10/s inputs  72000  floor 72.0  workshop lv 28 {"jar":10,"overcharge":7,"kindling":7,"static":4}
+autoclick@15/s inputs 108000  floor 75.5  workshop lv 31 {"jar":10,"overcharge":7,"kindling":7,"static":5}

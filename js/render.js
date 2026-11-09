@@ -213,7 +213,7 @@
     b.globalCompositeOperation = 'lighter';
     for (const tc of torches) glow(tc.x, tc.y, 14 * flick(tc.s), pal.torch, 0.22);
     for (const l of FX.lights) glow(sxw(l.x), l.y + sy, l.r * 0.5, l.col, 0.35 * (1 - l.t / l.life) * l.a);
-    if (W.boss && !W.boss.dead) glow(sxw(W.boss.x), W.boss.y - W.boss.def.h / 2 + sy, 30 + Math.sin(t * 4) * 4, '#ff3a3a', 0.18);
+    if (W.boss && !W.boss.dead) glow(sxw(W.boss.x), W.boss.y - W.boss.def.h / 2 + sy, 30 + Math.sin(t * 4) * 4, W.boss.hollowed ? '#a24cff' : '#ff3a3a', 0.18);
     // emissive biome layer (lava cracks / void stars)
     if (biome.id === 'magma' || biome.id === 'void') {
       b.globalAlpha = 0.35 + Math.sin(t * 1.5) * 0.1;
@@ -282,12 +282,12 @@
       bar(sxw(e.x) - 6, e.y - e.def.h - 3 + sy, 12, e.hp / e.maxHp, '#e04848');
     }
     if (W.boss && !W.boss.dead) {
-      const bw = Math.min(160, Wd * 0.3), bx = Math.round(Wd / 2 - bw / 2), by = 17;
+      const bw = Math.min(110, Wd * 0.22), bx = Math.round(Wd - bw - 10), by = 26;
       b.fillStyle = '#000'; b.fillRect(bx - 1, by - 1, bw + 2, 5);
       b.fillStyle = '#3a0a14'; b.fillRect(bx, by, bw, 3);
       b.fillStyle = '#e04848'; b.fillRect(bx, by, Math.ceil(bw * W.boss.hp / W.boss.maxHp), 3);
       b.fillStyle = '#ff9a9a'; b.fillRect(bx, by, Math.ceil(bw * W.boss.hp / W.boss.maxHp), 1);
-      KK.font.draw(b, W.boss.def.name.toUpperCase(), Wd / 2, by + 8, '#ffb4b4');
+      KK.font.draw(b, W.boss.def.name.toUpperCase(), bx + bw / 2, by + 6, '#ffb4b4');
     }
 
     // ---- floating texts
@@ -442,11 +442,31 @@
     if (h.flash > 0) { b.globalAlpha = 0.8; b.drawImage(KK.SPR.frames[h.id][f].white, Math.round(dxp), Math.round(y)); b.globalAlpha = 1; }
     // mage orb / cleric halo glow
     if (h.id === 'mage') { b.globalCompositeOperation = 'lighter'; glow(dxp + 14, y + 2, 5 + (h.cast > 0 ? 4 : 0), '#7ee8f6', 0.6); b.globalCompositeOperation = 'source-over'; }
-    // ult ready indicator: tiny spark over head
-    const def = D.HEROES[h.id];
-    if (KK.S.sparks >= Math.ceil(def.ult.cost * KK.mods().ultCost) && h.ultCd <= 0 && Math.floor(t * 3 + h.slot) % 2) {
-      b.fillStyle = '#7ee8f6'; b.fillRect(x, Math.round(y) - 6, 1, 1);
+    // ultimate charge: the hero whose turn it is shows a bar that your typing fills
+    if (W.ultTurn === h.id) {
+      const def = D.HEROES[h.id];
+      const cost = Math.ceil(def.ult.cost * KK.mods().ultCost);
+      const k = Math.min(1, KK.S.sparks / cost);
+      const bx = Math.round(x - 5), by = Math.round(y) - 6;
+      b.fillStyle = '#000'; b.fillRect(bx - 1, by - 1, 12, 4);
+      b.fillStyle = '#123842'; b.fillRect(bx, by, 10, 2);
+      const full = k >= 1;
+      b.fillStyle = full ? (Math.floor(t * 6) % 2 ? '#ffffff' : '#7ee8f6') : '#7ee8f6';
+      b.fillRect(bx, by, Math.max(1, Math.round(10 * k)), 2);
+      if (full) { b.globalCompositeOperation = 'lighter'; glow(x, by + 1, 6, '#7ee8f6', 0.5); b.globalCompositeOperation = 'source-over'; }
     }
+  }
+  // Hollowed bosses (floor 70+) get a void-purple tint so they read as new foes
+  const tintCache = new WeakMap();
+  function hollowTint(c) {
+    let out = tintCache.get(c);
+    if (out) return out;
+    out = document.createElement('canvas'); out.width = c.width; out.height = c.height;
+    const g = out.getContext('2d');
+    g.drawImage(c, 0, 0);
+    g.globalCompositeOperation = 'source-atop'; g.globalAlpha = 0.5; g.fillStyle = '#6a2cff'; g.fillRect(0, 0, c.width, c.height);
+    tintCache.set(c, out);
+    return out;
   }
 
   function drawEnemy(e, x, sy) {
@@ -461,7 +481,7 @@
     shadow(x, W.GROUND + sy, Math.max(4, Math.round(spr.w / 3)));
     b.globalAlpha = k;
     const dxp = Math.round(x - spr.w / 2 + dx);
-    b.drawImage(spr.c, dxp, Math.round(y));
+    b.drawImage(e.hollowed ? hollowTint(spr.c) : spr.c, dxp, Math.round(y));
     if (e.flash > 0) { b.globalAlpha = 0.9 * k; b.drawImage(spr.white, dxp, Math.round(y)); }
     b.globalAlpha = 1;
     if (e.stun > 0) {

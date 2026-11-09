@@ -1,0 +1,7 @@
+=== Ember trickle for non-typists: +25 Embers per golden rat, +10 per boss kill; 4 h, stall-8, 3 seeds ===
+idle   current: embers/h    73  workshop levels 3.0  deepest 76
+idle   trickle: embers/h   245  workshop levels 8.7  deepest 74
+burst  current: embers/h   362  workshop levels 10.0  deepest 73
+burst  trickle: embers/h   535  workshop levels 13.7  deepest 78
+typist current: embers/h  1999  workshop levels 24.0  deepest 91
+typist trickle: embers/h  2165  workshop levels 25.0  deepest 90

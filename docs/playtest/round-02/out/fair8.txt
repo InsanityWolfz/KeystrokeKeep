@@ -1,0 +1,11 @@
+=== typist / burst / idle at equal time, stall8, 4 seeds ===
+typist first retire 92m/f60/+79 98m/f60/+79 110m/f68/+105 81m/f60/+79
+       0h30: f40 R0 | 1h00: f54 R0 | 2h00: f73 R86 | 4h00: f96 R195 | 8h00: f106 R266
+heavy  first retire 88m/f70/+112 90m/f70/+112 125m/f70/+112 128m/f70/+112
+       0h30: f44 R0 | 1h00: f59 R0 | 2h00: f75 R56 | 4h00: f98 R206 | 8h00: f110 R293
+burst  first retire 48m/f30/+13 59m/f40/+30 43m/f30/+13 87m/f50/+51
+       0h30: f27 R0 | 1h00: f36 R14 | 2h00: f61 R27 | 4h00: f77 R123 | 8h00: f91 R196
+idle   first retire 109m/f50/+51 23m/f20/+3 100m/f50/+51 53m/f30/+13
+       0h30: f23 R1 | 1h00: f37 R4 | 2h00: f52 R42 | 4h00: f77 R113 | 8h00: f89 R187
+typist/idle renown ratio: 0h30 0.0x  1h00 0.0x  2h00 2.1x  4h00 1.7x  8h00 1.4x
+typist/idle depth  ratio: 0h30 1.73x  1h00 1.48x  2h00 1.39x  4h00 1.25x  8h00 1.19x

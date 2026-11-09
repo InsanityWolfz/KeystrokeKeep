@@ -1,0 +1,7 @@
+=== Fame variants (extra multiplier on dmg & gold on top of 1+0.03R), stall-8, 3 seeds ===
+typist current  : 1h f54 R0 | 2h f69 R88 | 4h f91 R194 | 8h f105 R253  first retire 91m/97m/110m  retires after 4h 48+21, 48+11, 33+15
+typist x1.004^R : 1h f54 R0 | 2h f71 R88 | 4h f100 R234 | 8h f119 R347  first retire 91m/97m/110m  retires after 4h 54+29+30, 54+53+6, 68+11+35
+typist x1.008^R : 1h f54 R0 | 2h f78 R88 | 4h f112 R242 | 8h f145 R510  first retire 91m/97m/110m  retires after 4h 118+64+69+73, 96+65+64+69, 59+57+68
+idle   current  : 1h f36 R1 | 2h f51 R44 | 4h f76 R122 | 8h f86 R174  first retire 108m/23m/99m  retires after 4h 33+20+13, 22+16+30, 13+4+4
+idle   x1.004^R : 1h f36 R1 | 2h f51 R51 | 4h f80 R150 | 8h f101 R242  first retire 108m/23m/99m  retires after 4h 44+48, 44+48, 44+28+20
+idle   x1.008^R : 1h f34 R3 | 2h f53 R37 | 4h f87 R172 | 8h f116 R310  first retire 108m/23m/99m  retires after 4h 48+43+11, 87+31+28, 61+64+41

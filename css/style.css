@@ -372,3 +372,26 @@ body.native #panel { border-bottom: 0; }
   .floor-line { flex-direction: column; gap: 0; align-items: center; }
   .fervor { width: 150px; }
 }
+
+/* Round 2 */
+.retire-box .worth { font: 10px var(--font-px); color: #e9a2ff; letter-spacing: .5px; margin-top: 2px; }
+
+/* Round 2: disabled currency buttons must look disabled */
+.buy.spark:disabled, .buy.renown:disabled { background: #3a2f4f; color: #7d6fa0; box-shadow: inset 0 -3px 0 #2a2140; }
+/* no endless CSS animations (they force the window to recomposite at the monitor's refresh rate) */
+.wave-pips i.cur { animation: none; }
+.blink .wave-pips i.cur { opacity: .45; }
+.fervor.t3 #fv-tier { animation: none; }
+.blink .fervor.t3 #fv-tier { color: #fff6c9; }
+.hbtn .badge { animation: none; }
+.hbtn .badge.glow { box-shadow: 0 0 0 1px #000, 0 0 8px var(--epic); }
+.blink .hbtn .badge.glow { box-shadow: 0 0 0 1px #000, 0 0 2px var(--epic); }
+.kk-paused *, .kk-paused *::before, .kk-paused *::after { animation-play-state: paused !important; }
+.res .embers { font-size: 11px; color: #ffb070; margin-left: 6px; display: inline-flex; align-items: center; gap: 2px; }
+.res .embers b { font-weight: normal; }
+/* card text: level badge never squeezes the name; buttons line up */
+.card .nm { flex-wrap: wrap; row-gap: 0; }
+.card .nm .lv { white-space: nowrap; }
+.card .info { display: flex; flex-direction: column; }
+.card .info .buy { margin-top: auto; }
+.biome { max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
