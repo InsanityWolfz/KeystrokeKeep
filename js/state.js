@@ -19,7 +19,7 @@
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
       stats: { kills: 0, bossKills: 0, keys: 0, clicks: 0, ults: 0, goldEarned: 0, playTime: 0, chests: 0, rats: 0, flowTime: 0, wipes: 0 },
-      settings: { sound: true, music: false, volume: 0.3, keySound: false, calm: false, fps: 24, lowGpu: 'auto', size: 'auto', countInput: true },
+      settings: { sound: true, music: false, volume: 0.2, keySound: false, calm: false, fps: 24, lowGpu: 'auto', size: 'auto', countInput: true },
       tutorial: {},
       lastSave: Date.now(),
       created: Date.now(),
@@ -363,6 +363,7 @@
         while (F.renownFor(rf) < fresh.renownLifetime && rf < 400) rf++;
         fresh.renownFloor = rf;
       }
+      if (!fresh.settings.lowGpuMigrated) { if (fresh.settings.lowGpu === true) fresh.settings.lowGpu = 'auto'; fresh.settings.lowGpuMigrated = true; }
       if (fresh.workshop.jar) {
         let refund = 0;
         for (let l = 0; l < fresh.workshop.jar; l++) refund += Math.ceil(60 * Math.pow(1.4, l));

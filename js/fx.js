@@ -248,6 +248,9 @@
   });
   KK.on('wipe', ({ reason }) => {
     if (reason === 'enrage') return; // the enrage has its own alert
+    const now = performance.now();
+    if (now - (FX.lastWipeBanner || -1e9) < 300000) { FX.alert('RETREAT', '#ff9a9a', 1.2); return; }
+    FX.lastWipeBanner = now;
     FX.banner('RETREAT!', 'THE PARTY FALLS BACK A FLOOR', '#ff6b6b', 2.4, { subCol: '#ffb4a0' });
     FX.flash('#5a0010', 0.6);
   });

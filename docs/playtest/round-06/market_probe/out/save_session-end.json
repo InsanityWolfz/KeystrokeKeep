@@ -1,0 +1,51 @@
+{
+  "mode": "save:session-end",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": true,
+  "cores": 32,
+  "switches": "",
+  "hasBattery": false,
+  "before": {
+    "full": {
+      "keystroke-keep.json": 70
+    },
+    "demo": "no dir"
+  },
+  "gpuInfoUpdates": 3,
+  "setup": "ok",
+  "knightAlphaAtBoot": 143,
+  "saveInfo": "main",
+  "toasts": [],
+  "loaded": {
+    "floor": 70,
+    "demoCap": 0,
+    "ls": null
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "demo-imported.flag": "corrupt(22B)",
+      "keystroke-keep.bak1.json": 70,
+      "keystroke-keep.json": 70
+    },
+    "demo": "no dir"
+  },
+  "afterSessionEnd": {
+    "mainFloor": 71,
+    "liveFloor": 72
+  },
+  "lowGpu": {
+    "switch": true,
+    "gpu": "disabled_software"
+  },
+  "files": {
+    "full": {
+      "demo-imported.flag": "corrupt(22B)",
+      "keystroke-keep.bak1.json": 70,
+      "keystroke-keep.json": 71
+    },
+    "demo": "no dir"
+  },
+  "mainBytes": 948
+}

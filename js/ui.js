@@ -351,6 +351,7 @@
       case 'set': {
         const k = el.dataset.k; let v = el.dataset.v;
         if (v === 'true') v = true; else if (v === 'false') v = false; else if (k === 'fps') v = +v;
+        if (k === 'lowGpu') S.settings.lowGpuMigrated = true;
         UI.setSetting(k, v);
         return;
       }

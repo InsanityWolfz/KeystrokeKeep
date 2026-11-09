@@ -446,6 +446,7 @@ function seedSaves(sc) {
 }
 async function saves(sc) {
   R.before = { full: dirState(FULL_DIR), demo: dirState(DEMO_DIR) };
+  if (/^tmp-/.test(sc)) { const t = P.readSave(); R.readSaveAtStart = t ? JSON.parse(t).floor : null; } // what main.js hands the renderer
   await bootGame();
   await sleep(2500); // the restore / import toast fires 2 s after boot
   R.saveInfo = await js(WIN, `window.kkNative.saveInfo()`);
@@ -517,13 +518,14 @@ async function saves(sc) {
     const target = P.savePath(); R.asyncLocks = [];
     for (const ms of [100, 300, 600, 1000, 2000]) {
       const holder = spawn('powershell', ['-NoProfile', '-Command', `$f=[IO.File]::Open('${target}','Open','Read','Read'); [Console]::Out.WriteLine('LOCKED'); [Console]::Out.Flush(); Start-Sleep -Milliseconds ${ms}; $f.Close()`]);
+      const exited = new Promise((r) => holder.on('exit', r));
       await new Promise((r) => holder.stdout.on('data', (b) => { if (/LOCKED/.test(String(b))) r(); }));
       const want = 200 + R.asyncLocks.length;
       let maxLag = 0, last = Date.now(); const lagT = setInterval(() => { const n = Date.now(); maxLag = Math.max(maxLag, n - last - 5); last = n; }, 5);
       const t0 = Date.now(); ipcMain.emit('kk:save', {}, save({ floor: want })); const blocked = Date.now() - t0;
       let landed = null; while (Date.now() - t0 < 4000) { if (floorOf(target) === want) { landed = Date.now() - t0; break; } await sleep(10); }
       clearInterval(lagT);
-      await new Promise((r) => holder.on('exit', r)); await sleep(300);
+      await exited; await sleep(300);
       const row = { lockMs: ms, emitBlockedMs: blocked, maxEventLoopLagMs: maxLag, landedAfterMs: landed, mainFloorNow: floorOf(target), tmpLeft: fs.existsSync(target + '.tmp'), tmpFloor: floorOf(target + '.tmp') };
       const t = P.readSave(); row.readSaveNow = t ? JSON.parse(t).floor : null; // what a reboot would load (newer .tmp wins)
       R.asyncLocks.push(row);

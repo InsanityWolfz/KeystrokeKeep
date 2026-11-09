@@ -155,6 +155,9 @@
   W.damageHero = function (h, dmg, src) {
     if (h.dead) return;
     h.hp -= dmg;
+    // onboarding grace: no knockouts before the first boss falls or 10 minutes of play
+    const S0 = KK.S;
+    if (h.hp <= 0 && (S0.stats.bossKills === 0 || S0.stats.playTime < 600)) h.hp = 1;
     h.flash = 0.1;
     KK.emit('heroHit', { h, dmg, src });
     if (h.hp <= 0) {
@@ -184,6 +187,12 @@
     const S = KK.S;
     W.wipeT = 2.4;
     if (reason !== 'enrage') S.stats.wipes++;
+    if (!F.isBossFloor(S.floor) && reason !== 'enrage') {
+      // a normal floor that wiped the party: farm the floor below until the heroes have grown
+      // (+4 levels in total) or 8 minutes pass, instead of bouncing off the same wall
+      S.campFloor = S.floor; S.campUntil = S.stats.playTime + 480;
+      S.campLevels = D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0) + 4;
+    }
     if (F.isBossFloor(S.floor)) {
       S.bossBlock = S.floor;
       S.bossLosses = (S.bossLosses || 0) + 1;
@@ -644,7 +653,9 @@
       S.floor = KK.DEMO_CAP - 4;
     } else if (KK.DEMO_CAP && S.runCapCleared && S.floor >= KK.DEMO_CAP - 1) S.floor = KK.DEMO_CAP - 4;
     // regrouping after repeated losses: keep farming the floor below the wall for a while
-    if (S.bossBlock && S.floor + 1 >= S.bossBlock && (S.campUntil || 0) > S.stats.playTime) S.floor--;
+    if (S.campFloor && S.campLevels && D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0) >= S.campLevels) { S.campFloor = 0; S.campLevels = 0; S.campUntil = 0; }
+    const wall = Math.max(S.bossBlock || 0, S.campFloor || 0);
+    if (wall && S.floor + 1 >= wall && (S.campUntil || 0) > S.stats.playTime) S.floor--;
     S.floor++;
     if (S.floor > S.maxFloorRun) S.maxFloorRun = S.floor;
     if (S.floor > S.maxFloorEver) {

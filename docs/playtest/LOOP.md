@@ -113,7 +113,9 @@ Format: `- [round found] [severity] item: status/reason`
 - [R3] [blocker, needs app id] Steamworks in main (steamworks-ffi-node or steamworks.js): init, achievements mirror of `S.ach` (full game only; demo grants on import), rich presence, Auto-Cloud on `%APPDATA%/Keystroke Keep/saves/*.json`, overlay test.
 - [R3] [blocker, owner: user] Code-signing certificate (Azure Artifact Signing or OV); then `win.azureSignOptions`/certificate config; VirusTotal + Microsoft submissions.
 - [R5] [check] R5 market report arrived after the write-up: fold its findings in (power low-GPU on/off, fullscreen filters, save hardening, packaged build, store checklist + trailer shot list in round-05/market.md).
-- [R6] [check] R6 market report arrived after the write-up: fold in its verification of the 89f4651 fixes and its dated Next Fest / Desktop Companion Fest plan.
+- [R6] [blocker, owner: user] Steamworks onboarding NOW (tax up to 30 days); app id + Desktop Companion tag by ~Dec 1 for Desktop Companion Fest (Jan 14-18, opt-in ~Dec 3); Coming Soon page submit Dec 7; demo build review Dec 18; dated plan in round-06/market.md.
+- [R6] [major] Idle first hour still ~10 quiet retreats (target <=4); consider a softer f11-30 curve for parties without the Cleric.
+- [R6] [major] KK_CAPTURE mode (60 fps, no idle drop, fixed crop, no dev UI) for store GIFs/trailer; shot list in round-06/market.md.
 - [R6] [major] Week-2 layer: Omen of the Day + Void Lantern + trophies at 160-200 (final numbers and code locations in round-06/auditor.md; prototype: typist beats after 8 h 22-28 -> 40-45).
 - [R6] [minor] Alert priority (only the newest alert draws); Codex progress line in Legacy; achievement progress counters; chests/wipes in the stat box.
 - [R5] [minor] Demo card: hold floor 40 in a victory pose until dismissed; sprite teasers; move the DEMO pill to .hud-right.
@@ -134,4 +136,4 @@ Format: `- [round found] [severity] item: status/reason`
 | R3 | 2026-11-09 | Demo re-delve loop + card, Delve Omens, Sanctuary reaction, ligature fix, file saves, per-monitor fullscreen, baked demo flag, 24 fps, bar transitions removed | 220510d |
 | R4 | 2026-11-09 | Packaging + fuses, achievements, depth trophies, demo Renown cap, omen rebalance + modal, Vigil + void slam, low-GPU mode, save hardening | 40214c3, d42bbc9 |
 | R5 | 2026-11-09 | Heal cap, Dynamo, Hollow Codex, War Charge + Reassemble, alert channel, Heart of the Keep, achievement fixes, demo cap 120, cross-build instance lock | 44379dd, 89f4651 |
-| R6 | 2026-11-09 | Enrage keeps wounds + regroup, all six boss signature moves, Codex per 8 kills, Dynamo 10%, digit font, achievements open state | ce6b6d1 + (this round) |
+| R6 | 2026-11-09 | Enrage keeps wounds + regroup, all six boss signature moves, Codex per 8 kills, Dynamo 10%, digit font, achievements open state, quiet first-hour retreats, handoff/save hardening | ce6b6d1, 3adcda5 + (this round) |

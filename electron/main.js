@@ -23,6 +23,8 @@ try { pkg = require('../package.json'); } catch (e) { /* ignore */ }
 const IS_DEMO = pkg.kkDemo === true || process.env.KK_DEMO === '1' || process.argv.includes('--kk-demo');
 const HIDE_HOTKEY = 'Control+Shift+Alt+K'; // not Ctrl+Alt+K: that is AltGr+K, which types a letter on some layouts
 let hotkeyOk = false;
+// one strip per Windows user (pipe names are machine-wide)
+const PIPE = '\\\\.\\pipe\\keystroke-keep-' + String((() => { try { return require('os').userInfo().username; } catch (e) { return 'user'; } })()).replace(/[^A-Za-z0-9_-]/g, '_');
 let hideNoticeShown = false;
 
 function targetDisplay() {
@@ -264,9 +266,11 @@ function validSave(text) {
 }
 const sleepSync = (ms) => { try { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms); } catch (e) { /* ignore */ } };
 /** async save: retries locked files on a timer instead of blocking the main process */
-function writeSaveAsync(text, attempt = 0) {
+let saveGen = 0;
+function writeSaveAsync(text, attempt = 0, gen = ++saveGen) {
+  if (gen < saveGen) return; // a newer save already went out
   try { writeSaveNoRetry(text); } catch (e) {
-    if (attempt < 5 && ['EPERM', 'EACCES', 'EBUSY'].includes(e.code)) setTimeout(() => writeSaveAsync(text, attempt + 1), 20 * Math.pow(2, attempt));
+    if (attempt < 5 && ['EPERM', 'EACCES', 'EBUSY'].includes(e.code)) setTimeout(() => writeSaveAsync(text, attempt + 1, gen), 20 * Math.pow(2, attempt));
     else console.warn('[KK] save failed', e.message);
   }
 }
@@ -306,6 +310,7 @@ let importMarked = false;
 const importMarker = () => path.join(saveDir(), 'demo-imported.flag');
 let loadSource = 'none';
 function readSave() {
+  loadSource = 'none';
   const order = [savePath(), backupPath(1), backupPath(2), backupPath(3)];
   // a leftover .tmp newer than the main file means the last rename failed: it holds the newest save
   try {
@@ -346,7 +351,7 @@ ipcMain.on('kk:wipeSave', (e) => {
   e.returnValue = true;
 });
 // Windows shutdown / logoff: write the last known save durably
-const flushSave = () => { if (lastSaveText) { try { writeSave(lastSaveText, true); } catch (e) { /* ignore */ } } };
+const flushSave = () => { if (lastSaveText) { saveGen++; try { writeSave(lastSaveText, true); } catch (e) { /* ignore */ } } };
 // the renderer tells us its saved settings at boot and whenever they change
 ipcMain.on('kk:settings', (_e, s) => {
   if (!s || typeof s !== 'object') return;
@@ -373,7 +378,7 @@ function hasBattery() {
     const f = koffi.load('kernel32.dll').func('__stdcall', 'GetSystemPowerStatus', 'int', [koffi.out(koffi.pointer(SPS))]);
     const o = {};
     if (!f(o)) return false;
-    return o.BatteryFlag !== 128 && o.BatteryFlag !== 255; // 128 = no system battery, 255 = unknown
+    return o.BatteryFlag !== 255 && (o.BatteryFlag & 128) === 0; // bit 128 = no system battery, 255 = unknown
   } catch (e) { return false; }
 }
 if (process.platform === 'win32') {
@@ -400,11 +405,11 @@ else {
     if (!process.env.KK_SNAPSHOT && process.platform === 'win32') {
       const owned = await new Promise((resolve) => {
         const srv = require('net').createServer((c) => {
-          c.on('data', (d) => { if (String(d).trim() === 'quit') { flushSave(); app.quit(); } });
+          c.on('data', (d) => { if (String(d).trim() === 'quit') { try { srv.close(); } catch (e) { /* ignore */ } flushSave(); app.quit(); } });
           c.on('error', () => {});
         });
         srv.once('error', () => resolve(false));
-        srv.listen('\\\\.\\pipe\\keystroke-keep-instance', () => resolve(true));
+        srv.listen(PIPE, () => resolve(true));
       });
       if (!owned) {
         const choice = require('electron').dialog.showMessageBoxSync({
@@ -414,10 +419,15 @@ else {
         });
         if (choice === 0) {
           await new Promise((resolve) => {
-            const c = require('net').connect('\\\\.\\pipe\\keystroke-keep-instance', () => c.end('quit'));
+            const c = require('net').connect(PIPE, () => c.end('quit'));
             c.on('error', resolve); c.on('close', resolve);
           });
-          await new Promise((r) => setTimeout(r, 1500));
+          // wait until the other copy has really let go of the pipe (up to 10 s)
+          for (let i = 0; i < 40; i++) {
+            const alive = await new Promise((r) => { const c = require('net').connect(PIPE, () => { c.destroy(); r(true); }); c.on('error', () => r(false)); });
+            if (!alive) break;
+            await new Promise((r) => setTimeout(r, 250));
+          }
           app.relaunch();
         }
         app.quit();
@@ -458,7 +468,7 @@ else {
         const img = await win.webContents.capturePage();
         require('fs').writeFileSync(process.env.KK_SNAPSHOT, img.toPNG());
         console.log('[KK] snapshot saved', win.getBounds());
-        app.quit();
+        app.exit(px > 0 ? 0 : 1);
       }, +(process.env.KK_SNAPSHOT_DELAY || 6000));
       return;
     }

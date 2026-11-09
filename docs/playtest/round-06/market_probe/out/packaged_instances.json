@@ -1,0 +1,77 @@
+﻿{
+    "realSaveMd5Before":  "D680A06B343DB55E16CF6D3B88B4B533",
+    "backupFiles":  68,
+    "P1_visibleAtStart":  true,
+    "P1_visibleAfterHotkey":  false,
+    "P1_secondExited":  true,
+    "P1_visibleAfterSecondLaunch":  true,
+    "P1_fullProfileHasPrefs":  true,
+    "P2_fullSaveBefore":  {
+                              "floor":  1,
+                              "lastSave":  1794251480296,
+                              "mtime":  "14:11:20.297"
+                          },
+    "P2_dialogAfterS":  0.2,
+    "P2_dialog":  {
+                      "title":  "Keystroke Keep",
+                      "texts":  [
+                                    "MainInstructionIcon",
+                                    "Keystroke Keep is already running (demo or full game).",
+                                    "Only one strip can run at a time. The other one saves before it closes.",
+                                    "Keystroke Keep",
+                                    "System Menu Bar",
+                                    "System"
+                                ],
+                      "buttons":  [
+                                      "Close the other one and start the demo",
+                                      "Cancel",
+                                      "Close"
+                                  ]
+                  },
+    "P2_clicked":  "Close the other one and start the demo",
+    "P2_fullExitedAfterS":  0.66,
+    "P2_demoStripVisibleAfterS":  2.44,
+    "P2_extraDialogs":  0,
+    "P2_fullSaveAfter":  {
+                             "floor":  1,
+                             "lastSave":  1794251486576,
+                             "mtime":  "14:11:26.576"
+                         },
+    "P2_demoProfileHasPrefs":  false,
+    "P2_demoSave":  "missing",
+    "P3_dialog":  {
+                      "title":  "Keystroke Keep",
+                      "texts":  [
+                                    "MainInstructionIcon",
+                                    "Keystroke Keep is already running (demo or full game).",
+                                    "Only one strip can run at a time. The other one saves before it closes.",
+                                    "Keystroke Keep",
+                                    "System Menu Bar",
+                                    "System"
+                                ],
+                      "buttons":  [
+                                      "Close the other one and start",
+                                      "Cancel",
+                                      "Close"
+                                  ]
+                  },
+    "P3_clicked":  null,
+    "P3_fullExited":  true,
+    "P3_demoStillRunning":  true,
+    "P3_demoVisible":  true,
+    "P4_clicked":  "Close the other one and start",
+    "P4_demoExitedAfterS":  0.63,
+    "P4_fullStripVisibleAfterS":  2.36,
+    "P4_extraDialogs":  0,
+    "P4_demoSaveAfter":  {
+                             "floor":  1,
+                             "lastSave":  1794251497365,
+                             "mtime":  "14:11:37.370"
+                         },
+    "gpuProcFlags":  [
+                         true
+                     ],
+    "realSaveMd5After":  "D680A06B343DB55E16CF6D3B88B4B533",
+    "restoredFiles":  68,
+    "restoredOk":  true
+}

@@ -1,0 +1,54 @@
+{
+  "mode": "save:own-marker-corrupt-with-demo",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": true,
+  "cores": 32,
+  "switches": "",
+  "hasBattery": false,
+  "before": {
+    "full": {
+      "demo-imported.flag": "corrupt(10B)",
+      "keystroke-keep.json": "corrupt(11B)"
+    },
+    "demo": {
+      "keystroke-keep.json": 31
+    }
+  },
+  "gpuInfoUpdates": 3,
+  "setup": "ok",
+  "knightAlphaAtBoot": 143,
+  "saveInfo": "none",
+  "toasts": [],
+  "loaded": {
+    "floor": 1,
+    "demoCap": 0,
+    "ls": null
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "demo-imported.flag": "corrupt(10B)",
+      "keystroke-keep.corrupt-1794251000538.json": "corrupt(11B)",
+      "keystroke-keep.json": 1
+    },
+    "demo": {
+      "keystroke-keep.json": 31
+    }
+  },
+  "lowGpu": {
+    "switch": true,
+    "gpu": "disabled_software"
+  },
+  "files": {
+    "full": {
+      "demo-imported.flag": "corrupt(10B)",
+      "keystroke-keep.corrupt-1794251000538.json": "corrupt(11B)",
+      "keystroke-keep.json": 1
+    },
+    "demo": {
+      "keystroke-keep.json": 31
+    }
+  },
+  "mainBytes": 931
+}

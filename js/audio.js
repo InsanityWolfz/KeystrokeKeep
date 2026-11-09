@@ -119,7 +119,7 @@
     buy: () => { if (limited('buy', 40)) return; tone(660, 0.05, { vol: 0.035, type: 'square', lp: 3000 }); tone(990, 0.07, { vol: 0.03, type: 'square', lp: 3000, delay: 0.04 }); },
     deny: () => { if (limited('deny', 120)) return; tone(160, 0.12, { vol: 0.04, type: 'square', lp: 800 }); },
     retire: () => { arp([262, 330, 392, 523, 659, 784, 1047], 0.12, { dur: 0.6, vol: 0.04, type: 'triangle' }); },
-    slam: () => { tone(70, 0.35, { slide: 30, vol: 0.12, type: 'sine' }); noise(0.3, { freq: 400, sweep: 80, vol: 0.1 }); },
+    slam: () => { if (limited('slamThump', 8000)) return; tone(70, 0.35, { slide: 30, vol: 0.12, type: 'sine' }); noise(0.3, { freq: 400, sweep: 80, vol: 0.1 }); },
   };
   A.play = (name) => { if (A.ready && A.ctx.state === 'running' && SFX[name]) SFX[name](); };
 
@@ -204,7 +204,8 @@
   });
   if (typeof document !== 'undefined') document.addEventListener('visibilitychange', () => A.applySettings());
   KK.on('power', () => A.applySettings());
-  KK.on('wipe', () => p('wipe'));
+  let lastWipeSfx = -1e9;
+  KK.on('wipe', () => { if (performance.now() - lastWipeSfx > 300000) { lastWipeSfx = performance.now(); p('wipe'); } });
   KK.on('door', () => p('door'));
   KK.on('relicPicked', () => p('relic'));
   KK.on('relicOffer', () => setTimeout(() => p('offer'), 1200));

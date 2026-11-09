@@ -4,7 +4,7 @@
 |---|---|---|---|
 | Economist | 8 / demo 7.5 | 8 / 7.5 | **7.5 / 7.5** |
 | Auditor | 7 | 7.5 | **7.5** |
-| Market | 8 | 6 (low-GPU sprite bug), 8.5 once fixed | *(still running at write-up; folded into R7)* |
+| Market | 8 | 6 (low-GPU sprite bug), 8.5 once fixed | **8.5** (all R5 fixes verified, incl. real packaged demo/full handoff) |
 | Player | 7.5 | 7.5 / 7.5 | **7.5 demo / 8 full** |
 
 Before this round: the R5 market blocker was fixed in 89f4651. Low-GPU mode blanked every baked sprite; baked canvases now use `willReadFrequently`, and there's a sprite-check gate in the self-test. Also in that commit: lowGpu "auto", demo productName/profile, second-instance handling, the caption-based fullscreen rule, and async save retries.
@@ -81,3 +81,40 @@ Before this round: the R5 market blocker was fixed in 89f4651. Low-GPU mode blan
 - Fold in the R6 market report: verification of the low-GPU and sprite fix, the demo/full dialog flow, and the dated Next Fest and Desktop Companion Fest plan.
 - Do the four new moves read well at strip size? Is Web Shot annoying? Is Lava Rain readable?
 - Is wounds + regroup + Codex every 8 kills enough for week 2? The auditor's Omen of the Day and Void Lantern designs are ready in round-06/auditor.md.
+
+## Market report (arrived after the first write-up; fixes in part 3)
+
+### Verified (pass)
+- Sprites in low-GPU mode: 0/48 blank frames, dev build and both packaged builds.
+- `lowGpu` auto, the demo profile, second launch, and the demo/full "close the other one" dialog in both directions. This was tested on real packaged runs with the real `%APPDATA%` folders backed up and restored; the save's md5 was unchanged.
+- Fullscreen: 30/30 cases on 3 monitors.
+- Save edge cases.
+
+### User blocker
+Start Steamworks onboarding this week. Tax verification can take up to 30 days, and there's a 21-day wait between the app fee and release. Desktop Companion Fest (Jan 14–18) registration closes around Dec 3, so the app ID and the "Desktop Companion" tag are needed by about Dec 1.
+
+A new direct competitor, Keyboard Hero (F2P, Coming Soon), pitches the same "every keystroke" hook. Our angle: premium, offline/no network, hand-made pixel art, idle-first.
+
+The dated plan through Mar 1 (user column vs lead column) is in round-06/market.md.
+
+### Fixed in part 3
+- **First hour for idle players:**
+  - No knockouts before the first boss falls or 10 min of play.
+  - A wipe on a normal floor makes the party camp one floor below until the heroes gain 4 levels in total, or 8 min pass.
+  - The wipe banner and sound play at most once per 5 min; otherwise a quiet "RETREAT" alert.
+  - Idle demo hour 1 still has about 10 retreats (target ≤4). The wall-bounce is inherent to idle pacing and is now quiet. Revisit next round.
+- **Sound:** the slam thump plays at most once every 8 s. The default volume is 0.2.
+- **Self-test:** the sprite gate now really exits 1 on failure (`app.exit`).
+- **Demo/full handoff:**
+  - The pipe name includes the Windows user.
+  - The running copy closes the pipe first.
+  - The new copy waits until the pipe is really free (up to 10 s), so the dialog no longer appears twice.
+- **Saves:** a generation counter drops stale async retries, and `loadSource` resets to 'none'.
+- **Low-GPU:**
+  - Old saves stuck on `lowGpu: true` from the previous default migrate once to 'auto'.
+  - The battery flag is tested as a bit.
+
+### Still open (user)
+- Code signing.
+- Copyright holder name (currently a placeholder).
+- Store screenshots must be gameplay-only.

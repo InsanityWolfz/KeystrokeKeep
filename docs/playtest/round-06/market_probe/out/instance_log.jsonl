@@ -1,0 +1,57 @@
+{"case":"I1_same_build_hidden","t":1794251346505}
+{"t":1794251347244,"pid":30416,"mode":"hold","demo":false,"tag":"A","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData"}
+{"t":1794251347373,"pid":30416,"mode":"hold","demo":false,"tag":"A","ev":"window","lowGpuSwitch":true}
+{"t":1794251351376,"pid":30416,"mode":"hold","demo":false,"tag":"A","ev":"ready","knight":143,"visible":false,"liveFloor":77}
+{"t":1794251356307,"pid":19240,"mode":"noop","demo":false,"tag":"A2","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData"}
+{"t":1794251356311,"pid":19240,"mode":"noop","demo":false,"tag":"A2","ev":"will-quit"}
+{"t":1794251356311,"pid":19240,"mode":"noop","demo":false,"tag":"A2","ev":"exit","code":0,"uptimeMs":28}
+{"t":1794251356909,"pid":30416,"mode":"hold","demo":false,"tag":"A","ev":"second-instance","visibleAfter":true,"userShown":true}
+{"t":1794251365377,"pid":30416,"mode":"hold","demo":false,"tag":"A","ev":"hold-expired","visible":true}
+{"t":1794251365381,"pid":30416,"mode":"hold","demo":false,"tag":"A","ev":"exit","code":0,"uptimeMs":18162}
+{"case":"I2_full_then_demo_close","t":1794251367474}
+{"t":1794251368263,"pid":9400,"mode":"hold","demo":false,"tag":"FULL","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData"}
+{"t":1794251368392,"pid":9400,"mode":"hold","demo":false,"tag":"FULL","ev":"window","lowGpuSwitch":true}
+{"t":1794251371895,"pid":9400,"mode":"hold","demo":false,"tag":"FULL","ev":"ready","knight":143,"visible":true,"liveFloor":77}
+{"t":1794251377322,"pid":4424,"mode":"hold","demo":true,"tag":"DEMO","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData-demo"}
+{"t":1794251377351,"pid":4424,"mode":"hold","demo":true,"tag":"DEMO","ev":"dialog","message":"Keystroke Keep is already running (demo or full game).","detail":"Only one strip can run at a time. The other one saves before it closes.","buttons":["Close the other one and start the demo","Cancel"],"picked":0}
+{"t":1794251377364,"pid":9400,"mode":"hold","demo":false,"tag":"FULL","ev":"will-quit"}
+{"t":1794251377365,"pid":9400,"mode":"hold","demo":false,"tag":"FULL","ev":"exit","code":0,"uptimeMs":9130}
+{"t":1794251378894,"pid":4424,"mode":"hold","demo":true,"tag":"DEMO","ev":"will-quit"}
+{"t":1794251378894,"pid":4424,"mode":"hold","demo":true,"tag":"DEMO","ev":"exit","code":0,"uptimeMs":1599}
+{"t":1794251378985,"pid":16928,"mode":"hold","demo":true,"tag":"DEMO","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData-demo"}
+{"t":1794251379112,"pid":16928,"mode":"hold","demo":true,"tag":"DEMO","ev":"window","lowGpuSwitch":true}
+{"t":1794251382613,"pid":16928,"mode":"hold","demo":true,"tag":"DEMO","ev":"ready","knight":143,"visible":true,"liveFloor":33}
+{"t":1794251390613,"pid":16928,"mode":"hold","demo":true,"tag":"DEMO","ev":"hold-expired","visible":true}
+{"t":1794251390617,"pid":16928,"mode":"hold","demo":true,"tag":"DEMO","ev":"exit","code":0,"uptimeMs":11656}
+{"case":"I2_files","fullSave":77}
+{"case":"I3_full_then_demo_cancel","t":1794251393022}
+{"t":1794251393791,"pid":8032,"mode":"hold","demo":false,"tag":"FULL","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData"}
+{"t":1794251393921,"pid":8032,"mode":"hold","demo":false,"tag":"FULL","ev":"window","lowGpuSwitch":true}
+{"t":1794251397423,"pid":8032,"mode":"hold","demo":false,"tag":"FULL","ev":"ready","knight":143,"visible":true,"liveFloor":77}
+{"t":1794251402834,"pid":29612,"mode":"hold","demo":true,"tag":"DEMO","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData-demo"}
+{"t":1794251402864,"pid":29612,"mode":"hold","demo":true,"tag":"DEMO","ev":"dialog","message":"Keystroke Keep is already running (demo or full game).","detail":"Only one strip can run at a time. The other one saves before it closes.","buttons":["Close the other one and start the demo","Cancel"],"picked":1}
+{"t":1794251402864,"pid":29612,"mode":"hold","demo":true,"tag":"DEMO","ev":"will-quit"}
+{"t":1794251402865,"pid":29612,"mode":"hold","demo":true,"tag":"DEMO","ev":"exit","code":0,"uptimeMs":55}
+{"t":1794251417424,"pid":8032,"mode":"hold","demo":false,"tag":"FULL","ev":"hold-expired","visible":true}
+{"t":1794251417427,"pid":8032,"mode":"hold","demo":false,"tag":"FULL","ev":"exit","code":0,"uptimeMs":23662}
+{"case":"I4_slow_owner_quit","t":1794251419520}
+{"t":1794251420322,"pid":19856,"mode":"hold","demo":false,"tag":"FULLSLOW","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData"}
+{"t":1794251420451,"pid":19856,"mode":"hold","demo":false,"tag":"FULLSLOW","ev":"window","lowGpuSwitch":true}
+{"t":1794251423954,"pid":19856,"mode":"hold","demo":false,"tag":"FULLSLOW","ev":"ready","knight":143,"visible":true,"liveFloor":77}
+{"t":1794251429347,"pid":23276,"mode":"hold","demo":true,"tag":"DEMO","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData-demo"}
+{"t":1794251429376,"pid":23276,"mode":"hold","demo":true,"tag":"DEMO","ev":"dialog","message":"Keystroke Keep is already running (demo or full game).","detail":"Only one strip can run at a time. The other one saves before it closes.","buttons":["Close the other one and start the demo","Cancel"],"picked":0}
+{"t":1794251429379,"pid":19856,"mode":"hold","demo":false,"tag":"FULLSLOW","ev":"slow-quit-begin"}
+{"t":1794251430954,"pid":23276,"mode":"hold","demo":true,"tag":"DEMO","ev":"will-quit"}
+{"t":1794251430954,"pid":23276,"mode":"hold","demo":true,"tag":"DEMO","ev":"exit","code":0,"uptimeMs":1632}
+{"t":1794251431038,"pid":24932,"mode":"hold","demo":true,"tag":"DEMO","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData-demo"}
+{"t":1794251431066,"pid":24932,"mode":"hold","demo":true,"tag":"DEMO","ev":"dialog","message":"Keystroke Keep is already running (demo or full game).","detail":"Only one strip can run at a time. The other one saves before it closes.","buttons":["Close the other one and start the demo","Cancel"],"picked":0}
+{"t":1794251432394,"pid":19856,"mode":"hold","demo":false,"tag":"FULLSLOW","ev":"will-quit"}
+{"t":1794251432395,"pid":19856,"mode":"hold","demo":false,"tag":"FULLSLOW","ev":"exit","code":0,"uptimeMs":12099}
+{"t":1794251433922,"pid":24932,"mode":"hold","demo":true,"tag":"DEMO","ev":"will-quit"}
+{"t":1794251433922,"pid":24932,"mode":"hold","demo":true,"tag":"DEMO","ev":"exit","code":0,"uptimeMs":2908}
+{"t":1794251434006,"pid":26520,"mode":"hold","demo":true,"tag":"DEMO","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\userData-demo"}
+{"t":1794251434136,"pid":26520,"mode":"hold","demo":true,"tag":"DEMO","ev":"window","lowGpuSwitch":true}
+{"t":1794251437638,"pid":26520,"mode":"hold","demo":true,"tag":"DEMO","ev":"ready","knight":143,"visible":true,"liveFloor":33}
+{"t":1794251445639,"pid":26520,"mode":"hold","demo":true,"tag":"DEMO","ev":"hold-expired","visible":true}
+{"t":1794251445644,"pid":26520,"mode":"hold","demo":true,"tag":"DEMO","ev":"exit","code":0,"uptimeMs":11662}
+{"case":"end","t":1794251452496}

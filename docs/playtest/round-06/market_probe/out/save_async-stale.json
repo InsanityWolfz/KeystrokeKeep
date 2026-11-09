@@ -1,0 +1,51 @@
+{
+  "mode": "save:async-stale",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": true,
+  "cores": 32,
+  "switches": "",
+  "hasBattery": false,
+  "before": {
+    "full": {
+      "keystroke-keep.json": 60
+    },
+    "demo": "no dir"
+  },
+  "gpuInfoUpdates": 3,
+  "setup": "ok",
+  "knightAlphaAtBoot": 143,
+  "saveInfo": "main",
+  "toasts": [],
+  "loaded": {
+    "floor": 59,
+    "demoCap": 0,
+    "ls": null
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r6\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "demo-imported.flag": "corrupt(22B)",
+      "keystroke-keep.bak1.json": 60,
+      "keystroke-keep.json": 59
+    },
+    "demo": "no dir"
+  },
+  "syncOk": true,
+  "afterSync": 302,
+  "afterRetries": 301,
+  "verdict": "STALE retry overwrote the newer save (301)",
+  "lowGpu": {
+    "switch": true,
+    "gpu": "disabled_software"
+  },
+  "files": {
+    "full": {
+      "demo-imported.flag": "corrupt(22B)",
+      "keystroke-keep.bak1.json": 60,
+      "keystroke-keep.json": 301
+    },
+    "demo": "no dir"
+  },
+  "mainBytes": 44
+}
