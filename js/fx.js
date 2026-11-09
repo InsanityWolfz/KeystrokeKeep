@@ -102,7 +102,7 @@
     e.alerted = e.alerted || {};
     const now = performance.now();
     FX.moveSeen = FX.moveSeen || {};
-    if (e.alerted[type] && now - (FX.moveSeen[type] || -1e9) < 600000) return;
+    if (e.alerted[type] || now - (FX.moveSeen[type] || -1e9) < 600000) return;
     e.alerted[type] = true; FX.moveSeen[type] = now;
     FX.alert(str, col, life);
   };
@@ -120,6 +120,10 @@
   FX.busy = () => FX.banners.length > 0 || FX.coins.length > 0 || FX.parts.length > 30 || FX.flashA > 0.02 || FX.shakeT > 0;
   FX.banner = (text, sub, col = '#fff', life = 2.2, o = {}) => {
     if (FX.banners.some((b) => b.text === text)) return;
+    FX.bannerSeen = FX.bannerSeen || {};
+    const now = performance.now();
+    if (o.big !== false && !o.always && now - (FX.bannerSeen[text] || -1e9) < 1200000) { o = Object.assign({}, o, { big: false }); life = Math.min(life, 1.4); }
+    FX.bannerSeen[text] = now;
     // minor banners (plain floor numbers) are skipped when something else is showing
     if (o.big === false && FX.banners.length) return;
     FX.banners.push({ text, sub, col, life, t: 0, subCol: o.subCol || '#c9b8ea', big: o.big !== false, prio: o.prio || 0 });
@@ -177,7 +181,9 @@
       FX.ring(e.x, e.y - e.def.h / 2, 2, 70, '#ffffff', 0.5, 1);
       FX.light(e.x, e.y - 10, 160, 1.4, '#ffd76a');
       FX.burst(e.x, e.y - e.def.h / 2, 60, ['#ffd76a', '#fff', '#ff9a3a'], { spd: 200, grav: 160, life: 1.4, floor: true });
-      FX.banner('VICTORY!', e.def.name + ' falls', '#ffd76a', 2.6, { subCol: '#fff' });
+      const first = !((KK.S.bossFirsts || (KK.S.bossFirsts = {}))[e.def.name]);
+      KK.S.bossFirsts[e.def.name] = 1;
+      FX.banner('VICTORY!', e.def.name + ' falls', '#ffd76a', first ? 2.6 : 1.2, { subCol: '#fff', big: first, always: first });
     } else {
       FX.burst(e.x, e.y - e.def.h / 2, 5, ['#ffffff', '#ffe9b0'], { spd: 70, life: 0.4 });
     }
@@ -246,11 +252,11 @@
   KK.on('floor', ({ floor, biomeChange, boss }) => {
     const b = KK.F.biomeOf(floor);
     if (biomeChange) FX.banner(b.name.toUpperCase(), 'FLOOR ' + floor, '#ffffff', 3, { subCol: b.pal.accent });
-    else if (boss) FX.banner('FLOOR ' + floor, 'A POWERFUL FOE AWAITS...', '#ff8a8a', 2.2, { subCol: '#ffb4a0' });
+    else if (boss) { /* the boss's own banner names the floor */ }
     else FX.banner('FLOOR ' + floor, null, '#ffffff', 1.4, { big: false });
   });
   KK.on('bossSpawn', ({ boss }) => {
-    FX.banner(boss.def.name.toUpperCase(), 'BOSS', '#ff6b6b', 1.8, { subCol: '#ffd76a' });
+    FX.banner(boss.def.name.toUpperCase(), 'FLOOR ' + KK.S.floor + ' BOSS', '#ff6b6b', 1.8, { subCol: '#ffd76a' });
     FX.shake(2, 1.6);
     FX.flash('#300010', 0.5);
   });
@@ -348,7 +354,7 @@
   });
   KK.on('reassemble', ({ e }) => {
     FX.burst(e.x, e.y - e.def.h / 2, 30, ['#e8e2d0', '#b8b098', '#ffffff'], { spd: 90, up: -40, life: 0.9, floor: true });
-    FX.alert(e.def.name.toUpperCase() + ' REASSEMBLES!', '#e8e2d0', 1.6);
+    FX.moveAlert('reassemble', e, e.def.name.toUpperCase() + ' REASSEMBLES!', '#e8e2d0', 1.6);
   });
   KK.on('voidWarn', ({ e }) => {
     FX.moveAlert('void', e, 'VOID SLAM INCOMING', '#e0b0ff', 1.1); e.windup = 1.0;

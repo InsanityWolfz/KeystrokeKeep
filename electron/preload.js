@@ -9,6 +9,7 @@ contextBridge.exposeInMainWorld('kkNative', {
   capture,
   onCapture: (cb) => ipcRenderer.on('kk:capture', (_e, d) => cb(+d)),
   mark: (v) => ipcRenderer.send('kk:mark', String(v)),
+  captureJs: (code) => ipcRenderer.send('kk:captureJs', String(code)),
   demo: process.argv.includes('--kk-demo'),
   onActivity: (cb) => ipcRenderer.on('kk:activity', (_e, kind) => cb(kind === 'click' ? 'click' : 'key')),
   onSetting: (cb) => ipcRenderer.on('kk:setting', (_e, s) => cb(s && typeof s.k === 'string' ? { k: s.k, v: s.v } : null)),

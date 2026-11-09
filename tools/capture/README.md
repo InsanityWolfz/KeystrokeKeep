@@ -71,3 +71,25 @@ Available cues:
 | `mark` | Label; prints a timestamped `[capture] MARK` line for the editor |
 
 The shot list (S1–S8, G1–G5, trailer beats) is in `docs/playtest/round-07/market.md`.
+
+## Ready-made store shots (`tools/capture/shots/`)
+
+Staged by the market tester in round 8. Build a shot's save, then run it:
+
+```
+node tools/capture/shots/stage.js all        # or g1, g2, s3, s4, g5
+```
+
+| Script | Shot |
+|---|---|
+| `g1_flow_meteor.json` | Typing → FLOW STATE banner → three ultimates → Meteor (fully scripted) |
+| `g2_ember_shell.json` | Ember Colossus Magma Shell cracked by an ultimate (type when the shell plate shows) |
+| `s3_relic_pick.json` | Relic offer → pick (fully scripted) |
+| `s4_omen_choice.json` | Omen picker with the Omen of the Day star (fully scripted) |
+| `g5_demo_glimpse.json` | Demo Glimpse of the Depths → DEMO COMPLETE card (run with `KK_DEMO=1`) |
+
+Each JSON's `_run` and `_cut` fields give the exact command and the cut points.
+
+**Cue timing:** `t` is seconds from the start of the script. `{ "do": "await", "v": "<event>" }` waits for a game event (for example `bossSpawn`); after an await, `t` counts from that event instead. `{ "do": "wave" }` jumps straight to the floor's boss wave.
+
+**Record on a monitor you aren't using**, and never inject keys while someone is working or playing on that PC.

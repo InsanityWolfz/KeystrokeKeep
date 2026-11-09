@@ -45,7 +45,7 @@
       floor: (v) => { S.floor = +v; S.maxFloorRun = Math.max(S.maxFloorRun, S.floor); S.maxFloorEver = Math.max(S.maxFloorEver, S.floor); W_(); },
       sparks: (v) => { S.sparks = v === 'full' ? KK.mods().sparkCap : +v; },
       autotype: (v) => KK.input.autotype(!!v),
-      flow: () => { S.fervor = 100; },
+      flow: () => { const before = KK.fervorTier(); S.fervor = 100; KK.addActivity('key'); const after = KK.fervorTier(); if (after !== before) KK.emit('fervorTier', { from: before, to: after }); },
       rat: () => W.spawnRat(),
       relicOffer: () => KK.actions.rollRelics(),
       openPanel: (v) => (v ? UI.open(v) : UI.close()),
@@ -53,10 +53,11 @@
       retire: () => { if (KK.actions.retire()) W.reset(); },
       omen: (v) => { S.omenOffer = S.omenOffer || [v]; KK.actions.pickOmen(v); },
       size: (v) => { s.size = v; KK.render.resize(); },
-      juice: (v) => { s.calm = v === 'companion'; },
+      juice: (v) => { s.calm = v === 'companion'; s.combatSfx = v !== 'companion'; },
       pause: (v) => { KK.capturePaused = v === undefined ? !KK.capturePaused : !!v; },
       toast: (v) => realToast.call(UI, String(v), 'crown', 'gold', 4),
-      js: (v) => { try { (0, eval)(String(v)); } catch (e) { console.warn('[capture] js cue failed', e); } },
+      js: (v) => (N.captureJs ? N.captureJs(String(v)) : console.warn('[capture] js cue needs the desktop shell')),
+      wave: () => { W.enemies = []; W.shots = []; W.door = null; W.boss = null; W.wave = W.waves - 1; W.spawnWave(); },
       mark: (v) => N.mark && N.mark(String(v)),
     };
     KK.captureOps = ops;
@@ -79,10 +80,21 @@
 
     // cue script: { cues: [{ t: seconds, do: op, v: value }] } on wall-clock time after boot
     let timers = [];
-    function runScript() {
-      timers.forEach(clearTimeout); timers = [];
+    // cues run in order; "t" is seconds after the previous cue (or after an {"do":"await","v":"<event>"} fires)
+    let runId = 0;
+    async function runScript() {
+      const id = ++runId;
       const cues = (C.script && C.script.cues) || [];
-      for (const c of cues) timers.push(setTimeout(() => { const f = ops[c.do]; if (f) f(c.v); else console.warn('[capture] unknown cue', c.do); }, (c.t || 0) * 1000));
+      let last = 0;
+      for (const c of cues) {
+        const wait = Math.max(0, (c.t || 0) - (c.abs === false ? 0 : last));
+        if (wait) await new Promise((r) => setTimeout(r, wait * 1000));
+        if (id !== runId) return;
+        last = c.t || 0;
+        if (c.do === 'await') { await new Promise((r) => { const off = KK.on(c.v, () => { if (typeof off === 'function') off(); r(); }); setTimeout(r, (c.timeout || 30) * 1000); }); last = 0; continue; }
+        const f = ops[c.do];
+        if (f) f(c.v); else console.warn('[capture] unknown cue', c.do);
+      }
     }
     setTimeout(runScript, 600);
     console.log('[capture] ready', JSON.stringify({ seed: C.seed, size: s.size, juice: C.juice, cues: ((C.script && C.script.cues) || []).length }));

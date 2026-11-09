@@ -564,7 +564,13 @@
     if (!def || (KK.DEMO_CAP && !def.demo)) return;
     achBatch.push(def.name);
     clearTimeout(achTimer);
-    achTimer = setTimeout(() => { UI.toast(`🏆 Achievement${achBatch.length > 1 ? 's' : ''}: ${achBatch.join(', ')}`, 'crown', 'gold', 5); achBatch = []; }, 600);
+    achTimer = setTimeout(() => {
+      if (performance.now() - (UI.lastAchToast || -1e9) < 600000) { UI.achPending = (UI.achPending || 0) + achBatch.length; achBatch = []; return; }
+      UI.lastAchToast = performance.now();
+      const extra = UI.achPending ? ` (+${UI.achPending} more in ♛ Legacy)` : '';
+      UI.achPending = 0;
+      UI.toast(`🏆 Achievement${achBatch.length > 1 ? 's' : ''}: ${achBatch.join(', ')}${extra}`, 'crown', 'gold', 5); achBatch = [];
+    }, 600);
   });
   KK.on('trophy', ({ floor, n }) => { if (floor !== 100) UI.toast(`Depth trophy for floor ${floor}: x1.05 damage & gold forever (${n} total).`, 'crown', 'gold', 6); });
   KK.on('omenPicked', () => { UI.dirty = true; });
@@ -574,7 +580,7 @@
     show();
   });
   KK.on('codex', ({ rank }) => UI.toast(`Hollow Codex rank ${rank}/${D.CODEX_MAX}: x1.03 damage & gold forever.${rank < D.CODEX_MAX ? ` Next rank in ${D.CODEX_EVERY} Hollowed kills.` : ' The Codex is complete!'}`, 'gem', 'epic', 6));
-  KK.on('demoSealed', ({ time }) => (time <= KK.S.bestCapTime + 0.01) && UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The depths are sealed in the demo: ${KK.S.renownLifetime < KK.DEMO_RENOWN_CAP ? 're-delve in ♛ Legacy for +6 Renown' : 'Demo Renown is maxed: re-delve to beat your best time'}.`, 'crown', 'epic', 8));
+  KK.on('demoSealed', ({ time, prev }) => (time <= KK.S.bestCapTime + 0.01) && ((KK.S.demoLaps || 0) <= 2 || (prev || 1e9) - time >= 60) && UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The depths are sealed in the demo: ${KK.S.renownLifetime < KK.DEMO_RENOWN_CAP ? 're-delve in ♛ Legacy for +6 Renown' : 'Demo Renown is maxed: re-delve to beat your best time'}.`, 'crown', 'epic', 8));
   /** Steam store page (set KK.STORE_URL once the page exists). */
   UI.openStore = function () {
     const url = KK.STORE_URL;

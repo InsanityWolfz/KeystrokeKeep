@@ -76,8 +76,8 @@
     const x0 = W.partyX + SPAWN_AHEAD;
     if (S.glimpse && S.floor > KK.DEMO_CAP) {
       if (!W.sealedX) W.sealedX = W.partyX + 330;
-      W.wave = W.waves - 1; // a single wave, then the statue
-      const n = 3;
+      if (W.wave === 0) W.wave = W.waves - 2; // two short waves, then the statue
+      const n = 2;
       for (let i = 0; i < n; i++) makeEnemy(b.monsters[(W.wave + i) % b.monsters.length], x0 + i * 15, KK.DEMO_CAP - 2, { hpMult: 0.3 });
       W.wave++;
       KK.emit('wave', { wave: W.wave });
@@ -366,7 +366,7 @@
       } else {
         W.door = { x: W.partyX + 85, t: 0 };
         if (S.glimpse && W.door) {
-          W.door.x = Math.max(W.door.x, (W.sealedX || W.door.x + 60) - 60);
+          W.sealedX = Math.max(W.sealedX || 0, W.door.x + 44);
           if (!S.demoDone) { S.demoDone = true; KK.emit('glimpseDoor'); KK.emit('demoComplete', { atStatue: true }); }
         }
         KK.emit('floorClear', { floor: S.floor });
@@ -707,9 +707,10 @@
       if (!S.runCapCleared) {
         S.runCapCleared = true;
         const tm = S.runTime || 0;
+        const prevBest = S.bestCapTime || 0;
         if (tm > 0 && (!S.bestCapTime || tm < S.bestCapTime)) S.bestCapTime = tm;
         S.demoLaps = (S.demoLaps || 0) + 1;
-        if (!S.demoDone) { S.demoDone = true; KK.emit('demoComplete'); } else KK.emit('demoSealed', { time: tm });
+        if (!S.demoDone) { S.demoDone = true; KK.emit('demoComplete'); } else KK.emit('demoSealed', { time: tm, prev: prevBest });
       }
       S.floor = KK.DEMO_CAP - 4;
     } else if (KK.DEMO_CAP && S.runCapCleared && S.floor >= KK.DEMO_CAP - 1) S.floor = KK.DEMO_CAP - 4;

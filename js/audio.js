@@ -124,11 +124,12 @@
   // A desktop companion must not be a constant soundtrack: the busy combat layer is optional,
   // and loud sounds (booms, thumps) are rationed to one every 20 s, each kind at most every 30 s.
   const COMBAT = new Set(['hit', 'crit', 'shoot', 'cast', 'explode', 'coin', 'die', 'hurt', 'heal', 'levelup', 'ultArcher', 'ultMage', 'ultCleric', 'door']);
-  const LOUD = { ultKnight: 30000, meteor: 30000, slam: 8000, bossKill: 0, bossIntro: 0 };
+  const LOUD = { ultKnight: 30000, meteor: 30000, slam: 8000, bossKill: 180000, bossIntro: 180000 };
   let lastLoud = -1e9;
   A.play = (name) => {
     if (!A.ready || A.ctx.state !== 'running' || !SFX[name]) return;
     if (COMBAT.has(name) && KK.S.settings.combatSfx === false) return;
+    if (KK.S.settings.combatSfx === false && (name === 'ultKnight' || name === 'meteor')) { if (!limited('softBoom', 4000)) noise(0.25, { freq: 900, sweep: 200, vol: 0.05 }); return; } // quiet variant, no sub-bass
     if (name in LOUD) {
       const now = performance.now();
       if (LOUD[name] && limited('loud_' + name, LOUD[name])) return;
@@ -195,7 +196,7 @@
   KK.on('kill', ({ e }) => { if (e.boss) { p('bossKill'); A.duck(2.5); } else p('die'); });
   KK.on('heroHit', () => p('hurt'));
   KK.on('heal', () => p('heal'));
-  KK.on('levelUp', ({ from, to }) => { const st = to >= 100 ? 50 : 10; p(Math.floor(to / st) > Math.floor(from / st) ? 'milestone' : 'levelup'); });
+  KK.on('levelUp', ({ from, to }) => { const st = to >= 100 ? 50 : 10; const ms = Math.floor(to / st) > Math.floor(from / st); if (ms && limited('milestoneArp', 180000)) return; p(ms ? 'milestone' : 'levelup'); });
   KK.on('voidWarn', ({ e }) => { if ((e.slams || 0) < 3) p('zone'); });
   KK.on('chargeWarn', () => p('deny'));
   KK.on('shellCrack', () => p('crit'));
@@ -215,7 +216,7 @@
     A.intensity = to;
     if (to <= from) return;
     if (to === 3 && performance.now() - lastFlowSfx > 600000) { lastFlowSfx = performance.now(); p('flow'); }
-    else if (to >= 2) p('zone');
+    else if (to >= 2 && !limited('zoneChime', 300000)) p('zone');
   });
   if (typeof document !== 'undefined') document.addEventListener('visibilitychange', () => A.applySettings());
   KK.on('power', () => A.applySettings());

@@ -475,6 +475,8 @@ else {
     if (CAPTURE) {
       for (let d = 0; d <= 9; d++) { try { globalShortcut.register('Control+Shift+Alt+' + d, () => send('kk:capture', d)); } catch (e) { /* taken */ } }
       ipcMain.on('kk:mark', (_e, v) => console.log(`[capture] MARK ${new Date().toISOString()} ${String(v)}`));
+      // capture-only escape hatch: the page's CSP forbids eval, so cue JS runs through the shell
+      ipcMain.on('kk:captureJs', (_e, code) => { win.webContents.executeJavaScript(String(code)).catch((err) => console.log('[capture] js cue failed', err.message)); });
       win.webContents.on('console-message', (e, _l, msg) => { const m = e && e.message !== undefined ? e.message : msg; if (String(m).startsWith('[capture]')) console.log(m); });
     }
     if (!hotkeyOk) console.warn('[KK] hide hotkey unavailable (taken by another app)');

@@ -44,7 +44,9 @@ Each round lives in `docs/playtest/round-NN/` (one report per tester + `SUMMARY.
 ## Ideas (optional, max 3: things that would make it more fun, not just less broken)
 ```
 
-Testers do **not** edit game files. They only write their report (and scratch scripts in their round folder).
+Testers do **not** edit game files.
+
+**Desktop safety (the user may be working or gaming on this PC):** never show a test window on the primary display, never inject keystrokes or mouse input into the real desktop, and never touch the real `%APPDATA%\Keystroke Keep*` save folders (use the probe, `-selftest` or `-capture` profiles). If a test truly needs any of these, write it down as "needs the user" instead of doing it. They only write their report (and scratch scripts in their round folder).
 
 ## Tester briefs
 
@@ -112,6 +114,9 @@ Format: `- [round found] [severity] item: status/reason`
 ### Fixed in R7
 - Strip noise (sound/visual/toast caps, calm default), idle first-hour gate (caution rule, Quartermaster v2), Dynamo cap, boss re-kill farm, re-delve softlock, web/shell typing callouts, moves under banners, week-2 layer, Codex box, capture mode.
 
+### Fixed in R8
+- Glimpse of the Depths (demo) incl. retire-softlock fix and statue/card staging, keys-only caution rule, Quartermaster value, Seal of the Day as a real goal (no clock farming), Lantern pricing, Fervor tier edge, banner/sound/toast caps, move-alert gate, capture cues (await, wave, js via shell, flow emits), ready store-shot scripts in tools/capture/shots.
+
 ### Open (ranked)
 - [R4] [check] Measure GPU/CPU with low-GPU mode on (default) incl. an iGPU laptop if possible; fullscreen filter vs real overlays; save edge cases on the packaged build (market probe in docs/playtest/round-04/market_probe).
 - [R3] [blocker, owner: user] Steamworks onboarding (fee/tax/bank), app id, Coming Soon page (~Nov 23), trailer (Jan 8), demo + page review submission (~Jan 12, deadline Jan 18). Set `KK.STORE_URL`.
@@ -119,8 +124,8 @@ Format: `- [round found] [severity] item: status/reason`
 - [R3] [blocker, owner: user] Code-signing certificate (Azure Artifact Signing or OV); then `win.azureSignOptions`/certificate config; VirusTotal + Microsoft submissions.
 - [R5] [check] R5 market report arrived after the write-up: fold its findings in (power low-GPU on/off, fullscreen filters, save hardening, packaged build, store checklist + trailer shot list in round-05/market.md).
 - [R6] [blocker, owner: user] Steamworks onboarding NOW (tax up to 30 days); app id + Desktop Companion tag by ~Dec 1 for Desktop Companion Fest (Jan 14-18, opt-in ~Dec 3); Coming Soon page submit Dec 7; demo build review Dec 18; dated plan in round-06/market.md.
-- [R7] [major] Demo: "Glimpse of the Depths" (first f40 clear or 40 min: one sealed Magma floor ending at a shelled Ember Colossus, then the wishlist card) - spec in round-07/auditor.md F2. Also make the DEMO pill clickable (store link).
-- [R7] [major, owner: user] Record store screenshots/GIFs with capture mode (tools/capture/README.md; shot list in round-07/market.md) once the Steam page exists; store copy v2 is in round-07/market.md.
+- [R7] [major, owner: user] Record store screenshots/GIFs with capture mode (tools/capture/README.md + tools/capture/shots/, on a monitor not in use) once the Steam page exists; store copy v2 is in round-07/market.md.
+- [R8] [minor] Achievement progress counters: implement-ready spec in round-08/auditor.md F5.
 - [R6] [minor] Alert priority (only the newest alert draws); achievement progress counters (goal/cur, spec in round-07/auditor.md F7).
 - [R5] [minor] Demo card: hold floor 40 in a victory pose until dismissed; sprite teasers; move the DEMO pill to .hud-right.
 - [R5] [minor] Progress display for counter achievements; chests/wipes in the stat box.
@@ -141,4 +146,5 @@ Format: `- [round found] [severity] item: status/reason`
 | R4 | 2026-11-09 | Packaging + fuses, achievements, depth trophies, demo Renown cap, omen rebalance + modal, Vigil + void slam, low-GPU mode, save hardening | 40214c3, d42bbc9 |
 | R5 | 2026-11-09 | Heal cap, Dynamo, Hollow Codex, War Charge + Reassemble, alert channel, Heart of the Keep, achievement fixes, demo cap 120, cross-build instance lock | 44379dd, 89f4651 |
 | R6 | 2026-11-09 | Enrage keeps wounds + regroup, all six boss signature moves, Codex per 8 kills, Dynamo 10%, digit font, achievements open state, quiet first-hour retreats, handoff/save hardening | ce6b6d1, 3adcda5, 4eb20cb |
-| R7 | 2026-11-09 | Calm strip (combat sfx off, rationed booms/alerts/toasts), caution rule (idle hour 1: 7.9 -> 1.8 retreats), week-2 layer (Omen of the Day, Seals, Void Lantern, trophies to 200), capture mode, re-delve softlock fix | 056ad04 + (this round) |
+| R7 | 2026-11-09 | Calm strip (combat sfx off, rationed booms/alerts/toasts), caution rule (idle hour 1: 7.9 -> 1.8 retreats), week-2 layer (Omen of the Day, Seals, Void Lantern, trophies to 200), capture mode, re-delve softlock fix | 056ad04, 51f84d5 |
+| R8 | 2026-11-09 | Glimpse of the Depths (+ fixes), keys-only caution, Quartermaster/Seal/Lantern/Fervor economy, banner + loud-sound + toast rationing, capture await/wave/js cues + 5 store shot scripts | 592ac10, 1d627b7, fb104c5 + (this round) |

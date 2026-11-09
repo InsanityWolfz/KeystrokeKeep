@@ -164,11 +164,14 @@
     if (KK.S.glimpse && W.sealedX) {
       const spr = KK.SPR.frame('embergolem', 0);
       if (spr) {
-        const gx = Math.round(sxw(W.sealedX) - spr.w / 2), gy = W.GROUND - spr.h + sy;
-        b.drawImage(stoneTint(spr.c), gx, gy);
-        b.globalCompositeOperation = 'lighter'; glow(gx + spr.w / 2, gy + spr.h / 2, 26 + Math.sin(t * 2) * 3, '#ff7a2e', 0.25); b.globalCompositeOperation = 'source-over';
-        KK.font.draw(b, 'EMBER COLOSSUS - SEALED', gx + spr.w / 2, gy - 6, '#ffb070');
-        if (Math.floor(t * 2) % 2) { b.fillStyle = '#ffb347'; b.fillRect(gx + Math.round(spr.w * 0.38), gy + Math.round(spr.h * 0.28), 1, 1); b.fillRect(gx + Math.round(spr.w * 0.6), gy + Math.round(spr.h * 0.28), 1, 1); }
+        const sw = Math.round(spr.w * 1.5), sh = Math.round(spr.h * 1.5);
+        const gx = Math.round(sxw(W.sealedX) - sw / 2), gy = W.GROUND - sh + sy;
+        for (const [ox, oy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) b.drawImage(spr.dark || spr.c, gx + ox, gy + oy, sw, sh);
+        b.drawImage(stoneTint(spr.c), gx, gy, sw, sh);
+        const spr2 = { w: sw, h: sh };
+        b.globalCompositeOperation = 'lighter'; glow(gx + spr2.w / 2, gy + spr2.h / 2, 30 + Math.sin(t * 2) * 3, '#ff7a2e', 0.25); b.globalCompositeOperation = 'source-over';
+        KK.font.draw(b, 'EMBER COLOSSUS - SEALED', gx + spr2.w / 2, gy - 6, '#ffb070');
+        if (Math.floor(t * 2) % 2) { b.fillStyle = '#ffb347'; b.fillRect(gx + Math.round(spr2.w * 0.38), gy + Math.round(spr2.h * 0.28), 2, 2); b.fillRect(gx + Math.round(spr2.w * 0.6), gy + Math.round(spr2.h * 0.28), 2, 2); }
       }
     }
     for (const p of W.props) {
@@ -321,7 +324,7 @@
 
     // ---- Flow vignette
     if (tier >= 2) {
-      const a = tier === 3 ? 0.22 + Math.sin(t * 5) * 0.08 : 0.08;
+      const a = tier === 3 ? (KK.S.settings.calm ? 0.15 : 0.22 + Math.sin(t * 5) * 0.08) : 0.08; // calm: a steady glow
       const col = tier === 3 ? '255,215,106' : '255,138,58';
       b.globalCompositeOperation = 'lighter';
       let g = b.createLinearGradient(0, 0, 0, H);
@@ -342,7 +345,7 @@
       const w = a.str.length * 4 + 8;
       b.globalAlpha = Math.min(1, (a.life - a.t) / 0.2);
       b.fillStyle = '#000000cc'; b.fillRect(ax - w / 2, ay - 4, w, 11);
-      KK.font.draw(b, a.str, ax, ay, Math.floor(a.t * 8) % 2 ? '#ffffff' : a.col);
+      KK.font.draw(b, a.str, ax, ay, Math.floor(a.t * 4) % 2 ? '#ffffff' : a.col);
       b.globalAlpha = 1;
     }
 
