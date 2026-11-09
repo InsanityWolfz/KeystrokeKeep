@@ -3,7 +3,7 @@ const fs = require('fs'), path = require('path');
 const D = path.join(__dirname, 'out', 'shots');
 const KEY = /^(BANNER|ALERT|MODAL|bossSpawn|magmaShell|shellCrack|kill BOSS|meteorLand|fervorTier|relicOffer|relicPicked|glimpse|glimpseDoor|demoComplete|floor|ult|TOAST)/;
 const rows = [];
-for (const shot of ['g1', 's3', 's4', 'g2', 'g5']) for (const mode of ['r10_']) {
+for (const shot of ['g1', 's3', 's4', 'g2', 'g5']) for (const mode of ['r10_', 'aoff_']) {
   const takes = [1, 2, 3].map((i) => { try { return JSON.parse(fs.readFileSync(path.join(D, `${shot}_${mode}${i}.json`), 'utf8')); } catch (e) { return null; } }).filter(Boolean);
   if (!takes.length) continue;
   const pages = takes.map((t) => t.page || { ev: [], dig: [], hashes: [] });

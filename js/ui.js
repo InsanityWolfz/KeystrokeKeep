@@ -322,11 +322,11 @@
     const S = KK.S, m = KK.mods();
     const kills = S.codexKills || 0, rank = m.codexRanks || 0;
     let body;
-    if (KK.DEMO_CAP) body = '<span class="muted">Full game: every 8 Hollowed boss kills below floor 70 adds a permanent x1.03 rank (28 ranks).</span>';
+    if (KK.DEMO_CAP) body = '<span class="muted">Full game: every 8 Hollowed boss kills from floor 70 adds a permanent x1.03 rank (40 ranks; the Heartroot bosses count too).</span>';
     else if (S.maxFloorEver < 70) body = '<span class="muted">Locked: reach floor 70 to start the Hollow Codex.</span>';
     else {
       const pips = Array.from({ length: D.CODEX_MAX }, (_, i) => `<i class="${i < rank ? 'on' : ''}"></i>`).join('');
-      const next = rank >= D.CODEX_MAX ? 'Complete!' : `next rank in ${D.CODEX_EVERY - (kills % D.CODEX_EVERY)} Hollowed kills`;
+      const next = rank >= D.CODEX_MAX ? 'Complete!' : `next rank in ${(rank < 28 ? (rank + 1) * D.CODEX_EVERY : 28 * D.CODEX_EVERY + (rank - 27) * 16) - kills} Codex kills`;
       body = `<b>Rank ${rank}/${D.CODEX_MAX}</b> · x${Math.pow(1.03, rank).toFixed(2)} damage &amp; gold · ${next}<div class="pips">${pips}</div>`;
     }
     return `<div class="codexbox"><h4>HOLLOW CODEX</h4>${body}</div>`;
@@ -562,7 +562,7 @@
       ${peek ? '' : `<div class="demo-stats">${stat('keystrokes', fmt(st.keys))}${stat('ultimates', fmt(st.ults))}${stat('bosses', fmt(st.bossKills))}${stat('in FLOW', U.fmtTime(st.flowTime))}</div>`}
       ${(() => { const n = KK.ach ? KK.ach.LIST.filter((a) => !a.demo && (S.ach || {})[a.id]).length : 0; return n ? `<p>You've already earned <b>${n} full-game achievement${n > 1 ? 's' : ''}</b>; they unlock when you buy.</p>` : ''; })()}
       ${ev && ev.atStatue ? '<p>The sealed <b style="color:#ff7a2e">Ember Colossus</b> you just saw waits on floor 50, with its Magma Shell.</p>' : ''}
-      <p><b style="color:#ff7a2e">The Magma Depths</b> and <b style="color:#c472ff">The Hollow Void</b>, 3 new bosses, 6 Hollowed returns, the Heart of the Keep, 60+ more floors, Delve Omens, the Hollow Codex and ${KK.ach ? KK.ach.LIST.length : 39} achievements wait in the full game. Your save carries over.</p>
+      <p><b style="color:#ff7a2e">The Magma Depths</b> and <b style="color:#c472ff">The Hollow Void</b>, the Heartroot and the Echoed Depths, 5 new bosses, 6 Hollowed returns, the Heart of the Keep, 250+ more floors, Delve Omens, the Hollow Codex and ${KK.ach ? KK.ach.LIST.length : 39} achievements wait in the full game. Your save carries over.</p>
       <p style="font-size:12px;color:var(--muted)">${peek ? 'Reach floor 40 to glimpse the Magma Depths. Your party gets there on its own; typing gets you there faster.' : 'Keep the strip running: every re-delve rerolls your relics, a fresh clear of floor 40 pays +6 Renown, and your best time is your score.'}</p>
       <div class="row"><button class="buy big" data-x="wish">♥ WISHLIST</button><button class="buy" data-x="ok" style="background:#3a2f4f;color:#fff;box-shadow:none">KEEP DELVING</button></div>`,
     (m, close) => {
@@ -594,7 +594,7 @@
     const show = () => { if (W.boss || KK.fx.banners.length) return setTimeout(show, 1500); KK.fx.banner('★ SEAL OF THE DAY', '+' + (v || 10) + ' RENOWN', '#ffd76a', 2.6, { subCol: '#fff' }); UI.toast(`★ Seal of the Day #${n}: +${v || 10} Renown. A new Omen of the Day tomorrow.`, 'crown', 'epic', 6); };
     show();
   });
-  KK.on('codex', ({ rank }) => UI.toast(`Hollow Codex rank ${rank}/${D.CODEX_MAX}: x1.03 damage & gold forever.${rank < D.CODEX_MAX ? ` Next rank in ${D.CODEX_EVERY} Hollowed kills.` : ' The Codex is complete!'}`, 'gem', 'epic', 6));
+  KK.on('codex', ({ rank }) => UI.toast(`Hollow Codex rank ${rank}/${D.CODEX_MAX}: x1.03 damage & gold forever.${rank < D.CODEX_MAX ? ` Next rank in ${rank < 28 ? D.CODEX_EVERY : 16} Codex kills.` : ' The Codex is complete!'}`, 'gem', 'epic', 6));
   KK.on('demoSealed', ({ time, prev }) => (time <= KK.S.bestCapTime + 0.01) && ((KK.S.demoLaps || 0) <= 2 || (prev || 1e9) - time >= 60) && UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The depths are sealed in the demo: ${KK.S.renownLifetime < KK.DEMO_RENOWN_CAP ? 're-delve in ♛ Legacy for +6 Renown' : 'Demo Renown is maxed: re-delve to beat your best time'}.`, 'crown', 'epic', 8));
   /** Steam store page (set KK.STORE_URL once the page exists). */
   UI.openStore = function () {

@@ -344,11 +344,11 @@
   });
   KK.on('royalSummons', ({ e }) => FX.moveAlert('summon', e, 'SQUEAK! THE RAT KING SUMMONS', '#ffd76a', 1.2));
   KK.on('webShot', ({ e }) => FX.moveAlert('web', e, 'WEB SHOT! TYPE TO TEAR IT', '#f2f2f2', 1.2));
-  KK.on('webbed', ({ h }) => FX.text(h.x, h.y - 22, 'WEBBED', '#f2f2f2', 1, { life: 1.2, vy: -8 }));
-  KK.on('webTorn', ({ h }) => { FX.text(h.x, h.y - 22, 'WEB TORN!', '#7ee8f6', 1, { life: 1.0, vy: -12 }); FX.burst(h.x, h.y - 8, 10, ['#f2f2f2', '#7ee8f6'], { spd: 60, life: 0.4 }); });
+  KK.on('webbed', ({ h, root }) => FX.text(h.x, h.y - 22, root ? 'ROOTED: TYPE!' : 'WEBBED', root ? '#9cff8a' : '#f2f2f2', 1, { life: 1.2, vy: -8 }));
+  KK.on('webTorn', ({ h }) => { FX.text(h.x, h.y - 22, h.webKind === 'root' ? 'ROOTS TORN!' : 'WEB TORN!', '#7ee8f6', 1, { life: 1.0, vy: -12 }); FX.burst(h.x, h.y - 8, 10, ['#f2f2f2', '#7ee8f6'], { spd: 60, life: 0.4 }); });
   KK.on('overgrowth', ({ e }) => FX.moveAlert('overgrowth', e, 'OVERGROWTH! TYPE TO TEAR THE ROOTS', '#9cff8a', 1.4));
   KK.on('lockdown', ({ e, h }) => { FX.moveAlert('lockdown', e, 'LOCKDOWN! TYPE TO BREAK THE SEAL', '#ffe08a', 1.2); FX.text(h.x, h.y - 26, 'SEALED', '#ffe08a', 1, { life: 1.2 }); });
-  KK.on('guardBreak', ({ e, worn }) => { if (!worn) FX.text(e.x, e.y - e.def.h - 4, 'GUARD BROKEN', '#7ee8f6', 1, { life: 0.9 }); FX.burst(e.x, e.y - e.def.h / 2, 12, ['#7a4a24', '#5e3a24', '#6cd05a'], { spd: 70, life: 0.5, floor: true }); });
+  KK.on('guardBreak', ({ e, worn }) => { FX.text(e.x, e.y - e.def.h - 4, worn ? 'GUARD WORN' : 'GUARD BROKEN', worn ? '#c9b8ea' : '#7ee8f6', 1, { life: 0.9 }); FX.burst(e.x, e.y - e.def.h / 2, 12, ['#7a4a24', '#5e3a24', '#6cd05a'], { spd: 70, life: 0.5, floor: true }); });
   KK.on('bloatBurst', ({ e }) => FX.burst(e.x, e.y - e.def.h / 2, 18, ['#f27cc0', '#ffe08a', '#922a3a'], { spd: 60, grav: 40, life: 0.7 }));
   KK.on('lockBroken', ({ h }) => FX.text(h.x, h.y - 26, 'SEAL BROKEN!', '#7ee8f6', 1, { life: 1.0 }));
   KK.on('magmaShell', ({ e }) => FX.moveAlert('shell', e, 'MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT', '#ffb070', 1.4));

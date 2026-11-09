@@ -3,7 +3,7 @@
 > HEAD 51310be (Biome 5), working tree clean. All Electron runs used my safe launcher (`market_probe/safe/`, copied from R9 and hardened) on the right-hand 1080p monitor (id 2904106817). Nothing was shown on the primary display; see "Desktop safety" at the end.
 
 ## Verdict
-The capture gate passes on frame rate: **379 of 381 measured seconds fall between 59 and 61 real fps** (one 58, one 62), so part 5 fixed the R9 3.3× speed-up. **S3 and G1 are frame-identical 3/3.** G5's beats land on the same frame in all 3 takes, and 2 takes are pixel-identical end to end. **G2 still drifts.** I traced it to the sound effects drawing from the gameplay random stream: with audio off, G2 is identical in every take.
+The capture gate passes on frame rate. In the 12 gate takes, **379 of 381 measured seconds fall between 59 and 61 real fps** (one 58, one 62), and each take averages 59.0–60.8. That's 3× slower than R9's 193–207 fps, which is right: part 5 fixed the speed-up. In 6 more takes, 23 of 318 seconds were at 58 fps (a 59.0 average), which is F2. **S3 and G1 are frame-identical 3/3.** G5's beats land on the same frame in all 3 takes, and 2 takes are pixel-identical end to end. **G2 still drifts.** I traced it to the sound effects drawing from the gameplay random stream: with audio off, G2 is identical in every take.
 
 The noise caps now pass everywhere except one item carried from R9: hour-1 toasts are 13 (cap 10), or 10 if recruit hints count as tutorial. The new Heartroot alerts add 1–2 an hour.
 
@@ -22,31 +22,33 @@ I'd keep it running and wouldn't refund it. **Rating: 9/10** (R9: 8.5). It's 9.5
   | G1 FLOW → Meteor | 9 | **0 frames** (Meteor lands at frame 380 in 3/3) | **12/12** | **6/6** |
   | G5 demo glimpse | 26 | **0 frames** (glimpse 1620, door 1940, card 1994) | 59/61 (take 3 differs from frame 3600) | 17/31 (take 3 differs from frame 2100; takes 1 and 2 identical 31/31) |
   | G2 Ember shell | 13 | 10 frames (2nd shell 15.1 s vs 14.9 s) | **4/44** (first difference at frame 300) | 2/22 |
-  | **G2, audio off** | | | __G2AOFF__ | |
-  | **G5, audio off** | | | __G5AOFF__ | |
+  | **G2, audio off** (`KK_CAPTURE_AUDIO=off`) | 19 | **0 frames** | **42/42** | **21/21** |
+  | **G5, audio off** | 26 | **0 frames** | **63/63** | **32/32** |
 
+- **Audio off makes both shots frame-identical (3/3, every digest and every pixel hash)**, so the timers are fixed and the remaining source is audio.
 - In G2, boss in (frame 7), first shell (145) and the crack (224) are identical. After the crack, the ultimates drift by 0–6 frames: the mage fires at frame 330, 336 or 330. The fight then runs differently, and 8 key events (VICTORY, relic offer, floor 51) occur in only some takes.
 - Cause:
   - `A.play` returns early unless `A.ready && A.ctx.state === 'running'` (`js/audio.js:130`). Every sound that does play draws from `Math.random`: `noise()` calls `Math.random() * 0.5` for the start offset (`audio.js:84`), and `hit`, `coin` and `spark` call `U.rand`/`U.pick` (`audio.js:89–95`).
   - Whether the context is running is decided by the real audio thread, not by the frame clock. So the number of draws on the gameplay stream changes from take to take.
-  - G2 is the shot with the most combat sounds (juice full, a long boss fight), so it drifts first. G5's late drift is probably the same thing.
+  - G2 is the shot with the most combat sounds (juice full, a long boss fight), so it drifts first. G5's late drift (after the DEMO COMPLETE card, take 3 only) disappears with audio off too.
 - Why it matters:
   - The trailer and G2 GIF are recorded with sound on. A take that differs every time means the editor can't re-record a beat and cut it into an earlier take.
   - The README promises "frame for frame at any CPU load".
 - Proposed fix (15 min, no effect on gameplay):
   - Give audio its own stream: in `audio.js`, use a local seeded `arand` (mulberry32, seed 99) for `noise()`'s offset and the SFX pitch picks, and don't touch `Math.random` or `U.rand`.
   - Do the same for render-only randomness (`render.js:208, 370, 582` motes and trails, plus `fx.js` particles) with `U.vrand`. That's the R9 F2b item.
-  - Gate: G2 3/3 with audio on.
+  - Gate: G2 and G5 3/3 with audio on.
 
 ### F2 [severity: minor] Capture pacing is 59 or 61 fps per take, not exactly 60: a 30 s clip can run about 1 s long or short
 - Evidence:
-  - Each take locks to one rate for its whole length. S3 take 1 ran 59.0 every second, G5 take 1 averaged 59.0, G1 takes averaged 60.8, and audio-off G2 take 2 ran 59 every second.
+  - Each take locks to one rate for its whole length. S3 take 1 ran 59.0 every second, G5 take 1 averaged 59.0, and G1 takes averaged 60.8.
+  - The 6 audio-off takes averaged 58.98 fps: 23 of 318 seconds at 58, 283 at 59. The machine was otherwise idle.
   - G5 reaches the door (frame 1940) at 33.1 s real in take 1 and at 32.3 s in takes 2 and 3.
   - The loop schedules `1000/60 − work` after each frame (`main.js:63`). Windows timer rounding then settles at 16 or 17 ms.
 - Why it matters: OBS records real time while game audio runs on the real clock. A 59 fps take plays 1.7% slow against 60 fps footage, and audio-on takes from different runs won't line up.
 - Proposed fix (5 min):
   - In capture mode, pace on an absolute schedule: `next += 1000/fps; later(frame, Math.max(0, next - realNow()))`. Reset `next` if it falls more than 100 ms behind.
-  - Gate: mean fps of 60.0 ± 0.1 over 30 s.
+  - Gate: mean fps of 60.0 ± 0.1 over 30 s, with no second below 59.
 
 ### F3 [severity: major, positive] Biome 5 + Echoed Depths remove the "content runs out in 3 hours" risk
 - Evidence (`node tools/playtest.js --retire nudge --omen random`, 20 h):
@@ -131,8 +133,8 @@ Only the status column is re-checked. Nothing below changed in the code:
 
 | Item | R9 | R10 |
 |---|---|---|
-| Capture speed (59–61 fps) | FAIL (193–207 fps) | **PASS** (379/381 s in 59–61) |
-| Capture determinism (S3/G5 3/3) | FAIL | **S3 PASS, G1 PASS, G5 beats PASS / 2 of 3 pixel-identical, G2 FAIL with audio on** |
+| Capture speed (59–61 fps) | FAIL (193–207 fps) | **PASS** (take means 59.0–60.8; 675/699 s in 59–61, 24 s at 58; F2) |
+| Capture determinism (S3/G5 3/3) | FAIL | **S3 PASS, G1 PASS. G5 beats PASS (2 of 3 pixel-identical with audio on, 3/3 with audio off). G2 3/3 only with audio off (F1).** |
 | Packaged build is current | stale | still stale (rebuild before any packaged check or recording) |
 | All other P0/P1/P2 rows | as R9 | unchanged |
 
@@ -205,10 +207,10 @@ Final states:
   - Capture runners: `run_shot.js` (now passes `KK_CAPTURE_DISPLAY=<id>` and syntax-checks `main.js` and `pre.js` before every start), `list_displays.js`, `gate.sh`, `gate2.sh`.
   - Analysis: `compare.js` (mode `r10_`), `census9.js`, `census.sh`, `table10.js`.
   - Outputs in `out/`: `shots/`, `c10_*.json`, `pt_*.txt`, `gate.log`, `gate2.log`, `displays.json`.
-- **Takes:** 1 smoke, 12 gate takes (S3, G5, G1, G2 × 3), and 6 audio-off takes (G2, G5 × 3). All with no aborts.
+- **Takes:** 1 smoke, 12 gate takes (S3, G5, G1, G2 × 3), and 6 audio-off takes (G2, G5 × 3). No aborts in any of the 19.
 - **Limits:**
   - The census uses scripted sim players, not humans.
-  - 3 takes per shot, on one PC. Census sims ran in parallel with the audio-off takes (32 cores). The gate takes ran with no other load.
+  - 3 takes per shot, on one PC. Census sims ran before the audio-off takes. Capture takes ran with no other load.
 
 ## Desktop safety (please relay)
 - Every game window was created hidden and shown (`showInactive`) only on the right-hand monitor (x 2560, id 2904106817).

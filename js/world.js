@@ -67,7 +67,7 @@
       atkT: U.rand(0.6, 1.4), atkSpd: isBoss ? 1.6 : 1.3,
       boss: isBoss, dead: false, active: false, flash: 0, kb: 0, stun: 0, anim: Math.random() * 10, spawnT: 0, lunge: 0, hits: 0,
     };
-    if (key === 'warden') { e.guard = true; e.guardT = 8; } // bark guard: an ultimate (or 8 s of fighting) breaks it
+    if (key === 'warden') { e.guard = true; e.guardT = 7; } // bark guard: an ultimate (or 8 s of fighting) breaks it
     if (F.biomeOf(floor).echo && !isBoss) e.echo = true;
     W.enemies.push(e);
     return e;
@@ -122,7 +122,7 @@
     if (e.dead || e.pile > 0) return;
     if (e.key === 'ratking' && e.boss && !(e.summonStage >= 1)) dmg = Math.min(dmg, Math.max(0, e.hp - e.maxHp * 0.55));
     if (e.guard) {
-      if (opts.ult) { e.guard = false; e.stun = Math.max(e.stun, 0.6); KK.emit('guardBreak', { e }); }
+      if (opts.ult) { e.guard = false; e.stun = Math.max(e.stun, 0.6); dmg *= 0.5; KK.emit('guardBreak', { e }); }
       else dmg *= 0.5;
     }
     if (e.shell > 0) {
@@ -151,7 +151,7 @@
     }
     e.dead = true; e.hp = 0;
     if (e.key === 'bloat') {
-      for (let i = 0; i < 2; i++) { const sp = makeEnemy('sporeling', e.x + 4 + i * 9, S.floor); sp.active = true; sp.echo = e.echo; }
+      W.spawnQ = (W.spawnQ || []).concat([0, 1].map((i) => ({ key: 'sporeling', x: e.x + 4 + i * 9, floor: S.floor, echo: e.echo })));
       KK.emit('bloatBurst', { e });
     }
     const gold = e.gold * m.gold;
@@ -308,6 +308,7 @@
   // ---------------------------------------------------------------- main update
   W.update = function (dt) {
     const S = KK.S, m = KK.mods();
+    if (W.spawnQ && W.spawnQ.length) { for (const q of W.spawnQ) if (q.floor === S.floor) { const sp = makeEnemy(q.key, q.x, q.floor); sp.active = true; sp.echo = q.echo; } W.spawnQ = []; }
     W.t += dt;
     KK.simTime = (KK.simTime || 0) + dt;
     S.stats.playTime += dt;
@@ -571,7 +572,7 @@
       if (e.windup > 0) e.windup -= dt;
       if (e.pile > 0) e.pile -= dt;
       if (e.shell > 0) e.shell -= dt;
-      if (e.guard && (e.guardT -= dt) <= 0) { e.guard = false; KK.emit('guardBreak', { e, worn: true }); }
+      if (e.guard && front && e.x - front.x <= e.def.w / 2 + e.def.range + 6 && (e.guardT -= dt) <= 0) { e.guard = false; KK.emit('guardBreak', { e, worn: true }); }
       if (e.boss && e.active && front && !frozen) sigMove(e, dt, front);
       if (e.stun > 0) { e.stun -= dt; prevX = e.x; continue; }
       if (frozen || !front) { prevX = e.x; continue; }

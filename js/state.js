@@ -81,7 +81,7 @@
       // past the Hollow, the Void throws every old boss back at you, hollowed out
       if (f === 70 || f === 100) return 'hollow';
       if (f >= 120 && f % 20 === 0) return (f / 20) % 2 === 0 ? 'rootmother' : 'keeper'; // the Heartroot's own, and their echoes
-      if (f >= 80) { const six = ['ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; const pool = six.slice(0, Math.max(2, Math.min(6, (KK.S.daysPlayed || 1) + 1))); return pool[(Math.floor((f - 80) / 10) + (KK.S.retires || 0)) % pool.length]; } // + retires (not 2x): the Heartroot bosses take the even bands from f120
+      if (f >= 80) { const six = ['ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; const pool = six.slice(0, Math.max(2, Math.min(6, (KK.S.daysPlayed || 1) + 1))); return pool[((f < 110 ? (f - 80) / 10 : 2 + Math.floor((f - 110) / 20)) + (KK.S.retires || 0)) % pool.length]; } // + retires (not 2x): the Heartroot bosses take the even bands from f120
       const b = F.biomeOf(f);
       const idx = Math.floor(((f - b.from) % 20) / 10);
       return b.bosses[Math.min(idx, b.bosses.length - 1)];
