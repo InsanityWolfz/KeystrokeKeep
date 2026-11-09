@@ -1,0 +1,24 @@
+=== R6 probe burst s1 480m: maxEver 100, retires 9, renown life 245, ach 22/36, trophies 6, codex 1/28, wipes 17, fame x22.2, unspent embers 1266
+beats per 30 min from h1: 7 5 6 2 4 3 3 4 0 2 3 1 4 1 0
+AFTER 8h: 0 beats {}; longest gap 0 min (from 8h00); empty 2h windows 1/1
+longest stretch with no new depth record (30-min snapshots): 1.0 h from 5h00
+codex: 3h45 The Hollow r1
+trophies: f75@3h07 f80@3h21 f85@4h06 f90@4h49 f95@6h14 f100@7h09
+retires (9): 1h04 f40 +30, 1h32 f54 +32, 2h06 f65 +33, 2h35 f74 +31, 3h31 f82 +32, 4h15 f89 +31, 4h57 f90 +5, 6h21 f96 +31, 7h17 f100 +20
+SIG totals: {"chargeWarn":70,"warCharge":68,"reassemble":5,"bossEnrage":3}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           2 |    1 |   1 |   0 |   22.4 |  12 | 
+  boneking          5 |    4 |   1 |   0 |   10.0 |   3 | reassemble 1 [80%] @8.4 | rise->death med 1.67s, <0.5s 0/4, <1.5s(still stunned) 2/4
+  broodmother      10 |    8 |   2 |   0 |    3.4 |   4 | 
+  warlord           9 |    9 |   0 |   0 |    3.5 |   1 | chargeWarn 1 [67%] @4.0; warCharge 0 [44%] @5.3 | died mid-charge 4/9, fights with 0 charges 5/9
+  embergolem        9 |    9 |   0 |   0 |    6.9 |   3 | 
+  magmalord         8 |    8 |   0 |   0 |   10.4 |   5 | 
+  hollow            8 |    7 |   1 |   1 |   50.2 |  36 | 
+  H-broodmother     2 |    2 |   0 |   0 |  291.8 | 180 | 
+  H-embergolem      2 |    2 |   0 |   0 |  167.5 | 101 | 
+  H-ratking         2 |    2 |   0 |   0 |  141.7 |  86 | 
+  H-boneking        2 |    1 |   1 |   1 |  103.4 | 110 | reassemble 1 [50%] @84.0 | rise->death med 19.37s, <0.5s 0/1, <1.5s(still stunned) 0/1
+  H-warlord         2 |    1 |   1 |   1 |  361.7 | 181 | chargeWarn 36 [100%] @3.6; warCharge 36 [100%] @4.8 | died mid-charge 0/1, fights with 0 charges 0/2
+  H-magmalord       1 |    1 |   0 |   0 |  127.2 |  76 | 
+  HEART             2 |    0 |   2 |   0 |    NaN |  37 | 
+ACH: first_boss 0h06 | flow NO | full_party 0h33 | retire1 1h04 | gatekeeper 1h16 | rat 0h04 | epic 1h35 | caverns 0h20 | comeback 0h06 | echo NO | ult_boss 0h44 | revive 0h33 | speed60 2h44 | blitz 4h25 | magma 1h16 | void 2h00 | hollow 2h29 | hollowed6 7h37 | f100 7h09 | codex28 NO | f125 NO | retire10 NO | omen1 1h32 | omen10 NO | deep90 5h37 | legacy_all NO | crucible10 NO | lv100 1h45 | chests100 6h22 | rats25 3h07 | idle50 NO | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO

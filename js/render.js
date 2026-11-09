@@ -287,7 +287,11 @@
       b.fillStyle = '#3a0a14'; b.fillRect(bx, by, bw, 3);
       b.fillStyle = '#e04848'; b.fillRect(bx, by, Math.ceil(bw * W.boss.hp / W.boss.maxHp), 3);
       b.fillStyle = '#ff9a9a'; b.fillRect(bx, by, Math.ceil(bw * W.boss.hp / W.boss.maxHp), 1);
-      KK.font.draw(b, W.boss.def.name.toUpperCase(), bx + bw / 2, by + 6, '#ffb4b4');
+      KK.font.draw(b, W.boss.def.name.toUpperCase() + (W.boss.wounded ? ' (WOUNDED)' : ''), bx + bw / 2, by + 6, '#ffb4b4');
+      // enrage timer: a thin bar that fills toward the 3-minute retreat
+      const ek = Math.min(1, (W.boss.fightT || 0) / 180);
+      if (ek > 0.33) { b.fillStyle = '#000'; b.fillRect(bx - 1, by + 3, bw + 2, 2); b.fillStyle = ek > 0.85 ? '#ff6b6b' : '#ffb070'; b.fillRect(bx, by + 3, Math.ceil(bw * ek), 1); }
+      if (ek >= 0.66) KK.font.draw(b, 'ENRAGE ' + Math.max(0, Math.ceil(180 - W.boss.fightT)) + 'S', bx + bw / 2, by + 12, ek > 0.9 ? '#ff6b6b' : '#ffb070');
     }
 
     // ---- floating texts
@@ -297,6 +301,7 @@
       if (tx.pop && k < 0.1) sc = tx.scale + 1;
       const col = tx.bump > 0 ? '#ffffff' : tx.col;
       if (tx.life < 0.25) b.globalAlpha = tx.life / 0.25;
+      if (FX.banners.length && FX.banners[0].big) b.globalAlpha *= 0.35; // big banners stay readable
       KK.font.draw(b, tx.str, sxw(tx.x), Math.round(tx.y + sy - (tx.bump > 0 ? 1 : 0)), col, sc);
       b.globalAlpha = 1;
     }
@@ -492,7 +497,13 @@
     shadow(x, W.GROUND + sy, Math.max(4, Math.round(spr.w / 3)));
     b.globalAlpha = k;
     const dxp = Math.round(x - spr.w / 2 + dx);
-    b.drawImage(e.hollowed ? hollowTint(spr.c) : spr.c, dxp, Math.round(y));
+    if (e.pile > 0) {
+      // the Bone King collapses into a pile, then pulls himself back up
+      const k2 = 1 - Math.min(1, e.pile / 1.5);
+      const hh = Math.max(Math.round(spr.h * 0.35), Math.round(spr.h * k2));
+      b.drawImage(e.hollowed ? hollowTint(spr.c) : spr.c, 0, spr.h - hh, spr.w, hh, dxp, Math.round(y) + spr.h - hh, spr.w, hh);
+    } else b.drawImage(e.hollowed ? hollowTint(spr.c) : spr.c, dxp, Math.round(y));
+    if ((e.windup > 0 || (e.boss && (e.fightT || 0) > 165)) && Math.floor(t * 8) % 2) { b.globalAlpha = 0.55 * k; b.drawImage(spr.white, dxp, Math.round(y)); b.globalAlpha = 1; }
     if (e.flash > 0) { b.globalAlpha = 0.9 * k; b.drawImage(spr.white, dxp, Math.round(y)); }
     b.globalAlpha = 1;
     if (e.stun > 0) {

@@ -1,0 +1,20 @@
+=== idle 8h x1 seeds, retire nudge, omen random ===
+--- base --- (2s)
+  1h00   f39.0 (39-39) R0 trophies 0.0 codex 0.0 fame x1 ach 6.0 retires 0.0 wipes 9 (hollow 0) enrages 0 Sanct 7 dyn 0.0
+  2h00   f68.0 (68-68) R62 trophies 0.0 codex 0.0 fame x4 ach 14.0 retires 2.0 wipes 9 (hollow 0) enrages 0 Sanct 13 dyn 1.0
+  4h00   f90.0 (90-90) R194 trophies 4.0 codex 1.0 fame x15 ach 20.0 retires 6.0 wipes 10 (hollow 1) enrages 1 Sanct 62 dyn 2.0
+  8h00   f108.0 (108-108) R269 trophies 7.0 codex 1.0 fame x27 ach 23.0 retires 9.0 wipes 14 (hollow 5) enrages 4 Sanct 162 dyn 4.0
+  blocked at a Hollowed boss: 39-39 min total
+  boss fights by band (all seeds):
+    f10-40    n    35  won  86%  enrage   0%  wipe  14%  win wall med 3s p90 64s max 101s  (fightT at win p90 63s)  enrage wall med NaNs
+    f41-69    n    17  won 100%  enrage   0%  wipe   0%  win wall med 4s p90 51s max 165s  (fightT at win p90 51s)  enrage wall med NaNs
+    f70-99    n    21  won  81%  enrage  10%  wipe   0%  win wall med 33s p90 133s max 161s  (fightT at win p90 133s)  enrage wall med 180s
+    f100-129  n     6  won  33%  enrage  33%  wipe  17%  win wall med 566s p90 566s max 566s  (fightT at win p90 566s)  enrage wall med 183s
+  f70+ by boss: H:hollow n14 won64% en14% | H:broodmother n2 won100% en0% | H:embergolem n2 won100% en0% | H:magmalord n3 won33% en33% | H:ratking n2 won100% en0% | H:boneking n3 won67% en33% | H:warlord n1 won100% en0%
+  f70+ enrage rate by omen: quiet 0% (n3) | march 17% (n6) | gilded 25% (n4) | muster 25% (n4) | deep 0% (n5) | embertide 20% (n5)
+  enrage streaks (consecutive enrages at one floor): n 4, len med 1 p90 1 max 1; ended {"retired":1,"won":3}; streak duration med 10 min p90 14 max 14 min
+  enrages/seed 4.0 (4-4), wipes/seed 6.0 boss + other; War Charges/seed 22, Reassembles/seed 11
+  codex: ranks reached (h): 1:3.3 4:-(0/1) 7:-(0/1) 14:-(0/1) 21:-(0/1) 28:-(0/1)
+  achievements unlocked: 23-23/36
+  rat 4m, first_boss 8m, comeback 8m, caverns 21m, full_party 35m, revive 35m, retire1 61m, gatekeeper 76m, magma 76m, idle50 88m, omen1 98m, epic 105m, lv100 109m, void 113m, speed60 133m, blitz 133m, hollow 142m, rats25 186m, ult_boss 193m, echo 199m, deep90 285m, f100 302m, hollowed6 333m, flow NEVER, codex28 NEVER, f125 NEVER, retire10 NEVER, omen10 NEVER, legacy_all NEVER, crucible10 NEVER, chests100 NEVER, keys10k NEVER, keys100k NEVER, flow1h NEVER, flow10h NEVER, ults1k NEVER
+  trophy first reached (h): f75 2.5 f80 2.9 f85 3.1 f90 3.6 f95 4.3 f100 5.0 f105 6.6

@@ -1,0 +1,14 @@
+=== R6 probe idle s1 180m DEMO: maxEver 40, retires 12, renown life 96, ach 12/36, trophies 0, codex 0/28, wipes 8, fame x5.7, unspent embers 36
+beats per 30 min from h1: 4 0 2 2 0
+longest gap after h1: 39 min (from 1h22)
+codex: none
+trophies: 
+retires (12): 1h07 f40 +30, 1h23 f40 +6, 1h35 f40 +6, 1h47 f40 +6, 1h58 f40 +6, 2h08 f40 +6, 2h17 f40 +6, 2h25 f40 +6, 2h33 f40 +6, 2h40 f40 +6, 2h48 f40 +6, 2h55 f40 +6
+SIG totals: {"chargeWarn":72,"warCharge":70,"reassemble":13,"bossEnrage":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           2 |    1 |   1 |   0 |   32.5 |  18 | 
+  boneking         14 |   13 |   1 |   0 |    5.0 |   2 | reassemble 1 [93%] @4.4 | rise->death med 0.57s, <0.5s 6/13, <1.5s(still stunned) 10/13
+  broodmother      14 |   13 |   1 |   0 |    8.7 |   7 | 
+  warlord          12 |   11 |   0 |   0 |   21.9 |  15 | chargeWarn 3 [100%] @4.1; warCharge 3 [100%] @5.3 | died mid-charge 1/11, fights with 0 charges 0/12
+DEMO: card 1h22, laps 11, re-delves 11, lifetime 96, best 5.9m
+ACH: first_boss 0h07 | flow NO | full_party 0h29 | retire1 1h07 | gatekeeper 1h22 | rat 0h04 | epic 2h01 | caverns 0h19 | comeback 0h07 | echo 2h01 | ult_boss 2h35 | revive 0h29 | speed60 NO | blitz 2h44 | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | codex28 NO | f125 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 NO | chests100 NO | rats25 NO | idle50 NO | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO

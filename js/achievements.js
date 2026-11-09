@@ -25,14 +25,14 @@
     { id: 'ult_boss', name: 'Overkill', desc: 'Finish a boss with an ultimate.', on: 'kill', test: (c) => c.ev.e.boss && c.ev.e.lastUlt },
     { id: 'revive', name: 'Not Today', desc: 'Sanctuary brings a fallen hero back.', on: 'revive', test: () => true },
     { id: 'speed60', name: 'Speedrunner', desc: 'Beat the floor-60 boss within 10 minutes of a new delve.', on: 'kill', test: (c) => c.ev.e.boss && c.S.floor === 60 && (c.S.runTime || 0) < 600 && c.S.retires >= 1 },
-    { id: 'blitz', name: 'Blitz', desc: 'Defeat 5 bosses within 10 minutes.', on: 'kill', test: (c) => { if (!c.ev.e.boss) return false; const now = c.S.stats.playTime || 0; c.P.bossTimes = (c.P.bossTimes || []).filter((x) => now - x < 600); c.P.bossTimes.push(now); return c.P.bossTimes.length >= 5; } },
+    { id: 'blitz', name: 'Blitz', desc: 'Defeat 8 bosses within 10 minutes.', on: 'kill', test: (c) => { if (!c.ev.e.boss) return false; const now = c.S.stats.playTime || 0; c.P.bossTimes = (c.P.bossTimes || []).filter((x) => now - x < 600); c.P.bossTimes.push(now); return c.P.bossTimes.length >= 8; } },
     // depth
     { id: 'magma', name: 'Fire Below', desc: 'Reach the Magma Depths.', on: 'floor', test: (c) => c.ev.floor >= 41 },
     { id: 'void', name: 'Into the Void', desc: 'Reach the Hollow Void.', on: 'floor', test: (c) => c.ev.floor >= 61 },
     { id: 'hollow', name: 'Hollow Victory', desc: 'Defeat The Hollow.', on: 'kill', test: (c) => c.ev.e.key === 'hollow' },
     { id: 'hollowed6', name: 'Echoes of the Deep', desc: 'Defeat all six Hollowed bosses.', on: 'kill', test: (c) => { if (!c.ev.e.hollowed) return false; const s = new Set(c.P.hollowed || []); s.add(c.ev.e.key); c.P.hollowed = [...s]; return s.size >= 6; } },
     { id: 'f100', name: 'Heart of the Keep', desc: 'Reach floor 100.', on: 'floor', test: (c) => c.S.maxFloorEver >= 100 },
-    { id: 'codex28', name: 'Hollow Scholar', desc: 'Complete every rank of the Hollow Codex.', on: 'codex', test: (c) => KK.mods().codexRanks >= 28 },
+    { id: 'codex28', name: 'Hollow Scholar', desc: 'Complete every rank of the Hollow Codex.', on: 'codex', test: () => KK.mods().codexRanks >= KK.DATA.CODEX_MAX },
     { id: 'f125', name: 'Abyss Walker', desc: 'Reach floor 125.', on: 'floor', test: (c) => c.S.maxFloorEver >= 125 },
     // prestige & omens
     { id: 'retire10', name: 'Dynasty', desc: 'Retire 10 times for 10+ Renown each.', on: 'retired', test: (c) => { if ((c.ev.gain || 0) >= 10) c.P.bigRetires = (c.P.bigRetires || 0) + 1; return (c.P.bigRetires || 0) >= 10; } },

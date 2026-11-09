@@ -1,0 +1,3 @@
+typist 1st delve to card (6 seeds): Warlord tries 1.8, first win 84s, lost fights 73s, War Charges landed 14.2 (each = 14% of the knight's max HP) | Bone King tries 2.5, first win 34s, reassembles 1.5
+idle   1st delve to card (6 seeds): Warlord tries 1.7, first win 224s, lost fights 42s, War Charges landed 28.0 (each = 9% of the knight's max HP) | Bone King tries 3.7, first win 62s, reassembles 1.8
+burst  1st delve to card (6 seeds): Warlord tries 1.0, first win 199s, lost fights NaNs, War Charges landed 19.7 (each = 8% of the knight's max HP) | Bone King tries 3.8, first win 49s, reassembles 1.7

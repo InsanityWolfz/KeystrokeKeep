@@ -1,0 +1,66 @@
+﻿[
+    {
+        "build":  "full",
+        "lowGpu":  "auto",
+        "exitCode":  0,
+        "gate":  "[KK] sprite check ok (143 px)",
+        "gpuProcDisableDirectComposition":  true,
+        "png":  true
+    },
+    {
+        "build":  "full",
+        "lowGpu":  "1",
+        "exitCode":  0,
+        "gate":  "[KK] sprite check ok (143 px)",
+        "gpuProcDisableDirectComposition":  true,
+        "png":  true
+    },
+    {
+        "build":  "full",
+        "lowGpu":  "0",
+        "exitCode":  0,
+        "gate":  "[KK] sprite check ok (143 px)",
+        "gpuProcDisableDirectComposition":  false,
+        "png":  true
+    },
+    {
+        "build":  "full",
+        "lowGpu":  "blank",
+        "exitCode":  0,
+        "gate":  "[KK] SPRITE CHECK FAILED (0)",
+        "gpuProcDisableDirectComposition":  true,
+        "png":  true
+    },
+    {
+        "build":  "demo",
+        "lowGpu":  "auto",
+        "exitCode":  0,
+        "gate":  "[KK] sprite check ok (143 px)",
+        "gpuProcDisableDirectComposition":  true,
+        "png":  true
+    },
+    {
+        "build":  "demo",
+        "lowGpu":  "1",
+        "exitCode":  0,
+        "gate":  "[KK] sprite check ok (143 px)",
+        "gpuProcDisableDirectComposition":  true,
+        "png":  true
+    },
+    {
+        "build":  "demo",
+        "lowGpu":  "0",
+        "exitCode":  0,
+        "gate":  "[KK] sprite check ok (143 px)",
+        "gpuProcDisableDirectComposition":  false,
+        "png":  true
+    },
+    {
+        "build":  "demo",
+        "lowGpu":  "blank",
+        "exitCode":  0,
+        "gate":  "[KK] SPRITE CHECK FAILED (0)",
+        "gpuProcDisableDirectComposition":  true,
+        "png":  true
+    }
+]

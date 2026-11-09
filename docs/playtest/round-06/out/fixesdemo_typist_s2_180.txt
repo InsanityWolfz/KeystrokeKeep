@@ -1,0 +1,16 @@
+=== R6 probe typist s2 180m DEMO PROTO=fixes: maxEver 40, retires 24, renown life 120, ach 16/36, trophies 0, codex 0/28, wipes 5, fame x7.4, unspent embers 1067
+beats per 30 min from h1: 2 0 2 0 0
+longest gap after h1: 50 min (from 2h10)
+codex: none
+trophies: 
+retires (24): 0h28 f40 +30, 0h38 f40 +6, 0h46 f40 +6, 0h54 f40 +6, 1h02 f40 +6, 1h10 f40 +6, 1h16 f40 +6, 1h23 f40 +6, 1h29 f40 +6, 1h36 f40 +6, 1h42 f40 +6, 1h48 f40 +6, 1h54 f40 +6, 2h00 f40 +6, 2h06 f40 +6, 2h11 f40 +6, 2h17 f40 +0, 2h23 f40 +0, 2h28 f40 +0, 2h34 f40 +0, 2h40 f40 +0, 2h45 f40 +0, 2h51 f40 +0, 2h57 f40 +0
+SIG totals: {"chargeWarn":37,"warCharge":33,"reassemble":25,"bossEnrage":0,"royalSummons":0,"webShot":0,"webbed":0,"shellUp":0,"shellCrack":0,"lavaWarn":0,"lavaLand":0,"seal":0,"dailyRedelve":0,"sigCollide":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   17.7 |   9 | 
+  boneking         25 |   25 |   0 |   0 |    4.0 |   1 | reassemble 1 [100%] @2.4 | rise->death med 1.70s, <0.5s 0/25, <1.5s(still stunned) 1/25
+  broodmother      26 |   24 |   2 |   0 |    3.1 |   1 | 
+  warlord          24 |   24 |   0 |   0 |    5.3 |   1 | chargeWarn 1 [92%] @3.3; warCharge 1 [75%] @4.5 | died mid-charge 4/24, fights with 0 charges 6/24
+DEMO: card 0h27, laps 24, re-delves 24, lifetime 120, best 4.0m
+ACH: first_boss 0h04 | flow 0h00 | full_party 0h13 | retire1 0h28 | gatekeeper 0h27 | rat 0h04 | epic 0h19 | caverns 0h08 | comeback 0h18 | echo 0h51 | ult_boss 0h37 | revive 0h13 | speed60 NO | blitz 1h06 | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | codex28 NO | f125 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 NO | chests100 2h10 | rats25 NO | idle50 NO | keys10k 1h16 | keys100k NO | flow1h 2h03 | flow10h NO | ults1k NO
+PROTO on: enrage,reass  N={"ratFirst":0.8,"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.3,"shellDur":5,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.8,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08}
+PROTO sig warnings 0, colliding with a void warning (<1.2 s) 0

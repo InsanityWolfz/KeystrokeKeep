@@ -1,0 +1,7 @@
+1) Blitz restart repro: saved bossTimes [4700,4800,4900,5000], playTime after reload 5000; kill 50 min later -> blitz locked (pass); bossTimes now [8000]
+   ... then 4 more bosses 1 min apart -> blitz unlocked (pass)
+2) idle HS x4 mid-delve: floor 30 startFloor 21, heroes {"knight":33,"archer":0,"mage":0,"cleric":0} (expected >= 33); wipes in next 5 min 0
+2) typist HS x8 mid-delve: floor 46 startFloor 41, heroes {"knight":65,"archer":0,"mage":0,"cleric":0} (expected >= 65); wipes in next 5 min 4
+3) typist: speed60 64m | first time N bosses within W min: 5 in 10m: 64m, 5 in 5m: 274m, 5 in 3m: never(0/3), 8 in 10m: 269m, 10 in 10m: never(0/3)
+3) idle: speed60 155m | first time N bosses within W min: 5 in 10m: 177m, 5 in 5m: never(0/3), 5 in 3m: never(0/3), 8 in 10m: never(0/3), 10 in 10m: never(0/3)
+3) burst: speed60 150m | first time N bosses within W min: 5 in 10m: 150m, 5 in 5m: 416m(1/3), 5 in 3m: never(0/3), 8 in 10m: 421m(1/3), 10 in 10m: never(0/3)

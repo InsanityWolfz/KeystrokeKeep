@@ -1,0 +1,12 @@
+base   typist  | f170 w226 e9 b8+25 gap494 | f179 w189 e8 b8+22 gap569 | f174 w195 e11 b8+20 gap525 | f174 w212 e9 b8+23 gap399
+base   light   | f158 w177 e8 b8+31 gap359 | f154 w150 e13 b8+31 gap217 | f157 w131 e7 b8+29 gap328 | f158 w113 e14 b8+34 gap312
+base   idle    | f124 w78 e16 b8+25 gap433 | f121 w62 e16 b8+26 gap393 | f120 w58 e16 b8+25 gap442 | f120 w113 e15 b8+28 gap276
+fixes2 typist  | f180 w196 e30 b8+23 gap536 | f170 w200 e51 b8+15 gap651 | f176 w265 e11 b8+22 gap713 | f174 w348 e20 b8+18 gap560
+fixes2 light   | f154 w158 e56 b8+31 gap285 | f154 w122 e44 b8+30 gap245 | f155 w111 e47 b8+30 gap310 | f155 w120 e58 b8+30 gap332
+fixes2 idle    | f117 w136 e111 b8+24 gap622 | f123 w106 e79 b8+23 gap484 | f120 w142 e74 b8+24 gap406 | f120 w117 e87 b8+24 gap370
+final2 typist  | f170 w115 e46 b8+22 gap406 | f177 w231 e18 b8+20 gap574 | f170 w183 e15 b8+21 gap456 | f174 w181 e42 b8+20 gap754
+final2 light   | f150 w125 e61 b8+28 gap411 | f157 w139 e33 b8+32 gap343 | f150 w147 e27 b8+26 gap594 | f156 w177 e29 b8+30 gap447
+final2 idle    | f118 w174 e124 b8+22 gap575 | f120 w143 e103 b8+22 gap455 | f118 w129 e76 b8+28 gap429 | f120 w159 e84 b8+25 gap388
+all2   typist  | f176 w217 e23 b8+34 gap436 | f175 w241 e31 b8+33 gap372 | f170 w278 e21 b8+38 gap366 | f170 w112 e60 b8+42 gap401
+all2   light   | f156 w138 e38 b8+35 gap247 | f160 w131 e36 b8+47 gap182 | f160 w111 e27 b8+42 gap181 | f157 w177 e42 b8+33 gap288
+all2   idle    | f121 w209 e134 b8+30 gap411 | f124 w117 e69 b8+32 gap251 | f128 w140 e63 b8+29 gap458 | f126 w100 e69 b8+34 gap304

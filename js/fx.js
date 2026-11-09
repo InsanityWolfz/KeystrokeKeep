@@ -140,7 +140,7 @@
     if (FX.texts.length > 14) FX.texts.shift();
   }
   KK.on('hit', ({ e, dmg, crit, ult }) => {
-    if (e.windup > 0) return;
+    if (e.windup > 0 || e.pile > 0) return; // keep telegraphs and the bone pile readable
     if (crit) {
       dmgText(e, dmg, '#ffd34a', 1, 'c');
       FX.stop(0.035);
@@ -246,7 +246,8 @@
     FX.shake(2, 1.6);
     FX.flash('#300010', 0.5);
   });
-  KK.on('wipe', () => {
+  KK.on('wipe', ({ reason }) => {
+    if (reason === 'enrage') return; // the enrage has its own alert
     FX.banner('RETREAT!', 'THE PARTY FALLS BACK A FLOOR', '#ff6b6b', 2.4, { subCol: '#ffb4a0' });
     FX.flash('#5a0010', 0.6);
   });
@@ -325,7 +326,7 @@
   });
   KK.on('reassemble', ({ e }) => {
     FX.burst(e.x, e.y - e.def.h / 2, 30, ['#e8e2d0', '#b8b098', '#ffffff'], { spd: 90, up: -40, life: 0.9, floor: true });
-    FX.text(e.x, e.y - e.def.h - 6, 'REASSEMBLES!', '#e8e2d0', 1, { life: 1.4, vy: -12 });
+    FX.alert(e.def.name.toUpperCase() + ' REASSEMBLES!', '#e8e2d0', 1.6);
   });
   KK.on('voidWarn', ({ e }) => {
     FX.alert('VOID SLAM INCOMING', '#e0b0ff', 1.1); e.windup = 1.0;
@@ -337,7 +338,8 @@
     FX.ring(W.partyX - 20, W.GROUND, 3, 110, '#c472ff', 0.6, 2);
     FX.burst(W.partyX - 20, W.GROUND - 4, 30, ['#c472ff', '#6a2cff', '#ffffff'], { spd: 120, up: -50, life: 0.8, floor: true });
   });
-  KK.on('bossEnrage', () => FX.alert('THE BOSS IS TOO STRONG: RETREAT', '#ff9a9a', 2.0));
+  KK.on('bossEnrage', ({ e }) => { FX.alert(`ENRAGED! RETREAT. IT KEEPS ITS WOUNDS (${Math.round(100 * e.hp / e.maxHp)}%)`, '#ff9a9a', 2.6); FX.flash('#5a0010', 0.3); });
+  KK.on('regroup', () => FX.alert('THE PARTY REGROUPS (10 MIN)', '#ffb4a0', 2.4));
   KK.on('trophy', ({ floor }) => {
     const x = W.partyX - 20;
     FX.banner(floor === 100 ? 'HEART OF THE KEEP' : 'DEPTH TROPHY', floor === 100 ? 'FLOOR 100: x1.05 FOREVER' : 'FLOOR ' + floor + ': x1.05 FOREVER', '#ffd76a', 2.6, { subCol: '#fff6c9' });

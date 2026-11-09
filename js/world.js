@@ -78,6 +78,8 @@
       const key = F.bossFor(f);
       const boss = makeEnemy(key, x0 + 20, f, f === 100 ? { hpMult: 1.5 } : undefined);
       if (f === 100) { boss.def = Object.assign({}, boss.def, { name: 'The Heart of the Keep' }); boss.heart = true; }
+      const wound = S.bossWounds && S.bossWounds[f];
+      if (wound) { boss.hp = boss.maxHp * wound; boss.wounded = wound; }
       else if (f >= 70 && key !== 'hollow') { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
       W.boss = boss;
       const minions = Math.min(2, Math.floor(f / 20));
@@ -122,7 +124,7 @@
     const S = KK.S, m = KK.mods();
     // The Bone King (and his Hollowed self) pulls himself back together once per fight
     if (e.boss && e.key === 'boneking' && !e.reassembled) {
-      e.reassembled = true; e.hp = e.maxHp * 0.25; e.stun = 1.5;
+      e.reassembled = true; e.hp = e.maxHp * 0.25; e.stun = 1.5; e.pile = 1.5;
       KK.emit('reassemble', { e });
       return;
     }
@@ -132,12 +134,11 @@
     S.stats.kills++;
     if (e.boss) {
       S.stats.bossKills++;
+      if (S.bossWounds) delete S.bossWounds[S.floor];
+      S.bossLosses = 0;
       if (e.hollowed || e.key === 'hollow') {
-        const ck = e.key === 'hollow' && !e.hollowed ? 'hollow' : 'h_' + e.key;
-        S.codex = S.codex || {};
-        S.codex[ck] = (S.codex[ck] || 0) + 1;
-        const rank = D.CODEX_RANKS.indexOf(S.codex[ck]);
-        if (rank >= 0) { KK.dirty(); KK.emit('codex', { name: e.def.name, rank: rank + 1 }); }
+        S.codexKills = (S.codexKills || 0) + 1;
+        if (S.codexKills % D.CODEX_EVERY === 0 && S.codexKills / D.CODEX_EVERY <= D.CODEX_MAX) { KK.dirty(); KK.emit('codex', { name: e.def.name, rank: S.codexKills / D.CODEX_EVERY }); }
       }
       KK.gainEmbers(10);
       W.boss = null;
@@ -174,13 +175,17 @@
     if (h.hp > before) KK.emit('heal', { h, amt: h.hp - before, src });
   };
 
-  W.wipe = function () {
+  W.wipe = function (reason) {
     if (W.wipeT > 0) return;
     const S = KK.S;
     W.wipeT = 2.4;
-    S.stats.wipes++;
-    if (F.isBossFloor(S.floor)) S.bossBlock = S.floor;
-    KK.emit('wipe', { floor: S.floor });
+    if (reason !== 'enrage') S.stats.wipes++;
+    if (F.isBossFloor(S.floor)) {
+      S.bossBlock = S.floor;
+      S.bossLosses = (S.bossLosses || 0) + 1;
+      if (S.bossLosses >= 3) { S.bossLosses = 0; S.campUntil = S.stats.playTime + 600; KK.emit('regroup', { floor: S.floor }); }
+    }
+    KK.emit('wipe', { floor: S.floor, reason });
   };
 
   // ---------------------------------------------------------------- ultimates
@@ -434,12 +439,13 @@
       e.flash = Math.max(0, e.flash - dt);
       e.lunge = Math.max(0, e.lunge - dt);
       if (e.kb > 0) { e.x += e.kb * 6 * dt * 4; e.kb = Math.max(0, e.kb - dt * 16); }
+      if (e.boss) e.fightT = (e.fightT || 0) + dt; // the enrage clock never pauses
       if (e.stun > 0) { e.stun -= dt; prevX = e.x; continue; }
       if (frozen || !front) { prevX = e.x; continue; }
       const reach = front.x + e.def.w / 2 + e.def.range;
       // Goblin Warlord (and his Hollowed self): War Charge. Backs off, winds up, charges the line.
       if (e.boss && e.key === 'warlord') {
-        e.chT = (e.chT === undefined ? 1.5 : e.chT) - dt;
+        e.chT = (e.chT === undefined ? 0.5 : e.chT) - dt;
         if (e.chPhase === 'back') { e.x += 60 * dt; e.moving = true; if ((e.chP -= dt) <= 0) { e.chPhase = 'wind'; e.chP = 1.0; KK.emit('chargeWarn', { e }); } prevX = e.x; continue; }
         if (e.chPhase === 'wind') { e.moving = false; if ((e.chP -= dt) <= 0) e.chPhase = 'go'; prevX = e.x; continue; }
         if (e.chPhase === 'go') {
@@ -461,9 +467,14 @@
       e.atkT -= dt;
       if (e.flashCool > 0) e.flashCool -= dt;
       if (e.windup > 0) e.windup -= dt;
+      if (e.pile > 0) e.pile -= dt;
       if (e.boss && e.active) {
-        e.fightT = (e.fightT || 0) + dt;
-        if (e.fightT > 180 && !W.wipeT) { KK.emit('bossEnrage', { e }); W.wipe(); } // too strong for now: retreat and farm
+        if (e.fightT > 180 && !(W.wipeT > 0)) {
+          // too strong for now: retreat and farm, but the boss keeps its wounds for the next try
+          const S0 = KK.S; S0.bossWounds = S0.bossWounds || {};
+          S0.bossWounds[S0.floor] = Math.max(0.05, e.hp / e.maxHp);
+          KK.emit('bossEnrage', { e }); W.wipe('enrage');
+        }
       }
       if (e.boss && (e.hollowed || e.key === 'hollow') && e.active) {
         e.voidT = (e.voidT === undefined ? 5 : e.voidT) - dt;
@@ -572,6 +583,8 @@
       }
       S.floor = KK.DEMO_CAP - 4;
     } else if (KK.DEMO_CAP && S.runCapCleared && S.floor >= KK.DEMO_CAP - 1) S.floor = KK.DEMO_CAP - 4;
+    // regrouping after repeated losses: keep farming the floor below the wall for a while
+    if (S.bossBlock && S.floor + 1 >= S.bossBlock && (S.campUntil || 0) > S.stats.playTime) S.floor--;
     S.floor++;
     if (S.floor > S.maxFloorRun) S.maxFloorRun = S.floor;
     if (S.floor > S.maxFloorEver) {
@@ -598,6 +611,7 @@
     W.wave = 0; W.door = null; W.chest = null; W.boss = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
     for (const h of W.heroes) { h.dead = false; h.hp = h.maxHp; }
+    W.wipeT = 0;
     KK.emit('recovered', { floor: S.floor });
   };
 

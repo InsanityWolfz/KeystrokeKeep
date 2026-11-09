@@ -181,11 +181,11 @@
   KK.on('heroHit', () => p('hurt'));
   KK.on('heal', () => p('heal'));
   KK.on('levelUp', ({ from, to }) => { const st = to >= 100 ? 50 : 10; p(Math.floor(to / st) > Math.floor(from / st) ? 'milestone' : 'levelup'); });
-  KK.on('voidWarn', () => p('deny'));
+  KK.on('voidWarn', ({ e }) => { if ((e.slams || 0) < 3) p('zone'); });
   KK.on('chargeWarn', () => p('deny'));
   KK.on('warCharge', () => p('slam'));
   KK.on('reassemble', () => p('heal'));
-  KK.on('voidSlam', () => p('slam'));
+  KK.on('voidSlam', ({ e }) => { if ((e.slams || 0) <= 3) p('slam'); });
   KK.on('recruit', () => p('recruit'));
   KK.on('ult', ({ id }) => p({ knight: 'ultKnight', archer: 'ultArcher', mage: 'ultMage', cleric: 'ultCleric' }[id]));
   KK.on('meteorLand', () => p('meteor'));

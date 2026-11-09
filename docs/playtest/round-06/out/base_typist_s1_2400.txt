@@ -1,0 +1,24 @@
+=== R6 probe typist s1 2400m: maxEver 170, retires 27, renown life 727, ach 34/36, trophies 14, codex 22/28, wipes 226, fame x415.5, unspent embers 54869
+beats per 30 min from h1: 10 5 5 4 7 3 2 3 0 5 2 5 1 0 3 0 3 0 2 0 0 1 0 0 1 0 0 1 0 1 3 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 2 0 0 0 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 0 0
+AFTER 8h: 25 beats {"TROPHY":4,"ACH":5,"OMEN":2,"CODEX":14}; longest gap 494 min (from 19h44); empty 2h windows 7/17
+longest stretch with no new depth record (30-min snapshots): 6.5 h from 33h30
+codex: 1h51 The Hollow r1, 4h52 The Hollow r2, 4h54 H-Rat King r1, 5h36 H-Goblin Warlord r1, 5h59 H-Brood Mother r1, 6h20 H-Magma Lord r1, 6h54 H-Ember Colossus r1, 7h22 H-Bone King r1, 10h28 The Hollow r3, 14h59 H-Goblin Warlord r2, 16h01 H-Bone King r2, 16h10 H-Magma Lord r2, 16h16 H-Rat King r2, 17h11 H-Brood Mother r2, 19h44 H-Ember Colossus r2, 27h58 The Hollow r4, 30h22 H-Goblin Warlord r3, 30h29 H-Bone King r3, 32h13 H-Magma Lord r3, 33h29 H-Rat King r3, 33h35 H-Ember Colossus r3, 35h33 H-Brood Mother r3
+trophies: f75@1h16 f80@1h34 f85@2h01 f90@2h09 f95@2h40 f100@3h16 f105@4h02 f110@4h39 f115@5h50 f120@6h40 f125@8h17 f130@9h14 f140@11h33 f150@15h47
+retires (27): 0h28 f40 +30, 0h53 f60 +49, 1h18 f76 +55, 1h43 f84 +33, 2h13 f91 +31, 2h47 f98 +34, 3h24 f100 +10, 4h04 f106 +32, 4h47 f110 +22, 5h53 f116 +35, 6h48 f120 +24, 8h17 f125 +34, 9h14 f130 +33, 10h24 f135 +33, 11h33 f140 +36, 13h13 f143 +21, 14h39 f147 +30, 15h55 f150 +22, 17h06 f154 +31, 19h38 f158 +32, 21h40 f159 +8, 23h25 f160 +8, 25h41 f164 +33, 27h54 f165 +8, 30h15 f168 +25, 32h07 f169 +9, 33h24 f170 +9
+SIG totals: {"chargeWarn":376,"warCharge":370,"reassemble":29,"bossEnrage":9}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   14.6 |   6 | 
+  boneking          4 |    3 |   1 |   0 |    4.1 |  15 | reassemble 1 [75%] @4.0 | rise->death med 0.43s, <0.5s 2/3, <1.5s(still stunned) 2/3
+  broodmother       7 |    6 |   1 |   0 |    4.2 |   1 | 
+  warlord           8 |    8 |   0 |   0 |    2.6 |   1 | chargeWarn 1 [50%] @2.6; warCharge 0 [25%] @3.9 | died mid-charge 3/8, fights with 0 charges 6/8
+  embergolem       27 |   27 |   0 |   0 |    1.9 |   0 | 
+  magmalord        27 |   26 |   0 |   0 |    2.0 |   0 | 
+  hollow           26 |   26 |   0 |   0 |    2.2 |   1 | 
+  H-ratking        29 |   21 |   7 |   0 |   15.0 |  17 | 
+  H-broodmother    63 |   20 |  43 |   1 |   20.8 |  11 | 
+  H-warlord        92 |   23 |  69 |   1 |    9.7 |   9 | chargeWarn 2 [97%] @2.8; warCharge 2 [93%] @3.9 | died mid-charge 4/23, fights with 0 charges 6/92
+  H-embergolem     44 |   20 |  24 |   1 |   12.3 |  31 | 
+  H-magmalord      37 |   22 |  15 |   1 |   13.2 |  13 | 
+  H-boneking       67 |   23 |  44 |   4 |   17.7 |  15 | reassemble 0 [39%] @16.8 | rise->death med 2.10s, <0.5s 6/23, <1.5s(still stunned) 9/23
+  HEART            25 |   21 |   3 |   1 |    5.1 |   5 | 
+ACH: first_boss 0h03 | flow 0h00 | full_party 0h17 | retire1 0h28 | gatekeeper 0h36 | rat 0h04 | epic 0h31 | caverns 0h08 | comeback 0h08 | echo 10h27 | ult_boss 0h31 | revive 3h48 | speed60 1h25 | blitz 1h04 | magma 0h36 | void 1h04 | hollow 1h11 | hollowed6 3h03 | f100 3h16 | codex28 NO | f125 8h17 | retire10 5h53 | omen1 0h53 | omen10 9h14 | deep90 6h56 | legacy_all 6h49 | crucible10 6h19 | lv100 0h50 | chests100 3h05 | rats25 3h31 | idle50 NO | keys10k 1h18 | keys100k 13h04 | flow1h 2h03 | flow10h 16h54 | ults1k 2h47

@@ -1,0 +1,32 @@
+=== R6 probe typist s2 480m PROTO=all: maxEver 125, retires 11, renown life 399, ach 31/36, trophies 11, codex 8/28, wipes 25, fame x63.8, unspent embers 2941
+beats per 30 min from h1: 8 7 5 9 3 2 2 1 1 1 4 5 3 0 0
+AFTER 8h: 0 beats {}; longest gap 0 min (from 8h00); empty 2h windows 1/1
+longest stretch with no new depth record (30-min snapshots): 1.5 h from 4h30
+codex: 1h51 The Hollow r1, 4h44 The Heart of the Keep r2, 6h00 H-Rat King r1, 6h02 H-Bone King r1, 6h15 H-Goblin Warlord r1, 6h42 H-Brood Mother r1, 6h52 H-Magma Lord r1, 7h23 H-Ember Colossus r1
+trophies: f75@1h15 f80@1h32 f85@1h41 f90@2h01 f95@2h35 f100@2h46 f105@3h31 f110@4h16 f115@5h50 f120@6h28 f125@7h17
+retires (11): 0h28 f40 +30, 0h53 f62 +55, 1h18 f76 +49, 1h43 f86 +41, 2h08 f94 +37, 2h46 f100 +30, 3h33 f106 +35, 4h24 f110 +22, 5h54 f116 +35, 6h36 f120 +24, 7h17 f125 +31
+SIG totals: {"chargeWarn":27,"warCharge":26,"reassemble":9,"bossEnrage":10,"royalSummons":24,"webShot":59,"webbed":59,"shellUp":31,"shellCrack":11,"lavaWarn":92,"lavaLand":258,"seal":1,"dailyRedelve":0,"sigCollide":23}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   20.3 |  11 | royalSummons 3 [100%] @0.8
+  boneking          4 |    3 |   1 |   0 |   11.0 |  10 | reassemble 1 [75%] @8.6 | rise->death med 2.43s, <0.5s 0/3, <1.5s(still stunned) 0/3
+  broodmother       7 |    5 |   2 |   0 |    2.7 |  18 | webShot 5 [100%] @1.0; webbed 5 [100%] @1.5
+  warlord           6 |    6 |   0 |   0 |    2.5 |   1 | chargeWarn 0 [33%] @3.4; warCharge 0 [33%] @4.7 | died mid-charge 2/6, fights with 0 charges 4/6
+  embergolem       11 |   11 |   0 |   0 |    2.4 |   1 | shellUp 1 [100%] @0.1; shellCrack 0 [27%] @2.8
+  magmalord        14 |   11 |   3 |   0 |    2.5 |   2 | lavaWarn 1 [100%] @1.0; lavaLand 3 [79%] @1.9
+  hollow           10 |   10 |   0 |   0 |    6.8 |   3 | 
+  H-ratking         4 |    4 |   0 |   0 |   80.2 |  42 | royalSummons 7 [100%] @0.8; sigCollide 2 [50%] @29.8
+  H-broodmother     4 |    3 |   1 |   1 |   13.1 |  24 | webShot 6 [100%] @1.0; webbed 6 [100%] @1.5; sigCollide 2 [50%] @17.0
+  H-warlord         5 |    4 |   1 |   0 |   77.9 |  25 | chargeWarn 5 [100%] @2.7; warCharge 5 [100%] @3.8 | died mid-charge 1/4, fights with 0 charges 0/5
+  H-embergolem      5 |    3 |   2 |   0 |   10.9 |  14 | shellUp 3 [100%] @0.1; shellCrack 1 [80%] @4.9
+  H-magmalord       7 |    4 |   3 |   1 |   60.2 |  37 | lavaWarn 8 [100%] @1.0; lavaLand 24 [100%] @1.9; sigCollide 2 [86%] @17.1
+  H-boneking       10 |    4 |   6 |   6 |  166.5 | 110 | reassemble 1 [60%] @129.7 | rise->death med 36.80s, <0.5s 0/4, <1.5s(still stunned) 0/4
+  HEART             9 |    6 |   3 |   2 |  112.0 |  64 | 
+ACH: first_boss 0h04 | flow 0h00 | full_party 0h17 | retire1 0h28 | gatekeeper 0h36 | rat 0h04 | epic 0h22 | caverns 0h09 | comeback 0h09 | echo 3h37 | ult_boss 0h04 | revive 3h15 | speed60 1h03 | blitz 1h00 | magma 0h36 | void 0h52 | hollow 1h11 | hollowed6 2h59 | f100 2h46 | codex28 NO | f125 7h17 | retire10 6h36 | omen1 0h53 | omen10 NO | deep90 2h57 | legacy_all 6h37 | crucible10 5h13 | lv100 0h47 | chests100 4h27 | rats25 2h50 | idle50 NO | keys10k 1h17 | keys100k NO | flow1h 1h58 | flow10h NO | ults1k 2h44
+PROTO on: enrage,reass,rat,web,shell,lava,omen,lantern,tro  N={"ratFirst":0.8,"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.3,"shellDur":5,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.8,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08}
+PROTO rat summons 48 spawned, 48 killed
+PROTO webs 59, hero-seconds webbed 142.5
+PROTO shells 31, cracked by ults 11 (35%), timed out 13
+PROTO lava drops landed 258
+PROTO sig warnings 206, colliding with a void warning (<1.2 s) 23
+PROTO SEALS 1: 1.0h f47 after 5min | daily re-delves 0
+PROTO LANTERN buys: L1@6.7h | void dmg prevented 1.69B

@@ -1,0 +1,17 @@
+               | base                              | fixes                             | sig                               | week2                             | all                               
+typist_s1_480  | f121 w15 e4 a29                   | f125 w18 e10 a31                  | f124 w17 e8 a28                   | f125 w19 e8 a29                   | f130 w24 e5 a30                   
+typist_s2_480  | f129 w15 e3 a31                   | f120 w21 e15 a29                  | f124 w31 e12 a29                  | f125 w17 e10 a30                  | f125 w25 e10 a31                  
+typist_s3_480  | f125 w15 e4 a30                   | f125 w17 e9 a30                   | f120 w30 e12 a28                  | f120 w21 e17 a29                  | f125 w26 e11 a29                  
+idle_s1_480    | f90 w14 e4 a19                    | f90 w21 e12 a21                   | f90 w32 e20 a19                   | f90 w20 e12 a21                   | f90 w27 e15 a20                   
+idle_s2_480    | f97 w19 e4 a19                    | f90 w22 e11 a19                   | f88 w35 e21 a19                   | f97 w26 e12 a21                   | f90 w30 e18 a22                   
+burst_s1_480   | f100 w17 e3 a22                   | f97 w28 e15 a20                   | f91 w26 e13 a19                   | f100 w23 e9 a23                   | f95 w27 e13 a20                   
+heavy_s1_480   | f139 w13 e3 a32                   | f134 w21 e5 a32                   | f139 w16 e2 a32                   | f140 w10 e8 a31                   | f140 w19 e9 a32                   
+light_s1_480   | f110 w19 e2 a26                   | f110 w23 e9 a26                   | f106 w36 e8 a26                   | f106 w30 e17 a26                  | f100 w41 e16 a25                  
+typist_s1_2400 | f170 w226 e9 a34 b8+ 25 gap 494m  | f169 w211 e78 a33 b8+ 15 gap 969m | f170 w254 e47 a33 b8+ 23 gap 383m | f170 w191 e115 a34 b8+ 34 gap 433m| f174 w219 e68 a32 b8+ 37 gap 393m 
+typist_s2_2400 | f179 w189 e8 a34 b8+ 22 gap 569m  | f170 w187 e97 a33 b8+ 24 gap 355m | f170 w292 e78 a32 b8+ 18 gap 453m | f174 w277 e59 a34 b8+ 36 gap 320m | f174 w303 e46 a32 b8+ 37 gap 288m 
+idle_s1_2400   | f124 w78 e16 a25 b8+ 25 gap 433m  | f118 w228 e159 a25 b8+ 24 gap 350m| f110 w263 e226 a26 b8+ 26 gap 716m| f125 w184 e160 a28 b8+ 31 gap 347m| f120 w213 e162 a27 b8+ 29 gap 318m
+light_s1_2400  | f158 w177 e8 a34 b8+ 31 gap 359m  | f154 w162 e119 a33 b8+ 27 gap 499m| f150 w205 e127 a32 b8+ 34 gap 464m| f154 w161 e120 a32 b8+ 39 gap 229m| f158 w219 e83 a34 b8+ 35 gap 158m 
+demo typist_s1_180| best 4.1m card 0h31 laps 24 w6    | best 3.7m card 0h35 laps 23 w6    | best 4.1m card 0h32 laps 23 w6    | best 4.0m card 0h35 laps 22 w6    | best 4.2m card 0h32 laps 21 w6    
+demo typist_s2_180| best 3.9m card 0h30 laps 24 w7    | best 4.0m card 0h27 laps 24 w5    | best 4.1m card 0h30 laps 24 w6    | best 4.1m card 0h27 laps 23 w5    | best 3.8m card 0h30 laps 23 w6    
+demo idle_s1_180| best 5.9m card 1h22 laps 11 w8    | best 5.2m card 1h22 laps 12 w9    | best 5.5m card 1h22 laps 11 w13   | best 6.2m card 1h22 laps 9 w9     | best 6.2m card 1h22 laps 9 w13    
+demo burst_s1_180| best 5.5m card 1h12 laps 13 w12   | best 5.4m card 1h23 laps 12 w13   | best 5.7m card 1h14 laps 12 w13   | best 6.2m card 1h23 laps 8 w13    | best 6.1m card 1h14 laps 9 w13    

@@ -1,0 +1,22 @@
+=== R6 probe idle s1 480m: maxEver 90, retires 9, renown life 197, ach 19/36, trophies 4, codex 1/28, wipes 14, fame x15.2, unspent embers 165
+beats per 30 min from h1: 6 5 5 1 4 1 3 1 2 1 1 0 3 2 0
+AFTER 8h: 0 beats {}; longest gap 0 min (from 8h00); empty 2h windows 1/1
+longest stretch with no new depth record (30-min snapshots): 1.0 h from 2h30
+codex: 4h45 The Hollow r1
+trophies: f75@3h25 f80@4h16 f85@5h23 f90@7h18
+retires (9): 0h59 f40 +30, 1h32 f50 +21, 2h00 f61 +31, 2h29 f70 +30, 3h41 f77 +26, 4h24 f80 +12, 5h33 f87 +33, 6h24 f88 +4, 7h26 f90 +10
+SIG totals: {"chargeWarn":20,"warCharge":18,"reassemble":5,"bossEnrage":4}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           2 |    1 |   1 |   0 |   32.5 |  18 | 
+  boneking          6 |    5 |   1 |   0 |    7.3 |   7 | reassemble 1 [83%] @5.7 | rise->death med 1.67s, <0.5s 2/5, <1.5s(still stunned) 2/5
+  broodmother      11 |   10 |   1 |   0 |    3.0 |   0 | 
+  warlord           9 |    9 |   0 |   0 |    4.8 |   1 | chargeWarn 1 [78%] @3.4; warCharge 1 [67%] @4.5 | died mid-charge 3/9, fights with 0 charges 3/9
+  embergolem       10 |    8 |   1 |   1 |   12.9 |  21 | 
+  magmalord         8 |    8 |   0 |   0 |   41.6 |  25 | 
+  hollow            7 |    6 |   1 |   1 |  123.2 |  75 | 
+  H-embergolem      3 |    1 |   2 |   2 |  190.3 | 110 | 
+  H-ratking         3 |    2 |   1 |   0 |  196.7 |  56 | 
+  H-broodmother     2 |    1 |   1 |   0 |  133.4 |  81 | 
+  H-magmalord       1 |    0 |   0 |   0 |    NaN | 135 | 
+  H-boneking        1 |    0 |   0 |   0 |    NaN |   0 |  | rise->death med NaNs, <0.5s 0/0, <1.5s(still stunned) 0/0
+ACH: first_boss 0h07 | flow NO | full_party 0h29 | retire1 0h59 | gatekeeper 1h14 | rat 0h04 | epic 1h49 | caverns 0h19 | comeback 0h07 | echo 7h32 | ult_boss NO | revive 0h29 | speed60 3h50 | blitz 2h09 | magma 1h14 | void 2h00 | hollow 3h13 | hollowed6 NO | f100 NO | codex28 NO | f125 NO | retire10 NO | omen1 1h32 | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 1h53 | chests100 NO | rats25 3h15 | idle50 1h24 | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO

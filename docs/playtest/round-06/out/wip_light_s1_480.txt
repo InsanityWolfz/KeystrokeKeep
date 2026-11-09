@@ -1,0 +1,24 @@
+=== R6 probe light s1 480m: maxEver 110, retires 11, renown life 275, ach 24/36, trophies 8, codex 2/28, wipes 18, fame x27.7, unspent embers 669
+beats per 30 min from h1: 3 4 4 6 3 5 4 2 1 4 1 3 0 1 0
+AFTER 8h: 0 beats {}; longest gap 0 min (from 8h00); empty 2h windows 1/1
+longest stretch with no new depth record (30-min snapshots): 1.0 h from 4h00
+codex: 4h16 H-Ember Colossus r1, 6h54 H-Ember Colossus r2
+trophies: f75@2h30 f80@2h36 f85@3h08 f90@3h52 f95@4h47 f100@5h50 f105@6h44 f110@7h52
+retires (11): 0h17 f20 +3, 0h49 f42 +31, 1h14 f55 +31, 1h40 f65 +30, 2h15 f74 +31, 2h44 f82 +32, 3h16 f89 +31, 4h00 f90 +5, 4h55 f97 +33, 5h58 f100 +16, 6h46 f106 +32
+SIG totals: {"chargeWarn":49,"warCharge":47,"reassemble":8,"bossEnrage":7}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           3 |    2 |   1 |   0 |   18.3 |   6 | 
+  boneking         10 |    6 |   4 |   0 |    8.0 |  20 | reassemble 1 [70%] @6.7 | rise->death med 2.00s, <0.5s 0/6, <1.5s(still stunned) 3/6
+  broodmother       8 |    8 |   0 |   0 |    2.8 |   0 | 
+  warlord          12 |   11 |   1 |   0 |    3.6 |   1 | chargeWarn 1 [58%] @3.8; warCharge 1 [50%] @5.0 | died mid-charge 3/11, fights with 0 charges 6/12
+  embergolem       11 |   11 |   0 |   0 |    6.1 |   3 | 
+  magmalord        10 |   10 |   0 |   0 |   16.2 |   9 | 
+  hollow            9 |    8 |   1 |   1 |   28.6 |  17 | 
+  H-embergolem      3 |    2 |   1 |   1 |  104.9 |  63 | 
+  H-ratking         2 |    2 |   0 |   0 |   83.9 |  49 | 
+  H-broodmother     2 |    2 |   0 |   0 |   75.3 |  45 | 
+  H-warlord         2 |    1 |   1 |   1 |   53.6 |  90 | chargeWarn 18 [100%] @3.3; warCharge 18 [100%] @4.5 | died mid-charge 0/1, fights with 0 charges 0/2
+  H-magmalord       2 |    1 |   1 |   1 |   78.2 | 106 | 
+  H-boneking        2 |    0 |   2 |   1 |    NaN | 108 | reassemble 1 [50%] @165.0 | rise->death med NaNs, <0.5s 0/0, <1.5s(still stunned) 0/0
+  HEART             6 |    2 |   4 |   2 |   85.7 |  50 | 
+ACH: first_boss 0h05 | flow 0h00 | full_party 0h30 | retire1 0h17 | gatekeeper 0h48 | rat 0h04 | epic 0h21 | caverns 0h24 | comeback 0h05 | echo 4h03 | ult_boss 0h24 | revive 2h55 | speed60 2h23 | blitz NO | magma 0h48 | void 1h35 | hollow 2h11 | hollowed6 NO | f100 5h50 | codex28 NO | f125 NO | retire10 NO | omen1 0h49 | omen10 NO | deep90 3h52 | legacy_all NO | crucible10 NO | lv100 1h26 | chests100 4h00 | rats25 4h01 | idle50 NO | keys10k 3h35 | keys100k NO | flow1h NO | flow10h NO | ults1k 6h17

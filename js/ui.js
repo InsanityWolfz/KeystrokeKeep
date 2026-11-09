@@ -36,6 +36,7 @@
     $('#panel-close').addEventListener('click', () => UI.close());
     $('#panel-body').addEventListener('click', onPanelClick);
     $('#panel-body').addEventListener('input', onPanelInput);
+    $('#panel-body').addEventListener('toggle', (e) => { if (e.target.classList && e.target.classList.contains('achbox')) UI.achOpen = e.target.open; }, true);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') UI.close(); });
     $('#relic-offer').addEventListener('click', onOfferClick);
     $('#hud-farm').addEventListener('click', () => { if (A.renownGain() > 0) UI.open('legacy'); else UI.open('party'); $('#panel-body').scrollTop = 0; });
@@ -78,11 +79,12 @@
     setText('#hud-floor', 'FLOOR ' + S.floor);
     setText('#hud-biome', F.biomeOf(S.floor).name);
     setText('#hud-rate', S.incomeRate > 0.05 ? fmt(S.incomeRate) + '/s' : '');
-    if (S.maxFloorRun !== UI._lastMax) { UI._lastMax = S.maxFloorRun; UI._lastMaxT = S.stats.playTime; }
-    const stalled = S.stats.playTime - (UI._lastMaxT || 0) > 300 && A.renownGain() >= 10;
+    if (S.maxFloorRun !== UI._lastMax || W.boss || S.stats.bossKills !== UI._lastBK) { UI._lastMax = S.maxFloorRun; UI._lastBK = S.stats.bossKills; UI._lastMaxT = S.stats.playTime; }
+    const stalled = !(KK.DEMO_CAP && S.demoDone) && S.stats.playTime - (UI._lastMaxT || 0) > 300 && A.renownGain() >= 10;
     const blocked = !!(S.bossBlock && S.floor < S.bossBlock) || stalled;
     const g = A.renownGain();
-    setText('#hud-farm', blocked && g >= 10 ? `Stuck? ♛ Retire: +${g} Renown` : '⚠ Boss too strong: farming. Level up!');
+    const camp = (S.campUntil || 0) - S.stats.playTime;
+    setText('#hud-farm', blocked && g >= 10 ? `Stuck? ♛ Retire: +${g} Renown` : camp > 0 ? `Regrouping: next try in ${Math.ceil(camp / 60)}m. Level up!` : '⚠ Boss too strong: farming. Level up!');
     $('#hud-farm').classList.toggle('hidden', !blocked || KK.fx.banners.length > 0);
     const pill = $('#hud-demo');
     if (pill) {
@@ -301,7 +303,7 @@
     const S = KK.S, got = S.ach || {};
     const list = KK.ach.LIST.filter((a) => !KK.DEMO_CAP || a.demo);
     const n = list.filter((a) => got[a.id]).length;
-    return `<details class="achbox" ${UI.achOpen ? 'open' : ''} ontoggle="KK.ui.achOpen = this.open"><summary>🏆 ACHIEVEMENTS ${n}/${list.length}${KK.DEMO_CAP ? ' (demo set: they unlock on Steam in the full game)' : ''}</summary><div class="achlist">${list.map((a) => `<div class="ach ${got[a.id] ? 'got' : ''}"><b>${a.name}</b><span>${a.desc}</span></div>`).join('')}</div></details>`;
+    return `<details class="achbox" ${UI.achOpen ? 'open' : ''}><summary>🏆 ACHIEVEMENTS ${n}/${list.length}${KK.DEMO_CAP ? ' (demo set: they unlock on Steam in the full game)' : ''}</summary><div class="achlist">${list.map((a) => `<div class="ach ${got[a.id] ? 'got' : ''}"><b>${a.name}</b><span>${a.desc}</span></div>`).join('')}</div></details>`;
   }
   /** "+X% damage & gold" that the pending Renown would add (Fame), for the retire button. */
   function renownWorth() {
@@ -436,12 +438,15 @@
   };
   UI.confirmRetire = function () {
     const gain = A.renownGain();
-    UI.modal(`<h2>♛ RETIRE THE PARTY?</h2>
+    const redelve = gain <= 0;
+    const best = KK.S.bestCapTime ? U.fmtTime(KK.S.bestCapTime) : null;
+    UI.modal(redelve ? `<h2>♛ RE-DELVE?</h2>
+      <p>A fresh run with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
       <p>Sir Clank and friends hang up their swords. A new generation starts the delve, stronger for it.</p>
       <div class="bigval">+${gain} RENOWN</div>
       ${KK.S.relicOffer ? `<p style="color:#ff9a9a">You have ${1 + (KK.S.relicQueue || []).length} unopened relic chest${(KK.S.relicQueue || []).length ? 's' : ''}. ${(KK.S.relicQueue || []).length ? 'They' : 'It'} will be lost.</p>` : ''}
       <p style="font-size:12px;color:var(--muted)">Resets: gold, hero levels, recruits, Forge, relics, floor.<br>Keeps: Renown, Legacy, Workshop upgrades, Embers.</p>
-      <div class="row"><button class="buy" data-x="no" style="background:#3a2f4f;color:#fff;box-shadow:none">NOT YET</button><button class="buy renown" data-x="yes">RETIRE</button></div>`,
+      <div class="row"><button class="buy" data-x="no" style="background:#3a2f4f;color:#fff;box-shadow:none">NOT YET</button><button class="buy renown" data-x="yes">${redelve ? 'RE-DELVE' : 'RETIRE'}</button></div>`,
     (m, close) => {
       m.querySelector('[data-x=no]').onclick = close;
       m.querySelector('[data-x=yes]').onclick = () => {
@@ -449,7 +454,7 @@
         const g = A.retire();
         if (g) {
           W.partyX = W.partyX + 0; W.reset();
-          KK.fx.flash('#ffffff', 1); KK.fx.banner(typeof g === 'number' ? 'A NEW GENERATION RISES' : 'A NEW DELVE BEGINS', typeof g === 'number' ? '+' + g + ' RENOWN' : (KK.S.bestCapTime ? 'BEAT ' + U.fmtTime(KK.S.bestCapTime) : 'NEW RUN'), '#e9a2ff', 3, { subCol: '#fff' });
+          KK.fx.flash('#ffffff', 1); KK.fx.banner(typeof g === 'number' ? 'A NEW GENERATION RISES' : 'A NEW DELVE BEGINS', typeof g === 'number' ? '+' + g + ' RENOWN' + (KK.DEMO_CAP && KK.S.bestCapTime ? ' · BEAT ' + U.fmtTime(KK.S.bestCapTime) : '') : (KK.S.bestCapTime ? 'BEAT ' + U.fmtTime(KK.S.bestCapTime) : 'NEW RUN'), '#e9a2ff', 3, { subCol: '#fff' });
           if (KK.S.omenOffer) setTimeout(UI.chooseOmen, 1200);
           else { UI.toast('Spend your Renown in the Hall of Legends!', 'crown', 'epic'); setTimeout(() => UI.open('legacy'), 900); }
           KK.save();

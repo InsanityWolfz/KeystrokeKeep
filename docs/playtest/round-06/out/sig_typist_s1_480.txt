@@ -1,0 +1,30 @@
+=== R6 probe typist s1 480m PROTO=sig,fixes: maxEver 124, retires 11, renown life 355, ach 28/36, trophies 10, codex 8/28, wipes 17, fame x48.1, unspent embers 141
+beats per 30 min from h1: 10 6 5 5 5 2 3 1 3 0 5 3 1 1 0
+AFTER 8h: 0 beats {}; longest gap 0 min (from 8h00); empty 2h windows 1/1
+longest stretch with no new depth record (30-min snapshots): 1.0 h from 5h00
+codex: 1h53 The Hollow r1, 5h10 The Hollow r2, 5h12 H-Rat King r1, 6h10 H-Brood Mother r1, 6h12 H-Goblin Warlord r1, 6h25 H-Magma Lord r1, 6h59 H-Ember Colossus r1, 7h17 H-Bone King r1
+trophies: f75@1h32 f80@1h37 f85@2h01 f90@2h08 f95@2h38 f100@3h13 f105@4h02 f110@4h58 f115@6h01 f120@6h46
+retires (11): 0h29 f40 +30, 0h54 f60 +49, 1h19 f73 +44, 1h44 f84 +44, 2h16 f90 +27, 2h42 f97 +33, 3h21 f100 +15, 4h04 f106 +32, 5h06 f110 +22, 6h04 f116 +35, 6h54 f120 +24
+SIG totals: {"chargeWarn":84,"warCharge":83,"reassemble":7,"bossEnrage":8,"royalSummons":30,"webShot":64,"webbed":64,"shellUp":24,"shellCrack":10,"lavaWarn":59,"lavaLand":165,"seal":0,"dailyRedelve":0,"sigCollide":25}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   17.2 |   8 | royalSummons 2 [100%] @0.8
+  boneking          5 |    4 |   1 |   0 |    5.7 |   1 | reassemble 1 [80%] @3.3 | rise->death med 2.40s, <0.5s 0/4, <1.5s(still stunned) 0/4
+  broodmother       7 |    6 |   1 |   0 |    3.6 |   1 | webShot 1 [100%] @1.0; webbed 1 [100%] @1.5
+  warlord           8 |    8 |   0 |   0 |    2.5 |   0 | chargeWarn 0 [38%] @2.9; warCharge 0 [25%] @4.0 | died mid-charge 1/8, fights with 0 charges 6/8
+  embergolem       11 |   11 |   0 |   0 |    2.7 |   1 | shellUp 1 [100%] @0.1; shellCrack 0 [36%] @4.0
+  magmalord        11 |   10 |   0 |   0 |    4.2 |   2 | lavaWarn 1 [100%] @1.0; lavaLand 3 [73%] @1.9
+  hollow           10 |   10 |   0 |   0 |    5.4 |   3 | 
+  H-ratking         4 |    3 |   1 |   1 |   43.8 |  49 | royalSummons 9 [100%] @0.8; sigCollide 2 [75%] @30.1
+  H-broodmother     7 |    4 |   3 |   0 |   41.9 |  15 | webShot 4 [86%] @1.0; webbed 4 [86%] @1.5; sigCollide 1 [71%] @17.0
+  H-warlord         6 |    3 |   2 |   2 |   77.8 | 105 | chargeWarn 21 [100%] @2.9; warCharge 21 [100%] @4.0 | died mid-charge 0/3, fights with 0 charges 0/6
+  H-embergolem      3 |    3 |   0 |   0 |    5.5 |   2 | shellUp 1 [100%] @0.1; shellCrack 1 [100%] @4.0
+  H-magmalord       4 |    4 |   0 |   0 |   69.1 |  38 | lavaWarn 8 [100%] @1.0; lavaLand 24 [100%] @1.9; sigCollide 2 [75%] @18.1
+  H-boneking        4 |    3 |   1 |   1 |   86.9 |  92 | reassemble 1 [75%] @70.3 | rise->death med 16.67s, <0.5s 0/3, <1.5s(still stunned) 0/3
+  HEART             9 |    5 |   4 |   4 |  128.0 | 108 | 
+ACH: first_boss 0h03 | flow 0h00 | full_party 0h20 | retire1 0h29 | gatekeeper 0h37 | rat 0h04 | epic 0h35 | caverns 0h08 | comeback 0h08 | echo 3h35 | ult_boss 1h06 | revive NO | speed60 1h26 | blitz 1h24 | magma 0h37 | void 1h06 | hollow 1h16 | hollowed6 3h34 | f100 3h13 | codex28 NO | f125 NO | retire10 6h04 | omen1 0h54 | omen10 NO | deep90 NO | legacy_all 6h55 | crucible10 7h59 | lv100 0h50 | chests100 3h26 | rats25 4h22 | idle50 NO | keys10k 1h19 | keys100k NO | flow1h 2h08 | flow10h NO | ults1k 2h44
+PROTO on: rat,web,shell,lava,enrage,reass  N={"ratFirst":0.8,"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.3,"shellDur":5,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.8,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08}
+PROTO rat summons 58 spawned, 57 killed
+PROTO webs 64, hero-seconds webbed 150.4
+PROTO shells 24, cracked by ults 10 (42%), timed out 9
+PROTO lava drops landed 165
+PROTO sig warnings 177, colliding with a void warning (<1.2 s) 25

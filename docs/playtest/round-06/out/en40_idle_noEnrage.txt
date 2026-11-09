@@ -1,0 +1,25 @@
+=== idle 40h x3 seeds, retire nudge, omen random ===
+--- noEnrage --- (98s)
+  1h00   f39.3 (39-40) R0 trophies 0.0 codex 0.0 fame x1 ach 6.0 retires 0.0 wipes 11 (hollow 0) enrages 0 Sanct 5 dyn 0.0
+  2h00   f65.3 (59-69) R77 trophies 0.0 codex 0.0 fame x5 ach 14.0 retires 2.3 wipes 11 (hollow 0) enrages 0 Sanct 13 dyn 1.0
+  4h00   f89.7 (87-93) R192 trophies 3.3 codex 1.0 fame x15 ach 19.3 retires 6.0 wipes 13 (hollow 2) enrages 0 Sanct 57 dyn 2.0
+  8h00   f107.3 (106-110) R275 trophies 7.3 codex 2.0 fame x28 ach 23.0 retires 9.7 wipes 15 (hollow 4) enrages 0 Sanct 147 dyn 3.0
+  16h00  f126.7 (124-130) R399 trophies 11.0 codex 8.7 fame x64 ach 25.3 retires 15.3 wipes 42 (hollow 31) enrages 0 Sanct 316 dyn 5.0
+  24h00  f134.7 (134-136) R453 trophies 12.0 codex 9.0 fame x89 ach 26.0 retires 18.3 wipes 75 (hollow 65) enrages 0 Sanct 458 dyn 6.0
+  32h00  f141.0 (138-145) R498 trophies 12.7 codex 12.0 fame x117 ach 27.7 retires 21.0 wipes 101 (hollow 91) enrages 0 Sanct 604 dyn 6.3
+  40h00  f143.0 (140-149) R513 trophies 13.0 codex 14.0 fame x129 ach 27.7 retires 22.7 wipes 125 (hollow 114) enrages 0 Sanct 688 dyn 7.0
+  blocked at a Hollowed boss: 372-807 min total
+  boss fights by band (all seeds):
+    f10-40    n   169  won  93%  enrage   0%  wipe   7%  win wall med 2s p90 22s max 101s  (fightT at win p90 -999999979s)  enrage wall med NaNs
+    f41-69    n   133  won 100%  enrage   0%  wipe   0%  win wall med 2s p90 16s max 165s  (fightT at win p90 -999999984s)  enrage wall med NaNs
+    f70-99    n   179  won  95%  enrage   0%  wipe   4%  win wall med 5s p90 83s max 339s  (fightT at win p90 -999999917s)  enrage wall med NaNs
+    f100-129  n   234  won  48%  enrage   0%  wipe  49%  win wall med 66s p90 294s max 833s  (fightT at win p90 -999999717s)  enrage wall med NaNs
+    f130+     n   244  won  10%  enrage   0%  wipe  90%  win wall med 497s p90 1008s max 1393s  (fightT at win p90 -999999052s)  enrage wall med NaNs
+  f70+ by boss: H:hollow n128 won82% en0% | H:broodmother n131 won24% en0% | H:embergolem n51 won59% en0% | H:magmalord n119 won30% en0% | H:ratking n59 won51% en0% | H:boneking n129 won29% en0% | H:warlord n40 won90% en0%
+  f70+ enrage rate by omen: quiet 0% (n24) | march 0% (n21) | gilded 0% (n53) | deep 0% (n126) | hoard 0% (n13) | embertide 0% (n56) | glass 0% (n132) | storm 0% (n56) | fever 0% (n94) | muster 0% (n82)
+  fights that passed 180 s without enraging (shipped guard bug): 0 of 64 long fights (won 0, lost 0)
+  enrages/seed 0.0 (0-0), wipes/seed 117.7 boss + other; War Charges/seed 231, Reassembles/seed 19
+  codex: ranks reached (h): 1:3.3 4:9.5 7:11.1 14:34.8(2/3) 21:-(0/3) 28:-(0/3)
+  achievements unlocked: 27-28/36
+  rat 4m, first_boss 7m, comeback 15m, caverns 20m, full_party 35m, retire1 61m, epic 62m, gatekeeper 76m, magma 76m, idle50 87m, omen1 96m, lv100 108m, void 114m, echo 118m, hollow 144m, revive 151m, speed60 155m, blitz 177m, rats25 187m, hollowed6 354m, f100 355m, ult_boss 377m, chests100 404m, retire10 509m, deep90 735m, f125 899m, omen10 1703m(2/3), ults1k 1763m, flow NEVER, codex28 NEVER, legacy_all NEVER, crucible10 NEVER, keys10k NEVER, keys100k NEVER, flow1h NEVER, flow10h NEVER
+  trophy first reached (h): f75 2.6 f80 3.0 f85 3.5 f90 4.1 f95 4.8 f100 5.9 f105 7.1 f110 8.2 f115 9.8 f120 11.5 f125 15.0 f130 17.6 f140 30.1

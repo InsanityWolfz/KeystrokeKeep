@@ -21,7 +21,7 @@
   --rare: #57a8ff;
   --epic: #c472ff;
   --strip-h: 192px;
-  --font-ui: 'Pixelify Sans', 'Silkscreen', ui-monospace, monospace;
+  --font-ui: 'KK Digits', 'Pixelify Sans', 'Silkscreen', ui-monospace, monospace;
   --font-px: 'Silkscreen', 'Pixelify Sans', ui-monospace, monospace;
 }
 
@@ -436,3 +436,5 @@ body.native #panel { border-bottom: 0; }
 /* Round 5: digits in the pixel font misread at 12px */
 .omen .up, .omen .down, .card .desc, .demo-stats span { font-size: 14px; }
 .demo-pill { align-self: center; }
+
+.demo-pill { display: table; margin: 3px auto 0; }

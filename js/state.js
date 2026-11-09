@@ -87,8 +87,9 @@
     for (const def of D.WORKSHOP) { const l = S.workshop[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.LEGACY) { const l = S.legacy[def.id] || 0; if (l) def.apply(m, l); }
     if (S.omen) { const o = D.OMENS.find((x) => x.id === S.omen); if (o) o.apply(m); }
-    m.codexRanks = 0;
-    for (const k in (S.codex || {})) m.codexRanks += D.CODEX_RANKS.filter((n) => S.codex[k] >= n).length;
+    // old saves kept per-boss counts: fold them into the total once
+    if (S.codex && Object.keys(S.codex).length && !S.codexKills) { S.codexKills = Object.values(S.codex).reduce((a, b) => a + b, 0); S.codex = {}; }
+    m.codexRanks = Math.min(D.CODEX_MAX, Math.floor((S.codexKills || 0) / D.CODEX_EVERY));
     if (m.codexRanks) { const c = Math.pow(1.03, m.codexRanks); m.dmg *= c; m.gold *= c; }
     m.trophies = D.TROPHIES.filter((f) => S.maxFloorEver >= f).length;
     if (m.trophies) { const t = Math.pow(1.05, m.trophies); m.dmg *= t; m.gold *= t; }
@@ -304,7 +305,7 @@
     const gain = A.renownGain();
     if (gain <= 0 && !A.canRedelve()) return false;
     S.renown += gain; S.renownLifetime += gain; S.retires++;
-    S.runTime = 0; S.runCapCleared = false;
+    S.runTime = 0; S.runCapCleared = false; S.bossWounds = {}; S.bossLosses = 0; S.campUntil = 0;
     S.incomeRate = 0; S.incomeAvg = 0; // a fresh delve doesn't keep the old run's income
     // Delve Omens: from the 2nd retire on, the next delve offers 3 omens (not in the demo)
     S.omen = null;

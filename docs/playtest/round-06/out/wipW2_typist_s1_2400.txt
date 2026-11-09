@@ -1,0 +1,28 @@
+=== R6 probe typist s1 2400m PROTO=week2,reass: maxEver 180, retires 32, renown life 865, ach 34/36, trophies 17, codex 25/28, wipes 113, fame x851.6, unspent embers 11917
+beats per 30 min from h1: 11 6 7 4 7 3 1 1 1 3 0 3 3 0 3 1 2 0 0 0 0 2 0 0 2 0 1 1 0 4 3 1 0 1 0 1 0 1 0 0 2 1 0 0 0 0 2 2 0 0 0 1 1 0 0 0 1 0 0 3 0 1 2 0 0 0 0 1 0 0 0 2 0 0 3 0 0 0 0
+AFTER 8h: 45 beats {"OMEN":2,"CODEX":21,"SEAL":4,"LANTERN":5,"TROPHY":6,"ACH":4,"TROPHY2":3}; longest gap 151 min (from 21h32); empty 2h windows 2/17
+longest stretch with no new depth record (30-min snapshots): 3.5 h from 31h00
+codex: 2h45 The Hollow r1, 3h50 H-Ember Colossus r2, 5h36 H-Brood Mother r3, 7h09 H-Brood Mother r4, 8h07 H-Goblin Warlord r5, 9h20 H-Bone King r6, 11h36 The Hollow r7, 13h09 H-Ember Colossus r8, 14h30 H-Rat King r9, 15h46 H-Brood Mother r10, 16h09 H-Magma Lord r11, 17h43 The Heart of the Keep r12, 19h53 The Heart of the Keep r13, 21h32 The Heart of the Keep r14, 24h03 H-Rat King r15, 24h32 H-Brood Mother r16, 26h36 The Hollow r17, 27h08 H-Magma Lord r18, 29h09 H-Rat King r19, 30h51 H-Rat King r20, 32h09 H-Bone King r21, 34h39 The Heart of the Keep r22, 36h31 H-Brood Mother r23, 36h48 H-Ember Colossus r24, 38h24 H-Goblin Warlord r25
+trophies: f75@1h30 f80@1h35 f85@1h56 f90@2h01 f95@2h33 f100@3h02 f105@3h43 f110@4h26 f115@5h27 f120@6h30 f125@7h18 f130@9h05 f140@11h32 f150@15h33 f160@21h18 f170@30h31 f180@38h06
+retires (32): 0h24 f30 +13, 0h49 f50 +38, 1h14 f70 +61, 1h39 f81 +42, 2h04 f91 +44, 2h39 f98 +34, 3h10 f100 +10, 3h45 f106 +35, 4h34 f110 +22, 5h31 f116 +35, 6h38 f120 +24, 7h18 f125 +31, 8h00 f120 +0, 9h05 f130 +33, 10h25 f135 +33, 11h32 f140 +36, 13h04 f145 +36, 14h25 f149 +30, 15h41 f150 +7, 16h03 f138 +0, 17h35 f154 +31, 19h45 f157 +24, 21h26 f160 +24, 23h57 f164 +33, 24h26 f150 +0, 26h32 f166 +17, 28h55 f167 +8, 30h39 f170 +26, 32h00 f170 +0, 34h31 f174 +34, 36h26 f178 +36, 38h14 f180 +18
+SIG totals: {"chargeWarn":235,"warCharge":227,"reassemble":37,"bossEnrage":33,"royalSummons":0,"webShot":0,"webbed":0,"shellUp":0,"shellCrack":0,"lavaWarn":0,"lavaLand":0,"seal":5,"dailyRedelve":4,"sigCollide":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           4 |    4 |   0 |   0 |   48.8 |  29 | 
+  boneking         14 |    6 |   8 |   7 |   71.3 | 104 | reassemble 1 [71%] @70.0 | rise->death med 28.87s, <0.5s 0/6, <1.5s(still stunned) 0/6
+  broodmother       8 |    5 |   3 |   0 |    8.0 |  12 | 
+  warlord          12 |   11 |   1 |   1 |   23.5 |  24 | chargeWarn 5 [75%] @3.1; warCharge 5 [67%] @4.2 | died mid-charge 4/11, fights with 0 charges 4/12
+  embergolem       37 |   34 |   2 |   2 |    1.9 |   0 | 
+  magmalord        36 |   35 |   1 |   1 |    2.0 |   0 | 
+  hollow           30 |   30 |   0 |   0 |    1.9 |   0 | 
+  H-ratking        47 |   24 |  23 |   3 |    3.6 |  13 | 
+  H-broodmother    37 |   24 |  13 |   1 |    8.4 |   7 | 
+  H-warlord        33 |   26 |   7 |   4 |    6.6 |   6 | chargeWarn 2 [82%] @2.8; warCharge 2 [70%] @4.1 | died mid-charge 8/26, fights with 0 charges 10/33
+  H-embergolem     36 |   22 |  14 |   3 |    6.9 |  14 | 
+  H-magmalord      47 |   26 |  21 |   4 |   10.0 |  10 | 
+  H-boneking       32 |   25 |   7 |   5 |    7.8 |  13 | reassemble 1 [84%] @9.0 | rise->death med 2.50s, <0.5s 0/25, <1.5s(still stunned) 0/25
+  HEART            32 |   26 |   5 |   2 |    4.5 |   3 | 
+ACH: first_boss 0h03 | flow 0h00 | full_party 0h14 | retire1 0h24 | gatekeeper 0h39 | rat 0h04 | epic 1h17 | caverns 0h08 | comeback 0h08 | echo 1h17 | ult_boss 0h26 | revive 0h14 | speed60 1h23 | blitz 16h14 | magma 0h40 | void 1h05 | hollow 1h28 | hollowed6 3h54 | f100 3h02 | codex28 NO | f125 7h18 | retire10 5h31 | omen1 0h49 | omen10 15h41 | deep90 3h20 | legacy_all 6h39 | crucible10 6h47 | lv100 0h59 | chests100 2h18 | rats25 3h22 | idle50 NO | keys10k 1h18 | keys100k 13h03 | flow1h 2h09 | flow10h 16h59 | ults1k 3h01
+PROTO on: omen,lantern,tro,reass  N={"ratFirst":0.8,"ratMode":"timer","ratTh":[0.6,0.3],"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.3,"shellDur":5,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.8,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08,"dodge":false,"enrHp":0.5,"enrCap":420}
+PROTO sig warnings 0, colliding with a void warning (<1.2 s) 0
+PROTO SEALS 5: 0.9h f40 after 5min, 8.2h f110 after 12min, 16.4h f135 after 19min, 24.9h f149 after 24min, 32.5h f155 after 25min | daily re-delves 4
+PROTO LANTERN buys: L1@8.6h L2@14.4h L3@18.8h L4@24.5h L5@31.9h | void dmg prevented 6.38T

@@ -1,0 +1,14 @@
+=== R6 probe typist s2 180m DEMO: maxEver 40, retires 24, renown life 120, ach 16/36, trophies 0, codex 0/28, wipes 7, fame x7.4, unspent embers 528
+beats per 30 min from h1: 2 1 1 0 0
+longest gap after h1: 52 min (from 2h08)
+codex: none
+trophies: 
+retires (24): 0h31 f40 +30, 0h40 f40 +6, 0h48 f40 +6, 0h56 f40 +6, 1h04 f40 +6, 1h11 f40 +6, 1h18 f40 +6, 1h25 f40 +6, 1h31 f40 +6, 1h37 f40 +6, 1h43 f40 +6, 1h49 f40 +6, 1h55 f40 +6, 2h01 f40 +6, 2h07 f40 +6, 2h13 f40 +6, 2h18 f40 +0, 2h24 f40 +0, 2h30 f40 +0, 2h35 f40 +0, 2h41 f40 +0, 2h47 f40 +0, 2h53 f40 +0, 2h58 f40 +0
+SIG totals: {"chargeWarn":38,"warCharge":30,"reassemble":24,"bossEnrage":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   17.7 |   9 | 
+  boneking         24 |   24 |   0 |   0 |    2.8 |   0 | reassemble 1 [100%] @2.4 | rise->death med 0.43s, <0.5s 19/24, <1.5s(still stunned) 22/24
+  broodmother      27 |   24 |   3 |   0 |    2.8 |   1 | 
+  warlord          24 |   24 |   0 |   0 |    5.8 |   1 | chargeWarn 1 [88%] @3.1; warCharge 1 [63%] @4.4 | died mid-charge 8/24, fights with 0 charges 9/24
+DEMO: card 0h30, laps 24, re-delves 24, lifetime 120, best 3.9m
+ACH: first_boss 0h04 | flow 0h00 | full_party 0h13 | retire1 0h31 | gatekeeper 0h30 | rat 0h04 | epic 0h21 | caverns 0h08 | comeback 0h21 | echo 0h51 | ult_boss 0h52 | revive 0h15 | speed60 NO | blitz 1h08 | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | codex28 NO | f125 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 NO | chests100 1h54 | rats25 NO | idle50 NO | keys10k 1h19 | keys100k NO | flow1h 2h08 | flow10h NO | ults1k NO

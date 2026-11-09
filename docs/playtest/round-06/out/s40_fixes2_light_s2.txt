@@ -1,0 +1,26 @@
+=== R6 probe light s2 2400m PROTO=fixes2: maxEver 154, retires 25, renown life 596, ach 32/36, trophies 14, codex 16/28, wipes 122, fame x203.8, unspent embers 14456
+beats per 30 min from h1: 4 6 5 4 5 4 2 1 2 4 0 4 1 0 5 0 0 0 3 1 0 2 1 0 4 0 0 1 0 0 0 0 0 0 1 0 1 0 0 0 0 2 0 0 0 0 0 0 0 3 1 0 0 1 0 1 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0
+AFTER 8h: 30 beats {"TROPHY":7,"ACH":6,"OMEN":4,"CODEX":13}; longest gap 245 min (from 28h40); empty 2h windows 5/17
+longest stretch with no new depth record (30-min snapshots): 4.5 h from 33h00
+codex: 2h52 The Hollow r1, 6h52 H-Brood Mother r1, 7h22 The Heart of the Keep r2, 8h18 H-Ember Colossus r1, 10h20 H-Rat King r1, 10h23 H-Bone King r1, 10h59 H-Goblin Warlord r1, 12h02 H-Magma Lord r1, 14h51 The Heart of the Keep r3, 25h35 H-Bone King r2, 25h41 H-Goblin Warlord r2, 25h49 H-Ember Colossus r2, 26h06 H-Magma Lord r2, 27h53 H-Rat King r2, 28h40 H-Brood Mother r2, 37h39 The Heart of the Keep r4
+trophies: f75@2h24 f80@2h32 f85@3h07 f90@3h51 f95@4h38 f100@5h32 f105@6h41 f110@8h04 f115@10h05 f120@11h30 f125@13h19 f130@19h08 f140@21h47 f150@32h45
+retires (25): 0h45 f40 +30, 1h12 f54 +32, 1h37 f65 +33, 2h05 f74 +31, 2h40 f82 +32, 3h16 f89 +31, 3h59 f90 +5, 4h45 f97 +33, 5h40 f100 +15, 6h43 f106 +32, 8h12 f110 +24, 10h13 f116 +35, 11h38 f120 +26, 13h19 f125 +31, 14h39 f127 +13, 16h46 f128 +7, 18h12 f129 +6, 19h16 f130 +7, 20h32 f135 +33, 21h47 f140 +36, 25h27 f145 +36, 28h35 f146 +7, 31h04 f148 +15, 32h53 f150 +15, 37h29 f154 +31
+SIG totals: {"chargeWarn":295,"warCharge":288,"reassemble":22,"bossEnrage":44,"royalSummons":0,"webShot":0,"webbed":0,"shellUp":0,"shellCrack":0,"lavaWarn":0,"lavaLand":0,"seal":0,"dailyRedelve":0,"sigCollide":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   37.9 |  21 | 
+  boneking          5 |    4 |   1 |   0 |    8.5 |   3 | reassemble 1 [100%] @5.6 | rise->death med 2.90s, <0.5s 0/4, <1.5s(still stunned) 0/4
+  broodmother      10 |    8 |   2 |   0 |    3.3 |   1 | 
+  warlord          10 |   10 |   0 |   0 |    3.2 |   1 | chargeWarn 1 [60%] @3.5; warCharge 0 [30%] @5.0 | died mid-charge 3/10, fights with 0 charges 7/10
+  embergolem       25 |   25 |   0 |   0 |    1.9 |   0 | 
+  magmalord        24 |   24 |   0 |   0 |    2.1 |   0 | 
+  hollow           23 |   23 |   0 |   0 |    2.8 |   1 | 
+  H-broodmother    25 |   14 |  11 |   3 |   33.5 |  17 | 
+  H-embergolem     47 |   13 |  34 |   4 |   63.9 |  18 | 
+  H-ratking        26 |   14 |  12 |   7 |   20.0 |  50 | 
+  H-boneking       45 |   15 |  30 |  17 |   40.7 |  32 | reassemble 0 [38%] @34.8 | rise->death med 6.23s, <0.5s 0/15, <1.5s(still stunned) 0/15
+  H-warlord        31 |   14 |  17 |   8 |   48.0 |  42 | chargeWarn 9 [94%] @3.2; warCharge 9 [90%] @4.4 | died mid-charge 3/14, fights with 0 charges 3/31
+  H-magmalord      18 |   14 |   3 |   3 |   56.0 |  57 | 
+  HEART            24 |   17 |   7 |   2 |   22.8 |  18 | 
+ACH: first_boss 0h06 | flow 0h00 | full_party 0h22 | retire1 0h45 | gatekeeper 0h57 | rat 0h04 | epic 2h02 | caverns 0h16 | comeback 0h16 | echo 4h15 | ult_boss 0h51 | revive 0h25 | speed60 2h13 | blitz 2h47 | magma 0h57 | void 1h33 | hollow 2h01 | hollowed6 5h55 | f100 5h32 | codex28 NO | f125 13h19 | retire10 8h12 | omen1 1h12 | omen10 NO | deep90 6h58 | legacy_all 13h20 | crucible10 11h57 | lv100 1h25 | chests100 3h20 | rats25 3h24 | idle50 NO | keys10k 3h22 | keys100k 34h23 | flow1h 8h11 | flow10h NO | ults1k 5h27
+PROTO on: enrage2,reass  N={"ratFirst":0.8,"ratMode":"timer","ratTh":[0.6,0.3],"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.3,"shellDur":5,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.8,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08,"dodge":false,"enrHp":0.5,"enrCap":420}
+PROTO sig warnings 0, colliding with a void warning (<1.2 s) 0

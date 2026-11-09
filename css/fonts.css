@@ -5,3 +5,7 @@
 @font-face { font-family: 'Pixelify Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('../assets/fonts/pixelify-sans-latin-700-normal.woff2') format('woff2'); }
 @font-face { font-family: 'Silkscreen'; font-style: normal; font-weight: 400; font-display: swap; src: url('../assets/fonts/silkscreen-latin-400-normal.woff2') format('woff2'); }
 @font-face { font-family: 'Silkscreen'; font-style: normal; font-weight: 700; font-display: swap; src: url('../assets/fonts/silkscreen-latin-700-normal.woff2') format('woff2'); }
+
+/* Pixelify Sans confuses 2/8 and 5/S at small sizes: every digit and % uses Silkscreen instead */
+@font-face { font-family: 'KK Digits'; font-style: normal; font-weight: 400; font-display: swap; src: url('../assets/fonts/silkscreen-latin-400-normal.woff2') format('woff2'); unicode-range: U+0025, U+0030-0039; }
+@font-face { font-family: 'KK Digits'; font-style: normal; font-weight: 700; font-display: swap; src: url('../assets/fonts/silkscreen-latin-700-normal.woff2') format('woff2'); unicode-range: U+0025, U+0030-0039; }

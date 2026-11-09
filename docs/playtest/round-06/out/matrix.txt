@@ -1,0 +1,10 @@
+cfg      typist_s1_480   typist_s2_480   idle_s1_480     idle_s2_480     light_s1_480    burst_s1_480    idle_s1_2400    light_s1_2400   typist_s1_2400  
+fixes    f125 w18 e10    f120 w21 e15    f90 w21 e12     f90 w22 e11     f110 w23 e9     f97 w28 e15     f118 w228 e159  f154 w162 e119  f169 w211 e78   
+rat      f120 w23 e6     f120 w22 e13    f89 w30 e18     f90 w22 e10     f106 w28 e16    f97 w29 e9      f110 w250 e234  f150 w172 e123  f170 w210 e75   
+rathp    f125 w11 e7     f120 w19 e12    f90 w26 e8      f90 w33 e4      f106 w35 e17    f100 w18 e3     f110 w251 e232  f150 w211 e93   f168 w215 e75   
+web      f120 w25 e11    f125 w20 e6     f90 w21 e11     f90 w22 e10     f106 w25 e10    f96 w29 e14     f110 w248 e235  f150 w181 e90   f174 w210 e88   
+shell    f120 w22 e14    f120 w19 e12    f90 w18 e9      f95 w23 e13     f106 w29 e14    f100 w21 e8     f110 w259 e247  f149 w172 e148  f170 w301 e66   
+shell54  f120 w23 e12    f120 w23 e10    f90 w17 e9      f90 w16 e6      f100 w24 e13    f92 w31 e16     f100 w276 e267  f149 w212 e121  f164 w208 e132  
+lava     f120 w22 e14    f125 w22 e12    f90 w19 e11     f90 w24 e14     f106 w26 e14    f96 w38 e8      f106 w263 e238  f154 w174 e120  f170 w268 e76   
+lava5    f125 w13 e5     f125 w20 e10    f90 w21 e10     f91 w22 e12     f100 w27 e18    f97 w28 e15     f116 w242 e231  f150 w173 e116  f170 w262 e103  
+final    f124 w17 e10    f123 w18 e17    f94 w43 e11     f89 w32 e16     f106 w30 e6     f98 w19 e7      f110 w254 e228  f150 w231 e96   f170 w218 e65   

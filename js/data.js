@@ -114,7 +114,7 @@
     { id: 'crucible', name: 'Ember Crucible', icon: 'spark', base: 60, growth: 1.6, max: 10, desc: (l) => `+15% Embers from every source per level (now +${15 * l}%)`, apply: (m, l) => { m.emberGain *= 1 + 0.15 * l; } },
     { id: 'overcharge', name: 'Overcharge', icon: 'gem', base: 100, growth: 1.6, max: 999, desc: (l) => `Ultimate damage x1.3 per level (now x${Math.pow(1.3, l).toFixed(2)})`, apply: (m, l) => { m.ultPow *= Math.pow(1.3, l); } },
     { id: 'kindling', name: 'Second Wind', icon: 'candle', base: 120, growth: 1.55, max: 10, needsTyping: 'FOR TYPISTS WHO PAUSE', desc: (l) => `After a break of 30s+, your next ${4 * l} keys each give +2 extra Sparks`, apply: (m, l) => { m.secondWind += 4 * l; } },
-    { id: 'dynamo', name: 'Dynamo', icon: 'clock', base: 150, growth: 1.6, max: 10, desc: (l) => `+6% power per level while you're not typing (now +${6 * l}%)`, apply: (m, l) => { m.dynamo += 0.06 * l; } },
+    { id: 'dynamo', name: 'Dynamo', icon: 'clock', base: 150, growth: 1.6, max: 10, desc: (l) => `+10% power per level while you're not typing (now +${10 * l}%)`, apply: (m, l) => { m.dynamo += 0.10 * l; } },
     { id: 'static', name: 'Static Coins', icon: 'keycap', base: 140, growth: 1.75, max: 8, needsTyping: true, desc: (l) => `Each keystroke: +1% chance per level to mint a coin (now ${l}%)`, apply: (m, l) => { m.keyCoin += 0.01 * l; } },
   ];
 
@@ -148,7 +148,8 @@
 
   // Depth trophies: permanent x1.05 damage & gold for each record depth reached
   // Hollow Codex: each late boss (The Hollow + 6 Hollowed) ranks up at these kill counts, x1.03 each
-  const CODEX_RANKS = [3, 10, 20, 40];
+  const CODEX_RANKS = [3, 10, 20, 40]; // legacy per-boss thresholds (old saves)
+  const CODEX_EVERY = 8, CODEX_MAX = 28; // one rank per 8 Hollowed kills
   const TROPHIES = [75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 140, 150];
 
   const FERVOR_TIERS = [
@@ -158,5 +159,5 @@
     { at: 90, name: 'FLOW STATE', mult: 2.2 },
   ];
 
-  KK.DATA = { HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES, CODEX_RANKS };
+  KK.DATA = { HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES, CODEX_RANKS, CODEX_EVERY, CODEX_MAX };
 })();

@@ -1,0 +1,26 @@
+=== R6 probe idle s2 480m PROTO=fixes,sig: maxEver 89, retires 8, renown life 180, ach 19/36, trophies 3, codex 1/28, wipes 32, fame x13.1, unspent embers 407
+beats per 30 min from h1: 8 2 5 2 3 2 2 4 2 1 2 1 0 0 0
+AFTER 8h: 0 beats {}; longest gap 0 min (from 8h00); empty 2h windows 1/1
+longest stretch with no new depth record (30-min snapshots): 1.5 h from 5h00
+codex: 5h18 The Hollow r1
+trophies: f75@4h00 f80@4h53 f85@6h19
+retires (8): 0h45 f30 +13, 1h27 f47 +31, 2h01 f59 +32, 2h36 f69 +32, 3h11 f70 +4, 4h14 f78 +30, 5h01 f80 +8, 6h29 f87 +30
+SIG totals: {"chargeWarn":28,"warCharge":28,"reassemble":6,"bossEnrage":16,"royalSummons":7,"webShot":143,"webbed":142,"shellUp":144,"shellCrack":1,"lavaWarn":41,"lavaLand":120,"seal":0,"dailyRedelve":0,"sigCollide":19}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           2 |    2 |   0 |   0 |   39.6 |  23 | royalSummons 3 [100%] @0.8
+  boneking          8 |    6 |   2 |   0 |   10.4 |   4 | reassemble 1 [75%] @7.5 | rise->death med 2.90s, <0.5s 0/6, <1.5s(still stunned) 0/6
+  broodmother       9 |    8 |   1 |   0 |    2.9 |   0 | webShot 1 [100%] @1.0; webbed 1 [100%] @1.5
+  warlord           8 |    8 |   0 |   0 |    6.4 |   2 | chargeWarn 1 [88%] @3.5; warCharge 1 [88%] @4.6 | died mid-charge 1/8, fights with 0 charges 1/8
+  embergolem        7 |    7 |   0 |   0 |   16.8 |   9 | shellUp 2 [100%] @0.1
+  magmalord         6 |    6 |   0 |   0 |   65.6 |  39 | lavaWarn 9 [100%] @1.0; lavaLand 24 [100%] @1.9
+  hollow            8 |    4 |   4 |   4 |  150.3 | 110 | 
+  H-ratking         1 |    0 |   1 |   1 |    NaN | 109 | royalSummons 1 [100%] @0.8
+  H-broodmother     5 |    1 |   4 |   4 |  120.4 | 110 | webShot 25 [100%] @1.0; webbed 25 [100%] @1.5; sigCollide 4 [100%] @16.0
+  H-embergolem      8 |    1 |   7 |   7 |  176.6 | 110 | shellUp 15 [100%] @0.1; shellCrack 0 [13%] @135.9
+ACH: first_boss 0h07 | flow NO | full_party 0h57 | retire1 0h45 | gatekeeper 1h15 | rat 0h04 | epic 1h01 | caverns 0h19 | comeback 0h19 | echo 1h02 | ult_boss 2h41 | revive 4h56 | speed60 4h24 | blitz NO | magma 1h15 | void 2h22 | hollow 3h51 | hollowed6 NO | f100 NO | codex28 NO | f125 NO | retire10 NO | omen1 1h27 | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 2h01 | chests100 NO | rats25 3h32 | idle50 1h44 | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO
+PROTO on: enrage,reass,rat,web,shell,lava  N={"ratFirst":0.8,"ratMode":"hp","ratTh":[0.6,0.3],"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.5,"shellDur":4,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.5,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08,"dodge":true}
+PROTO rat summons 14 spawned, 14 killed
+PROTO webs 143, hero-seconds webbed 352.5
+PROTO shells 144, cracked by ults 1 (1%), timed out 143
+PROTO lava drops landed 120
+PROTO sig warnings 335, colliding with a void warning (<1.2 s) 19

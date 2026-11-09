@@ -1,0 +1,24 @@
+=== R6 probe heavy s1 480m: maxEver 139, retires 14, renown life 486, ach 32/36, trophies 12, codex 9/28, wipes 13, fame x108.4, unspent embers 3649
+beats per 30 min from h1: 6 6 7 5 3 1 4 9 3 2 0 2 0 1 0
+AFTER 8h: 0 beats {}; longest gap 0 min (from 8h00); empty 2h windows 1/1
+longest stretch with no new depth record (30-min snapshots): 1.0 h from 6h00
+codex: 1h41 The Hollow r1, 3h33 The Hollow r2, 4h09 H-Rat King r1, 4h12 H-Bone King r1, 4h22 H-Goblin Warlord r1, 4h51 H-Brood Mother r1, 5h01 H-Magma Lord r1, 5h32 H-Ember Colossus r1, 6h40 The Hollow r3
+trophies: f75@1h01 f80@1h06 f85@1h30 f90@1h51 f95@2h12 f100@2h16 f105@2h47 f110@3h21 f115@4h00 f120@4h37 f125@5h26 f130@5h58
+retires (14): 0h18 f40 +30, 0h43 f67 +71, 1h08 f80 +49, 1h33 f87 +30, 1h58 f94 +32, 2h23 f101 +35, 2h49 f107 +32, 3h29 f110 +17, 4h03 f116 +35, 4h45 f120 +24, 5h26 f125 +34, 5h58 f130 +33, 6h36 f134 +30, 7h36 f139 +34
+SIG totals: {"chargeWarn":38,"warCharge":38,"reassemble":10,"bossEnrage":3}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   20.7 |  12 | 
+  boneking          4 |    3 |   1 |   0 |    3.2 |   9 | reassemble 1 [75%] @3.1 | rise->death med 0.43s, <0.5s 2/3, <1.5s(still stunned) 2/3
+  broodmother       7 |    5 |   2 |   0 |    2.0 |   1 | 
+  warlord           7 |    7 |   0 |   0 |    2.3 |   0 | chargeWarn 0 [14%] @3.2; warCharge 0 [14%] @4.4 | died mid-charge 2/7, fights with 0 charges 6/7
+  embergolem       14 |   14 |   0 |   0 |    2.0 |   0 | 
+  magmalord        14 |   14 |   0 |   0 |    2.4 |   1 | 
+  hollow           13 |   13 |   0 |   0 |    2.7 |   1 | 
+  H-embergolem      8 |    5 |   1 |   0 |   11.3 |  13 | 
+  H-ratking        11 |    6 |   5 |   0 |   56.3 |  16 | 
+  H-broodmother     7 |    6 |   1 |   0 |   11.5 |   6 | 
+  H-warlord         7 |    7 |   0 |   0 |   32.8 |  15 | chargeWarn 3 [100%] @2.8; warCharge 3 [100%] @3.8 | died mid-charge 0/7, fights with 0 charges 0/7
+  H-magmalord       9 |    7 |   1 |   1 |   13.1 |  10 | 
+  HEART            11 |   10 |   1 |   1 |   38.7 |  22 | 
+  H-boneking        8 |    7 |   1 |   1 |   26.0 |  28 | reassemble 1 [88%] @21.3 | rise->death med 7.00s, <0.5s 1/7, <1.5s(still stunned) 1/7
+ACH: first_boss 0h02 | flow 0h00 | full_party 0h10 | retire1 0h18 | gatekeeper 0h25 | rat 0h04 | epic 0h15 | caverns 0h07 | comeback 0h07 | echo 0h15 | ult_boss 0h07 | revive 4h43 | speed60 0h52 | blitz 0h52 | magma 0h25 | void 0h37 | hollow 0h57 | hollowed6 2h35 | f100 2h16 | codex28 NO | f125 5h26 | retire10 4h45 | omen1 0h43 | omen10 NO | deep90 4h52 | legacy_all 4h46 | crucible10 4h39 | lv100 0h36 | chests100 2h38 | rats25 3h08 | idle50 NO | keys10k 0h40 | keys100k 6h58 | flow1h 1h14 | flow10h NO | ults1k 2h07

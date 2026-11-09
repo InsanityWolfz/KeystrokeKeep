@@ -1,0 +1,27 @@
+=== R6 probe light s1 2400m PROTO=fixes,rat: maxEver 150, retires 23, renown life 567, ach 33/36, trophies 14, codex 15/28, wipes 211, fame x173.2, unspent embers 9545
+beats per 30 min from h1: 4 7 6 4 4 4 3 2 4 2 0 0 3 0 1 2 0 0 0 0 1 0 1 3 1 2 0 0 0 1 3 0 2 0 0 1 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 1 0 0 0 2 1 1 0 1 1 0 0
+AFTER 8h: 30 beats {"CODEX":14,"TROPHY":7,"ACH":7,"OMEN":2}; longest gap 477 min (from 21h51); empty 2h windows 5/17
+longest stretch with no new depth record (30-min snapshots): 6.5 h from 30h00
+codex: 2h54 The Hollow r1, 8h11 The Heart of the Keep r2, 8h53 H-Ember Colossus r1, 12h38 H-Rat King r1, 12h41 H-Bone King r1, 12h58 H-Goblin Warlord r1, 13h30 H-Brood Mother r1, 13h53 H-Magma Lord r1, 17h25 The Heart of the Keep r3, 30h09 H-Bone King r2, 30h50 H-Goblin Warlord r2, 36h48 H-Ember Colossus r2, 37h00 H-Magma Lord r2, 37h38 H-Rat King r2, 38h50 H-Brood Mother r2
+trophies: f75@2h25 f80@2h34 f85@3h13 f90@3h45 f95@4h30 f100@5h14 f105@7h21 f110@8h38 f115@12h27 f120@13h16 f125@16h00 f130@18h56 f140@29h48 f150@39h12
+retires (23): 0h48 f40 +30, 1h16 f54 +32, 1h41 f65 +36, 2h08 f74 +31, 2h42 f80 +24, 3h17 f87 +30, 3h53 f90 +14, 4h35 f97 +33, 5h22 f100 +15, 7h25 f106 +32, 8h46 f110 +22, 12h32 f116 +35, 13h24 f120 +24, 16h00 f125 +31, 17h14 f127 +13, 19h04 f130 +22, 21h49 f135 +33, 24h40 f137 +14, 27h19 f139 +15, 29h56 f140 +8, 36h33 f145 +36, 38h12 f148 +22, 39h20 f150 +15
+SIG totals: {"chargeWarn":370,"warCharge":367,"reassemble":24,"bossEnrage":93,"royalSummons":65,"webShot":0,"webbed":0,"shellUp":0,"shellCrack":0,"lavaWarn":0,"lavaLand":0,"seal":0,"dailyRedelve":0,"sigCollide":9}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           2 |    1 |   1 |   0 |   28.4 |  16 | royalSummons 3 [100%] @0.8
+  boneking          7 |    4 |   3 |   0 |    9.9 |  11 | reassemble 1 [71%] @7.2 | rise->death med 2.73s, <0.5s 0/4, <1.5s(still stunned) 0/4
+  broodmother       8 |    8 |   0 |   0 |    3.0 |   0 | 
+  warlord          10 |   10 |   0 |   0 |    2.5 |   1 | chargeWarn 0 [40%] @4.0; warCharge 0 [40%] @5.3 | died mid-charge 1/10, fights with 0 charges 6/10
+  embergolem       23 |   23 |   0 |   0 |    2.1 |   0 | 
+  magmalord        22 |   22 |   0 |   0 |    2.4 |   0 | 
+  hollow           24 |   21 |   3 |   0 |    2.6 |   1 | 
+  H-broodmother    15 |   11 |   4 |   1 |   23.9 |  14 | 
+  H-embergolem     72 |   11 |  61 |  20 |   12.5 |  46 | 
+  H-ratking        27 |   11 |  16 |  12 |   50.8 |  92 | royalSummons 2 [100%] @0.8; sigCollide 0 [30%] @64.1
+  H-boneking       72 |   13 |  58 |  30 |   35.9 |  54 | reassemble 0 [26%] @68.7 | rise->death med 6.47s, <0.5s 0/13, <1.5s(still stunned) 0/13
+  H-warlord        28 |   13 |  15 |  11 |   42.9 |  96 | chargeWarn 19 [100%] @3.0; warCharge 19 [96%] @4.1 | died mid-charge 3/13, fights with 0 charges 1/28
+  H-magmalord      36 |   12 |  23 |   1 |   52.0 |  39 | 
+  HEART            34 |   15 |  19 |  18 |   11.7 | 109 | 
+ACH: first_boss 0h06 | flow 0h00 | full_party 0h32 | retire1 0h48 | gatekeeper 0h59 | rat 0h04 | epic 0h36 | caverns 0h17 | comeback 0h06 | echo 0h37 | ult_boss 1h23 | revive 2h03 | speed60 2h15 | blitz 2h54 | magma 0h59 | void 1h36 | hollow 2h04 | hollowed6 5h40 | f100 5h14 | codex28 NO | f125 16h00 | retire10 7h25 | omen1 1h16 | omen10 NO | deep90 17h22 | legacy_all 16h00 | crucible10 15h30 | lv100 1h31 | chests100 4h00 | rats25 4h06 | idle50 21h51 | keys10k 3h28 | keys100k 34h50 | flow1h 11h11 | flow10h NO | ults1k 5h56
+PROTO on: enrage,reass,rat  N={"ratFirst":0.8,"ratMode":"hp","ratTh":[0.6,0.3],"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.3,"shellDur":5,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.8,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08,"dodge":false}
+PROTO rat summons 130 spawned, 119 killed
+PROTO sig warnings 65, colliding with a void warning (<1.2 s) 9

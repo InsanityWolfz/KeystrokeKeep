@@ -1,0 +1,30 @@
+=== R6 probe idle s1 2400m PROTO=sig,fixes: maxEver 110, retires 15, renown life 302, ach 26/36, trophies 8, codex 6/28, wipes 263, fame x33.6, unspent embers 1594
+beats per 30 min from h1: 8 4 2 2 4 4 3 2 1 0 0 0 2 1 0 4 0 2 2 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1 1 1 1 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 2 1 0 0 0 0 0
+AFTER 8h: 26 beats {"OMEN":2,"ACH":9,"TROPHY":5,"MAJOR":5,"CODEX":5}; longest gap 716 min (from 22h58); empty 2h windows 10/17
+longest stretch with no new depth record (30-min snapshots): 12.0 h from 23h00
+codex: 4h49 The Hollow r1, 22h07 H-Rat King r1, 22h54 The Hollow r2, 22h58 H-Brood Mother r1, 35h06 H-Ember Colossus r1, 37h37 H-Bone King r1
+trophies: f75@3h42 f80@4h24 f85@7h24 f90@9h44 f95@18h35 f100@22h39 f105@34h54 f110@37h17
+retires (15): 1h00 f40 +30, 1h33 f50 +21, 2h17 f60 +28, 3h00 f70 +33, 3h51 f78 +30, 4h32 f80 +8, 7h29 f87 +33, 8h40 f89 +9, 9h52 f90 +5, 18h39 f96 +31, 19h48 f98 +10, 21h56 f99 +5, 22h47 f100 +5, 34h58 f106 +32, 37h25 f110 +22
+SIG totals: {"chargeWarn":163,"warCharge":162,"reassemble":13,"bossEnrage":226,"royalSummons":602,"webShot":112,"webbed":110,"shellUp":132,"shellCrack":0,"lavaWarn":215,"lavaLand":624,"seal":0,"dailyRedelve":0,"sigCollide":198}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           2 |    1 |   1 |   0 |   41.1 |  23 | royalSummons 5 [100%] @0.8
+  boneking          7 |    5 |   2 |   0 |   11.5 |   4 | reassemble 1 [71%] @8.2 | rise->death med 3.00s, <0.5s 0/5, <1.5s(still stunned) 0/5
+  broodmother      12 |   10 |   2 |   0 |    3.1 |   2 | webShot 1 [100%] @1.0; webbed 1 [100%] @1.5
+  warlord          14 |   14 |   0 |   0 |    2.7 |   1 | chargeWarn 0 [43%] @3.6; warCharge 0 [43%] @4.7 | died mid-charge 2/14, fights with 0 charges 8/14
+  embergolem       16 |   14 |   1 |   1 |    6.3 |   3 | shellUp 1 [100%] @0.1
+  magmalord        14 |   13 |   1 |   1 |    9.2 |   8 | lavaWarn 2 [100%] @1.0; lavaLand 6 [100%] @1.9
+  hollow           14 |   12 |   2 |   2 |   49.3 |  31 | 
+  H-embergolem      8 |    3 |   4 |   3 |  113.5 | 109 | shellUp 15 [100%] @0.1
+  H-ratking        33 |    4 |  29 |  29 |  142.6 | 110 | royalSummons 20 [100%] @0.8; sigCollide 5 [97%] @28.0
+  H-broodmother     4 |    3 |   1 |   1 |   65.1 | 100 | webShot 24 [100%] @1.0; webbed 23 [100%] @1.5; sigCollide 5 [100%] @16.0
+  H-magmalord      16 |    2 |  13 |   0 |  161.0 |  33 | lavaWarn 7 [100%] @1.0; lavaLand 21 [100%] @1.9; sigCollide 2 [100%] @17.1
+  H-boneking       68 |    3 |  64 |  64 |  163.9 | 110 | reassemble 0 [12%] @174.5 | rise->death med 30.90s, <0.5s 0/3, <1.5s(still stunned) 0/3
+  H-warlord         9 |    2 |   7 |   4 |  209.7 | 108 | chargeWarn 21 [100%] @2.9; warCharge 21 [100%] @4.0 | died mid-charge 0/2, fights with 0 charges 0/9
+  HEART           132 |    3 | 129 | 121 |  163.7 | 110 | 
+ACH: first_boss 0h07 | flow NO | full_party 0h35 | retire1 1h00 | gatekeeper 1h14 | rat 0h04 | epic 1h53 | caverns 0h18 | comeback 0h07 | echo 8h54 | ult_boss 3h12 | revive 10h18 | speed60 4h00 | blitz 8h50 | magma 1h14 | void 2h38 | hollow 3h36 | hollowed6 21h13 | f100 22h39 | codex28 NO | f125 NO | retire10 37h25 | omen1 1h33 | omen10 NO | deep90 11h16 | legacy_all NO | crucible10 NO | lv100 1h52 | chests100 8h50 | rats25 3h51 | idle50 1h25 | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k 20h41
+PROTO on: rat,web,shell,lava,enrage,reass  N={"ratFirst":0.8,"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.3,"shellDur":5,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.8,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08}
+PROTO rat summons 1157 spawned, 1127 killed
+PROTO webs 112, hero-seconds webbed 272.8
+PROTO shells 132, cracked by ults 0 (0%), timed out 126
+PROTO lava drops landed 624
+PROTO sig warnings 1061, colliding with a void warning (<1.2 s) 198

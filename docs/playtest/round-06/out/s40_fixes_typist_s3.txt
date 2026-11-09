@@ -1,0 +1,26 @@
+=== R6 probe typist s3 2400m PROTO=fixes: maxEver 170, retires 26, renown life 730, ach 34/36, trophies 14, codex 19/28, wipes 205, fame x422.1, unspent embers 24751
+beats per 30 min from h1: 12 7 6 5 4 3 2 1 3 4 3 2 0 4 0 2 0 0 1 1 0 0 0 1 1 0 0 0 0 0 3 2 2 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 2 0 0 0 0 0 0 0 0 0
+AFTER 8h: 20 beats {"ACH":4,"TROPHY":3,"OMEN":2,"CODEX":11}; longest gap 358 min (from 19h54); empty 2h windows 9/17
+longest stretch with no new depth record (30-min snapshots): 5.5 h from 26h00
+codex: 1h55 The Hollow r1, 5h08 The Hollow r2, 5h10 H-Rat King r1, 5h53 H-Brood Mother r1, 5h55 H-Goblin Warlord r1, 6h08 H-Magma Lord r1, 6h33 H-Ember Colossus r1, 6h45 H-Bone King r1, 10h32 The Hollow r3, 16h10 H-Bone King r2, 16h13 H-Goblin Warlord r2, 16h20 H-Magma Lord r2, 17h06 H-Brood Mother r2, 17h13 H-Rat King r2, 19h54 H-Ember Colossus r2, 31h30 The Hollow r4, 34h45 H-Goblin Warlord r3, 35h50 H-Magma Lord r3, 35h53 H-Bone King r3
+trophies: f75@1h37 f80@1h42 f85@2h06 f90@2h29 f95@2h39 f100@3h20 f105@4h11 f110@4h55 f115@5h43 f120@6h19 f125@7h54 f130@8h47 f140@13h10 f150@16h53
+retires (26): 0h31 f40 +30, 0h56 f59 +46, 1h21 f71 +39, 1h46 f81 +39, 2h11 f88 +30, 2h39 f95 +33, 3h28 f100 +28, 4h13 f106 +32, 5h03 f110 +22, 5h47 f116 +35, 6h27 f120 +24, 7h54 f125 +31, 8h47 f130 +33, 10h28 f135 +33, 12h22 f139 +28, 13h18 f140 +8, 14h36 f145 +36, 16h04 f149 +33, 17h01 f150 +7, 19h49 f154 +31, 21h33 f158 +32, 23h23 f160 +16, 25h52 f164 +33, 31h26 f166 +17, 34h24 f167 +8, 35h44 f170 +26
+SIG totals: {"chargeWarn":331,"warCharge":324,"reassemble":28,"bossEnrage":82,"royalSummons":0,"webShot":0,"webbed":0,"shellUp":0,"shellCrack":0,"lavaWarn":0,"lavaLand":0,"seal":0,"dailyRedelve":0,"sigCollide":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   12.2 |   5 | 
+  boneking          5 |    4 |   0 |   0 |    7.6 |   1 | reassemble 1 [100%] @3.0 | rise->death med 2.53s, <0.5s 0/4, <1.5s(still stunned) 1/4
+  broodmother       6 |    6 |   0 |   0 |    3.1 |   1 | 
+  warlord           8 |    8 |   0 |   0 |    2.5 |   1 | chargeWarn 1 [50%] @2.8; warCharge 0 [25%] @4.9 | died mid-charge 2/8, fights with 0 charges 6/8
+  embergolem       26 |   26 |   0 |   0 |    2.0 |   0 | 
+  magmalord        25 |   25 |   0 |   0 |    2.0 |   0 | 
+  hollow           25 |   25 |   0 |   0 |    2.0 |   1 | 
+  H-ratking        53 |   18 |  34 |  19 |    7.4 |  53 | 
+  H-broodmother    48 |   19 |  28 |  12 |   18.5 |  32 | 
+  H-embergolem     45 |   19 |  26 |  13 |   19.8 |  31 | 
+  H-magmalord      39 |   21 |  18 |   1 |   16.2 |  17 | 
+  H-boneking       61 |   20 |  40 |  31 |   15.2 | 109 | reassemble 0 [38%] @15.5 | rise->death med 2.57s, <0.5s 0/20, <1.5s(still stunned) 0/20
+  HEART            25 |   20 |   5 |   3 |    9.1 |   8 | 
+  H-warlord        72 |   21 |  51 |   3 |    9.3 |  16 | chargeWarn 4 [94%] @3.0; warCharge 3 [92%] @4.2 | died mid-charge 4/21, fights with 0 charges 6/72
+ACH: first_boss 0h04 | flow 0h00 | full_party 0h18 | retire1 0h31 | gatekeeper 0h40 | rat 0h04 | epic 1h02 | caverns 0h08 | comeback 0h19 | echo 1h04 | ult_boss 0h08 | revive 1h44 | speed60 1h29 | blitz 1h27 | magma 0h40 | void 1h08 | hollow 1h19 | hollowed6 3h41 | f100 3h20 | codex28 NO | f125 7h54 | retire10 5h47 | omen1 0h56 | omen10 25h52 | deep90 2h58 | legacy_all 7h55 | crucible10 8h36 | lv100 0h55 | chests100 4h23 | rats25 3h59 | idle50 NO | keys10k 1h19 | keys100k 12h56 | flow1h 2h20 | flow10h 16h31 | ults1k 3h08
+PROTO on: enrage,reass  N={"ratFirst":0.8,"ratMode":"timer","ratTh":[0.6,0.3],"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.3,"shellDur":5,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.8,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08,"dodge":false}
+PROTO sig warnings 0, colliding with a void warning (<1.2 s) 0

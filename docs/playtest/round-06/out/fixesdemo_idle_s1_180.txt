@@ -1,0 +1,16 @@
+=== R6 probe idle s1 180m DEMO PROTO=fixes: maxEver 40, retires 13, renown life 102, ach 11/36, trophies 0, codex 0/28, wipes 9, fame x6.1, unspent embers 297
+beats per 30 min from h1: 4 1 0 2 0
+longest gap after h1: 50 min (from 1h45)
+codex: none
+trophies: 
+retires (13): 1h07 f40 +30, 1h23 f40 +6, 1h35 f40 +6, 1h45 f40 +6, 1h55 f40 +6, 2h05 f40 +6, 2h14 f40 +6, 2h22 f40 +6, 2h30 f40 +6, 2h38 f40 +6, 2h45 f40 +6, 2h52 f40 +6, 2h59 f40 +6
+SIG totals: {"chargeWarn":60,"warCharge":59,"reassemble":13,"bossEnrage":1,"royalSummons":0,"webShot":0,"webbed":0,"shellUp":0,"shellCrack":0,"lavaWarn":0,"lavaLand":0,"seal":0,"dailyRedelve":0,"sigCollide":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           2 |    1 |   1 |   0 |   32.5 |  18 | 
+  boneking         14 |   13 |   1 |   0 |    7.0 |   2 | reassemble 1 [93%] @4.7 | rise->death med 2.03s, <0.5s 0/13, <1.5s(still stunned) 0/13
+  broodmother      14 |   13 |   1 |   0 |    9.5 |   6 | 
+  warlord          13 |   12 |   1 |   1 |   22.6 |  10 | chargeWarn 2 [100%] @3.9; warCharge 2 [100%] @5.1 | died mid-charge 1/12, fights with 0 charges 0/13
+DEMO: card 1h22, laps 12, re-delves 12, lifetime 102, best 5.2m
+ACH: first_boss 0h07 | flow NO | full_party 0h29 | retire1 1h07 | gatekeeper 1h22 | rat 0h04 | epic 1h45 | caverns 0h19 | comeback 0h07 | echo NO | ult_boss NO | revive 0h29 | speed60 NO | blitz 2h34 | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | codex28 NO | f125 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 NO | chests100 NO | rats25 2h59 | idle50 NO | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO
+PROTO on: enrage,reass  N={"ratFirst":0.8,"ratEvery":9,"ratHp":0.35,"ratAtk":0.6,"ratGold":0.5,"ratMax":4,"webFirst":1,"webEvery":7,"webAtk":0.3,"webDur":2.5,"webFly":0.5,"shellFirst":0.01,"shellEvery":12,"shellMult":0.3,"shellDur":5,"crackStun":1,"lavaFirst":1,"lavaEvery":8,"lavaN":3,"lavaWarn":0.9,"lavaMult":0.8,"day":28800,"sealGap":15,"sealRenown":10,"lanternStep":0.08}
+PROTO sig warnings 0, colliding with a void warning (<1.2 s) 0
