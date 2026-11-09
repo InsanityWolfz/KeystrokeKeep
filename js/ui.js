@@ -531,8 +531,8 @@
   KK.on('achievement', ({ def }) => { if (def && (!KK.DEMO_CAP || def.demo)) UI.toast(`🏆 Achievement: ${def.name}`, 'crown', 'gold', 5); UI.dirty = true; });
   KK.on('trophy', ({ floor, n }) => { if (floor !== 100) UI.toast(`Depth trophy for floor ${floor}: x1.05 damage & gold forever (${n} total).`, 'crown', 'gold', 6); });
   KK.on('omenPicked', () => { UI.dirty = true; });
-  KK.on('codex', ({ name, rank }) => UI.toast(`Hollow Codex: ${name} rank ${rank}/4. x1.03 damage & gold forever.`, 'gem', 'epic', 6));
-  KK.on('demoSealed', ({ time }) => UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The depths are sealed in the demo: re-delve in ♛ Legacy for +6 Renown.`, 'crown', 'epic', 8));
+  KK.on('codex', ({ rank }) => UI.toast(`Hollow Codex rank ${rank}/${D.CODEX_MAX}: x1.03 damage & gold forever. Next rank in ${D.CODEX_EVERY} Hollowed kills.`, 'gem', 'epic', 6));
+  KK.on('demoSealed', ({ time }) => UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The depths are sealed in the demo: ${KK.S.renownLifetime < KK.DEMO_RENOWN_CAP ? 're-delve in ♛ Legacy for +6 Renown' : 'Demo Renown is maxed: re-delve to beat your best time'}.`, 'crown', 'epic', 8));
   /** Steam store page (set KK.STORE_URL once the page exists). */
   UI.openStore = function () {
     const url = KK.STORE_URL;

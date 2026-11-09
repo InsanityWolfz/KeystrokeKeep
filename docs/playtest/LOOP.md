@@ -104,14 +104,18 @@ Format: `- [round found] [severity] item: status/reason`
 ### Fixed in R5
 - Heal scaling, achievement bugs (Hands Off, Speedrunner, Blitz), ember floater amounts, re-delve banner, Head Start mid-delve levels, void slam readability (alert channel) and pacing, floor-100 boss + banner, Codex for week 2, two signature moves, demo/full instance lock.
 
+### Fixed in R6
+- Enrage bug + wound carry-over + regroup, all 4 remaining signature moves, Reassemble visibility, Codex cadence, Dynamo, Blitz, digit font, achievements list open state, re-delve wording, false stall hint, omen pill tooltip/width.
+
 ### Open (ranked)
 - [R4] [check] Measure GPU/CPU with low-GPU mode on (default) incl. an iGPU laptop if possible; fullscreen filter vs real overlays; save edge cases on the packaged build (market probe in docs/playtest/round-04/market_probe).
 - [R3] [blocker, owner: user] Steamworks onboarding (fee/tax/bank), app id, Coming Soon page (~Nov 23), trailer (Jan 8), demo + page review submission (~Jan 12, deadline Jan 18). Set `KK.STORE_URL`.
 - [R3] [blocker, needs app id] Steamworks in main (steamworks-ffi-node or steamworks.js): init, achievements mirror of `S.ach` (full game only; demo grants on import), rich presence, Auto-Cloud on `%APPDATA%/Keystroke Keep/saves/*.json`, overlay test.
 - [R3] [blocker, owner: user] Code-signing certificate (Azure Artifact Signing or OV); then `win.azureSignOptions`/certificate config; VirusTotal + Microsoft submissions.
 - [R5] [check] R5 market report arrived after the write-up: fold its findings in (power low-GPU on/off, fullscreen filters, save hardening, packaged build, store checklist + trailer shot list in round-05/market.md).
-- [R5] [major] Remaining signature moves: Rat King Royal Summons, Brood Mother Web Shot, Ember Colossus Magma Shell, Magma Lord Lava Rain (numbers in round-05/auditor.md).
-- [R5] [major] Week-2 layer beyond the Codex: Omen of the Day (daily star omen, +10 Renown once a day), Void Lantern Workshop sink, trophies every 10 floors past 150.
+- [R6] [check] R6 market report arrived after the write-up: fold in its verification of the 89f4651 fixes and its dated Next Fest / Desktop Companion Fest plan.
+- [R6] [major] Week-2 layer: Omen of the Day + Void Lantern + trophies at 160-200 (final numbers and code locations in round-06/auditor.md; prototype: typist beats after 8 h 22-28 -> 40-45).
+- [R6] [minor] Alert priority (only the newest alert draws); Codex progress line in Legacy; achievement progress counters; chests/wipes in the stat box.
 - [R5] [minor] Demo card: hold floor 40 in a victory pose until dismissed; sprite teasers; move the DEMO pill to .hud-right.
 - [R5] [minor] Progress display for counter achievements; chests/wipes in the stat box.
 - [R4] [minor] Mouse-move events wake the main process ~650 Hz (uiohook); post-fest Raw Input or a fork that drops moves.
@@ -129,4 +133,5 @@ Format: `- [round found] [severity] item: status/reason`
 | R2 | 2026-11-09 | Ember Crucible, ult buff, compounding Fame, relic queue, charge bar, retire nudge, demo mode, fullscreen auto-hide, sleeping loop, CSS-animation GPU fix, hook off on pause | e4068a6 |
 | R3 | 2026-11-09 | Demo re-delve loop + card, Delve Omens, Sanctuary reaction, ligature fix, file saves, per-monitor fullscreen, baked demo flag, 24 fps, bar transitions removed | 220510d |
 | R4 | 2026-11-09 | Packaging + fuses, achievements, depth trophies, demo Renown cap, omen rebalance + modal, Vigil + void slam, low-GPU mode, save hardening | 40214c3, d42bbc9 |
-| R5 | 2026-11-09 | Heal cap, Dynamo, Hollow Codex, War Charge + Reassemble, alert channel, Heart of the Keep, achievement fixes, demo cap 120, cross-build instance lock | (this round) |
+| R5 | 2026-11-09 | Heal cap, Dynamo, Hollow Codex, War Charge + Reassemble, alert channel, Heart of the Keep, achievement fixes, demo cap 120, cross-build instance lock | 44379dd, 89f4651 |
+| R6 | 2026-11-09 | Enrage keeps wounds + regroup, all six boss signature moves, Codex per 8 kills, Dynamo 10%, digit font, achievements open state | ce6b6d1 + (this round) |

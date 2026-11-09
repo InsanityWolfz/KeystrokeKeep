@@ -438,3 +438,5 @@ body.native #panel { border-bottom: 0; }
 .demo-pill { align-self: center; }
 
 .demo-pill { display: table; margin: 3px auto 0; }
+
+.demo-pill.omen { pointer-events: auto; cursor: help; }

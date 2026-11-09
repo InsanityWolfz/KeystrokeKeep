@@ -454,6 +454,7 @@
       b.globalAlpha = 1;
     }
     b.drawImage(spr.c, Math.round(dxp), Math.round(y));
+    if (h.webbed > 0) { b.fillStyle = '#f2f2f2'; for (let i = 0; i < 6; i++) b.fillRect(Math.round(dxp + 2 + (i * 5) % 12), Math.round(y + 2 + (i * 7) % 12), 1, 1); b.fillRect(Math.round(dxp + 1), Math.round(y + 6), 12, 1); }
     if (h.flash > 0) { b.globalAlpha = 0.8; b.drawImage(KK.SPR.frames[h.id][f].white, Math.round(dxp), Math.round(y)); b.globalAlpha = 1; }
     // mage orb / cleric halo glow
     if (h.id === 'mage') { b.globalCompositeOperation = 'lighter'; glow(dxp + 14, y + 2, 5 + (h.cast > 0 ? 4 : 0), '#7ee8f6', 0.6); b.globalCompositeOperation = 'source-over'; }
@@ -471,6 +472,17 @@
       b.fillRect(bx, by, Math.max(1, Math.round(10 * k)), 2);
       if (ready) { b.globalCompositeOperation = 'lighter'; glow(x, by + 1, 6, '#7ee8f6', 0.5); b.globalCompositeOperation = 'source-over'; }
     }
+  }
+  const stoneCache = new WeakMap();
+  function stoneTint(c) {
+    let out = stoneCache.get(c);
+    if (out) return out;
+    out = document.createElement('canvas'); out.width = c.width; out.height = c.height;
+    const g = out.getContext('2d', { willReadFrequently: true });
+    g.drawImage(c, 0, 0);
+    g.globalCompositeOperation = 'source-atop'; g.globalAlpha = 0.6; g.fillStyle = '#8a8a8a'; g.fillRect(0, 0, c.width, c.height);
+    stoneCache.set(c, out);
+    return out;
   }
   // Hollowed bosses (floor 70+) get a void-purple tint so they read as new foes
   const tintCache = new WeakMap();
@@ -502,7 +514,7 @@
       const k2 = 1 - Math.min(1, e.pile / 1.5);
       const hh = Math.max(Math.round(spr.h * 0.35), Math.round(spr.h * k2));
       b.drawImage(e.hollowed ? hollowTint(spr.c) : spr.c, 0, spr.h - hh, spr.w, hh, dxp, Math.round(y) + spr.h - hh, spr.w, hh);
-    } else b.drawImage(e.hollowed ? hollowTint(spr.c) : spr.c, dxp, Math.round(y));
+    } else b.drawImage(e.shell > 0 ? stoneTint(spr.c) : e.hollowed ? hollowTint(spr.c) : spr.c, dxp, Math.round(y));
     if ((e.windup > 0 || (e.boss && (e.fightT || 0) > 165)) && Math.floor(t * 8) % 2) { b.globalAlpha = 0.55 * k; b.drawImage(spr.white, dxp, Math.round(y)); b.globalAlpha = 1; }
     if (e.flash > 0) { b.globalAlpha = 0.9 * k; b.drawImage(spr.white, dxp, Math.round(y)); }
     b.globalAlpha = 1;
@@ -544,6 +556,10 @@
       case 'efire': {
         b.fillStyle = '#ff3a1e'; b.fillRect(x - 1, y - 1, 2, 2);
         FX.particle(s.x, s.y, { vx: U.rand(5, 20), vy: U.rand(-8, 8), life: 0.25, col: '#ff7a2e', add: true });
+        break;
+      }
+      case 'web': {
+        b.fillStyle = '#f2f2f2'; b.fillRect(x - 1, y - 1, 3, 3); b.fillStyle = '#9a9a9a'; b.fillRect(x, y, 1, 1);
         break;
       }
       case 'ebeam': {

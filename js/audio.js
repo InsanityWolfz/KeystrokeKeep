@@ -183,6 +183,9 @@
   KK.on('levelUp', ({ from, to }) => { const st = to >= 100 ? 50 : 10; p(Math.floor(to / st) > Math.floor(from / st) ? 'milestone' : 'levelup'); });
   KK.on('voidWarn', ({ e }) => { if ((e.slams || 0) < 3) p('zone'); });
   KK.on('chargeWarn', () => p('deny'));
+  KK.on('shellCrack', () => p('crit'));
+  KK.on('lavaLand', () => p('explode'));
+  KK.on('webTorn', () => p('ui'));
   KK.on('warCharge', () => p('slam'));
   KK.on('reassemble', () => p('heal'));
   KK.on('voidSlam', ({ e }) => { if ((e.slams || 0) <= 3) p('slam'); });

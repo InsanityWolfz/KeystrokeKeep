@@ -318,6 +318,15 @@
     FX.coinBurst(x, W.GROUND - 30, 1);
     FX.burst(x, W.GROUND - 30, 4, ['#ffd76a', '#fff'], { spd: 30, life: 0.4 });
   });
+  KK.on('royalSummons', () => FX.alert('SQUEAK! THE RAT KING SUMMONS', '#ffd76a', 1.2));
+  KK.on('webShot', () => FX.alert('WEB SHOT!', '#f2f2f2', 1.0));
+  KK.on('webbed', ({ h }) => FX.text(h.x, h.y - 22, 'WEBBED', '#f2f2f2', 1, { life: 1.2, vy: -8 }));
+  KK.on('webTorn', ({ h }) => { FX.text(h.x, h.y - 22, 'WEB TORN!', '#7ee8f6', 1, { life: 1.0, vy: -12 }); FX.burst(h.x, h.y - 8, 10, ['#f2f2f2', '#7ee8f6'], { spd: 60, life: 0.4 }); });
+  KK.on('magmaShell', () => FX.alert('MAGMA SHELL: AN ULTIMATE CRACKS IT', '#ffb070', 1.4));
+  KK.on('shellCrack', ({ e }) => { FX.alert('SHELL CRACKED!', '#7ee8f6', 1.0); FX.burst(e.x, e.y - e.def.h / 2, 30, ['#8a8a8a', '#ff7a2e', '#ffe08a'], { spd: 120, up: -40, life: 0.8, floor: true }); FX.shake(2, 0.2); });
+  KK.on('lavaRain', () => FX.alert('LAVA RAIN!', '#ff7a2e', 1.0));
+  KK.on('lavaMark', ({ x, t }) => { FX.light(x, W.GROUND, 14, t, '#ff5a2e', 0.8); FX.ring(x, W.GROUND, 2, 8, '#ff5a2e', t, 1); });
+  KK.on('lavaLand', ({ x }) => FX.burst(x, W.GROUND - 2, 12, ['#ff5a2e', '#ffb347', '#ffe08a'], { spd: 80, up: -50, life: 0.6, floor: true }));
   KK.on('chargeWarn', ({ e }) => { FX.alert('WAR CHARGE!', '#ff9a9a', 1.0); e.windup = 1.0; });
   KK.on('warCharge', ({ e }) => {
     FX.shake(3, 0.3);

@@ -78,9 +78,9 @@
       const key = F.bossFor(f);
       const boss = makeEnemy(key, x0 + 20, f, f === 100 ? { hpMult: 1.5 } : undefined);
       if (f === 100) { boss.def = Object.assign({}, boss.def, { name: 'The Heart of the Keep' }); boss.heart = true; }
+      else if (f >= 70 && key !== 'hollow') { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
       const wound = S.bossWounds && S.bossWounds[f];
       if (wound) { boss.hp = boss.maxHp * wound; boss.wounded = wound; }
-      else if (f >= 70 && key !== 'hollow') { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
       W.boss = boss;
       const minions = Math.min(2, Math.floor(f / 20));
       for (let i = 0; i < minions; i++) makeEnemy(U.pick(b.monsters), x0 - 14 - i * 14, f);
@@ -107,7 +107,11 @@
   }
 
   W.damageEnemy = function (e, dmg, opts = {}) {
-    if (e.dead) return;
+    if (e.dead || e.pile > 0) return;
+    if (e.shell > 0) {
+      if (opts.ult) { e.shell = 0; e.stun = Math.max(e.stun, 1); KK.emit('shellCrack', { e }); }
+      else dmg *= 0.5;
+    }
     e.hp -= dmg;
     if (!(e.flashCool > 0)) { e.flash = 0.09; e.flashCool = 0.25; } // capped so tints stay visible
     e.kb = Math.min(4, e.kb + (opts.kb !== undefined ? opts.kb : (opts.crit ? 3 : 1.5)));
@@ -197,6 +201,7 @@
     W.ultTurn = ids[(i + 1) % ids.length];
   };
   W.castUlt = function (h, free) {
+    if (h.webbed > 0) { h.webbed = 0; KK.emit('webTorn', { h }); }
     const S = KK.S, m = KK.mods();
     const def = D.HEROES[h.id];
     if (!free) {
@@ -354,6 +359,7 @@
         else if (want && S.sparks >= cost) { W.castUlt(h); W.passUlt(); }
       }
 
+      if (h.webbed > 0) { h.webbed -= dt; continue; }
       h.atkT -= dt * m.aspd * speedMult;
       if (h.atkT > 0) continue;
       if (def.role === 'healer') {
@@ -401,7 +407,7 @@
   function targetInRange(x, range) {
     let best = null;
     for (const e of W.enemies) {
-      if (e.dead || !e.active) continue;
+      if (e.dead || !e.active || e.pile > 0) continue;
       const d = e.x - e.def.w / 2 - x;
       if (d <= range && d > -20 && (!best || e.x < best.x)) best = e;
     }
@@ -430,6 +436,51 @@
     }
   }
 
+  // ---------------------------------------------------------------- boss signature moves
+  // Timers start when the boss is on screen; a move about to collide with a void slam waits.
+  function sigMove(e, dt, front) {
+    const S = KK.S;
+    if (e.sigT === undefined) e.sigT = { ratking: 0.8, broodmother: 1.0, embergolem: 0, magmalord: 1.0 }[e.key];
+    if (e.sigT === undefined) return;
+    e.sigT -= dt;
+    if (e.voidT !== undefined && e.voidT < 2.4 && e.sigT < 0.5) e.sigT = 0.5;
+    const living = W.heroes.filter((h) => !h.dead);
+    if (!living.length) return;
+    if (e.key === 'ratking') {
+      // Royal Summons: an opener, then one wave at 60% and one at 30% HP; max 4 rats alive
+      const stage = e.summonStage || 0;
+      const due = (stage === 0 && e.sigT <= 0) || (stage === 1 && e.hp / e.maxHp < 0.6) || (stage === 2 && e.hp / e.maxHp < 0.3);
+      if (!due) return;
+      e.summonStage = stage + 1;
+      const alive = W.enemies.filter((o) => o.summon && !o.dead).length;
+      for (let i = 0; i < Math.min(2, 4 - alive); i++) {
+        const r = makeEnemy('rat', Math.max(front.x + 20 + 12 * i, e.x - 12 - 12 * i), S.floor, { hpMult: 0.35 });
+        r.active = true; r.atk *= 0.6; r.gold *= 0.5; r.summon = true;
+      }
+      KK.emit('royalSummons', { e });
+    } else if (e.key === 'broodmother' && e.sigT <= 0) {
+      // Web Shot at the back-most hero: no attacks or heals for 2.5 s (an ultimate tears it)
+      e.sigT = 7;
+      const back = living.reduce((a, h) => (h.x < a.x ? h : a), living[0]);
+      W.shots.push({ type: 'web', x: e.x - 6, y: e.y - 8, target: back, dmg: e.atk * 0.3, speed: 90, src: e, enemy: true, web: 2.5 });
+      KK.emit('webShot', { e });
+    } else if (e.key === 'embergolem' && e.sigT <= 0) {
+      // Magma Shell: normal hits x0.5 for up to 4 s; any ultimate cracks it
+      e.sigT = 12; e.shell = 4;
+      KK.emit('magmaShell', { e });
+    } else if (e.key === 'magmalord' && e.sigT <= 0) {
+      // Lava Rain: three marked drops, 0.9 s warning, 0.5x attack each
+      e.sigT = 8;
+      for (let i = 0; i < 3; i++) {
+        const h = U.pick(living);
+        const s = { type: 'lava', target: h, tx: h.x, t: 0.9 + 0.12 * i, dmg: e.atk * 0.5, src: e, enemy: true };
+        W.shots.push(s);
+        KK.emit('lavaMark', { x: h.x, t: s.t });
+      }
+      KK.emit('lavaRain', { e });
+    }
+  }
+
   function updateEnemies(dt, frozen) {
     const front = W.frontHero();
     const act = W.enemies.filter((e) => !e.dead && e.active).sort((a, b) => a.x - b.x);
@@ -440,6 +491,11 @@
       e.lunge = Math.max(0, e.lunge - dt);
       if (e.kb > 0) { e.x += e.kb * 6 * dt * 4; e.kb = Math.max(0, e.kb - dt * 16); }
       if (e.boss) e.fightT = (e.fightT || 0) + dt; // the enrage clock never pauses
+      if (e.flashCool > 0) e.flashCool -= dt;
+      if (e.windup > 0) e.windup -= dt;
+      if (e.pile > 0) e.pile -= dt;
+      if (e.shell > 0) e.shell -= dt;
+      if (e.boss && e.active && front && !frozen) sigMove(e, dt, front);
       if (e.stun > 0) { e.stun -= dt; prevX = e.x; continue; }
       if (frozen || !front) { prevX = e.x; continue; }
       const reach = front.x + e.def.w / 2 + e.def.range;
@@ -465,9 +521,6 @@
       else e.moving = false;
       prevX = e.x;
       e.atkT -= dt;
-      if (e.flashCool > 0) e.flashCool -= dt;
-      if (e.windup > 0) e.windup -= dt;
-      if (e.pile > 0) e.pile -= dt;
       if (e.boss && e.active) {
         if (e.fightT > 180 && !(W.wipeT > 0)) {
           // too strong for now: retreat and farm, but the boss keeps its wounds for the next try
@@ -539,6 +592,13 @@
         } else { s.x += (dx / d) * step; s.y += (dy / d) * step; out.push(s); }
         continue;
       }
+      if (s.type === 'lava') {
+        s.t -= dt;
+        if (s.t > 0) { out.push(s); continue; }
+        if (s.target && !s.target.dead && s.src && !s.src.dead) W.damageHero(s.target, s.dmg, s.src);
+        KK.emit('lavaLand', { x: s.tx });
+        continue;
+      }
       // homing projectiles
       const t = s.target;
       if (!t || t.dead) { KK.emit('fizzle', { s }); continue; }
@@ -546,7 +606,7 @@
       const dx = tx - s.x, dy = ty - s.y, d = Math.hypot(dx, dy);
       const step = s.speed * dt;
       if (d <= step + 2) {
-        if (s.enemy) W.damageHero(t, s.dmg, s.src);
+        if (s.enemy) { W.damageHero(t, s.dmg, s.src); if (s.web && !t.dead) { t.webbed = s.web; KK.emit('webbed', { h: t }); } }
         else {
           W.damageEnemy(t, s.dmg, { crit: s.crit, src: s.src });
           if (s.splash) {
