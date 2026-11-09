@@ -21,6 +21,7 @@ set KK_CAPTURE=1 && set KK_CAPTURE_SAVE=tools/capture/f19_party.json && set KK_C
 | `KK_CAPTURE_AUDIO` | sfx | `sfx`, `music`, `both` or `off`. |
 | `KK_CAPTURE_TOASTS=1` | off | Allow normal toasts. |
 | `KK_CAPTURE_BG` | transparent | Opaque background colour, e.g. `#00ff00` for chroma key. |
+| `KK_CAPTURE_DISPLAY` | the save's monitor | `secondary` (first non-primary monitor) or an Electron display id. Use it: a capture window on your main monitor sits over your work. |
 | `KK_LOWGPU=1` | off | Force low-GPU mode. Capture mode defaults it to off. |
 
 Fullscreen auto-hide is off in capture mode, so OBS and editors don't hide the strip.
@@ -69,6 +70,10 @@ Available cues:
 | `toast` | Text |
 | `js` | Renderer JS, for unusual setups |
 | `mark` | Label; prints a timestamped `[capture] MARK` line for the editor |
+| `wave` | none: jump to the floor's last wave (the boss wave on boss floors) |
+| `await` | Event name (`bossSpawn`, `magmaShell`, `shellCrack`, `glimpse`, `glimpseDoor`, `fervorTier`, ...); waits for it, then the next cue's `t` counts from there. `timeout` (s, default 30); a timeout prints `MARK await <ev> TIMED OUT` |
+
+Timings are frame-locked: the clock advances exactly 1/fps per drawn frame, so the same seed and save give the same take, frame for frame, at any CPU load.
 
 The shot list (S1–S8, G1–G5, trailer beats) is in `docs/playtest/round-07/market.md`.
 

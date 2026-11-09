@@ -1,16 +1,54 @@
-{ "seed": 7,
-  "_shot": "G1, the first GIF on the page: typing -> FLOW STATE banner -> Earthshatter, Arrow Storm, Meteor. Dock on a 1920x1080 monitor, size L, juice full.",
-  "_run": "node tools/capture/shots/stage.js g1 [--display <id>]; then KK_CAPTURE=1 KK_CAPTURE_SAVE=tools/capture/shots/saves/g1_f16_flow.json KK_CAPTURE_SCRIPT=<this file> npx electron .",
-  "_cut": "GIF = G1 IN .. G1 OUT (8 s). S1 still: run again with KK_CAPTURE_TOASTS=0 and press Ctrl+Shift+Alt+8 while the FLOW STATE banner is up (about 2 s after G1 IN).",
-  "_notes": "The save holds fervor 80, so real FLOW fires (banner, flash, chord) on the 2nd-9th keystroke. Do not use the 'flow' cue: it lights FLOW silently, without the banner.",
-  "cues": [
-  { "t": 0,   "do": "floor", "v": 16 },
-  { "t": 0,   "do": "sparks", "v": "full" },
-  { "t": 0,   "do": "autotype", "v": true },
-  { "t": 0.4, "do": "mark", "v": "G1 IN" },
-  { "t": 1.6, "do": "mark", "v": "FLOW STATE banner (S1 freeze point)" },
-  { "t": 4.5, "do": "sparks", "v": "full" },
-  { "t": 5.9, "do": "mark", "v": "METEOR lands" },
-  { "t": 8.4, "do": "mark", "v": "G1 OUT" },
-  { "t": 8.6, "do": "autotype", "v": false }
-] }
+{
+ "seed": 7,
+ "_shot": "G1, the first GIF on the page: typing -> FLOW STATE banner -> Earthshatter, Arrow Storm, Meteor. Dock on a 1920x1080 monitor, size L, juice full.",
+ "_run": "node tools/capture/shots/stage.js g1; then KK_CAPTURE=1 KK_CAPTURE_DISPLAY=secondary KK_CAPTURE_SAVE=tools/capture/shots/saves/g1_f16_flow.json KK_CAPTURE_SCRIPT=<this file> npx electron .",
+ "_cut": "GIF = G1 IN .. G1 OUT (8 s). S1 still: run again with KK_CAPTURE_TOASTS=0 and press Ctrl+Shift+Alt+8 while the FLOW STATE banner is up (about 2 s after G1 IN).",
+ "_notes": "The save holds fervor 80, so real FLOW fires (banner, flash, chord) on the 2nd-9th keystroke. Do not use the 'flow' cue: it lights FLOW silently, without the banner.",
+ "cues": [
+  {
+   "t": 0,
+   "do": "floor",
+   "v": 16
+  },
+  {
+   "t": 0,
+   "do": "sparks",
+   "v": "full"
+  },
+  {
+   "t": 0,
+   "do": "autotype",
+   "v": true
+  },
+  {
+   "t": 0.4,
+   "do": "mark",
+   "v": "G1 IN"
+  },
+  {
+   "t": 1.6,
+   "do": "mark",
+   "v": "FLOW STATE banner (S1 freeze point)"
+  },
+  {
+   "t": 4.5,
+   "do": "sparks",
+   "v": "full"
+  },
+  {
+   "t": 5.9,
+   "do": "mark",
+   "v": "METEOR lands"
+  },
+  {
+   "t": 8.4,
+   "do": "mark",
+   "v": "G1 OUT"
+  },
+  {
+   "t": 8.6,
+   "do": "autotype",
+   "v": false
+  }
+ ]
+}

@@ -1,8 +1,18 @@
-{ "seed": 7,
-  "_shot": "S4 (still): CHOOSE AN OMEN, three cards with up/down effects, the Omen of the Day star on Gilded Delve, NEW tags. The save carries a pending omen offer, so the game opens the picker by itself 1.5 s after boot (the 'retire' cue can't: it skips the UI and its banner).",
-  "_run": "node tools/capture/shots/stage.js s4 [--display <id>]; KK_CAPTURE=1 KK_CAPTURE_SAVE=tools/capture/shots/saves/s4_omen_offer.json KK_CAPTURE_SCRIPT=<this file> npx electron .",
-  "_cut": "Still from OMENS UP on. The dungeon waits while the picker is open (the game pauses itself). To follow with S5 (Legacy), click an omen by hand: the game opens the Hall of Legends.",
-  "cues": [
-  { "t": 1.4, "do": "mark", "v": "OMENS UP (still)" },
-  { "t": 12,  "do": "mark", "v": "END" }
-] }
+{
+ "seed": 7,
+ "_shot": "S4 (still): CHOOSE AN OMEN, three cards with up/down effects, the Omen of the Day star on Gilded Delve, NEW tags. The save carries a pending omen offer, so the game opens the picker by itself 1.5 s after boot (the 'retire' cue can't: it skips the UI and its banner).",
+ "_run": "node tools/capture/shots/stage.js s4; KK_CAPTURE=1 KK_CAPTURE_DISPLAY=secondary KK_CAPTURE_SAVE=tools/capture/shots/saves/s4_omen_offer.json KK_CAPTURE_SCRIPT=<this file> npx electron .",
+ "_cut": "Still from OMENS UP on. The dungeon waits while the picker is open (the game pauses itself). To follow with S5 (Legacy), click an omen by hand: the game opens the Hall of Legends.",
+ "cues": [
+  {
+   "t": 1.4,
+   "do": "mark",
+   "v": "OMENS UP (still)"
+  },
+  {
+   "t": 12,
+   "do": "mark",
+   "v": "END"
+  }
+ ]
+}

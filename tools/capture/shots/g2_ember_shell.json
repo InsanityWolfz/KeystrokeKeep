@@ -1,9 +1,7 @@
 {
  "seed": 7,
- "_shot": "G2, boss signature move: the Ember Colossus hardens its MAGMA SHELL, the plate says TYPE: AN ULTIMATE CRACKS IT, you type, Earthshatter cracks it, VICTORY. Best with REAL typing in an editor above the strip (the input hook is live in capture mode).",
- "_run": "node tools/capture/shots/stage.js g2 [--display <id>]; KK_CAPTURE=1 KK_CAPTURE_SAVE=tools/capture/shots/saves/g2_f56_ember.json KK_CAPTURE_SCRIPT=<this file> npx electron .",
- "_save": "A floor-56 party (real sim state) fighting floor 50, so the mobs fall fast and the boss dies a few seconds after the crack.",
- "_cut": "Cut from the boss name banner (BOSS IN) to the VICTORY banner, 8-12 s. When the MAGMA SHELL plate shows: type ~5 real keys (sparks start at 20/25) or press Ctrl+Shift+Alt+3 (fill Sparks); the next ultimate cracks the shell. Do not autotype before the plate: an ultimate fired before the shell wastes the moment.",
+ "_shot": "G2 v9: event-anchored. Jumps straight to the Ember Colossus wave, then every beat waits on the game event, so the cut points no longer drift with frame timing.",
+ "_cut": "BOSS IN .. VICTORY. For a real-typing take, delete the 'sparks full' cue after SHELL and type ~5 keys when the plate shows.",
  "cues": [
   {
    "t": 0,
@@ -16,29 +14,49 @@
    "v": 20
   },
   {
+   "t": 0.1,
+   "do": "wave"
+  },
+  {
+   "do": "await",
+   "v": "bossSpawn",
+   "timeout": 20
+  },
+  {
    "t": 0,
-   "do": "warp",
-   "v": 4
-  },
-  {
-   "t": 8,
-   "do": "warp",
-   "v": 1
-  },
-  {
-   "t": 8.1,
-   "do": "sparks",
-   "v": 20
-  },
-  {
-   "t": 8.2,
    "do": "mark",
-   "v": "APPROACH at 1x: boss name banner next, then the MAGMA SHELL plate"
+   "v": "BOSS IN"
   },
   {
-   "t": 40,
+   "do": "await",
+   "v": "magmaShell",
+   "timeout": 30
+  },
+  {
+   "t": 0,
+   "do": "mark",
+   "v": "SHELL (type now)"
+  },
+  {
+   "t": 0.8,
+   "do": "sparks",
+   "v": "full"
+  },
+  {
+   "do": "await",
+   "v": "shellCrack",
+   "timeout": 20
+  },
+  {
+   "t": 0,
+   "do": "mark",
+   "v": "CRACK"
+  },
+  {
+   "t": 12,
    "do": "mark",
    "v": "END"
   }
- ]
+ ],
+ "_run": "node tools/capture/shots/stage.js g2 ; KK_CAPTURE=1 KK_CAPTURE_DISPLAY=secondary KK_CAPTURE_SAVE=tools/capture/shots/saves/g2_f56_ember.json KK_CAPTURE_SCRIPT=<this file> npx electron ."
 }

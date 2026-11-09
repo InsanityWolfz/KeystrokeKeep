@@ -117,7 +117,16 @@ Format: `- [round found] [severity] item: status/reason`
 ### Fixed in R8
 - Glimpse of the Depths (demo) incl. retire-softlock fix and statue/card staging, keys-only caution rule, Quartermaster value, Seal of the Day as a real goal (no clock farming), Lantern pricing, Fervor tier edge, banner/sound/toast caps, move-alert gate, capture cues (await, wave, js via shell, flow emits), ready store-shot scripts in tools/capture/shots.
 
+### Fixed in R9
+- Achievement progress counters + NEXT line, Glimpse staging (door before the statue, wipe ends it), Rat King one-shot guard, clock-proof Seals (new day + 1 h play, any omen, star doubles), Hollowed rotation by days played, Codex 40, trophies to 300, full-Forge Quartermaster, Heart of the Keep visuals + capstone toasts, Legacy order, launch flash on the primary monitor, KK_CAPTURE_DISPLAY, retail ignores KK_* flags, frame-locked capture clock + adopted v9 shots, star glyph, first-ever-only big banners, calm FLOW outline, HUD contrast plate.
+
 ### Open (ranked)
+- [R9] [major, launch] Biome 5 "The Heartroot" (f101-150: Root Lasher / Spore Bloat / Heart Warden, Rootmother f120 + Keeper f140) + "Echoed Depths" (f151+, old palettes cycle every 10 floors, hollowTint). Full spec: round-09/auditor.md F4. Build before R10 testing.
+- [R9] [major, store] Store copy v2 corrections (round-09/auditor.md F3): 39 achievements, trophies to 300, FLOW multiplier, Hollowed from f80, Codex 40 (update again after Biome 5).
+- [R9] [check] Market: verify the launch-flash fix and frame-locked capture determinism in the Electron shell (second monitor, safe launcher in round-09/market_probe/safe).
+- [R9] [minor] HUD font scale with S/M/L, auto -> M on >=1440p (market F7); cosmetic RNG stream if frame lock is not enough (market F2b).
+- [R9] [P2] Chromium cache to %LOCALAPPDATA%, Delete-my-data button, in-game version + credits, Start with Windows toggle.
+- [R9] [blocker, owner: user] Public trailer + Coming Soon page by ~Dec 1-3 (Desktop Companion Fest marketing opt-in); Next Fest Feb 2027 dates in round-09/market.md F8; code signing: Azure individual = US/Canada only, else OV cert.
 - [R4] [check] Measure GPU/CPU with low-GPU mode on (default) incl. an iGPU laptop if possible; fullscreen filter vs real overlays; save edge cases on the packaged build (market probe in docs/playtest/round-04/market_probe).
 - [R3] [blocker, owner: user] Steamworks onboarding (fee/tax/bank), app id, Coming Soon page (~Nov 23), trailer (Jan 8), demo + page review submission (~Jan 12, deadline Jan 18). Set `KK.STORE_URL`.
 - [R3] [blocker, needs app id] Steamworks in main (steamworks-ffi-node or steamworks.js): init, achievements mirror of `S.ach` (full game only; demo grants on import), rich presence, Auto-Cloud on `%APPDATA%/Keystroke Keep/saves/*.json`, overlay test.
@@ -147,4 +156,5 @@ Format: `- [round found] [severity] item: status/reason`
 | R5 | 2026-11-09 | Heal cap, Dynamo, Hollow Codex, War Charge + Reassemble, alert channel, Heart of the Keep, achievement fixes, demo cap 120, cross-build instance lock | 44379dd, 89f4651 |
 | R6 | 2026-11-09 | Enrage keeps wounds + regroup, all six boss signature moves, Codex per 8 kills, Dynamo 10%, digit font, achievements open state, quiet first-hour retreats, handoff/save hardening | ce6b6d1, 3adcda5, 4eb20cb |
 | R7 | 2026-11-09 | Calm strip (combat sfx off, rationed booms/alerts/toasts), caution rule (idle hour 1: 7.9 -> 1.8 retreats), week-2 layer (Omen of the Day, Seals, Void Lantern, trophies to 200), capture mode, re-delve softlock fix | 056ad04, 51f84d5 |
-| R8 | 2026-11-09 | Glimpse of the Depths (+ fixes), keys-only caution, Quartermaster/Seal/Lantern/Fervor economy, banner + loud-sound + toast rationing, capture await/wave/js cues + 5 store shot scripts | 592ac10, 1d627b7, fb104c5 + (this round) |
+| R8 | 2026-11-09 | Glimpse of the Depths (+ fixes), keys-only caution, Quartermaster/Seal/Lantern/Fervor economy, banner + loud-sound + toast rationing, capture await/wave/js cues + 5 store shot scripts | 592ac10, 1d627b7, fb104c5 |
+| R9 | 2026-11-09 | Achievement counters, Glimpse staging + wipe, clock-proof Seals, Codex 40 / trophies 300, Heart of the Keep finale, no launch flash, frame-locked capture, first-ever-only big banners, calm FLOW outline | e36437d, 847e0d4, 7fc2f20, e1046e5, 2c6e43d + (this round) |

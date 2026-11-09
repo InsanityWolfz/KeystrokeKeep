@@ -466,3 +466,13 @@
   0.33 tray: fake (no icon shown)
   0.39 shown at {"x":2560,"y":1235,"width":1920,"height":128}
   0.42 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":11}
+  6.61 [page] [capture] await bossSpawn TIMED OUT
+ 40.02 finish
+2026-11-09T21:11:44.585Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.33 tray: fake (no icon shown)
+  0.39 shown at {"x":2560,"y":1235,"width":1920,"height":128}
+  0.43 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":11}
+  6.58 [page] [capture] await bossSpawn TIMED OUT
