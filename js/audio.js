@@ -1,6 +1,11 @@
 /* Keystroke Keep — procedural WebAudio SFX + adaptive music. No audio files needed. */
 (function () {
   'use strict';
+  // sounds draw from their own stream, so playing one never shifts the game's (seeded) Math.random
+  let aSeed = 0x2f6b9e1d;
+  const arnd = () => { aSeed = (aSeed + 0x6d2b79f5) | 0; let t = Math.imul(aSeed ^ (aSeed >>> 15), 1 | aSeed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  const aRand = (a, b) => a + arnd() * (b - a);
+  const aPick = (arr) => arr[Math.floor(arnd() * arr.length)];
   const KK = window.KK, U = KK.U;
   const A = KK.audio = { ctx: null, ready: false, intensity: 0 };
   let master, sfxBus, musicBus, comp, noiseBuf;
@@ -19,7 +24,7 @@
     master.connect(comp); comp.connect(ctx.destination);
     noiseBuf = ctx.createBuffer(1, ctx.sampleRate * 1.5, ctx.sampleRate);
     const d = noiseBuf.getChannelData(0);
-    for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    for (let i = 0; i < d.length; i++) d[i] = arnd() * 2 - 1;
     A.ready = true;
     A.applySettings();
     startMusic();
@@ -81,18 +86,18 @@
     g.gain.exponentialRampToValueAtTime(o.vol || 0.1, t + (o.attack || 0.004));
     g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
     src.connect(f); f.connect(g); g.connect(o.bus || sfxBus);
-    src.start(t, Math.random() * 0.5); src.stop(t + dur + 0.05);
+    src.start(t, arnd() * 0.5); src.stop(t + dur + 0.05);
   }
   const arp = (notes, step, o) => notes.forEach((n, i) => tone(n, o.dur || 0.12, Object.assign({}, o, { delay: (o.delay || 0) + i * step })));
 
   const SFX = {
-    hit: () => { if (limited('hit', 45)) return; noise(0.05, { freq: 2400, ftype: 'highpass', vol: 0.05 }); tone(U.rand(150, 190), 0.07, { slide: 70, vol: 0.04, type: 'square' }); },
+    hit: () => { if (limited('hit', 45)) return; noise(0.05, { freq: 2400, ftype: 'highpass', vol: 0.05 }); tone(aRand(150, 190), 0.07, { slide: 70, vol: 0.04, type: 'square' }); },
     crit: () => { if (limited('crit', 60)) return; noise(0.09, { freq: 3000, ftype: 'highpass', vol: 0.09 }); tone(880, 0.1, { slide: 1500, vol: 0.05, type: 'square' }); tone(110, 0.12, { slide: 50, vol: 0.08, type: 'triangle' }); },
     shoot: () => { if (limited('shoot', 60)) return; tone(700, 0.06, { slide: 320, vol: 0.025, type: 'triangle' }); noise(0.04, { freq: 4000, ftype: 'bandpass', vol: 0.03 }); },
     cast: () => { if (limited('cast', 80)) return; noise(0.25, { freq: 600, sweep: 2400, vol: 0.05, ftype: 'bandpass', q: 2 }); },
     explode: () => { if (limited('explode', 70)) return; noise(0.3, { freq: 1200, sweep: 200, vol: 0.09 }); tone(90, 0.25, { slide: 40, vol: 0.07, type: 'triangle' }); },
-    coin: () => { if (limited('coin', 55)) return; const b = U.pick([1320, 1480, 1568]); tone(b, 0.05, { vol: 0.025, type: 'square' }); tone(b * 1.335, 0.09, { vol: 0.025, type: 'square', delay: 0.045 }); },
-    spark: () => { if (limited('spark', 70)) return; tone(U.rand(1900, 2600), 0.035, { vol: 0.01, type: 'sine' }); },
+    coin: () => { if (limited('coin', 55)) return; const b = aPick([1320, 1480, 1568]); tone(b, 0.05, { vol: 0.025, type: 'square' }); tone(b * 1.335, 0.09, { vol: 0.025, type: 'square', delay: 0.045 }); },
+    spark: () => { if (limited('spark', 70)) return; tone(aRand(1900, 2600), 0.035, { vol: 0.01, type: 'sine' }); },
     die: () => { if (limited('die', 60)) return; noise(0.14, { freq: 900, sweep: 150, vol: 0.07 }); tone(320, 0.12, { slide: 60, vol: 0.04, type: 'square' }); },
     hurt: () => { if (limited('hurt', 90)) return; tone(230, 0.1, { slide: 110, vol: 0.035, type: 'sawtooth', lp: 1400 }); },
     heal: () => { if (limited('heal', 200)) return; arp([784, 988], 0.05, { dur: 0.12, vol: 0.02, type: 'sine' }); },
@@ -103,7 +108,7 @@
     ultArcher: () => { for (let i = 0; i < 8; i++) noise(0.08, { freq: 3000 + i * 200, ftype: 'bandpass', q: 3, vol: 0.04, delay: i * 0.09 }); tone(600, 0.3, { slide: 1200, vol: 0.03, type: 'triangle' }); },
     ultMage: () => { noise(0.6, { freq: 300, sweep: 3000, vol: 0.06, ftype: 'bandpass', q: 1.5 }); tone(200, 0.6, { slide: 900, vol: 0.03, type: 'sawtooth', lp: 1500 }); },
     meteor: () => { noise(0.8, { freq: 1600, sweep: 60, vol: 0.25 }); tone(70, 0.7, { slide: 28, vol: 0.22, type: 'sine' }); tone(140, 0.3, { slide: 50, vol: 0.06, type: 'square', lp: 600 }); },
-    ultCleric: () => { [523, 659, 784, 1047].forEach((f, i) => tone(f, 1.2, { vol: 0.03, type: 'sine', attack: 0.15, delay: i * 0.04, detune: U.rand(-8, 8) })); arp([1568, 2093, 2637], 0.07, { dur: 0.3, vol: 0.015, type: 'sine', delay: 0.2 }); },
+    ultCleric: () => { [523, 659, 784, 1047].forEach((f, i) => tone(f, 1.2, { vol: 0.03, type: 'sine', attack: 0.15, delay: i * 0.04, detune: aRand(-8, 8) })); arp([1568, 2093, 2637], 0.07, { dur: 0.3, vol: 0.015, type: 'sine', delay: 0.2 }); },
     bossIntro: () => { tone(55, 2.0, { vol: 0.12, type: 'sawtooth', lp: 300, attack: 0.3 }); tone(82, 2.0, { vol: 0.06, type: 'sawtooth', lp: 260, attack: 0.5, detune: 7 }); noise(1.6, { freq: 200, vol: 0.06, attack: 0.4 }); tone(110, 1.2, { vol: 0.08, type: 'triangle', delay: 1.0, slide: 55 }); },
     bossKill: () => { noise(1.0, { freq: 2000, sweep: 60, vol: 0.25 }); tone(60, 0.9, { slide: 25, vol: 0.2, type: 'sine' }); arp([523, 659, 784, 1047, 784, 1047, 1319], 0.09, { dur: 0.25, vol: 0.05, type: 'square', lp: 5000, delay: 0.5 }); },
     chest: () => { tone(200, 0.15, { slide: 320, vol: 0.04, type: 'sawtooth', lp: 900 }); arp([1047, 1319, 1568, 2093], 0.06, { dur: 0.15, vol: 0.035, type: 'square', delay: 0.15 }); },

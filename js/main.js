@@ -43,6 +43,7 @@
     let frozen = false;
     const realNow = () => (KK.realNow ? KK.realNow() : performance.now());
     const later = (fn, ms) => (KK.realSetTimeout || setTimeout)(fn, ms);
+    let nextAt = 0;
     function frame() {
       const now = realNow();
       const fps = KK.targetFps();
@@ -60,7 +61,9 @@
       if (!KK.paused) for (let i = 0; i < steps; i++) W.update(simDt / steps);
       KK.render.draw(dt);
       KK.ui.update(dt);
-      later(frame, Math.max(1, 1000 / fps - (realNow() - now)));
+      // capture mode keeps a fixed schedule (exactly fps frames a second against OBS); play mode subtracts the frame's work
+      if (KK.fixedDt) { nextAt = Math.max((nextAt || now) + 1000 / fps, realNow() - 50); later(frame, Math.max(0, nextAt - realNow())); }
+      else later(frame, Math.max(1, 1000 / fps - (realNow() - now)));
     }
     later(frame, 16);
 

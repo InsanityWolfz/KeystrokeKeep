@@ -377,7 +377,7 @@
     switch (el.dataset.action) {
       case 'mult': UI.buyMult = el.dataset.v === 'max' ? 'max' : +el.dataset.v; KK.audio.play('ui'); UI.dirty = true; refreshPanel(); return;
       case 'lvl': ok = A.levelHero(id, UI.buyMult); break;
-      case 'recruit': ok = A.recruit(id); if (ok) UI.toast(`${D.HEROES[id].name} the ${D.HEROES[id].cls} joins the party!`, 'heart', 'gold'); break;
+      case 'recruit': ok = A.recruit(id); break; // the canvas 'JOINS!' banner announces it
       case 'forge': ok = A.buyForge(id); break;
       case 'workshop': ok = A.buyWorkshop(id); break;
       case 'legacy': ok = A.buyLegacy(id); break;

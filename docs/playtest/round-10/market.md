@@ -1,9 +1,14 @@
 # Round 10: T3 "market" (Steam Market & Reviews Analyst)
 
-> HEAD 51310be (Biome 5), working tree clean. All Electron runs used my safe launcher (`market_probe/safe/`, copied from R9 and hardened) on the right-hand 1080p monitor (id 2904106817). Nothing was shown on the primary display; see "Desktop safety" at the end.
+> **Code versions:**
+> - The 12 gate takes (21:36–21:45 UTC), the playtest.js content runs and the census ran on **51310be** with a clean tree. The census still shows the old "LOCKDOWN! <HERO>'S ULTIMATE IS SEALED" text.
+> - The 6 audio-off takes (23:22–23:29 UTC) may have overlapped the lead's round-10 part-1 edits (45278ee: relic `minFloor`, Root Ward, Lockdown, Seal and Echoed changes). None of those touch audio, capture or timers. Each audio-off set is identical across its own 3 takes, so the F1 conclusion holds.
+> - A draft of this report was committed in 45278ee. This version replaces it.
+>
+> All Electron runs used my safe launcher (`market_probe/safe/`, copied from R9 and hardened) on the right-hand 1080p monitor (id 2904106817). Nothing was shown on the primary display; see "Desktop safety" at the end.
 
 ## Verdict
-The capture gate passes on frame rate. In the 12 gate takes, **379 of 381 measured seconds fall between 59 and 61 real fps** (one 58, one 62), and each take averages 59.0–60.8. That's 3× slower than R9's 193–207 fps, which is right: part 5 fixed the speed-up. In 6 more takes, 23 of 318 seconds were at 58 fps (a 59.0 average), which is F2. **S3 and G1 are frame-identical 3/3.** G5's beats land on the same frame in all 3 takes, and 2 takes are pixel-identical end to end. **G2 still drifts.** I traced it to the sound effects drawing from the gameplay random stream: with audio off, G2 is identical in every take.
+The capture gate passes on frame rate. In the 12 gate takes, **379 of 381 measured seconds fall between 59 and 61 real fps** (one 58, one 62), and each take averages 59.0–60.8. R9's part-4 build ran at 193–207 fps, so part 5 fixed the speed-up. In 6 more takes, 23 of 318 seconds were at 58 fps (a 59.0 average), which is F2. **S3 and G1 are frame-identical 3/3.** G5's beats land on the same frame in all 3 takes, and 2 takes are pixel-identical end to end. **G2 still drifts.** I traced it to the sound effects drawing from the gameplay random stream: with audio off, G2 is identical in every take.
 
 The noise caps now pass everywhere except one item carried from R9: hour-1 toasts are 13 (cap 10), or 10 if recruit hints count as tutorial. The new Heartroot alerts add 1–2 an hour.
 
