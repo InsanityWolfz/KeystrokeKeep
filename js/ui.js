@@ -89,7 +89,8 @@
     const regroup = (S.regroupUntil || 0) - S.stats.playTime, camp = (S.campUntil || 0) - S.stats.playTime;
     const lvls = D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0);
     const calmLine = W.cautious ? `Training on floor ${S.floor}: gathering strength` : (camp > 0 && S.campFloor) ? `Regrouping below floor ${S.campFloor}${S.campLevels > lvls ? ` · +${S.campLevels - lvls} levels to go` : ''}` : '';
-    setText('#hud-farm', blocked && g >= 10 ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Regrouping: next try in ${Math.ceil(regroup / 60)}m. Level up!` : blocked ? '⚠ Boss too strong: farming. Level up!' : calmLine);
+    const hintMin = KK.DEMO_CAP && !S.demoDone ? 25 : 10; // in the demo, don't pull players off the road to the Glimpse
+    setText('#hud-farm', blocked && g >= hintMin ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Regrouping: next try in ${Math.ceil(regroup / 60)}m. Level up!` : blocked ? '⚠ Boss too strong: farming. Level up!' : calmLine);
     $('#hud-farm').classList.toggle('hidden', (!blocked && !calmLine) || KK.fx.banners.length > 0);
     $('#hud-farm').classList.toggle('calm', !blocked && !!calmLine);
     const pill = $('#hud-demo');
@@ -98,7 +99,7 @@
       const starOn = om && S.omen === S.omenStar && A.dailyOpen();
       setText(pill, KK.DEMO_CAP ? 'DEMO · ENDS AT FLOOR 40' + (S.demoLaps ? ` · BEST ${U.fmtTime(S.bestCapTime)} · ${S.demoLaps} CLEAR${S.demoLaps > 1 ? 'S' : ''}` : '') + ' · ♥ WISHLIST' : om ? (starOn ? '★ ' : '◆ ') + om.name.toUpperCase() + (starOn ? ` · ★ FLOOR ${A.sealFloor()}` : (S.omen === S.omenStar && S.sealDay === KK.today() ? ' · ★ SEALED' : '')) : '');
       pill.classList.toggle('hidden', (!KK.DEMO_CAP && !om) || KK.fx.banners.length > 0 || KK.fx.alerts.length > 0);
-      pill.title = KK.DEMO_CAP ? 'Wishlist Keystroke Keep on Steam' : om ? om.desc + (starOn ? ` Omen of the Day: reach floor ${A.sealFloor()} for +10 Renown.` : '') : '';
+      pill.title = KK.DEMO_CAP ? 'Wishlist Keystroke Keep on Steam' : om ? om.desc + (starOn ? ` Omen of the Day: reach floor ${A.sealFloor()} for +${A.sealValue()} Renown.` : '') : '';
       pill.classList.toggle('omen', !KK.DEMO_CAP);
     }
     setText('#np-count', fmt(S.stats.keys) + ' keystrokes · ' + U.fmtTime(S.stats.flowTime) + ' in FLOW');
@@ -471,7 +472,7 @@
     const redelve = gain <= 0;
     const best = KK.S.bestCapTime ? U.fmtTime(KK.S.bestCapTime) : null;
     UI.modal((redelve ? `<h2>♛ RE-DELVE?</h2>
-      <p>A fresh run with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}${KK.DEMO_CAP ? '' : ` Free once a day: this delve pays no Renown, but today's ★ omen pays <b>+10 Renown</b> at floor ${A.sealFloor()}.`}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
+      <p>A fresh run with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}${KK.DEMO_CAP ? '' : ` Free once a day: this delve pays no Renown, but today's ★ omen pays <b>+${A.sealValue()} Renown</b> at floor ${A.sealFloor()}.`}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
       <p>Sir Clank and friends hang up their swords. A new generation starts the delve, stronger for it.</p>
       <div class="bigval">+${gain} RENOWN</div>`) + `
       ${KK.S.relicOffer ? `<p style="color:#ff9a9a">You have ${1 + (KK.S.relicQueue || []).length} unopened relic chest${(KK.S.relicQueue || []).length ? 's' : ''}. ${(KK.S.relicQueue || []).length ? 'They' : 'It'} will be lost.</p>` : ''}
@@ -501,7 +502,7 @@
       const o = D.OMENS.find((x) => x.id === id);
       const [up, down] = o.desc.split(/, but /i);
       const seen = ((S.achP && S.achP.omens) || []).includes(id);
-      const star = id === S.omenStar ? `<i class="new star">★ OMEN OF THE DAY: FLOOR ${A.sealFloor()} = +10 RENOWN</i>` : '';
+      const star = id === S.omenStar ? `<i class="new star">★ OMEN OF THE DAY: FLOOR ${A.sealFloor()} = +${A.sealValue()} RENOWN</i>` : '';
       return `<button class="omen ${id === S.omenStar ? 'starred' : ''}" data-omen="${id}"><img src="${KK.SPR.iconURL[o.icon]}" alt=""><b>${o.name}${seen ? '' : ' <i class="new">NEW</i>'}</b>${star}<span class="up">▲ ${up.replace(/\.$/, '')}</span>${down ? `<span class="down">▼ ${down.replace(/\.$/, '')}</span>` : ''}</button>`;
     };
     UI.modal(`<h2>CHOOSE AN OMEN</h2>
@@ -568,8 +569,8 @@
   KK.on('trophy', ({ floor, n }) => { if (floor !== 100) UI.toast(`Depth trophy for floor ${floor}: x1.05 damage & gold forever (${n} total).`, 'crown', 'gold', 6); });
   KK.on('omenPicked', () => { UI.dirty = true; });
   KK.on('floor', ({ floor }) => { if (floor >= 70 && !KK.DEMO_CAP && !KK.S.tutorial.lantern) { KK.S.tutorial.lantern = 1; UI.toast('New in the Workshop: the Void Lantern softens void slams.', 'candle', 'spark', 6); } });
-  KK.on('seal', ({ n }) => {
-    const show = () => { if (W.boss || KK.fx.banners.length) return setTimeout(show, 1500); KK.fx.banner('★ SEAL OF THE DAY', '+10 RENOWN', '#ffd76a', 2.6, { subCol: '#fff' }); UI.toast(`★ Seal of the Day #${n}: +10 Renown. A new Omen of the Day tomorrow.`, 'crown', 'epic', 6); };
+  KK.on('seal', ({ n, v }) => {
+    const show = () => { if (W.boss || KK.fx.banners.length) return setTimeout(show, 1500); KK.fx.banner('★ SEAL OF THE DAY', '+' + (v || 10) + ' RENOWN', '#ffd76a', 2.6, { subCol: '#fff' }); UI.toast(`★ Seal of the Day #${n}: +${v || 10} Renown. A new Omen of the Day tomorrow.`, 'crown', 'epic', 6); };
     show();
   });
   KK.on('codex', ({ rank }) => UI.toast(`Hollow Codex rank ${rank}/${D.CODEX_MAX}: x1.03 damage & gold forever.${rank < D.CODEX_MAX ? ` Next rank in ${D.CODEX_EVERY} Hollowed kills.` : ' The Codex is complete!'}`, 'gem', 'epic', 6));

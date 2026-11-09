@@ -119,17 +119,19 @@
     let mult = D.FERVOR_TIERS[t].mult;
     if (t === 3) mult += m.flowBonus;
     // Idle Battery and Dynamo are a floor, so starting to type can never make the party weaker
-    return Math.max(mult, 1 + m.idlePow + m.dynamo);
+    return Math.max(mult, 1 + m.idlePow + m.dynamo) * (1 + 0.05 * t);
   };
 
   // ---------------------------------------------------------------- activity (the hook)
-  let lastInputT = 0;
+  let lastInputT = 0, lastKeyT = 0;
   KK.lastInputAgo = () => (KK.simTime || 0) - lastInputT;
+  KK.lastKeyAgo = () => (KK.simTime || 0) - lastKeyT;
   KK.addActivity = function (kind) {
     const S = KK.S, m = KK.mods();
     if (!S.settings.countInput) return;
     if (m.secondWind > 0 && KK.lastInputAgo() >= 30 && kind === 'key') { S.secondWind = m.secondWind; KK.emit('secondWind', { keys: m.secondWind }); }
     lastInputT = KK.simTime || 0;
+    if (kind === 'key') lastKeyT = lastInputT;
     const before = KK.fervorTier();
     if (kind === 'key') {
       S.stats.keys++; S.keyCounter++;
@@ -300,8 +302,9 @@
   // Omen of the Day: one starred omen per calendar day; reaching (record - 15) under it pays a Seal (+10 Renown)
   A.starOmen = () => { let h = 0; for (const c of KK.today()) h = (h * 31 + c.charCodeAt(0)) >>> 0; return D.OMENS[h % D.OMENS.length].id; };
   A.dailyOpen = () => !KK.DEMO_CAP && KK.S.retires >= 2 && KK.S.sealDay !== KK.today();
-  A.sealFloor = () => Math.max(40, (KK.S.renownFloor || 0) - 15);
-  A.claimSeal = () => { const S = KK.S; S.sealDay = KK.today(); S.seals = (S.seals || 0) + 1; S.renown += 10; S.renownLifetime += 10; KK.dirty(); KK.emit('seal', { n: S.seals }); };
+  A.sealFloor = () => Math.max(40, (KK.S.renownFloor || 0) - 5);
+  A.sealValue = () => 10 + Math.floor((KK.S.renownFloor || 0) / 10);
+  A.claimSeal = () => { const S = KK.S; const v = A.sealValue(); S.sealDay = KK.today(); S.seals = (S.seals || 0) + 1; S.renown += v; S.renownLifetime += v; KK.dirty(); KK.emit('seal', { n: S.seals, v }); };
   A.canRedelve = () => !!(KK.DEMO_CAP && KK.S.demoDone && KK.S.maxFloorRun >= 20) || (A.dailyOpen() && KK.S.freeDelveDay !== KK.today() && A.renownGain() <= 0 && KK.S.maxFloorRun >= 20);
   A.canRetire = () => !KK.S.glimpse && (A.renownGain() > 0 || A.canRedelve());
   /** What the retire button should ask for when nothing can be earned yet. */
@@ -321,7 +324,7 @@
     S.omenOffer = !KK.DEMO_CAP && S.retires >= 2 ? U.shuffle(pool).slice(0, 3) : null;
     if (S.omenOffer) S.lastOmenOffer = S.omenOffer.slice();
     S.omenStar = null;
-    if (S.omenOffer && A.dailyOpen()) { const st = A.starOmen(); if (!S.omenOffer.includes(st)) S.omenOffer[0] = st; S.omenStar = st; }
+    if (S.omenOffer && A.dailyOpen()) { const st = A.starOmen(); if (!S.omenOffer.includes(st)) S.omenOffer[0] = st; S.omenStar = st; S.omenStarDay = KK.today(); }
     if (gain <= 0 && !KK.DEMO_CAP) S.freeDelveDay = KK.today();
     S.renownFloor = Math.max(S.renownFloor || 0, S.maxFloorRun);
     S.lastForge = Object.assign({}, S.forge);

@@ -680,10 +680,11 @@
     const low = W.floorLow === undefined ? 1 : W.floorLow;
     W.floorLow = 1;
     const holding = (S.campUntil || 0) > S.stats.playTime || (S.regroupUntil || 0) > S.stats.playTime;
-    if (!holding && KK.lastInputAgo() >= 30 && !F.isBossFloor(S.floor) && !(KK.DEMO_CAP && S.runCapCleared) && S.floor > KK.mods().startFloor) {
+    if (!holding && !F.isBossFloor(S.floor) && !(KK.DEMO_CAP && S.runCapCleared) && S.floor > KK.mods().startFloor) {
+      const idle = (KK.lastKeyAgo ? KK.lastKeyAgo() : KK.lastInputAgo()) >= 30;
       let back = 0;
       if (low < 0.35 && !F.isBossFloor(S.floor - 1)) back = 2;
-      else if (low < 0.6 || (F.isBossFloor(S.floor + 1) && low < 0.85)) back = 1;
+      else if ((idle && low < 0.6) || (F.isBossFloor(S.floor + 1) && low < 0.85)) back = 1;
       if (back) { S.floor = Math.max(KK.mods().startFloor - 1, S.floor - back); W.cautious = S.floor + back; }
       else W.cautious = 0;
     } else W.cautious = 0;
@@ -719,7 +720,7 @@
     else if (S.campFloor && S.floor + 1 >= S.campFloor && (S.campUntil || 0) > S.stats.playTime) S.floor--;
     S.floor++;
     if (S.floor > S.maxFloorRun && !S.glimpse) S.maxFloorRun = S.floor;
-    if (S.omen && S.omen === S.omenStar && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
+    if (S.omen && S.omen === S.omenStar && S.omenStarDay === KK.today() && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
     if (S.floor > S.maxFloorEver && !S.glimpse) {
       S.maxFloorEver = S.floor;
       if (D.TROPHIES.includes(S.floor)) { KK.dirty(); KK.emit('trophy', { floor: S.floor, n: D.TROPHIES.indexOf(S.floor) + 1 }); }
@@ -785,6 +786,7 @@
 
   function autoBuy() {
     const S = KK.S, A = KK.actions;
+    if (S.settings.autoLevel !== false) for (const id of ['blades', 'armor', 'purse']) { const d = D.FORGE.find((x) => x.id === id); if (F.upCost(d, S.forge[id] || 0) <= S.gold * 0.25) A.buyForge(id); }
     if (S.settings.autoLevel === false) return;
     for (const id of D.PARTY_ORDER) if (A.canRecruit(id) && S.gold >= A.recruitCost(id)) A.recruit(id);
     // close to affording a recruit (within ~2 minutes of income)? save for it
@@ -797,7 +799,7 @@
         const c = F.levelCost(id, S.heroes[id]);
         if (c < bestC) { bestC = c; best = id; }
       }
-      if (!best || bestC > S.gold * 0.1) break;
+      if (!best || bestC > S.gold * 0.5) break;
       A.levelHero(best, 1);
     }
   }
