@@ -1,0 +1,11 @@
+
+[capture] ready {"seed":7,"size":"L","juice":"full","cues":12}
+[capture] MARK 2026-11-09T21:13:47.392Z await bossSpawn TIMED OUT
+[capture] await bossSpawn TIMED OUT
+[capture] MARK 2026-11-09T21:13:47.393Z BOSS (await ok)
+[capture] MARK 2026-11-09T21:13:48.015Z await neverHappens TIMED OUT
+[capture] await neverHappens TIMED OUT
+[capture] MARK 2026-11-09T21:13:48.016Z after timeout
+
+--stderr--
+(electron) 'console-message' arguments are deprecated and will be removed. Please use Event<WebContentsConsoleMessageEventParams> object instead.

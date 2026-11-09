@@ -21,7 +21,7 @@ set KK_CAPTURE=1 && set KK_CAPTURE_SAVE=tools/capture/f19_party.json && set KK_C
 | `KK_CAPTURE_AUDIO` | sfx | `sfx`, `music`, `both` or `off`. |
 | `KK_CAPTURE_TOASTS=1` | off | Allow normal toasts. |
 | `KK_CAPTURE_BG` | transparent | Opaque background colour, e.g. `#00ff00` for chroma key. |
-| `KK_CAPTURE_DISPLAY` | the save's monitor | `secondary` (first non-primary monitor) or an Electron display id. Use it: a capture window on your main monitor sits over your work. |
+| `KK_CAPTURE_DISPLAY` | the save's monitor | An Electron display id (best: the monitor you're not using), or `secondary` for the first non-primary monitor (which may be the one you work on). A capture window sits over whatever is on that monitor. |
 | `KK_LOWGPU=1` | off | Force low-GPU mode. Capture mode defaults it to off. |
 
 Fullscreen auto-hide is off in capture mode, so OBS and editors don't hide the strip.

@@ -1,0 +1,332 @@
+{
+ "name": "s3_cuetest",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-capture",
+ "log": [
+  "  0.05 uiohook start() blocked (dummy)",
+  "  0.09 pre installed {\"identifier\":\"1\"}",
+  "  0.09 loadFile",
+  "  0.33 tray: fake (no icon shown)",
+  "  0.39 shown at {\"x\":2560,\"y\":1235,\"width\":1920,\"height\":128}",
+  "  0.42 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":12}",
+  "  5.02 [page] [capture] await bossSpawn TIMED OUT",
+  "  5.64 [page] [capture] await neverHappens TIMED OUT",
+  " 22.03 finish"
+ ],
+ "page": {
+  "f": 4151,
+  "t0f": 35,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue js \"KK.fx.banner('JS CUE OK', 'VIA SHELL', '#fff', 1.5)\""
+   },
+   {
+    "f": 1,
+    "r": 1,
+    "v": 0,
+    "e": "BANNER JS CUE OK / VIA SHELL"
+   },
+   {
+    "f": 61,
+    "r": 323,
+    "v": 1000,
+    "e": "cue flow"
+   },
+   {
+    "f": 181,
+    "r": 957,
+    "v": 3000,
+    "e": "cue juice \"companion\""
+   },
+   {
+    "f": 193,
+    "r": 1021,
+    "v": 3200,
+    "e": "cue js \"KK.fx.alert('JUICE CALM=' + KK.S.settings.calm + ' COMBAT=' + KK.S.settings.combatSfx)\""
+   },
+   {
+    "f": 193,
+    "r": 1021,
+    "v": 3200,
+    "e": "ALERT JUICE CALM=true COMBAT=false"
+   },
+   {
+    "f": 211,
+    "r": 1118,
+    "v": 3500,
+    "e": "cue juice \"full\""
+   },
+   {
+    "f": 223,
+    "r": 1183,
+    "v": 3700,
+    "e": "cue js \"KK.fx.alert('JUICE2 CALM=' + KK.S.settings.calm + ' COMBAT=' + KK.S.settings.combatSfx)\""
+   },
+   {
+    "f": 223,
+    "r": 1183,
+    "v": 3700,
+    "e": "ALERT JUICE2 CALM=false COMBAT=true"
+   },
+   {
+    "f": 235,
+    "r": 1246,
+    "v": 3900,
+    "e": "cue floor 30"
+   },
+   {
+    "f": 241,
+    "r": 1279,
+    "v": 4000,
+    "e": "cue wave"
+   },
+   {
+    "f": 241,
+    "r": 1279,
+    "v": 4000,
+    "e": "BANNER BROOD MOTHER / FLOOR 30 BOSS"
+   },
+   {
+    "f": 241,
+    "r": 1279,
+    "v": 4000,
+    "e": "bossSpawn Brood Mother"
+   },
+   {
+    "f": 408,
+    "r": 2163,
+    "v": 6800,
+    "e": "ALERT WEB SHOT! TYPE TO TEAR IT"
+   },
+   {
+    "f": 626,
+    "r": 3316,
+    "v": 10433,
+    "e": "fervorTier 3->2"
+   },
+   {
+    "f": 841,
+    "r": 4431,
+    "v": 14000,
+    "e": "cue mark \"BOSS (await ok)\""
+   },
+   {
+    "f": 961,
+    "r": 5054,
+    "v": 16000,
+    "e": "cue mark \"after timeout\""
+   },
+   {
+    "f": 1148,
+    "r": 6039,
+    "v": 19133,
+    "e": "fervorTier 2->1"
+   },
+   {
+    "f": 1754,
+    "r": 9170,
+    "v": 29233,
+    "e": "fervorTier 1->0"
+   },
+   {
+    "f": 3403,
+    "r": 17715,
+    "v": 56717,
+    "e": "BANNER RETREAT! / THE PARTY FALLS BACK A FLOOR"
+   },
+   {
+    "f": 3403,
+    "r": 17715,
+    "v": 56717,
+    "e": "wipe "
+   }
+  ],
+  "dig": [
+   "60|29|1|141|3|82395|6234|11|100|",
+   "120|29|1|178|3|73546|6234|12|100|",
+   "180|29|1|187.4|3|62262|6234|12|100|",
+   "240|30|1|198.9|3|106039|6234|12|100|",
+   "300|30|3|261.3|2|316472|6234|12|96.7|Brood Mother",
+   "360|30|3|310.2|2|303197|6234|12|93.4|Brood Mother",
+   "420|30|3|326|2|291154|6234|12|89.9|Brood Mother",
+   "480|30|3|331.3|2|283636|6662|12|86.4|Brood Mother",
+   "540|30|3|344.7|2|273139|6662|12|83|Brood Mother",
+   "600|30|3|356.1|2|265112|6662|12|79.5|Brood Mother",
+   "660|30|3|362.5|2|258876|6662|12|76|Brood Mother",
+   "720|30|3|375.8|2|250822|6662|12|72.6|Brood Mother",
+   "780|30|3|393.5|2|244483|6662|12|69.3|Brood Mother",
+   "840|30|3|401.5|2|239468|6662|12|65.8|Brood Mother",
+   "900|30|3|414|2|230337|6662|12|62.4|Brood Mother",
+   "960|30|3|424.9|2|227545|6662|12|58.9|Brood Mother",
+   "1020|30|3|430.9|2|223608|6662|12|55.4|Brood Mother",
+   "1080|30|3|438.9|2|218024|6662|12|51.9|Brood Mother",
+   "1140|30|3|454.2|2|212538|6662|12|48.5|Brood Mother",
+   "1200|30|3|462.2|2|208506|6662|12|45|Brood Mother",
+   "1260|30|3|466.2|2|206424|6662|12|41.5|Brood Mother",
+   "1320|30|3|476.2|2|201456|6662|12|38|Brood Mother",
+   "1380|30|3|485.9|2|198093|6662|12|34.6|Brood Mother",
+   "1440|30|3|490.5|2|195157|6662|12|31.1|Brood Mother",
+   "1500|30|3|495.9|2|193075|6662|12|27.6|Brood Mother",
+   "1560|30|3|506|2|190189|6662|12|24.1|Brood Mother",
+   "1620|30|3|515|2|186449|6662|12|20.6|Brood Mother",
+   "1680|30|3|519|2|184367|6662|12|17.1|Brood Mother",
+   "1740|30|3|537.2|2|176352|6662|12|13.8|Brood Mother",
+   "1800|30|3|547|2|174766|6662|12|10.3|Brood Mother",
+   "1860|30|3|555.7|2|172203|6662|12|7|Brood Mother",
+   "1920|30|3|558.6|2|169214|6662|12|3.6|Brood Mother",
+   "1980|30|3|569.5|2|165573|6662|12|0.1|Brood Mother",
+   "2040|30|3|582.5|2|164922|6662|12|0|Brood Mother",
+   "2100|30|3|591.9|2|162360|6662|12|0|Brood Mother",
+   "2160|30|3|601.3|2|159797|6662|12|0|Brood Mother",
+   "2220|30|3|608.6|2|157459|6662|12|0|Brood Mother",
+   "2280|30|3|610.6|2|156523|6662|12|0|Brood Mother",
+   "2340|30|3|614.6|2|154937|6662|12|0|Brood Mother",
+   "2400|30|3|618.6|2|153351|6662|12|0|Brood Mother",
+   "2460|30|3|622.6|2|151764|6662|12|0|Brood Mother",
+   "2520|30|3|627|2|149527|6662|12|0|Brood Mother",
+   "2580|30|3|633|2|147941|6662|12|0|Brood Mother",
+   "2640|30|3|635|2|147005|6662|12|0|Brood Mother",
+   "2700|30|3|642.3|2|144667|6662|12|0|Brood Mother",
+   "2760|30|3|644.3|2|143732|6662|12|0|Brood Mother",
+   "2820|30|3|652.6|2|141494|6662|12|0|Brood Mother",
+   "2880|30|3|657.1|2|139908|6662|12|0|Brood Mother",
+   "2940|30|3|666.5|2|136919|6662|12|0|Brood Mother",
+   "3000|30|3|670.5|2|135332|6662|12|0|Brood Mother",
+   "3060|30|3|672.5|2|134397|6662|12|0|Brood Mother",
+   "3120|30|3|678.6|2|133461|6662|12|0|Brood Mother",
+   "3180|30|3|690.5|2|132811|6662|12|0|Brood Mother",
+   "3240|30|3|692.5|2|132160|6662|12|0|Brood Mother",
+   "3300|30|3|694.5|2|131509|6662|12|0|Brood Mother",
+   "3360|30|3|698.5|2|130207|6662|12|0|Brood Mother",
+   "3420|30|3|700.5|2|129556|6662|12|0|Brood Mother",
+   "3480|30|3|700.5|2|129556|6662|12|0|Brood Mother",
+   "3540|30|3|700.5|2|129556|6662|12|0|Brood Mother",
+   "3600|29|1|730.6|1|22682|6662|12|0|",
+   "3660|29|1|766|1|22031|6662|12|0|",
+   "3720|29|1|800.2|1|19123|6662|12|0|",
+   "3780|29|1|806.2|1|16907|6662|12|0|",
+   "3840|29|1|814.5|1|15302|6662|12|0|",
+   "3900|29|1|824|1|12435|6662|12|0|",
+   "3960|29|1|831.3|1|10831|6662|12|0|",
+   "4020|29|1|837.9|1|8614|6662|12|0|",
+   "4080|29|1|843.9|1|7028|6662|12|0|"
+  ],
+  "hashes": [
+   [
+    60,
+    "773ac585"
+   ],
+   [
+    180,
+    "9d639eb5"
+   ],
+   [
+    300,
+    "9499d925"
+   ],
+   [
+    420,
+    "b4181ff5"
+   ],
+   [
+    540,
+    "bc9d6cf5"
+   ],
+   [
+    660,
+    "c9cdf4a5"
+   ],
+   [
+    780,
+    "ca9598f5"
+   ],
+   [
+    900,
+    "515c67f5"
+   ],
+   [
+    1020,
+    "567e4cf5"
+   ],
+   [
+    1140,
+    "e2b422d5"
+   ],
+   [
+    1260,
+    "104da6c5"
+   ]
+  ],
+  "det": false,
+  "fpsReal": [
+   193,
+   187,
+   190,
+   191,
+   193,
+   192,
+   190,
+   193,
+   197,
+   194,
+   196,
+   192,
+   192,
+   195,
+   190,
+   194,
+   193,
+   194,
+   193,
+   192,
+   192
+  ],
+  "boot": {
+   "gold": 6234.1692431325255,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 497.19999998807907,
+  "t0v": 633.3333333333334
+ }
+}

@@ -1,0 +1,410 @@
+{
+ "name": "g5_new3",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-capture",
+ "log": [
+  "  0.05 uiohook start() blocked (dummy)",
+  "  0.09 pre installed {\"identifier\":\"1\"}",
+  "  0.09 loadFile",
+  "  0.33 tray: fake (no icon shown)",
+  "  0.39 shown at {\"x\":2560,\"y\":1235,\"width\":1920,\"height\":128}",
+  "  0.42 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":11}",
+  "  6.68 [page] [capture] await bossSpawn TIMED OUT",
+  " 18.02 finish"
+ ],
+ "page": {
+  "f": 3500,
+  "t0f": 35,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue floor 40"
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue autotype true"
+   },
+   {
+    "f": 7,
+    "r": 29,
+    "v": 100,
+    "e": "cue wave"
+   },
+   {
+    "f": 7,
+    "r": 30,
+    "v": 100,
+    "e": "BANNER GOBLIN WARLORD / FLOOR 40 BOSS"
+   },
+   {
+    "f": 7,
+    "r": 31,
+    "v": 100,
+    "e": "bossSpawn Goblin Warlord"
+   },
+   {
+    "f": 152,
+    "r": 761,
+    "v": 2533,
+    "e": "ult knight"
+   },
+   {
+    "f": 206,
+    "r": 1031,
+    "v": 3433,
+    "e": "fervorTier 0->1"
+   },
+   {
+    "f": 280,
+    "r": 1403,
+    "v": 4667,
+    "e": "ALERT WAR CHARGE!"
+   },
+   {
+    "f": 280,
+    "r": 1403,
+    "v": 4667,
+    "e": "chargeWarn Goblin Warlord"
+   },
+   {
+    "f": 347,
+    "r": 1756,
+    "v": 5783,
+    "e": "warCharge Goblin Warlord"
+   },
+   {
+    "f": 511,
+    "r": 2589,
+    "v": 8517,
+    "e": "ult archer"
+   },
+   {
+    "f": 563,
+    "r": 2851,
+    "v": 9383,
+    "e": "fervorTier 1->2"
+   },
+   {
+    "f": 654,
+    "r": 3294,
+    "v": 10900,
+    "e": "ult cleric"
+   },
+   {
+    "f": 870,
+    "r": 4379,
+    "v": 14500,
+    "e": "BANNER FLOW STATE! / x2.5 POWER"
+   },
+   {
+    "f": 870,
+    "r": 4380,
+    "v": 14500,
+    "e": "fervorTier 2->3"
+   },
+   {
+    "f": 896,
+    "r": 4515,
+    "v": 14933,
+    "e": "chargeWarn Goblin Warlord"
+   },
+   {
+    "f": 957,
+    "r": 4840,
+    "v": 15950,
+    "e": "warCharge Goblin Warlord"
+   },
+   {
+    "f": 1091,
+    "r": 5516,
+    "v": 18183,
+    "e": "ult mage"
+   },
+   {
+    "f": 1146,
+    "r": 5789,
+    "v": 19100,
+    "e": "meteorLand "
+   },
+   {
+    "f": 1207,
+    "r": 6094,
+    "v": 20100,
+    "e": "cue mark \"WARLORD IN\""
+   },
+   {
+    "f": 1339,
+    "r": 6756,
+    "v": 22317,
+    "e": "ult knight"
+   },
+   {
+    "f": 1414,
+    "r": 7131,
+    "v": 23567,
+    "e": "relicOffer [\"hotkey\",\"boots\",\"enter\"]"
+   },
+   {
+    "f": 1414,
+    "r": 7131,
+    "v": 23567,
+    "e": "TOAST-call 🏆 Gatekeeper!"
+   },
+   {
+    "f": 1414,
+    "r": 7131,
+    "v": 23567,
+    "e": "BANNER VICTORY! / Goblin Warlord falls"
+   },
+   {
+    "f": 1414,
+    "r": 7132,
+    "v": 23567,
+    "e": "kill BOSS Goblin Warlord"
+   },
+   {
+    "f": 1552,
+    "r": 7841,
+    "v": 25867,
+    "e": "glimpse "
+   },
+   {
+    "f": 1552,
+    "r": 7841,
+    "v": 25867,
+    "e": "BANNER MAGMA DEPTHS / FLOOR 41"
+   },
+   {
+    "f": 1552,
+    "r": 7841,
+    "v": 25867,
+    "e": "floor 41"
+   },
+   {
+    "f": 1553,
+    "r": 7841,
+    "v": 25867,
+    "e": "cue mark \"GLIMPSE (clip A ends ~+3 s)\""
+   },
+   {
+    "f": 1687,
+    "r": 8532,
+    "v": 28100,
+    "e": "TOAST-call The boss dropped a relic! Choose it in ◆ Relics when you hav"
+   },
+   {
+    "f": 1852,
+    "r": 9378,
+    "v": 30867,
+    "e": "ult archer"
+   },
+   {
+    "f": 1862,
+    "r": 9429,
+    "v": 31033,
+    "e": "ALERT SEALED: THE EMBER COLOSSUS WAITS IN THE FULL GAME"
+   },
+   {
+    "f": 1862,
+    "r": 9429,
+    "v": 31033,
+    "e": "glimpseDoor "
+   },
+   {
+    "f": 1862,
+    "r": 9430,
+    "v": 31033,
+    "e": "demoComplete {\"atStatue\":true}"
+   },
+   {
+    "f": 1863,
+    "r": 9431,
+    "v": 31033,
+    "e": "cue mark \"SEALED (clip B)\""
+   },
+   {
+    "f": 1863,
+    "r": 9431,
+    "v": 31033,
+    "e": "cue autotype false"
+   },
+   {
+    "f": 2042,
+    "r": 10331,
+    "v": 34017,
+    "e": "MODAL DEMO COMPLETE!"
+   },
+   {
+    "f": 2343,
+    "r": 11829,
+    "v": 39033,
+    "e": "cue mark \"END\""
+   }
+  ],
+  "dig": [
+   "60|40|3|106.2|3|4805103|8109|16|7.2|Goblin Warlord",
+   "120|40|3|147.2|3|4793818|8109|22|14.4|Goblin Warlord",
+   "180|40|3|167.3|3|4715558|8109|2|20.4|Goblin Warlord",
+   "240|40|3|200.2|3|4029654|11852|8|27.6|Goblin Warlord",
+   "300|40|3|209.3|3|3986270|11852|10|30|Goblin Warlord",
+   "360|40|3|206.2|3|3920879|11852|14|34.8|Goblin Warlord",
+   "420|40|3|229.5|3|3816477|11852|20|42|Goblin Warlord",
+   "480|40|3|229.6|3|3789038|11852|26|49.2|Goblin Warlord",
+   "540|40|3|249.2|3|3577666|15596|2|56.4|Goblin Warlord",
+   "600|40|3|269.4|3|3453093|15596|8|63.6|Goblin Warlord",
+   "660|40|3|277.4|3|3380135|15596|14|70.8|Goblin Warlord",
+   "720|40|3|292.2|3|3292448|18092|21|79.2|Goblin Warlord",
+   "780|40|3|317.5|3|3179424|18092|26|85.2|Goblin Warlord",
+   "840|40|3|333.9|3|3071991|18092|27|86.4|Goblin Warlord",
+   "900|40|3|377|3|2970847|18092|32|92.4|Goblin Warlord",
+   "960|40|3|398.5|3|2752904|18092|37|98.4|Goblin Warlord",
+   "1020|40|3|439.6|3|2598470|18092|43|100|Goblin Warlord",
+   "1080|40|3|466.7|3|2356172|18092|48|100|Goblin Warlord",
+   "1140|40|3|490|3|2172449|18092|4|100|Goblin Warlord",
+   "1200|40|3|520.7|3|1442379|18092|9|100|Goblin Warlord",
+   "1260|40|3|541.3|3|1261010|18092|16|100|Goblin Warlord",
+   "1320|40|3|563.9|3|1117434|18092|22|100|Goblin Warlord",
+   "1380|40|3|595.8|3|119261|18092|3|100|Goblin Warlord",
+   "1440|40|3|619.6|0|0|60020|5|100|",
+   "1500|40|3|664.4|0|0|60020|6|100|",
+   "1560|41|0|725.4|0|0|60020|12|100|",
+   "1620|41|2|789.6|2|255823|60020|18|100|",
+   "1680|41|2|856.2|2|161572|61975|24|100|",
+   "1740|41|2|889|2|0|65174|27|100|",
+   "1800|41|3|955.5|2|191828|65174|27|100|",
+   "1860|41|3|991.2|2|23682|67307|0|100|",
+   "1920|41|3|994.4|2|0|70506|1|100|",
+   "1980|41|3|994.4|2|0|70506|1|100|",
+   "2040|41|3|994.4|2|0|70506|1|100|",
+   "2100|41|3|994.4|2|0|70506|1|100|",
+   "2160|41|3|994.4|2|0|70506|1|100|",
+   "2220|41|3|994.4|2|0|70506|1|100|",
+   "2280|41|3|994.4|2|0|70506|1|100|",
+   "2340|41|3|994.4|2|0|70506|1|100|",
+   "2400|41|3|994.4|2|0|70506|1|100|",
+   "2460|41|3|994.4|2|0|70506|1|100|",
+   "2520|41|3|994.4|2|0|70506|1|100|",
+   "2580|41|3|994.4|2|0|70506|1|100|",
+   "2640|41|3|994.4|2|0|70506|1|100|",
+   "2700|41|3|994.4|2|0|70506|1|100|",
+   "2760|41|3|994.4|2|0|70506|1|100|",
+   "2820|41|3|994.4|2|0|70506|1|100|",
+   "2880|41|3|994.4|2|0|70506|1|100|",
+   "2940|41|3|994.4|2|0|70506|1|100|",
+   "3000|41|3|994.4|2|0|70506|1|100|",
+   "3060|41|3|994.4|2|0|70506|1|100|",
+   "3120|41|3|994.4|2|0|70506|1|100|",
+   "3180|41|3|994.4|2|0|70506|1|100|",
+   "3240|41|3|994.4|2|0|70506|1|100|",
+   "3300|41|3|994.4|2|0|70506|1|100|",
+   "3360|41|3|994.4|2|0|70506|1|100|",
+   "3420|41|3|994.4|2|0|70506|1|100|"
+  ],
+  "hashes": [
+   [
+    60,
+    "d99ded25"
+   ],
+   [
+    180,
+    "ccbfa3a5"
+   ],
+   [
+    300,
+    "4cfa56f5"
+   ],
+   [
+    420,
+    "a4ecf915"
+   ],
+   [
+    540,
+    "d7813b25"
+   ],
+   [
+    660,
+    "d2d38a25"
+   ],
+   [
+    780,
+    "40bb0305"
+   ],
+   [
+    900,
+    "5f401035"
+   ],
+   [
+    1020,
+    "5aa85445"
+   ]
+  ],
+  "det": false,
+  "fpsReal": [
+   204,
+   195,
+   199,
+   201,
+   195,
+   200,
+   201,
+   196,
+   196,
+   196,
+   200,
+   201,
+   195,
+   202,
+   202,
+   198,
+   203
+  ],
+  "boot": {
+   "gold": 5612.82108015019,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 491.9000000357628,
+  "t0v": 633.3333333333334
+ }
+}

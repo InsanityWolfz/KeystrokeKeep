@@ -82,6 +82,26 @@ Built before testing: **achievement progress counters** (e36437d), the R8 audito
   - At f100 the Heart is fully inside the strip, red, and its Void Slam telegraph reads.
 - **Not verified on this PC:** the launch-flash fix and the frame-locked capture both need the Electron shell on a second monitor. The R10 market tester re-runs them with the safe launcher.
 
+## Market tester's final pass (after part 4)
+- **Verified in the Electron shell (safe launcher, side monitors):**
+  - Launch flash fixed: the strip docks on the saved monitor at 0.33 s and shows at 0.39 s. Before, it showed on the primary at 0.31 s.
+  - `KK_CAPTURE_DISPLAY` works.
+  - ★ glyph, steady Calm FLOW, HUD plate, welcome line, `KK.on` unsubscribe and the await timeout MARK all pass.
+  - Big banners are down to 1–14 an hour. The exception is typists' hour 1 at 20–26, and all of it is first-ever content.
+- **Regressions caused by part 4, fixed in part 5:**
+  - **Capture ran about 3.3× fast (193–207 fps).** The overridden `performance.now` also paced the loop. The loop now paces on the real clock (`KK.realNow`, `KK.realSetTimeout`).
+  - **Takes still drifted,** because game timers ran on wall-clock time. In capture mode every `setTimeout` now runs on frames.
+  - **The adopted G2/G5 scripts timed out on `await bossSpawn` right after `wave`.** `await` now resolves if the event fired this frame, G2 uses the tester's `g2_v9b`, and G5 drops that await.
+  - **The README** recommends a display id over `secondary`, because the first non-primary monitor may be the one the user works on.
+- **Not run here:** the part-5 pacing fix needs the Electron shell. **R10 market gate:** capture at 59–61 real fps, and 3/3 identical state digests for S3 and G5.
+- **Still open:**
+  - Demo typist hour-2 alerts are 21/h (cap 20).
+  - Hour-1 toasts are 12–13 (cap 10); counting recruit hints as tutorial makes it 9–10.
+  - Default size is S on 1080p.
+  - Chromium cache in Roaming.
+  - No in-game version.
+  - The packaged `dist/full` predates part 4 and needs a rebuild before any recording.
+
 ## Market tester: desktop incidents (relayed to the user)
 The tester's safe launcher never showed a window on the primary display. Before its guards were complete there were two short incidents:
 - **About 20:42 UTC:** a bare `electron.exe` start may have shown a default window or dialog on the primary display for about 60 s.
@@ -95,7 +115,8 @@ No input was injected. The real save is unchanged (md5 `d680a06b…b533`).
 - **[major, launch] Biome 5 "The Heartroot" + Echoed Depths.** Full spec in auditor.md F4. Candidate to build before R10's testing.
 - **[major, store] Store copy v2 corrections** (auditor F3): 39 achievements, trophies to 300, FLOW multiplier, Hollowed from f80, Codex 40.
 - **[minor] HUD font scale with S/M/L, and `auto` → M on ≥1440p** (market F7).
-- **[minor] Cosmetic RNG on its own stream** (market F2b). Not needed if the frame lock alone proves deterministic in R10.
+- **[minor] Cosmetic RNG on its own stream** (market F2b). Only if the frame-locked timers aren't enough in R10.
+- **[minor] Recruit hints count as tutorial toasts; move-alert gate 15 min** (both about 1 over their caps).
 - **[P2] Trust items:**
   - Chromium cache to `%LOCALAPPDATA%`.
   - "Delete my data" button.

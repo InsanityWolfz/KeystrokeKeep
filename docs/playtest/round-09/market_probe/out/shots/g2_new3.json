@@ -1,0 +1,332 @@
+{
+ "name": "g2_new3",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-capture",
+ "log": [
+  "  0.06 uiohook start() blocked (dummy)",
+  "  0.09 pre installed {\"identifier\":\"1\"}",
+  "  0.09 loadFile",
+  "  0.32 tray: fake (no icon shown)",
+  "  0.39 shown at {\"x\":2560,\"y\":1235,\"width\":1920,\"height\":128}",
+  "  0.42 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":11}",
+  "  6.70 [page] [capture] await bossSpawn TIMED OUT",
+  " 16.02 finish"
+ ],
+ "page": {
+  "f": 3107,
+  "t0f": 35,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue floor 50"
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue sparks 20"
+   },
+   {
+    "f": 7,
+    "r": 33,
+    "v": 100,
+    "e": "cue wave"
+   },
+   {
+    "f": 7,
+    "r": 34,
+    "v": 100,
+    "e": "BANNER EMBER COLOSSUS / FLOOR 50 BOSS"
+   },
+   {
+    "f": 7,
+    "r": 37,
+    "v": 100,
+    "e": "bossSpawn Ember Colossus"
+   },
+   {
+    "f": 147,
+    "r": 783,
+    "v": 2450,
+    "e": "ALERT MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT"
+   },
+   {
+    "f": 147,
+    "r": 783,
+    "v": 2450,
+    "e": "magmaShell Ember Colossus"
+   },
+   {
+    "f": 484,
+    "r": 2474,
+    "v": 8067,
+    "e": "ult cleric"
+   },
+   {
+    "f": 901,
+    "r": 4595,
+    "v": 15017,
+    "e": "magmaShell Ember Colossus"
+   },
+   {
+    "f": 1207,
+    "r": 6113,
+    "v": 20100,
+    "e": "cue mark \"BOSS IN\""
+   },
+   {
+    "f": 1659,
+    "r": 8357,
+    "v": 27650,
+    "e": "magmaShell Ember Colossus"
+   },
+   {
+    "f": 1660,
+    "r": 8357,
+    "v": 27650,
+    "e": "cue mark \"SHELL (type now)\""
+   },
+   {
+    "f": 1708,
+    "r": 8598,
+    "v": 28450,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 1708,
+    "r": 8602,
+    "v": 28467,
+    "e": "ult knight"
+   },
+   {
+    "f": 1738,
+    "r": 8750,
+    "v": 28967,
+    "e": "ALERT SHELL CRACKED!"
+   },
+   {
+    "f": 1738,
+    "r": 8750,
+    "v": 28967,
+    "e": "shellCrack Ember Colossus"
+   },
+   {
+    "f": 1739,
+    "r": 8751,
+    "v": 28967,
+    "e": "cue mark \"CRACK\""
+   },
+   {
+    "f": 1774,
+    "r": 8945,
+    "v": 29567,
+    "e": "ult archer"
+   },
+   {
+    "f": 1848,
+    "r": 9328,
+    "v": 30800,
+    "e": "ult mage"
+   },
+   {
+    "f": 1907,
+    "r": 9633,
+    "v": 31783,
+    "e": "relicOffer [\"whetstone\",\"oil\",\"spacebar\"]"
+   },
+   {
+    "f": 1907,
+    "r": 9633,
+    "v": 31783,
+    "e": "BANNER VICTORY! / Ember Colossus falls"
+   },
+   {
+    "f": 1907,
+    "r": 9633,
+    "v": 31783,
+    "e": "kill BOSS Ember Colossus"
+   },
+   {
+    "f": 1907,
+    "r": 9633,
+    "v": 31783,
+    "e": "meteorLand "
+   },
+   {
+    "f": 2067,
+    "r": 10437,
+    "v": 34450,
+    "e": "floor 51"
+   },
+   {
+    "f": 2189,
+    "r": 11037,
+    "v": 36467,
+    "e": "TOAST-call The boss dropped a relic! Choose it in ◆ Relics when you hav"
+   },
+   {
+    "f": 2192,
+    "r": 11056,
+    "v": 36533,
+    "e": "ult knight"
+   },
+   {
+    "f": 2459,
+    "r": 12393,
+    "v": 40967,
+    "e": "cue mark \"END\""
+   }
+  ],
+  "dig": [
+   "60|50|3|125.4|3|58680795|0|20|0|Ember Colossus",
+   "120|50|3|176.4|3|58489938|0|20|0|Ember Colossus",
+   "180|50|3|199.5|3|56599691|0|20|0|Ember Colossus",
+   "240|50|3|211.1|3|54019831|0|20|0|Ember Colossus",
+   "300|50|3|219.8|3|52990353|51353|20|0|Ember Colossus",
+   "360|50|3|225.2|3|51938783|51353|20|0|Ember Colossus",
+   "420|50|3|229.9|3|51849019|102706|20|0|Ember Colossus",
+   "480|50|3|231.7|3|51505530|102706|20|0|Ember Colossus",
+   "540|50|3|256.5|3|50957289|102706|20|0|Ember Colossus",
+   "600|50|3|270.2|3|50328362|102706|20|0|Ember Colossus",
+   "660|50|3|279.5|3|49784500|102706|20|0|Ember Colossus",
+   "720|50|3|296.3|3|48773712|102706|20|0|Ember Colossus",
+   "780|50|3|314.4|3|47233199|102706|20|0|Ember Colossus",
+   "840|50|3|337.4|3|46222412|102706|20|0|Ember Colossus",
+   "900|50|3|360.5|3|44157716|102706|20|0|Ember Colossus",
+   "960|50|3|376.3|3|43394804|102706|20|0|Ember Colossus",
+   "1020|50|3|398|3|43120683|102706|20|0|Ember Colossus",
+   "1080|50|3|413.4|3|42406597|102706|20|0|Ember Colossus",
+   "1140|50|3|442.2|3|41676683|102706|20|0|Ember Colossus",
+   "1200|50|3|462.3|3|40460757|102706|20|0|Ember Colossus",
+   "1260|50|3|470.3|3|40131957|102706|20|0|Ember Colossus",
+   "1320|50|3|487|3|38718474|102706|20|0|Ember Colossus",
+   "1380|50|3|505|3|36618255|102706|20|0|Ember Colossus",
+   "1440|50|3|523.6|3|35872071|102706|20|0|Ember Colossus",
+   "1500|50|3|542.6|3|34720357|102706|20|0|Ember Colossus",
+   "1560|50|3|554.5|3|33831058|102706|20|0|Ember Colossus",
+   "1620|50|3|572.4|3|32913173|102706|20|0|Ember Colossus",
+   "1680|50|3|591.4|3|31592166|102706|20|0|Ember Colossus",
+   "1740|50|3|604.5|3|28460839|102706|125|0|Ember Colossus",
+   "1800|50|3|637.4|3|22033059|102706|95|0|Ember Colossus",
+   "1860|50|3|658.8|3|16434356|102706|45|0|Ember Colossus",
+   "1920|50|3|685.4|0|0|821647|45|0|",
+   "1980|50|3|711.1|0|0|141258|45|0|",
+   "2040|50|3|763.9|0|0|141258|45|0|",
+   "2100|51|1|807.2|1|4224324|141258|45|0|",
+   "2160|51|1|860|1|4224324|141258|45|0|",
+   "2220|51|1|911.1|1|3527035|141258|20|0|",
+   "2280|51|1|962.1|1|474116|141258|20|0|",
+   "2340|51|2|1010.5|2|7392568|202111|20|0|",
+   "2400|51|2|1061.5|2|6840198|202111|20|0|",
+   "2460|51|2|1108.7|2|5728226|202111|20|0|",
+   "2520|51|2|1118.8|2|4027412|202111|20|0|",
+   "2580|51|2|1135.8|2|2411676|202111|20|0|",
+   "2640|51|2|1162.8|2|1327456|202111|20|0|",
+   "2700|51|2|1176.1|2|555464|202111|20|0|",
+   "2760|51|3|1213.9|2|16897297|133492|20|0|",
+   "2820|51|3|1266.7|2|16767328|133492|20|0|",
+   "2880|51|3|1311.4|2|16045375|133492|20|0|",
+   "2940|51|3|1319.2|2|15453390|133492|20|0|",
+   "3000|51|3|1324.9|2|14308383|133492|20|0|",
+   "3060|51|3|1329.5|2|13716399|133492|20|0|"
+  ],
+  "hashes": [
+   [
+    60,
+    "52f5bfe5"
+   ],
+   [
+    180,
+    "4e81c795"
+   ],
+   [
+    300,
+    "9934d4e5"
+   ],
+   [
+    420,
+    "87fe6a75"
+   ],
+   [
+    540,
+    "aa1b0805"
+   ],
+   [
+    660,
+    "958e6445"
+   ],
+   [
+    780,
+    "35e2d615"
+   ],
+   [
+    900,
+    "702df675"
+   ]
+  ],
+  "det": false,
+  "fpsReal": [
+   193,
+   199,
+   198,
+   195,
+   202,
+   203,
+   198,
+   204,
+   201,
+   192,
+   202,
+   202,
+   198,
+   206,
+   201
+  ],
+  "boot": {
+   "gold": 0,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 491.30000001192093,
+  "t0v": 633.3333333333334
+ }
+}

@@ -1,0 +1,1148 @@
+{
+ "args": "--min 480 --profile idle --seed 6 --retire nudge --omen random --out docs/playtest/round-09/market_probe/out/c9_newfull_idle_6.json",
+ "full": false,
+ "simHours": 8,
+ "perHour": {
+  "0": {
+   "hud": {
+    "gold pulse": 543
+   },
+   "screen": {
+    "floor fade to black": 106
+   },
+   "toast": {
+    "hero can be recruited": 3,
+    "tutorial: rat": 1,
+    "achievement (batched)": 3,
+    "tutorial: first ult": 1,
+    "relic dropped": 2,
+    "tutorial: retire": 1
+   },
+   "popup": {
+    "LV #": 166,
+    "TREASURE! +#": 17,
+    "GOLDEN RAT! +#": 6,
+    "+# EMBERS": 10,
+    "EARTHSHATTER!": 6,
+    "ARROW STORM!": 6,
+    "+#": 4,
+    "KO": 4
+   },
+   "sound": {
+    "rat": 14,
+    "chest": 17,
+    "recruit": 5,
+    "milestone": 9,
+    "ratCaught": 6,
+    "softBoom": 6,
+    "bossIntro": 4,
+    "slam": 6,
+    "offer": 4,
+    "relic": 4,
+    "wipe": 1,
+    "retire": 1
+   },
+   "banner": {
+    "WREN JOINS!": 1,
+    "SIR CLANK LV #": 2,
+    "THE RAT KING": 1,
+    "VICTORY!": 2,
+    "RETREAT!": 1,
+    "THE BONE KING": 1,
+    "MOSSY CAVERNS": 1,
+    "MORTIMER JOINS!": 1,
+    "MORTIMER LV #": 1,
+    "SISTER PELL JOINS!": 1
+   },
+   "bannerFirstEver": {
+    "WREN JOINS!": 1,
+    "SIR CLANK LV #": 2,
+    "THE RAT KING": 1,
+    "VICTORY!": 1,
+    "RETREAT!": 1,
+    "THE BONE KING": 1,
+    "MOSSY CAVERNS": 1,
+    "MORTIMER JOINS!": 1,
+    "MORTIMER LV #": 1,
+    "SISTER PELL JOINS!": 1
+   },
+   "flashFaint": {
+    "#ffffff": 15,
+    "#ffd76a": 15,
+    "#300010": 4,
+    "#c472ff": 4,
+    "#5a0010": 1
+   },
+   "toastPlayer": {
+    "recruit": 5,
+    "relic acquired": 4,
+    "retire / omen": 1
+   },
+   "secs": {
+    "big banner on screen": 27.033333333333836,
+    "alert plate on screen (2 Hz text blink)": 5.466666666666657,
+    "any sound started (seconds with >=1)": 73
+   },
+   "loudSound": {
+    "bossIntro": 4,
+    "slam": 6
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 2,
+    "THE BONE KING REASSEMBLES!": 2
+   },
+   "suppressed": {
+    "achievement toast held": 2
+   },
+   "minorBanner": {
+    "SIR CLANK LV #": 5,
+    "MOSSY CAVERNS": 15,
+    "WREN JOINS!": 1,
+    "THE RAT KING": 1,
+    "VICTORY!": 2,
+    "MORTIMER JOINS!": 1,
+    "THE BONE KING": 1,
+    "MORTIMER LV #": 1
+   },
+   "bannerRepeat": {
+    "VICTORY!": 1
+   },
+   "downgraded": {
+    "MOSSY CAVERNS": 15,
+    "WREN JOINS!": 1,
+    "THE RAT KING": 1,
+    "MORTIMER JOINS!": 1,
+    "THE BONE KING": 1
+   }
+  },
+  "1": {
+   "popup": {
+    "LV #": 742,
+    "TREASURE! +#": 26,
+    "WEBBED": 16,
+    "SANCTUARY!": 11,
+    "+#": 13,
+    "+# EMBERS": 19,
+    "GOLDEN RAT! +#": 6,
+    "METEOR!": 5,
+    "EARTHSHATTER!": 8,
+    "WAR CHARGE!": 21,
+    "ARROW STORM!": 6
+   },
+   "hud": {
+    "gold pulse": 527
+   },
+   "sound": {
+    "chest": 26,
+    "bossIntro": 10,
+    "slam": 18,
+    "rat": 13,
+    "offer": 13,
+    "relic": 12,
+    "milestone": 15,
+    "ratCaught": 6,
+    "softBoom": 9,
+    "deny": 21,
+    "retire": 2,
+    "recruit": 6,
+    "bossKill": 3
+   },
+   "screen": {
+    "floor fade to black": 126
+   },
+   "banner": {
+    "BROOD MOTHER": 1,
+    "VICTORY!": 4,
+    "SISTER PELL LV #": 2,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "WREN LV #": 1,
+    "THE CRYPT": 1,
+    "★ SEAL OF THE DAY": 1,
+    "EMBER COLOSSUS": 1,
+    "SIR CLANK LV #": 1,
+    "MAGMA LORD": 1,
+    "MORTIMER LV #": 1,
+    "THE HOLLOW VOID": 1
+   },
+   "bannerFirstEver": {
+    "BROOD MOTHER": 1,
+    "SISTER PELL LV #": 2,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "WREN LV #": 1,
+    "THE CRYPT": 1,
+    "★ SEAL OF THE DAY": 1,
+    "EMBER COLOSSUS": 1,
+    "SIR CLANK LV #": 1,
+    "MAGMA LORD": 1,
+    "MORTIMER LV #": 1,
+    "THE HOLLOW VOID": 1
+   },
+   "flashFaint": {
+    "#300010": 13,
+    "#fff6c9": 11,
+    "#ffffff": 27,
+    "#c472ff": 12,
+    "#ffd76a": 21,
+    "#ffb347": 5
+   },
+   "loudSound": {
+    "bossIntro": 10,
+    "slam": 18,
+    "bossKill": 3
+   },
+   "secs": {
+    "big banner on screen": 36.53333333333382,
+    "alert plate on screen (2 Hz text blink)": 15.533333333333289,
+    "boss white flicker (2 Hz)": 29.40000000000062,
+    "any sound started (seconds with >=1)": 144
+   },
+   "alert": {
+    "WEB SHOT! TYPE TO TEAR IT": 3,
+    "WAR CHARGE!": 3,
+    "SQUEAK! THE RAT KING SUMMONS": 1,
+    "THE BONE KING REASSEMBLES!": 2,
+    "MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT": 2,
+    "LAVA RAIN!": 2
+   },
+   "bannerRepeat": {
+    "VICTORY!": 4
+   },
+   "toast": {
+    "relic dropped": 3,
+    "achievement (batched)": 2,
+    "seal of the day": 1
+   },
+   "toastPlayer": {
+    "relic acquired": 12,
+    "retire / omen": 2,
+    "recruit": 6
+   },
+   "suppressed": {
+    "achievement toast held": 5
+   },
+   "minorBanner": {
+    "WREN LV #": 3,
+    "WREN JOINS!": 2,
+    "THE RAT KING": 1,
+    "VICTORY!": 9,
+    "MORTIMER JOINS!": 2,
+    "THE BONE KING": 2,
+    "MOSSY CAVERNS": 2,
+    "SISTER PELL JOINS!": 2,
+    "SIR CLANK LV #": 2,
+    "BROOD MOTHER": 2,
+    "SISTER PELL LV #": 3,
+    "GOBLIN WARLORD": 2,
+    "MAGMA DEPTHS": 2,
+    "MORTIMER LV #": 2,
+    "THE CRYPT": 1,
+    "EMBER COLOSSUS": 1,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1
+   },
+   "downgraded": {
+    "WREN JOINS!": 2,
+    "THE RAT KING": 1,
+    "MORTIMER JOINS!": 2,
+    "THE BONE KING": 2,
+    "MOSSY CAVERNS": 2,
+    "SISTER PELL JOINS!": 2,
+    "BROOD MOTHER": 2,
+    "GOBLIN WARLORD": 2,
+    "MAGMA DEPTHS": 2,
+    "THE CRYPT": 1,
+    "EMBER COLOSSUS": 1,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1
+   }
+  },
+  "2": {
+   "popup": {
+    "LV #": 765,
+    "SANCTUARY!": 12,
+    "KO": 12,
+    "TREASURE! +#": 27,
+    "+#": 12,
+    "+# EMBERS": 19,
+    "GOLDEN RAT! +#": 7,
+    "EARTHSHATTER!": 6,
+    "ARROW STORM!": 6,
+    "WEBBED": 2,
+    "WAR CHARGE!": 1,
+    "METEOR!": 5
+   },
+   "hud": {
+    "gold pulse": 509
+   },
+   "sound": {
+    "rat": 14,
+    "bossIntro": 10,
+    "zone": 15,
+    "slam": 11,
+    "wipe": 1,
+    "milestone": 11,
+    "chest": 27,
+    "retire": 2,
+    "offer": 12,
+    "relic": 12,
+    "ratCaught": 7,
+    "softBoom": 9,
+    "deny": 1,
+    "bossKill": 1
+   },
+   "screen": {
+    "floor fade to black": 138
+   },
+   "toast": {
+    "lantern unlock": 1,
+    "relic dropped": 3,
+    "achievement (batched)": 2,
+    "depth trophy": 1
+   },
+   "banner": {
+    "THE HOLLOW": 1,
+    "RETREAT!": 1,
+    "SISTER PELL LV #": 1,
+    "VICTORY!": 1,
+    "SIR CLANK LV #": 1,
+    "DEPTH TROPHY": 1,
+    "WREN LV #": 1
+   },
+   "bannerFirstEver": {
+    "THE HOLLOW": 1,
+    "SISTER PELL LV #": 1,
+    "SIR CLANK LV #": 1,
+    "DEPTH TROPHY": 1,
+    "WREN LV #": 1
+   },
+   "flashFaint": {
+    "#300010": 15,
+    "#5a1aa0": 15,
+    "#fff6c9": 12,
+    "#5a0010": 1,
+    "#ffd76a": 18,
+    "#ffffff": 18,
+    "#c472ff": 12,
+    "#ffb347": 5
+   },
+   "loudSound": {
+    "bossIntro": 10,
+    "slam": 11,
+    "bossKill": 1
+   },
+   "secs": {
+    "big banner on screen": 15.166666666666623,
+    "alert plate on screen (2 Hz text blink)": 17.933333333333383,
+    "boss white flicker (2 Hz)": 24.80000000000039,
+    "any sound started (seconds with >=1)": 127
+   },
+   "alert": {
+    "VOID SLAM INCOMING": 3,
+    "RETREAT": 2,
+    "THE PARTY REGROUPS (# MIN)": 1,
+    "THE BONE KING REASSEMBLES!": 2,
+    "WEB SHOT! TYPE TO TEAR IT": 2,
+    "WAR CHARGE!": 1,
+    "MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT": 2,
+    "LAVA RAIN!": 2
+   },
+   "bannerRepeat": {
+    "RETREAT!": 1,
+    "VICTORY!": 1
+   },
+   "minorBanner": {
+    "THE HOLLOW": 4,
+    "SIR CLANK LV #": 3,
+    "THE BONE KING": 2,
+    "VICTORY!": 11,
+    "MOSSY CAVERNS": 2,
+    "BROOD MOTHER": 2,
+    "GOBLIN WARLORD": 2,
+    "MAGMA DEPTHS": 2,
+    "EMBER COLOSSUS": 2,
+    "WREN LV #": 1,
+    "MAGMA LORD": 2,
+    "THE HOLLOW VOID": 2,
+    "SISTER PELL LV #": 2
+   },
+   "downgraded": {
+    "THE HOLLOW": 4,
+    "THE BONE KING": 2,
+    "MOSSY CAVERNS": 2,
+    "BROOD MOTHER": 2,
+    "GOBLIN WARLORD": 2,
+    "MAGMA DEPTHS": 2,
+    "EMBER COLOSSUS": 2,
+    "MAGMA LORD": 2,
+    "THE HOLLOW VOID": 2
+   },
+   "toastPlayer": {
+    "retire / omen": 2,
+    "relic acquired": 12
+   },
+   "suppressed": {
+    "achievement toast held": 1
+   }
+  },
+  "3": {
+   "popup": {
+    "LV #": 530,
+    "TREASURE! +#": 13,
+    "GOLDEN RAT! +#": 8,
+    "EARTHSHATTER!": 7,
+    "+# EMBERS": 16,
+    "ARROW STORM!": 6,
+    "METEOR!": 4,
+    "SANCTUARY!": 15,
+    "+#": 8,
+    "WEBBED": 1
+   },
+   "hud": {
+    "gold pulse": 363
+   },
+   "screen": {
+    "floor fade to black": 90
+   },
+   "minorBanner": {
+    "WREN LV #": 2,
+    "THE HOLLOWED RAT KING": 2,
+    "DEPTH TROPHY": 1,
+    "SIR CLANK LV #": 2,
+    "THE BONE KING": 1,
+    "VICTORY!": 7,
+    "MOSSY CAVERNS": 1,
+    "BROOD MOTHER": 1,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "EMBER COLOSSUS": 1,
+    "MORTIMER LV #": 1,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1,
+    "THE HOLLOW": 1
+   },
+   "flashFaint": {
+    "#ffd76a": 16,
+    "#ffffff": 15,
+    "#ffb347": 4,
+    "#300010": 10,
+    "#5a1aa0": 13,
+    "#fff6c9": 15,
+    "#5a0010": 1,
+    "#c472ff": 8
+   },
+   "sound": {
+    "milestone": 8,
+    "chest": 13,
+    "rat": 14,
+    "ratCaught": 8,
+    "softBoom": 7,
+    "bossIntro": 7,
+    "zone": 13,
+    "slam": 10,
+    "wipe": 1,
+    "offer": 8,
+    "relic": 8,
+    "retire": 1
+   },
+   "banner": {
+    "DEPTH TROPHY": 2,
+    "THE HOLLOWED RAT KING": 1,
+    "VICTORY!": 1,
+    "MORTIMER LV #": 1,
+    "SISTER PELL LV #": 1,
+    "THE HOLLOWED BONE KING": 1
+   },
+   "bannerRepeat": {
+    "DEPTH TROPHY": 2,
+    "VICTORY!": 1
+   },
+   "toast": {
+    "depth trophy": 3,
+    "achievement (batched)": 2,
+    "relic dropped": 2
+   },
+   "secs": {
+    "big banner on screen": 15.166666666666623,
+    "alert plate on screen (2 Hz text blink)": 13.199999999999964,
+    "boss white flicker (2 Hz)": 45.29999999999999,
+    "any sound started (seconds with >=1)": 90
+   },
+   "bannerFirstEver": {
+    "THE HOLLOWED RAT KING": 1,
+    "MORTIMER LV #": 1,
+    "SISTER PELL LV #": 1,
+    "THE HOLLOWED BONE KING": 1
+   },
+   "loudSound": {
+    "bossIntro": 7,
+    "slam": 10
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 2,
+    "VOID SLAM INCOMING": 3,
+    "ENRAGED! FALL BACK - BOSS STAYS AT #% HP": 1,
+    "THE BONE KING REASSEMBLES!": 1,
+    "WEB SHOT! TYPE TO TEAR IT": 1,
+    "MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT": 1,
+    "LAVA RAIN!": 1
+   },
+   "downgraded": {
+    "THE HOLLOWED RAT KING": 2,
+    "DEPTH TROPHY": 1,
+    "THE BONE KING": 1,
+    "MOSSY CAVERNS": 1,
+    "BROOD MOTHER": 1,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "EMBER COLOSSUS": 1,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1,
+    "THE HOLLOW": 1
+   },
+   "toastPlayer": {
+    "relic acquired": 8,
+    "retire / omen": 1
+   }
+  },
+  "4": {
+   "sound": {
+    "slam": 17,
+    "zone": 11,
+    "ratCaught": 5,
+    "softBoom": 8,
+    "wipe": 2,
+    "rat": 14,
+    "retire": 1,
+    "chest": 17,
+    "bossIntro": 6,
+    "milestone": 6,
+    "offer": 8,
+    "relic": 8,
+    "bossKill": 1
+   },
+   "loudSound": {
+    "slam": 17,
+    "bossIntro": 6,
+    "bossKill": 1
+   },
+   "secs": {
+    "boss white flicker (2 Hz)": 75.0999999999983,
+    "alert plate on screen (2 Hz text blink)": 15.099999999999957,
+    "big banner on screen": 7.0999999999999845,
+    "any sound started (seconds with >=1)": 100
+   },
+   "flashFaint": {
+    "#5a1aa0": 11,
+    "#ffd76a": 11,
+    "#ffb347": 5,
+    "#ffffff": 15,
+    "#fff6c9": 18,
+    "#5a0010": 2,
+    "#300010": 9,
+    "#c472ff": 8
+   },
+   "popup": {
+    "LV #": 482,
+    "GOLDEN RAT! +#": 5,
+    "METEOR!": 5,
+    "+# EMBERS": 13,
+    "EARTHSHATTER!": 7,
+    "ARROW STORM!": 6,
+    "SANCTUARY!": 18,
+    "TREASURE! +#": 17,
+    "+#": 8,
+    "WEBBED": 1
+   },
+   "hud": {
+    "gold pulse": 332
+   },
+   "alert": {
+    "ENRAGED! FALL BACK - BOSS STAYS AT #% HP": 2,
+    "THE BONE KING REASSEMBLES!": 1,
+    "WEB SHOT! TYPE TO TEAR IT": 1,
+    "MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT": 1,
+    "LAVA RAIN!": 1,
+    "VOID SLAM INCOMING": 2,
+    "SQUEAK! THE RAT KING SUMMONS": 1,
+    "THE HOLLOWED BONE KING REASSEMBLES!": 1
+   },
+   "toastPlayer": {
+    "retire / omen": 1,
+    "relic acquired": 8
+   },
+   "screen": {
+    "floor fade to black": 82
+   },
+   "minorBanner": {
+    "THE CRYPT": 1,
+    "THE BONE KING": 1,
+    "VICTORY!": 7,
+    "MOSSY CAVERNS": 1,
+    "BROOD MOTHER": 1,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "SISTER PELL LV #": 2,
+    "EMBER COLOSSUS": 1,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1,
+    "THE HOLLOW": 1,
+    "WREN LV #": 1,
+    "THE HOLLOWED RAT KING": 1,
+    "THE HOLLOWED BONE KING": 2
+   },
+   "downgraded": {
+    "THE CRYPT": 1,
+    "THE BONE KING": 1,
+    "MOSSY CAVERNS": 1,
+    "BROOD MOTHER": 1,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "EMBER COLOSSUS": 1,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1,
+    "THE HOLLOW": 1,
+    "THE HOLLOWED RAT KING": 1,
+    "THE HOLLOWED BONE KING": 2
+   },
+   "toast": {
+    "relic dropped": 2,
+    "achievement (batched)": 1,
+    "codex rank": 1,
+    "depth trophy": 1
+   },
+   "banner": {
+    "VICTORY!": 1,
+    "DEPTH TROPHY": 1,
+    "SIR CLANK LV #": 1
+   },
+   "bannerRepeat": {
+    "VICTORY!": 1,
+    "DEPTH TROPHY": 1
+   },
+   "bannerFirstEver": {
+    "SIR CLANK LV #": 1
+   }
+  },
+  "5": {
+   "popup": {
+    "LV #": 1015,
+    "GOLDEN RAT! +#": 7,
+    "ARROW STORM!": 6,
+    "+# EMBERS": 23,
+    "METEOR!": 3,
+    "EARTHSHATTER!": 6,
+    "TREASURE! +#": 25,
+    "+#": 16,
+    "WEBBED": 2,
+    "SANCTUARY!": 22,
+    "ECHO!": 16
+   },
+   "hud": {
+    "gold pulse": 545
+   },
+   "sound": {
+    "rat": 13,
+    "ratCaught": 7,
+    "softBoom": 6,
+    "retire": 2,
+    "chest": 25,
+    "milestone": 10,
+    "bossIntro": 10,
+    "offer": 16,
+    "relic": 16,
+    "zone": 17,
+    "slam": 19,
+    "wipe": 1,
+    "bossKill": 3
+   },
+   "flashFaint": {
+    "#ffd76a": 16,
+    "#ffb347": 4,
+    "#ffffff": 24,
+    "#300010": 18,
+    "#c472ff": 16,
+    "#5a1aa0": 17,
+    "#fff6c9": 33,
+    "#5a0010": 1
+   },
+   "screen": {
+    "floor fade to black": 165
+   },
+   "toastPlayer": {
+    "retire / omen": 2,
+    "relic acquired": 16
+   },
+   "minorBanner": {
+    "SIR CLANK LV #": 3,
+    "THE BONE KING": 2,
+    "VICTORY!": 16,
+    "MOSSY CAVERNS": 2,
+    "BROOD MOTHER": 2,
+    "GOBLIN WARLORD": 2,
+    "MAGMA DEPTHS": 2,
+    "MORTIMER LV #": 1,
+    "EMBER COLOSSUS": 2,
+    "MAGMA LORD": 2,
+    "THE HOLLOW VOID": 2,
+    "THE HOLLOW": 2,
+    "THE HOLLOWED RAT KING": 2,
+    "THE HOLLOWED BONE KING": 2,
+    "THE HEART OF THE KEEP": 1,
+    "SISTER PELL LV #": 2,
+    "WREN LV #": 1
+   },
+   "downgraded": {
+    "THE BONE KING": 2,
+    "MOSSY CAVERNS": 2,
+    "BROOD MOTHER": 2,
+    "GOBLIN WARLORD": 2,
+    "MAGMA DEPTHS": 2,
+    "EMBER COLOSSUS": 2,
+    "MAGMA LORD": 2,
+    "THE HOLLOW VOID": 2,
+    "THE HOLLOW": 2,
+    "THE HOLLOWED RAT KING": 2,
+    "THE HOLLOWED BONE KING": 2,
+    "THE HEART OF THE KEEP": 1
+   },
+   "loudSound": {
+    "bossIntro": 10,
+    "slam": 19,
+    "bossKill": 3
+   },
+   "alert": {
+    "THE BONE KING REASSEMBLES!": 2,
+    "WEB SHOT! TYPE TO TEAR IT": 2,
+    "MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT": 2,
+    "LAVA RAIN!": 2,
+    "VOID SLAM INCOMING": 4,
+    "SQUEAK! THE RAT KING SUMMONS": 2,
+    "THE HOLLOWED BONE KING REASSEMBLES!": 2,
+    "ENRAGED! FALL BACK - BOSS STAYS AT #% HP": 1
+   },
+   "secs": {
+    "alert plate on screen (2 Hz text blink)": 22.500000000000277,
+    "boss white flicker (2 Hz)": 64.36666666666558,
+    "big banner on screen": 6.299999999999987,
+    "any sound started (seconds with >=1)": 136
+   },
+   "toast": {
+    "relic dropped": 3,
+    "achievement (batched)": 1
+   },
+   "banner": {
+    "WREN LV #": 1,
+    "DEPTH TROPHY": 1,
+    "THE HEART OF THE KEEP": 1
+   },
+   "bannerFirstEver": {
+    "WREN LV #": 1,
+    "THE HEART OF THE KEEP": 1
+   },
+   "bannerRepeat": {
+    "DEPTH TROPHY": 1
+   }
+  },
+  "6": {
+   "popup": {
+    "LV #": 113,
+    "GOLDEN RAT! +#": 9,
+    "METEOR!": 5,
+    "+# EMBERS": 10,
+    "EARTHSHATTER!": 5,
+    "ARROW STORM!": 5,
+    "TREASURE! +#": 2,
+    "SANCTUARY!": 21,
+    "+#": 1
+   },
+   "sound": {
+    "rat": 14,
+    "ratCaught": 9,
+    "milestone": 2,
+    "softBoom": 8,
+    "chest": 2,
+    "bossIntro": 4,
+    "zone": 12,
+    "slam": 22,
+    "wipe": 3,
+    "offer": 1,
+    "relic": 1
+   },
+   "hud": {
+    "gold pulse": 116
+   },
+   "flashFaint": {
+    "#ffd76a": 10,
+    "#ffb347": 5,
+    "#ffffff": 6,
+    "#300010": 4,
+    "#5a1aa0": 12,
+    "#fff6c9": 21,
+    "#5a0010": 3,
+    "#c472ff": 1
+   },
+   "minorBanner": {
+    "WREN LV #": 1,
+    "THE HEART OF THE KEEP": 4
+   },
+   "screen": {
+    "floor fade to black": 16
+   },
+   "downgraded": {
+    "THE HEART OF THE KEEP": 4
+   },
+   "loudSound": {
+    "bossIntro": 4,
+    "slam": 22
+   },
+   "alert": {
+    "VOID SLAM INCOMING": 3,
+    "ENRAGED! FALL BACK - BOSS STAYS AT #% HP": 3,
+    "THE PARTY REGROUPS (# MIN)": 1
+   },
+   "secs": {
+    "alert plate on screen (2 Hz text blink)": 10.899999999999972,
+    "boss white flicker (2 Hz)": 105.66666666666323,
+    "big banner on screen": 5.133333333333325,
+    "any sound started (seconds with >=1)": 72
+   },
+   "banner": {
+    "VICTORY!": 1,
+    "DEPTH TROPHY": 1
+   },
+   "bannerRepeat": {
+    "VICTORY!": 1,
+    "DEPTH TROPHY": 1
+   },
+   "toast": {
+    "achievement (batched)": 1,
+    "relic dropped": 1,
+    "depth trophy": 1
+   },
+   "toastPlayer": {
+    "relic acquired": 1
+   }
+  },
+  "7": {
+   "sound": {
+    "rat": 14,
+    "ratCaught": 7,
+    "milestone": 8,
+    "softBoom": 12,
+    "retire": 1,
+    "chest": 13,
+    "bossIntro": 7,
+    "offer": 9,
+    "relic": 9,
+    "zone": 11,
+    "slam": 11,
+    "wipe": 1,
+    "bossKill": 1
+   },
+   "popup": {
+    "LV #": 541,
+    "GOLDEN RAT! +#": 7,
+    "METEOR!": 8,
+    "+# EMBERS": 16,
+    "EARTHSHATTER!": 11,
+    "TREASURE! +#": 13,
+    "+#": 9,
+    "ARROW STORM!": 8,
+    "WEBBED": 1,
+    "SANCTUARY!": 12
+   },
+   "flashFaint": {
+    "#ffd76a": 15,
+    "#ffb347": 8,
+    "#ffffff": 20,
+    "#300010": 10,
+    "#c472ff": 9,
+    "#5a1aa0": 10,
+    "#fff6c9": 12,
+    "#5a0010": 1
+   },
+   "banner": {
+    "SISTER PELL LV #": 1
+   },
+   "bannerFirstEver": {
+    "SISTER PELL LV #": 1
+   },
+   "secs": {
+    "big banner on screen": 1.9666666666666694,
+    "alert plate on screen (2 Hz text blink)": 12.5333333333333,
+    "boss white flicker (2 Hz)": 46.133333333333276,
+    "any sound started (seconds with >=1)": 97
+   },
+   "hud": {
+    "gold pulse": 347
+   },
+   "screen": {
+    "floor fade to black": 95
+   },
+   "toastPlayer": {
+    "retire / omen": 1,
+    "relic acquired": 9
+   },
+   "minorBanner": {
+    "THE BONE KING": 1,
+    "VICTORY!": 9,
+    "MOSSY CAVERNS": 1,
+    "BROOD MOTHER": 1,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "MORTIMER LV #": 2,
+    "EMBER COLOSSUS": 1,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1,
+    "WREN LV #": 2,
+    "THE HOLLOW": 1,
+    "THE HOLLOWED RAT KING": 1,
+    "SISTER PELL LV #": 1,
+    "THE HOLLOWED BONE KING": 1,
+    "THE HEART OF THE KEEP": 2
+   },
+   "downgraded": {
+    "THE BONE KING": 1,
+    "MOSSY CAVERNS": 1,
+    "BROOD MOTHER": 1,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "EMBER COLOSSUS": 1,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1,
+    "THE HOLLOW": 1,
+    "THE HOLLOWED RAT KING": 1,
+    "THE HOLLOWED BONE KING": 1,
+    "THE HEART OF THE KEEP": 2
+   },
+   "loudSound": {
+    "bossIntro": 7,
+    "slam": 11,
+    "bossKill": 1
+   },
+   "alert": {
+    "THE BONE KING REASSEMBLES!": 1,
+    "WEB SHOT! TYPE TO TEAR IT": 1,
+    "MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT": 1,
+    "LAVA RAIN!": 1,
+    "VOID SLAM INCOMING": 2,
+    "SQUEAK! THE RAT KING SUMMONS": 1,
+    "THE HOLLOWED BONE KING REASSEMBLES!": 1,
+    "ENRAGED! FALL BACK - BOSS STAYS AT #% HP": 1
+   },
+   "toast": {
+    "relic dropped": 2,
+    "codex rank": 1
+   }
+  }
+ },
+ "firsts": [
+  [
+   0.9,
+   "toast hero can be recruited"
+  ],
+  [
+   3.5,
+   "toast tutorial: rat"
+  ],
+  [
+   6,
+   "banner WREN JOINS!"
+  ],
+  [
+   7,
+   "banner SIR CLANK LV #"
+  ],
+  [
+   7,
+   "toast achievement (batched)"
+  ],
+  [
+   7,
+   "toast tutorial: first ult"
+  ],
+  [
+   9.1,
+   "banner THE RAT KING"
+  ],
+  [
+   9.1,
+   "loud sound bossIntro"
+  ],
+  [
+   9.1,
+   "alert SQUEAK! THE RAT KING SUMMONS"
+  ],
+  [
+   9.5,
+   "loud sound slam"
+  ],
+  [
+   9.7,
+   "banner VICTORY!"
+  ],
+  [
+   9.8,
+   "toast relic dropped"
+  ],
+  [
+   17.2,
+   "banner RETREAT!"
+  ],
+  [
+   23.2,
+   "toast tutorial: retire"
+  ],
+  [
+   23.6,
+   "banner THE BONE KING"
+  ],
+  [
+   24.4,
+   "alert THE BONE KING REASSEMBLES!"
+  ],
+  [
+   24.6,
+   "banner MOSSY CAVERNS"
+  ],
+  [
+   26,
+   "banner MORTIMER JOINS!"
+  ],
+  [
+   28,
+   "banner MORTIMER LV #"
+  ],
+  [
+   56,
+   "banner SISTER PELL JOINS!"
+  ],
+  [
+   61.6,
+   "banner BROOD MOTHER"
+  ],
+  [
+   61.6,
+   "alert WEB SHOT! TYPE TO TEAR IT"
+  ],
+  [
+   64,
+   "banner SISTER PELL LV #"
+  ],
+  [
+   73.7,
+   "banner GOBLIN WARLORD"
+  ],
+  [
+   73.8,
+   "alert WAR CHARGE!"
+  ],
+  [
+   76.7,
+   "banner MAGMA DEPTHS"
+  ],
+  [
+   77,
+   "banner WREN LV #"
+  ],
+  [
+   78,
+   "banner THE CRYPT"
+  ],
+  [
+   84.9,
+   "loud sound bossKill"
+  ],
+  [
+   88.1,
+   "toast seal of the day"
+  ],
+  [
+   88.1,
+   "banner ★ SEAL OF THE DAY"
+  ],
+  [
+   92.5,
+   "banner EMBER COLOSSUS"
+  ],
+  [
+   92.5,
+   "alert MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT"
+  ],
+  [
+   100.8,
+   "banner MAGMA LORD"
+  ],
+  [
+   100.8,
+   "alert LAVA RAIN!"
+  ],
+  [
+   102.1,
+   "banner THE HOLLOW VOID"
+  ],
+  [
+   120.2,
+   "toast lantern unlock"
+  ],
+  [
+   121.2,
+   "banner THE HOLLOW"
+  ],
+  [
+   121.3,
+   "alert VOID SLAM INCOMING"
+  ],
+  [
+   123.9,
+   "alert RETREAT"
+  ],
+  [
+   125.8,
+   "alert THE PARTY REGROUPS (# MIN)"
+  ],
+  [
+   153.3,
+   "banner DEPTH TROPHY"
+  ],
+  [
+   153.3,
+   "toast depth trophy"
+  ],
+  [
+   185.7,
+   "banner THE HOLLOWED RAT KING"
+  ],
+  [
+   188.7,
+   "alert ENRAGED! FALL BACK - BOSS STAYS AT #% HP"
+  ],
+  [
+   239.6,
+   "banner THE HOLLOWED BONE KING"
+  ],
+  [
+   281.5,
+   "alert THE HOLLOWED BONE KING REASSEMBLES!"
+  ],
+  [
+   282.2,
+   "toast codex rank"
+  ],
+  [
+   326.2,
+   "banner THE HEART OF THE KEEP"
+  ]
+ ],
+ "final": {
+  "floor": 109,
+  "maxFloorEver": 109,
+  "retires": 10,
+  "bossKills": 71,
+  "wipes": 4,
+  "glimpseDone": false,
+  "demoDone": false
+ }
+}

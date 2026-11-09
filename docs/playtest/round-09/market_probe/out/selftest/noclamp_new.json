@@ -1,0 +1,39 @@
+{
+ "name": "noclamp_new",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K"
+  ],
+  "balloons": [],
+  "hookStart": 0
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-selftest",
+ "log": [
+  "  0.05 loadFile (no probe)",
+  "  0.33 tray: fake (no icon shown)",
+  "  0.33 setBounds (game) {\"x\":2560,\"y\":1235,\"width\":1920,\"height\":128}",
+  "  0.39 shown at {\"x\":2560,\"y\":1235,\"width\":1920,\"height\":128}",
+  "  5.03 finish",
+  "  5.03 collect failed No target available"
+ ],
+ "page": null
+}

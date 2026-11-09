@@ -17,11 +17,6 @@
    "do": "wave"
   },
   {
-   "do": "await",
-   "v": "bossSpawn",
-   "timeout": 20
-  },
-  {
    "t": 0,
    "do": "mark",
    "v": "WARLORD IN"
@@ -57,5 +52,5 @@
    "v": "END"
   }
  ],
- "_run": "node tools/capture/shots/stage.js g5 ; KK_DEMO=1 KK_CAPTURE=1 KK_CAPTURE_DISPLAY=secondary KK_CAPTURE_SAVE=tools/capture/shots/saves/g5_demo_f38.json KK_CAPTURE_SCRIPT=<this file> npx electron ."
+ "_run": "node tools/capture/shots/stage.js g5 ; KK_DEMO=1 KK_CAPTURE=1 KK_CAPTURE_DISPLAY=<display id> KK_CAPTURE_SAVE=tools/capture/shots/saves/g5_demo_f38.json KK_CAPTURE_SCRIPT=<this file> npx electron ."
 }

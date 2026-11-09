@@ -1,5 +1,5 @@
 // R9 market: per-hour cap table (avg seeds 1+6).  node table8.js [full|proto]
-const pre = process.argv[2] === 'proto' ? 'proto' : '';
+const pre = process.argv[2] || '';
 const rows = [['demo', 'idle', [0]], ['demo', 'idle', [1]], ['demo', 'typist', [0]], ['demo', 'typist', [1]], ['full', 'idle', [0]], ['full', 'idle', [6, 7]], ['full', 'typist', [0]], ['full', 'typist', [6, 7]]];
 const sum = (o) => Object.values(o || {}).reduce((a, b) => a + b, 0);
 const geo = /^(FLOOR #|MOSSY CAVERNS|THE CRYPT|MAGMA DEPTHS|THE HOLLOW VOID)$/;

@@ -1,0 +1,269 @@
+{
+ "name": "g1_new3",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-capture",
+ "log": [
+  "  0.05 uiohook start() blocked (dummy)",
+  "  0.09 pre installed {\"identifier\":\"1\"}",
+  "  0.09 loadFile",
+  "  0.32 tray: fake (no icon shown)",
+  "  0.38 shown at {\"x\":2560,\"y\":1235,\"width\":1920,\"height\":128}",
+  "  0.41 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":9}",
+  " 10.02 finish"
+ ],
+ "page": {
+  "f": 1919,
+  "t0f": 35,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue floor 16"
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue autotype true"
+   },
+   {
+    "f": 25,
+    "r": 122,
+    "v": 400,
+    "e": "cue mark \"G1 IN\""
+   },
+   {
+    "f": 89,
+    "r": 450,
+    "v": 1483,
+    "e": "BANNER FLOW STATE! / x2.5 POWER"
+   },
+   {
+    "f": 89,
+    "r": 451,
+    "v": 1483,
+    "e": "fervorTier 2->3"
+   },
+   {
+    "f": 97,
+    "r": 488,
+    "v": 1600,
+    "e": "cue mark \"FLOW STATE banner (S1 freeze point)\""
+   },
+   {
+    "f": 123,
+    "r": 626,
+    "v": 2050,
+    "e": "ult knight"
+   },
+   {
+    "f": 189,
+    "r": 966,
+    "v": 3150,
+    "e": "ult archer"
+   },
+   {
+    "f": 207,
+    "r": 1052,
+    "v": 3433,
+    "e": "TOAST-call 🏆 Achievement: Flow State"
+   },
+   {
+    "f": 271,
+    "r": 1367,
+    "v": 4500,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 306,
+    "r": 1551,
+    "v": 5100,
+    "e": "ult mage"
+   },
+   {
+    "f": 355,
+    "r": 1791,
+    "v": 5900,
+    "e": "cue mark \"METEOR lands\""
+   },
+   {
+    "f": 365,
+    "r": 1846,
+    "v": 6083,
+    "e": "meteorLand "
+   },
+   {
+    "f": 493,
+    "r": 2499,
+    "v": 8217,
+    "e": "ult knight"
+   },
+   {
+    "f": 505,
+    "r": 2558,
+    "v": 8400,
+    "e": "cue mark \"G1 OUT\""
+   },
+   {
+    "f": 517,
+    "r": 2619,
+    "v": 8600,
+    "e": "cue autotype false"
+   },
+   {
+    "f": 644,
+    "r": 3268,
+    "v": 10733,
+    "e": "floor 17"
+   },
+   {
+    "f": 726,
+    "r": 3677,
+    "v": 12100,
+    "e": "ult archer"
+   },
+   {
+    "f": 912,
+    "r": 4602,
+    "v": 15200,
+    "e": "ult knight"
+   },
+   {
+    "f": 1077,
+    "r": 5425,
+    "v": 17950,
+    "e": "fervorTier 3->2"
+   },
+   {
+    "f": 1197,
+    "r": 6032,
+    "v": 19950,
+    "e": "floor 18"
+   },
+   {
+    "f": 1591,
+    "r": 7943,
+    "v": 26517,
+    "e": "fervorTier 2->1"
+   }
+  ],
+  "dig": [
+   "60|16|1|93.5|3|2892|0|150|87.2|",
+   "120|16|1|131.4|3|2249|18|150|93.2|",
+   "180|16|1|173.8|3|1607|37|130|100|",
+   "240|16|2|216.2|4|3106|63|106|100|",
+   "300|16|2|258.5|4|2606|63|150|100|",
+   "360|16|2|298.1|4|1250|80|104|100|",
+   "420|16|3|336.9|3|1607|125|110|100|",
+   "480|16|3|379.2|3|607|125|117|100|",
+   "540|16|3|421.6|0|0|151|96|100|",
+   "600|16|3|464|0|0|151|96|100|",
+   "660|17|0|500.4|0|0|151|96|100|",
+   "720|17|1|541.1|2|1912|151|96|98.5|",
+   "780|17|2|582|3|3960|192|66|95.1|",
+   "840|17|2|623|3|3141|214|66|91.7|",
+   "900|17|2|665.3|3|2017|214|66|88.2|",
+   "960|17|3|705.8|3|819|265|41|84.8|",
+   "1020|17|3|748.2|3|320|265|41|81.3|",
+   "1080|17|3|790.1|0|0|287|41|77.8|",
+   "1140|17|3|823.2|0|0|287|41|74.3|",
+   "1200|18|0|853.1|0|0|287|41|70.8|",
+   "1260|18|1|883.5|1|1045|287|41|67.3|",
+   "1320|18|1|916.6|1|697|287|41|63.8|",
+   "1380|18|2|949.7|3|3830|312|41|60.3|",
+   "1440|18|2|982.8|3|3830|312|41|56.8|",
+   "1500|18|2|1016|3|3048|312|41|53.3|",
+   "1560|18|2|1047.8|3|1973|338|41|49.8|",
+   "1620|18|2|1060.8|3|511|361|41|46.3|",
+   "1680|18|3|1080.2|2|4005|384|41|42.8|",
+   "1740|18|3|1108|2|3745|384|41|39.3|",
+   "1800|18|3|1135.7|2|3421|384|41|35.8|",
+   "1860|18|3|1163.5|2|2358|407|41|32.3|"
+  ],
+  "hashes": [
+   [
+    60,
+    "53493c45"
+   ],
+   [
+    180,
+    "214a1e75"
+   ],
+   [
+    300,
+    "2b066705"
+   ],
+   [
+    420,
+    "63756375"
+   ],
+   [
+    540,
+    "24f2cd5"
+   ]
+  ],
+  "det": false,
+  "fpsReal": [
+   196,
+   200,
+   195,
+   200,
+   202,
+   200,
+   206,
+   205,
+   199
+  ],
+  "boot": {
+   "gold": 0,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 509.89999997615814,
+  "t0v": 633.3333333333334
+ }
+}

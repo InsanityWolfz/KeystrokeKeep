@@ -123,7 +123,8 @@ Format: `- [round found] [severity] item: status/reason`
 ### Open (ranked)
 - [R9] [major, launch] Biome 5 "The Heartroot" (f101-150: Root Lasher / Spore Bloat / Heart Warden, Rootmother f120 + Keeper f140) + "Echoed Depths" (f151+, old palettes cycle every 10 floors, hollowTint). Full spec: round-09/auditor.md F4. Build before R10 testing.
 - [R9] [major, store] Store copy v2 corrections (round-09/auditor.md F3): 39 achievements, trophies to 300, FLOW multiplier, Hollowed from f80, Codex 40 (update again after Biome 5).
-- [R9] [check] Market: verify the launch-flash fix and frame-locked capture determinism in the Electron shell (second monitor, safe launcher in round-09/market_probe/safe).
+- [R9] [check, gate] Market: capture must run at 59-61 real fps (part 4 ran 3.3x fast; fixed in part 5, unverified) and S3/G5 takes 3/3 identical state digests; safe launcher in round-09/market_probe/safe, never the primary display. Rebuild dist/ before any packaged check.
+- [R9] [minor] Recruit hints count as tutorial toasts (h1 toasts 12-13, cap 10); move-alert gate 15 min (demo typist h2 21/h, cap 20).
 - [R9] [minor] HUD font scale with S/M/L, auto -> M on >=1440p (market F7); cosmetic RNG stream if frame lock is not enough (market F2b).
 - [R9] [P2] Chromium cache to %LOCALAPPDATA%, Delete-my-data button, in-game version + credits, Start with Windows toggle.
 - [R9] [blocker, owner: user] Public trailer + Coming Soon page by ~Dec 1-3 (Desktop Companion Fest marketing opt-in); Next Fest Feb 2027 dates in round-09/market.md F8; code signing: Azure individual = US/Canada only, else OV cert.

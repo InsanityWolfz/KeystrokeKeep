@@ -41,12 +41,14 @@
     // rate even when we skip the frame). While locked / asleep / hidden we freeze entirely and
     // awayCheck pays offline gold on return.
     let frozen = false;
+    const realNow = () => (KK.realNow ? KK.realNow() : performance.now());
+    const later = (fn, ms) => (KK.realSetTimeout || setTimeout)(fn, ms);
     function frame() {
-      const now = performance.now();
+      const now = realNow();
       const fps = KK.targetFps();
       const off = fps === 0 || document.hidden;
       document.documentElement.classList.toggle('kk-paused', off); // also pauses CSS animations
-      if (off) { if (!frozen) { frozen = true; KK.save(); } last = now; setTimeout(frame, 500); return; }
+      if (off) { if (!frozen) { frozen = true; KK.save(); } last = now; later(frame, 500); return; }
       frozen = false;
       if (KK.onFrame) KK.onFrame(); // capture mode: the frame-locked clock
       const dt = KK.fixedDt || Math.min(0.25, (now - last) / 1000);
@@ -58,9 +60,9 @@
       if (!KK.paused) for (let i = 0; i < steps; i++) W.update(simDt / steps);
       KK.render.draw(dt);
       KK.ui.update(dt);
-      setTimeout(frame, Math.max(1, 1000 / fps - (performance.now() - now)));
+      later(frame, Math.max(1, 1000 / fps - (realNow() - now)));
     }
-    setTimeout(frame, 16);
+    later(frame, 16);
 
     setInterval(KK.save, 10000);
     window.addEventListener('beforeunload', () => { if (!KK.resetting) KK.save(true); });

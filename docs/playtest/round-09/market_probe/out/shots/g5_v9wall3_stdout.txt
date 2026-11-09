@@ -1,0 +1,11 @@
+
+[capture] ready {"seed":7,"size":"L","juice":"full","cues":11}
+[capture] MARK 2026-11-09T21:12:31.470Z await bossSpawn TIMED OUT
+[capture] await bossSpawn TIMED OUT
+[capture] MARK 2026-11-09T21:12:31.471Z WARLORD IN
+[capture] MARK 2026-11-09T21:12:34.132Z GLIMPSE (clip A ends ~+3 s)
+[capture] MARK 2026-11-09T21:12:35.707Z SEALED (clip B)
+[capture] MARK 2026-11-09T21:12:38.236Z END
+
+--stderr--
+(electron) 'console-message' arguments are deprecated and will be removed. Please use Event<WebContentsConsoleMessageEventParams> object instead.

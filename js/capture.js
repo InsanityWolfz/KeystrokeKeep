@@ -24,6 +24,10 @@
   const FPS = C.fps || 60;
   let frameNo = 0;
   const waiters = [];
+  const realPerfNow = performance.now.bind(performance);
+  KK.realNow = realPerfNow;
+  KK.realSetTimeout = window.setTimeout.bind(window);
+  const realClear = window.clearTimeout.bind(window);
   performance.now = () => (frameNo * 1000) / FPS;
   KK.fixedDt = 1 / FPS;
   KK.onFrame = () => {
@@ -32,6 +36,13 @@
   };
   KK.later = (fn, ms) => { const w = { at: frameNo + Math.max(1, Math.round((ms * FPS) / 1000)), fn }; waiters.push(w); return { cancel: () => { w.dead = true; } }; };
   const sleep = (sec) => new Promise((r) => KK.later(r, sec * 1000));
+  // game timers (toasts, audio cues, fx delays, retries) fire on frame boundaries too
+  window.setTimeout = (fn, ms, ...args) => (typeof fn === 'function' ? KK.later(() => fn(...args), ms || 0) : KK.realSetTimeout(fn, ms));
+  window.clearTimeout = (h) => (h && h.cancel ? h.cancel() : realClear(h));
+  // events seen this frame, so an await right after the op that fires them still resolves
+  const firedAt = {};
+  const realEmit = KK.emit;
+  KK.emit = (type, data) => { firedAt[type] = frameNo; return realEmit(type, data); };
 
   const whenBooted = (fn) => (KK.booted ? fn() : setTimeout(() => whenBooted(fn), 50));
   whenBooted(() => {
@@ -106,6 +117,7 @@
         if (id !== runId) return;
         last = c.t || 0;
         if (c.do === 'await') {
+          if (firedAt[c.v] === frameNo) { last = 0; continue; }
           await new Promise((r) => {
             let done = false, tm = null;
             const off = KK.on(c.v, () => { if (done) return; done = true; off(); tm.cancel(); r(); });
