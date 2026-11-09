@@ -1,0 +1,430 @@
+=== KEYSTROKE KEEP PLAYTEST  profile=burst strategy=smart glance=60s stuck=8m seed=1 sessions=1x480m offline=0h ===
+
+--- timeline (every 5 min) ---
+0h00m  floor 1 (max 1)  gold 0  inc 0/s  lv k1 a0 c0 m0  relics 0  sparks 0/150  renown 0  IDLE
+0h05m  floor 9 (max 9)  gold 175  inc 0.6/s  lv k9 a1 c0 m0  relics 0  sparks 10/150  renown 0  IDLE
+0h10m  floor 11 (max 12)  gold 581  inc 5.1/s  lv k20 a9 c0 m0  relics 1  sparks 2/150  renown 0  IDLE
+0h15m  floor 16 (max 18)  gold 313  inc 3.7/s  lv k27 a17 c0 m0  relics 1  sparks 17/150  renown 0  IDLE
+0h20m  floor 21 (max 21)  gold 1.77K  inc 16/s  lv k32 a21 c0 m0  relics 1  sparks 1/150  renown 0  FOCUSED
+0h25m  floor 21 (max 22)  gold 723  inc 8.3/s  lv k33 a22 c0 m11  relics 2  sparks 11/150  renown 0  IDLE
+0h30m  floor 5 (max 5)  gold 110  inc 0.5/s  lv k2 a0 c0 m0  relics 0  sparks 14/150  renown 1  IDLE
+0h35m  floor 15 (max 15)  gold 270  inc 3.6/s  lv k18 a7 c0 m0  relics 1  sparks 11/150  renown 1  IDLE
+0h40m  floor 19 (max 19)  gold 730  inc 10/s  lv k28 a17 c0 m0  relics 1  sparks 24/150  renown 1  IDLE
+0h45m  floor 25 (max 25)  gold 1.14K  inc 14/s  lv k33 a23 c0 m9  relics 2  sparks 38/150  renown 1  IDLE
+0h50m  floor 27 (max 27)  gold 3.07K  inc 45/s  lv k39 a28 c1 m17  relics 2  sparks 3/150  renown 1  IDLE
+0h55m  floor 33 (max 33)  gold 6.31K  inc 96/s  lv k46 a35 c8 m24  relics 3  sparks 11/150  renown 1  IDLE
+1h00m  floor 38 (max 38)  gold 30.7K  inc 509/s  lv k52 a41 c15 m30  relics 3  sparks 28/150  renown 1  IDLE
+1h05m  floor 40 (max 40)  gold 56.6K  inc 1.64K/s  lv k61 a50 c24 m39  relics 3  sparks 19/150  renown 1  IDLE
+1h10m  floor 19 (max 19)  gold 62  inc 43/s  lv k33 a23 c19 m19  relics 1  sparks 20/150  renown 0  IDLE
+1h15m  floor 33 (max 33)  gold 2.80K  inc 341/s  lv k55 a45 c19 m33  relics 3  sparks 27/150  renown 0  IDLE
+1h20m  floor 42 (max 42)  gold 25.8K  inc 4.39K/s  lv k74 a64 c37 m52  relics 3  sparks 20/150  renown 2  IDLE
+1h25m  floor 50 (max 50)  gold 268K  inc 12.3K/s  lv k95 a85 c58 m73  relics 4  sparks 9/150  renown 2  IDLE
+1h30m  floor 55 (max 55)  gold 726K  inc 31.0K/s  lv k107 a96 c69 m84  relics 5  sparks 4/150  renown 2  IDLE
+1h35m  floor 27 (max 27)  gold 6.85K  inc 1.95K/s  lv k66 a55 c37 m44  relics 2  sparks 48/150  renown 1  IDLE
+1h40m  floor 50 (max 50)  gold 965K  inc 166K/s  lv k110 a99 c72 m88  relics 4  sparks 18/150  renown 1  IDLE
+1h45m  floor 62 (max 62)  gold 5.24M  inc 919K/s  lv k128 a117 c91 m106  relics 5  sparks 33/150  renown 1  IDLE
+1h50m  floor 69 (max 69)  gold 29.3M  inc 3.92M/s  lv k141 a130 c103 m119  relics 6  sparks 27/150  renown 1  IDLE
+1h55m  floor 71 (max 71)  gold 34.7M  inc 1.73M/s  lv k145 a135 c108 m123  relics 7  sparks 2/150  renown 1  IDLE
+2h00m  floor 32 (max 32)  gold 36.3K  inc 8.88K/s  lv k80 a69 c55 m57  relics 1  sparks 45/150  renown 4  IDLE
+2h05m  floor 57 (max 57)  gold 1.84M  inc 625K/s  lv k119 a109 c82 m97  relics 4  sparks 2/150  renown 4  IDLE
+2h10m  floor 70 (max 70)  gold 24.4M  inc 2.07M/s  lv k143 a132 c105 m121  relics 5  sparks 10/150  renown 4  IDLE
+2h15m  floor 75 (max 75)  gold 81.2M  inc 4.17M/s  lv k152 a141 c114 m129  relics 6  sparks 22/150  renown 4  IDLE
+2h20m  floor 79 (max 79)  gold 120M  inc 5.28M/s  lv k157 a147 c120 m135  relics 6  sparks 19/150  renown 4  IDLE
+2h25m  floor 38 (max 38)  gold 133K  inc 18.1K/s  lv k89 a79 c65 m67  relics 2  sparks 9/150  renown 1  IDLE
+2h30m  floor 61 (max 61)  gold 10.6M  inc 3.00M/s  lv k131 a120 c93 m109  relics 4  sparks 12/150  renown 1  IDLE
+2h35m  floor 74 (max 74)  gold 63.4M  inc 4.34M/s  lv k150 a139 c112 m127  relics 6  sparks 25/150  renown 1  IDLE
+2h40m  floor 80 (max 80)  gold 287M  inc 20.7M/s  lv k162 a152 c125 m140  relics 6  sparks 14/150  renown 1  FOCUSED
+2h45m  floor 82 (max 82)  gold 389M  inc 7.65M/s  lv k167 a156 c129 m145  relics 7  sparks 8/150  renown 1  IDLE
+2h50m  floor 84 (max 84)  gold 409M  inc 4.99M/s  lv k170 a159 c133 m148  relics 7  sparks 3/150  renown 1  IDLE
+2h55m  floor 25 (max 25)  gold 34.2K  inc 3.37K/s  lv k76 a66 c65 m65  relics 0  sparks 95/150  renown 1  FOCUSED
+3h00m  floor 57 (max 57)  gold 10.6M  inc 2.48M/s  lv k131 a120 c94 m109  relics 4  sparks 5/150  renown 1  IDLE
+3h05m  floor 77 (max 77)  gold 319M  inc 27.5M/s  lv k165 a154 c127 m142  relics 6  sparks 24/150  renown 1  IDLE
+3h10m  floor 83 (max 83)  gold 1.02B  inc 63.2M/s  lv k175 a164 c138 m153  relics 7  sparks 40/150  renown 1  IDLE
+3h15m  floor 87 (max 87)  gold 1.03B  inc 73.8M/s  lv k180 a170 c143 m158  relics 7  sparks 0/150  renown 1  FOCUSED
+3h20m  floor 89 (max 89)  gold 3.50B  inc 40.7M/s  lv k187 a176 c149 m165  relics 7  sparks 21/150  renown 1  IDLE
+3h25m  floor 90 (max 90)  gold 1.33B  inc 13.0M/s  lv k189 a178 c151 m166  relics 7  sparks 14/150  renown 1  IDLE
+3h30m  floor 23 (max 23)  gold 24.5K  inc 3.90K/s  lv k78 a67 c65 m65  relics 0  sparks 3/150  renown 0  IDLE
+3h35m  floor 57 (max 57)  gold 13.6M  inc 3.70M/s  lv k132 a121 c95 m110  relics 4  sparks 33/150  renown 0  FOCUSED
+3h40m  floor 79 (max 79)  gold 709M  inc 74.8M/s  lv k171 a160 c134 m149  relics 6  sparks 4/150  renown 0  IDLE
+3h45m  floor 87 (max 87)  gold 2.38B  inc 232M/s  lv k186 a175 c149 m164  relics 7  sparks 6/150  renown 0  IDLE
+3h50m  floor 90 (max 90)  gold 5.32B  inc 28.5M/s  lv k193 a183 c156 m171  relics 7  sparks 9/150  renown 0  IDLE
+3h55m  floor 95 (max 95)  gold 10.8B  inc 305M/s  lv k201 a190 c163 m179  relics 8  sparks 9/150  renown 0  IDLE
+4h00m  floor 40 (max 40)  gold 734K  inc 128K/s  lv k105 a94 c75 m82  relics 2  sparks 24/150  renown 4  IDLE
+4h05m  floor 75 (max 75)  gold 303M  inc 105M/s  lv k168 a158 c131 m146  relics 6  sparks 27/150  renown 4  IDLE
+4h10m  floor 88 (max 88)  gold 5.39B  inc 323M/s  lv k191 a181 c154 m169  relics 7  sparks 21/150  renown 4  IDLE
+4h15m  floor 93 (max 93)  gold 9.53B  inc 588M/s  lv k200 a189 c162 m177  relics 8  sparks 5/150  renown 4  FOCUSED
+4h20m  floor 97 (max 97)  gold 19.2B  inc 501M/s  lv k207 a196 c169 m185  relics 8  sparks 1/150  renown 4  IDLE
+4h25m  floor 99 (max 99)  gold 40.9B  inc 797M/s  lv k213 a203 c176 m191  relics 8  sparks 22/150  renown 4  IDLE
+4h30m  floor 99 (max 100)  gold 44.4B  inc 323M/s  lv k216 a205 c178 m193  relics 8  sparks 17/150  renown 4  IDLE
+4h35m  floor 25 (max 25)  gold 102K  inc 12.1K/s  lv k87 a77 c75 m75  relics 0  sparks 8/150  renown 3  IDLE
+4h40m  floor 57 (max 57)  gold 26.3M  inc 8.81M/s  lv k140 a130 c103 m118  relics 4  sparks 5/150  renown 3  IDLE
+4h45m  floor 81 (max 81)  gold 1.74B  inc 367M/s  lv k181 a170 c143 m158  relics 6  sparks 2/150  renown 3  IDLE
+4h50m  floor 90 (max 90)  gold 6.04B  inc 393M/s  lv k195 a184 c157 m172  relics 7  sparks 5/150  renown 3  IDLE
+4h55m  floor 94 (max 94)  gold 25.6B  inc 924M/s  lv k206 a195 c168 m183  relics 8  sparks 7/150  renown 3  IDLE
+5h00m  floor 99 (max 99)  gold 52.5B  inc 1.64B/s  lv k215 a204 c178 m193  relics 8  sparks 2/150  renown 3  IDLE
+5h05m  floor 100 (max 100)  gold 60.2B  inc 417M/s  lv k218 a207 c180 m195  relics 8  sparks 6/150  renown 3  IDLE
+5h10m  floor 101 (max 101)  gold 95.1B  inc 11.6B/s  lv k222 a212 c185 m200  relics 8  sparks 3/150  renown 3  IDLE
+5h15m  floor 103 (max 103)  gold 198B  inc 2.60B/s  lv k228 a217 c190 m205  relics 9  sparks 1/150  renown 3  IDLE
+5h20m  floor 105 (max 105)  gold 228B  inc 5.12B/s  lv k229 a218 c191 m207  relics 9  sparks 25/150  renown 3  FOCUSED
+5h25m  floor 38 (max 38)  gold 1.05M  inc 260K/s  lv k111 a100 c85 m89  relics 2  sparks 29/150  renown 2  IDLE
+5h30m  floor 71 (max 71)  gold 348M  inc 137M/s  lv k166 a156 c129 m144  relics 5  sparks 30/150  renown 2  IDLE
+5h35m  floor 90 (max 90)  gold 11.4B  inc 1.20B/s  lv k198 a188 c161 m176  relics 7  sparks 2/150  renown 2  IDLE
+5h40m  floor 98 (max 98)  gold 73.2B  inc 6.19B/s  lv k216 a205 c178 m193  relics 8  sparks 10/150  renown 2  IDLE
+5h45m  floor 100 (max 100)  gold 134B  inc 603M/s  lv k221 a210 c183 m198  relics 8  sparks 6/150  renown 2  IDLE
+5h50m  floor 103 (max 103)  gold 119B  inc 2.67B/s  lv k226 a215 c188 m203  relics 9  sparks 1/150  renown 2  IDLE
+5h55m  floor 106 (max 106)  gold 294B  inc 4.28B/s  lv k230 a219 c193 m208  relics 9  sparks 13/150  renown 2  IDLE
+6h00m  floor 108 (max 108)  gold 361B  inc 10.2B/s  lv k234 a223 c196 m211  relics 9  sparks 10/150  renown 2  FOCUSED
+6h05m  floor 109 (max 109)  gold 412B  inc 7.63B/s  lv k236 a225 c199 m214  relics 9  sparks 10/150  renown 2  IDLE
+6h10m  floor 109 (max 110)  gold 183B  inc 1.18B/s  lv k239 a228 c202 m217  relics 9  sparks 3/150  renown 2  IDLE
+6h15m  floor 24 (max 24)  gold 117K  inc 14.0K/s  lv k92 a85 c85 m85  relics 0  sparks 9/150  renown 2  IDLE
+6h20m  floor 59 (max 59)  gold 36.5M  inc 10.6M/s  lv k143 a133 c106 m121  relics 4  sparks 38/150  renown 2  IDLE
+6h25m  floor 87 (max 87)  gold 5.39B  inc 1.16B/s  lv k193 a182 c156 m171  relics 7  sparks 3/150  renown 2  IDLE
+6h30m  floor 98 (max 98)  gold 47.5B  inc 6.87B/s  lv k214 a203 c177 m192  relics 8  sparks 26/150  renown 2  IDLE
+6h35m  floor 102 (max 102)  gold 111B  inc 5.56B/s  lv k222 a212 c185 m200  relics 9  sparks 6/150  renown 2  IDLE
+6h40m  floor 106 (max 106)  gold 183B  inc 7.04B/s  lv k227 a216 c190 m205  relics 9  sparks 9/150  renown 2  IDLE
+6h45m  floor 108 (max 108)  gold 387B  inc 8.44B/s  lv k233 a222 c195 m210  relics 9  sparks 28/150  renown 2  IDLE
+6h50m  floor 110 (max 110)  gold 526B  inc 13.9B/s  lv k236 a225 c198 m214  relics 9  sparks 22/150  renown 2  IDLE
+6h55m  floor 109 (max 110)  gold 753B  inc 1.88B/s  lv k240 a229 c203 m218  relics 9  sparks 1/150  renown 2  IDLE
+7h00m  floor 110 (max 110)  gold 105B  inc 1.68B/s  lv k242 a231 c205 m220  relics 9  sparks 48/150  renown 2  IDLE
+7h05m  floor 112 (max 112)  gold 1.27T  inc 13.1B/s  lv k244 a233 c206 m222  relics 10  sparks 9/150  renown 2  IDLE
+7h10m  floor 113 (max 113)  gold 1.40T  inc 31.1B/s  lv k245 a235 c208 m223  relics 10  sparks 4/150  renown 2  IDLE
+7h15m  floor 114 (max 114)  gold 911B  inc 2.40B/s  lv k247 a236 c210 m225  relics 10  sparks 8/150  renown 2  IDLE
+7h20m  floor 115 (max 115)  gold 298B  inc 5.07B/s  lv k250 a239 c212 m228  relics 10  sparks 14/150  renown 2  IDLE
+7h25m  floor 47 (max 47)  gold 16.1M  inc 4.06M/s  lv k134 a123 c96 m112  relics 2  sparks 1/150  renown 4  IDLE
+7h30m  floor 81 (max 81)  gold 9.36B  inc 2.71B/s  lv k195 a184 c158 m173  relics 5  sparks 39/150  renown 4  IDLE
+7h35m  floor 98 (max 98)  gold 159B  inc 14.3B/s  lv k223 a212 c185 m200  relics 7  sparks 41/150  renown 4  IDLE
+7h40m  floor 104 (max 104)  gold 652B  inc 28.0B/s  lv k236 a225 c199 m214  relics 8  sparks 6/150  renown 4  IDLE
+7h45m  floor 108 (max 108)  gold 817B  inc 48.1B/s  lv k243 a232 c205 m221  relics 8  sparks 14/150  renown 4  IDLE
+7h50m  floor 110 (max 110)  gold 2.84T  inc 31.6B/s  lv k250 a239 c212 m228  relics 8  sparks 12/150  renown 4  IDLE
+7h55m  floor 113 (max 113)  gold 4.34T  inc 170B/s  lv k256 a246 c219 m234  relics 9  sparks 10/150  renown 4  IDLE
+8h00m  floor 115 (max 115)  gold 7.33T  inc 120B/s  lv k259 a248 c221 m237  relics 9  sparks 24/150  renown 4  IDLE
+
+--- key events ---
+0h00m  >> reached biome The Crypt (floor 2)
+0h02m  recruit archer
+0h05m  first buy workshop:crucible
+0h06m  BOSS The Rat King down (floor 10)
+0h07m  relic picked: boots
+0h10m  first buy forge:blades
+0h10m  first buy forge:armor
+0h19m  BOSS The Bone King down (floor 20)
+0h19m  >> reached biome Mossy Caverns (floor 21)
+0h20m  relic picked: enter
+0h20m  recruit mage
+0h20m  first buy workshop:overcharge
+0h23m  first buy forge:swift
+0h24m  first buy forge:purse
+0h25m  first buy workshop:kindling
+0h28m  >>> RETIRE #1 from floor 22 +5 renown (lifetime 5)
+0h29m  first buy legacy:lineage
+0h29m  first buy legacy:treasury
+0h30m  recruit archer
+0h32m  BOSS The Rat King down (floor 10)
+0h33m  relic picked: coffee
+0h37m  first buy workshop:dynamo
+0h42m  BOSS The Bone King down (floor 20)
+0h43m  relic picked: coffee
+0h43m  recruit mage
+0h46m  first buy forge:keen
+0h49m  recruit cleric
+0h53m  BOSS Brood Mother down (floor 30)
+0h54m  relic picked: glass
+1h02m  first buy workshop:static
+1h04m  BOSS Goblin Warlord down (floor 40)
+1h05m  >> reached biome Magma Depths (floor 41)
+1h05m  relic picked: lens
+1h06m  >>> RETIRE #2 from floor 43 +31 renown (lifetime 36)
+1h07m  omen: embertide
+1h07m  first buy legacy:quartermaster
+1h07m  first buy legacy:veterans
+1h07m  first buy legacy:headstart
+1h07m  first buy legacy:zeal
+1h07m  first buy legacy:recruiter
+1h07m  recruit archer
+1h07m  BOSS The Rat King down (floor 10)
+1h08m  relic picked: spacebar
+1h08m  recruit mage
+1h09m  recruit cleric
+1h10m  BOSS The Bone King down (floor 20)
+1h11m  relic picked: coffee
+1h13m  BOSS Brood Mother down (floor 30)
+1h14m  relic picked: oil
+1h19m  BOSS Goblin Warlord down (floor 40)
+1h20m  relic picked: luckycoin
+1h25m  BOSS Ember Colossus down (floor 50)
+1h26m  relic picked: belt
+1h31m  >>> RETIRE #3 from floor 56 +31 renown (lifetime 81)
+1h31m  recruit archer
+1h32m  recruit mage
+1h32m  BOSS The Rat King down (floor 10)
+1h32m  relic picked: lens
+1h32m  omen: gilded
+1h33m  recruit cleric
+1h33m  BOSS The Bone King down (floor 20)
+1h34m  relic picked: map
+1h35m  BOSS Brood Mother down (floor 30)
+1h36m  relic picked: coffee
+1h37m  BOSS Goblin Warlord down (floor 40)
+1h38m  relic picked: spacebar
+1h40m  BOSS Ember Colossus down (floor 50)
+1h41m  relic picked: whetstone
+1h44m  BOSS Magma Lord down (floor 60)
+1h44m  >> reached biome The Hollow Void (floor 61)
+1h45m  relic picked: belt
+1h53m  BOSS The Hollow down (floor 70)
+1h54m  relic picked: fang
+1h56m  >>> RETIRE #4 from floor 72 +52 renown (lifetime 133)
+1h56m  recruit archer
+1h56m  recruit mage
+1h57m  omen: deep
+1h57m  first buy legacy:campfire
+1h57m  first buy legacy:battery
+1h57m  recruit cleric
+1h57m  BOSS The Bone King down (floor 20)
+1h58m  relic picked: whetstone
+1h59m  BOSS Brood Mother down (floor 30)
+2h00m  relic picked: lens
+2h01m  BOSS Goblin Warlord down (floor 40)
+2h02m  relic picked: coffee
+2h03m  BOSS Ember Colossus down (floor 50)
+2h04m  relic picked: belt
+2h06m  BOSS Magma Lord down (floor 60)
+2h07m  relic picked: whetstone
+2h10m  BOSS The Hollow down (floor 70)
+2h11m  relic picked: oil
+2h21m  >>> RETIRE #5 from floor 79 +30 renown (lifetime 163)
+2h21m  recruit archer
+2h21m  recruit mage
+2h21m  recruit cleric
+2h22m  omen: embertide
+2h22m  BOSS The Bone King down (floor 20)
+2h23m  relic picked: oil
+2h23m  BOSS Brood Mother down (floor 30)
+2h24m  relic picked: spacebar
+2h25m  BOSS Goblin Warlord down (floor 40)
+2h26m  relic picked: coffee
+2h27m  BOSS Ember Colossus down (floor 50)
+2h28m  relic picked: lens
+2h29m  BOSS Magma Lord down (floor 60)
+2h30m  relic picked: enter
+2h33m  BOSS The Hollow down (floor 70)
+2h34m  relic picked: flowpend
+2h42m  BOSS The Hollowed Ember Colossus down (floor 80)
+2h43m  relic picked: enter
+2h53m  >>> RETIRE #6 from floor 87 +34 renown (lifetime 197)
+2h53m  recruit archer
+2h53m  recruit mage
+2h53m  recruit cleric
+2h54m  omen: deep
+2h54m  BOSS The Bone King down (floor 20)
+2h55m  relic picked: keycap
+2h55m  BOSS Brood Mother down (floor 30)
+2h56m  relic picked: coffee
+2h57m  BOSS Goblin Warlord down (floor 40)
+2h58m  relic picked: boots
+2h58m  BOSS Ember Colossus down (floor 50)
+2h59m  relic picked: capslock
+3h00m  BOSS Magma Lord down (floor 60)
+3h01m  relic picked: coffee
+3h02m  BOSS The Hollow down (floor 70)
+3h03m  relic picked: coffee
+3h08m  BOSS The Hollowed Rat King down (floor 80)
+3h09m  relic picked: whetstone
+3h28m  >>> RETIRE #7 from floor 90 +15 renown (lifetime 212)
+3h28m  recruit archer
+3h28m  recruit mage
+3h28m  recruit cleric
+3h29m  omen: storm
+3h29m  BOSS The Bone King down (floor 20)
+3h30m  relic picked: luckycoin
+3h31m  BOSS Brood Mother down (floor 30)
+3h32m  relic picked: flowpend
+3h32m  BOSS Goblin Warlord down (floor 40)
+3h33m  relic picked: boots
+3h34m  BOSS Ember Colossus down (floor 50)
+3h34m  relic picked: whetstone
+3h35m  BOSS Magma Lord down (floor 60)
+3h36m  relic picked: belt
+3h37m  BOSS The Hollow down (floor 70)
+3h38m  relic picked: boots
+3h41m  BOSS The Hollowed Brood Mother down (floor 80)
+3h42m  relic picked: whetstone
+3h50m  BOSS The Hollowed Goblin Warlord down (floor 90)
+3h51m  relic picked: lens
+3h56m  >>> RETIRE #8 from floor 97 +33 renown (lifetime 245)
+3h56m  recruit archer
+3h56m  recruit mage
+3h57m  omen: march
+3h57m  recruit cleric
+3h57m  BOSS The Bone King down (floor 20)
+3h58m  relic picked: whetstone
+3h58m  BOSS Brood Mother down (floor 30)
+3h59m  relic picked: spacebar
+4h00m  BOSS Goblin Warlord down (floor 40)
+4h00m  relic picked: luckycoin
+4h01m  BOSS Ember Colossus down (floor 50)
+4h02m  relic picked: keycap
+4h02m  BOSS Magma Lord down (floor 60)
+4h03m  relic picked: belt
+4h04m  BOSS The Hollow down (floor 70)
+4h04m  relic picked: spacebar
+4h06m  BOSS The Hollowed Ember Colossus down (floor 80)
+4h07m  relic picked: keycap
+4h12m  BOSS The Hollowed Magma Lord down (floor 90)
+4h13m  relic picked: whetstone
+4h33m  >>> RETIRE #9 from floor 100 +15 renown (lifetime 260)
+4h33m  recruit archer
+4h33m  recruit mage
+4h33m  recruit cleric
+4h34m  omen: storm
+4h34m  BOSS The Bone King down (floor 20)
+4h35m  relic picked: enter
+4h35m  BOSS Brood Mother down (floor 30)
+4h36m  relic picked: map
+4h37m  BOSS Goblin Warlord down (floor 40)
+4h38m  relic picked: belt
+4h38m  BOSS Ember Colossus down (floor 50)
+4h39m  relic picked: map
+4h40m  BOSS Magma Lord down (floor 60)
+4h41m  relic picked: capslock
+4h42m  BOSS The Hollow down (floor 70)
+4h43m  relic picked: coffee
+4h44m  BOSS The Hollowed Rat King down (floor 80)
+4h45m  relic picked: belt
+4h50m  BOSS The Hollowed Bone King down (floor 90)
+4h51m  relic picked: luckycoin
+5h09m  BOSS The Heart of the Keep down (floor 100)
+5h10m  relic picked: luckycoin
+5h21m  >>> RETIRE #10 from floor 106 +32 renown (lifetime 292)
+5h21m  recruit archer
+5h21m  recruit mage
+5h21m  recruit cleric
+5h22m  omen: glass
+5h22m  BOSS The Bone King down (floor 20)
+5h23m  relic picked: spacebar
+5h23m  BOSS Brood Mother down (floor 30)
+5h24m  relic picked: luckycoin
+5h25m  BOSS Goblin Warlord down (floor 40)
+5h26m  relic picked: coffee
+5h26m  BOSS Ember Colossus down (floor 50)
+5h27m  relic picked: spacebar
+5h28m  BOSS Magma Lord down (floor 60)
+5h29m  relic picked: enter
+5h29m  BOSS The Hollow down (floor 70)
+5h30m  relic picked: belt
+5h31m  BOSS The Hollowed Brood Mother down (floor 80)
+5h32m  relic picked: oil
+5h35m  BOSS The Hollowed Goblin Warlord down (floor 90)
+5h36m  relic picked: map
+5h40m  first buy workshop:lantern
+5h45m  BOSS The Heart of the Keep down (floor 100)
+5h46m  relic picked: whetstone
+6h13m  >>> RETIRE #11 from floor 110 +22 renown (lifetime 314)
+6h13m  recruit archer
+6h13m  recruit mage
+6h14m  recruit cleric
+6h14m  omen: quiet
+6h14m  BOSS The Bone King down (floor 20)
+6h15m  relic picked: flowpend
+6h15m  BOSS Brood Mother down (floor 30)
+6h16m  relic picked: coffee
+6h17m  BOSS Goblin Warlord down (floor 40)
+6h18m  relic picked: coffee
+6h18m  BOSS Ember Colossus down (floor 50)
+6h19m  relic picked: echo
+6h20m  BOSS Magma Lord down (floor 60)
+6h21m  relic picked: capslock
+6h21m  BOSS The Hollow down (floor 70)
+6h22m  relic picked: map
+6h23m  BOSS The Hollowed Ember Colossus down (floor 80)
+6h24m  relic picked: belt
+6h26m  BOSS The Hollowed Magma Lord down (floor 90)
+6h27m  relic picked: fang
+6h33m  BOSS The Heart of the Keep down (floor 100)
+6h34m  relic picked: boots
+7h00m  BOSS The Hollowed Bone King down (floor 110)
+7h01m  relic picked: enter
+7h21m  >>> RETIRE #12 from floor 116 +35 renown (lifetime 349)
+7h21m  recruit archer
+7h21m  recruit mage
+7h21m  omen: gilded
+7h21m  recruit cleric
+7h22m  BOSS Brood Mother down (floor 30)
+7h23m  relic picked: coffee
+7h24m  BOSS Goblin Warlord down (floor 40)
+7h24m  relic picked: spacebar
+7h25m  BOSS Ember Colossus down (floor 50)
+7h26m  relic picked: whetstone
+7h26m  BOSS Magma Lord down (floor 60)
+7h27m  relic picked: boots
+7h28m  BOSS The Hollow down (floor 70)
+7h29m  relic picked: echo
+7h29m  BOSS The Hollowed Rat King down (floor 80)
+7h30m  relic picked: luckycoin
+7h32m  BOSS The Hollowed Bone King down (floor 90)
+7h33m  relic picked: whetstone
+7h36m  BOSS The Heart of the Keep down (floor 100)
+7h37m  relic picked: luckycoin
+7h52m  BOSS The Hollowed Goblin Warlord down (floor 110)
+7h52m  relic picked: coffee
+
+--- prestige ---
+retire at 0h28m: run 28.2 min, max floor 22, +5 renown
+retire at 1h06m: run 38.0 min, max floor 43, +31 renown
+retire at 1h31m: run 25.0 min, max floor 56, +31 renown
+retire at 1h56m: run 25.0 min, max floor 72, +52 renown
+retire at 2h21m: run 25.0 min, max floor 79, +30 renown
+retire at 2h53m: run 32.3 min, max floor 87, +34 renown
+retire at 3h28m: run 35.1 min, max floor 90, +15 renown
+retire at 3h56m: run 28.3 min, max floor 97, +33 renown
+retire at 4h33m: run 36.5 min, max floor 100, +15 renown
+retire at 5h21m: run 48.2 min, max floor 106, +32 renown
+retire at 6h13m: run 52.1 min, max floor 110, +22 renown
+retire at 7h21m: run 67.4 min, max floor 116, +35 renown
+
+--- pacing ---
+longest stall (no new max floor): 11.5 min
+glances with NOTHING affordable: 23/480  longest drought: 2.0 min
+purchases per 10 min: 29, 29, 32, 51, 54, 62, 99, 166, 163, 314, 148, 137, 289, 68, 291, 144, 34, 315, 200, 52, 66, 412, 103, 161, 396, 72, 41, 290, 246, 95, 34, 30, 378, 226, 46, 37, 26, 256, 328, 60, 41, 28, 14, 23, 461, 187, 64, 41
+wipes 8  chests 191  rats 57/113 spawned  ults 981 (2.0/min)
+fervor time: IDLE 86%  FOCUSED 12%  ZONE 2%  FLOW 0%
+sparks at cap 0% of the time; 0 sparks wasted of 8639 inputs; embers banked 1113 (unspent)
+ults by hero: knight 324, archer 295, mage 244, cleric 118
+
+--- content coverage (first affordable / first bought / buys) ---
+forge:blades             0h05m   0h10m   391
+forge:armor              0h05m   0h10m   416
+forge:purse              0h10m   0h24m   323
+forge:swift              0h07m   0h23m   118
+forge:keen               0h10m   0h46m   116
+workshop:crucible        0h05m   0h05m   7
+workshop:overcharge      0h20m   0h20m   6
+workshop:kindling        0h20m   0h25m   6
+workshop:lantern         5h09m   5h40m   1
+workshop:dynamo          0h37m   0h37m   5
+workshop:static          0h37m   1h02m   4
+legacy:lineage           0h29m   0h29m   12
+legacy:treasury          0h29m   0h29m   8
+legacy:quartermaster     1h07m   1h07m   1
+legacy:veterans          0h29m   1h07m   6
+legacy:headstart         0h29m   1h07m   4
+legacy:zeal              0h29m   1h07m   3
+legacy:recruiter         1h07m   1h07m   1
+legacy:campfire          0h29m   1h57m   2
+legacy:battery           0h29m   1h57m   1
+legacy:collector         1h07m   NEVER   0
+recruit:knight           never   NEVER   0
+recruit:archer           0h02m   0h02m   13
+recruit:mage             0h20m   0h20m   13
+recruit:cleric           0h49m   0h49m   12
+
+--- relics (offered / picked) ---
+whetstone 28/11  luckycoin 23/8  spacebar 28/8  boots 20/6  coffee 31/15  belt 27/9  keycap 8/3  capslock 18/3  enter 18/6  fang 5/2  oil 12/4  map 21/5  lens 11/5  echo 5/2  glass 6/1  flowpend 7/3  hotkey 5/0
+
+--- world ---
+biomes reached: The Crypt@0h00m, Mossy Caverns@0h19m, Magma Depths@1h05m, The Hollow Void@1h44m
+bosses killed: The Rat King x4, The Bone King x12, Brood Mother x12, Goblin Warlord x12, Ember Colossus x11, Magma Lord x10, The Hollow x10, The Hollowed Ember Colossus x3, The Hollowed Rat King x3, The Hollowed Brood Mother x2, The Hollowed Goblin Warlord x3, The Hollowed Magma Lord x2, The Hollowed Bone King x3, The Heart of the Keep x4
+monsters never seen: none
+achievements: 22/39  rat first_boss caverns retire1 full_party epic gatekeeper comeback magma omen1 lv100 void hollow ult_boss speed60 rats25 deep90 chests100 hollowed6 f100 retire10 echo
+trophies: 9  demo laps: 0  best f40: -
+END 8h00m: floor 115 maxEver 116 retires 12 renownLifetime 349 kills 6131

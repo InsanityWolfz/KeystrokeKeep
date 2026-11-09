@@ -464,3 +464,6 @@ body:not(.native) .demo-pill:not(.omen), .demo-pill:not(.omen) { pointer-events:
 .achprog i { display: block; height: 100%; background: #ffd76a; }
 .ach small { font: 10px var(--font-px); color: #ffd76a; margin-top: 2px; }
 .ach.locked { opacity: .45; }
+
+.ach.locked.earned { opacity: .8; }
+.ach.locked.earned .new { background: #8de88a; }

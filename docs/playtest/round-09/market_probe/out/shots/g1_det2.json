@@ -1,0 +1,210 @@
+{
+ "name": "g1_det2",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: input counting PAUSED",
+   "Keystroke Keep: input counting PAUSED"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-capture",
+ "log": [
+  "  0.09 uiohook start() blocked (dummy)",
+  "  0.14 shown at {\"x\":2560,\"y\":1171,\"width\":1920,\"height\":192}",
+  "  0.14 pre installed {\"identifier\":\"1\"}",
+  "  0.14 loadFile",
+  "  0.58 tray: fake (no icon shown)",
+  "  0.73 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":9}",
+  " 14.04 finish"
+ ],
+ "page": {
+  "f": 764,
+  "t0f": 36,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue floor 16"
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue autotype true"
+   },
+   {
+    "f": 26,
+    "r": 436,
+    "v": 417,
+    "e": "cue mark \"G1 IN\""
+   },
+   {
+    "f": 98,
+    "r": 1711,
+    "v": 1617,
+    "e": "cue mark \"FLOW STATE banner (S1 freeze point)\""
+   },
+   {
+    "f": 125,
+    "r": 2194,
+    "v": 2083,
+    "e": "ult knight"
+   },
+   {
+    "f": 192,
+    "r": 3380,
+    "v": 3200,
+    "e": "ult archer"
+   },
+   {
+    "f": 272,
+    "r": 4767,
+    "v": 4517,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 344,
+    "r": 6044,
+    "v": 5733,
+    "e": "ult mage"
+   },
+   {
+    "f": 356,
+    "r": 6238,
+    "v": 5917,
+    "e": "cue mark \"METEOR lands\""
+   },
+   {
+    "f": 396,
+    "r": 6958,
+    "v": 6600,
+    "e": "meteorLand "
+   },
+   {
+    "f": 507,
+    "r": 8879,
+    "v": 8433,
+    "e": "cue mark \"G1 OUT\""
+   },
+   {
+    "f": 520,
+    "r": 9103,
+    "v": 8650,
+    "e": "cue autotype false"
+   },
+   {
+    "f": 540,
+    "r": 9475,
+    "v": 9000,
+    "e": "ult knight"
+   },
+   {
+    "f": 693,
+    "r": 12095,
+    "v": 11550,
+    "e": "fervorTier 2->1"
+   }
+  ],
+  "dig": [
+   "60|16|1|94.6|3|3320|0|150|80|",
+   "120|16|1|127.8|3|2625|0|150|80|",
+   "180|16|1|160.9|3|509|43|125|77.7|",
+   "240|16|2|194|4|3106|59|95|74.2|",
+   "300|16|2|226|4|2463|78|150|70.8|",
+   "360|16|2|259.1|4|1768|78|100|67.3|",
+   "420|16|3|290.6|3|2249|120|100|64|",
+   "480|16|3|323.7|3|2249|120|100|60.5|",
+   "540|16|3|356.8|3|1554|120|100|57|",
+   "600|16|3|390|0|0|165|75|53.5|",
+   "660|16|3|423.1|0|0|165|75|50|",
+   "720|16|3|453.8|0|0|165|75|46.5|"
+  ],
+  "hashes": [
+   [
+    60,
+    "6ceec5c5"
+   ],
+   [
+    180,
+    "9ff63a5"
+   ],
+   [
+    300,
+    "802bd225"
+   ],
+   [
+    420,
+    "7b794235"
+   ],
+   [
+    540,
+    "2c8bbca5"
+   ],
+   [
+    660,
+    "a35ba9e5"
+   ]
+  ],
+  "det": true,
+  "fpsReal": [
+   58,
+   57,
+   58,
+   57,
+   57,
+   57,
+   58,
+   57,
+   58,
+   58,
+   58,
+   59,
+   59
+  ],
+  "boot": {
+   "gold": 0,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 1223.6000000238419,
+  "t0v": 675.0666666428247
+ }
+}

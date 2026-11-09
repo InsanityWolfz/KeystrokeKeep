@@ -31,7 +31,7 @@
     { id: 'void', name: 'Into the Void', desc: 'Reach the Hollow Void.', on: 'floor', test: (c) => c.ev.floor >= 61 },
     { id: 'hollow', name: 'Hollow Victory', desc: 'Defeat The Hollow.', on: 'kill', test: (c) => c.ev.e.key === 'hollow' },
     { id: 'hollowed6', goal: 6, cur: (S, P) => (P.hollowed || []).length, name: 'Echoes of the Deep', desc: 'Defeat all six Hollowed bosses.', on: 'kill', test: (c) => { if (!c.ev.e.hollowed) return false; const s = new Set(c.P.hollowed || []); s.add(c.ev.e.key); c.P.hollowed = [...s]; return s.size >= 6; } },
-    { id: 'f100', goal: 100, from: 61, cur: (S) => Math.min(S.maxFloorEver, 100), name: 'Heart of the Keep', desc: 'Defeat the Heart of the Keep on floor 100.', on: 'kill', test: (c) => !!c.ev.e.heart || (c.ev.e.boss && c.S.floor >= 100) },
+    { id: 'f100', goal: 100, from: 61, cur: (S) => Math.min(S.maxFloorEver, 99), name: 'Heart of the Keep', desc: 'Defeat the Heart of the Keep on floor 100.', on: 'kill', test: (c) => !!c.ev.e.heart || (c.ev.e.boss && c.S.floor >= 100) },
     { id: 'codex28', get goal() { return D.CODEX_MAX; }, cur: () => KK.mods().codexRanks || 0, name: 'Hollow Scholar', desc: 'Complete every rank of the Hollow Codex.', on: 'codex', test: () => KK.mods().codexRanks >= KK.DATA.CODEX_MAX },
     { id: 'seals7', goal: 7, cur: (S) => S.seals || 0, name: 'Faithful', desc: 'Earn 7 Seals of the Day.', on: 'seal', test: (c) => (c.S.seals || 0) >= 7 },
     { id: 'seals30', goal: 30, cur: (S) => S.seals || 0, name: 'Devout', desc: 'Earn 30 Seals of the Day.', on: 'seal', test: (c) => (c.S.seals || 0) >= 30 },
@@ -82,7 +82,7 @@
     let cur;
     try { cur = def.cur(S, P); } catch (e) { return null; }
     if (def.from && cur < def.from) return null;
-    if (cur >= def.goal) { if (def.id !== 'f100') check(def); return null; } // old saves past a goal unlock on sight
+    if (cur >= def.goal) { A.unlock(def.id); return null; } // old saves past a goal unlock on sight
     const f = def.fmt || KK.U.fmt;
     return { cur, goal: def.goal, pct: Math.floor((100 * cur) / def.goal), txt: f(Math.floor(cur)) + '/' + f(def.goal) };
   };

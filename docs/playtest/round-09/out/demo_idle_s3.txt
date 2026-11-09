@@ -1,0 +1,25 @@
+=== R6 probe idle s3 180m DEMO: maxEver 40, retires 10, renown life 72, ach 10/39, trophies 0, codex 0/28, wipes 3, fame x4.2, unspent embers 240
+beats per 30 min from h1: 2 4 1 0 0
+longest gap after h1: 56 min (from 2h04)
+codex: none
+trophies: 
+retires (10): 0h25 f20 +3, 1h17 f37 +21, 1h35 f40 +6, 1h50 f40 +6, 2h03 f40 +6, 2h15 f40 +6, 2h27 f40 +6, 2h37 f40 +6, 2h46 f40 +6, 2h55 f40 +6
+SIG totals: {"chargeWarn":37,"warCharge":36,"reassemble":10,"bossEnrage":0,"royalSummons":26,"webShot":39,"webbed":38,"webTorn":0,"magmaShell":0,"shellCrack":0,"lavaRain":0,"regroup":1,"seal":0,"voidWarn":0,"voidSlam":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking          11 |   11 |   0 |   0 |    5.6 |   1 | royalSummons 3 [100%] @1.8
+  boneking         13 |   10 |   3 |   0 |   10.0 |   4 | regroup 0 [8%] @43.4; reassemble 1 [77%] @7.6 | rise->death med 2.47s, <0.5s 0/10, <1.5s(still stunned) 0/10
+  broodmother      10 |    9 |   0 |   0 |   17.7 |  10 | webShot 3 [100%] @2.3; webbed 3 [90%] @3.3
+  warlord           8 |    8 |   0 |   0 |   48.6 |  23 | chargeWarn 5 [100%] @4.2; warCharge 5 [100%] @5.4 | died mid-charge 1/8, fights with 0 charges 0/8
+DEMO: card 1h34, laps 8, re-delves 8, lifetime 72, best 7.2m
+ACH: first_boss 0h08 | flow NO | full_party 0h54 | retire1 0h25 | gatekeeper 1h34 | rat 0h04 | epic 0h09 | caverns 0h40 | comeback NO | echo 1h43 | ult_boss 2h04 | revive 1h13 | speed60 NO | blitz NO | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | codex28 NO | seals7 NO | seals30 NO | f150 NO | f125 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 NO | chests100 NO | rats25 NO | idle50 NO | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO
+R9 DEMO glimpse 94.2m | peek (new guard) 40.0m at f20 | old guard would fire 40.0m f20 | magma ach -
+R9 GLIMPSE statue set +0.5s at party+329, jumps [91], min statue-party gap during waves 38, overlap 1.5s, passed true; door at start+390; card +12.2s gap 129 door 85 atStatue true; hold 3.0s min gap -53 (door gap -97); on screen 640/960/1280 17.5/17.5/17.5s first +0.5; alert +12.2 SEALED: THE EMBER COLOSSUS WAITS IN THE FULL GAME; floor lasted 18.1s; cards on floor 1; KOs 0; after {"floor":37,"maxRun":40,"maxEver":40,"demoDone":true,"laps":1}
+R9 RATKING fights 11, with summons 100% (laps 2+: 100%), waves med 3, first at med 1.9s, kill med 5.7s, waves under banner 0, double-wave same frame 0
+R9 ACH counters (21): unlock cur/goal -
+R9 ACH problems: none | decreasing: lv100 x10
+R9 ACH NEXT line changes: 0.0h -
+R9 SEEN bosses: ratking@0.1h boneking@0.7h broodmother@1.0h warlord@1.6h
+R9 SEEN monsters: rat@0.00h bat@0.05h skeleton@0.09h slime@0.67h spider@0.71h goblin@0.93h imp NEVER golem NEVER magslime NEVER eye NEVER wraith NEVER voidknight NEVER
+R9 RELICS offered/picked: whetstone 6/3, luckycoin 7/1, spacebar 12/3, boots 6/1, coffee 14/4, belt 11/4, keycap 5/2, capslock 6/4, enter 5/2, fang 6/2, oil 8/5, map 6/3, lens 3/0, echo 4/1, glass 8/2, flowpend 6/1, hotkey 1/0
+R9 OMENS picked: gilded 0, glass 0, storm 0, quiet 0, fever 0, embertide 0, march 0, hoard 0, muster 0, deep 0 | seals 0 | redelves 0 | lantern never
+R9 END workshop {"crucible":4,"overcharge":2,"kindling":2,"dynamo":2,"static":1} legacy {"veterans":3,"headstart":1,"battery":3,"zeal":2,"campfire":2,"lineage":2,"quartermaster":1,"treasury":2} forge(last delve) {"armor":7,"blades":6,"purse":5,"swift":3,"keen":1}

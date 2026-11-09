@@ -1,0 +1,10 @@
+--min 480 --profile idle --seed 6 --retire nudge --omen random --out docs/playtest/round-09/market_probe/out/c9_full_idle_6.json {"floor":107,"maxFloorEver":107,"retires":11,"bossKills":70,"wipes":11,"glimpseDone":false,"demoDone":false}
+hour alert banner minorBanner toast toastPlayer modal flashStrong flashSoft flashFaint shake sound loudSound hud popup secsWithSound
+0 4 22 101 11 10 0 0 0 39 0 77 10 547 219 73
+1 12 37 97 6 18 0 0 0 77 0 143 31 448 646 136
+2 13 39 125 8 22 0 0 0 98 0 138 24 512 796 131
+3 13 35 113 7 18 0 0 0 88 0 114 23 446 707 106
+4 14 26 102 6 13 0 0 0 100 0 134 23 457 733 124
+5 16 40 150 5 22 0 0 0 120 0 162 21 599 1067 155
+6 7 5 17 3 1 0 0 0 62 0 77 25 115 170 73
+7 6 18 84 4 12 0 0 0 87 0 95 19 320 605 88

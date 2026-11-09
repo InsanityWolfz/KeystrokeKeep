@@ -299,7 +299,7 @@
   };
   A.retireTarget = () => { const S = KK.S; let f = Math.max(20, S.maxFloorRun + 1); while (F.renownFor(f) - F.renownFor(S.renownFloor || 0) <= 0 && f < 2000) f++; return f; };
   // demo: once the cap is beaten, a 0-Renown "re-delve" restarts the run (new relics, beat your best time)
-  // Omen of the Day: one starred omen per calendar day; reaching (record - 15) under it pays a Seal (+10 Renown)
+  // Omen of the Day: one starred omen per calendar day; reaching (record - 5) under it pays a Seal (10 + record/10 Renown)
   A.starOmen = () => { let h = 0; for (const c of KK.today()) h = (h * 31 + c.charCodeAt(0)) >>> 0; return D.OMENS[h % D.OMENS.length].id; };
   A.dailyOpen = () => !KK.DEMO_CAP && KK.S.retires >= 2 && KK.S.sealDay !== KK.today();
   A.sealFloor = () => Math.max(40, (KK.S.renownFloor || 0) - 5);
@@ -331,7 +331,9 @@
     S.gold = 0; S.forge = {}; S.relics = []; S.relicOffer = null; S.relicQueue = []; S.bossBlock = 0;
     KK.dirty();
     const m = KK.mods();
+    const had = Object.assign({}, S.heroes);
     S.heroes = { knight: 1 + m.startLvl, archer: 0, mage: 0, cleric: 0 };
+    if (m.rejoin) for (const id of ['archer', 'mage', 'cleric']) if (had[id]) S.heroes[id] = 1 + m.startLvl; // Recruiter: veterans rejoin
     S.floor = m.startFloor; S.maxFloorRun = m.startFloor;
     KK.dirty();
     KK.emit('retired', { gain });

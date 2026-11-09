@@ -254,7 +254,7 @@
     const curIcon = cur === 'gold' ? icon('coin') : cur === 'embers' ? icon('candle') : '♛';
     return `<div class="card ${maxed ? 'maxed' : ''}"><div class="port"><img src="${KK.SPR.iconURL[def.icon]}" alt=""></div><div class="info">
       <div class="nm"><span>${def.name}</span><span class="lv">${maxed ? 'MAX' : 'LV ' + lvl}</span></div>
-      <div class="desc">${def.minFloor && !lvl ? '<i class="new">NEW</i> ' : ''}${def.desc(lvl)}${def.needsTyping ? ` <span class="tag">${def.needsTyping === true ? 'NEEDS TYPING' : def.needsTyping}</span>` : ''}</div>
+      <div class="desc">${def.minFloor && !lvl && !KK.S.tutorial['seen_' + def.id] ? '<i class="new">NEW</i> ' : ''}${def.desc(lvl)}${def.needsTyping ? ` <span class="tag">${def.needsTyping === true ? 'NEEDS TYPING' : def.needsTyping}</span>` : ''}</div>
       ${maxed ? '<button class="buy" disabled><span>MAXED</span></button>' : `<button class="buy ${cur === 'embers' ? 'spark' : cur === 'renown' ? 'renown' : ''}" data-action="${action}" data-id="${def.id}" data-cost="${cost}" data-cur="${cur}"><span>UPGRADE</span><span>${curIcon} ${fmt(cost)}</span></button>`}
     </div></div>`;
   }
@@ -265,6 +265,7 @@
   }
   function workshopHTML() {
     const S = KK.S;
+    setTimeout(() => { for (const d of D.WORKSHOP) if (d.minFloor && S.maxFloorEver >= d.minFloor) S.tutorial['seen_' + d.id] = 1; }, 0);
     return `<div class="ph"><div><h3>WORKSHOP</h3><div class="sub"><b style="color:#ffb070">Embers</b> come from Sparks spent on ultimates (1 per 4), from bosses and from golden rats. They buy upgrades that <b style="color:var(--spark)">never reset</b>.</div></div>
       <div class="res-pill">${icon('candle')} <span id="ws-embers">${fmt(Math.floor(S.embers || 0))}</span> EMBERS</div></div>
       <div class="grid">${D.WORKSHOP.filter((d) => !d.minFloor || S.maxFloorEver >= d.minFloor).map((d) => upCard(d, S.workshop[d.id] || 0, 'embers', 'workshop')).join('')}</div>`;
@@ -335,7 +336,7 @@
     const n = list.filter((a) => got[a.id]).length;
     const nx = KK.ach.next ? KK.ach.next() : null;
     const row = (a) => { const p = !got[a.id] && KK.ach.progress ? KK.ach.progress(a) : null; return `<div class="ach ${got[a.id] ? 'got' : ''}"><b>${a.name}</b><span>${a.desc}</span>${p ? `<div class="achprog" data-ach="${a.id}"><i style="width:${p.pct}%"></i></div><small data-achtxt="${a.id}">${p.txt}</small>` : ''}</div>`; };
-    return `<details class="achbox" ${UI.achOpen ? 'open' : ''}><summary>🏆 ACHIEVEMENTS ${n}/${list.length}${KK.DEMO_CAP ? ` (+${locked.length} more in the full game)` : ''}${nx ? ` · NEXT: ${nx.def.name} ${nx.txt}` : ''}</summary><div class="achlist">${list.map(row).join('')}${locked.map((a) => `<div class="ach locked"><b>${a.name} <i class="new">FULL GAME</i></b><span>${a.desc}</span></div>`).join('')}</div></details>`;
+    return `<details class="achbox" ${UI.achOpen ? 'open' : ''}><summary>🏆 ACHIEVEMENTS ${n}/${list.length}${KK.DEMO_CAP ? ` (+${locked.length} more in the full game${locked.filter((a) => got[a.id]).length ? `, ${locked.filter((a) => got[a.id]).length} already earned` : ''})` : ''}${nx ? ` · NEXT: ${nx.def.name} ${nx.txt}` : ''}</summary><div class="achlist">${list.map(row).join('')}${locked.map((a) => `<div class="ach locked ${got[a.id] ? 'earned' : ''}"><b>${a.name} <i class="new">${got[a.id] ? '✓ EARNED · UNLOCKS IN THE FULL GAME' : 'FULL GAME'}</i></b><span>${a.desc}</span></div>`).join('')}</div></details>`;
   }
   /** "+X% damage & gold" that the pending Renown would add (Fame), for the retire button. */
   function renownWorth() {
@@ -553,6 +554,7 @@
     UI.modal(`<h2>${peek ? 'WHAT WAITS BELOW' : 'DEMO COMPLETE!'}</h2>
       <p>${peek ? `Your party is still delving (floor ${S.maxFloorRun} so far). The demo ends at floor 40. Here's what waits below:` : `Your party conquered the Mossy Caverns in <b>${U.fmtTime(S.bestCapTime || st.playTime)}</b>.`}</p>
       ${peek ? '' : `<div class="demo-stats">${stat('keystrokes', fmt(st.keys))}${stat('ultimates', fmt(st.ults))}${stat('bosses', fmt(st.bossKills))}${stat('in FLOW', U.fmtTime(st.flowTime))}</div>`}
+      ${(() => { const n = KK.ach ? KK.ach.LIST.filter((a) => !a.demo && (S.ach || {})[a.id]).length : 0; return n ? `<p>You've already earned <b>${n} full-game achievement${n > 1 ? 's' : ''}</b>; they unlock when you buy.</p>` : ''; })()}
       ${ev && ev.atStatue ? '<p>The sealed <b style="color:#ff7a2e">Ember Colossus</b> you just saw waits on floor 50, with its Magma Shell.</p>' : ''}
       <p><b style="color:#ff7a2e">The Magma Depths</b> and <b style="color:#c472ff">The Hollow Void</b>, 3 new bosses, 6 Hollowed returns, the Heart of the Keep, 60+ more floors, Delve Omens, the Hollow Codex and ${KK.ach ? KK.ach.LIST.length : 39} achievements wait in the full game. Your save carries over.</p>
       <p style="font-size:12px;color:var(--muted)">${peek ? 'Reach floor 40 to glimpse the Magma Depths. Your party gets there on its own; typing gets you there faster.' : 'Keep the strip running: every re-delve rerolls your relics, a fresh clear of floor 40 pays +6 Renown, and your best time is your score.'}</p>

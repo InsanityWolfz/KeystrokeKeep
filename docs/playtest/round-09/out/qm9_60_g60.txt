@@ -1,0 +1,2 @@
+qm      h1 retreats 0.9 [1,0,1,2,2,0,0,2,1,0]  maxFloor 35.1  archer 4.8m mage 26.5m cleric 40.6m (10/10)  f40 0.0 (0/10)  unspent gold (x cheapest level) 1.7  saving-for-recruit min 7.5  lv@end k56 a45 c19 m34
+manual  h1 retreats 1.8 [3,2,0,2,2,0,4,3,0,2]  maxFloor 35.4  archer 5.1m mage 26.7m cleric 42.7m (10/10)  f40 0.0 (0/10)  unspent gold (x cheapest level) 1.9  saving-for-recruit min 8.0  lv@end k55 a44 c18 m33

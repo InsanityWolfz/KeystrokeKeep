@@ -1,0 +1,449 @@
+{
+ "args": "--min 120 --profile typist --seed 1 --retire nudge --omen random --demo --out docs/playtest/round-09/market_probe/out/c9_demo_typist_1.json",
+ "full": false,
+ "simHours": 2,
+ "perHour": {
+  "0": {
+   "toast": {
+    "tutorial: sparks": 1,
+    "tutorial: first ult": 1,
+    "tutorial: flow": 1,
+    "achievement (batched)": 2,
+    "hero can be recruited": 3,
+    "relic dropped": 4,
+    "tutorial: rat": 1,
+    "tutorial: retire": 1,
+    "demo sealed (new best)": 2
+   },
+   "popup": {
+    "FOCUSED": 30,
+    "EARTHSHATTER!": 174,
+    "IN THE ZONE": 43,
+    "TREASURE! +#": 39,
+    "LV #": 911,
+    "ARROW STORM!": 156,
+    "FLOW!": 42,
+    "+#": 25,
+    "+# EMBERS": 35,
+    "GOLDEN RAT! +#": 11,
+    "METEOR!": 97,
+    "SECOND WIND!": 24,
+    "WEBBED": 13,
+    "WEB TORN!": 10,
+    "KO": 7,
+    "REVIVED": 1,
+    "SANCTUARY!": 9,
+    "WAR CHARGE!": 15
+   },
+   "sound": {
+    "softBoom": 225,
+    "zone": 11,
+    "flow": 6,
+    "chest": 39,
+    "recruit": 20,
+    "milestone": 16,
+    "bossIntro": 14,
+    "offer": 24,
+    "rat": 15,
+    "relic": 19,
+    "ratCaught": 11,
+    "slam": 11,
+    "ui": 10,
+    "wipe": 1,
+    "deny": 16,
+    "retire": 6,
+    "bossKill": 1
+   },
+   "flashFaint": {
+    "#ffffff": 249,
+    "#ffd76a": 33,
+    "#300010": 26,
+    "#c472ff": 19,
+    "#ffb347": 121,
+    "#5a0010": 1,
+    "#fff6c9": 13
+   },
+   "hud": {
+    "gold pulse": 832
+   },
+   "secs": {
+    "ZONE vignette": 731.0333333333258,
+    "FLOW vignette (steady in calm)": 1706.5333333324386,
+    "hero FLOW outline pulse 1.3 Hz (not calm-gated)": 1706.5333333324386,
+    "big banner on screen": 70.06666666666526,
+    "alert plate on screen (2 Hz text blink)": 22.800000000000292,
+    "boss white flicker (2 Hz)": 15.866666666666621,
+    "any sound started (seconds with >=1)": 423
+   },
+   "screen": {
+    "floor fade to black": 242
+   },
+   "minorBanner": {
+    "FLOOR #": 205,
+    "MOSSY CAVERNS": 5,
+    "FLOW STATE!": 5,
+    "BROOD MOTHER": 6,
+    "VICTORY!": 20,
+    "SISTER PELL JOINS!": 5,
+    "GOBLIN WARLORD": 5,
+    "WREN JOINS!": 5,
+    "THE RAT KING": 5,
+    "THE BONE KING": 4,
+    "SIR CLANK LV #": 2,
+    "SISTER PELL LV #": 1,
+    "MORTIMER JOINS!": 1
+   },
+   "banner": {
+    "FLOW STATE!": 1,
+    "WREN JOINS!": 2,
+    "SIR CLANK LV #": 6,
+    "THE RAT KING": 2,
+    "VICTORY!": 4,
+    "WREN LV #": 4,
+    "THE BONE KING": 2,
+    "MOSSY CAVERNS": 2,
+    "MORTIMER JOINS!": 1,
+    "SISTER PELL JOINS!": 1,
+    "BROOD MOTHER": 1,
+    "RETREAT!": 1,
+    "SISTER PELL LV #": 3,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "THE CRYPT": 1
+   },
+   "bannerFirstEver": {
+    "FLOW STATE!": 1,
+    "WREN JOINS!": 1,
+    "SIR CLANK LV #": 5,
+    "THE RAT KING": 1,
+    "VICTORY!": 1,
+    "WREN LV #": 4,
+    "THE BONE KING": 1,
+    "MOSSY CAVERNS": 1,
+    "MORTIMER JOINS!": 1,
+    "SISTER PELL JOINS!": 1,
+    "BROOD MOTHER": 1,
+    "RETREAT!": 1,
+    "SISTER PELL LV #": 3,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "THE CRYPT": 1
+   },
+   "toastPlayer": {
+    "recruit": 20,
+    "relic acquired": 19,
+    "retire / omen": 6
+   },
+   "loudSound": {
+    "bossIntro": 14,
+    "slam": 11,
+    "bossKill": 1
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 4,
+    "THE BONE KING REASSEMBLES!": 4,
+    "WEB SHOT! TYPE TO TEAR IT": 4,
+    "WAR CHARGE!": 4,
+    "SEALED: THE EMBER COLOSSUS WAITS IN THE FULL GAME": 1
+   },
+   "suppressed": {
+    "achievement toast held": 3
+   },
+   "bannerRepeat": {
+    "VICTORY!": 3,
+    "WREN JOINS!": 1,
+    "THE RAT KING": 1,
+    "THE BONE KING": 1,
+    "MOSSY CAVERNS": 1,
+    "SIR CLANK LV #": 1
+   },
+   "downgraded": {
+    "MOSSY CAVERNS": 5,
+    "FLOW STATE!": 5,
+    "BROOD MOTHER": 6,
+    "SISTER PELL JOINS!": 5,
+    "GOBLIN WARLORD": 5,
+    "WREN JOINS!": 5,
+    "THE RAT KING": 5,
+    "THE BONE KING": 4,
+    "SIR CLANK LV #": 2,
+    "SISTER PELL LV #": 1,
+    "MORTIMER JOINS!": 1
+   },
+   "event": {
+    "glimpse start": 1
+   },
+   "modal": {
+    "demo complete card": 1
+   }
+  },
+  "1": {
+   "secs": {
+    "FLOW vignette (steady in calm)": 1809.2999999990118,
+    "hero FLOW outline pulse 1.3 Hz (not calm-gated)": 1809.2999999990118,
+    "ZONE vignette": 842.4666666665578,
+    "big banner on screen": 19.766666666666808,
+    "boss white flicker (2 Hz)": 5.966666666666655,
+    "alert plate on screen (2 Hz text blink)": 23.500000000000327,
+    "any sound started (seconds with >=1)": 407
+   },
+   "popup": {
+    "+# EMBERS": 52,
+    "GOLDEN RAT! +#": 8,
+    "LV #": 1300,
+    "ARROW STORM!": 103,
+    "TREASURE! +#": 62,
+    "METEOR!": 88,
+    "EARTHSHATTER!": 110,
+    "SECOND WIND!": 28,
+    "FOCUSED": 21,
+    "IN THE ZONE": 35,
+    "FLOW!": 44,
+    "+#": 43,
+    "WEBBED": 11,
+    "WAR CHARGE!": 3,
+    "WEB TORN!": 5
+   },
+   "hud": {
+    "gold pulse": 1126
+   },
+   "sound": {
+    "offer": 44,
+    "relic": 35,
+    "ratCaught": 8,
+    "chest": 62,
+    "softBoom": 168,
+    "recruit": 31,
+    "milestone": 18,
+    "zone": 11,
+    "bossIntro": 16,
+    "rat": 13,
+    "deny": 8,
+    "retire": 10,
+    "flow": 5,
+    "ui": 5
+   },
+   "screen": {
+    "floor fade to black": 395
+   },
+   "flashFaint": {
+    "#c472ff": 35,
+    "#ffd76a": 31,
+    "#ffb347": 104,
+    "#ffffff": 200,
+    "#300010": 43
+   },
+   "toastPlayer": {
+    "relic acquired": 35,
+    "recruit": 31,
+    "retire / omen": 10
+   },
+   "minorBanner": {
+    "FLOOR #": 338,
+    "THE BONE KING": 11,
+    "VICTORY!": 41,
+    "MOSSY CAVERNS": 10,
+    "BROOD MOTHER": 11,
+    "GOBLIN WARLORD": 11,
+    "WREN JOINS!": 9,
+    "MORTIMER JOINS!": 10,
+    "THE RAT KING": 10,
+    "FLOW STATE!": 4,
+    "SIR CLANK LV #": 7
+   },
+   "banner": {
+    "SIR CLANK LV #": 5,
+    "MORTIMER LV #": 1,
+    "WREN LV #": 2,
+    "SISTER PELL LV #": 2
+   },
+   "bannerFirstEver": {
+    "SIR CLANK LV #": 2,
+    "MORTIMER LV #": 1,
+    "WREN LV #": 2,
+    "SISTER PELL LV #": 2
+   },
+   "downgraded": {
+    "THE BONE KING": 11,
+    "MOSSY CAVERNS": 10,
+    "BROOD MOTHER": 11,
+    "GOBLIN WARLORD": 11,
+    "WREN JOINS!": 9,
+    "MORTIMER JOINS!": 10,
+    "THE RAT KING": 10,
+    "FLOW STATE!": 4,
+    "SIR CLANK LV #": 7
+   },
+   "loudSound": {
+    "bossIntro": 16
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 5,
+    "THE BONE KING REASSEMBLES!": 5,
+    "WEB SHOT! TYPE TO TEAR IT": 5,
+    "WAR CHARGE!": 4
+   },
+   "toast": {
+    "relic dropped": 4
+   },
+   "bannerRepeat": {
+    "SIR CLANK LV #": 3
+   }
+  }
+ },
+ "firsts": [
+  [
+   0,
+   "toast tutorial: sparks"
+  ],
+  [
+   0.1,
+   "toast tutorial: first ult"
+  ],
+  [
+   0.3,
+   "banner FLOW STATE!"
+  ],
+  [
+   0.3,
+   "toast tutorial: flow"
+  ],
+  [
+   0.3,
+   "toast achievement (batched)"
+  ],
+  [
+   0.5,
+   "toast hero can be recruited"
+  ],
+  [
+   1,
+   "banner WREN JOINS!"
+  ],
+  [
+   3,
+   "banner SIR CLANK LV #"
+  ],
+  [
+   3.2,
+   "banner THE RAT KING"
+  ],
+  [
+   3.2,
+   "loud sound bossIntro"
+  ],
+  [
+   3.2,
+   "alert SQUEAK! THE RAT KING SUMMONS"
+  ],
+  [
+   3.5,
+   "banner VICTORY!"
+  ],
+  [
+   3.5,
+   "toast relic dropped"
+  ],
+  [
+   3.6,
+   "toast tutorial: rat"
+  ],
+  [
+   6,
+   "banner WREN LV #"
+  ],
+  [
+   6.1,
+   "toast tutorial: retire"
+  ],
+  [
+   6.2,
+   "banner THE BONE KING"
+  ],
+  [
+   6.6,
+   "alert THE BONE KING REASSEMBLES!"
+  ],
+  [
+   6.7,
+   "loud sound slam"
+  ],
+  [
+   6.7,
+   "banner MOSSY CAVERNS"
+  ],
+  [
+   9,
+   "banner MORTIMER JOINS!"
+  ],
+  [
+   10,
+   "banner SISTER PELL JOINS!"
+  ],
+  [
+   14.9,
+   "banner BROOD MOTHER"
+  ],
+  [
+   14.9,
+   "alert WEB SHOT! TYPE TO TEAR IT"
+  ],
+  [
+   15.5,
+   "banner RETREAT!"
+  ],
+  [
+   20,
+   "banner SISTER PELL LV #"
+  ],
+  [
+   22.5,
+   "banner GOBLIN WARLORD"
+  ],
+  [
+   22.6,
+   "alert WAR CHARGE!"
+  ],
+  [
+   23.9,
+   "glimpse"
+  ],
+  [
+   23.9,
+   "banner MAGMA DEPTHS"
+  ],
+  [
+   24.1,
+   "alert SEALED: THE EMBER COLOSSUS WAITS IN THE FULL GAME"
+  ],
+  [
+   24.1,
+   "modal demo complete"
+  ],
+  [
+   25,
+   "banner THE CRYPT"
+  ],
+  [
+   27.6,
+   "loud sound bossKill"
+  ],
+  [
+   33.1,
+   "toast demo sealed (new best)"
+  ],
+  [
+   64.5,
+   "banner MORTIMER LV #"
+  ]
+ ],
+ "final": {
+  "floor": 39,
+  "maxFloorEver": 40,
+  "retires": 16,
+  "bossKills": 68,
+  "wipes": 1,
+  "glimpseDone": true,
+  "demoDone": true
+ }
+}

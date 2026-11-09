@@ -1,0 +1,85 @@
+=== KEYSTROKE KEEP PLAYTEST  profile=idle strategy=smart glance=60s stuck=8m seed=4 sessions=1x60m offline=0h ===
+
+--- timeline (every 5 min) ---
+0h00m  floor 1 (max 1)  gold 0  inc 0/s  lv k1 a0 c0 m0  relics 0  sparks 0/150  renown 0  IDLE
+0h05m  floor 6 (max 6)  gold 42  inc 0.5/s  lv k8 a0 c0 m0  relics 0  sparks 0/150  renown 0  IDLE
+0h10m  floor 11 (max 11)  gold 177  inc 1.6/s  lv k13 a3 c0 m0  relics 0  sparks 0/150  renown 0  IDLE
+0h15m  floor 14 (max 14)  gold 377  inc 7.7/s  lv k21 a11 c0 m0  relics 1  sparks 0/150  renown 0  IDLE
+0h20m  floor 15 (max 18)  gold 360  inc 5.3/s  lv k28 a17 c0 m0  relics 1  sparks 0/150  renown 0  IDLE
+0h25m  floor 20 (max 20)  gold 320  inc 5.1/s  lv k32 a21 c0 m0  relics 1  sparks 0/150  renown 0  IDLE
+0h30m  floor 21 (max 21)  gold 1.27K  inc 13/s  lv k35 a25 c0 m0  relics 2  sparks 5/150  renown 0  IDLE
+0h35m  floor 23 (max 23)  gold 1.94K  inc 20/s  lv k40 a29 c0 m0  relics 2  sparks 5/150  renown 0  IDLE
+0h40m  floor 26 (max 27)  gold 1.38K  inc 14/s  lv k41 a31 c0 m19  relics 2  sparks 10/150  renown 0  IDLE
+0h45m  floor 28 (max 28)  gold 2.70K  inc 43/s  lv k44 a34 c7 m22  relics 2  sparks 20/150  renown 0  IDLE
+0h50m  floor 30 (max 30)  gold 2.51K  inc 51/s  lv k48 a38 c11 m26  relics 2  sparks 20/150  renown 0  IDLE
+0h55m  floor 33 (max 33)  gold 3.54K  inc 49/s  lv k51 a40 c13 m29  relics 3  sparks 20/150  renown 0  IDLE
+1h00m  floor 34 (max 34)  gold 6.61K  inc 63/s  lv k53 a43 c16 m31  relics 3  sparks 20/150  renown 0  IDLE
+
+--- key events ---
+0h00m  >> reached biome The Crypt (floor 2)
+0h07m  recruit archer
+0h09m  BOSS The Rat King down (floor 10)
+0h10m  relic picked: luckycoin
+0h15m  first buy forge:blades
+0h15m  first buy forge:armor
+0h28m  first buy forge:purse
+0h28m  first buy forge:swift
+0h28m  BOSS The Bone King down (floor 20)
+0h28m  >> reached biome Mossy Caverns (floor 21)
+0h29m  relic picked: map
+0h35m  recruit mage
+0h36m  first buy workshop:crucible
+0h36m  first buy forge:keen
+0h41m  recruit cleric
+0h51m  BOSS Brood Mother down (floor 30)
+0h52m  relic picked: flowpend
+
+--- prestige ---
+never retired
+
+--- pacing ---
+longest stall (no new max floor): 6.3 min
+glances with NOTHING affordable: 2/60  longest drought: 1.0 min
+purchases per 10 min: 15, 31, 22, 41, 38, 21
+wipes 4  chests 12  rats 3/14 spawned  ults 8 (0.1/min)
+fervor time: IDLE 100%  FOCUSED 0%  ZONE 0%  FLOW 0%
+sparks at cap 0% of the time; 0 sparks wasted of 0 inputs; embers banked 92 (unspent)
+ults by hero: archer 2, knight 2, mage 1, cleric 3
+
+--- content coverage (first affordable / first bought / buys) ---
+forge:blades             0h10m   0h15m   7
+forge:armor              0h10m   0h15m   7
+forge:purse              0h15m   0h28m   4
+forge:swift              0h14m   0h28m   4
+forge:keen               0h23m   0h36m   3
+workshop:crucible        0h36m   0h36m   1
+workshop:overcharge      never   NEVER   0
+workshop:kindling        never   NEVER   0
+workshop:lantern         never   NEVER   0
+workshop:dynamo          never   NEVER   0
+workshop:static          never   NEVER   0
+legacy:lineage           never   NEVER   0
+legacy:treasury          never   NEVER   0
+legacy:quartermaster     never   NEVER   0
+legacy:veterans          never   NEVER   0
+legacy:headstart         never   NEVER   0
+legacy:zeal              never   NEVER   0
+legacy:recruiter         never   NEVER   0
+legacy:campfire          never   NEVER   0
+legacy:battery           never   NEVER   0
+legacy:collector         never   NEVER   0
+recruit:knight           never   NEVER   0
+recruit:archer           0h07m   0h07m   1
+recruit:mage             0h35m   0h35m   1
+recruit:cleric           0h41m   0h41m   1
+
+--- relics (offered / picked) ---
+whetstone 2/0  luckycoin 1/1  spacebar 0/0  boots 1/0  coffee 0/0  belt 0/0  keycap 0/0  capslock 0/0  enter 1/0  fang 0/0  oil 0/0  map 2/1  lens 0/0  echo 0/0  glass 0/0  flowpend 2/1  hotkey 0/0
+
+--- world ---
+biomes reached: The Crypt@0h00m, Mossy Caverns@0h28m
+bosses killed: The Rat King x1, The Bone King x1, Brood Mother x1
+monsters never seen: Fire Imp, Rock Golem, Magma Slime, Watcher, Wraith, Void Knight, Goblin Warlord, Ember Colossus, Magma Lord, The Hollow
+achievements: 6/39  first_boss rat comeback caverns full_party epic
+trophies: 0  demo laps: 0  best f40: -
+END 1h00m: floor 34 maxEver 34 retires 0 renownLifetime 0 kills 437

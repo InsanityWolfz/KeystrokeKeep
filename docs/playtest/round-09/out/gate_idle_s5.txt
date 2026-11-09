@@ -1,0 +1,93 @@
+=== KEYSTROKE KEEP PLAYTEST  profile=idle strategy=smart glance=60s stuck=8m seed=5 sessions=1x60m offline=0h ===
+
+--- timeline (every 5 min) ---
+0h00m  floor 1 (max 1)  gold 0  inc 0/s  lv k1 a0 c0 m0  relics 0  sparks 0/150  renown 0  IDLE
+0h05m  floor 6 (max 6)  gold 128  inc 0.6/s  lv k7 a0 c0 m0  relics 0  sparks 10/150  renown 0  IDLE
+0h10m  floor 11 (max 11)  gold 344  inc 1.5/s  lv k17 a7 c0 m0  relics 1  sparks 15/150  renown 0  IDLE
+0h15m  floor 16 (max 16)  gold 1.26K  inc 5.6/s  lv k24 a14 c0 m0  relics 1  sparks 20/150  renown 0  IDLE
+0h20m  floor 18 (max 18)  gold 592  inc 7.5/s  lv k29 a18 c0 m6  relics 1  sparks 0/150  renown 0  IDLE
+0h25m  floor 21 (max 21)  gold 1.11K  inc 12/s  lv k34 a23 c0 m11  relics 2  sparks 5/150  renown 0  IDLE
+0h30m  floor 21 (max 21)  gold 833  inc 11/s  lv k38 a27 c0 m15  relics 2  sparks 35/150  renown 0  IDLE
+0h35m  floor 10 (max 10)  gold 188  inc 2.4/s  lv k11 a1 c0 m0  relics 0  sparks 10/150  renown 0  IDLE
+0h40m  floor 16 (max 16)  gold 620  inc 11/s  lv k22 a11 c0 m0  relics 1  sparks 10/150  renown 0  IDLE
+0h45m  floor 21 (max 21)  gold 1.36K  inc 12/s  lv k29 a19 c0 m0  relics 1  sparks 15/150  renown 0  IDLE
+0h50m  floor 24 (max 24)  gold 1.23K  inc 18/s  lv k37 a27 c0 m0  relics 2  sparks 15/150  renown 0  IDLE
+0h55m  floor 27 (max 27)  gold 1.54K  inc 23/s  lv k40 a29 c2 m8  relics 2  sparks 20/150  renown 0  IDLE
+1h00m  floor 29 (max 29)  gold 2.69K  inc 28/s  lv k41 a30 c4 m19  relics 2  sparks 20/150  renown 0  IDLE
+
+--- key events ---
+0h00m  >> reached biome The Crypt (floor 2)
+0h05m  recruit archer
+0h07m  BOSS The Rat King down (floor 10)
+0h08m  relic picked: boots
+0h10m  first buy workshop:crucible
+0h10m  first buy forge:blades
+0h14m  first buy forge:armor
+0h15m  first buy forge:purse
+0h15m  first buy forge:swift
+0h18m  recruit mage
+0h22m  BOSS The Bone King down (floor 20)
+0h22m  >> reached biome Mossy Caverns (floor 21)
+0h23m  relic picked: capslock
+0h26m  first buy workshop:overcharge
+0h29m  first buy forge:keen
+0h30m  >>> RETIRE #1 from floor 21 +4 renown (lifetime 4)
+0h31m  first buy legacy:lineage
+0h31m  first buy legacy:treasury
+0h32m  recruit archer
+0h35m  BOSS The Rat King down (floor 10)
+0h36m  relic picked: spacebar
+0h44m  BOSS The Bone King down (floor 20)
+0h45m  relic picked: coffee
+0h51m  recruit cleric
+0h53m  recruit mage
+
+--- prestige ---
+retire at 0h30m: run 30.7 min, max floor 21, +4 renown
+
+--- pacing ---
+longest stall (no new max floor): 4.5 min
+glances with NOTHING affordable: 2/60  longest drought: 1.0 min
+purchases per 10 min: 23, 38, 34, 38, 38, 37
+wipes 0  chests 14  rats 8/13 spawned  ults 17 (0.3/min)
+fervor time: IDLE 100%  FOCUSED 0%  ZONE 0%  FLOW 0%
+sparks at cap 0% of the time; 0 sparks wasted of 0 inputs; embers banked 13 (unspent)
+ults by hero: knight 10, archer 7
+
+--- content coverage (first affordable / first bought / buys) ---
+forge:blades             0h05m   0h10m   8
+forge:armor              0h05m   0h14m   9
+forge:purse              0h10m   0h15m   5
+forge:swift              0h10m   0h15m   4
+forge:keen               0h14m   0h29m   2
+workshop:crucible        0h10m   0h10m   3
+workshop:overcharge      0h18m   0h26m   1
+workshop:kindling        0h18m   NEVER   0
+workshop:lantern         never   NEVER   0
+workshop:dynamo          0h51m   NEVER   0
+workshop:static          0h51m   NEVER   0
+legacy:lineage           0h31m   0h31m   1
+legacy:treasury          0h31m   0h31m   1
+legacy:quartermaster     never   NEVER   0
+legacy:veterans          0h31m   NEVER   0
+legacy:headstart         0h31m   NEVER   0
+legacy:zeal              0h31m   NEVER   0
+legacy:recruiter         never   NEVER   0
+legacy:campfire          0h31m   NEVER   0
+legacy:battery           0h31m   NEVER   0
+legacy:collector         never   NEVER   0
+recruit:knight           never   NEVER   0
+recruit:archer           0h05m   0h05m   2
+recruit:mage             0h18m   0h18m   2
+recruit:cleric           0h51m   0h51m   1
+
+--- relics (offered / picked) ---
+whetstone 0/0  luckycoin 1/0  spacebar 3/1  boots 2/1  coffee 2/1  belt 1/0  keycap 0/0  capslock 1/1  enter 0/0  fang 0/0  oil 0/0  map 0/0  lens 1/0  echo 0/0  glass 1/0  flowpend 0/0  hotkey 0/0
+
+--- world ---
+biomes reached: The Crypt@0h00m, Mossy Caverns@0h22m
+bosses killed: The Rat King x2, The Bone King x2
+monsters never seen: Fire Imp, Rock Golem, Magma Slime, Watcher, Wraith, Void Knight, Brood Mother, Goblin Warlord, Ember Colossus, Magma Lord, The Hollow
+achievements: 5/39  rat first_boss caverns retire1 full_party
+trophies: 0  demo laps: 0  best f40: -
+END 1h00m: floor 29 maxEver 29 retires 1 renownLifetime 4 kills 562

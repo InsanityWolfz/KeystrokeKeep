@@ -1,0 +1,230 @@
+{
+ "name": "g1_wall1",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: input counting PAUSED",
+   "Keystroke Keep: input counting PAUSED"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-capture",
+ "log": [
+  "  0.06 uiohook start() blocked (dummy)",
+  "  0.09 shown at {\"x\":2560,\"y\":1171,\"width\":1920,\"height\":192}",
+  "  0.09 pre installed {\"identifier\":\"1\"}",
+  "  0.09 loadFile",
+  "  0.33 tray: fake (no icon shown)",
+  "  0.42 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":9}",
+  "  2.47 png at frame 121 (asked 120)",
+  "  7.26 png at frame 401 (asked 400)",
+  " 14.02 finish"
+ ],
+ "page": {
+  "f": 798,
+  "t0f": 37,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue floor 16"
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue autotype true"
+   },
+   {
+    "f": 24,
+    "r": 409,
+    "v": 409,
+    "e": "cue mark \"G1 IN\""
+   },
+   {
+    "f": 95,
+    "r": 1614,
+    "v": 1614,
+    "e": "cue mark \"FLOW STATE banner (S1 freeze point)\""
+   },
+   {
+    "f": 121,
+    "r": 2074,
+    "v": 2074,
+    "e": "ult knight"
+   },
+   {
+    "f": 195,
+    "r": 3339,
+    "v": 3339,
+    "e": "ult archer"
+   },
+   {
+    "f": 265,
+    "r": 4519,
+    "v": 4519,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 314,
+    "r": 5371,
+    "v": 5371,
+    "e": "ult mage"
+   },
+   {
+    "f": 348,
+    "r": 5934,
+    "v": 5934,
+    "e": "cue mark \"METEOR lands\""
+   },
+   {
+    "f": 365,
+    "r": 6241,
+    "v": 6241,
+    "e": "meteorLand "
+   },
+   {
+    "f": 490,
+    "r": 8381,
+    "v": 8381,
+    "e": "BANNER FLOOR 17 (minor)"
+   },
+   {
+    "f": 490,
+    "r": 8381,
+    "v": 8381,
+    "e": "floor 17"
+   },
+   {
+    "f": 495,
+    "r": 8449,
+    "v": 8449,
+    "e": "cue mark \"G1 OUT\""
+   },
+   {
+    "f": 507,
+    "r": 8653,
+    "v": 8653,
+    "e": "cue autotype false"
+   },
+   {
+    "f": 650,
+    "r": 11103,
+    "v": 11103,
+    "e": "ult knight"
+   },
+   {
+    "f": 673,
+    "r": 11493,
+    "v": 11493,
+    "e": "fervorTier 2->1"
+   },
+   {
+    "f": 759,
+    "r": 12962,
+    "v": 12962,
+    "e": "ult archer"
+   }
+  ],
+  "dig": [
+   "60|16|1|96.8|1|857|0|150|80|",
+   "120|16|1|130.6|1|162|0|150|80|",
+   "180|16|2|164.7|2|1285|16|125|77.3|",
+   "240|16|3|198.7|1|643|53|95|73.7|",
+   "300|16|3|232.6|1|295|53|150|70.1|",
+   "360|16|3|266.4|0|0|71|100|66.6|",
+   "420|16|3|298.8|0|0|71|100|63.1|",
+   "480|16|3|330.9|0|0|71|100|59.6|",
+   "540|17|1|360.6|2|3141|71|100|56|",
+   "600|17|1|394.5|2|3141|71|100|52.4|",
+   "660|17|1|428.2|2|2446|71|75|48.8|",
+   "720|17|2|457.7|2|2868|122|75|45.3|"
+  ],
+  "hashes": [
+   [
+    60,
+    "49936dc5"
+   ],
+   [
+    180,
+    "f7cde745"
+   ],
+   [
+    300,
+    "30f19415"
+   ],
+   [
+    420,
+    "5a245385"
+   ],
+   [
+    540,
+    "5722d25"
+   ],
+   [
+    660,
+    "392dd9d5"
+   ]
+  ],
+  "det": false,
+  "fpsReal": [
+   60,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59
+  ],
+  "boot": {
+   "gold": 0,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 936.3999999761581,
+  "t0v": 936.3999999761581
+ }
+}

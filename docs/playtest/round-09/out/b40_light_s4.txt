@@ -1,0 +1,34 @@
+=== R6 probe light s4 2400m: maxEver 170, retires 33, renown life 835, ach 35/39, trophies 16, codex 24/28, wipes 35, fame x730.2, unspent embers 26134
+beats per 30 min from h1: 8 7 4 3 3 7 4 7 1 2 2 1 0 3 2 0 4 0 0 2 1 0 0 1 2 1 0 0 1 0 1 0 1 1 0 0 1 0 0 1 0 0 1 0 2 1 1 0 0 4 0 0 1 0 0 1 1 1 0 0 0 0 2 1 0 0 0 0 1 0 1 0 0 1 0 0 0 2 0
+AFTER 8h: 40 beats {"OMEN":3,"ACH":9,"TROPHY":7,"CODEX":21}; longest gap 143 min (from 29h41); empty 2h windows 2/17
+longest stretch with no new depth record (30-min snapshots): 3.5 h from 29h30
+codex: 3h52 H-Goblin Warlord r1, 5h38 The Hollow r2, 7h38 H-Bone King r3, 9h26 H-Goblin Warlord r4, 11h10 H-Bone King r5, 13h11 The Hollow r6, 15h24 H-Ember Colossus r7, 16h09 The Heart of the Keep r8, 17h34 H-Magma Lord r9, 19h27 H-Bone King r10, 20h55 H-Goblin Warlord r11, 22h18 H-Magma Lord r12, 23h33 H-Bone King r13, 24h13 H-Ember Colossus r14, 25h41 H-Magma Lord r15, 27h09 The Heart of the Keep r16, 28h49 H-Bone King r17, 29h41 H-Brood Mother r18, 32h04 The Hollow r19, 32h24 H-Magma Lord r20, 32h51 H-Magma Lord r21, 36h07 H-Magma Lord r22, 37h48 H-Magma Lord r23, 39h42 The Hollow r24
+trophies: f75@2h17 f80@2h23 f85@2h52 f90@3h26 f95@3h57 f100@4h32 f105@5h30 f110@6h22 f115@7h54 f120@9h12 f125@10h55 f130@12h59 f140@17h22 f150@23h15 f160@29h28 f170@39h30
+retires (33): 0h41 f26 +9, 1h09 f45 +31, 1h34 f60 +39, 1h59 f70 +33, 2h24 f80 +38, 2h58 f87 +30, 3h34 f90 +14, 4h00 f97 +33, 4h40 f100 +15, 5h33 f106 +32, 6h30 f110 +22, 8h01 f116 +35, 9h20 f120 +26, 10h55 f125 +31, 11h53 f129 +26, 13h07 f130 +7, 15h18 f135 +33, 16h00 f130 +0, 17h22 f140 +36, 19h16 f144 +28, 20h44 f148 +30, 22h07 f149 +8, 23h23 f150 +7, 24h00 f140 +0, 25h32 f154 +31, 27h01 f158 +32, 28h42 f159 +8, 29h36 f160 +8, 32h00 f160 +0, 32h38 f164 +33, 35h58 f168 +33, 37h42 f169 +9, 39h38 f170 +9
+SIG totals: {"chargeWarn":204,"warCharge":195,"reassemble":33,"bossEnrage":39,"royalSummons":72,"webShot":287,"webbed":274,"webTorn":58,"magmaShell":198,"shellCrack":44,"lavaRain":217,"regroup":9,"seal":5,"voidWarn":1169,"voidSlam":1148}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           3 |    2 |   0 |   0 |   31.1 |   4 | royalSummons 3 [100%] @2.2
+  boneking          5 |    5 |   0 |   0 |    4.9 |   1 | reassemble 1 [100%] @3.3 | rise->death med 1.77s, <0.5s 0/5, <1.5s(still stunned) 0/5
+  broodmother       7 |    7 |   0 |   0 |    2.3 |   0 | webShot 0 [43%] @2.7; webbed 0 [43%] @3.4; webTorn 0 [29%] @18.3
+  warlord          11 |   11 |   0 |   0 |    2.4 |   0 | chargeWarn 0 [36%] @3.8; warCharge 0 [27%] @4.8 | died mid-charge 1/11, fights with 0 charges 8/11
+  embergolem       32 |   32 |   0 |   0 |    1.9 |   0 | magmaShell 0 [19%] @2.2; shellCrack 0 [6%] @63.8
+  magmalord        31 |   31 |   0 |   0 |    1.8 |   0 | lavaRain 0 [19%] @2.7
+  hollow           31 |   30 |   0 |   0 |    2.0 |   0 | voidWarn 0 [26%] @4.0; voidSlam 0 [23%] @5.0
+  H-embergolem     33 |   22 |  10 |   8 |   11.1 |  15 | magmaShell 3 [82%] @2.2; voidWarn 2 [73%] @4.0; shellCrack 1 [58%] @4.3; voidSlam 2 [70%] @5.0; regroup 0 [3%] @180.0
+  H-ratking        29 |   24 |   5 |   5 |    7.3 |  11 | royalSummons 3 [83%] @2.2; voidWarn 2 [66%] @4.0; voidSlam 2 [62%] @5.0
+  H-boneking       38 |   26 |  10 |  10 |   23.8 |  23 | voidWarn 3 [79%] @4.0; voidSlam 3 [79%] @5.0; reassemble 1 [74%] @6.5; regroup 0 [3%] @180.0 | rise->death med 3.77s, <0.5s 0/26, <1.5s(still stunned) 0/26
+  H-broodmother    44 |   22 |  22 |   3 |    7.5 |  17 | voidWarn 3 [80%] @4.0; voidSlam 2 [77%] @5.0; webShot 4 [77%] @2.3; webbed 3 [77%] @3.0; webTorn 1 [50%] @4.0; regroup 0 [11%] @29.0
+  H-warlord        32 |   25 |   6 |   6 |    6.0 |   7 | chargeWarn 2 [94%] @2.8; warCharge 2 [75%] @4.0; voidWarn 1 [69%] @4.0; voidSlam 1 [66%] @5.0 | died mid-charge 9/25, fights with 0 charges 8/32
+  H-magmalord      37 |   25 |  12 |   3 |    8.2 |  13 | voidWarn 2 [78%] @4.0; voidSlam 2 [73%] @5.0; lavaRain 3 [73%] @2.3; regroup 0 [3%] @54.1
+  HEART            32 |   25 |   7 |   4 |    5.9 |   7 | voidWarn 1 [72%] @4.0; voidSlam 1 [63%] @5.0; regroup 0 [3%] @29.6
+ACH: first_boss 0h09 | flow 0h05 | full_party 0h37 | retire1 0h41 | gatekeeper 1h05 | rat 0h08 | epic 0h59 | caverns 0h22 | comeback 4h18 | echo 4h43 | ult_boss 0h09 | revive 4h37 | speed60 2h07 | blitz 25h43 | magma 1h05 | void 1h46 | hollow 2h12 | hollowed6 4h53 | f100 5h22 | codex28 NO | seals7 NO | seals30 NO | f150 23h15 | f125 10h55 | retire10 6h30 | omen1 1h09 | omen10 25h32 | deep90 8h08 | legacy_all 9h21 | crucible10 13h41 | lv100 1h26 | chests100 3h47 | rats25 4h19 | idle50 9h21 | keys10k 3h31 | keys100k 35h06 | flow1h 7h56 | flow10h NO | ults1k 6h04
+R9 RATKING fights 2, with summons 100% (laps 2+: 100%), waves med 3, first at med 2.3s, kill med 31.2s, waves under banner 0, double-wave same frame 0
+R9 H-RATKING fights 29, with summons 83%
+R9 ACH counters (21): unlock cur/goal lv100 100/100, keys10k 10000/10000, chests100 100/100, rats25 25/25, hollowed6 6/6, f100 100/100, ults1k 1000/1000, retire10 10/10, flow1h 3600.26666666405/3600, deep90 90/90, legacy_all 8/8, f125 125/125, crucible10 10/10, f150 150/150, omen10 10/10, blitz 8/8, keys100k 100002/100000
+R9 ACH problems: f100 cur 100 >= goal 100, progress() hid it but no unlock @4.55h | decreasing: lv100 x2
+R9 ACH NEXT line changes: 0.0h - > 0.1h keys10k 154/10.0K > 0.1h crucible10 1/10 > 0.2h blitz 1/8 > 0.2h crucible10 2/10 > 0.3h lv100 30/100 > 0.7h crucible10 3/10 > 0.8h lv100 31/100 > 1.2h crucible10 4/10 > 1.2h lv100 42/100 > 1.5h blitz 4/8 > 1.8h f100 61/100 > 3.1h keys10k 8.83K/10.0K > 3.5h chests100 92/100 ... (35)
+R9 SEEN bosses: ratking@0.2h boneking@0.4h broodmother@1.0h warlord@1.1h embergolem@1.4h magmalord@1.8h hollow@2.2h H-embergolem@2.8h H-ratking@3.2h H-broodmother@3.7h H-warlord@3.9h H-magmalord@4.3h H-boneking@4.9h HEART@5.4h
+R9 SEEN monsters: rat@0.00h bat@0.04h skeleton@0.07h slime@0.38h spider@0.42h goblin@0.84h imp@1.10h golem@1.30h magslime@1.14h eye@1.78h wraith@1.81h voidknight@1.86h
+R9 RELICS offered/picked: whetstone 85/28, luckycoin 95/28, spacebar 88/26, boots 112/25, coffee 106/26, belt 101/29, keycap 57/14, capslock 66/19, enter 45/13, fang 62/12, oil 65/21, map 53/8, lens 50/12, echo 26/9, glass 25/6, flowpend 30/5, hotkey 30/6
+R9 OMENS picked: gilded 5, glass 5, storm 5, quiet 4, fever 2, embertide 1, march 3, hoard 2, muster 3, deep 2 | seals 5 | redelves 3 | lantern L1@4.9h L2@7.7h L3@12.1h L4@14.2h L5@18.1h
+R9 END workshop {"crucible":10,"overcharge":13,"kindling":10,"static":8,"dynamo":6,"lantern":5} legacy {"veterans":10,"headstart":8,"battery":3,"zeal":5,"campfire":4,"quartermaster":1,"lineage":16,"treasury":15,"recruiter":1,"collector":1} forge(last delve) {"blades":65,"armor":69,"purse":55,"swift":10,"keen":10}

@@ -78,7 +78,8 @@
       if (!W.sealedX) W.sealedX = W.partyX + 330;
       if (W.wave === 0) W.wave = W.waves - 2; // two short waves, then the statue
       const n = 2;
-      for (let i = 0; i < n; i++) makeEnemy(b.monsters[(W.wave + i) % b.monsters.length], x0 + i * 15, KK.DEMO_CAP - 2, { hpMult: 0.3 });
+      const gx0 = Math.min(x0, W.sealedX - 50 - 15 * n);
+      for (let i = 0; i < n; i++) makeEnemy(b.monsters[(W.wave + i) % b.monsters.length], gx0 + i * 15, KK.DEMO_CAP - 2, { hpMult: 0.3 });
       W.wave++;
       KK.emit('wave', { wave: W.wave });
       return;
@@ -117,6 +118,7 @@
 
   W.damageEnemy = function (e, dmg, opts = {}) {
     if (e.dead || e.pile > 0) return;
+    if (e.key === 'ratking' && e.boss && !(e.summonStage >= 1)) dmg = Math.min(dmg, Math.max(0, e.hp - e.maxHp * 0.55));
     if (e.shell > 0) {
       if (opts.ult) { e.shell = 0; e.stun = Math.max(e.stun, 1); KK.emit('shellCrack', { e }); }
       else dmg *= 0.5;
@@ -351,7 +353,7 @@
       if (W.partyX < stopAt) walkParty(dt, speedMult, false, stopAt);
       else { W.chest.openT += dt; if (W.chest.openT > 0.5) openChest(); }
     } else if (W.door) {
-      walkParty(dt, speedMult);
+      walkParty(dt, speedMult, false, KK.S.glimpse ? W.door.x - 4 : undefined);
       if (W.partyX >= W.door.x - 4 && !(KK.S.glimpse && (W.glimpseHold = (W.glimpseHold === undefined ? 3 : W.glimpseHold) - dt) > 0)) { W.glimpseHold = undefined; W.trans = 0.9; W.transFloorDone = false; KK.emit('door'); }
     } else if (!W.enemies.some((e) => !e.dead)) {
       // between waves
@@ -364,9 +366,8 @@
         W.chestRolled = true;
         if (!W.chest || W.chest.opened) { W.spawnWave(); W.chestRolled = false; }
       } else {
-        W.door = { x: W.partyX + 85, t: 0 };
+        W.door = { x: S.glimpse && W.sealedX ? Math.max(W.partyX + 24, W.sealedX - 44) : W.partyX + 85, t: 0 };
         if (S.glimpse && W.door) {
-          W.sealedX = Math.max(W.sealedX || 0, W.door.x + 44);
           if (!S.demoDone) { S.demoDone = true; KK.emit('glimpseDoor'); KK.emit('demoComplete', { atStatue: true }); }
         }
         KK.emit('floorClear', { floor: S.floor });
@@ -495,7 +496,7 @@
       const frac = e.hp / e.maxHp;
       const due = (stage === 0 && (e.sigT <= 0 || frac < 0.6)) || (stage === 1 && frac < 0.6) || (stage === 2 && frac < 0.3);
       if (!due) return;
-      e.summonStage = stage + 1;
+      e.summonStage = stage === 0 && frac < 0.6 ? 2 : stage + 1; // an HP-triggered opener also counts as the 60% wave
       const alive = W.enemies.filter((o) => o.summon && !o.dead).length;
       for (let i = 0; i < Math.min(2, 4 - alive); i++) {
         const r = makeEnemy('rat', Math.max(front.x + 20 + 12 * i, e.x - 12 - 12 * i), S.floor, { hpMult: 0.35 });
@@ -746,7 +747,7 @@
     W.wave = 0; W.door = null; W.chest = null; W.boss = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
     for (const h of W.heroes) { h.dead = false; h.hp = h.maxHp; h.webbed = 0; }
-    W.wipeT = 0; W.floorLow = 1;
+    W.wipeT = 0; W.floorLow = 1; if (!KK.S.glimpse) W.sealedX = 0;
     KK.emit('recovered', { floor: S.floor });
   };
 
