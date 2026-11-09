@@ -76,7 +76,6 @@
   W.spawnWave = function () {
     const S = KK.S, f = S.floor, b = F.biomeOf(f);
     const x0 = W.partyX + SPAWN_AHEAD;
-    W.wardUsed = false; // Root Ward: one free pass per fight
     if (S.glimpse && S.floor > KK.DEMO_CAP) {
       if (!W.sealedX) W.sealedX = W.partyX + 330;
       if (W.wave === 0) W.wave = W.waves - 2; // two short waves, then the statue
@@ -293,7 +292,12 @@
   // typing shakes a hero free of a web: each keystroke shaves half a second off it
   KK.on('activity', ({ kind }) => {
     if (kind !== 'key') return;
-    for (const h of W.heroes) if (h.webbed > 0) { h.webbed -= 0.5; if (h.webbed <= 0) { h.webbed = 0; KK.emit('webTorn', { h }); } }
+    const m = KK.mods(), S = KK.S;
+    for (const h of W.heroes) if (h.webbed > 0) {
+      h.webbed -= 0.5;
+      if (h.webbed <= 0) { h.webbed = 0; if (m.rootSparks) S.sparks = Math.min(m.sparkCap, S.sparks + m.rootSparks); KK.emit('webTorn', { h }); }
+    }
+    for (const h of W.heroes) if (h.locked > 0 && (h.lockKeys = (h.lockKeys || 0) + 1) >= 10) { h.locked = 0; h.lockKeys = 0; h.ultCd = 0; KK.emit('lockBroken', { h }); }
   });
   KK.on('hotkey', () => {
     const h = W.heroes.find((x) => x.id === W.ultTurn && !x.dead) || W.heroes.find((x) => !x.dead);
@@ -409,7 +413,8 @@
         const cost = Math.ceil(def.ult.cost * m.ultCost);
         let want = false;
         want = W.enemies.some((e) => !e.dead && e.active && e.x - h.x <= Math.max(def.range, 60));
-        if (h.ultCd > 0) W.passUlt();
+        if (h.locked > 0) { /* Lockdown: the rotation waits for the seal (10 keys break it) */ }
+        else if (h.ultCd > 0) W.passUlt();
         else if (want && S.sparks >= cost) { W.castUlt(h); W.passUlt(); }
       }
 
@@ -539,25 +544,18 @@
     } else if (e.key === 'rootmother' && e.sigT <= 0) {
       // Overgrowth: roots the whole line for 2 s; every keystroke tears 0.5 s off (an ultimate tears it all)
       e.sigT = 9;
-      if (W.wardBlocks()) return;
-      for (const h of living) { h.webbed = Math.max(h.webbed || 0, 2); h.webKind = 'root'; }
+      for (const h of living) { h.webbed = Math.max(h.webbed || 0, 2 * (KK.mods().rootShort || 1)); h.webKind = 'root'; }
       KK.emit('overgrowth', { e });
     } else if (e.key === 'keeper' && e.sigT <= 0) {
       // Lockdown: seals the next ultimate in the rotation for 6 s
       e.sigT = 10;
       const h = living.find((x) => x.id === W.ultTurn) || living.find((x) => x.id !== 'cleric');
       if (!h) return;
-      h.ultCd = Math.max(h.ultCd, 6); h.locked = 6;
+      h.ultCd = Math.max(h.ultCd, 6); h.locked = 6; h.lockKeys = 0;
       KK.emit('lockdown', { e, h });
     }
   }
-  /** Root Ward: the first web / root / Overgrowth of each fight is ignored. */
-  W.wardBlocks = function () {
-    if (!KK.mods().ward || W.wardUsed) return false;
-    W.wardUsed = true;
-    KK.emit('warded', {});
-    return true;
-  };
+
 
   function updateEnemies(dt, frozen) {
     const front = W.frontHero();
@@ -686,7 +684,7 @@
       const dx = tx - s.x, dy = ty - s.y, d = Math.hypot(dx, dy);
       const step = s.speed * dt;
       if (d <= step + 2) {
-        if (s.enemy) { W.damageHero(t, s.dmg, s.src); if (s.web && !t.dead && !W.wardBlocks()) { t.webbed = s.web; t.webKind = s.root ? 'root' : 'web'; KK.emit('webbed', { h: t, root: s.root }); } }
+        if (s.enemy) { W.damageHero(t, s.dmg, s.src); if (s.web && !t.dead) { t.webbed = s.web * (KK.mods().rootShort || 1); t.webKind = s.root ? 'root' : 'web'; KK.emit('webbed', { h: t, root: s.root }); } }
         else {
           W.damageEnemy(t, s.dmg, { crit: s.crit, src: s.src });
           if (s.splash) {
@@ -757,7 +755,7 @@
     else if (S.campFloor && S.floor + 1 >= S.campFloor && (S.campUntil || 0) > S.stats.playTime) S.floor--;
     S.floor++;
     if (S.floor > S.maxFloorRun && !S.glimpse) S.maxFloorRun = S.floor;
-    if (S.omen && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
+    if (S.omen && S.delveDay === KK.today() && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
     if (S.floor > S.maxFloorEver && !S.glimpse) {
       S.maxFloorEver = S.floor;
       if (D.TROPHIES.includes(S.floor)) { KK.dirty(); KK.emit('trophy', { floor: S.floor, n: D.TROPHIES.indexOf(S.floor) + 1 }); }

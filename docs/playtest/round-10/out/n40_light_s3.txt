@@ -1,0 +1,36 @@
+=== R6 probe light s3 2400m: maxEver 179, retires 35, renown life 1029, ach 38/43, trophies 16, codex 28/28, wipes 45, fame x1938.1, unspent embers 26516
+beats per 30 min from h1: 12 8 5 3 4 1 3 3 1 7 2 3 0 0 3 0 4 2 2 3 0 0 3 0 0 1 0 0 1 1 0 1 2 0 2 0 1 0 3 1 1 0 3 0 1 0 1 0 0 0 1 1 1 0 2 1 0 1 0 0 1 0 1 2 1 0 0 4 1 0 1 1 1 0 0 0 0 0 0
+AFTER 8h: 56 beats {"ACH":12,"CODEX":26,"TROPHY":8,"OMEN":5,"MAJOR":5}; longest gap 162 min (from 37h18); empty 2h windows 2/17
+longest stretch with no new depth record (30-min snapshots): 2.5 h from 23h30
+codex: 4h02 H-Bone King r1, 6h00 The Hollow r2, 8h04 The Hollow r3, 9h12 The Heart of the Keep r4, 10h44 The Hollow r5, 12h13 H-Bone King r6, 13h59 The Heart of the Keep r7, 15h44 H-Bone King r8, 16h40 H-Bone King r9, 18h09 The Keeper r10, 19h14 The Keeper r11, 20h05 The Keeper r12, 21h08 The Keeper r13, 22h28 H-Bone King r14, 23h29 The Rootmother r15, 24h10 H-Bone King r16, 26h12 The Heart of the Keep r17, 27h13 H-Bone King r18, 28h26 The Hollow r19, 28h51 H-Bone King r20, 29h52 H-Bone King r21, 31h12 H-Bone King r22, 32h07 H-Bone King r23, 32h55 The Hollow r24, 33h17 H-Bone King r25, 34h58 The Rootmother r26, 36h37 H-Bone King r27, 37h18 H-Bone King r28
+trophies: f75@2h07 f80@2h29 f85@2h37 f90@3h21 f95@4h10 f100@4h49 f105@5h52 f110@6h50 f115@9h00 f120@9h48 f125@10h40 f130@12h06 f140@17h10 f150@20h27 f160@26h58 f170@32h43
+retires (35): 0h54 f40 +30, 1h20 f54 +32, 1h45 f70 +50, 2h12 f78 +30, 2h38 f86 +33, 3h29 f90 +21, 4h16 f97 +33, 4h57 f100 +16, 5h56 f106 +32, 6h58 f110 +22, 8h00 f108 +0, 9h00 f115 +32, 9h48 f120 +30, 10h40 f125 +31, 12h06 f130 +33, 13h50 f135 +33, 15h33 f138 +21, 16h00 f126 +0, 17h18 f140 +15, 18h24 f145 +36, 19h33 f149 +30, 20h35 f150 +7, 22h13 f154 +31, 23h17 f158 +32, 24h00 f156 +0, 26h04 f159 +8, 27h06 f160 +8, 28h23 f164 +33, 29h38 f168 +33, 31h03 f169 +9, 32h00 f166 +0, 32h51 f170 +9, 34h48 f174 +34, 36h30 f177 +27, 37h48 f179 +18
+SIG totals: {"chargeWarn":7,"warCharge":7,"reassemble":102,"bossEnrage":36,"royalSummons":56,"webShot":11,"magmaShell":25,"shellCrack":1,"lavaRain":17,"voidSlam":804,"overgrowth":323,"lockdown":141,"warded":180}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   28.2 |  17 | royalSummons 3 [100%] @2.2
+  boneking          4 |    3 |   1 |   0 |    5.1 |   8 | reassemble 1 [100%] @14.2 | rise->death med 2.37s, <0.5s 0/3, <1.5s(still stunned) 0/3
+  broodmother       5 |    5 |   0 |   0 |    3.1 |   1 | webShot 1 [60%] @2.3
+  warlord           8 |    8 |   0 |   0 |    2.3 |   0 | chargeWarn 0 [38%] @3.2; warCharge 0 [38%] @4.3 | died mid-charge 0/8, fights with 0 charges 5/8
+  embergolem       35 |   35 |   0 |   0 |    1.9 |   0 | magmaShell 1 [54%] @1.8; shellCrack 0 [3%] @64.2
+  magmalord        34 |   34 |   0 |   0 |    1.8 |   0 | lavaRain 0 [24%] @2.3
+  hollow           33 |   33 |   0 |   0 |    1.8 |   0 | voidSlam 0 [21%] @5.0
+  H-ratking        32 |   32 |   0 |   0 |    2.2 |   1 | royalSummons 1 [100%] @1.8; voidSlam 0 [22%] @5.0
+  H-boneking      141 |   93 |  48 |  20 |    9.1 |  14 | voidSlam 2 [72%] @5.0; reassemble 1 [70%] @6.6; warded 0 [1%] @5.0 | rise->death med 3.00s, <0.5s 0/93, <1.5s(still stunned) 6/93
+  HEART            33 |   28 |   5 |   4 |    2.8 |   2 | voidSlam 0 [45%] @5.0
+  rootmother       43 |   32 |  11 |   9 |   22.9 |  14 | overgrowth 3 [79%] @3.3; warded 0 [28%] @3.3
+  keeper           23 |   17 |   6 |   3 |   41.0 |  27 | lockdown 5 [91%] @2.8; warded 0 [4%] @3.5
+ACH: first_boss 0h06 | flow 0h01 | full_party 0h28 | retire1 0h54 | gatekeeper 1h05 | rat 0h04 | epic 0h36 | caverns 0h16 | comeback 0h16 | echo 0h37 | ult_boss 1h05 | revive 0h44 | speed60 1h55 | blitz 22h24 | magma 1h05 | void 1h33 | hollow 2h03 | hollowed6 NO | f100 5h39 | codex28 NO | seals7 NO | seals30 NO | heartroot 5h39 | rootmother 10h26 | keeper 18h09 | f125 10h40 | f150 20h27 | echo175 36h12 | retire10 6h58 | omen1 1h20 | omen10 34h48 | deep90 3h21 | legacy_all 8h23 | crucible10 15h21 | lv100 1h29 | chests100 5h22 | rats25 4h13 | idle50 8h01 | keys10k 3h43 | keys100k 35h12 | flow1h 9h06 | flow10h NO | ults1k 6h19
+R10 BIOME first 8h: The Hollow Void 55.8%, The Heartroot 16.9%, Mossy Caverns 12.7%, Magma Depths 10.2%, The Crypt 4.4%
+R10 BIOME after 8h: The Heartroot 55.4%, Echoed Caverns 15.8%, Echoed Crypt 12.4%, The Hollow Void 7.9%, Echoed Magma 5.1%, Magma Depths 3.4% | palettes after 8h: root 55.4%, caverns 15.8%, crypt 12.4%, magma 8.5%, void 7.9%
+R10 BIOME first: The Crypt@0.01h Mossy Caverns@0.27h Magma Depths@1.09h The Hollow Void@1.56h The Heartroot@5.66h Echoed Crypt@22.13h Echoed Caverns@28.27h Echoed Magma@34.57h | banners {"Mossy Caverns":5,"The Crypt":2,"Magma Depths":8,"The Hollow Void":34,"The Heartroot":28,"Echoed Crypt":14,"Echoed Caverns":9,"Echoed Magma":4}
+R10 FIRST SEEN: lasher@5.66h bloat@5.78h sporeling@5.80h warden@6.57h rootmother@10.40h keeper@17.22h E-rat@22.13h E-lasher@NEVER H-ratking@2.50h H-boneking@3.41h H-broodmother@NEVER H-warlord@NEVER H-embergolem@NEVER H-magmalord@NEVER hollow@2.02h HEART@4.86h | echo kinds seen 9
+R10 ACH new: heartroot@5.66h rootmother@10.45h keeper@18.16h f125@10.67h f150@20.45h echo175@36.21h hollowed6@NEVER codex28@NEVER
+R10 WARDEN n 4037: died guarded 506, ult break 906, timer break 611, left floor 2014 | spawn->first hit med 1.3s, guard left at first hit med 6.3s (0 at contact: 296) | timer breaks after first hit med 6.3s | ult-broken then dead <0.5s 461/906 | hits guarded 17% | life med 4.1s
+R10 SPORELING n 4647: same-frame deaths 1149 (25%), life <0.5s 1198, med life 0.60s
+R10 LASHER roots 6048: torn by keys 109, by ult 138, expired 4359; med rooted 1.53s; any hero rooted 10.1% of Heartroot time (19.1 h)
+R10 OVERGROWTH n 323: freed med 2.03s, by keys 55 ult 16 expired 252
+R10 LOCKDOWN n 141: sealed hero {"mage":45,"archer":44,"knight":52}; was on cooldown already 15, cd>=6 already 0; sparks < its cost 128; ults by anyone in the 6 s after med 0 vs 6 s before med 0; windows with 0 ults after 99/141
+R10 BOSS ults per active min (f110+): hollowed n108 kills 63 5.2/min med 65s | rootmother n43 kills 32 5.1/min med 69s | keeper n23 kills 17 7.2/min med 59s
+R10 WARD offered/picked 31/6 picked at floors [83,76,72,107,55,54] | calls 6562 blocks 180 {"lasher":169,"overgrowth":11} | per pick: useful-floor share 95%/51b 87%/27b 90%/44b 41%/28b 40%/22b 16%/8b
+R10 BOSS by floor: 80:ratking32 90:boneking33 100:HEART33 110:boneking28 120:rootmother25 130:boneking27 140:keeper23 150:boneking29 160:rootmother18 170:boneking24
+R10 RELICS offered/picked: whetstone 118/25, luckycoin 133/31, spacebar 105/28, boots 113/25, coffee 114/30, belt 114/22, keycap 62/15, capslock 77/24, enter 54/12, fang 60/18, oil 52/13, map 64/16, lens 55/15, echo 29/12, glass 34/7, rootward 31/6, flowpend 23/12, hotkey 34/10 | seals 5 redelves 4

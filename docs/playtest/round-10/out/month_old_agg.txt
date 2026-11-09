@@ -1,0 +1,45 @@
+
+==== g60 / typist (4 seeds, 144 h) final floor 284,283,283,281  ach 38,38,38,38/39  codex 40,40,40,40
+max floor at h  2h:108.0  4h:133.5  8h:150.0  12h:162.0  20h:179.0  28h:191.5  40h:208.5  60h:226.0  80h:242.0  100h:255.5  144h:283.0
+hours to floor  f90:1.3 f100:1.6 f110:2.0 f120:2.6 f130:3.6 f140:5.0 f150:7.6 f160:10.9 f170:15.3 f175:17.8 f180:20.9 f200:32.9 f220:51.6 f250:93.5
+floors/h  90-100:30.8 100-110:22.2 110-120:18.0 120-130:10.4 130-140:7.3 140-150:3.8 150-160:3.0 160-170:2.2 170-180:1.8 180-200:1.7 200-220:1.1
+renown/h  90-100:319 100-110:190 110-120:117 120-130:84 130-140:48 140-150:30 150-160:31 160-170:33 170-180:24 180-200:26 200-220:21
+band h/wipes 81:2.0/1 91:1.9/1 101:2.0/1 111:2.2/0 121:2.5/4 131:3.3/10 141:4.2/15 151:4.2/18 161:5.4/39 171:5.5/44 181:6.4/55 191:8.2/72
+boss f: keys/win%/fight s 100:hollow 99%(348) 4s | 110:boneking 99%(342) 5s | 120:ratking 100%(336) 6s | 130:boneking 95%(343) 7s | 140:ratking 90%(354) 6s | 150:boneking 84%(361) 7s | 160:boneking/broodmother 85%(339) 6s | 170:boneking/broodmother/warlord 76%(359) 6s | 180:ratking/broodmother 79%(321) 5s
+codex rank 10/20/28/34/40 at h: 8.6/16.6/23.7/34.1/45.2 (day 6/11; reached 40: 4/4)
+ach h: f100:1.7(4) heartroot:-(0) rootmother:-(0) f125:3.0(4) keeper:-(0) f150:7.6(4) echo175:-(0) hollowed6:20.3(4) codex28:45.2(4) seals7:28.0(4) seals30:122.8(4)
+mech/run: overgrowth 0 lockdown 0 rooted 0 webbed 226 guard ult/worn 0/0 | Root Ward held 0.0 h, warded 0 (0/h held)
+seals 34.5 (starred 17.5) worth 1630 Renown of 3650 lifetime
+day:milestones/newBoss+biome 1:82.5/b14.0 2:10.0/b1.0 3:8.5/b1.0 4:8.3/b1.0 5:9.0/b1.0 6:4.0/b0.0 7:4.3/b0.0 8:3.0/b0.0 9:2.5/b0.0 10:3.8/b0.0 11:3.8/b0.0 12:0.5/b0.0 13:0.8/b0.0 14:0.3/b0.0 15:1.0/b0.0 16:1.5/b0.0 17:0.3/b0.0 18:0.5/b0.0 19:1.0/b0.0 20:0.5/b0.0 21:0.3/b0.0 22:0.3/b0.0 23:0.8/b0.0 24:1.0/b0.0 25:0.0/b0.0 26:0.5/b0.0 27:0.5/b0.0 28:1.0/b0.0 29:0.3/b0.0 30:1.5/b0.0 31:1.0/b0.0 32:0.3/b0.0 33:0.5/b0.0 34:0.3/b0.0 35:0.3/b0.0
+dead days (no milestone but the Seal): 10[14..] 13[13..] 12[9..] 12[12..]
+last new boss/biome day: 5,5,5,5  missing: idle50:4
+
+==== g60 / burst (4 seeds, 144 h) final floor 266,268,273,274  ach 37,37,37,37/39  codex 40,40,40,40
+max floor at h  2h:71.0  4h:104.0  8h:120.0  12h:135.0  20h:151.5  28h:166.0  40h:181.5  60h:199.5  80h:223.0  100h:237.5  144h:270.5
+hours to floor  f90:2.6 f100:3.6 f110:4.8 f120:7.3 f130:10.1 f140:13.8 f150:18.4 f160:23.5 f170:31.0 f175:36.0 f180:38.8 f200:58.5 f220:79.3 f250:112.5
+floors/h  90-100:10.3 100-110:8.5 110-120:3.7 120-130:3.4 130-140:2.8 140-150:2.2 150-160:1.9 160-170:1.5 170-180:1.1 180-200:1.2 200-220:1.0
+renown/h  90-100:70 100-110:40 110-120:25 120-130:35 130-140:26 140-150:24 150-160:20 160-170:21 170-180:20 180-200:21 200-220:22
+band h/wipes 81:2.5/1 91:2.9/3 101:3.5/4 111:4.0/5 121:4.4/7 131:5.4/16 141:6.1/20 151:6.8/21 161:8.7/45 171:7.3/36 181:9.5/64 191:9.2/88
+boss f: keys/win%/fight s 100:hollow 96%(337) 9s | 110:boneking 95%(334) 9s | 120:ratking 94%(327) 8s | 130:broodmother/boneking/ratking 92%(321) 11s | 140:ratking/broodmother 83%(339) 10s | 150:warlord/boneking/embergolem/broodmother 79%(339) 12s | 160:broodmother/embergolem 76%(329) 11s | 170:warlord/boneking/magmalord 63%(365) 9s | 180:embergolem/broodmother 79%(273) 8s
+codex rank 10/20/28/34/40 at h: 15.6/28.4/39.2/55.3/67.3 (day 10/17; reached 40: 4/4)
+ach h: f100:3.7(4) heartroot:-(0) rootmother:-(0) f125:8.3(4) keeper:-(0) f150:18.4(4) echo175:-(0) hollowed6:20.6(4) codex28:67.3(4) seals7:28.1(4) seals30:123.8(4)
+mech/run: overgrowth 0 lockdown 0 rooted 0 webbed 341 guard ult/worn 0/0 | Root Ward held 0.0 h, warded 0 (0/h held)
+seals 34.3 (starred 17.0) worth 1530 Renown of 3371 lifetime
+day:milestones/newBoss+biome 1:60.0/b14.0 2:13.3/b1.0 3:5.8/b1.0 4:8.3/b1.0 5:7.0/b1.0 6:5.8/b0.0 7:5.5/b0.0 8:4.0/b0.0 9:6.0/b0.0 10:3.8/b0.0 11:2.3/b0.0 12:2.3/b0.0 13:2.8/b0.0 14:2.0/b0.0 15:4.0/b0.0 16:3.3/b0.0 17:1.5/b0.0 18:1.3/b0.0 19:0.5/b0.0 20:1.0/b0.0 21:0.5/b0.0 22:1.8/b0.0 23:0.8/b0.0 24:0.5/b0.0 25:0.5/b0.0 26:0.3/b0.0 27:1.5/b0.0 28:0.3/b0.0 29:0.8/b0.0 30:0.8/b0.0 31:1.5/b0.0 32:1.0/b0.0 33:0.0/b0.0 34:0.5/b0.0 35:0.0/b0.0
+dead days (no milestone but the Seal): 7[19..] 7[19..] 9[19..] 7[21..]
+last new boss/biome day: 5,5,5,5  missing: flow1h:4 flow10h:4
+
+==== g60 / idle (4 seeds, 144 h) final floor 274,268,254,266  ach 34,34,34,34/39  codex 40,40,40,40
+max floor at h  2h:60.5  4h:96.5  8h:116.0  12h:130.5  20h:145.0  28h:156.0  40h:169.5  60h:190.5  80h:210.5  100h:230.0  144h:267.0
+hours to floor  f90:3.2 f100:4.3 f110:6.1 f120:8.2 f130:11.2 f140:16.5 f150:22.5 f160:30.0 f170:39.6 f175:47.2 f180:50.8 f200:69.9 f220:86.8 f250:124.4
+floors/h  90-100:10.3 100-110:5.3 110-120:4.9 120-130:4.2 130-140:2.0 140-150:1.7 150-160:1.2 160-170:1.0 170-180:1.2 180-200:1.1 200-220:1.1
+renown/h  90-100:48 100-110:28 110-120:38 120-130:25 130-140:24 140-150:19 150-160:19 160-170:22 170-180:19 180-200:22 200-220:23
+band h/wipes 81:2.6/1 91:3.3/5 101:3.9/6 111:3.9/8 121:5.2/11 131:7.7/27 141:8.9/34 151:8.5/25 161:9.2/40 171:7.9/28 181:9.1/36 191:8.6/26
+boss f: keys/win%/fight s 100:hollow 94%(336) 8s | 110:boneking 92%(333) 9s | 120:ratking/boneking 90%(330) 10s | 130:boneking/warlord 87%(334) 14s | 140:warlord/broodmother 72%(383) 15s | 150:magmalord/warlord/boneking 65%(393) 15s | 160:broodmother/embergolem 70%(338) 14s | 170:boneking/warlord 57%(374) 16s | 180:embergolem/ratking 65%(303) 15s
+codex rank 10/20/28/34/40 at h: 18.3/35.7/46.5/60.1/72.7 (day 11/18; reached 40: 4/4)
+ach h: f100:5.0(4) heartroot:-(0) rootmother:-(0) f125:9.4(4) keeper:-(0) f150:22.5(4) echo175:-(0) hollowed6:20.2(4) codex28:72.7(4) seals7:28.9(4) seals30:120.7(4)
+mech/run: overgrowth 0 lockdown 0 rooted 0 webbed 605 guard ult/worn 0/0 | Root Ward held 0.0 h, warded 0 (0/h held)
+seals 35.0 (starred 16.5) worth 1472 Renown of 3256 lifetime
+day:milestones/newBoss+biome 1:56.0/b14.0 2:10.3/b1.0 3:5.8/b1.0 4:5.8/b1.0 5:6.0/b1.0 6:4.0/b0.0 7:6.3/b0.0 8:4.8/b0.0 9:5.3/b0.0 10:2.5/b0.0 11:4.3/b0.0 12:2.8/b0.0 13:3.5/b0.0 14:3.0/b0.0 15:3.0/b0.0 16:2.5/b0.0 17:3.0/b0.0 18:2.5/b0.0 19:1.5/b0.0 20:1.8/b0.0 21:1.0/b0.0 22:1.8/b0.0 23:0.5/b0.0 24:1.0/b0.0 25:0.5/b0.0 26:0.8/b0.0 27:0.8/b0.0 28:0.5/b0.0 29:0.5/b0.0 30:1.5/b0.0 31:1.0/b0.0 32:0.5/b0.0 33:0.5/b0.0 34:1.3/b0.0 35:0.3/b0.0
+dead days (no milestone but the Seal): 6[19..] 6[23..] 5[23..] 4[19..]
+last new boss/biome day: 5,5,5,5  missing: flow:4 keys10k:4 keys100k:4 flow1h:4 flow10h:4

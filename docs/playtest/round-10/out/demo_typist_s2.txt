@@ -1,0 +1,24 @@
+=== R6 probe typist s2 180m DEMO: maxEver 40, retires 23, renown life 120, ach 15/43, trophies 0, codex 0/28, wipes 1, fame x7.4, unspent embers 1581
+beats per 30 min from h1: 1 2 2 1 0
+longest gap after h1: 24 min (from 2h05)
+codex: none
+trophies: 
+retires (23): 0h36 f40 +30, 0h46 f40 +6, 0h54 f40 +6, 1h01 f40 +6, 1h09 f40 +6, 1h16 f40 +6, 1h23 f40 +6, 1h29 f40 +6, 1h36 f40 +6, 1h42 f40 +6, 1h48 f40 +6, 1h54 f40 +6, 2h00 f40 +6, 2h06 f40 +6, 2h12 f40 +6, 2h18 f40 +6, 2h23 f40 +0, 2h29 f40 +0, 2h35 f40 +0, 2h41 f40 +0, 2h46 f40 +0, 2h52 f40 +0, 2h58 f40 +0
+SIG totals: {"chargeWarn":38,"warCharge":31,"reassemble":23,"bossEnrage":0,"royalSummons":26,"webShot":15,"magmaShell":0,"shellCrack":0,"lavaRain":0,"voidSlam":0,"overgrowth":0,"lockdown":0,"warded":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking          24 |   24 |   0 |   0 |    1.9 |   0 | royalSummons 1 [100%] @1.6
+  boneking         23 |   23 |   0 |   0 |    3.5 |   0 | reassemble 1 [100%] @1.9 | rise->death med 1.53s, <0.5s 0/23, <1.5s(still stunned) 0/23
+  broodmother      23 |   23 |   0 |   0 |    2.3 |   1 | webShot 0 [48%] @2.3
+  warlord          23 |   23 |   0 |   0 |    4.1 |   1 | chargeWarn 1 [83%] @2.8; warCharge 1 [52%] @4.5 | died mid-charge 10/23, fights with 0 charges 11/23
+DEMO: card 0h35, laps 23, re-delves 23, lifetime 120, best 3.8m
+ACH: first_boss 0h05 | flow 0h00 | full_party 0h20 | retire1 0h36 | gatekeeper 0h34 | rat 0h04 | epic 0h42 | caverns 0h10 | comeback NO | echo 0h51 | ult_boss 1h35 | revive NO | speed60 NO | blitz 2h45 | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | codex28 NO | seals7 NO | seals30 NO | heartroot NO | rootmother NO | keeper NO | f125 NO | f150 NO | echo175 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 2h29 | chests100 1h55 | rats25 NO | idle50 NO | keys10k 1h21 | keys100k NO | flow1h 2h05 | flow10h NO | ults1k NO
+R10 BIOME first 8h: Mossy Caverns 65.1%, The Crypt 34.9%
+R10 BIOME after 8h: - | palettes after 8h: -
+R10 BIOME first: The Crypt@0.00h Mossy Caverns@0.17h Magma Depths@0.57h | banners {"Mossy Caverns":24,"Magma Depths":1,"The Crypt":1}
+R10 FIRST SEEN: lasher@NEVER bloat@NEVER sporeling@NEVER warden@NEVER rootmother@NEVER keeper@NEVER E-rat@NEVER E-lasher@NEVER H-ratking@NEVER H-boneking@NEVER H-broodmother@NEVER H-warlord@NEVER H-embergolem@NEVER H-magmalord@NEVER hollow@NEVER HEART@NEVER | echo kinds seen 0
+R10 ACH new: heartroot@NEVER rootmother@NEVER keeper@NEVER f125@NEVER f150@NEVER echo175@NEVER hollowed6@NEVER codex28@NEVER
+R10 LASHER roots 0: torn by keys 0, by ult 0, expired 0; med rooted NaNs; any hero rooted 0.0% of Heartroot time (0.0 h)
+R10 BOSS ults per active min (f110+): 
+R10 WARD offered/picked 8/3 picked at floors [34,27,27] | calls 15 blocks 0 {} | per pick: useful-floor share 0%/0b 1%/0b 1%/0b
+R10 BOSS by floor: 
+R10 RELICS offered/picked: whetstone 26/5, luckycoin 28/6, spacebar 23/4, boots 27/10, coffee 29/10, belt 17/4, keycap 17/10, capslock 15/5, enter 12/4, fang 10/6, oil 17/6, map 12/2, lens 9/3, echo 7/1, glass 2/0, rootward 8/3, flowpend 12/9, hotkey 8/4 | seals 0 redelves 0

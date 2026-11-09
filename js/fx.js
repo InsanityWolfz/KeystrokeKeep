@@ -347,10 +347,10 @@
   KK.on('webbed', ({ h }) => FX.text(h.x, h.y - 22, 'WEBBED', '#f2f2f2', 1, { life: 1.2, vy: -8 }));
   KK.on('webTorn', ({ h }) => { FX.text(h.x, h.y - 22, 'WEB TORN!', '#7ee8f6', 1, { life: 1.0, vy: -12 }); FX.burst(h.x, h.y - 8, 10, ['#f2f2f2', '#7ee8f6'], { spd: 60, life: 0.4 }); });
   KK.on('overgrowth', ({ e }) => FX.moveAlert('overgrowth', e, 'OVERGROWTH! TYPE TO TEAR THE ROOTS', '#9cff8a', 1.4));
-  KK.on('lockdown', ({ e, h }) => { FX.moveAlert('lockdown', e, 'LOCKDOWN! ' + KK.DATA.HEROES[h.id].name.toUpperCase() + "'S ULTIMATE IS SEALED", '#ffe08a', 1.2); FX.text(h.x, h.y - 26, 'SEALED', '#ffe08a', 1, { life: 1.2 }); });
+  KK.on('lockdown', ({ e, h }) => { FX.moveAlert('lockdown', e, 'LOCKDOWN! TYPE TO BREAK THE SEAL', '#ffe08a', 1.2); FX.text(h.x, h.y - 26, 'SEALED', '#ffe08a', 1, { life: 1.2 }); });
   KK.on('guardBreak', ({ e, worn }) => { if (!worn) FX.text(e.x, e.y - e.def.h - 4, 'GUARD BROKEN', '#7ee8f6', 1, { life: 0.9 }); FX.burst(e.x, e.y - e.def.h / 2, 12, ['#7a4a24', '#5e3a24', '#6cd05a'], { spd: 70, life: 0.5, floor: true }); });
   KK.on('bloatBurst', ({ e }) => FX.burst(e.x, e.y - e.def.h / 2, 18, ['#f27cc0', '#ffe08a', '#922a3a'], { spd: 60, grav: 40, life: 0.7 }));
-  KK.on('warded', () => { const h = W.frontHero && W.frontHero(); if (h) FX.text(h.x, h.y - 26, 'WARDED', '#7ee8f6', 1, { life: 1.0 }); });
+  KK.on('lockBroken', ({ h }) => FX.text(h.x, h.y - 26, 'SEAL BROKEN!', '#7ee8f6', 1, { life: 1.0 }));
   KK.on('magmaShell', ({ e }) => FX.moveAlert('shell', e, 'MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT', '#ffb070', 1.4));
   KK.on('shellCrack', ({ e }) => { FX.moveAlert('crack', e, 'SHELL CRACKED!', '#7ee8f6', 1.0); FX.burst(e.x, e.y - e.def.h / 2, 30, ['#8a8a8a', '#ff7a2e', '#ffe08a'], { spd: 120, up: -40, life: 0.8, floor: true }); FX.shake(2, 0.2); });
   KK.on('lavaRain', ({ e }) => FX.moveAlert('lava', e, 'LAVA RAIN!', '#ff7a2e', 1.0));

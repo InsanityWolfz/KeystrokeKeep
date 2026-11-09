@@ -49,7 +49,7 @@
     dmgLin: 0.45, dmgMile: 1.5, hpLin: 0.35, hpMile: 1.4, costG: 1.11,
     eHp: 28, eHpG: 1.275, eAtk: 2.2, eAtkG: 1.14, eGold: 1.6, eGoldG: 1.185,
   }, root.BAL_OVERRIDE || {});
-  const echoCache = [];
+  const echoCache = {};
   const F = KK.F = {
     heroDmg: (id, lvl) => D.HEROES[id].atk * (1 + B.dmgLin * (lvl - 1)) * Math.pow(B.dmgMile, Math.floor(lvl / 10)),
     heroHp: (id, lvl) => D.HEROES[id].hp * (1 + B.hpLin * (lvl - 1)) * Math.pow(B.hpMile, Math.floor(lvl / 10)),
@@ -63,10 +63,12 @@
       // the Echoed Depths (f151+): every 10 floors an old biome comes back, hollowed, at depth stats
       if (f >= 151) {
         const band = Math.floor((f - 151) / 10);
-        let e = echoCache[band];
+        const open = Math.max(1, Math.min(D.BIOMES.length, (KK.S && KK.S.daysPlayed) || 1));
+        const key = band + ':' + open;
+        let e = echoCache[key];
         if (!e) {
-          const base = D.BIOMES[band % D.BIOMES.length];
-          e = echoCache[band] = Object.assign({}, base, { name: 'Echoed ' + ({ crypt: 'Crypt', caverns: 'Caverns', magma: 'Magma', void: 'Void', root: 'Heartroot' }[base.id] || base.name), from: 151 + band * 10, echo: true });
+          const base = D.BIOMES[band % open];
+          e = echoCache[key] = Object.assign({}, base, { name: 'Echoed ' + ({ crypt: 'Crypt', caverns: 'Caverns', magma: 'Magma', void: 'Void', root: 'Heartroot' }[base.id] || base.name), from: 151 + band * 10, echo: true });
         }
         return e;
       }
@@ -79,7 +81,7 @@
       // past the Hollow, the Void throws every old boss back at you, hollowed out
       if (f === 70 || f === 100) return 'hollow';
       if (f >= 120 && f % 20 === 0) return (f / 20) % 2 === 0 ? 'rootmother' : 'keeper'; // the Heartroot's own, and their echoes
-      if (f >= 80) { const six = ['ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; const pool = six.slice(0, Math.max(2, Math.min(6, (KK.S.daysPlayed || 1) + 1))); return pool[(Math.floor((f - 80) / 10) + 2 * (KK.S.retires || 0)) % pool.length]; }
+      if (f >= 80) { const six = ['ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; const pool = six.slice(0, Math.max(2, Math.min(6, (KK.S.daysPlayed || 1) + 1))); return pool[(Math.floor((f - 80) / 10) + (KK.S.retires || 0)) % pool.length]; } // + retires (not 2x): the Heartroot bosses take the even bands from f120
       const b = F.biomeOf(f);
       const idx = Math.floor(((f - b.from) % 20) / 10);
       return b.bosses[Math.min(idx, b.bosses.length - 1)];
@@ -270,6 +272,7 @@
     if (!S.omenOffer || (id && !S.omenOffer.includes(id))) return false;
     S.omen = id || null;
     S.omenOffer = null;
+    S.delveDay = KK.today(); // only a delve begun today can claim today's Seal
     if (id === 'muster') S.forge = Object.assign({}, S.lastForge || {});
     KK.dirty();
     const m = KK.mods();
@@ -280,7 +283,7 @@
   };
   A.rollRelics = () => {
     const S = KK.S, m = KK.mods();
-    const pool = D.RELICS.filter((r) => !(r.unique && S.relics.includes(r.id)));
+    const pool = D.RELICS.filter((r) => !(r.unique && S.relics.includes(r.id)) && !(r.minFloor && S.maxFloorEver < r.minFloor));
     const out = [];
     if (!S.epicGiven && S.floor === 30) {
       const epics = pool.filter((r) => r.rar === 'epic');
@@ -320,7 +323,7 @@
   A.dailyOpen = () => { const S = KK.S, t = KK.today(); return !KK.DEMO_CAP && S.retires >= 2 && S.sealDay !== t && !(S.sealDay && t < S.sealDay) && (S.stats.playTime - (S.sealPT || -1e9)) >= 3600; };
   A.sealFloor = () => Math.max(40, (KK.S.renownFloor || 0) - 5);
   A.sealValue = () => 10 + Math.floor((KK.S.renownFloor || 0) / 10);
-  A.claimSeal = () => { const S = KK.S; const v = A.sealValue() * (S.omen === S.omenStar && S.omenStarDay === KK.today() ? 2 : 1); S.sealDay = KK.today(); S.sealPT = S.stats.playTime; S.seals = (S.seals || 0) + 1; S.renown += v; S.renownLifetime += v; KK.dirty(); KK.emit('seal', { n: S.seals, v }); };
+  A.claimSeal = () => { const S = KK.S; const v = A.sealValue() * (S.omen === S.omenStar && S.omenStarDay === KK.today() ? 1.5 : 1); const vv = Math.round(v); S.sealDay = KK.today(); S.sealPT = S.stats.playTime; S.seals = (S.seals || 0) + 1; S.renown += vv; S.renownLifetime += vv; KK.dirty(); KK.emit('seal', { n: S.seals, v: vv }); };
   A.canRedelve = () => !!(KK.DEMO_CAP && KK.S.demoDone && KK.S.maxFloorRun >= 20) || (A.dailyOpen() && KK.S.freeDelveDay !== KK.today() && A.renownGain() <= 0 && KK.S.maxFloorRun >= 20);
   A.canRetire = () => !KK.S.glimpse && (A.renownGain() > 0 || A.canRedelve());
   /** What the retire button should ask for when nothing can be earned yet. */

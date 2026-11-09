@@ -1,0 +1,5 @@
+--min 120 --profile typist --seed 6 --retire nudge --omen random --demo --out docs/playtest/round-10/market_probe/out/c10_demo_typist_6.json {"floor":21,"maxFloorEver":40,"retires":16,"bossKills":66,"wipes":3,"glimpseDone":true,"demoDone":true}
+hour alert banner minorBanner toast toastPlayer modal flashStrong flashSoft flashFaint shake sound loudSound hud popup secsWithSound
+0 13 20 55 18 26 1 0 0 377 0 344 24 754 1453 327
+1 20 0 129 4 46 0 0 0 367 0 415 21 1159 1906 388
+2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

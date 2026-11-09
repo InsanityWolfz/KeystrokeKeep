@@ -1,0 +1,229 @@
+{
+ "name": "g1_r10_1",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r10-capture",
+ "log": [
+  "  0.14 uiohook start() blocked (dummy)",
+  "  0.52 pre installed {\"identifier\":\"1\"}",
+  "  0.52 loadFile",
+  "  0.77 tray: fake (no icon shown)",
+  "  0.83 shown at {\"x\":2560,\"y\":1235,\"width\":1920,\"height\":128}",
+  "  1.00 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":9}",
+  "  6.02 png at frame 300 (asked 300)",
+  " 11.00 png at frame 600 (asked 600)",
+  " 14.07 finish"
+ ],
+ "page": {
+  "f": 787,
+  "t0f": 35,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue floor 16"
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue autotype true"
+   },
+   {
+    "f": 25,
+    "r": 405,
+    "v": 400,
+    "e": "cue mark \"G1 IN\""
+   },
+   {
+    "f": 78,
+    "r": 1324,
+    "v": 1300,
+    "e": "BANNER FLOW STATE! / x2.5 POWER"
+   },
+   {
+    "f": 78,
+    "r": 1325,
+    "v": 1300,
+    "e": "fervorTier 2->3"
+   },
+   {
+    "f": 97,
+    "r": 1622,
+    "v": 1600,
+    "e": "cue mark \"FLOW STATE banner (S1 freeze point)\""
+   },
+   {
+    "f": 114,
+    "r": 1921,
+    "v": 1900,
+    "e": "TOAST-call 🏆 Achievement: Flow State"
+   },
+   {
+    "f": 118,
+    "r": 1988,
+    "v": 1967,
+    "e": "ult knight"
+   },
+   {
+    "f": 203,
+    "r": 3392,
+    "v": 3383,
+    "e": "ult archer"
+   },
+   {
+    "f": 271,
+    "r": 4502,
+    "v": 4500,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 327,
+    "r": 5445,
+    "v": 5450,
+    "e": "ult mage"
+   },
+   {
+    "f": 355,
+    "r": 5892,
+    "v": 5900,
+    "e": "cue mark \"METEOR lands\""
+   },
+   {
+    "f": 380,
+    "r": 6324,
+    "v": 6333,
+    "e": "meteorLand "
+   },
+   {
+    "f": 505,
+    "r": 8381,
+    "v": 8400,
+    "e": "cue mark \"G1 OUT\""
+   },
+   {
+    "f": 517,
+    "r": 8582,
+    "v": 8600,
+    "e": "cue autotype false"
+   },
+   {
+    "f": 525,
+    "r": 8731,
+    "v": 8750,
+    "e": "floor 17"
+   },
+   {
+    "f": 667,
+    "r": 11078,
+    "v": 11117,
+    "e": "ult knight"
+   }
+  ],
+  "dig": [
+   "60|16|1|94.1|2|2463|0|150|87.2|",
+   "120|16|1|133.7|2|1616|0|125|95.6|",
+   "180|16|2|176|2|857|43|130|100|",
+   "240|16|3|218.4|3|2892|59|105|100|",
+   "300|16|3|260.8|3|2892|59|150|100|",
+   "360|16|3|303.1|3|1285|86|102|100|",
+   "420|16|3|343.4|1|0|122|108|100|",
+   "480|16|3|385.7|1|0|122|114|100|",
+   "540|17|0|422.3|0|0|122|117|100|",
+   "600|17|1|462.8|2|3141|122|117|100|",
+   "660|17|1|505.2|2|2141|122|117|100|",
+   "720|17|2|547.5|2|2868|173|92|98.2|"
+  ],
+  "hashes": [
+   [
+    60,
+    "78bd4265"
+   ],
+   [
+    180,
+    "aba815a5"
+   ],
+   [
+    300,
+    "ea475065"
+   ],
+   [
+    420,
+    "b405b6d5"
+   ],
+   [
+    540,
+    "19db2515"
+   ],
+   [
+    660,
+    "6e646d45"
+   ]
+  ],
+  "det": false,
+  "fpsReal": [
+   61,
+   59,
+   61,
+   61,
+   61,
+   61,
+   61,
+   61,
+   61,
+   61,
+   61,
+   61
+  ],
+  "boot": {
+   "gold": 0,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 1069.199999988079,
+  "t0v": 650
+ }
+}

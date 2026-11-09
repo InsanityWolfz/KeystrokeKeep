@@ -1,0 +1,184 @@
+{
+ "name": "s3_smoke",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r10-capture",
+ "log": [
+  "  0.06 uiohook start() blocked (dummy)",
+  "  0.10 pre installed {\"identifier\":\"1\"}",
+  "  0.10 loadFile",
+  "  0.34 tray: fake (no icon shown)",
+  "  0.40 shown at {\"x\":2560,\"y\":1235,\"width\":1920,\"height\":128}",
+  "  0.49 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":7}",
+  " 13.03 finish"
+ ],
+ "page": {
+  "f": 734,
+  "t0f": 35,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue relicOffer"
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "relicOffer [\"map\",\"enter\",\"whetstone\"]"
+   },
+   {
+    "f": 73,
+    "r": 1227,
+    "v": 1200,
+    "e": "cue openPanel \"relics\""
+   },
+   {
+    "f": 84,
+    "r": 1430,
+    "v": 1400,
+    "e": "TOAST-call The boss dropped a relic! Choose it in ◆ Relics when you hav"
+   },
+   {
+    "f": 91,
+    "r": 1536,
+    "v": 1500,
+    "e": "cue mark \"OFFER OPEN (still)\""
+   },
+   {
+    "f": 391,
+    "r": 6654,
+    "v": 6500,
+    "e": "cue pickRelic 1"
+   },
+   {
+    "f": 391,
+    "r": 6655,
+    "v": 6500,
+    "e": "relicPicked enter"
+   },
+   {
+    "f": 391,
+    "r": 6655,
+    "v": 6500,
+    "e": "cue mark \"PICK\""
+   },
+   {
+    "f": 481,
+    "r": 8188,
+    "v": 8000,
+    "e": "cue openPanel \"\""
+   },
+   {
+    "f": 527,
+    "r": 8990,
+    "v": 8783,
+    "e": "fervorTier 3->2"
+   },
+   {
+    "f": 541,
+    "r": 9216,
+    "v": 9000,
+    "e": "cue mark \"END\""
+   }
+  ],
+  "dig": [
+   "60|29|1|142.1|3|82395|6234|11|100|",
+   "120|29|1|177.7|3|71076|6234|11|100|",
+   "180|29|1|190.7|3|55743|6234|11|97.9|",
+   "240|29|1|194.9|3|44573|6234|11|94.5|",
+   "300|29|1|201|3|32670|6234|11|91|",
+   "360|29|1|207.7|3|19075|6234|11|87.6|",
+   "420|29|1|210.9|3|9676|6562|11|84.2|",
+   "480|29|1|221.2|3|540|6923|11|80.7|",
+   "540|29|2|268.6|3|52925|7415|11|77.2|",
+   "600|29|2|317.5|3|50634|7415|11|73.7|",
+   "660|29|2|344.7|3|45017|7415|11|70.2|"
+  ],
+  "hashes": [
+   [
+    60,
+    "abb4cac5"
+   ],
+   [
+    180,
+    "8760f315"
+   ],
+   [
+    300,
+    "68f4bd45"
+   ],
+   [
+    420,
+    "82240545"
+   ],
+   [
+    540,
+    "7ffee155"
+   ],
+   [
+    660,
+    "8a045805"
+   ]
+  ],
+  "det": false,
+  "fpsReal": [
+   60,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59,
+   59
+  ],
+  "boot": {
+   "gold": 6234.1692431325255,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 997.9000000357628,
+  "t0v": 650
+ }
+}

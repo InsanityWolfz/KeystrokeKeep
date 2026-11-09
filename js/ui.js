@@ -482,7 +482,7 @@
     const redelve = gain <= 0;
     const best = KK.S.bestCapTime ? U.fmtTime(KK.S.bestCapTime) : null;
     UI.modal((redelve ? `<h2>♛ RE-DELVE?</h2>
-      <p>A fresh run with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}${KK.DEMO_CAP ? '' : ` Free once a day: this delve pays no Renown, but today's ★ omen doubles today's Seal: <b>+${A.sealValue() * 2} Renown</b> at floor ${A.sealFloor()} (any omen earns +${A.sealValue()}).`}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
+      <p>A fresh run with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}${KK.DEMO_CAP ? '' : ` Free once a day: this delve pays no Renown, and reaching floor ${A.sealFloor()} under any omen earns today's Seal: <b>+${A.sealValue()} Renown</b> (<b>+${Math.round(A.sealValue() * 1.5)}</b> under today's ★ omen).`}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
       <p>Sir Clank and friends hang up their swords. A new generation starts the delve, stronger for it.</p>
       <div class="bigval">+${gain} RENOWN</div>`) + `
       ${KK.S.relicOffer ? `<p style="color:#ff9a9a">You have ${1 + (KK.S.relicQueue || []).length} unopened relic chest${(KK.S.relicQueue || []).length ? 's' : ''}. ${(KK.S.relicQueue || []).length ? 'They' : 'It'} will be lost.</p>` : ''}
@@ -513,7 +513,7 @@
       const o = D.OMENS.find((x) => x.id === id);
       const [up, down] = o.desc.split(/, but /i);
       const seen = ((S.achP && S.achP.omens) || []).includes(id);
-      const star = id === S.omenStar ? `<i class="new star">★ OMEN OF THE DAY: SEAL x2 (+${A.sealValue() * 2} RENOWN AT FLOOR ${A.sealFloor()})</i>` : '';
+      const star = id === S.omenStar ? `<i class="new star">★ OMEN OF THE DAY: SEAL x1.5 (+${Math.round(A.sealValue() * 1.5)} RENOWN AT FLOOR ${A.sealFloor()})</i>` : '';
       return `<button class="omen ${id === S.omenStar ? 'starred' : ''}" data-omen="${id}"><img src="${KK.SPR.iconURL[o.icon]}" alt=""><b>${o.name}${seen ? '' : ' <i class="new">NEW</i>'}</b>${star}<span class="up">▲ ${up.replace(/\.$/, '')}</span>${down ? `<span class="down">▼ ${down.replace(/\.$/, '')}</span>` : ''}</button>`;
     };
     UI.modal(`<h2>CHOOSE AN OMEN</h2>

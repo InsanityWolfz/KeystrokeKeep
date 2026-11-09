@@ -1,0 +1,31 @@
+=== R6 probe burst s4 480m: maxEver 106, retires 10, renown life 296, ach 22/43, trophies 7, codex 2/28, wipes 1, fame x32.2, unspent embers 27
+beats per 30 min from h1: 10 4 10 6 1 1 7 1 1 3 1 6 1 1 0
+AFTER 8h: 0 beats {}; longest gap 0 min (from 8h00); empty 2h windows 1/1
+longest stretch with no new depth record (30-min snapshots): 1.0 h from 6h00
+codex: 4h21 The Hollow r1, 6h08 H-Bone King r2
+trophies: f75@2h46 f80@2h51 f85@3h25 f90@4h05 f95@4h54 f100@5h44 f105@7h55
+retires (10): 1h05 f40 +30, 1h39 f54 +32, 2h05 f65 +33, 2h30 f73 +31, 2h56 f81 +31, 3h35 f88 +30, 4h13 f90 +10, 5h01 f97 +33, 5h52 f100 +15, 7h03 f104 +21
+SIG totals: {"chargeWarn":9,"warCharge":8,"reassemble":7,"bossEnrage":7,"royalSummons":25,"webShot":18,"magmaShell":28,"shellCrack":2,"lavaRain":23,"voidSlam":232,"overgrowth":0,"lockdown":0,"warded":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   34.7 |  19 | royalSummons 3 [100%] @2.2
+  boneking          3 |    3 |   0 |   0 |   12.4 |   4 | reassemble 1 [100%] @10.0 | rise->death med 2.47s, <0.5s 0/3, <1.5s(still stunned) 0/3
+  broodmother       7 |    7 |   0 |   0 |    1.9 |   0 | webShot 0 [43%] @2.3
+  warlord           9 |    9 |   0 |   0 |    2.0 |   0 | chargeWarn 0 [33%] @3.6; warCharge 0 [33%] @4.6 | died mid-charge 2/9, fights with 0 charges 6/9
+  embergolem       10 |   10 |   0 |   0 |    6.0 |   2 | magmaShell 1 [100%] @1.8; shellCrack 0 [10%] @63.2
+  magmalord         9 |    9 |   0 |   0 |    5.7 |   3 | lavaRain 1 [89%] @2.3
+  hollow            8 |    8 |   0 |   0 |   28.8 |  17 | voidSlam 2 [100%] @5.0
+  H-ratking         8 |    7 |   1 |   0 |   67.1 |  40 | royalSummons 3 [100%] @1.8; voidSlam 6 [100%] @5.0
+  H-boneking        6 |    4 |   2 |   2 |  103.7 |  98 | voidSlam 13 [100%] @5.0; reassemble 1 [67%] @86.6 | rise->death med 21.30s, <0.5s 0/4, <1.5s(still stunned) 0/4
+  HEART             7 |    2 |   5 |   5 |  127.5 | 108 | voidSlam 15 [100%] @5.0
+ACH: first_boss 0h09 | flow NO | full_party 0h33 | retire1 1h05 | gatekeeper 1h18 | rat 0h32 | epic 2h08 | caverns 0h23 | comeback 2h56 | echo 4h19 | ult_boss 0h23 | revive 0h43 | speed60 2h38 | blitz NO | magma 1h18 | void 2h00 | hollow 2h26 | hollowed6 NO | f100 6h46 | codex28 NO | seals7 NO | seals30 NO | heartroot 6h46 | rootmother NO | keeper NO | f125 NO | f150 NO | echo175 NO | retire10 7h03 | omen1 1h39 | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 1h51 | chests100 4h23 | rats25 4h23 | idle50 NO | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO
+R10 BIOME first 8h: The Hollow Void 58.9%, Mossy Caverns 14.9%, Magma Depths 13.9%, The Heartroot 6.4%, The Crypt 5.9%
+R10 BIOME after 8h: The Heartroot 100.0% | palettes after 8h: root 100.0%
+R10 BIOME first: The Crypt@0.01h Mossy Caverns@0.39h Magma Depths@1.31h The Hollow Void@2.01h The Heartroot@6.78h | banners {"Mossy Caverns":5,"The Crypt":2,"Magma Depths":10,"The Hollow Void":9,"The Heartroot":2}
+R10 FIRST SEEN: lasher@6.78h bloat@6.93h sporeling@6.97h warden@NEVER rootmother@NEVER keeper@NEVER E-rat@NEVER E-lasher@NEVER H-ratking@2.87h H-boneking@4.14h H-broodmother@NEVER H-warlord@NEVER H-embergolem@NEVER H-magmalord@NEVER hollow@2.40h HEART@5.79h | echo kinds seen 0
+R10 ACH new: heartroot@6.78h rootmother@NEVER keeper@NEVER f125@NEVER f150@NEVER echo175@NEVER hollowed6@NEVER codex28@NEVER
+R10 SPORELING n 20: same-frame deaths 2 (10%), life <0.5s 4, med life 19.67s
+R10 LASHER roots 630: torn by keys 3, by ult 8, expired 299; med rooted 1.53s; any hero rooted 30.2% of Heartroot time (0.5 h)
+R10 BOSS ults per active min (f110+): 
+R10 WARD offered/picked 9/1 picked at floors [32] | calls 648 blocks 0 {} | per pick: useful-floor share 0%/0b
+R10 BOSS by floor: 80:ratking8 90:boneking6 100:HEART7
+R10 RELICS offered/picked: whetstone 15/6, luckycoin 13/5, spacebar 19/8, boots 12/3, coffee 18/8, belt 18/4, keycap 9/4, capslock 10/4, enter 10/3, fang 11/4, oil 11/1, map 5/2, lens 8/2, echo 7/1, glass 4/1, rootward 9/1, flowpend 4/1, hotkey 4/1 | seals 1 redelves 0

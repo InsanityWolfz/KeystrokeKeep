@@ -1,0 +1,57 @@
+{
+ "seed": 7,
+ "_shot": "R9 fix-up of the adopted g2: no await right after wave (wave spawns the boss in the same frame, so that await always timed out and skipped the first shell).",
+ "_cut": "BOSS IN .. VICTORY. For a real-typing take, delete the 'sparks full' cue after SHELL and type ~5 keys when the plate shows.",
+ "cues": [
+  {
+   "t": 0,
+   "do": "floor",
+   "v": 50
+  },
+  {
+   "t": 0,
+   "do": "sparks",
+   "v": 20
+  },
+  {
+   "t": 0.1,
+   "do": "wave"
+  },
+  {
+   "t": 0.1,
+   "do": "mark",
+   "v": "BOSS IN"
+  },
+  {
+   "do": "await",
+   "v": "magmaShell",
+   "timeout": 30
+  },
+  {
+   "t": 0,
+   "do": "mark",
+   "v": "SHELL (type now)"
+  },
+  {
+   "t": 0.8,
+   "do": "sparks",
+   "v": "full"
+  },
+  {
+   "do": "await",
+   "v": "shellCrack",
+   "timeout": 20
+  },
+  {
+   "t": 0,
+   "do": "mark",
+   "v": "CRACK"
+  },
+  {
+   "t": 12,
+   "do": "mark",
+   "v": "END"
+  }
+ ],
+ "_run": "node tools/capture/shots/stage.js g2 ; KK_CAPTURE=1 KK_CAPTURE_DISPLAY=secondary KK_CAPTURE_SAVE=tools/capture/shots/saves/g2_f56_ember.json KK_CAPTURE_SCRIPT=<this file> npx electron ."
+}

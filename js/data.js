@@ -108,7 +108,7 @@
     { id: 'lens', name: "Critic's Lens", rar: 'rare', icon: 'lens', desc: '+10% crit chance. Crits deal 3x.', unique: true, apply: (m) => { m.crit += 0.1; m.critMult = Math.max(m.critMult, 3); } },
     { id: 'echo', name: 'Echo Rune', rar: 'epic', icon: 'rune', desc: 'Every ultimate casts twice.', unique: true, apply: (m) => { m.echo += 1; } },
     { id: 'glass', name: 'Glass Cannon', rar: 'epic', icon: 'gem', desc: '+75% damage, but -25% max HP.', unique: true, apply: (m) => { m.dmg *= 1.75; m.hp *= 0.75; } },
-    { id: 'rootward', name: 'Root Ward', rar: 'epic', icon: 'shield', desc: 'The first web, root or Overgrowth in each fight is ignored.', unique: true, apply: (m) => { m.ward = 1; } },
+    { id: 'rootward', name: 'Root Ward', rar: 'rare', icon: 'shield', minFloor: 90, desc: 'Webs and roots last 60% shorter, and tearing one free with your typing gives +2 Sparks.', unique: true, apply: (m) => { m.rootShort = 0.4; m.rootSparks = 2; } },
     { id: 'flowpend', name: 'Flow Pendant', rar: 'epic', icon: 'pendant', desc: 'FLOW STATE grants an extra +100% power.', unique: true, apply: (m) => { m.flowBonus += 1; } },
     { id: 'hotkey', name: 'Hotkey Ring', rar: 'epic', icon: 'ring', desc: 'Every 60th keystroke fires the next hero\'s ultimate for free.', unique: true, apply: (m) => { m.hotkey = true; } },
   ];

@@ -1,0 +1,34 @@
+=== R6 probe light s2 480m: maxEver 120, retires 10, renown life 361, ach 24/43, trophies 10, codex 3/28, wipes 1, fame x50.0, unspent embers 2054
+beats per 30 min from h1: 9 11 1 5 4 2 8 2 2 1 0 4 0 2 0
+AFTER 8h: 0 beats {}; longest gap 0 min (from 8h00); empty 2h windows 1/1
+longest stretch with no new depth record (30-min snapshots): 1.0 h from 3h30
+codex: 3h01 H-Rat King r1, 4h33 H-Bone King r2, 6h45 H-Rat King r3
+trophies: f75@1h46 f80@1h52 f85@2h16 f90@2h42 f95@3h13 f100@3h21 f105@4h17 f110@5h12 f115@6h34 f120@7h53
+retires (10): 0h40 f40 +30, 1h05 f54 +32, 1h30 f69 +46, 1h55 f80 +42, 2h20 f87 +30, 2h53 f94 +32, 3h21 f100 +30, 4h23 f106 +32, 5h20 f110 +22, 6h40 f116 +35
+SIG totals: {"chargeWarn":8,"warCharge":8,"reassemble":13,"bossEnrage":6,"royalSummons":25,"webShot":11,"magmaShell":22,"shellCrack":3,"lavaRain":14,"voidSlam":227,"overgrowth":15,"lockdown":0,"warded":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   30.3 |  17 | royalSummons 3 [100%] @2.2
+  boneking          4 |    4 |   0 |   0 |    6.3 |   1 | reassemble 1 [100%] @4.4 | rise->death med 1.90s, <0.5s 0/4, <1.5s(still stunned) 0/4
+  broodmother       6 |    6 |   0 |   0 |    3.6 |   1 | webShot 1 [50%] @2.3
+  warlord           8 |    8 |   0 |   0 |    2.2 |   0 | chargeWarn 0 [38%] @3.3; warCharge 0 [38%] @4.4 | died mid-charge 0/8, fights with 0 charges 5/8
+  embergolem       10 |   10 |   0 |   0 |    4.9 |   2 | magmaShell 1 [90%] @1.8; shellCrack 0 [10%] @54.2
+  magmalord         9 |    9 |   0 |   0 |    2.6 |   1 | lavaRain 1 [56%] @2.3
+  hollow            8 |    8 |   0 |   0 |    5.8 |   3 | voidSlam 1 [50%] @5.0
+  H-ratking         8 |    7 |   0 |   0 |    9.3 |  13 | royalSummons 3 [100%] @1.8; voidSlam 2 [75%] @5.0
+  H-boneking       13 |    8 |   4 |   4 |   90.1 |  80 | voidSlam 11 [100%] @5.0; reassemble 1 [69%] @44.2 | rise->death med 31.10s, <0.5s 0/8, <1.5s(still stunned) 0/8
+  HEART             6 |    4 |   2 |   2 |  101.2 |  90 | voidSlam 12 [100%] @5.0
+  rootmother        1 |    0 |   0 |   0 |    NaN |  84 | overgrowth 15 [100%] @3.7
+ACH: first_boss 0h07 | flow 0h00 | full_party 0h20 | retire1 0h40 | gatekeeper 0h51 | rat 0h04 | epic 1h31 | caverns 0h17 | comeback 2h50 | echo 1h33 | ult_boss 0h46 | revive NO | speed60 1h38 | blitz NO | magma 0h51 | void 1h20 | hollow 1h43 | hollowed6 NO | f100 4h04 | codex28 NO | seals7 NO | seals30 NO | heartroot 4h04 | rootmother NO | keeper NO | f125 NO | f150 NO | echo175 NO | retire10 6h40 | omen1 1h05 | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 1h14 | chests100 4h28 | rats25 2h49 | idle50 NO | keys10k 3h31 | keys100k NO | flow1h NO | flow10h NO | ults1k 5h46
+R10 BIOME first 8h: The Heartroot 38.4%, The Hollow Void 37.4%, Magma Depths 10.2%, Mossy Caverns 9.3%, The Crypt 4.8%
+R10 BIOME after 8h: The Heartroot 100.0% | palettes after 8h: root 100.0%
+R10 BIOME first: The Crypt@0.00h Mossy Caverns@0.29h Magma Depths@0.86h The Hollow Void@1.35h The Heartroot@4.08h | banners {"Mossy Caverns":4,"The Crypt":2,"Magma Depths":8,"The Hollow Void":9,"The Heartroot":4}
+R10 FIRST SEEN: lasher@4.08h bloat@4.20h sporeling@4.22h warden@4.99h rootmother@7.96h keeper@NEVER E-rat@NEVER E-lasher@NEVER H-ratking@1.89h H-boneking@2.72h H-broodmother@NEVER H-warlord@NEVER H-embergolem@NEVER H-magmalord@NEVER hollow@1.72h HEART@3.83h | echo kinds seen 0
+R10 ACH new: heartroot@4.08h rootmother@NEVER keeper@NEVER f125@NEVER f150@NEVER echo175@NEVER hollowed6@NEVER codex28@NEVER
+R10 WARDEN n 113: died guarded 0, ult break 25, timer break 32, left floor 56 | spawn->first hit med 1.1s, guard left at first hit med 6.4s (0 at contact: 7) | timer breaks after first hit med 6.8s | ult-broken then dead <0.5s 0/25 | hits guarded 6% | life med 81.9s
+R10 SPORELING n 192: same-frame deaths 25 (13%), life <0.5s 24, med life 7.63s
+R10 LASHER roots 1628: torn by keys 40, by ult 17, expired 1089; med rooted 1.53s; any hero rooted 15.5% of Heartroot time (3.1 h)
+R10 OVERGROWTH n 15: freed med 2.03s, by keys 4 ult 0 expired 11
+R10 BOSS ults per active min (f110+): hollowed n6 kills 2 4.3/min med 157s
+R10 WARD offered/picked 2/0 picked at floors [] | calls 1654 blocks 0 {} | per pick: useful-floor share 
+R10 BOSS by floor: 80:ratking8 90:boneking7 100:HEART6 110:boneking6 120:rootmother1
+R10 RELICS offered/picked: whetstone 17/8, luckycoin 20/6, spacebar 13/6, boots 18/7, coffee 17/4, belt 16/6, keycap 12/2, capslock 5/3, enter 9/4, fang 18/6, oil 6/1, map 15/3, lens 11/3, echo 10/3, glass 5/2, rootward 2/0, flowpend 4/1, hotkey 4/0 | seals 1 redelves 0
