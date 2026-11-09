@@ -1,0 +1,1035 @@
+{
+  "mode": "fs",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": true,
+  "cores": 32,
+  "switches": "",
+  "gpuInfoUpdates": 4,
+  "setup": "ok",
+  "knightAlphaAtBoot": 0,
+  "fs": {
+    "H27P22S__electronFs_same": {
+      "strip": "H27P22S",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 1,
+      "backAfterS": 0.6,
+      "qunsSeen": [
+        2
+      ],
+      "decidedBy": {
+        "cls": "Chrome_WidgetWin_1",
+        "title": "kk-fs-helper",
+        "pid": 9176,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x14030000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          0,
+          0,
+          3840,
+          2160
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "H27P22S__electronFs_other": {
+      "strip": "H27P22S",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": null
+    },
+    "H27P22S__borderless_same": {
+      "strip": "H27P22S",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 0,
+      "backAfterS": 1.11,
+      "qunsSeen": [
+        2
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.845b04_r13_ad1",
+        "title": "KK probe borderless",
+        "pid": 26064,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16010000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          0,
+          0,
+          3840,
+          2160
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "H27P22S__maximized_same": {
+      "strip": "H27P22S",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe maximized",
+        "pid": 14024,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x17cf0000",
+        "caption": true,
+        "thickframe": true,
+        "zoomed": true,
+        "rect": [
+          -11,
+          -11,
+          3862,
+          2110
+        ],
+        "geomCovers": false,
+        "covers": false,
+        "altRuleNoCaption": false
+      },
+      "topmostSkipped": []
+    },
+    "H27P22S__bigframe_same(maximized,no-taskbar)": {
+      "strip": "H27P22S",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe bigframe",
+        "pid": 27736,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16cf0000",
+        "caption": true,
+        "thickframe": true,
+        "zoomed": false,
+        "rect": [
+          -8,
+          -8,
+          3856,
+          2176
+        ],
+        "geomCovers": true,
+        "covers": false,
+        "altRuleNoCaption": false
+      },
+      "topmostSkipped": []
+    },
+    "H27P22S__topmostOverlay_same": {
+      "strip": "H27P22S",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        2
+      ],
+      "decidedBy": null
+    },
+    "H27P22S__topmostBorderless_same(game)": {
+      "strip": "H27P22S",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 0.5,
+      "backAfterS": 0,
+      "qunsSeen": [
+        2
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.3cb29f_r13_ad1",
+        "title": "KK probe topborderless",
+        "pid": 7212,
+        "topmost": true,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16010000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          0,
+          0,
+          3840,
+          2160
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "H27P22S__borderlessMaximized_same(kiosk)": {
+      "strip": "H27P22S",
+      "expect": "hidden",
+      "result": "visible",
+      "pass": false,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        2
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe borderlessmax",
+        "pid": 14424,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x17010000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": true,
+        "rect": [
+          0,
+          0,
+          3840,
+          2160
+        ],
+        "geomCovers": true,
+        "covers": false,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "H27P22S__thickBorderless_same(WPF)": {
+      "strip": "H27P22S",
+      "expect": "hidden",
+      "result": "visible",
+      "pass": false,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        2
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.192c2b5_r13_ad1",
+        "title": "KK probe thickborderless",
+        "pid": 19576,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16050000",
+        "caption": false,
+        "thickframe": true,
+        "zoomed": false,
+        "rect": [
+          0,
+          0,
+          3840,
+          2160
+        ],
+        "geomCovers": true,
+        "covers": false,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "ASUSVP247__electronFs_same": {
+      "strip": "ASUS VP247",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 0.3,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "Chrome_WidgetWin_1",
+        "title": "kk-fs-helper",
+        "pid": 24264,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x14030000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          -1920,
+          510,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "ASUSVP247__electronFs_other": {
+      "strip": "ASUS VP247",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        2
+      ],
+      "decidedBy": {
+        "cls": "Chrome_WidgetWin_1",
+        "title": "Claude",
+        "pid": 2144,
+        "topmost": false,
+        "layered": true,
+        "clickThrough": false,
+        "style": "0x15c70000",
+        "caption": true,
+        "thickframe": true,
+        "zoomed": true,
+        "rect": [
+          -1931,
+          499,
+          1942,
+          1054
+        ],
+        "geomCovers": false,
+        "covers": false,
+        "altRuleNoCaption": false
+      },
+      "topmostSkipped": []
+    },
+    "ASUSVP247__borderless_same": {
+      "strip": "ASUS VP247",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 1,
+      "backAfterS": 0.4,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe borderless",
+        "pid": 18776,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16010000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          -1920,
+          510,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "ASUSVP247__maximized_same": {
+      "strip": "ASUS VP247",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe maximized",
+        "pid": 26916,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x17cf0000",
+        "caption": true,
+        "thickframe": true,
+        "zoomed": true,
+        "rect": [
+          -1928,
+          502,
+          1936,
+          1048
+        ],
+        "geomCovers": false,
+        "covers": false,
+        "altRuleNoCaption": false
+      },
+      "topmostSkipped": []
+    },
+    "ASUSVP247__bigframe_same(maximized,no-taskbar)": {
+      "strip": "ASUS VP247",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe bigframe",
+        "pid": 13780,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16cf0000",
+        "caption": true,
+        "thickframe": true,
+        "zoomed": false,
+        "rect": [
+          -1928,
+          502,
+          1936,
+          1096
+        ],
+        "geomCovers": true,
+        "covers": false,
+        "altRuleNoCaption": false
+      },
+      "topmostSkipped": []
+    },
+    "ASUSVP247__topmostOverlay_same": {
+      "strip": "ASUS VP247",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "Chrome_WidgetWin_1",
+        "title": "Claude",
+        "pid": 2144,
+        "topmost": false,
+        "layered": true,
+        "clickThrough": false,
+        "style": "0x15c70000",
+        "caption": true,
+        "thickframe": true,
+        "zoomed": true,
+        "rect": [
+          -1931,
+          499,
+          1942,
+          1054
+        ],
+        "geomCovers": false,
+        "covers": false,
+        "altRuleNoCaption": false
+      },
+      "topmostSkipped": []
+    },
+    "ASUSVP247__topmostBorderless_same(game)": {
+      "strip": "ASUS VP247",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 0,
+      "backAfterS": 0.61,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe topborderless",
+        "pid": 4636,
+        "topmost": true,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16010000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          -1920,
+          510,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "ASUSVP247__borderlessMaximized_same(kiosk)": {
+      "strip": "ASUS VP247",
+      "expect": "hidden",
+      "result": "visible",
+      "pass": false,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe borderlessmax",
+        "pid": 17444,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x17010000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": true,
+        "rect": [
+          -1920,
+          510,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": false,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "ASUSVP247__thickBorderless_same(WPF)": {
+      "strip": "ASUS VP247",
+      "expect": "hidden",
+      "result": "visible",
+      "pass": false,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe thickborderless",
+        "pid": 19104,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16050000",
+        "caption": false,
+        "thickframe": true,
+        "zoomed": false,
+        "rect": [
+          -1920,
+          510,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": false,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "HP25x__electronFs_same": {
+      "strip": "HP 25x",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 0,
+      "backAfterS": 1.11,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "Chrome_WidgetWin_1",
+        "title": "kk-fs-helper",
+        "pid": 28116,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x14030000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          3840,
+          497,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "HP25x__electronFs_other": {
+      "strip": "HP 25x",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        2
+      ],
+      "decidedBy": null
+    },
+    "HP25x__borderless_same": {
+      "strip": "HP 25x",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 0,
+      "backAfterS": 0.7,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe borderless",
+        "pid": 9296,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16010000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          3840,
+          497,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "HP25x__maximized_same": {
+      "strip": "HP 25x",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe maximized",
+        "pid": 20976,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x17cf0000",
+        "caption": true,
+        "thickframe": true,
+        "zoomed": true,
+        "rect": [
+          3832,
+          489,
+          1936,
+          1048
+        ],
+        "geomCovers": false,
+        "covers": false,
+        "altRuleNoCaption": false
+      },
+      "topmostSkipped": []
+    },
+    "HP25x__bigframe_same(maximized,no-taskbar)": {
+      "strip": "HP 25x",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe bigframe",
+        "pid": 24772,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16cf0000",
+        "caption": true,
+        "thickframe": true,
+        "zoomed": false,
+        "rect": [
+          3832,
+          489,
+          1936,
+          1096
+        ],
+        "geomCovers": true,
+        "covers": false,
+        "altRuleNoCaption": false
+      },
+      "topmostSkipped": []
+    },
+    "HP25x__topmostOverlay_same": {
+      "strip": "HP 25x",
+      "expect": "visible",
+      "result": "visible",
+      "pass": true,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": null
+    },
+    "HP25x__topmostBorderless_same(game)": {
+      "strip": "HP 25x",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 0,
+      "backAfterS": 0.81,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe topborderless",
+        "pid": 30080,
+        "topmost": true,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16010000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          3840,
+          497,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "HP25x__borderlessMaximized_same(kiosk)": {
+      "strip": "HP 25x",
+      "expect": "hidden",
+      "result": "visible",
+      "pass": false,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe borderlessmax",
+        "pid": 14972,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x17010000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": true,
+        "rect": [
+          3840,
+          497,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": false,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "HP25x__thickBorderless_same(WPF)": {
+      "strip": "HP 25x",
+      "expect": "hidden",
+      "result": "visible",
+      "pass": false,
+      "hiddenAfterS": null,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "WindowsForms10.Window.8.app.0.17693e8_r13_ad1",
+        "title": "KK probe thickborderless",
+        "pid": 20640,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x16050000",
+        "caption": false,
+        "thickframe": true,
+        "zoomed": false,
+        "rect": [
+          3840,
+          497,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": false,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "H27P22S__fs_then_focus_other": {
+      "strip": "H27P22S",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 0,
+      "backAfterS": 0,
+      "qunsSeen": [
+        2
+      ],
+      "decidedBy": {
+        "cls": "Chrome_WidgetWin_1",
+        "title": "kk-fs-helper",
+        "pid": 2188,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x14030000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          0,
+          0,
+          3840,
+          2160
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "ASUS_VP247__fs_then_focus_other": {
+      "strip": "ASUS VP247",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 1,
+      "backAfterS": 0,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "Chrome_WidgetWin_1",
+        "title": "kk-fs-helper",
+        "pid": 30300,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x14030000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          -1920,
+          510,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    },
+    "HP_25x__fs_then_focus_other": {
+      "strip": "HP 25x",
+      "expect": "hidden",
+      "result": "hidden",
+      "pass": true,
+      "hiddenAfterS": 0.8,
+      "backAfterS": 0.71,
+      "qunsSeen": [
+        5
+      ],
+      "decidedBy": {
+        "cls": "Chrome_WidgetWin_1",
+        "title": "kk-fs-helper",
+        "pid": 11192,
+        "topmost": false,
+        "layered": false,
+        "clickThrough": false,
+        "style": "0x14030000",
+        "caption": false,
+        "thickframe": false,
+        "zoomed": false,
+        "rect": [
+          3840,
+          497,
+          1920,
+          1080
+        ],
+        "geomCovers": true,
+        "covers": true,
+        "altRuleNoCaption": true
+      },
+      "topmostSkipped": []
+    }
+  },
+  "displays": [
+    {
+      "id": 3462733201,
+      "label": "H27P22S",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2560,
+        "height": 1440
+      },
+      "phys": {
+        "x": 0,
+        "y": 0,
+        "width": 3840,
+        "height": 2160
+      },
+      "workArea": {
+        "x": 0,
+        "y": 0,
+        "width": 2560,
+        "height": 1392
+      },
+      "primary": true
+    },
+    {
+      "id": 44500887,
+      "label": "ASUS VP247",
+      "bounds": {
+        "x": -1920,
+        "y": 340,
+        "width": 1920,
+        "height": 1080
+      },
+      "phys": {
+        "x": -1920,
+        "y": 510,
+        "width": 1920,
+        "height": 1080
+      },
+      "workArea": {
+        "x": -1920,
+        "y": 340,
+        "width": 1920,
+        "height": 1032
+      },
+      "primary": false
+    },
+    {
+      "id": 2904106817,
+      "label": "HP 25x",
+      "bounds": {
+        "x": 2560,
+        "y": 331,
+        "width": 1920,
+        "height": 1080
+      },
+      "phys": {
+        "x": 3840,
+        "y": 497,
+        "width": 1920,
+        "height": 1080
+      },
+      "workArea": {
+        "x": 2560,
+        "y": 331,
+        "width": 1920,
+        "height": 1032
+      },
+      "primary": false
+    }
+  ],
+  "idleDecision": {
+    "H27P22S": {
+      "fullscreen": false,
+      "decidedBy": null,
+      "walked": 263,
+      "considered": 0
+    },
+    "ASUS VP247": {
+      "fullscreen": false,
+      "decidedBy": {
+        "cls": "Chrome_WidgetWin_1",
+        "title": "Claude",
+        "pid": 2144,
+        "topmost": false,
+        "layered": true,
+        "clickThrough": false,
+        "style": "0x15c70000",
+        "caption": true,
+        "thickframe": true,
+        "zoomed": true,
+        "rect": [
+          -1931,
+          499,
+          1942,
+          1054
+        ],
+        "geomCovers": false,
+        "covers": false,
+        "altRuleNoCaption": false
+      },
+      "walked": 96,
+      "considered": 1,
+      "topmostSkipped": []
+    },
+    "HP 25x": {
+      "fullscreen": false,
+      "decidedBy": null,
+      "walked": 263,
+      "considered": 0
+    }
+  },
+  "topLevelWindows": {
+    "all": 263,
+    "visible": 32
+  }
+}

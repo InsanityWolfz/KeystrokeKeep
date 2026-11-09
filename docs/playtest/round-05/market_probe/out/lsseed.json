@@ -1,0 +1,10 @@
+{
+  "mode": "lsseed",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": false,
+  "cores": 32,
+  "switches": "",
+  "seeded": 43,
+  "gpuInfoUpdates": 2
+}

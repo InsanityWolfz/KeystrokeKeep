@@ -1,0 +1,60 @@
+{
+  "mode": "save:corrupt-main",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": true,
+  "cores": 32,
+  "switches": "",
+  "before": {
+    "full": {
+      "keystroke-keep.bak1.json": 23,
+      "keystroke-keep.bak2.json": 21,
+      "keystroke-keep.json": "corrupt(16B)"
+    },
+    "demo": "no dir"
+  },
+  "gpuInfoUpdates": 3,
+  "setup": "ok",
+  "knightAlphaAtBoot": 0,
+  "saveInfo": "backup",
+  "toasts": [
+    "Your save was damaged, so it was restored from a backup."
+  ],
+  "loaded": {
+    "floor": 23,
+    "demoCap": 0,
+    "ls": null
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r5\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "keystroke-keep.bak1.json": 23,
+      "keystroke-keep.bak2.json": 21,
+      "keystroke-keep.corrupt-1794242276850.json": "corrupt(16B)",
+      "keystroke-keep.json": 23
+    },
+    "demo": "no dir"
+  },
+  "after11min": {
+    "keystroke-keep.bak1.json": 23,
+    "keystroke-keep.bak2.json": 23,
+    "keystroke-keep.bak3.json": 21,
+    "keystroke-keep.corrupt-1794242276850.json": "corrupt(16B)",
+    "keystroke-keep.json": 24
+  },
+  "lowGpu": {
+    "switch": true,
+    "gpu": "disabled_software"
+  },
+  "files": {
+    "full": {
+      "keystroke-keep.bak1.json": 23,
+      "keystroke-keep.bak2.json": 23,
+      "keystroke-keep.bak3.json": 21,
+      "keystroke-keep.corrupt-1794242276850.json": "corrupt(16B)",
+      "keystroke-keep.json": 24
+    },
+    "demo": "no dir"
+  },
+  "mainBytes": 43
+}

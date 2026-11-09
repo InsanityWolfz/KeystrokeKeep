@@ -2,14 +2,12 @@
   "mode": "sprites",
   "phases": {},
   "childGone": [],
-  "lowGpuSwitch": true,
+  "lowGpuSwitch": false,
   "cores": 32,
-  "switches": "",
-  "gpuInfoUpdates": 3,
+  "switches": "disable-gpu-compositing",
+  "gpuInfoUpdates": 2,
   "setup": "ok",
-  "knightAlphaAtBoot": 0,
-  "rebake": "ok",
-  "knightAlphaAfterRebake": 143,
+  "knightAlphaAtBoot": 143,
   "gpuInfo": {
     "2d_canvas": "enabled",
     "direct_rendering_display_compositor": "disabled_off_ok",
@@ -27,7 +25,7 @@
     "webnn": "disabled_off"
   },
   "canvasCensus": {
-    "colours": 156,
+    "colours": 155,
     "heroes": [
       {
         "id": "knight",
@@ -36,5 +34,5 @@
       }
     ]
   },
-  "screenColours": 576
+  "screenColours": 584
 }

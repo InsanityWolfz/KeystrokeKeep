@@ -1,0 +1,75 @@
+{
+  "mode": "save:lock-short",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": true,
+  "cores": 32,
+  "switches": "",
+  "before": {
+    "full": {
+      "keystroke-keep.json": 60
+    },
+    "demo": "no dir"
+  },
+  "gpuInfoUpdates": 3,
+  "setup": "ok",
+  "knightAlphaAtBoot": 0,
+  "saveInfo": "main",
+  "toasts": [],
+  "loaded": {
+    "floor": 60,
+    "demoCap": 0,
+    "ls": null
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r5\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "keystroke-keep.bak1.json": 60,
+      "keystroke-keep.json": 60
+    },
+    "demo": "no dir"
+  },
+  "locks": [
+    {
+      "lockMs": 100,
+      "ok": true,
+      "blockedMainMs": 147,
+      "mainFloorNow": 61,
+      "tmpLeft": false
+    },
+    {
+      "lockMs": 250,
+      "ok": true,
+      "blockedMainMs": 305,
+      "mainFloorNow": 62,
+      "tmpLeft": false
+    },
+    {
+      "lockMs": 600,
+      "ok": false,
+      "blockedMainMs": 305,
+      "mainFloorNow": 62,
+      "tmpLeft": true
+    },
+    {
+      "lockMs": 2000,
+      "ok": false,
+      "blockedMainMs": 305,
+      "mainFloorNow": 62,
+      "tmpLeft": true
+    }
+  ],
+  "lowGpu": {
+    "switch": true,
+    "gpu": "disabled_software"
+  },
+  "files": {
+    "full": {
+      "keystroke-keep.bak1.json": 60,
+      "keystroke-keep.json": 62,
+      "keystroke-keep.json.tmp": 59
+    },
+    "demo": "no dir"
+  },
+  "mainBytes": 43
+}

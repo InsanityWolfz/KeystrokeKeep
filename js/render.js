@@ -60,9 +60,9 @@
     const p = bi.pal;
     const TW = 48, TH = 50;
     const wall = document.createElement('canvas'); wall.width = TW; wall.height = TH;
-    const g = wall.getContext('2d');
+    const g = wall.getContext('2d', { willReadFrequently: true });
     const emis = document.createElement('canvas'); emis.width = TW; emis.height = TH;
-    const eg = emis.getContext('2d');
+    const eg = emis.getContext('2d', { willReadFrequently: true });
     g.fillStyle = p.mortar; g.fillRect(0, 0, TW, TH);
     const BW = 12, BH = 6;
     for (let row = 0; row < Math.ceil(TH / BH); row++) {
@@ -94,7 +94,7 @@
     // floor tile
     const FW = 64, FH = H - 50;
     const floor = document.createElement('canvas'); floor.width = FW; floor.height = FH;
-    const fg = floor.getContext('2d');
+    const fg = floor.getContext('2d', { willReadFrequently: true });
     fg.fillStyle = p.floorLo; fg.fillRect(0, 0, FW, FH);
     fg.fillStyle = p.floor; fg.fillRect(0, 1, FW, 5);
     fg.fillStyle = p.floorHi; fg.fillRect(0, 0, FW, 1);
@@ -473,7 +473,7 @@
     let out = tintCache.get(c);
     if (out) return out;
     out = document.createElement('canvas'); out.width = c.width; out.height = c.height;
-    const g = out.getContext('2d');
+    const g = out.getContext('2d', { willReadFrequently: true });
     g.drawImage(c, 0, 0);
     g.globalCompositeOperation = 'source-atop'; g.globalAlpha = 0.5; g.fillStyle = '#6a2cff'; g.fillRect(0, 0, c.width, c.height);
     tintCache.set(c, out);

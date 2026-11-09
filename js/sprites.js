@@ -394,7 +394,9 @@
 
   // ---------------------------------------------------------------- baking
   const hasDOM = typeof document !== 'undefined';
-  function canvas(w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
+  // baked-once canvases stay in CPU memory (willReadFrequently): GPU-backed ones can be wiped by a
+  // context loss (e.g. low-GPU mode), which would leave every sprite blank
+  function canvas(w, h) { const c = document.createElement('canvas'); c.width = w; c.height = h; c.getContext('2d', { willReadFrequently: true }); return c; }
 
   function bake(rows, swap, flip) {
     const h = rows.length;

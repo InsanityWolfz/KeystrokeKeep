@@ -9,7 +9,7 @@
     "serve": "python tools/serve.py 5173",
     "sim": "node tools/sim.js 120 typist 60",
     "dist": "electron-builder --win dir",
-    "dist:demo": "electron-builder --win dir --config.extraMetadata.kkDemo=true --config.productName=\"Keystroke Keep Demo\" --config.directories.output=dist/demo",
+    "dist:demo": "electron-builder --win dir --config.extraMetadata.kkDemo=true --config.extraMetadata.productName=\"Keystroke Keep Demo\" --config.productName=\"Keystroke Keep Demo\" --config.directories.output=dist/demo",
     "icon": "electron tools/make-icon.js"
   },
   "devDependencies": {
@@ -70,6 +70,7 @@
       "onlyLoadAppFromAsar": true,
       "enableCookieEncryption": false,
       "grantFileProtocolExtraPrivileges": true
-    }
+    },
+    "copyright": "Copyright © 2026 Keystroke Keep"
   }
 }

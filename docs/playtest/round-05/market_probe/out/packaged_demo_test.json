@@ -1,0 +1,21 @@
+﻿{
+    "processes":  4,
+    "workingSetMB":  499,
+    "privateMB":  243,
+    "nativeModules":  [
+                          "C:\\Development\\KeystrokeKeep\\dist\\demo\\win-unpacked\\resources\\app.asar.unpacked\\node_modules\\@koromix\\koffi-win32-x64\\win32_x64\\koffi.node",
+                          "C:\\Development\\KeystrokeKeep\\dist\\demo\\win-unpacked\\resources\\app.asar.unpacked\\node_modules\\uiohook-napi\\prebuilds\\win32-x64\\uiohook-napi.node"
+                      ],
+    "keysInjected":  40,
+    "secondInstanceExited":  true,
+    "processesAfterSecondLaunch":  5,
+    "gracefulExit":  true,
+    "exitSecs":  0.2,
+    "saveBytes":  1037,
+    "statsKeys":  40,
+    "statsClicks":  0,
+    "demoSave":  true,
+    "lowGpu":  true,
+    "filesInDemoDir":  2,
+    "cleanedUp":  true
+}

@@ -152,9 +152,9 @@ function startFullscreenWatch() {
         if (!isCloaked && !overlay && !(ex & WS_EX_TOOLWINDOW) && !SHELL.has(cname)) {
           const r = {}; W.rect(h, r);
           const covers = r.left <= M.left && r.top <= M.top && r.right >= M.right && r.bottom >= M.bottom;
-          // a maximized / resizable window that happens to fill a taskbar-less monitor is not fullscreen
+          // fullscreen = covers the monitor and has no full title bar (a maximized normal window keeps its caption)
           const style = Number(W.exstyle(h, -16));
-          if (covers && !W.zoomed(h) && !(style & 0x00040000)) { fs = true; break; }
+          if (covers && (style & 0xC00000) !== 0xC00000) { fs = true; break; }
           if (!(ex & WS_EX_TOPMOST)) break; // the first normal window on this monitor decides
         }
       }
@@ -263,6 +263,13 @@ function validSave(text) {
   try { const o = JSON.parse(text); return !!o && typeof o === 'object' && typeof o.v === 'number'; } catch (e) { return false; }
 }
 const sleepSync = (ms) => { try { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms); } catch (e) { /* ignore */ } };
+/** async save: retries locked files on a timer instead of blocking the main process */
+function writeSaveAsync(text, attempt = 0) {
+  try { writeSaveNoRetry(text); } catch (e) {
+    if (attempt < 5 && ['EPERM', 'EACCES', 'EBUSY'].includes(e.code)) setTimeout(() => writeSaveAsync(text, attempt + 1), 20 * Math.pow(2, attempt));
+    else console.warn('[KK] save failed', e.message);
+  }
+}
 /** rename with retries: antivirus / OneDrive / backup tools briefly lock files on Windows */
 function renameRetry(a, b) {
   for (let i = 0, wait = 20; ; i++, wait *= 2) {
@@ -273,7 +280,8 @@ function renameRetry(a, b) {
   }
 }
 let lastSaveText = null;
-function writeSave(text, durable) {
+function writeSaveNoRetry(text) { return writeSave(text, false, true); }
+function writeSave(text, durable, noRetry) {
   if (!validSave(text)) return false;
   lastSaveText = text;
   fs.mkdirSync(saveDir(), { recursive: true });
@@ -290,13 +298,21 @@ function writeSave(text, durable) {
   const tmp = savePath() + '.tmp';
   const fd = fs.openSync(tmp, 'w');
   try { fs.writeSync(fd, text, 0, 'utf8'); if (durable) fs.fsyncSync(fd); } finally { fs.closeSync(fd); }
-  renameRetry(tmp, savePath());
+  if (noRetry) fs.renameSync(tmp, savePath()); else renameRetry(tmp, savePath());
+  if (!IS_DEMO && !importMarked) { importMarked = true; try { if (!fs.existsSync(importMarker())) fs.writeFileSync(importMarker(), 'own save ' + Date.now()); } catch (e) { /* ignore */ } }
   return true;
 }
+let importMarked = false;
 const importMarker = () => path.join(saveDir(), 'demo-imported.flag');
 let loadSource = 'none';
 function readSave() {
   const order = [savePath(), backupPath(1), backupPath(2), backupPath(3)];
+  // a leftover .tmp newer than the main file means the last rename failed: it holds the newest save
+  try {
+    const tmp = savePath() + '.tmp';
+    const tt = fs.statSync(tmp).mtimeMs, mt = fs.existsSync(savePath()) ? fs.statSync(savePath()).mtimeMs : 0;
+    if (tt > mt) { const t = fs.readFileSync(tmp, 'utf8'); if (validSave(t)) { loadSource = 'main'; return t; } }
+  } catch (e) { /* no tmp */ }
   for (let i = 0; i < order.length; i++) {
     const p = order[i];
     let t = null;
@@ -320,7 +336,7 @@ function readSave() {
 }
 ipcMain.on('kk:loadSave', (e) => { e.returnValue = readSave(); });
 ipcMain.on('kk:saveInfo', (e) => { e.returnValue = loadSource; });
-ipcMain.on('kk:save', (_e, text) => { try { writeSave(text); } catch (err) { console.warn('[KK] save failed', err.message); } });
+ipcMain.on('kk:save', (_e, text) => writeSaveAsync(text));
 ipcMain.on('kk:saveSync', (e, text) => { try { e.returnValue = writeSave(text, true); } catch (err) { e.returnValue = false; } });
 ipcMain.on('kk:wipeSave', (e) => {
   for (const p of [savePath(), backupPath(1), backupPath(2), backupPath(3)]) { try { fs.unlinkSync(p); } catch (err) { /* ignore */ } }
@@ -347,13 +363,32 @@ ipcMain.on('kk:settings', (_e, s) => {
 // self-test runs use their own profile so they never touch the player's real save
 if (process.env.KK_SNAPSHOT) app.setPath('userData', app.getPath('userData') + '-selftest');
 
-// Low-GPU mode (default): DirectComposition off measured 5% -> 0% GPU while typing for a
-// transparent always-on-top strip. Read from the save before the GPU process starts.
-try {
-  const t = fs.readFileSync(path.join(app.getPath('appData'), IS_DEMO ? 'Keystroke Keep Demo' : 'Keystroke Keep', 'saves', 'keystroke-keep.json'), 'utf8');
-  const lowGpu = JSON.parse(t).settings.lowGpu;
-  if (lowGpu !== false && process.platform === 'win32') app.commandLine.appendSwitch('disable-direct-composition');
-} catch (e) { if (process.platform === 'win32') app.commandLine.appendSwitch('disable-direct-composition'); }
+// Low-GPU mode: DirectComposition off measured 5% -> 0% GPU while typing, but about 2x CPU on
+// laptop-class cores. 'auto' (default) = on for machines without a battery, off for laptops.
+// Read from the save before the GPU process starts (self-tests: KK_LOWGPU=1/0 only).
+function hasBattery() {
+  try {
+    const koffi = require('koffi');
+    const SPS = koffi.struct('KK_SPS', { ACLineStatus: 'uint8', BatteryFlag: 'uint8', BatteryLifePercent: 'uint8', SystemStatusFlag: 'uint8', BatteryLifeTime: 'uint32', BatteryFullLifeTime: 'uint32' });
+    const f = koffi.load('kernel32.dll').func('__stdcall', 'GetSystemPowerStatus', 'int', [koffi.out(koffi.pointer(SPS))]);
+    const o = {};
+    if (!f(o)) return false;
+    return o.BatteryFlag !== 128 && o.BatteryFlag !== 255; // 128 = no system battery, 255 = unknown
+  } catch (e) { return false; }
+}
+if (process.platform === 'win32') {
+  let pref = 'auto';
+  if (process.env.KK_SNAPSHOT) pref = process.env.KK_LOWGPU === '1' ? true : process.env.KK_LOWGPU === '0' ? false : 'auto';
+  else {
+    try {
+      const t = fs.readFileSync(path.join(app.getPath('appData'), IS_DEMO ? 'Keystroke Keep Demo' : 'Keystroke Keep', 'saves', 'keystroke-keep.json'), 'utf8');
+      const v = JSON.parse(t).settings.lowGpu;
+      if (v === true || v === false) pref = v;
+    } catch (e) { /* no save yet: auto */ }
+  }
+  const on = pref === 'auto' ? !hasBattery() : pref;
+  if (on) app.commandLine.appendSwitch('disable-direct-composition');
+}
 if (process.platform === 'win32') app.setAppUserModelId('com.keystrokekeep.game');
 
 const gotLock = process.env.KK_SNAPSHOT ? true : app.requestSingleInstanceLock();
@@ -364,12 +399,27 @@ else {
     // separate because their folders differ): a named pipe both builds try to own.
     if (!process.env.KK_SNAPSHOT && process.platform === 'win32') {
       const owned = await new Promise((resolve) => {
-        const srv = require('net').createServer((c) => c.end());
+        const srv = require('net').createServer((c) => {
+          c.on('data', (d) => { if (String(d).trim() === 'quit') { flushSave(); app.quit(); } });
+          c.on('error', () => {});
+        });
         srv.once('error', () => resolve(false));
         srv.listen('\\\\.\\pipe\\keystroke-keep-instance', () => resolve(true));
       });
       if (!owned) {
-        require('electron').dialog.showMessageBoxSync({ type: 'info', title: 'Keystroke Keep', message: 'Keystroke Keep is already running (demo or full game).', detail: 'Look for the crown icon in the system tray. Quit it there before starting the other version.' });
+        const choice = require('electron').dialog.showMessageBoxSync({
+          type: 'question', title: 'Keystroke Keep', buttons: [IS_DEMO ? 'Close the other one and start the demo' : 'Close the other one and start', 'Cancel'], defaultId: 0, cancelId: 1,
+          message: 'Keystroke Keep is already running (demo or full game).',
+          detail: 'Only one strip can run at a time. The other one saves before it closes.',
+        });
+        if (choice === 0) {
+          await new Promise((resolve) => {
+            const c = require('net').connect('\\\\.\\pipe\\keystroke-keep-instance', () => c.end('quit'));
+            c.on('error', resolve); c.on('close', resolve);
+          });
+          await new Promise((r) => setTimeout(r, 1500));
+          app.relaunch();
+        }
         app.quit();
         return;
       }
@@ -377,6 +427,7 @@ else {
     // no network, ever: everything the game needs ships in the app folder
     session.defaultSession.webRequest.onBeforeRequest({ urls: ['http://*/*', 'https://*/*', 'ws://*/*', 'wss://*/*'] }, (_d, cb) => cb({ cancel: true }));
     createWindow();
+    app.on('second-instance', () => { sys.userShown = true; applyVisibility(); if (tray) { try { tray.displayBalloon({ title: 'Keystroke Keep', content: 'Already running: the strip is back.' }); } catch (e) { /* ignore */ } } });
     app.on('before-quit', flushSave);
     win.on('session-end', flushSave);
     // stop drawing and audio while locked, asleep, hidden or behind a fullscreen app; cap fps on battery
@@ -400,6 +451,10 @@ else {
       win.webContents.on('console-message', (e, _level, msg) => console.log('[renderer]', e && e.message !== undefined ? e.message : msg));
       if (process.env.KK_SNAPSHOT_JS) setTimeout(() => win.webContents.executeJavaScript(process.env.KK_SNAPSHOT_JS).catch((e) => console.log('[KK] js error', e.message)), 2500);
       setTimeout(async () => {
+        // regression gate: baked sprites must survive (low-GPU context loss once blanked them all)
+        const px = await win.webContents.executeJavaScript("(() => { const f = KK.SPR.frames.knight[0].c; const d = f.getContext('2d').getImageData(0, 0, f.width, f.height).data; let n = 0; for (let i = 3; i < d.length; i += 4) if (d[i]) n++; return n; })()").catch(() => -1);
+        console.log(px > 0 ? `[KK] sprite check ok (${px} px)` : `[KK] SPRITE CHECK FAILED (${px})`);
+        if (!(px > 0)) process.exitCode = 1;
         const img = await win.webContents.capturePage();
         require('fs').writeFileSync(process.env.KK_SNAPSHOT, img.toPNG());
         console.log('[KK] snapshot saved', win.getBounds());

@@ -15,6 +15,10 @@
 //   fs        fullscreen matrix on all displays (separate-process windows)      -> out/fs.json
 //   lsseed    writes a marker save into localStorage only (for the migration test), then quits
 //   save:<s>  save scenarios (seeded on disk before main.js loads)              -> out/save_<s>.json
+//   R5: sprites (party visible? capturePage + screen grab), losttime (when the low-GPU canvas wipe hits;
+//       uses diag_preload.js), eval (KK_EVAL=<file> runs JS in the page, e.g. diag_sprites.js / diag_bake.js)
+//   R5 env: KK_LOWGPU=0|1 (seeds settings.lowGpu), KK_REBAKE=1|wrf (re-run sprites.js after boot, wrf = with
+//       willReadFrequently canvases = the proposed fix), KK_AFFINITY=<hex mask> + KK_CORES=<n> (laptop proxy)
 const path = require('path');
 const fs = require('fs');
 const Module = require('module');

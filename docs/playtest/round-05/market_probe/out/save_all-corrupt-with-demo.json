@@ -1,0 +1,52 @@
+{
+  "mode": "save:all-corrupt-with-demo",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": true,
+  "cores": 32,
+  "switches": "",
+  "before": {
+    "full": {
+      "keystroke-keep.json": "corrupt(11B)"
+    },
+    "demo": {
+      "keystroke-keep.json": 31
+    }
+  },
+  "gpuInfoUpdates": 3,
+  "setup": "ok",
+  "knightAlphaAtBoot": 0,
+  "saveInfo": "demo",
+  "toasts": [
+    "Welcome to the full game! Your demo progress came with you."
+  ],
+  "loaded": {
+    "floor": 31,
+    "demoCap": 0,
+    "ls": null
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r5\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "keystroke-keep.corrupt-1794242291583.json": "corrupt(11B)",
+      "keystroke-keep.json": 31
+    },
+    "demo": {
+      "keystroke-keep.json": 31
+    }
+  },
+  "lowGpu": {
+    "switch": true,
+    "gpu": "disabled_software"
+  },
+  "files": {
+    "full": {
+      "keystroke-keep.corrupt-1794242291583.json": "corrupt(11B)",
+      "keystroke-keep.json": 31
+    },
+    "demo": {
+      "keystroke-keep.json": 31
+    }
+  },
+  "mainBytes": 929
+}
