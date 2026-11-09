@@ -1,0 +1,6 @@
+{
+  "name": "kk-market-probe-r7",
+  "version": "0.0.7",
+  "private": true,
+  "main": "probe.js"
+}

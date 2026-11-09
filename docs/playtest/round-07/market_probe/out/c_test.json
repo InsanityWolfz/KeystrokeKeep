@@ -1,0 +1,128 @@
+{
+ "args": "--min 60 --profile idle --seed 6 --retire nudge --omen random --demo --out docs/playtest/round-07/market_probe/out/c_test.json",
+ "calm": false,
+ "simHours": 1,
+ "perHour": {
+  "0": {
+   "sound": {
+    "hit": 6151,
+    "hurt": 3320,
+    "crit": 858,
+    "die": 341,
+    "coin": 845,
+    "door": 53,
+    "levelup": 55,
+    "rat": 13,
+    "milestone": 14,
+    "bossIntro": 4,
+    "slam": 18,
+    "recruit": 3,
+    "shoot": 3431,
+    "bossKill": 3,
+    "offer": 3,
+    "relic": 3,
+    "ratCaught": 7,
+    "ultKnight": 6,
+    "chest": 10,
+    "ultArcher": 4,
+    "wipe": 4,
+    "heal": 952,
+    "cast": 1165,
+    "explode": 1147,
+    "ultMage": 4,
+    "meteor": 4,
+    "ultCleric": 5
+   },
+   "hitstop": {
+    "s0.035": 864,
+    "s0.06": 4
+   },
+   "hud": {
+    "gold pulse": 1373
+   },
+   "screen": {
+    "floor fade to black": 53
+   },
+   "minorBanner": {
+    "FLOOR #": 46
+   },
+   "toast": {
+    "hero can be recruited": 5,
+    "tutorial: rat": 1,
+    "achievement": 2,
+    "relic dropped": 3,
+    "tutorial: first ult": 1,
+    "tutorial: retire": 1
+   },
+   "banner": {
+    "SIR CLANK LV #": 5,
+    "FLOOR #": 5,
+    "THE RAT KING": 1,
+    "WREN JOINS!": 1,
+    "VICTORY!": 3,
+    "RETREAT!": 4,
+    "WREN LV #": 4,
+    "THE BONE KING": 2,
+    "MOSSY CAVERNS": 1,
+    "MORTIMER JOINS!": 1,
+    "MORTIMER LV #": 3,
+    "SISTER PELL JOINS!": 1,
+    "BROOD MOTHER": 1,
+    "SISTER PELL LV #": 2
+   },
+   "flashStrong": {
+    "#ffd76a": 21,
+    "#300010": 4,
+    "#ffffff": 6,
+    "#c472ff": 3,
+    "#5a0010": 4,
+    "#ffb347": 4
+   },
+   "shake": {
+    "amp2": 31,
+    "amp3.5": 37,
+    "amp4": 3
+   },
+   "secs": {
+    "big banner on screen": 72.66666666666511,
+    "shaking": 28.73333333333392,
+    "alert plate on screen (4 Hz blink)": 22.400000000000272,
+    "enrage fuse visible": 48.5999999999998,
+    "any sound started (seconds with >=1)": 3423
+   },
+   "loudSound": {
+    "bossIntro": 4,
+    "slam": 18,
+    "bossKill": 3,
+    "ultKnight": 6,
+    "meteor": 4
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 3,
+    "RETREAT": 2,
+    "THE BONE KING REASSEMBLES!": 1,
+    "WEB SHOT!": 15
+   },
+   "toastPlayer": {
+    "recruit": 3,
+    "relic acquired": 3
+   },
+   "slowmo": {
+    "x0.25": 3
+   },
+   "flashFaint": {
+    "#ffffff": 6
+   },
+   "flashSoft": {
+    "#fff6c9": 5
+   }
+  }
+ },
+ "final": {
+  "floor": 40,
+  "maxFloorEver": 40,
+  "retires": 0,
+  "bossKills": 3,
+  "wipes": 6
+ }
+}

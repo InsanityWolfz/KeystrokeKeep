@@ -1,0 +1,4 @@
+=== idle 180 min --demo --glance 300 seeds 1-10 ===
+variant                   h1 retreats (N/B/E)        first  <10  maxEver  card   bestLap  renown  total
+base                       8.9 [12,10,7,6,11,8,8,9,11,7] (6.1/2.8/0.0)  12.3    0     38.9150.5(9/10)    20.2    39.0   19.8
+c60b35pb85i30              1.8 [3,2,2,1,3,2,0,1,2,2] (1.7/0.1/0.0)  13.1    0     40.0    134.2    13.8    48.0    5.0

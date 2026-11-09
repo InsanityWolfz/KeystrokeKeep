@@ -33,6 +33,9 @@
     { id: 'hollowed6', name: 'Echoes of the Deep', desc: 'Defeat all six Hollowed bosses.', on: 'kill', test: (c) => { if (!c.ev.e.hollowed) return false; const s = new Set(c.P.hollowed || []); s.add(c.ev.e.key); c.P.hollowed = [...s]; return s.size >= 6; } },
     { id: 'f100', name: 'Heart of the Keep', desc: 'Reach floor 100.', on: 'floor', test: (c) => c.S.maxFloorEver >= 100 },
     { id: 'codex28', name: 'Hollow Scholar', desc: 'Complete every rank of the Hollow Codex.', on: 'codex', test: () => KK.mods().codexRanks >= KK.DATA.CODEX_MAX },
+    { id: 'seals7', name: 'Faithful', desc: 'Earn 7 Seals of the Day.', on: 'seal', test: (c) => (c.S.seals || 0) >= 7 },
+    { id: 'seals30', name: 'Devout', desc: 'Earn 30 Seals of the Day.', on: 'seal', test: (c) => (c.S.seals || 0) >= 30 },
+    { id: 'f150', name: 'Bottom of the Keep', desc: 'Reach floor 150.', on: 'floor', test: (c) => c.S.maxFloorEver >= 150 },
     { id: 'f125', name: 'Abyss Walker', desc: 'Reach floor 125.', on: 'floor', test: (c) => c.S.maxFloorEver >= 125 },
     // prestige & omens
     { id: 'retire10', name: 'Dynasty', desc: 'Retire 10 times for 10+ Renown each.', on: 'retired', test: (c) => { if ((c.ev.gain || 0) >= 10) c.P.bigRetires = (c.P.bigRetires || 0) + 1; return (c.P.bigRetires || 0) >= 10; } },

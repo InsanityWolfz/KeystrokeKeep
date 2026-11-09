@@ -1,0 +1,4 @@
+--min 120 --profile typist --seed 1 --retire nudge --omen random --demo --out docs/playtest/round-07/market_probe/out/census_demo_typist_1.json {"floor":33,"maxFloorEver":40,"retires":16,"bossKills":57,"wipes":4}
+hour alert banner minorBanner toast toastPlayer modal flashStrong flashSoft shake hitstop slowmo sound loudSound hud screen
+0 64 173 142 46 35 1 233 11 388 1131 20 21172 267 5670 190
+1 36 279 274 62 72 0 333 1 405 563 37 17621 282 12439 361

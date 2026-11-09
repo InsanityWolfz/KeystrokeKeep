@@ -1,0 +1,46 @@
+=== idle 60 min --demo  seeds 1-10 ===
+variant                   h1 retreats (N/B/E)        first  <10  maxEver  card   bestLap  renown  total
+caut50                     3.3 [1,2,7,5,1,5,4,1,6,1] (2.0/1.3/0.0)  11.6    0     35.8  -(0/10)       -     5.7    3.3
+    s1: 16.3mN19  holds 34
+    s2: 15mB20 36.1mB30  holds 37
+    s3: 15.1mN19 21.8mN25 25.9mN24 35.5mB30 37.8mB30 39.7mB30 50.1mB20  holds 23
+    s4: 11.6mN11 18mN18 21.5mB20 28mN21 33.2mN24  holds 28
+    s5: 15.9mN18  holds 42
+    s6: 15.8mN18 19.8mN18 23.3mN21 25.9mB20 50.8mN25  holds 37
+    s7: 16.3mB20 23.8mN25 29mN26 41.4mB20  holds 20
+    s8: 17.8mN19  holds 40
+    s9: 16mN18 22.3mB20 25.1mN21 27.8mB20 33.9mN24 38.4mN25  holds 24
+    s10: 43.5mB20  holds 46
+c50hhp125                  2.4 [3,3,4,1,1,3,3,3,3,0] (0.8/1.5/0.1)  15.3    0     32.9  -(0/10)       -     5.0    2.4
+    s1: 17.2mN18 28.2mN21 59.4mE40  holds 25
+    s2: 16.1mB20 18.2mB20 30.7mN24  holds 24
+    s3: 38.1mB10 45.8mB20 47.8mB20 53.6mN24  holds 44
+    s4: 17.6mN19  holds 27
+    s5: 17mB20  holds 26
+    s6: 16.4mN17 28.6mN22 45.6mB30  holds 24
+    s7: 19mB20 21.8mB20 51mB20  holds 28
+    s8: 15.3mB20 46.3mB20 48.2mB20  holds 20
+    s9: 20.9mB20 30.3mN25 44.4mB20  holds 27
+    s10:   holds 28
+c50g20                     2.1 [2,0,3,2,1,6,1,2,3,1] (1.1/1.0/0.0)  20.5    0     34.3  -(0/10)       -     9.0    2.1
+    s1: 21.6mB20 28.1mN23  holds 29
+    s2:   holds 53
+    s3: 26.8mN26 32.1mN28 49.2mB40  holds 30
+    s4: 32.2mN26 35.5mN25  holds 35
+    s5: 30.5mN23  holds 43
+    s6: 20.5mN18 26.4mN21 29mB20 44.5mB20 46.4mB20 58mB30  holds 36
+    s7: 20.9mN21  holds 28
+    s8: 22.9mB20 49.9mB20  holds 42
+    s9: 22mB20 27.5mN21 36.7mN26  holds 32
+    s10: 43.5mB20  holds 46
+c55                        3.1 [2,4,5,3,1,2,0,6,5,3] (1.0/2.0/0.1)  11.6    0     35.0  -(0/10)       -     1.9    3.1
+    s1: 16.9mB20 19.1mB20  holds 30
+    s2: 15.7mB20 17.3mB20 37.5mB30 59mE40  holds 27
+    s3: 15.1mN19 21.8mN25 25.9mN24 34.4mB30 36.8mB30  holds 19
+    s4: 11.6mN11 18mN18 22.9mB20  holds 47
+    s5: 15.9mN18  holds 45
+    s6: 19.4mN18 38.7mB10  holds 48
+    s7:   holds 39
+    s8: 16.8mN19 21.8mB20 46.1mB20 48.1mB20 56.6mB30 58.4mB30  holds 33
+    s9: 17.3mB20 23.6mN25 27.4mN24 38.1mB20 40mB20  holds 19
+    s10: 15.5mB20 18mB20 20.4mB20  holds 35

@@ -1,0 +1,49 @@
+=== R6 probe idle s2 180m DEMO: maxEver 40, retires 12, renown life 84, ach 9/36, trophies 0, codex 0/28, wipes 9, fame x4.9, unspent embers 84
+  0h00  MAJOR   biome The Crypt
+  0h03  MAJOR   first golden rat
+  0h04  ACH     ach rat
+  0h05  MAJOR   recruit archer
+  0h06  MAJOR   boss The Rat King (f10)
+  0h06  MAJOR   first relic offer
+  0h06  ACH     ach first_boss
+  0h13  MAJOR   retire unlocked
+  0h15  MAJOR   boss The Bone King (f20)
+  0h21  ACH     ach retire1
+  0h21  MAJOR   first RETIRE
+  0h35  ACH     ach comeback
+  0h35  ACH     ach caverns
+  0h35  MAJOR   biome Mossy Caverns
+  0h37  MAJOR   recruit mage
+  1h01  ACH     ach full_party
+  1h01  MAJOR   recruit cleric
+  1h06  MAJOR   boss Brood Mother (f30)
+  1h07  MAJOR   first EPIC offered
+  1h08  ACH     ach epic
+  1h21  MAJOR   boss Goblin Warlord (f40)
+  1h42  ACH     ach gatekeeper
+  2h46  ACH     ach rats25
+beats per 30 min from h1: 6 1 0 1 0
+longest gap after h1: 64 min (from 1h42)
+codex: none
+trophies: 
+retires (12): 0h21 f20 +3, 0h51 f26 +6, 1h27 f40 +21, 1h43 f40 +6, 1h54 f40 +6, 2h06 f40 +6, 2h16 f40 +6, 2h26 f40 +6, 2h34 f40 +6, 2h42 f40 +6, 2h49 f40 +6, 2h56 f40 +6
+SIG totals: {"chargeWarn":58,"warCharge":58,"reassemble":12,"bossEnrage":1,"royalSummons":9,"webShot":30,"webbed":30,"webTorn":0,"magmaShell":0,"shellCrack":0,"lavaRain":0,"lavaLand":0,"regroup":1,"seal":0,"lantern":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           3 |    3 |   0 |   0 |   23.6 |  13 | royalSummons 3 [100%] @0.8
+  boneking         15 |   12 |   3 |   0 |    7.8 |   3 | regroup 0 [7%] @28.3; reassemble 1 [80%] @5.9 | rise->death med 1.93s, <0.5s 0/12, <1.5s(still stunned) 0/12
+  broodmother      10 |   10 |   0 |   0 |   14.7 |   7 | webShot 2 [100%] @1.0; webbed 2 [100%] @2.3
+  warlord          11 |    9 |   1 |   1 |   37.9 |  20 | chargeWarn 4 [100%] @4.0; warCharge 4 [100%] @5.3 | died mid-charge 2/9, fights with 0 charges 0/11
+DEMO: card 1h42, laps 9, re-delves 9, lifetime 84, best 5.4m
+ACH: first_boss 0h06 | flow NO | full_party 1h01 | retire1 0h21 | gatekeeper 1h42 | rat 0h04 | epic 1h08 | caverns 0h35 | comeback 0h35 | echo NO | ult_boss NO | revive NO | speed60 NO | blitz NO | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | codex28 NO | f125 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 NO | chests100 NO | rats25 2h46 | idle50 NO | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO
+MOVE ratking         fights 3 kills 3 wipes 0 | royalSummons seen 100% (a 2nd one or after the 2.6 s boss banner: 100%) med/fight 3 | med kill 23.6 s | first hero hit @4.2 s
+MOVE broodmother     fights 10 kills 10 wipes 0 | webShot seen 100% (a 2nd one or after the 2.6 s boss banner: 60%) med/fight 2 | med kill 14.7 s | first hero hit @3.0 s
+MOVE boneking        fights 15 kills 12 wipes 3 | reassemble seen 80% (a 2nd one or after the 2.6 s boss banner: 80%) med/fight 1 | med kill 7.8 s | first hero hit @2.5 s
+MOVE warlord         fights 11 kills 9 wipes 1 | chargeWarn seen 100% (a 2nd one or after the 2.6 s boss banner: 100%) med/fight 4 | med kill 37.9 s | first hero hit @4.9 s
+REASSEMBLE kills 12: standing time after the 1.5 s pile med 0.43 s, <0.5 s 7, died as pile 0 | hits blocked by the pile 5 | ultimates cast at a lone pile 0
+SHELL 0 (openers 0, opener shells that took any hit 0 = -), cracked 0 = - | hits on shell normal 0 ult 0
+WEB webbed 30, torn by an ult 0 = 0%, hero-sec webbed 76, web carried into a new floor/retreat 1, webbed heroes knocked out 0
+LAVA hits 0, KOs 0, lava share of all hero damage 0.0%
+WOUNDS wounded spawns 1; late (f70+, not Hollow/Heart) spawns 0, wounded 0, of which Hollowed 0 | enrages 1 regroups 1 wipes 9
+H-WARLORD charging 0 s: void timer frozen 0 s (-), attack timer frozen 0 s
+ALERTS {"royalSummons":9,"regroup":1,"reassemble":12,"webShot":30,"chargeWarn":58,"bossEnrage":1} | within 1.1 s after a void warning (replaces it) {} | during the 2.6 s boss banner {"royalSummons":3,"webShot":10}
+first hero hit on a boss after activation: med 3.3 s

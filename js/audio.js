@@ -121,7 +121,22 @@
     retire: () => { arp([262, 330, 392, 523, 659, 784, 1047], 0.12, { dur: 0.6, vol: 0.04, type: 'triangle' }); },
     slam: () => { if (limited('slamThump', 8000)) return; tone(70, 0.35, { slide: 30, vol: 0.12, type: 'sine' }); noise(0.3, { freq: 400, sweep: 80, vol: 0.1 }); },
   };
-  A.play = (name) => { if (A.ready && A.ctx.state === 'running' && SFX[name]) SFX[name](); };
+  // A desktop companion must not be a constant soundtrack: the busy combat layer is optional,
+  // and loud sounds (booms, thumps) are rationed to one every 20 s, each kind at most every 30 s.
+  const COMBAT = new Set(['hit', 'crit', 'shoot', 'cast', 'explode', 'coin', 'die', 'hurt', 'heal', 'levelup', 'ultArcher', 'ultMage', 'ultCleric', 'door']);
+  const LOUD = { ultKnight: 30000, meteor: 30000, slam: 8000, bossKill: 0, bossIntro: 0 };
+  let lastLoud = -1e9;
+  A.play = (name) => {
+    if (!A.ready || A.ctx.state !== 'running' || !SFX[name]) return;
+    if (COMBAT.has(name) && KK.S.settings.combatSfx === false) return;
+    if (name in LOUD) {
+      const now = performance.now();
+      if (LOUD[name] && limited('loud_' + name, LOUD[name])) return;
+      if (LOUD[name] && now - lastLoud < 20000) return;
+      lastLoud = now;
+    }
+    SFX[name]();
+  };
 
   // ---------------------------------------------------------------- music
   // A-minor dungeon loop: Am - F - C - G, 8th-note arpeggio, layers react to Fervor.

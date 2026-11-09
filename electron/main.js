@@ -24,7 +24,7 @@ const IS_DEMO = pkg.kkDemo === true || process.env.KK_DEMO === '1' || process.ar
 const HIDE_HOTKEY = 'Control+Shift+Alt+K'; // not Ctrl+Alt+K: that is AltGr+K, which types a letter on some layouts
 let hotkeyOk = false;
 // one strip per Windows user (pipe names are machine-wide)
-const PIPE = '\\\\.\\pipe\\keystroke-keep-' + String((() => { try { return require('os').userInfo().username; } catch (e) { return 'user'; } })()).replace(/[^A-Za-z0-9_-]/g, '_');
+const PIPE = '\\\\.\\pipe\\keystroke-keep-' + String((() => { try { return require('os').userInfo().username; } catch (e) { return 'user'; } })()).split('').map((ch) => /[A-Za-z0-9_-]/.test(ch) ? ch : '~' + ch.charCodeAt(0).toString(16)).join('');
 let hideNoticeShown = false;
 
 function targetDisplay() {
@@ -342,7 +342,7 @@ function readSave() {
 ipcMain.on('kk:loadSave', (e) => { e.returnValue = readSave(); });
 ipcMain.on('kk:saveInfo', (e) => { e.returnValue = loadSource; });
 ipcMain.on('kk:save', (_e, text) => writeSaveAsync(text));
-ipcMain.on('kk:saveSync', (e, text) => { try { e.returnValue = writeSave(text, true); } catch (err) { e.returnValue = false; } });
+ipcMain.on('kk:saveSync', (e, text) => { saveGen++; try { e.returnValue = writeSave(text, true); } catch (err) { e.returnValue = false; } });
 ipcMain.on('kk:wipeSave', (e) => {
   for (const p of [savePath(), backupPath(1), backupPath(2), backupPath(3)]) { try { fs.unlinkSync(p); } catch (err) { /* ignore */ } }
   // a reset must never resurrect an old demo save
@@ -388,7 +388,8 @@ if (process.platform === 'win32') {
     try {
       const t = fs.readFileSync(path.join(app.getPath('appData'), IS_DEMO ? 'Keystroke Keep Demo' : 'Keystroke Keep', 'saves', 'keystroke-keep.json'), 'utf8');
       const v = JSON.parse(t).settings.lowGpu;
-      if (v === true || v === false) pref = v;
+      const st = JSON.parse(t).settings;
+      if (v === false || (v === true && st.lowGpuMigrated)) pref = v; // an old 'true' from the previous default means auto
     } catch (e) { /* no save yet: auto */ }
   }
   const on = pref === 'auto' ? !hasBattery() : pref;

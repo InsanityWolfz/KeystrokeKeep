@@ -14,12 +14,13 @@
       forge: {}, workshop: {}, legacy: {},
       relics: [], relicOffer: null, relicQueue: [],
       omen: null, omenOffer: null, epicGiven: false, secondWind: 0,
+      seals: 0, sealDay: '', freeDelveDay: '', omenStar: null,
       demoDone: false, runCapCleared: false, bestCapTime: 0, runTime: 0, demoSave: false, demoLaps: 0,
       ach: {}, achP: {}, runInputs: 0, lastForge: {}, codex: {},
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
       stats: { kills: 0, bossKills: 0, keys: 0, clicks: 0, ults: 0, goldEarned: 0, playTime: 0, chests: 0, rats: 0, flowTime: 0, wipes: 0 },
-      settings: { sound: true, music: false, volume: 0.2, keySound: false, calm: false, fps: 24, lowGpu: 'auto', size: 'auto', countInput: true },
+      settings: { sound: true, music: false, volume: 0.2, keySound: false, calm: !!(root.kkNative), combatSfx: !root.kkNative, fps: 24, lowGpu: 'auto', size: 'auto', countInput: true },
       tutorial: {},
       lastSave: Date.now(),
       created: Date.now(),
@@ -31,6 +32,7 @@
   KK.STORE_URL = ''; // e.g. 'steam://openurl/https://store.steampowered.com/app/<appid>' once the page exists
 
   // Next Fest demo mode: ?demo in the browser, --kk-demo / KK_DEMO=1 for the desktop build.
+  KK.today = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
   KK.DEMO_CAP = (function () {
     try {
       if (root.kkNative && root.kkNative.demo) return 40;
@@ -80,7 +82,7 @@
       dmg: 1, hp: 1, gold: 1, walk: 1, aspd: 1, ultCost: 1, ultPow: 1, fervDecay: 1, fervGain: 1,
       sparkCap: 150, chest: 0.08, offline: 0.4, offlineCap: 0.8, emberGain: 1, crit: 0.06, critMult: 2, lifesteal: 0, echo: 0, flowBonus: 0,
       keyCoin: 0, hotkey: false, knightHp: 1, knightDmg: 1, heroCost: 1, startLvl: 0, startFloor: 1,
-      relicChoices: 3, auto: false, idlePow: 0, secondWind: 0, dynamo: 0, eHp: 1, eAtk: 1, renownMult: 1,
+      relicChoices: 3, auto: false, idlePow: 0, secondWind: 0, dynamo: 0, voidDmg: 1, eHp: 1, eAtk: 1, renownMult: 1,
     };
     for (const r of S.relics) { const def = D.RELICS.find((x) => x.id === r); if (def) def.apply(m); }
     for (const def of D.FORGE) { const l = S.forge[def.id] || 0; if (l) def.apply(m, l); }
@@ -296,7 +298,12 @@
   };
   A.retireTarget = () => { const S = KK.S; let f = Math.max(20, S.maxFloorRun + 1); while (F.renownFor(f) - F.renownFor(S.renownFloor || 0) <= 0 && f < 2000) f++; return f; };
   // demo: once the cap is beaten, a 0-Renown "re-delve" restarts the run (new relics, beat your best time)
-  A.canRedelve = () => !!(KK.DEMO_CAP && KK.S.demoDone && KK.S.maxFloorRun >= 20);
+  // Omen of the Day: one starred omen per calendar day; reaching (record - 15) under it pays a Seal (+10 Renown)
+  A.starOmen = () => { let h = 0; for (const c of KK.today()) h = (h * 31 + c.charCodeAt(0)) >>> 0; return D.OMENS[h % D.OMENS.length].id; };
+  A.dailyOpen = () => !KK.DEMO_CAP && KK.S.retires >= 2 && KK.S.sealDay !== KK.today();
+  A.sealFloor = () => Math.max(40, (KK.S.renownFloor || 0) - 15);
+  A.claimSeal = () => { const S = KK.S; S.sealDay = KK.today(); S.seals = (S.seals || 0) + 1; S.renown += 10; S.renownLifetime += 10; KK.dirty(); KK.emit('seal', { n: S.seals }); };
+  A.canRedelve = () => !!(KK.DEMO_CAP && KK.S.demoDone && KK.S.maxFloorRun >= 20) || (A.dailyOpen() && KK.S.freeDelveDay !== KK.today() && A.renownGain() <= 0 && KK.S.maxFloorRun >= 20);
   A.canRetire = () => A.renownGain() > 0 || A.canRedelve();
   /** What the retire button should ask for when nothing can be earned yet. */
   A.retireHint = () => (KK.DEMO_CAP && KK.S.demoDone ? (KK.S.renownLifetime >= KK.DEMO_RENOWN_CAP ? 'DEMO RENOWN MAXED: BEAT YOUR BEST TIME' : 'CLEAR FLOOR ' + KK.DEMO_CAP + ' AGAIN FOR +6 RENOWN') : 'REACH FLOOR ' + A.retireTarget() + ' TO EARN RENOWN');
@@ -305,7 +312,7 @@
     const gain = A.renownGain();
     if (gain <= 0 && !A.canRedelve()) return false;
     S.renown += gain; S.renownLifetime += gain; S.retires++;
-    S.runTime = 0; S.runCapCleared = false; S.bossWounds = {}; S.bossLosses = 0; S.campUntil = 0;
+    S.runTime = 0; S.runCapCleared = false; S.bossWounds = {}; S.bossLosses = 0; S.campUntil = 0; S.campFloor = 0; S.campLevels = 0; S.slain = {}; S.graceSaves = {};
     S.incomeRate = 0; S.incomeAvg = 0; // a fresh delve doesn't keep the old run's income
     // Delve Omens: from the 2nd retire on, the next delve offers 3 omens (not in the demo)
     S.omen = null;
@@ -313,6 +320,9 @@
     const pool = D.OMENS.map((o) => o.id).filter((id) => !prevOffer.includes(id));
     S.omenOffer = !KK.DEMO_CAP && S.retires >= 2 ? U.shuffle(pool).slice(0, 3) : null;
     if (S.omenOffer) S.lastOmenOffer = S.omenOffer.slice();
+    S.omenStar = null;
+    if (S.omenOffer && A.dailyOpen()) { const st = A.starOmen(); if (!S.omenOffer.includes(st)) S.omenOffer[0] = st; S.omenStar = st; }
+    if (gain <= 0 && !KK.DEMO_CAP) S.freeDelveDay = KK.today();
     S.renownFloor = Math.max(S.renownFloor || 0, S.maxFloorRun);
     S.lastForge = Object.assign({}, S.forge);
     S.gold = 0; S.forge = {}; S.relics = []; S.relicOffer = null; S.relicQueue = []; S.bossBlock = 0;
@@ -364,6 +374,7 @@
         fresh.renownFloor = rf;
       }
       if (!fresh.settings.lowGpuMigrated) { if (fresh.settings.lowGpu === true) fresh.settings.lowGpu = 'auto'; fresh.settings.lowGpuMigrated = true; }
+      if (!fresh.settings.calmMigrated) { if (fresh.settings.volume === 0.3) fresh.settings.volume = 0.2; fresh.settings.calmMigrated = true; }
       if (fresh.workshop.jar) {
         let refund = 0;
         for (let l = 0; l < fresh.workshop.jar; l++) refund += Math.ceil(60 * Math.pow(1.4, l));

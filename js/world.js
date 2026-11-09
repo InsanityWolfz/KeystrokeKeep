@@ -74,7 +74,7 @@
   W.spawnWave = function () {
     const S = KK.S, f = S.floor, b = F.biomeOf(f);
     const x0 = W.partyX + SPAWN_AHEAD;
-    if (F.isBossFloor(f) && W.wave === W.waves - 1) {
+    if (F.isBossFloor(f) && W.wave === W.waves - 1 && !(S.slain && S.slain[f])) {
       const key = F.bossFor(f);
       const boss = makeEnemy(key, x0 + 20, f, f === 100 ? { hpMult: 1.5 } : undefined);
       if (f === 100) { boss.def = Object.assign({}, boss.def, { name: 'The Heart of the Keep' }); boss.heart = true; }
@@ -138,6 +138,7 @@
     S.stats.kills++;
     if (e.boss) {
       S.stats.bossKills++;
+      S.slain = S.slain || {}; S.slain[S.floor] = true;
       if (S.bossWounds) delete S.bossWounds[S.floor];
       S.bossLosses = 0;
       if (e.hollowed || e.key === 'hollow') {
@@ -157,11 +158,22 @@
     h.hp -= dmg;
     // onboarding grace: no knockouts before the first boss falls or 10 minutes of play
     const S0 = KK.S;
-    if (h.hp <= 0 && (S0.stats.bossKills === 0 || S0.stats.playTime < 600)) h.hp = 1;
+    if (h.hp <= 0 && (S0.stats.bossKills === 0 || S0.stats.playTime < 600)) {
+      h.hp = 1;
+      // the grace is being leaned on: quietly settle one floor back until the party has grown
+      if (!F.isBossFloor(S0.floor) && !W.boss) {
+        S0.graceSaves = S0.graceSaves || {};
+        S0.graceSaves[S0.floor] = (S0.graceSaves[S0.floor] || 0) + 1;
+        if (S0.graceSaves[S0.floor] >= 3 && !(S0.campUntil > S0.stats.playTime)) {
+          S0.campFloor = S0.floor; S0.campUntil = S0.stats.playTime + 480;
+          S0.campLevels = D.PARTY_ORDER.reduce((a, id) => a + (S0.heroes[id] || 0), 0) + 4 * D.PARTY_ORDER.filter((id) => S0.heroes[id]).length;
+        }
+      }
+    }
     h.flash = 0.1;
     KK.emit('heroHit', { h, dmg, src });
     if (h.hp <= 0) {
-      h.hp = 0; h.dead = true;
+      h.hp = 0; h.dead = true; h.webbed = 0;
       KK.emit('heroDown', { h });
       W.sanctuaryReact();
       if (!W.heroes.some((x) => !x.dead)) W.wipe();
@@ -191,7 +203,7 @@
       // a normal floor that wiped the party: farm the floor below until the heroes have grown
       // (+4 levels in total) or 8 minutes pass, instead of bouncing off the same wall
       S.campFloor = S.floor; S.campUntil = S.stats.playTime + 480;
-      S.campLevels = D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0) + 4;
+      S.campLevels = D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0) + 4 * D.PARTY_ORDER.filter((id) => S.heroes[id]).length;
     }
     if (F.isBossFloor(S.floor)) {
       S.bossBlock = S.floor;
@@ -254,6 +266,11 @@
     }
   };
 
+  // typing shakes a hero free of a web: each keystroke shaves half a second off it
+  KK.on('activity', ({ kind }) => {
+    if (kind !== 'key') return;
+    for (const h of W.heroes) if (h.webbed > 0) { h.webbed -= 0.5; if (h.webbed <= 0) { h.webbed = 0; KK.emit('webTorn', { h }); } }
+  });
   KK.on('hotkey', () => {
     const h = W.heroes.find((x) => x.id === W.ultTurn && !x.dead) || W.heroes.find((x) => !x.dead);
     if (h && W.enemies.some((e) => !e.dead && e.active)) { W.castUlt(h, true); W.passUlt(); }
@@ -508,6 +525,17 @@
       if (e.stun > 0) { e.stun -= dt; prevX = e.x; continue; }
       if (frozen || !front) { prevX = e.x; continue; }
       const reach = front.x + e.def.w / 2 + e.def.range;
+      if (e.boss && (e.hollowed || e.key === 'hollow') && e.active) {
+        e.voidT = (e.voidT === undefined ? 5 : e.voidT) - dt;
+        if (e.voidT <= 1 && !e.voidWarn) { e.voidWarn = true; KK.emit('voidWarn', { e }); }
+        if (e.voidT <= 0) {
+          e.voidT = 12; e.voidWarn = false;
+          for (const h of W.heroes) if (!h.dead) W.damageHero(h, h.maxHp * 0.55 * (KK.mods().voidDmg || 1), e);
+          KK.emit('voidSlam', { e });
+          if (!e.vigil) { e.vigil = true; W.sanctuaryReact(true); }
+          else if (W.heroes.some((h) => !h.dead && h.hp / h.maxHp < 0.5)) W.sanctuaryReact();
+        }
+      }
       // Goblin Warlord (and his Hollowed self): War Charge. Backs off, winds up, charges the line.
       if (e.boss && e.key === 'warlord') {
         e.chT = (e.chT === undefined ? 0.5 : e.chT) - dt;
@@ -536,17 +564,6 @@
           const S0 = KK.S; S0.bossWounds = S0.bossWounds || {};
           S0.bossWounds[S0.floor] = Math.max(0.05, e.hp / e.maxHp);
           KK.emit('bossEnrage', { e }); W.wipe('enrage');
-        }
-      }
-      if (e.boss && (e.hollowed || e.key === 'hollow') && e.active) {
-        e.voidT = (e.voidT === undefined ? 5 : e.voidT) - dt;
-        if (e.voidT <= 1 && !e.voidWarn) { e.voidWarn = true; KK.emit('voidWarn', { e }); }
-        if (e.voidT <= 0) {
-          e.voidT = 12; e.voidWarn = false;
-          for (const h of W.heroes) if (!h.dead) W.damageHero(h, h.maxHp * 0.55, e);
-          KK.emit('voidSlam', { e });
-          if (!e.vigil) { e.vigil = true; W.sanctuaryReact(true); }
-          else if (W.heroes.some((h) => !h.dead && h.hp / h.maxHp < 0.5)) W.sanctuaryReact();
         }
       }
       if (e.atkT <= 0 && e.x - front.x <= e.def.w / 2 + e.def.range + 3) {
@@ -658,13 +675,14 @@
     if (wall && S.floor + 1 >= wall && (S.campUntil || 0) > S.stats.playTime) S.floor--;
     S.floor++;
     if (S.floor > S.maxFloorRun) S.maxFloorRun = S.floor;
+    if (S.omen && S.omen === S.omenStar && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
     if (S.floor > S.maxFloorEver) {
       S.maxFloorEver = S.floor;
       if (D.TROPHIES.includes(S.floor)) { KK.dirty(); KK.emit('trophy', { floor: S.floor, n: D.TROPHIES.indexOf(S.floor) + 1 }); }
     }
     W.wave = 0; W.door = null; W.chest = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
-    for (const h of W.heroes) if (h.dead) { h.dead = false; h.hp = h.maxHp * 0.5; }
+    for (const h of W.heroes) { h.webbed = 0; if (h.dead) { h.dead = false; h.hp = h.maxHp * 0.5; } }
     KK.emit('floor', { floor: S.floor, biomeChange: F.biomeOf(S.floor) !== F.biomeOf(S.floor - 1), boss: F.isBossFloor(S.floor) });
   };
 
@@ -681,7 +699,7 @@
     S.floor = Math.max(KK.mods().startFloor, S.floor - 1); // a retreat never undoes Head Start
     W.wave = 0; W.door = null; W.chest = null; W.boss = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
-    for (const h of W.heroes) { h.dead = false; h.hp = h.maxHp; }
+    for (const h of W.heroes) { h.dead = false; h.hp = h.maxHp; h.webbed = 0; }
     W.wipeT = 0;
     KK.emit('recovered', { floor: S.floor });
   };

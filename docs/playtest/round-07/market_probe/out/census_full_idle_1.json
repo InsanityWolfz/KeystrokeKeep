@@ -1,0 +1,1003 @@
+{
+ "args": "--min 480 --profile idle --seed 1 --retire nudge --omen random --out docs/playtest/round-07/market_probe/out/census_full_idle_1.json",
+ "calm": false,
+ "simHours": 8,
+ "perHour": {
+  "0": {
+   "sound": {
+    "hit": 5924,
+    "hurt": 2978,
+    "die": 398,
+    "coin": 907,
+    "door": 66,
+    "levelup": 57,
+    "crit": 505,
+    "chest": 10,
+    "rat": 13,
+    "ratCaught": 6,
+    "ultKnight": 7,
+    "recruit": 5,
+    "milestone": 12,
+    "shoot": 3353,
+    "bossIntro": 8,
+    "slam": 27,
+    "bossKill": 4,
+    "offer": 4,
+    "relic": 4,
+    "wipe": 6,
+    "ultArcher": 4,
+    "heal": 791,
+    "cast": 975,
+    "explode": 949,
+    "ultMage": 1,
+    "meteor": 1,
+    "ultCleric": 7,
+    "retire": 1
+   },
+   "hud": {
+    "gold pulse": 1370
+   },
+   "screen": {
+    "floor fade to black": 66
+   },
+   "minorBanner": {
+    "FLOOR #": 55
+   },
+   "toast": {
+    "hero can be recruited": 6,
+    "tutorial: rat": 1,
+    "achievement": 8,
+    "tutorial: first ult": 1,
+    "relic dropped": 4,
+    "tutorial: retire": 1
+   },
+   "hitstop": {
+    "s0.035": 508,
+    "s0.06": 1
+   },
+   "flashStrong": {
+    "#ffd76a": 18,
+    "#ffffff": 9,
+    "#300010": 8,
+    "#c472ff": 4,
+    "#5a0010": 6,
+    "#ffb347": 1
+   },
+   "shake": {
+    "amp2": 33,
+    "amp3.5": 53,
+    "amp4": 4
+   },
+   "loudSound": {
+    "ultKnight": 7,
+    "bossIntro": 8,
+    "slam": 27,
+    "bossKill": 4,
+    "meteor": 1
+   },
+   "secs": {
+    "shaking": 40.100000000000286,
+    "big banner on screen": 104.26666666666331,
+    "alert plate on screen (4 Hz blink)": 34.46666666666727,
+    "enrage fuse visible": 46.93333333333323,
+    "any sound started (seconds with >=1)": 3361
+   },
+   "flashFaint": {
+    "#ffffff": 7
+   },
+   "banner": {
+    "WREN JOINS!": 2,
+    "SIR CLANK LV #": 6,
+    "FLOOR #": 9,
+    "THE RAT KING": 2,
+    "VICTORY!": 4,
+    "RETREAT!": 6,
+    "WREN LV #": 4,
+    "THE BONE KING": 4,
+    "MOSSY CAVERNS": 2,
+    "MORTIMER JOINS!": 2,
+    "MORTIMER LV #": 2,
+    "SISTER PELL JOINS!": 1,
+    "BROOD MOTHER": 2
+   },
+   "toastPlayer": {
+    "recruit": 5,
+    "relic acquired": 4,
+    "retire / omen": 1
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 6,
+    "THE BONE KING REASSEMBLES!": 2,
+    "RETREAT": 2,
+    "WEB SHOT!": 22
+   },
+   "slowmo": {
+    "x0.25": 4
+   },
+   "flashSoft": {
+    "#fff6c9": 7
+   }
+  },
+  "1": {
+   "sound": {
+    "hit": 5989,
+    "hurt": 2601,
+    "shoot": 3453,
+    "cast": 1523,
+    "die": 736,
+    "crit": 1839,
+    "coin": 2414,
+    "levelup": 250,
+    "explode": 1361,
+    "door": 122,
+    "rat": 14,
+    "chest": 20,
+    "milestone": 54,
+    "wipe": 1,
+    "recruit": 7,
+    "heal": 528,
+    "bossIntro": 11,
+    "slam": 30,
+    "ultCleric": 9,
+    "bossKill": 11,
+    "offer": 11,
+    "relic": 11,
+    "ratCaught": 7,
+    "ultMage": 7,
+    "meteor": 7,
+    "ultKnight": 8,
+    "ultArcher": 6,
+    "deny": 12,
+    "retire": 2
+   },
+   "hitstop": {
+    "s0.035": 1885,
+    "s0.06": 7
+   },
+   "hud": {
+    "gold pulse": 4384
+   },
+   "screen": {
+    "floor fade to black": 122
+   },
+   "minorBanner": {
+    "FLOOR #": 100
+   },
+   "banner": {
+    "SIR CLANK LV #": 17,
+    "WREN LV #": 15,
+    "RETREAT!": 1,
+    "SISTER PELL JOINS!": 3,
+    "MORTIMER LV #": 13,
+    "FLOOR #": 11,
+    "BROOD MOTHER": 3,
+    "VICTORY!": 11,
+    "SISTER PELL LV #": 9,
+    "GOBLIN WARLORD": 3,
+    "MAGMA DEPTHS": 3,
+    "THE CRYPT": 2,
+    "WREN JOINS!": 2,
+    "THE RAT KING": 1,
+    "MORTIMER JOINS!": 2,
+    "THE BONE KING": 2,
+    "MOSSY CAVERNS": 2,
+    "EMBER COLOSSUS": 2
+   },
+   "flashStrong": {
+    "#ffd76a": 61,
+    "#5a0010": 1,
+    "#ffffff": 18,
+    "#300010": 11,
+    "#c472ff": 11,
+    "#ffb347": 7
+   },
+   "shake": {
+    "amp2": 80,
+    "amp3.5": 56,
+    "amp4": 11,
+    "amp3": 12
+   },
+   "secs": {
+    "big banner on screen": 213.99999999999042,
+    "shaking": 77.46666666666484,
+    "alert plate on screen (4 Hz blink)": 50.63333333333302,
+    "enrage fuse visible": 83.09999999999785,
+    "boss white flicker (4 Hz)": 12.399999999999967,
+    "any sound started (seconds with >=1)": 3383
+   },
+   "toastPlayer": {
+    "recruit": 7,
+    "relic acquired": 11,
+    "retire / omen": 2
+   },
+   "loudSound": {
+    "bossIntro": 11,
+    "slam": 30,
+    "bossKill": 11,
+    "meteor": 7,
+    "ultKnight": 8
+   },
+   "alert": {
+    "WEB SHOT!": 14,
+    "WAR CHARGE!": 12,
+    "SQUEAK! THE RAT KING SUMMONS": 3,
+    "THE BONE KING REASSEMBLES!": 2,
+    "MAGMA SHELL: AN ULTIMATE CRACKS IT": 14
+   },
+   "flashSoft": {
+    "#fff6c9": 9
+   },
+   "toast": {
+    "achievement": 6,
+    "relic dropped": 11,
+    "hero can be recruited": 3
+   },
+   "slowmo": {
+    "x0.25": 11
+   },
+   "flashFaint": {
+    "#ffffff": 8
+   }
+  },
+  "2": {
+   "sound": {
+    "hit": 8022,
+    "hurt": 3740,
+    "crit": 4407,
+    "cast": 2236,
+    "shoot": 4926,
+    "explode": 2164,
+    "milestone": 27,
+    "levelup": 169,
+    "die": 452,
+    "coin": 1625,
+    "door": 77,
+    "rat": 13,
+    "chest": 10,
+    "bossIntro": 7,
+    "heal": 327,
+    "slam": 28,
+    "ultCleric": 8,
+    "ratCaught": 4,
+    "ultMage": 2,
+    "meteor": 2,
+    "bossKill": 7,
+    "offer": 7,
+    "relic": 7,
+    "ultKnight": 3,
+    "ultArcher": 2,
+    "retire": 1,
+    "recruit": 3,
+    "deny": 1,
+    "zone": 3
+   },
+   "hitstop": {
+    "s0.035": 4589,
+    "s0.06": 2
+   },
+   "banner": {
+    "SISTER PELL LV #": 8,
+    "SIR CLANK LV #": 6,
+    "WREN LV #": 6,
+    "MORTIMER LV #": 7,
+    "FLOOR #": 7,
+    "MAGMA LORD": 2,
+    "VICTORY!": 7,
+    "THE HOLLOW VOID": 2,
+    "WREN JOINS!": 1,
+    "MORTIMER JOINS!": 1,
+    "THE CRYPT": 1,
+    "THE BONE KING": 1,
+    "SISTER PELL JOINS!": 1,
+    "MOSSY CAVERNS": 1,
+    "BROOD MOTHER": 1,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "EMBER COLOSSUS": 1,
+    "THE HOLLOW": 1,
+    "DEPTH TROPHY": 1
+   },
+   "flashStrong": {
+    "#ffd76a": 31,
+    "#300010": 7,
+    "#ffb347": 2,
+    "#ffffff": 10,
+    "#c472ff": 7,
+    "#5a1aa0": 3
+   },
+   "shake": {
+    "amp2": 41,
+    "amp3.5": 52,
+    "amp4": 7,
+    "amp3": 4
+   },
+   "secs": {
+    "big banner on screen": 121.83333333332898,
+    "shaking": 74.83333333333165,
+    "alert plate on screen (4 Hz blink)": 41.16666666666689,
+    "enrage fuse visible": 153.2333333333272,
+    "boss white flicker (4 Hz)": 14.466666666666626,
+    "any sound started (seconds with >=1)": 3524
+   },
+   "hud": {
+    "gold pulse": 3054
+   },
+   "screen": {
+    "floor fade to black": 77
+   },
+   "minorBanner": {
+    "FLOOR #": 60
+   },
+   "loudSound": {
+    "bossIntro": 7,
+    "slam": 28,
+    "meteor": 2,
+    "bossKill": 7,
+    "ultKnight": 3
+   },
+   "alert": {
+    "LAVA RAIN!": 21,
+    "THE BONE KING REASSEMBLES!": 1,
+    "WEB SHOT!": 1,
+    "WAR CHARGE!": 1,
+    "MAGMA SHELL: AN ULTIMATE CRACKS IT": 2,
+    "VOID SLAM INCOMING": 13
+   },
+   "flashSoft": {
+    "#fff6c9": 8
+   },
+   "slowmo": {
+    "x0.25": 7
+   },
+   "toast": {
+    "relic dropped": 7,
+    "achievement": 2,
+    "hero can be recruited": 1,
+    "depth trophy": 1
+   },
+   "toastPlayer": {
+    "relic acquired": 7,
+    "retire / omen": 1,
+    "recruit": 3
+   },
+   "flashFaint": {
+    "#ffffff": 3
+   }
+  },
+  "3": {
+   "sound": {
+    "hit": 6113,
+    "explode": 1611,
+    "hurt": 3163,
+    "shoot": 4048,
+    "cast": 1803,
+    "crit": 3304,
+    "levelup": 240,
+    "heal": 769,
+    "die": 739,
+    "coin": 2614,
+    "chest": 16,
+    "door": 122,
+    "retire": 2,
+    "ultKnight": 4,
+    "rat": 13,
+    "recruit": 6,
+    "ratCaught": 4,
+    "ultArcher": 3,
+    "bossIntro": 13,
+    "bossKill": 12,
+    "offer": 12,
+    "relic": 12,
+    "milestone": 27,
+    "deny": 1,
+    "slam": 29,
+    "ultCleric": 16,
+    "ultMage": 2,
+    "meteor": 2,
+    "zone": 9,
+    "wipe": 1
+   },
+   "hitstop": {
+    "s0.035": 3394,
+    "s0.06": 2
+   },
+   "hud": {
+    "gold pulse": 5019
+   },
+   "screen": {
+    "floor fade to black": 122
+   },
+   "minorBanner": {
+    "FLOOR #": 95
+   },
+   "toastPlayer": {
+    "retire / omen": 2,
+    "recruit": 6,
+    "relic acquired": 12
+   },
+   "loudSound": {
+    "ultKnight": 4,
+    "bossIntro": 13,
+    "bossKill": 12,
+    "slam": 29,
+    "meteor": 2
+   },
+   "shake": {
+    "amp2": 48,
+    "amp4": 12,
+    "amp3.5": 54,
+    "amp3": 9
+   },
+   "flashFaint": {
+    "#ffffff": 4
+   },
+   "secs": {
+    "shaking": 83.73333333333115,
+    "big banner on screen": 170.3999999999929,
+    "alert plate on screen (4 Hz blink)": 65.73333333333217,
+    "boss white flicker (4 Hz)": 44.36666666666671,
+    "enrage fuse visible": 162.0333333333267,
+    "any sound started (seconds with >=1)": 3462
+   },
+   "toast": {
+    "hero can be recruited": 2,
+    "relic dropped": 12,
+    "achievement": 1,
+    "depth trophy": 1
+   },
+   "banner": {
+    "WREN JOINS!": 2,
+    "SISTER PELL JOINS!": 2,
+    "MORTIMER JOINS!": 2,
+    "FLOOR #": 13,
+    "THE BONE KING": 2,
+    "VICTORY!": 12,
+    "MOSSY CAVERNS": 2,
+    "BROOD MOTHER": 2,
+    "SIR CLANK LV #": 8,
+    "GOBLIN WARLORD": 2,
+    "WREN LV #": 7,
+    "MAGMA DEPTHS": 2,
+    "MORTIMER LV #": 6,
+    "EMBER COLOSSUS": 2,
+    "SISTER PELL LV #": 6,
+    "MAGMA LORD": 2,
+    "THE HOLLOW VOID": 2,
+    "THE HOLLOW": 2,
+    "DEPTH TROPHY": 1,
+    "THE HOLLOWED EMBER COLOSSUS": 1
+   },
+   "flashStrong": {
+    "#ffffff": 18,
+    "#ffd76a": 31,
+    "#300010": 13,
+    "#c472ff": 12,
+    "#ffb347": 2,
+    "#5a1aa0": 9,
+    "#5a0010": 1
+   },
+   "alert": {
+    "THE BONE KING REASSEMBLES!": 2,
+    "WEB SHOT!": 2,
+    "WAR CHARGE!": 1,
+    "MAGMA SHELL: AN ULTIMATE CRACKS IT": 17,
+    "LAVA RAIN!": 5,
+    "VOID SLAM INCOMING": 27,
+    "ENRAGED! RETREAT. IT KEEPS ITS WOUNDS (#%)": 1
+   },
+   "slowmo": {
+    "x0.25": 12
+   },
+   "flashSoft": {
+    "#fff6c9": 16
+   }
+  },
+  "4": {
+   "hitstop": {
+    "s0.035": 4471,
+    "s0.06": 5
+   },
+   "sound": {
+    "crit": 4330,
+    "explode": 2082,
+    "hurt": 3581,
+    "cast": 2214,
+    "shoot": 4813,
+    "hit": 7860,
+    "die": 518,
+    "coin": 2147,
+    "levelup": 217,
+    "heal": 550,
+    "door": 88,
+    "rat": 15,
+    "ratCaught": 9,
+    "ultKnight": 6,
+    "ultArcher": 5,
+    "milestone": 18,
+    "ultMage": 5,
+    "meteor": 5,
+    "chest": 62,
+    "bossIntro": 9,
+    "zone": 12,
+    "slam": 42,
+    "ultCleric": 16,
+    "bossKill": 8,
+    "offer": 8,
+    "relic": 8,
+    "retire": 1,
+    "recruit": 3,
+    "deny": 17
+   },
+   "hud": {
+    "gold pulse": 4401
+   },
+   "screen": {
+    "floor fade to black": 88
+   },
+   "minorBanner": {
+    "FLOOR #": 67
+   },
+   "flashStrong": {
+    "#ffd76a": 27,
+    "#ffb347": 5,
+    "#300010": 9,
+    "#5a1aa0": 12,
+    "#ffffff": 11,
+    "#c472ff": 8
+   },
+   "shake": {
+    "amp2": 42,
+    "amp3.5": 70,
+    "amp3": 29,
+    "amp4": 8
+   },
+   "secs": {
+    "shaking": 94.23333333333055,
+    "big banner on screen": 114.69999999999605,
+    "alert plate on screen (4 Hz blink)": 77.89999999999814,
+    "boss white flicker (4 Hz)": 68.0999999999987,
+    "enrage fuse visible": 258.19999999998976,
+    "any sound started (seconds with >=1)": 3516
+   },
+   "loudSound": {
+    "ultKnight": 6,
+    "meteor": 5,
+    "bossIntro": 9,
+    "slam": 42,
+    "bossKill": 8
+   },
+   "flashFaint": {
+    "#ffffff": 6
+   },
+   "banner": {
+    "WREN LV #": 5,
+    "FLOOR #": 9,
+    "THE HOLLOWED RAT KING": 1,
+    "VICTORY!": 8,
+    "MORTIMER LV #": 5,
+    "DEPTH TROPHY": 2,
+    "WREN JOINS!": 1,
+    "SISTER PELL JOINS!": 1,
+    "MORTIMER JOINS!": 1,
+    "THE BONE KING": 1,
+    "MOSSY CAVERNS": 1,
+    "SIR CLANK LV #": 4,
+    "BROOD MOTHER": 1,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "SISTER PELL LV #": 4,
+    "EMBER COLOSSUS": 1,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1,
+    "THE HOLLOW": 1,
+    "THE HOLLOWED BROOD MOTHER": 1,
+    "THE HOLLOWED GOBLIN WARLORD": 1
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 3,
+    "VOID SLAM INCOMING": 37,
+    "THE BONE KING REASSEMBLES!": 1,
+    "WEB SHOT!": 14,
+    "MAGMA SHELL: AN ULTIMATE CRACKS IT": 1,
+    "LAVA RAIN!": 1,
+    "WAR CHARGE!": 17
+   },
+   "flashSoft": {
+    "#fff6c9": 16
+   },
+   "slowmo": {
+    "x0.25": 8
+   },
+   "toast": {
+    "relic dropped": 8,
+    "achievement": 2,
+    "depth trophy": 2,
+    "hero can be recruited": 1
+   },
+   "toastPlayer": {
+    "relic acquired": 8,
+    "retire / omen": 1,
+    "recruit": 3
+   }
+  },
+  "5": {
+   "secs": {
+    "boss white flicker (4 Hz)": 66.49999999999879,
+    "enrage fuse visible": 214.46666666665706,
+    "shaking": 94.33333333333054,
+    "alert plate on screen (4 Hz blink)": 99.83333333333023,
+    "big banner on screen": 114.4333333333294,
+    "any sound started (seconds with >=1)": 3506
+   },
+   "hitstop": {
+    "s0.035": 5753,
+    "s0.06": 5
+   },
+   "sound": {
+    "crit": 5445,
+    "explode": 2735,
+    "hit": 9584,
+    "shoot": 6220,
+    "cast": 2800,
+    "hurt": 3713,
+    "slam": 36,
+    "rat": 15,
+    "heal": 891,
+    "deny": 3,
+    "ultCleric": 17,
+    "ratCaught": 7,
+    "ultArcher": 6,
+    "wipe": 2,
+    "coin": 1862,
+    "die": 501,
+    "levelup": 224,
+    "door": 83,
+    "bossIntro": 10,
+    "zone": 13,
+    "retire": 2,
+    "ultKnight": 6,
+    "recruit": 3,
+    "chest": 17,
+    "bossKill": 8,
+    "offer": 8,
+    "relic": 8,
+    "milestone": 17,
+    "ultMage": 5,
+    "meteor": 5
+   },
+   "shake": {
+    "amp3.5": 67,
+    "amp3": 16,
+    "amp2": 40,
+    "amp4": 8
+   },
+   "loudSound": {
+    "slam": 36,
+    "bossIntro": 10,
+    "ultKnight": 6,
+    "bossKill": 8,
+    "meteor": 5
+   },
+   "alert": {
+    "WAR CHARGE!": 3,
+    "VOID SLAM INCOMING": 37,
+    "ENRAGED! RETREAT. IT KEEPS ITS WOUNDS (#%)": 2,
+    "THE BONE KING REASSEMBLES!": 1,
+    "WEB SHOT!": 1,
+    "MAGMA SHELL: AN ULTIMATE CRACKS IT": 10,
+    "LAVA RAIN!": 36
+   },
+   "flashSoft": {
+    "#fff6c9": 17
+   },
+   "flashStrong": {
+    "#ffd76a": 24,
+    "#5a0010": 2,
+    "#300010": 10,
+    "#5a1aa0": 13,
+    "#ffffff": 11,
+    "#c472ff": 8,
+    "#ffb347": 5
+   },
+   "hud": {
+    "gold pulse": 3596
+   },
+   "screen": {
+    "floor fade to black": 83
+   },
+   "banner": {
+    "FLOOR #": 10,
+    "THE HOLLOWED GOBLIN WARLORD": 1,
+    "WREN JOINS!": 1,
+    "SISTER PELL JOINS!": 1,
+    "MORTIMER JOINS!": 1,
+    "THE BONE KING": 1,
+    "VICTORY!": 8,
+    "MOSSY CAVERNS": 1,
+    "SIR CLANK LV #": 5,
+    "BROOD MOTHER": 1,
+    "WREN LV #": 4,
+    "GOBLIN WARLORD": 1,
+    "MAGMA DEPTHS": 1,
+    "MORTIMER LV #": 4,
+    "EMBER COLOSSUS": 1,
+    "SISTER PELL LV #": 4,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1,
+    "THE HOLLOW": 1,
+    "THE HOLLOWED EMBER COLOSSUS": 1,
+    "THE HOLLOWED MAGMA LORD": 2,
+    "DEPTH TROPHY": 1
+   },
+   "toastPlayer": {
+    "retire / omen": 2,
+    "recruit": 3,
+    "relic acquired": 8
+   },
+   "flashFaint": {
+    "#ffffff": 6
+   },
+   "minorBanner": {
+    "FLOOR #": 63
+   },
+   "toast": {
+    "hero can be recruited": 1,
+    "relic dropped": 8,
+    "codex rank": 1,
+    "depth trophy": 1
+   },
+   "slowmo": {
+    "x0.25": 8
+   }
+  },
+  "6": {
+   "sound": {
+    "hurt": 3030,
+    "crit": 4274,
+    "die": 741,
+    "coin": 2989,
+    "hit": 5456,
+    "door": 125,
+    "recruit": 6,
+    "ratCaught": 5,
+    "shoot": 4083,
+    "cast": 1828,
+    "ultKnight": 5,
+    "ultArcher": 3,
+    "bossIntro": 13,
+    "heal": 706,
+    "bossKill": 12,
+    "levelup": 321,
+    "offer": 12,
+    "relic": 12,
+    "milestone": 26,
+    "chest": 74,
+    "rat": 13,
+    "explode": 1593,
+    "zone": 10,
+    "slam": 29,
+    "ultCleric": 14,
+    "ultMage": 2,
+    "meteor": 2,
+    "wipe": 1,
+    "retire": 1
+   },
+   "hitstop": {
+    "s0.035": 4478,
+    "s0.06": 2
+   },
+   "hud": {
+    "gold pulse": 5901
+   },
+   "screen": {
+    "floor fade to black": 125
+   },
+   "minorBanner": {
+    "FLOOR #": 98
+   },
+   "banner": {
+    "WREN JOINS!": 2,
+    "MORTIMER JOINS!": 2,
+    "FLOOR #": 13,
+    "THE BONE KING": 2,
+    "VICTORY!": 12,
+    "MOSSY CAVERNS": 2,
+    "SISTER PELL JOINS!": 2,
+    "SIR CLANK LV #": 7,
+    "BROOD MOTHER": 2,
+    "WREN LV #": 7,
+    "MORTIMER LV #": 6,
+    "GOBLIN WARLORD": 2,
+    "MAGMA DEPTHS": 2,
+    "SISTER PELL LV #": 6,
+    "EMBER COLOSSUS": 2,
+    "MAGMA LORD": 1,
+    "THE HOLLOW VOID": 1,
+    "THE HOLLOW": 1,
+    "THE HOLLOWED RAT KING": 1,
+    "THE HOLLOWED BONE KING": 1,
+    "HEART OF THE KEEP": 1,
+    "THE HEART OF THE KEEP": 1
+   },
+   "flashStrong": {
+    "#ffffff": 18,
+    "#ffd76a": 31,
+    "#300010": 13,
+    "#c472ff": 12,
+    "#5a1aa0": 10,
+    "#ffb347": 2,
+    "#5a0010": 1
+   },
+   "toastPlayer": {
+    "recruit": 6,
+    "relic acquired": 12,
+    "retire / omen": 1
+   },
+   "shake": {
+    "amp2": 49,
+    "amp4": 12,
+    "amp3": 10,
+    "amp3.5": 54
+   },
+   "secs": {
+    "shaking": 90.3666666666641,
+    "big banner on screen": 167.83333333332638,
+    "alert plate on screen (4 Hz blink)": 49.03333333333311,
+    "boss white flicker (4 Hz)": 48.399999999999814,
+    "enrage fuse visible": 201.6666666666578,
+    "any sound started (seconds with >=1)": 3481
+   },
+   "loudSound": {
+    "ultKnight": 5,
+    "bossIntro": 13,
+    "bossKill": 12,
+    "slam": 29,
+    "meteor": 2
+   },
+   "flashFaint": {
+    "#ffffff": 5
+   },
+   "toast": {
+    "hero can be recruited": 2,
+    "relic dropped": 12,
+    "achievement": 2
+   },
+   "alert": {
+    "THE BONE KING REASSEMBLES!": 2,
+    "WEB SHOT!": 2,
+    "MAGMA SHELL: AN ULTIMATE CRACKS IT": 2,
+    "LAVA RAIN!": 1,
+    "VOID SLAM INCOMING": 31,
+    "SQUEAK! THE RAT KING SUMMONS": 3,
+    "THE HOLLOWED BONE KING REASSEMBLES!": 1,
+    "ENRAGED! RETREAT. IT KEEPS ITS WOUNDS (#%)": 1
+   },
+   "slowmo": {
+    "x0.25": 12
+   },
+   "flashSoft": {
+    "#fff6c9": 14
+   }
+  },
+  "7": {
+   "sound": {
+    "cast": 2643,
+    "crit": 5152,
+    "die": 280,
+    "shoot": 5674,
+    "coin": 1037,
+    "hit": 9176,
+    "levelup": 162,
+    "door": 45,
+    "hurt": 4394,
+    "explode": 2558,
+    "bossIntro": 6,
+    "heal": 1097,
+    "bossKill": 4,
+    "offer": 4,
+    "chest": 6,
+    "relic": 4,
+    "milestone": 6,
+    "zone": 13,
+    "slam": 44,
+    "ultCleric": 19,
+    "rat": 14,
+    "ratCaught": 4,
+    "ultArcher": 4,
+    "ultMage": 2,
+    "meteor": 2,
+    "deny": 12,
+    "ultKnight": 3,
+    "wipe": 2
+   },
+   "hitstop": {
+    "s0.035": 5351,
+    "s0.06": 2
+   },
+   "hud": {
+    "gold pulse": 1976
+   },
+   "screen": {
+    "floor fade to black": 45
+   },
+   "minorBanner": {
+    "FLOOR #": 33
+   },
+   "banner": {
+    "FLOOR #": 7,
+    "MAGMA LORD": 1,
+    "VICTORY!": 4,
+    "THE HOLLOW VOID": 1,
+    "SIR CLANK LV #": 2,
+    "THE HOLLOW": 1,
+    "WREN LV #": 2,
+    "MORTIMER LV #": 1,
+    "THE HOLLOWED BROOD MOTHER": 1,
+    "SISTER PELL LV #": 1,
+    "THE HOLLOWED GOBLIN WARLORD": 1,
+    "THE HEART OF THE KEEP": 2,
+    "RETREAT!": 1
+   },
+   "secs": {
+    "big banner on screen": 57.899999999999274,
+    "shaking": 85.93333333333102,
+    "alert plate on screen (4 Hz blink)": 64.36666666666558,
+    "boss white flicker (4 Hz)": 81.53333333333127,
+    "enrage fuse visible": 296.23333333335336,
+    "any sound started (seconds with >=1)": 3566
+   },
+   "shake": {
+    "amp2": 19,
+    "amp4": 4,
+    "amp3": 24,
+    "amp3.5": 75
+   },
+   "flashStrong": {
+    "#300010": 6,
+    "#ffffff": 4,
+    "#c472ff": 4,
+    "#ffd76a": 10,
+    "#5a1aa0": 12,
+    "#ffb347": 2,
+    "#5a0010": 2
+   },
+   "loudSound": {
+    "bossIntro": 6,
+    "bossKill": 4,
+    "slam": 44,
+    "meteor": 2,
+    "ultKnight": 3
+   },
+   "alert": {
+    "LAVA RAIN!": 1,
+    "VOID SLAM INCOMING": 42,
+    "WEB SHOT!": 4,
+    "WAR CHARGE!": 12,
+    "ENRAGED! RETREAT. IT KEEPS ITS WOUNDS (#%)": 1
+   },
+   "slowmo": {
+    "x0.25": 4
+   },
+   "toast": {
+    "relic dropped": 4,
+    "achievement": 1
+   },
+   "toastPlayer": {
+    "relic acquired": 4
+   },
+   "flashSoft": {
+    "#fff6c9": 19
+   },
+   "flashFaint": {
+    "#ffffff": 3
+   }
+  }
+ },
+ "final": {
+  "floor": 100,
+  "maxFloorEver": 100,
+  "retires": 10,
+  "bossKills": 66,
+  "wipes": 10
+ }
+}

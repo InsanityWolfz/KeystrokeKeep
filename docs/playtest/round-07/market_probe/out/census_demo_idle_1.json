@@ -1,0 +1,251 @@
+{
+ "args": "--min 120 --profile idle --seed 1 --retire nudge --omen random --demo --out docs/playtest/round-07/market_probe/out/census_demo_idle_1.json",
+ "calm": false,
+ "simHours": 2,
+ "perHour": {
+  "0": {
+   "sound": {
+    "hit": 5924,
+    "hurt": 2978,
+    "die": 398,
+    "coin": 890,
+    "door": 66,
+    "levelup": 57,
+    "crit": 505,
+    "chest": 10,
+    "rat": 13,
+    "ratCaught": 6,
+    "ultKnight": 7,
+    "recruit": 5,
+    "milestone": 12,
+    "shoot": 3353,
+    "bossIntro": 8,
+    "slam": 27,
+    "bossKill": 4,
+    "offer": 4,
+    "relic": 4,
+    "wipe": 6,
+    "ultArcher": 4,
+    "heal": 791,
+    "cast": 975,
+    "explode": 949,
+    "ultMage": 1,
+    "meteor": 1,
+    "ultCleric": 7,
+    "retire": 1
+   },
+   "hud": {
+    "gold pulse": 1370
+   },
+   "screen": {
+    "floor fade to black": 66
+   },
+   "minorBanner": {
+    "FLOOR #": 55
+   },
+   "toast": {
+    "hero can be recruited": 6,
+    "tutorial: rat": 1,
+    "tutorial: first ult": 1,
+    "achievement": 3,
+    "relic dropped": 4,
+    "tutorial: retire": 1
+   },
+   "hitstop": {
+    "s0.035": 508,
+    "s0.06": 1
+   },
+   "flashStrong": {
+    "#ffd76a": 18,
+    "#ffffff": 9,
+    "#300010": 8,
+    "#c472ff": 4,
+    "#5a0010": 6,
+    "#ffb347": 1
+   },
+   "shake": {
+    "amp2": 33,
+    "amp3.5": 53,
+    "amp4": 4
+   },
+   "loudSound": {
+    "ultKnight": 7,
+    "bossIntro": 8,
+    "slam": 27,
+    "bossKill": 4,
+    "meteor": 1
+   },
+   "secs": {
+    "shaking": 40.100000000000286,
+    "big banner on screen": 104.26666666666331,
+    "alert plate on screen (4 Hz blink)": 34.46666666666727,
+    "enrage fuse visible": 46.93333333333323,
+    "any sound started (seconds with >=1)": 3361
+   },
+   "flashFaint": {
+    "#ffffff": 7
+   },
+   "banner": {
+    "WREN JOINS!": 2,
+    "SIR CLANK LV #": 6,
+    "FLOOR #": 9,
+    "THE RAT KING": 2,
+    "VICTORY!": 4,
+    "RETREAT!": 6,
+    "WREN LV #": 4,
+    "THE BONE KING": 4,
+    "MOSSY CAVERNS": 2,
+    "MORTIMER JOINS!": 2,
+    "MORTIMER LV #": 2,
+    "SISTER PELL JOINS!": 1,
+    "BROOD MOTHER": 2
+   },
+   "toastPlayer": {
+    "recruit": 5,
+    "relic acquired": 4,
+    "retire / omen": 1
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 6,
+    "THE BONE KING REASSEMBLES!": 2,
+    "RETREAT": 2,
+    "WEB SHOT!": 22
+   },
+   "slowmo": {
+    "x0.25": 4
+   },
+   "flashSoft": {
+    "#fff6c9": 7
+   }
+  },
+  "1": {
+   "sound": {
+    "hit": 5325,
+    "hurt": 1540,
+    "shoot": 3174,
+    "cast": 1306,
+    "die": 936,
+    "crit": 1170,
+    "coin": 2832,
+    "levelup": 246,
+    "explode": 1083,
+    "door": 161,
+    "rat": 14,
+    "chest": 30,
+    "milestone": 54,
+    "wipe": 1,
+    "recruit": 13,
+    "heal": 291,
+    "bossIntro": 18,
+    "slam": 33,
+    "ultCleric": 15,
+    "bossKill": 17,
+    "offer": 17,
+    "relic": 13,
+    "ratCaught": 6,
+    "ultMage": 4,
+    "meteor": 4,
+    "ultKnight": 6,
+    "ultArcher": 4,
+    "deny": 23,
+    "retire": 4
+   },
+   "hitstop": {
+    "s0.035": 1181,
+    "s0.06": 4
+   },
+   "hud": {
+    "gold pulse": 4982
+   },
+   "screen": {
+    "floor fade to black": 161
+   },
+   "minorBanner": {
+    "FLOOR #": 132
+   },
+   "banner": {
+    "SIR CLANK LV #": 21,
+    "WREN LV #": 16,
+    "RETREAT!": 1,
+    "SISTER PELL JOINS!": 5,
+    "MORTIMER LV #": 12,
+    "FLOOR #": 18,
+    "BROOD MOTHER": 5,
+    "VICTORY!": 17,
+    "SISTER PELL LV #": 5,
+    "GOBLIN WARLORD": 5,
+    "THE CRYPT": 1,
+    "WREN JOINS!": 4,
+    "THE RAT KING": 4,
+    "MORTIMER JOINS!": 4,
+    "THE BONE KING": 4,
+    "MOSSY CAVERNS": 4
+   },
+   "flashStrong": {
+    "#ffd76a": 60,
+    "#5a0010": 1,
+    "#ffffff": 30,
+    "#300010": 18,
+    "#c472ff": 13,
+    "#ffb347": 4
+   },
+   "shake": {
+    "amp2": 84,
+    "amp3.5": 45,
+    "amp4": 17,
+    "amp3": 23
+   },
+   "secs": {
+    "big banner on screen": 273.133333333335,
+    "shaking": 89.09999999999751,
+    "alert plate on screen (4 Hz blink)": 58.76666666666589,
+    "enrage fuse visible": 36.43333333333383,
+    "boss white flicker (4 Hz)": 23.766666666667007,
+    "any sound started (seconds with >=1)": 3229
+   },
+   "toastPlayer": {
+    "recruit": 13,
+    "relic acquired": 13,
+    "retire / omen": 4
+   },
+   "loudSound": {
+    "bossIntro": 18,
+    "slam": 33,
+    "bossKill": 17,
+    "meteor": 4,
+    "ultKnight": 6
+   },
+   "alert": {
+    "WEB SHOT!": 19,
+    "WAR CHARGE!": 23,
+    "SQUEAK! THE RAT KING SUMMONS": 9,
+    "THE BONE KING REASSEMBLES!": 4
+   },
+   "flashSoft": {
+    "#fff6c9": 15
+   },
+   "slowmo": {
+    "x0.25": 17
+   },
+   "toast": {
+    "relic dropped": 17,
+    "achievement": 1,
+    "hero can be recruited": 9,
+    "demo sealed (re-delve)": 3
+   },
+   "flashFaint": {
+    "#ffffff": 6
+   },
+   "modal": {
+    "demo complete": 1
+   }
+  }
+ },
+ "final": {
+  "floor": 40,
+  "maxFloorEver": 40,
+  "retires": 5,
+  "bossKills": 21,
+  "wipes": 9
+ }
+}

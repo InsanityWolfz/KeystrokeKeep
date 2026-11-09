@@ -44,8 +44,8 @@
     // wave pips
     UI.renderPips();
     KK.on('wave', UI.renderPips); KK.on('floor', UI.renderPips); KK.on('recovered', UI.renderPips); KK.on('floorClear', UI.renderPips);
-    KK.on('coinArrive', () => pulse('#hud-gold'));
-    KK.on('relicOffer', () => setTimeout(() => UI.toast('The boss dropped a relic! Choose it in ◆ Relics when you have a moment.', 'gem', 'epic', 6), 1400));
+    KK.on('coinArrive', () => { if (performance.now() - (UI.lastPulse || 0) > 2000) { UI.lastPulse = performance.now(); pulse('#hud-gold'); } });
+    KK.on('relicOffer', () => { const S = KK.S; if ((S.relicQueue || []).length) return; if (performance.now() - (UI.lastRelicToast || -1e9) < 900000) return; UI.lastRelicToast = performance.now(); setTimeout(() => UI.toast('The boss dropped a relic! Choose it in ◆ Relics when you have a moment.', 'gem', 'epic', 6), 1400); });
     KK.on('dirty', () => { UI.dirty = true; });
     KK.on('retired', () => { UI.dirty = true; UI.close(); });
     setInterval(UI.slowUpdate, 250);
@@ -89,9 +89,10 @@
     const pill = $('#hud-demo');
     if (pill) {
       const om = S.omen && D.OMENS.find((o) => o.id === S.omen);
-      setText(pill, KK.DEMO_CAP ? 'DEMO · ENDS AT FLOOR 40' + (S.demoLaps ? ` · BEST ${U.fmtTime(S.bestCapTime)} · ${S.demoLaps} CLEAR${S.demoLaps > 1 ? 'S' : ''}` : '') : om ? '◆ ' + om.name.toUpperCase() : '');
+      const starOn = om && S.omen === S.omenStar && A.dailyOpen();
+      setText(pill, KK.DEMO_CAP ? 'DEMO · ENDS AT FLOOR 40' + (S.demoLaps ? ` · BEST ${U.fmtTime(S.bestCapTime)} · ${S.demoLaps} CLEAR${S.demoLaps > 1 ? 'S' : ''}` : '') : om ? (starOn ? '★ ' : '◆ ') + om.name.toUpperCase() + (starOn ? ` · ★ FLOOR ${A.sealFloor()}` : '') : '');
       pill.classList.toggle('hidden', (!KK.DEMO_CAP && !om) || KK.fx.banners.length > 0);
-      pill.title = om ? om.desc : '';
+      pill.title = om ? om.desc + (starOn ? ` Omen of the Day: reach floor ${A.sealFloor()} for +10 Renown.` : '') : '';
       pill.classList.toggle('omen', !KK.DEMO_CAP);
     }
     setText('#np-count', fmt(S.stats.keys) + ' keystrokes · ' + U.fmtTime(S.stats.flowTime) + ' in FLOW');
@@ -254,7 +255,7 @@
     const S = KK.S;
     return `<div class="ph"><div><h3>WORKSHOP</h3><div class="sub"><b style="color:#ffb070">Embers</b> come from Sparks spent on ultimates (1 per 4), from bosses and from golden rats. They buy upgrades that <b style="color:var(--spark)">never reset</b>.</div></div>
       <div class="res-pill">${icon('candle')} <span id="ws-embers">${fmt(Math.floor(S.embers || 0))}</span> EMBERS</div></div>
-      <div class="grid">${D.WORKSHOP.map((d) => upCard(d, S.workshop[d.id] || 0, 'embers', 'workshop')).join('')}</div>`;
+      <div class="grid">${D.WORKSHOP.filter((d) => !d.minFloor || S.maxFloorEver >= d.minFloor).map((d) => upCard(d, S.workshop[d.id] || 0, 'embers', 'workshop')).join('')}</div>`;
   }
   function relicCard(id, count) {
     const r = D.RELICS.find((x) => x.id === id);
@@ -284,7 +285,7 @@
         <p>Deepest floor this delve: <b>${S.maxFloorRun}</b> · Renown: <b style="color:#e9a2ff">${S.renown}</b> (lifetime ${S.renownLifetime}, Fame x${fmt(S.renownLifetime ? KK.mods().fame : 1)} dmg &amp; gold${KK.mods().trophies ? `, ${KK.mods().trophies} depth troph${KK.mods().trophies > 1 ? 'ies' : 'y'}` : ''}${KK.mods().codexRanks ? `, Hollow Codex ${KK.mods().codexRanks}/28` : ''})${S.omen ? `<br>Omen this delve: <b style="color:#ffd76a">${D.OMENS.find((o) => o.id === S.omen).name}</b>` : ''}</p>
         <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
           <div><div class="gain" id="retire-gain">+${gain}</div><div class="worth" id="retire-worth">${renownWorth()}</div></div>
-          <button class="buy renown big" data-action="retire" ${A.canRetire() ? '' : 'disabled'} style="flex:1">${gain > 0 ? 'RETIRE FOR RENOWN' : A.canRetire() ? 'RE-DELVE (NEW RUN, NEW RELICS)' : A.retireHint()}</button>
+          <button class="buy renown big" data-action="retire" ${A.canRetire() ? '' : 'disabled'} style="flex:1">${gain > 0 ? 'RETIRE FOR RENOWN' : A.canRetire() ? (KK.DEMO_CAP ? 'RE-DELVE (NEW RUN, NEW RELICS)' : '★ FREE DAILY RE-DELVE (OMEN OF THE DAY)') : A.retireHint()}</button>
         </div>
       </div>
       <div class="statbox">
@@ -293,17 +294,34 @@
         ${statRow('Ultimates cast', fmt(st.ults))}${statRow('Time in FLOW', U.fmtTime(st.flowTime))}
         ${statRow('Gold earned', fmt(st.goldEarned))}${statRow('Golden rats', fmt(st.rats))}
         ${statRow('Deepest floor ever', S.maxFloorEver)}${statRow('Retirements', S.retires)}
+        ${statRow('Chests opened', fmt(st.chests))}${statRow('Retreats', fmt(st.wipes))}
+        ${KK.DEMO_CAP ? '' : statRow('Seals of the Day', S.seals || 0)}
       </div></div>
+      ${codexHTML()}
       ${achHTML()}
       <div class="ph"><div><h3>HALL OF LEGENDS</h3><div class="sub">Permanent upgrades bought with Renown.</div></div><div class="res-pill renown" id="legacy-renown">♛ ${S.renown}</div></div>
       <div class="grid">${D.LEGACY.map((d) => upCard(d, S.legacy[d.id] || 0, 'renown', 'legacy')).join('')}</div>`;
   }
+  function codexHTML() {
+    const S = KK.S, m = KK.mods();
+    const kills = S.codexKills || 0, rank = m.codexRanks || 0;
+    let body;
+    if (KK.DEMO_CAP) body = '<span class="muted">Full game: every 8 Hollowed boss kills below floor 70 adds a permanent x1.03 rank (28 ranks).</span>';
+    else if (S.maxFloorEver < 70) body = '<span class="muted">Locked: reach floor 70 to start the Hollow Codex.</span>';
+    else {
+      const pips = Array.from({ length: D.CODEX_MAX }, (_, i) => `<i class="${i < rank ? 'on' : ''}"></i>`).join('');
+      const next = rank >= D.CODEX_MAX ? 'Complete!' : `next rank in ${D.CODEX_EVERY - (kills % D.CODEX_EVERY)} Hollowed kills`;
+      body = `<b>Rank ${rank}/${D.CODEX_MAX}</b> · x${Math.pow(1.03, rank).toFixed(2)} damage &amp; gold · ${next}<div class="pips">${pips}</div>`;
+    }
+    return `<div class="codexbox"><h4>HOLLOW CODEX</h4>${body}</div>`;
+  }
   function achHTML() {
     if (!KK.ach) return '';
     const S = KK.S, got = S.ach || {};
-    const list = KK.ach.LIST.filter((a) => !KK.DEMO_CAP || a.demo);
+    const list = KK.DEMO_CAP ? KK.ach.LIST.filter((a) => a.demo) : KK.ach.LIST;
+    const locked = KK.DEMO_CAP ? KK.ach.LIST.filter((a) => !a.demo) : [];
     const n = list.filter((a) => got[a.id]).length;
-    return `<details class="achbox" ${UI.achOpen ? 'open' : ''}><summary>🏆 ACHIEVEMENTS ${n}/${list.length}${KK.DEMO_CAP ? ' (demo set: they unlock on Steam in the full game)' : ''}</summary><div class="achlist">${list.map((a) => `<div class="ach ${got[a.id] ? 'got' : ''}"><b>${a.name}</b><span>${a.desc}</span></div>`).join('')}</div></details>`;
+    return `<details class="achbox" ${UI.achOpen ? 'open' : ''}><summary>🏆 ACHIEVEMENTS ${n}/${list.length}${KK.DEMO_CAP ? ` (+${locked.length} more in the full game)` : ''}</summary><div class="achlist">${list.map((a) => `<div class="ach ${got[a.id] ? 'got' : ''}"><b>${a.name}</b><span>${a.desc}</span></div>`).join('')}${locked.map((a) => `<div class="ach locked"><b>${a.name} <i class="new">FULL GAME</i></b><span>${a.desc}</span></div>`).join('')}</div></details>`;
   }
   /** "+X% damage & gold" that the pending Renown would add (Fame), for the retire button. */
   function renownWorth() {
@@ -320,8 +338,9 @@
       <div class="setrow"><span>Sound effects</span><div class="opts">${opt('sound', true, 'ON')}${opt('sound', false, 'OFF')}</div></div>
       <div class="setrow"><span>Music</span><div class="opts">${opt('music', true, 'ON')}${opt('music', false, 'OFF')}</div></div>
       <div class="setrow"><span>Volume</span><input type="range" min="0" max="1" step="0.05" value="${s.volume}" data-action="vol"></div>
+      <div class="setrow"><span>Combat sounds<br><small style="color:var(--muted)">Hits, coins and spells. Big moments always play.</small></span><div class="opts">${opt('combatSfx', true, 'ON')}${opt('combatSfx', false, 'OFF')}</div></div>
       <div class="setrow"><span>Keystroke blips</span><div class="opts">${opt('keySound', true, 'ON')}${opt('keySound', false, 'OFF')}</div></div>
-      <div class="setrow"><span>Calm mode<br><small style="color:var(--muted)">No screen shake, flashes or slow-mo.</small></span><div class="opts">${opt('calm', true, 'ON')}${opt('calm', false, 'OFF')}</div></div>
+      <div class="setrow"><span>Calm mode<br><small style="color:var(--muted)">No screen shake, flashes or slow-mo. Turn OFF for full juice.</small></span><div class="opts">${opt('calm', true, 'ON')}${opt('calm', false, 'OFF (FULL JUICE)')}</div></div>
       <div class="setrow"><span>Frame rate<br><small style="color:var(--muted)">Lower = less GPU &amp; battery. Drops further when idle.</small></span><div class="opts">${opt('fps', 15, '15')}${opt('fps', 24, '24')}${opt('fps', 30, '30')}${opt('fps', 60, '60')}</div></div>
       ${KK.native ? `<div class="setrow"><span>Low-GPU mode<br><small style="color:var(--muted)">~0% GPU but about twice the CPU. AUTO = on for desktops, off on laptops. Applies after a restart.</small></span><div class="opts">${opt('lowGpu', 'auto', 'AUTO')}${opt('lowGpu', true, 'ON')}${opt('lowGpu', false, 'OFF')}</div></div>` : ''}
       <div class="setrow"><span>Strip size</span><div class="opts">${opt('size', 'auto', 'AUTO')}${opt('size', 'S', 'S')}${opt('size', 'M', 'M')}${opt('size', 'L', 'L')}</div></div>
@@ -472,7 +491,8 @@
       const o = D.OMENS.find((x) => x.id === id);
       const [up, down] = o.desc.split(/, but /i);
       const seen = ((S.achP && S.achP.omens) || []).includes(id);
-      return `<button class="omen" data-omen="${id}"><img src="${KK.SPR.iconURL[o.icon]}" alt=""><b>${o.name}${seen ? '' : ' <i class="new">NEW</i>'}</b><span class="up">▲ ${up.replace(/\.$/, '')}</span>${down ? `<span class="down">▼ ${down.replace(/\.$/, '')}</span>` : ''}</button>`;
+      const star = id === S.omenStar ? `<i class="new star">★ OMEN OF THE DAY: FLOOR ${A.sealFloor()} = +10 RENOWN</i>` : '';
+      return `<button class="omen" data-omen="${id}"><img src="${KK.SPR.iconURL[o.icon]}" alt=""><b>${o.name}${seen ? '' : ' <i class="new">NEW</i>'}</b>${star}<span class="up">▲ ${up.replace(/\.$/, '')}</span>${down ? `<span class="down">▼ ${down.replace(/\.$/, '')}</span>` : ''}</button>`;
     };
     UI.modal(`<h2>CHOOSE AN OMEN</h2>
       <p style="font-size:13px">Every new delve can carry one omen: a twist that lasts until you retire. (The dungeon waits while you choose.)</p>
@@ -520,7 +540,7 @@
     UI.modal(`<h2>DEMO COMPLETE!</h2>
       <p>Your party conquered the Mossy Caverns in <b>${U.fmtTime(S.bestCapTime || st.playTime)}</b>.</p>
       <div class="demo-stats">${stat('keystrokes', fmt(st.keys))}${stat('ultimates', fmt(st.ults))}${stat('bosses', fmt(st.bossKills))}${stat('in FLOW', U.fmtTime(st.flowTime))}</div>
-      <p><b style="color:#ff7a2e">The Magma Depths</b> and <b style="color:#c472ff">The Hollow Void</b>, 3 more bosses, Delve Omens, the Hollow Codex, depth trophies and 36 achievements wait in the full game. Your save carries over.</p>
+      <p><b style="color:#ff7a2e">The Magma Depths</b> and <b style="color:#c472ff">The Hollow Void</b>, 3 new bosses, 6 Hollowed returns, the Heart of the Keep, 60+ more floors, Delve Omens, the Hollow Codex and ${KK.ach ? KK.ach.LIST.length : 39} achievements wait in the full game. Your save carries over.</p>
       <p style="font-size:12px;color:var(--muted)">Keep the strip running: every re-delve rerolls your relics, a fresh clear of floor 40 pays +6 Renown, and your best time is your score.</p>
       <div class="row"><button class="buy big" data-x="wish">♥ WISHLIST</button><button class="buy" data-x="ok" style="background:#3a2f4f;color:#fff;box-shadow:none">KEEP DELVING</button></div>`,
     (m, close) => {
@@ -529,11 +549,20 @@
       m.querySelector('[data-x=wish]').onclick = () => { UI.openStore(); done(); };
     });
   }, 2500));
-  KK.on('achievement', ({ def }) => { if (def && (!KK.DEMO_CAP || def.demo)) UI.toast(`🏆 Achievement: ${def.name}`, 'crown', 'gold', 5); UI.dirty = true; });
+  // achievements unlocked together share one toast
+  let achBatch = [], achTimer = null;
+  KK.on('achievement', ({ def }) => {
+    UI.dirty = true;
+    if (!def || (KK.DEMO_CAP && !def.demo)) return;
+    achBatch.push(def.name);
+    clearTimeout(achTimer);
+    achTimer = setTimeout(() => { UI.toast(`🏆 Achievement${achBatch.length > 1 ? 's' : ''}: ${achBatch.join(', ')}`, 'crown', 'gold', 5); achBatch = []; }, 600);
+  });
   KK.on('trophy', ({ floor, n }) => { if (floor !== 100) UI.toast(`Depth trophy for floor ${floor}: x1.05 damage & gold forever (${n} total).`, 'crown', 'gold', 6); });
   KK.on('omenPicked', () => { UI.dirty = true; });
-  KK.on('codex', ({ rank }) => UI.toast(`Hollow Codex rank ${rank}/${D.CODEX_MAX}: x1.03 damage & gold forever. Next rank in ${D.CODEX_EVERY} Hollowed kills.`, 'gem', 'epic', 6));
-  KK.on('demoSealed', ({ time }) => UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The depths are sealed in the demo: ${KK.S.renownLifetime < KK.DEMO_RENOWN_CAP ? 're-delve in ♛ Legacy for +6 Renown' : 'Demo Renown is maxed: re-delve to beat your best time'}.`, 'crown', 'epic', 8));
+  KK.on('seal', ({ n }) => UI.toast(`★ Seal of the Day #${n}: +10 Renown. A new Omen of the Day tomorrow.`, 'crown', 'epic', 6));
+  KK.on('codex', ({ rank }) => UI.toast(`Hollow Codex rank ${rank}/${D.CODEX_MAX}: x1.03 damage & gold forever.${rank < D.CODEX_MAX ? ` Next rank in ${D.CODEX_EVERY} Hollowed kills.` : ' The Codex is complete!'}`, 'gem', 'epic', 6));
+  KK.on('demoSealed', ({ time }) => (time <= KK.S.bestCapTime + 0.01) && UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The depths are sealed in the demo: ${KK.S.renownLifetime < KK.DEMO_RENOWN_CAP ? 're-delve in ♛ Legacy for +6 Renown' : 'Demo Renown is maxed: re-delve to beat your best time'}.`, 'crown', 'epic', 8));
   /** Steam store page (set KK.STORE_URL once the page exists). */
   UI.openStore = function () {
     const url = KK.STORE_URL;
@@ -567,7 +596,7 @@
     KK.on('ult', () => once('ult', () => UI.toast('Your typing just powered an ultimate! The bar under a hero fills with your Sparks: full = next ultimate.', 'spark', 'spark', 6)));
     KK.on('fervorTier', ({ to }) => { if (to === 3) once('flow', () => UI.toast('FLOW STATE! Keep typing to keep the dungeon lit.', 'spark', 'gold', 5)); });
     KK.on('floor', ({ floor }) => {
-      for (const id of D.PARTY_ORDER) if (D.HEROES[id].unlockFloor === floor && !KK.S.heroes[id]) UI.toast(`${D.HEROES[id].name} the ${D.HEROES[id].cls} can be recruited in ⚔ Party!`, 'heart', 'gold', 5);
+      for (const id of D.PARTY_ORDER) if (D.HEROES[id].unlockFloor === floor && !KK.S.heroes[id] && !T()['rec_' + id] && (T()['rec_' + id] = 1)) UI.toast(`${D.HEROES[id].name} the ${D.HEROES[id].cls} can be recruited in ⚔ Party!`, 'heart', 'gold', 5);
       if (floor === 20 && KK.S.retires === 0) once('retire', () => UI.toast('You can now ♛ Retire for permanent Renown (when you get stuck).', 'crown', 'epic', 6));
     });
     // the first time a retire is clearly worth it, say so once (players don't know they lose nothing)

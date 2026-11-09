@@ -97,6 +97,15 @@
     if (FX.texts.length > 14) FX.texts.shift();
     FX.texts.push({ x: x + U.rand(-2, 2), y, str: String(str), col, scale, life: o.life || 0.85, max: o.life || 0.85, vy: o.vy !== undefined ? o.vy : -38, pop: !!o.pop, bump: 0 });
   };
+  /** A signature move's warning plate: first time in each fight, then at most once per 10 min per move. */
+  FX.moveAlert = (type, e, str, col, life) => {
+    e.alerted = e.alerted || {};
+    const now = performance.now();
+    FX.moveSeen = FX.moveSeen || {};
+    if (e.alerted[type] && now - (FX.moveSeen[type] || -1e9) < 600000) return;
+    e.alerted[type] = true; FX.moveSeen[type] = now;
+    FX.alert(str, col, life);
+  };
   /** Important warnings: never dropped, drawn on top over the party. */
   FX.alert = (str, col = '#fff', life = 1.2) => { FX.alerts = FX.alerts.filter((a) => a.str !== str); FX.alerts.push({ str, col, life, t: 0 }); };
   FX.ring = (x, y, r0, r1, col, life = 0.5, w = 1) => FX.rings.push({ x, y, r0, r1, col, life, t: 0, w });
@@ -217,7 +226,7 @@
   KK.on('skyarrowLand', ({ x, y }) => FX.burst(x, y, 4, ['#ffe9b0', '#fff'], { spd: 50, up: -30, life: 0.35 }));
   KK.on('meteorLand', ({ x, y }) => {
     FX.shake(3.5, 0.4);
-    FX.flash('#ffb347', 0.22);
+    FX.flash('#ffb347', 0.08);
     FX.ring(x, y, 4, 90, '#ffb347', 0.6, 2);
     FX.ring(x, y, 2, 50, '#fff', 0.35, 1);
     FX.light(x, y - 10, 140, 1.0, '#ff9a3a');
@@ -284,7 +293,8 @@
     FX.pillar(h.x, milestone ? '#ffd76a' : '#fff6c9', milestone ? 1.2 : 0.6, milestone ? 14 : 8);
     FX.burst(h.x, h.y - 8, milestone ? 30 : 8, ['#ffd76a', '#ffffff'], { spd: milestone ? 110 : 50, grav: -50, life: 0.8 });
     FX.text(h.x, h.y - 24, to - from > 1 ? `LV ${to} (+${to - from})` : 'LV ' + to, '#ffd76a', 1, { life: 1.0, vy: -18 });
-    if (milestone) {
+    if (milestone && performance.now() - (FX.lastMilestone || -1e9) > 180000) {
+      FX.lastMilestone = performance.now();
       FX.banner(KK.DATA.HEROES[id].name.toUpperCase() + ' LV ' + Math.floor(to / 10) * 10, 'x' + KK.BAL.dmgMile + ' DAMAGE!', '#ffd76a', 2, { slot: 'lvl', subCol: '#fff' });
       FX.flash('#ffd76a', 0.25);
       FX.shake(2, 0.2);
@@ -321,16 +331,16 @@
     FX.coinBurst(x, W.GROUND - 30, 1);
     FX.burst(x, W.GROUND - 30, 4, ['#ffd76a', '#fff'], { spd: 30, life: 0.4 });
   });
-  KK.on('royalSummons', () => FX.alert('SQUEAK! THE RAT KING SUMMONS', '#ffd76a', 1.2));
-  KK.on('webShot', () => FX.alert('WEB SHOT!', '#f2f2f2', 1.0));
+  KK.on('royalSummons', ({ e }) => FX.moveAlert('summon', e, 'SQUEAK! THE RAT KING SUMMONS', '#ffd76a', 1.2));
+  KK.on('webShot', ({ e }) => FX.moveAlert('web', e, 'WEB SHOT! TYPE TO TEAR IT', '#f2f2f2', 1.2));
   KK.on('webbed', ({ h }) => FX.text(h.x, h.y - 22, 'WEBBED', '#f2f2f2', 1, { life: 1.2, vy: -8 }));
   KK.on('webTorn', ({ h }) => { FX.text(h.x, h.y - 22, 'WEB TORN!', '#7ee8f6', 1, { life: 1.0, vy: -12 }); FX.burst(h.x, h.y - 8, 10, ['#f2f2f2', '#7ee8f6'], { spd: 60, life: 0.4 }); });
-  KK.on('magmaShell', () => FX.alert('MAGMA SHELL: AN ULTIMATE CRACKS IT', '#ffb070', 1.4));
-  KK.on('shellCrack', ({ e }) => { FX.alert('SHELL CRACKED!', '#7ee8f6', 1.0); FX.burst(e.x, e.y - e.def.h / 2, 30, ['#8a8a8a', '#ff7a2e', '#ffe08a'], { spd: 120, up: -40, life: 0.8, floor: true }); FX.shake(2, 0.2); });
-  KK.on('lavaRain', () => FX.alert('LAVA RAIN!', '#ff7a2e', 1.0));
+  KK.on('magmaShell', ({ e }) => FX.moveAlert('shell', e, 'MAGMA SHELL: AN ULTIMATE CRACKS IT', '#ffb070', 1.4));
+  KK.on('shellCrack', ({ e }) => { FX.moveAlert('crack', e, 'SHELL CRACKED!', '#7ee8f6', 1.0); FX.burst(e.x, e.y - e.def.h / 2, 30, ['#8a8a8a', '#ff7a2e', '#ffe08a'], { spd: 120, up: -40, life: 0.8, floor: true }); FX.shake(2, 0.2); });
+  KK.on('lavaRain', ({ e }) => FX.moveAlert('lava', e, 'LAVA RAIN!', '#ff7a2e', 1.0));
   KK.on('lavaMark', ({ x, t }) => { FX.light(x, W.GROUND, 14, t, '#ff5a2e', 0.8); FX.ring(x, W.GROUND, 2, 8, '#ff5a2e', t, 1); });
   KK.on('lavaLand', ({ x }) => FX.burst(x, W.GROUND - 2, 12, ['#ff5a2e', '#ffb347', '#ffe08a'], { spd: 80, up: -50, life: 0.6, floor: true }));
-  KK.on('chargeWarn', ({ e }) => { FX.alert('WAR CHARGE!', '#ff9a9a', 1.0); e.windup = 1.0; });
+  KK.on('chargeWarn', ({ e }) => { FX.moveAlert('charge', e, 'WAR CHARGE!', '#ff9a9a', 1.0); e.windup = 1.0; });
   KK.on('warCharge', ({ e }) => {
     FX.shake(3, 0.3);
     FX.burst(e.x - 8, W.GROUND, 20, ['#9a8a7a', '#c9b8a0', '#ff6b6b'], { spd: 110, up: -50, life: 0.7, floor: true });
@@ -341,7 +351,7 @@
     FX.alert(e.def.name.toUpperCase() + ' REASSEMBLES!', '#e8e2d0', 1.6);
   });
   KK.on('voidWarn', ({ e }) => {
-    FX.alert('VOID SLAM INCOMING', '#e0b0ff', 1.1); e.windup = 1.0;
+    FX.moveAlert('void', e, 'VOID SLAM INCOMING', '#e0b0ff', 1.1); e.windup = 1.0;
     FX.ring(W.partyX - 20, W.GROUND, 4, 80, '#a24cff', 1.0, 2);
   });
   KK.on('voidSlam', ({ e }) => {

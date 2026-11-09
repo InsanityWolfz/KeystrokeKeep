@@ -1,0 +1,47 @@
+=== R6 probe typist s3 2400m PROTO=week2: maxEver 185, retires 33, renown life 917, ach 35/36, trophies 17, codex 28/28, wipes 90, fame x1108.7, unspent embers 10662
+beats per 30 min from h1: 9 6 5 2 8 2 2 1 1 2 1 4 0 5 1 1 1 1 1 0 2 0 1 0 2 2 2 2 0 2 2 0 3 1 1 1 1 1 1 1 0 0 2 1 1 0 3 2 1 0 0 0 0 0 0 0 0 0 0 0 0 1 2 0 0 1 2 0 0 2 0 0 0 1 2 0 0 0 0
+AFTER 8h: 51 beats {"CODEX":24,"SEAL":4,"TROPHY":6,"ACH":11,"OMEN":2,"LANTERN":4}; longest gap 380 min (from 25h20); empty 2h windows 3/17
+longest stretch with no new depth record (30-min snapshots): 6.5 h from 25h00
+codex: 2h28 H-Ember Colossus r1, 3h54 The Heart of the Keep r2, 5h02 The Heart of the Keep r3, 6h50 H-Ember Colossus r4, 8h00 The Heart of the Keep r5, 9h33 The Hollow r6, 10h23 H-Rat King r7, 11h24 H-Goblin Warlord r8, 12h21 H-Magma Lord r9, 13h31 H-Bone King r10, 14h39 H-Goblin Warlord r11, 16h07 H-Magma Lord r12, 18h03 H-Rat King r13, 19h02 The Hollow r14, 19h37 H-Goblin Warlord r15, 20h33 H-Ember Colossus r16, 22h31 H-Ember Colossus r17, 23h18 The Heart of the Keep r18, 24h07 H-Magma Lord r19, 24h53 The Hollow r20, 25h20 H-Bone King r21, 31h40 H-Rat King r22, 32h10 H-Bone King r23, 33h32 H-Rat King r24, 34h04 H-Brood Mother r25, 35h50 H-Bone King r26, 37h41 H-Magma Lord r27, 38h24 H-Bone King r28
+trophies: f75@1h12 f80@1h37 f85@1h46 f90@2h11 f95@2h40 f100@3h16 f105@4h01 f110@4h32 f115@5h47 f120@6h37 f125@7h51 f130@9h29 f140@11h17 f150@14h25 f160@20h01 f170@24h42 f180@35h30
+retires (33): 0h28 f40 +30, 0h53 f60 +49, 1h18 f78 +63, 1h46 f85 +32, 2h19 f92 +32, 2h47 f99 +34, 3h24 f100 +5, 4h04 f106 +32, 4h40 f110 +22, 5h50 f116 +35, 6h45 f120 +24, 7h51 f125 +31, 8h18 f120 +0, 9h29 f130 +36, 10h19 f135 +33, 11h17 f140 +36, 12h15 f145 +36, 13h24 f149 +33, 14h33 f150 +7, 16h00 f150 +0, 17h57 f154 +31, 18h58 f158 +32, 20h09 f160 +16, 22h20 f164 +33, 23h10 f168 +33, 24h00 f159 +0, 24h50 f170 +18, 31h29 f174 +34, 32h00 f160 +0, 33h27 f178 +36, 35h38 f180 +18, 37h34 f183 +27, 39h31 f185 +19
+SIG totals: {"chargeWarn":322,"warCharge":316,"reassemble":36,"bossEnrage":25,"royalSummons":87,"webShot":295,"webbed":280,"webTorn":36,"magmaShell":148,"shellCrack":50,"lavaRain":272,"lavaLand":815,"regroup":24,"seal":5,"lantern":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   24.3 |  11 | royalSummons 3 [100%] @0.8
+  boneking          3 |    3 |   0 |   0 |    5.2 |   1 | reassemble 1 [100%] @3.1 | rise->death med 2.17s, <0.5s 0/3, <1.5s(still stunned) 0/3
+  broodmother       6 |    5 |   1 |   0 |    1.9 |   3 | webShot 1 [100%] @1.0; webbed 1 [50%] @2.3; webTorn 0 [17%] @16.2
+  warlord           8 |    8 |   0 |   0 |    2.2 |   0 | chargeWarn 0 [38%] @2.8; warCharge 0 [13%] @4.2 | died mid-charge 3/8, fights with 0 charges 7/8
+  embergolem       33 |   33 |   0 |   0 |    1.8 |   0 | magmaShell 1 [100%] @0.0; shellCrack 0 [15%] @2.0
+  magmalord        33 |   32 |   0 |   0 |    1.9 |   0 | lavaRain 1 [97%] @1.0; lavaLand 1 [55%] @1.9
+  hollow           32 |   32 |   0 |   0 |    1.9 |   1 | 
+  H-ratking        42 |   29 |  13 |   5 |    5.8 |   8 | royalSummons 2 [100%] @0.8; regroup 0 [5%] @180.0
+  H-broodmother    48 |   29 |  19 |   1 |   14.9 |  12 | webShot 3 [98%] @1.0; webbed 3 [90%] @1.8; webTorn 0 [33%] @15.5; regroup 0 [10%] @31.1
+  H-warlord        69 |   32 |  37 |   7 |   10.4 |  10 | chargeWarn 2 [90%] @2.6; warCharge 2 [87%] @3.7; regroup 0 [14%] @29.4 | died mid-charge 6/32, fights with 0 charges 9/69
+  H-embergolem     30 |   24 |   5 |   3 |    5.9 |   4 | magmaShell 1 [100%] @0.0; shellCrack 0 [47%] @3.8
+  H-magmalord      43 |   31 |  12 |   4 |    5.3 |   6 | lavaRain 2 [100%] @1.0; lavaLand 6 [91%] @1.9; regroup 0 [7%] @27.6
+  H-boneking       49 |   31 |  18 |   3 |   13.7 |  12 | reassemble 1 [67%] @8.9; regroup 0 [6%] @21.1 | rise->death med 3.50s, <0.5s 0/31, <1.5s(still stunned) 4/31
+  HEART            31 |   27 |   3 |   2 |    2.5 |   1 | 
+ACH: first_boss 0h04 | flow 0h00 | full_party 0h17 | retire1 0h28 | gatekeeper 0h36 | rat 0h04 | epic 0h31 | caverns 0h09 | comeback 0h21 | echo 0h31 | ult_boss 0h09 | revive 0h19 | speed60 1h02 | blitz 14h44 | magma 0h36 | void 1h02 | hollow 1h08 | hollowed6 3h03 | f100 3h16 | codex28 38h24 | f125 7h51 | retire10 6h45 | omen1 0h53 | omen10 22h20 | deep90 3h01 | legacy_all 7h52 | crucible10 7h56 | lv100 0h53 | chests100 3h45 | rats25 3h15 | idle50 NO | keys10k 1h15 | keys100k 13h01 | flow1h 1h51 | flow10h 15h56 | ults1k 3h19
+MOVE ratking         fights 1 kills 1 wipes 0 | royalSummons seen 100% (a 2nd one or after the 2.6 s boss banner: 100%) med/fight 3 | med kill 24.3 s | first hero hit @6.1 s
+MOVE H-ratking       fights 42 kills 29 wipes 13 | royalSummons seen 100% (a 2nd one or after the 2.6 s boss banner: 57%) med/fight 2 | med kill 5.8 s | first hero hit @2.0 s
+MOVE broodmother     fights 6 kills 5 wipes 1 | webShot seen 100% (a 2nd one or after the 2.6 s boss banner: 33%) med/fight 1 | med kill 1.9 s | first hero hit @1.9 s
+MOVE H-broodmother   fights 48 kills 29 wipes 19 | webShot seen 98% (a 2nd one or after the 2.6 s boss banner: 73%) med/fight 3 | med kill 14.9 s | first hero hit @1.9 s
+MOVE embergolem      fights 33 kills 33 wipes 0 | magmaShell seen 100% (a 2nd one or after the 2.6 s boss banner: 3%) med/fight 1 | med kill 1.8 s | first hero hit @1.8 s
+MOVE H-embergolem    fights 30 kills 24 wipes 5 | magmaShell seen 100% (a 2nd one or after the 2.6 s boss banner: 40%) med/fight 1 | med kill 5.9 s | first hero hit @1.9 s
+MOVE magmalord       fights 33 kills 32 wipes 0 | lavaRain seen 97% (a 2nd one or after the 2.6 s boss banner: 6%) med/fight 1 | med kill 1.9 s | first hero hit @1.8 s
+MOVE H-magmalord     fights 43 kills 31 wipes 12 | lavaRain seen 100% (a 2nd one or after the 2.6 s boss banner: 56%) med/fight 2 | med kill 5.3 s | first hero hit @1.8 s
+MOVE boneking        fights 3 kills 3 wipes 0 | reassemble seen 100% (a 2nd one or after the 2.6 s boss banner: 67%) med/fight 1 | med kill 5.2 s | first hero hit @1.9 s
+MOVE H-boneking      fights 49 kills 31 wipes 18 | reassemble seen 67% (a 2nd one or after the 2.6 s boss banner: 51%) med/fight 1 | med kill 13.7 s | first hero hit @1.9 s
+MOVE warlord         fights 8 kills 8 wipes 0 | chargeWarn seen 38% (a 2nd one or after the 2.6 s boss banner: 25%) med/fight 0 | med kill 2.2 s | first hero hit @1.9 s
+MOVE H-warlord       fights 69 kills 32 wipes 37 | chargeWarn seen 90% (a 2nd one or after the 2.6 s boss banner: 88%) med/fight 2 | med kill 10.4 s | first hero hit @1.8 s
+REASSEMBLE kills 34: standing time after the 1.5 s pile med 2.00 s, <0.5 s 11, died as pile 4 | hits blocked by the pile 91 | ultimates cast at a lone pile 8
+SHELL 148 (openers 63, opener shells that took any hit 63 = 100%), cracked 50 = 34% | hits on shell normal 1353 ult 50
+WEB webbed 280, torn by an ult 36 = 13%, hero-sec webbed 662, web carried into a new floor/retreat 23, webbed heroes knocked out 13
+LAVA hits 738, KOs 22, lava share of all hero damage 0.1%
+WOUNDS wounded spawns 28; late (f70+, not Hollow/Heart) spawns 281, wounded 26, of which Hollowed 26 | enrages 25 regroups 24 wipes 90
+H-WARLORD charging 532 s: void timer frozen 522 s (98%), attack timer frozen 522 s
+ALERTS {"royalSummons":87,"reassemble":36,"webShot":295,"chargeWarn":322,"magmaShell":148,"shellCrack":50,"lavaRain":272,"bossEnrage":25,"regroup":24} | within 1.1 s after a void warning (replaces it) {"chargeWarn":10,"royalSummons":4,"reassemble":5,"regroup":6,"shellCrack":1,"bossEnrage":1} | during the 2.6 s boss banner {"royalSummons":54,"webShot":53,"magmaShell":63,"lavaRain":75,"reassemble":9,"shellCrack":10,"chargeWarn":20}
+first hero hit on a boss after activation: med 1.9 s
+PROTO on=omen,lantern,tro,ach2 N={"day":28800,"gap":15,"minFloor":40,"renown":10,"lBase":4000,"lGrowth":1.8,"lStep":0.08,"walledMin":30} lanternFirst
+SEALS 5 (star offered 5, taken 5, free re-delves 4): 1.0h f45/rec60 4min, 8.6h f110/rec125 16min, 16.4h f135/rec150 24min, 24.3h f153/rec168 17min, 32.4h f159/rec174 22min
+LANTERN L1@6.1h L2@13.8h L3@18.5h L4@24.2h L5@34.1h | void dmg prevented 16.9T | first f70 at 1.1h with 37 embers

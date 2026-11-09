@@ -1,0 +1,10 @@
+--min 480 --profile idle --seed 1 --retire nudge --omen random --out docs/playtest/round-07/market_probe/out/census_full_idle_1.json {"floor":100,"maxFloorEver":100,"retires":10,"bossKills":66,"wipes":10}
+hour alert banner minorBanner toast toastPlayer modal flashStrong flashSoft shake hitstop slowmo sound loudSound hud screen
+0 32 46 55 21 10 0 46 7 90 509 4 17023 47 1370 66
+1 45 102 100 20 20 0 109 9 159 1892 11 21044 67 4384 122
+2 39 57 60 11 11 0 60 8 104 4591 7 28280 47 3054 77
+3 55 78 95 16 20 0 86 16 123 3396 12 24710 60 5019 122
+4 74 52 67 13 12 0 72 16 149 4476 8 28649 70 4401 88
+5 90 52 63 11 13 0 73 17 131 5758 8 34246 65 3596 83
+6 43 76 98 16 19 0 87 14 125 4480 12 25386 61 5901 125
+7 60 25 33 5 4 0 40 19 122 5353 4 32367 59 1976 45

@@ -1,0 +1,55 @@
+=== R6 probe typist s2 180m DEMO: maxEver 40, retires 23, renown life 120, ach 13/36, trophies 0, codex 0/28, wipes 4, fame x7.4, unspent embers 816
+  0h00  ACH     ach flow
+  0h00  MAJOR   first FLOW
+  0h00  MAJOR   biome The Crypt
+  0h03  MAJOR   recruit archer
+  0h03  MAJOR   boss The Rat King (f10)
+  0h03  MAJOR   first relic offer
+  0h03  MAJOR   first EPIC offered
+  0h03  ACH     ach first_boss
+  0h03  MAJOR   first golden rat
+  0h04  ACH     ach rat
+  0h07  MAJOR   retire unlocked
+  0h08  MAJOR   boss The Bone King (f20)
+  0h09  ACH     ach caverns
+  0h09  MAJOR   biome Mossy Caverns
+  0h15  MAJOR   recruit mage
+  0h21  ACH     ach full_party
+  0h21  MAJOR   recruit cleric
+  0h21  ACH     ach revive
+  0h21  MAJOR   first REVIVE
+  0h21  MAJOR   boss Brood Mother (f30)
+  0h23  ACH     ach epic
+  0h30  MAJOR   boss Goblin Warlord (f40)
+  0h33  ACH     ach gatekeeper
+  0h33  ACH     ach ult_boss
+  0h34  ACH     ach retire1
+  0h34  MAJOR   first RETIRE
+  1h18  ACH     ach keys10k
+  2h01  ACH     ach flow1h
+  2h23  ACH     ach chests100
+beats per 30 min from h1: 1 0 2 0 0
+longest gap after h1: 43 min (from 1h18)
+codex: none
+trophies: 
+retires (23): 0h34 f40 +30, 0h44 f40 +6, 0h52 f40 +6, 0h59 f40 +6, 1h06 f40 +6, 1h14 f40 +6, 1h21 f40 +6, 1h28 f40 +6, 1h34 f40 +6, 1h40 f40 +6, 1h46 f40 +6, 1h52 f40 +6, 1h58 f40 +6, 2h04 f40 +6, 2h10 f40 +6, 2h16 f40 +6, 2h21 f40 +0, 2h27 f40 +0, 2h32 f40 +0, 2h38 f40 +0, 2h43 f40 +0, 2h49 f40 +0, 2h54 f40 +0
+SIG totals: {"chargeWarn":40,"warCharge":34,"reassemble":24,"bossEnrage":0,"royalSummons":3,"webShot":36,"webbed":36,"webTorn":1,"magmaShell":0,"shellCrack":0,"lavaRain":0,"lavaLand":0,"regroup":0,"seal":0,"lantern":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   22.9 |  12 | royalSummons 3 [100%] @0.8
+  boneking         24 |   24 |   0 |   0 |    3.9 |   0 | reassemble 1 [100%] @2.4 | rise->death med 1.53s, <0.5s 0/24, <1.5s(still stunned) 0/24
+  broodmother      24 |   24 |   0 |   0 |    2.8 |   1 | webShot 1 [100%] @1.0; webbed 1 [83%] @2.1
+  warlord          24 |   24 |   0 |   0 |    5.6 |   1 | chargeWarn 1 [92%] @2.9; warCharge 1 [67%] @4.2 | died mid-charge 6/24, fights with 0 charges 8/24
+DEMO: card 0h33, laps 24, re-delves 23, lifetime 120, best 3.8m
+ACH: first_boss 0h03 | flow 0h00 | full_party 0h21 | retire1 0h34 | gatekeeper 0h33 | rat 0h04 | epic 0h23 | caverns 0h09 | comeback NO | echo NO | ult_boss 0h33 | revive 0h21 | speed60 NO | blitz NO | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | codex28 NO | f125 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 NO | chests100 2h23 | rats25 NO | idle50 NO | keys10k 1h18 | keys100k NO | flow1h 2h01 | flow10h NO | ults1k NO
+MOVE ratking         fights 1 kills 1 wipes 0 | royalSummons seen 100% (a 2nd one or after the 2.6 s boss banner: 100%) med/fight 3 | med kill 22.9 s | first hero hit @3.9 s
+MOVE broodmother     fights 24 kills 24 wipes 0 | webShot seen 100% (a 2nd one or after the 2.6 s boss banner: 21%) med/fight 1 | med kill 2.8 s | first hero hit @1.9 s
+MOVE boneking        fights 24 kills 24 wipes 0 | reassemble seen 100% (a 2nd one or after the 2.6 s boss banner: 38%) med/fight 1 | med kill 3.9 s | first hero hit @1.9 s
+MOVE warlord         fights 24 kills 24 wipes 0 | chargeWarn seen 92% (a 2nd one or after the 2.6 s boss banner: 79%) med/fight 1 | med kill 5.6 s | first hero hit @2.3 s
+REASSEMBLE kills 24: standing time after the 1.5 s pile med 0.03 s, <0.5 s 21, died as pile 0 | hits blocked by the pile 46 | ultimates cast at a lone pile 5
+SHELL 0 (openers 0, opener shells that took any hit 0 = -), cracked 0 = - | hits on shell normal 0 ult 0
+WEB webbed 36, torn by an ult 1 = 3%, hero-sec webbed 104, web carried into a new floor/retreat 15, webbed heroes knocked out 0
+LAVA hits 0, KOs 0, lava share of all hero damage 0.0%
+WOUNDS wounded spawns 0; late (f70+, not Hollow/Heart) spawns 0, wounded 0, of which Hollowed 0 | enrages 0 regroups 0 wipes 4
+H-WARLORD charging 0 s: void timer frozen 0 s (-), attack timer frozen 0 s
+ALERTS {"royalSummons":3,"reassemble":24,"webShot":36,"chargeWarn":40} | within 1.1 s after a void warning (replaces it) {} | during the 2.6 s boss banner {"royalSummons":1,"webShot":24,"reassemble":15,"chargeWarn":3}
+first hero hit on a boss after activation: med 2.0 s

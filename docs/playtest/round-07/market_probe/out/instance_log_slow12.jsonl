@@ -1,0 +1,15 @@
+{"t":1794252942071,"pid":20880,"mode":"hold","demo":false,"tag":"FULLSLOW12","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r7\\userData","fakeUser":""}
+{"t":1794252942201,"pid":20880,"mode":"hold","demo":false,"tag":"FULLSLOW12","ev":"window","lowGpuSwitch":true,"pipe":"\\\\.\\pipe\\keystroke-keep-SHAUN"}
+{"t":1794252945703,"pid":20880,"mode":"hold","demo":false,"tag":"FULLSLOW12","ev":"ready","knight":143,"visible":true,"liveFloor":77}
+{"t":1794252961710,"pid":23756,"mode":"hold","demo":true,"tag":"DEMO","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r7\\userData-demo","fakeUser":""}
+{"t":1794252961780,"pid":23756,"mode":"hold","demo":true,"tag":"DEMO","ev":"dialog","message":"Keystroke Keep is already running (demo or full game).","detail":"Only one strip can run at a time. The other one saves before it closes.","buttons":["Close the other one and start the demo","Cancel"],"picked":0}
+{"t":1794252961800,"pid":20880,"mode":"hold","demo":false,"tag":"FULLSLOW12","ev":"slow-quit-begin"}
+{"t":1794252973827,"pid":20880,"mode":"hold","demo":false,"tag":"FULLSLOW12","ev":"will-quit"}
+{"t":1794252973829,"pid":20880,"mode":"hold","demo":false,"tag":"FULLSLOW12","ev":"exit","code":0,"uptimeMs":31784}
+{"t":1794252973908,"pid":23756,"mode":"hold","demo":true,"tag":"DEMO","ev":"will-quit"}
+{"t":1794252973908,"pid":23756,"mode":"hold","demo":true,"tag":"DEMO","ev":"exit","code":0,"uptimeMs":12244}
+{"t":1794252975018,"pid":31656,"mode":"hold","demo":true,"tag":"DEMO","ev":"start","userData":"C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r7\\userData-demo","fakeUser":""}
+{"t":1794252975410,"pid":31656,"mode":"hold","demo":true,"tag":"DEMO","ev":"window","lowGpuSwitch":true,"pipe":"\\\\.\\pipe\\keystroke-keep-SHAUN"}
+{"t":1794252979053,"pid":31656,"mode":"hold","demo":true,"tag":"DEMO","ev":"ready","knight":143,"visible":true,"liveFloor":33}
+{"t":1794252987054,"pid":31656,"mode":"hold","demo":true,"tag":"DEMO","ev":"hold-expired","visible":true}
+{"t":1794252987057,"pid":31656,"mode":"hold","demo":true,"tag":"DEMO","ev":"exit","code":0,"uptimeMs":12094}
