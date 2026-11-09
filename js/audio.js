@@ -200,6 +200,7 @@
   KK.on('voidWarn', ({ e }) => { if ((e.slams || 0) < 3) p('zone'); });
   KK.on('chargeWarn', () => p('deny'));
   KK.on('shellCrack', () => p('crit'));
+  KK.on('guardBreak', ({ worn }) => { if (!worn) p('crit'); });
   KK.on('lavaLand', () => p('explode'));
   KK.on('webTorn', () => p('ui'));
   KK.on('warCharge', () => p('slam'));

@@ -88,6 +88,13 @@
       eg.fillStyle = '#ff5a2e';
       for (let row = 0; row < Math.ceil(TH / BH); row++) for (let x = 0; x < TW; x++) if (U.hash2(row, x) > 0.55) eg.fillRect(x, row * BH, 1, 1);
     }
+    if (bi.id === 'root') {
+      // roots crawling over the brick, with a faint pulse of the Heart in their veins
+      for (let i = 0; i < 6; i++) {
+        let x = Math.floor(U.hash(i * 6.1) * TW), y = 0;
+        while (y < TH) { g.fillStyle = '#4a2a14'; g.fillRect(x, y, 2, 1); g.fillStyle = '#2a170b'; g.fillRect(x, y + 1, 1, 1); if (U.hash2(i, y) > 0.7) eg.fillStyle = '#ff4f7a', eg.fillRect(x, y, 1, 1); y++; if (U.hash2(i * 3, y) > 0.6) x = (x + (U.hash2(y, i) > 0.5 ? 1 : -1) + TW) % TW; }
+      }
+    }
     if (bi.id === 'void') {
       for (let i = 0; i < 18; i++) { eg.fillStyle = U.hash(i * 9) > 0.5 ? '#c472ff' : '#7ee8f6'; eg.fillRect(Math.floor(U.hash(i * 5.3) * TW), Math.floor(U.hash(i * 2.9) * TH), 1, 1); }
     }
@@ -228,7 +235,7 @@
     for (const l of FX.lights) glow(sxw(l.x), l.y + sy, l.r * 0.5, l.col, 0.35 * (1 - l.t / l.life) * l.a);
     if (W.boss && !W.boss.dead) glow(sxw(W.boss.x), W.boss.y - W.boss.def.h / 2 + sy, 30 + Math.sin(t * 4) * 4, W.boss.hollowed ? '#a24cff' : '#ff3a3a', 0.18);
     // emissive biome layer (lava cracks / void stars)
-    if (biome.id === 'magma' || biome.id === 'void') {
+    if (biome.id === 'magma' || biome.id === 'void' || biome.id === 'root') {
       b.globalAlpha = 0.35 + Math.sin(t * 1.5) * 0.1;
       for (let x = -((px % art.TW) + art.TW) % art.TW; x < Wd; x += art.TW) b.drawImage(art.emis, x, sy);
       b.globalAlpha = 1;
@@ -470,7 +477,8 @@
       b.globalAlpha = 1;
     }
     b.drawImage(spr.c, Math.round(dxp), Math.round(y));
-    if (h.webbed > 0) { b.fillStyle = '#f2f2f2'; for (let i = 0; i < 6; i++) b.fillRect(Math.round(dxp + 2 + (i * 5) % 12), Math.round(y + 2 + (i * 7) % 12), 1, 1); b.fillRect(Math.round(dxp + 1), Math.round(y + 6), 12, 1); }
+    if (h.locked > 0) { b.fillStyle = '#ffe08a'; b.fillRect(Math.round(dxp + 4), Math.round(y - 4), 5, 3); b.fillStyle = '#1b1424'; b.fillRect(Math.round(dxp + 6), Math.round(y - 3), 1, 1); }
+    if (h.webbed > 0) { b.fillStyle = h.webKind === 'root' ? '#7a4a24' : '#f2f2f2'; for (let i = 0; i < 6; i++) b.fillRect(Math.round(dxp + 2 + (i * 5) % 12), Math.round(y + 2 + (i * 7) % 12), 1, 1); b.fillRect(Math.round(dxp + 1), Math.round(y + 6), 12, 1); }
     if (h.flash > 0) { b.globalAlpha = 0.8; b.drawImage(KK.SPR.frames[h.id][f].white, Math.round(dxp), Math.round(y)); b.globalAlpha = 1; }
     // mage orb / cleric halo glow
     if (h.id === 'mage') { b.globalCompositeOperation = 'lighter'; glow(dxp + 14, y + 2, 5 + (h.cast > 0 ? 4 : 0), '#7ee8f6', 0.6); b.globalCompositeOperation = 'source-over'; }
@@ -546,7 +554,7 @@
       b.globalCompositeOperation = 'lighter'; glow(x, hy + hh * 0.45, 40 + Math.sin(t * 3) * 6, '#ff3355', 0.35); b.globalCompositeOperation = 'source-over';
       for (const [ox, oy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) b.drawImage(spr.dark || spr.c, hx + ox, hy + oy, hw, hh);
       b.drawImage(heartTint(spr.c), hx, hy, hw, hh);
-    } else b.drawImage(e.shell > 0 ? stoneTint(spr.c) : e.hollowed ? hollowTint(spr.c) : spr.c, dxp, Math.round(y));
+    } else b.drawImage(e.shell > 0 || e.guard ? stoneTint(spr.c) : e.hollowed || e.echo ? hollowTint(spr.c) : spr.c, dxp, Math.round(y));
     if ((e.windup > 0 || (e.boss && (e.fightT || 0) > 165)) && Math.floor(t * 4) % 2) { b.globalAlpha = 0.55 * k; b.drawImage(spr.white, dxp, Math.round(y)); b.globalAlpha = 1; }
     if (e.flash > 0) { b.globalAlpha = 0.9 * k; b.drawImage(spr.white, dxp, Math.round(y)); }
     b.globalAlpha = 1;
@@ -591,6 +599,7 @@
         break;
       }
       case 'web': {
+        if (s.root) { b.fillStyle = '#7a4a24'; b.fillRect(x - 2, y, 4, 1); b.fillStyle = '#6cd05a'; b.fillRect(x - 1, y - 1, 1, 1); break; }
         b.fillStyle = '#f2f2f2'; b.fillRect(x - 1, y - 1, 3, 3); b.fillStyle = '#9a9a9a'; b.fillRect(x, y, 1, 1);
         break;
       }

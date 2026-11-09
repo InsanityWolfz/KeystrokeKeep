@@ -46,6 +46,11 @@
     eye: { name: 'Watcher', hp: 0.9, atk: 1.3, gold: 1.3, speed: 10, range: 80, w: 12, h: 12, fly: true, ranged: 'beam' },
     wraith: { name: 'Wraith', hp: 1.1, atk: 1.4, gold: 1.3, speed: 16, range: 11, w: 12, h: 14, fly: true },
     voidknight: { name: 'Void Knight', hp: 2.0, atk: 1.5, gold: 1.8, speed: 10, range: 13, w: 16, h: 16 },
+    // the Heartroot (f101-150)
+    lasher: { name: 'Root Lasher', hp: 1.0, atk: 1.2, gold: 1.3, speed: 11, range: 72, w: 12, h: 16, ranged: 'root' },
+    bloat: { name: 'Spore Bloat', hp: 1.6, atk: 1.0, gold: 1.4, speed: 8, range: 10, w: 14, h: 12 },
+    sporeling: { name: 'Sporeling', hp: 0.5, atk: 0.6, gold: 0.3, speed: 18, range: 9, w: 8, h: 6 },
+    warden: { name: 'Heart Warden', hp: 2.2, atk: 1.4, gold: 2.0, speed: 8, range: 13, w: 14, h: 16 },
     // bosses
     ratking: { name: 'The Rat King', boss: true, hp: 1, atk: 1, gold: 1, speed: 10, range: 18, w: 32, h: 22 },
     boneking: { name: 'The Bone King', boss: true, hp: 1.2, atk: 1, gold: 1.1, speed: 8, range: 18, w: 24, h: 40 },
@@ -54,6 +59,8 @@
     embergolem: { name: 'Ember Colossus', boss: true, hp: 1.4, atk: 1.1, gold: 1.2, speed: 6, range: 20, w: 28, h: 32 },
     magmalord: { name: 'Magma Lord', boss: true, hp: 1.1, atk: 1.3, gold: 1.2, speed: 9, range: 18, w: 24, h: 32, fly: true },
     hollow: { name: 'The Hollow', boss: true, hp: 1.3, atk: 1.3, gold: 1.3, speed: 8, range: 20, w: 24, h: 30, fly: true },
+    rootmother: { name: 'The Rootmother', boss: true, root: true, hp: 1.3, atk: 1.2, gold: 1.3, speed: 7, range: 20, w: 24, h: 34 },
+    keeper: { name: 'The Keeper', boss: true, root: true, hp: 1.4, atk: 1.3, gold: 1.4, speed: 8, range: 20, w: 26, h: 38 },
   };
 
   const BIOMES = [
@@ -77,6 +84,11 @@
       monsters: ['eye', 'wraith', 'voidknight'], bosses: ['hollow', 'hollow'],
       pal: { fog: '#07040e', wall: '#231a38', wallHi: '#30244c', wallLo: '#170f27', mortar: '#0b0714', floor: '#2a1f40', floorHi: '#3c2d5a', floorLo: '#140d22', accent: '#c472ff', torch: '#c472ff', dark: 0.62 },
     },
+    {
+      id: 'root', name: 'The Heartroot', from: 101,
+      monsters: ['lasher', 'bloat', 'warden'], bosses: ['rootmother', 'keeper'],
+      pal: { fog: '#100608', wall: '#33171f', wallHi: '#46202b', wallLo: '#220e15', mortar: '#3a2212', floor: '#3a1d24', floorHi: '#522a33', floorLo: '#1c0b10', accent: '#ff4f7a', torch: '#ff5a7a', dark: 0.58 },
+    },
   ];
 
   const RARITY = { common: { w: 58, label: 'COMMON' }, rare: { w: 30, label: 'RARE' }, epic: { w: 15, label: 'EPIC' } };
@@ -96,6 +108,7 @@
     { id: 'lens', name: "Critic's Lens", rar: 'rare', icon: 'lens', desc: '+10% crit chance. Crits deal 3x.', unique: true, apply: (m) => { m.crit += 0.1; m.critMult = Math.max(m.critMult, 3); } },
     { id: 'echo', name: 'Echo Rune', rar: 'epic', icon: 'rune', desc: 'Every ultimate casts twice.', unique: true, apply: (m) => { m.echo += 1; } },
     { id: 'glass', name: 'Glass Cannon', rar: 'epic', icon: 'gem', desc: '+75% damage, but -25% max HP.', unique: true, apply: (m) => { m.dmg *= 1.75; m.hp *= 0.75; } },
+    { id: 'rootward', name: 'Root Ward', rar: 'epic', icon: 'shield', desc: 'The first web, root or Overgrowth in each fight is ignored.', unique: true, apply: (m) => { m.ward = 1; } },
     { id: 'flowpend', name: 'Flow Pendant', rar: 'epic', icon: 'pendant', desc: 'FLOW STATE grants an extra +100% power.', unique: true, apply: (m) => { m.flowBonus += 1; } },
     { id: 'hotkey', name: 'Hotkey Ring', rar: 'epic', icon: 'ring', desc: 'Every 60th keystroke fires the next hero\'s ultimate for free.', unique: true, apply: (m) => { m.hotkey = true; } },
   ];

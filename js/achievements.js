@@ -35,8 +35,12 @@
     { id: 'codex28', big: true, get goal() { return D.CODEX_MAX; }, cur: () => KK.mods().codexRanks || 0, name: 'Hollow Scholar', desc: 'Complete every rank of the Hollow Codex.', on: 'codex', test: () => KK.mods().codexRanks >= KK.DATA.CODEX_MAX },
     { id: 'seals7', goal: 7, cur: (S) => S.seals || 0, name: 'Faithful', desc: 'Earn 7 Seals of the Day.', on: 'seal', test: (c) => (c.S.seals || 0) >= 7 },
     { id: 'seals30', big: true, goal: 30, cur: (S) => S.seals || 0, name: 'Devout', desc: 'Earn 30 Seals of the Day.', on: 'seal', test: (c) => (c.S.seals || 0) >= 30 },
+    { id: 'heartroot', name: 'Root and Branch', desc: 'Reach the Heartroot.', on: 'floor', test: (c) => c.ev.floor >= 101 },
+    { id: 'rootmother', name: 'Weed Killer', desc: 'Defeat the Rootmother.', on: 'kill', test: (c) => c.ev.e.key === 'rootmother' },
+    { id: 'keeper', big: true, name: 'Keys to the Keep', desc: 'Defeat the Keeper.', on: 'kill', test: (c) => c.ev.e.key === 'keeper' },
     { id: 'f125', goal: 125, from: 100, cur: (S) => S.maxFloorEver, name: 'Abyss Walker', desc: 'Reach floor 125.', on: 'floor', test: (c) => c.S.maxFloorEver >= 125 },
     { id: 'f150', big: true, goal: 150, from: 100, cur: (S) => S.maxFloorEver, name: 'Bottom of the Keep', desc: 'Reach floor 150.', on: 'floor', test: (c) => c.S.maxFloorEver >= 150 },
+    { id: 'echo175', goal: 175, from: 150, cur: (S) => S.maxFloorEver, name: 'Echoes All the Way Down', desc: 'Reach floor 175 in the Echoed Depths.', on: 'floor', test: (c) => c.S.maxFloorEver >= 175 },
     // prestige & omens
     { id: 'retire10', goal: 10, cur: (S, P) => P.bigRetires || 0, name: 'Dynasty', desc: 'Retire 10 times for 10+ Renown each.', on: 'retired', test: (c) => { if ((c.ev.gain || 0) >= 10) c.P.bigRetires = (c.P.bigRetires || 0) + 1; return (c.P.bigRetires || 0) >= 10; } },
     { id: 'omen1', name: 'Ill Omen', desc: 'Start a delve under an omen.', on: 'omenPicked', test: (c) => !!c.ev.id },

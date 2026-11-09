@@ -49,6 +49,7 @@
     dmgLin: 0.45, dmgMile: 1.5, hpLin: 0.35, hpMile: 1.4, costG: 1.11,
     eHp: 28, eHpG: 1.275, eAtk: 2.2, eAtkG: 1.14, eGold: 1.6, eGoldG: 1.185,
   }, root.BAL_OVERRIDE || {});
+  const echoCache = [];
   const F = KK.F = {
     heroDmg: (id, lvl) => D.HEROES[id].atk * (1 + B.dmgLin * (lvl - 1)) * Math.pow(B.dmgMile, Math.floor(lvl / 10)),
     heroHp: (id, lvl) => D.HEROES[id].hp * (1 + B.hpLin * (lvl - 1)) * Math.pow(B.hpMile, Math.floor(lvl / 10)),
@@ -59,6 +60,16 @@
     upCost: (def, lvl) => Math.ceil(def.base * Math.pow(def.growth, lvl)),
     renownFor: (maxFloor) => maxFloor < 20 ? 0 : Math.floor(Math.pow((maxFloor - 10) / 5, 1.9)),
     biomeOf: (f) => {
+      // the Echoed Depths (f151+): every 10 floors an old biome comes back, hollowed, at depth stats
+      if (f >= 151) {
+        const band = Math.floor((f - 151) / 10);
+        let e = echoCache[band];
+        if (!e) {
+          const base = D.BIOMES[band % D.BIOMES.length];
+          e = echoCache[band] = Object.assign({}, base, { name: 'Echoed ' + ({ crypt: 'Crypt', caverns: 'Caverns', magma: 'Magma', void: 'Void', root: 'Heartroot' }[base.id] || base.name), from: 151 + band * 10, echo: true });
+        }
+        return e;
+      }
       let b = D.BIOMES[0];
       for (const bb of D.BIOMES) if (f >= bb.from) b = bb;
       return b;
@@ -67,6 +78,7 @@
     bossFor: (f) => {
       // past the Hollow, the Void throws every old boss back at you, hollowed out
       if (f === 70 || f === 100) return 'hollow';
+      if (f >= 120 && f % 20 === 0) return (f / 20) % 2 === 0 ? 'rootmother' : 'keeper'; // the Heartroot's own, and their echoes
       if (f >= 80) { const six = ['ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; const pool = six.slice(0, Math.max(2, Math.min(6, (KK.S.daysPlayed || 1) + 1))); return pool[(Math.floor((f - 80) / 10) + 2 * (KK.S.retires || 0)) % pool.length]; }
       const b = F.biomeOf(f);
       const idx = Math.floor(((f - b.from) % 20) / 10);

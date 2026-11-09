@@ -331,6 +331,96 @@
     '..kp.kp.k...',
     '..k...k.....',
   ]);
+  // the Heartroot
+  const LASHER = [
+    '....kkk.....',
+    '...kRrRk....',
+    '..kRrZrRk...',
+    '..kRrrrRk...',
+    '...kRRRk.kk.',
+    '..k.kEk.kEEk',
+    '.kEk.kEkEk..',
+    'kEk..kEEk...',
+    '.k...kEk....',
+    '.....kEk....',
+    '....kEEk....',
+    '....kEk.....',
+    '...kNEk.....',
+    '..kNNNk.....',
+    '.kNNnNNk....',
+    'kkkkkkkkk...',
+  ];
+  const LASHER_B = LASHER.slice(0, 4).concat([
+    '...kRRRk....',
+    '.kk.kEk.....',
+    'kEEkkEk.k...',
+    '...kEEkkEk..',
+    '....kEk..kEk',
+  ], LASHER.slice(9));
+  const BLOAT = [
+    '....kkkkkk....',
+    '..kkmmmmmmkk..',
+    '.kmmwmmmmZmmk.',
+    'kmmmmmmmmmmmmk',
+    'kmZmmmmmwmmmmk',
+    'kmmmmkmmkmmZmk',
+    'kmmmmmmmmmmmmk',
+    '.kmmmkkkkmmmk.',
+    '..kRmmmmmmRk..',
+    '...kRRRRRRk...',
+    '...kNk..kNk...',
+    '...kk....kk...',
+  ];
+  const BLOAT_B = ['..............'].concat(BLOAT.slice(0, 3), BLOAT.slice(4, 9), ['..kRRRRRRRRk..', '..kNk....kNk..', '..kk......kk..']);
+  const SPORELING = [
+    '..kkkk..',
+    '.kmmZmk.',
+    'kmmmmmmk',
+    'kmkmmkmk',
+    '.kmmmmk.',
+    '.kk..kk.',
+  ];
+  const SPORELING_B = ['........', '..kkkk..', '.kmmZmk.', 'kmkmmkmk', '.kmmmmk.', 'kk....kk'];
+  const WARDEN = [
+    '....kkkkkk....',
+    '...kNnnnnNk...',
+    '...knkZZknk...',
+    '...kNnnnnNk...',
+    '.kkkkNnnNkkkk.',
+    'kEEnkNNNNknEEk',
+    'kEnnkNrrNknnEk',
+    'kEnnkrmmrknnEk',
+    'kNnnkNrrNknnNk',
+    'kNnnkNNNNknnNk',
+    '.kkkNnnnnNkkk.',
+    '...kNnnnnNk...',
+    '...kNNkkNNk...',
+    '..kNnk..kNnk..',
+    '..kNnk..kNnk..',
+    '..kkkk..kkkk..',
+  ];
+  const WARDEN_B = WARDEN.slice(0, 12).concat(['...kNNkkNNk...', '.kNnk....kNnk.', '.kNnk....kNnk.', '.kkkk....kkkk.']);
+  const KEEPER = [
+    '....kkkk.....',
+    '...kPPPPk....',
+    '..kPvvvvPk...',
+    '..kPkZkZPk...',
+    '..kPvvvvPk.k.',
+    '...kPPPPk.kyk',
+    '..kPPPPPPkkyk',
+    '.kPPvPPvPPkyk',
+    'kPPvvPPvvPkyk',
+    'kPvvPyyPvvkyk',
+    'kPvvPyyPvvkyk',
+    'kPPvvPPvvPkyk',
+    '.kPvvvvvvPkyk',
+    '.kPvvvvvvPkk.',
+    '.kPPvvvvPPk..',
+    'kPPPvvvvPPPk.',
+    'kPPPPPPPPPPk.',
+    'kkkkkkkkkkkk.',
+  ];
+  const KEEPER_B = KEEPER.slice(0, 14).concat(['.kPPvvvvPPk..', '.kPPvvvvPPPk.', 'kPPPPPPPPPPk.', 'kkkkkkkkkkkk.']);
   const CROWN = [
     '.k.k.k.',
     'kykykyk',
@@ -492,6 +582,11 @@
     const vk = { g: 'v', w: 'p', G: 'P', b: 'P', B: 'v', y: 'c', r: 'm', c: 'm', s: 'p', S: 'P' };
     S.frames.voidknight = [bake(KNIGHT, vk, true), bake(KNIGHT.slice(0, 13).concat(KNIGHT_LEGS), vk, true)];
 
+    S.frames.lasher = [bake(LASHER), bake(LASHER_B)];
+    S.frames.bloat = [bake(BLOAT), bake(BLOAT_B)];
+    S.frames.sporeling = [bake(SPORELING), bake(SPORELING_B)];
+    S.frames.warden = [bake(WARDEN), bake(WARDEN_B)];
+
     // bosses
     S.frames.ratking = [bossOf(RAT, { G: 'n', g: 'l' }, true), bossOf(RAT_B, { G: 'n', g: 'l' }, true)];
     S.frames.boneking = [bossOf(SKELETON, { k: 'k', l: 'l' }, true), bossOf(SKELETON_B, null, true)];
@@ -502,6 +597,10 @@
     S.frames.magmalord = [bossOf(IMP, { r: 'o', R: 'O' }, true), bossOf(IMP_B, { r: 'o', R: 'O' }, true)];
     const hol = { p: 'v', w: 'P', c: 'm', k: 'k' };
     S.frames.hollow = [bossOf(EYE, hol, { y: 'p', Y: 'P', r: 'm' }), bossOf(EYE_B, hol, { y: 'p', Y: 'P', r: 'm' })];
+
+    const rm = { R: 'E', r: 'e', Z: 'm', E: 'R', N: 'E', n: 'e' };
+    S.frames.rootmother = [bossOf(LASHER, rm, { y: 'm', Y: 'R', r: 'e' }), bossOf(LASHER_B, rm, { y: 'm', Y: 'R', r: 'e' })];
+    S.frames.keeper = [bossOf(KEEPER, null, { y: 'Z', Y: 'y' }), bossOf(KEEPER_B, null, { y: 'Z', Y: 'y' })];
 
     S.chest = bake(CHEST);
     S.chestOpen = bake(CHEST_OPEN);

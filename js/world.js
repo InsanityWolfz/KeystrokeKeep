@@ -67,6 +67,8 @@
       atkT: U.rand(0.6, 1.4), atkSpd: isBoss ? 1.6 : 1.3,
       boss: isBoss, dead: false, active: false, flash: 0, kb: 0, stun: 0, anim: Math.random() * 10, spawnT: 0, lunge: 0, hits: 0,
     };
+    if (key === 'warden') { e.guard = true; e.guardT = 8; } // bark guard: an ultimate (or 8 s of fighting) breaks it
+    if (F.biomeOf(floor).echo && !isBoss) e.echo = true;
     W.enemies.push(e);
     return e;
   }
@@ -74,6 +76,7 @@
   W.spawnWave = function () {
     const S = KK.S, f = S.floor, b = F.biomeOf(f);
     const x0 = W.partyX + SPAWN_AHEAD;
+    W.wardUsed = false; // Root Ward: one free pass per fight
     if (S.glimpse && S.floor > KK.DEMO_CAP) {
       if (!W.sealedX) W.sealedX = W.partyX + 330;
       if (W.wave === 0) W.wave = W.waves - 2; // two short waves, then the statue
@@ -88,7 +91,7 @@
       const key = F.bossFor(f);
       const boss = makeEnemy(key, x0 + 20, f, f === 100 ? { hpMult: 1.5 } : undefined);
       if (f === 100) { boss.def = Object.assign({}, boss.def, { name: 'The Heart of the Keep' }); boss.heart = true; }
-      else if (f >= 70 && key !== 'hollow') { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
+      else if (f >= 70 && key !== 'hollow' && !boss.def.root) { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
       const wound = S.bossWounds && S.bossWounds[f];
       if (wound) { boss.hp = boss.maxHp * wound; boss.wounded = wound; }
       W.boss = boss;
@@ -119,6 +122,10 @@
   W.damageEnemy = function (e, dmg, opts = {}) {
     if (e.dead || e.pile > 0) return;
     if (e.key === 'ratking' && e.boss && !(e.summonStage >= 1)) dmg = Math.min(dmg, Math.max(0, e.hp - e.maxHp * 0.55));
+    if (e.guard) {
+      if (opts.ult) { e.guard = false; e.stun = Math.max(e.stun, 0.6); KK.emit('guardBreak', { e }); }
+      else dmg *= 0.5;
+    }
     if (e.shell > 0) {
       if (opts.ult) { e.shell = 0; e.stun = Math.max(e.stun, 1); KK.emit('shellCrack', { e }); }
       else dmg *= 0.5;
@@ -144,6 +151,10 @@
       return;
     }
     e.dead = true; e.hp = 0;
+    if (e.key === 'bloat') {
+      for (let i = 0; i < 2; i++) { const sp = makeEnemy('sporeling', e.x + 4 + i * 9, S.floor); sp.active = true; sp.echo = e.echo; }
+      KK.emit('bloatBurst', { e });
+    }
     const gold = e.gold * m.gold;
     KK.gainGold(gold, 'kill');
     S.stats.kills++;
@@ -152,7 +163,7 @@
       S.slain = S.slain || {}; S.slain[S.floor] = true;
       if (S.bossWounds) delete S.bossWounds[S.floor];
       S.bossLosses = 0;
-      if (e.hollowed || e.key === 'hollow') {
+      if (e.hollowed || e.key === 'hollow' || e.def.root) {
         S.codexKills = (S.codexKills || 0) + 1;
         const before = KK.mods().codexRanks; KK.dirty(); const after = KK.mods().codexRanks;
         if (after > before) KK.emit('codex', { name: e.def.name, rank: after });
@@ -388,6 +399,7 @@
       if (h.dead) continue;
       const def = D.HEROES[h.id];
       h.ultCd = Math.max(0, h.ultCd - dt);
+      if (h.locked > 0) h.locked -= dt;
       // regen when out of combat
       if (!engaged && !fe) h.hp = Math.min(h.maxHp, h.hp + h.maxHp * 0.06 * dt);
 
@@ -482,7 +494,7 @@
   // Timers start when the boss is on screen; a move about to collide with a void slam waits.
   function sigMove(e, dt, front) {
     const S = KK.S;
-    if (e.sigT === undefined) e.sigT = { ratking: 0.8, broodmother: 1.0, embergolem: 0, magmalord: 1.0 }[e.key];
+    if (e.sigT === undefined) e.sigT = { ratking: 0.8, broodmother: 1.0, embergolem: 0, magmalord: 1.0, rootmother: 2.0, keeper: 1.5 }[e.key];
     if (e.sigT === undefined) return;
     const gated = KK.fx && KK.fx.banners && KK.fx.banners.length;
     if (gated && !(e.key === 'ratking' && (e.summonStage || 0) >= 1)) { e.sigT = Math.max(e.sigT, 0.5); if (e.key !== 'ratking') return; }
@@ -524,8 +536,28 @@
         KK.emit('lavaMark', { x: h.x, t: s.t });
       }
       KK.emit('lavaRain', { e });
+    } else if (e.key === 'rootmother' && e.sigT <= 0) {
+      // Overgrowth: roots the whole line for 2 s; every keystroke tears 0.5 s off (an ultimate tears it all)
+      e.sigT = 9;
+      if (W.wardBlocks()) return;
+      for (const h of living) { h.webbed = Math.max(h.webbed || 0, 2); h.webKind = 'root'; }
+      KK.emit('overgrowth', { e });
+    } else if (e.key === 'keeper' && e.sigT <= 0) {
+      // Lockdown: seals the next ultimate in the rotation for 6 s
+      e.sigT = 10;
+      const h = living.find((x) => x.id === W.ultTurn) || living.find((x) => x.id !== 'cleric');
+      if (!h) return;
+      h.ultCd = Math.max(h.ultCd, 6); h.locked = 6;
+      KK.emit('lockdown', { e, h });
     }
   }
+  /** Root Ward: the first web / root / Overgrowth of each fight is ignored. */
+  W.wardBlocks = function () {
+    if (!KK.mods().ward || W.wardUsed) return false;
+    W.wardUsed = true;
+    KK.emit('warded', {});
+    return true;
+  };
 
   function updateEnemies(dt, frozen) {
     const front = W.frontHero();
@@ -541,6 +573,7 @@
       if (e.windup > 0) e.windup -= dt;
       if (e.pile > 0) e.pile -= dt;
       if (e.shell > 0) e.shell -= dt;
+      if (e.guard && (e.guardT -= dt) <= 0) { e.guard = false; KK.emit('guardBreak', { e, worn: true }); }
       if (e.boss && e.active && front && !frozen) sigMove(e, dt, front);
       if (e.stun > 0) { e.stun -= dt; prevX = e.x; continue; }
       if (frozen || !front) { prevX = e.x; continue; }
@@ -589,7 +622,8 @@
       if (e.atkT <= 0 && e.x - front.x <= e.def.w / 2 + e.def.range + 3) {
         e.atkT = e.atkSpd * U.rand(0.9, 1.1);
         if (e.def.ranged) {
-          W.shots.push({ type: e.def.ranged === 'beam' ? 'ebeam' : 'efire', x: e.x - 6, y: e.y - 6, target: front, dmg: e.atk, speed: 110, src: e, enemy: true });
+          if (e.def.ranged === 'root') { e.rootN = (e.rootN || 0) + 1; W.shots.push({ type: 'web', root: true, x: e.x - 6, y: e.y - 8, target: front, dmg: e.atk, speed: 100, src: e, enemy: true, web: e.rootN % 3 === 0 ? 1.5 : 0 }); }
+          else W.shots.push({ type: e.def.ranged === 'beam' ? 'ebeam' : 'efire', x: e.x - 6, y: e.y - 6, target: front, dmg: e.atk, speed: 110, src: e, enemy: true });
         } else {
           e.lunge = 0.15;
           // bosses slam the whole party every 4th attack
@@ -652,7 +686,7 @@
       const dx = tx - s.x, dy = ty - s.y, d = Math.hypot(dx, dy);
       const step = s.speed * dt;
       if (d <= step + 2) {
-        if (s.enemy) { W.damageHero(t, s.dmg, s.src); if (s.web && !t.dead) { t.webbed = s.web; KK.emit('webbed', { h: t }); } }
+        if (s.enemy) { W.damageHero(t, s.dmg, s.src); if (s.web && !t.dead && !W.wardBlocks()) { t.webbed = s.web; t.webKind = s.root ? 'root' : 'web'; KK.emit('webbed', { h: t, root: s.root }); } }
         else {
           W.damageEnemy(t, s.dmg, { crit: s.crit, src: s.src });
           if (s.splash) {
