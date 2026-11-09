@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+<title>Keystroke Keep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ Fake desktop (browser prototype only) ============ -->
+<div id="desktop">
+  <div class="wallpaper"><canvas id="wall-stars"></canvas></div>
+
+  <div class="window notepad" id="notepad" style="left:6%;top:7%;">
+    <div class="titlebar"><span class="t-icon">📝</span><span>work_notes.txt</span><span class="tb-btns"><i></i><i></i><i class="x"></i></span></div>
+    <div class="menubar"><span>File</span><span>Edit</span><span>Format</span><span>View</span></div>
+    <textarea id="notepad-text" spellcheck="false" placeholder="Pretend this is your real work. Type anything here...&#10;&#10;Every keystroke becomes a Spark ⚡ for your heroes below.&#10;Keep typing to build FERVOR. Hit FLOW STATE and watch the dungeon light up."></textarea>
+    <div class="statusbar"><span id="np-count">0 keystrokes today</span><span>UTF-8</span></div>
+  </div>
+
+  <div class="window sticky" id="howto" style="right:5%;top:8%;">
+    <div class="titlebar"><span>📌 how to play</span><span class="tb-btns"><i class="x" data-close="howto"></i></span></div>
+    <div class="sticky-body">
+      <p><b>Keystroke Keep</b> lives in the strip at the bottom of your screen.</p>
+      <ol>
+        <li><b>Type &amp; click</b> anywhere. That makes <span class="c-spark">Sparks ⚡</span> and builds <span class="c-fervor">Fervor</span>.</li>
+        <li>Sparks fire your heroes' <b>ultimates</b> automatically.</li>
+        <li>Fervor makes the party stronger. Reach <span class="c-flow">FLOW STATE</span>!</li>
+        <li>Spend <span class="c-gold">gold</span> in <b>⚔ Party</b> to level up.</li>
+        <li>Bosses every 10 floors drop <b>Relics</b>.</li>
+        <li>Stuck? <b>♛ Retire</b> for permanent Renown.</li>
+        <li>Click the <span class="c-gold">golden rat</span> when it scurries by!</li>
+      </ol>
+      <p class="small">We only count keystrokes. We never record what you type.</p>
+    </div>
+  </div>
+
+  <div class="window devwin" id="devwin" style="right:5%;top:52%;">
+    <div class="titlebar"><span>🛠 dev tools</span><span class="tb-btns"><i class="x" data-close="devwin"></i></span></div>
+    <div class="dev-body">
+      <label class="dev-row"><input type="checkbox" id="dev-autotype"> Simulate typing (≈5 keys/s)</label>
+      <div class="dev-row">Time warp:
+        <button data-warp="1" class="on">1x</button><button data-warp="5">5x</button><button data-warp="20">20x</button><button data-warp="60">60x</button>
+      </div>
+      <div class="dev-row">
+        <button id="dev-gold">+Gold</button><button id="dev-sparks">+Sparks</button><button id="dev-floor">+5 Floors</button><button id="dev-rat">Rat!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ The dock: panel + strip ============ -->
+<div id="dock">
+  <div id="panel" class="closed">
+    <div class="panel-tabs" id="panel-tabs"></div>
+    <div class="panel-body" id="panel-body"></div>
+    <button class="panel-close" id="panel-close" title="Close (Esc)">✕</button>
+  </div>
+
+  <div id="relic-offer" class="hidden"></div>
+
+  <div id="strip">
+    <canvas id="game"></canvas>
+    <div id="hud">
+      <div class="hud-left">
+        <div class="res gold" id="hud-gold"><img class="ico" data-icon="coin"><span class="val">0</span><span class="rate" id="hud-rate"></span></div>
+        <div class="res spark" id="hud-spark"><img class="ico" data-icon="spark"><span class="val">0</span><div class="sparkbar"><i></i></div></div>
+      </div>
+      <div class="hud-center">
+        <div class="floor-line"><span id="hud-floor">FLOOR 1</span><span class="biome" id="hud-biome">The Crypt</span></div>
+        <div class="wave-pips" id="hud-waves"></div>
+        <div class="farm-tag hidden" id="hud-farm">⚠ Boss too strong: farming. Level up!</div>
+      </div>
+      <div class="hud-right">
+        <div class="fervor" id="hud-fervor">
+          <div class="fv-label"><span id="fv-tier">IDLE</span><span id="fv-mult">x1.0</span></div>
+          <div class="fv-bar"><i id="fv-fill"></i><b class="t1"></b><b class="t2"></b><b class="t3"></b></div>
+        </div>
+        <div class="hud-btns" id="hud-btns"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="taskbar">
+    <div class="tb-start">◈</div>
+    <div class="tb-app active">📝 work_notes.txt</div>
+    <div class="tb-app">🏰 Keystroke Keep</div>
+    <div class="tb-spacer"></div>
+    <div class="tb-tray"><span id="tb-sound" title="Toggle sound">🔊</span><span id="tb-clock">9:00 AM</span></div>
+  </div>
+</div>
+
+<div id="modal-root"></div>
+<div id="toasts"></div>
+
+<script src="js/util.js"></script>
+<script src="js/font.js"></script>
+<script src="js/sprites.js"></script>
+<script src="js/data.js"></script>
+<script src="js/state.js"></script>
+<script src="js/world.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/input.js"></script>
+<script src="js/native.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "keystroke-keep",
+  "version": "0.1.0",
+  "description": "A tiny dungeon crawler that lives in a strip at the bottom of your screen. Your work is their adventure.",
+  "main": "electron/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "serve": "python -m http.server 5173 --bind 127.0.0.1",
+    "sim": "node tools/sim.js 120 typist 60"
+  },
+  "devDependencies": {
+    "electron": "^45.2.3"
+  },
+  "dependencies": {
+    "uiohook-napi": "^1.5.5"
+  }
+}

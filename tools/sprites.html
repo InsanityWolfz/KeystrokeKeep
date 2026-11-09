@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>KK sprite sheet</title>
+<style>body{background:#2a2438;margin:0;padding:10px;font:12px monospace;color:#ccc}canvas{image-rendering:pixelated}</style></head>
+<body><canvas id="c"></canvas>
+<script src="../js/util.js"></script><script src="../js/font.js"></script><script src="../js/sprites.js"></script>
+<script>
+const S = KK.SPR, c = document.getElementById('c'), g = c.getContext('2d');
+const scale = +(new URLSearchParams(location.search).get('s') || 4);
+const keys = Object.keys(S.frames);
+c.width = 780; c.height = 1400;
+g.imageSmoothingEnabled = false;
+let x = 4, y = 4, rowH = 0;
+function put(spr, label) {
+  const w = spr.w * scale, h = spr.h * scale;
+  if (x + w > c.width - 4) { x = 4; y += rowH + 16; rowH = 0; }
+  g.fillStyle = '#3a3350'; g.fillRect(x - 1, y - 1, w + 2, h + 2);
+  g.drawImage(spr.c, x, y, w, h);
+  g.fillStyle = '#ccc'; g.fillText(label, x, y + h + 11);
+  x += w + 10; rowH = Math.max(rowH, h);
+}
+for (const k of keys) S.frames[k].forEach((f, i) => put(f, k + i));
+put(S.chest, 'chest'); put(S.chestOpen, 'chestOpen');
+for (const k in S.icons) put(S.icons[k], k);
+</script></body></html>
