@@ -456,3 +456,11 @@ body.native #panel { border-bottom: 0; }
 body:not(.native) .demo-pill:not(.omen), .demo-pill:not(.omen) { pointer-events: auto; cursor: pointer; }
 
 .omen.starred { box-shadow: inset 0 0 0 2px #ffd76a, 0 0 12px #ffd76a66; }
+
+/* achievement progress: dim the text of locked rows, not the bar */
+.ach { opacity: 1; }
+.ach:not(.got) > b, .ach:not(.got) > span { opacity: .45; }
+.achprog { height: 3px; background: #0008; margin-top: 4px; }
+.achprog i { display: block; height: 100%; background: #ffd76a; }
+.ach small { font: 10px var(--font-px); color: #ffd76a; margin-top: 2px; }
+.ach.locked { opacity: .45; }

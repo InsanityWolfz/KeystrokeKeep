@@ -213,6 +213,10 @@
       setText('#legacy-renown', '♛ ' + S.renown);
     }
     if (UI.tab === 'workshop') setText('#ws-embers', fmt(Math.floor(S.embers || 0)));
+    if (UI.tab === 'legacy' && UI.achOpen && performance.now() - (UI._achT || 0) > 1000) {
+      UI._achT = performance.now();
+      $$('#panel-body [data-ach]').forEach((el) => { const def = KK.ach.LIST.find((d) => d.id === el.dataset.ach); const p = def && KK.ach.progress(def); if (!p) return; el.firstChild.style.width = p.pct + '%'; const tx = $(`#panel-body [data-achtxt="${def.id}"]`); if (tx) setText(tx, p.txt); });
+    }
   }
 
   function heroCard(id) {
@@ -329,7 +333,9 @@
     const list = KK.DEMO_CAP ? KK.ach.LIST.filter((a) => a.demo) : KK.ach.LIST;
     const locked = KK.DEMO_CAP ? KK.ach.LIST.filter((a) => !a.demo) : [];
     const n = list.filter((a) => got[a.id]).length;
-    return `<details class="achbox" ${UI.achOpen ? 'open' : ''}><summary>🏆 ACHIEVEMENTS ${n}/${list.length}${KK.DEMO_CAP ? ` (+${locked.length} more in the full game)` : ''}</summary><div class="achlist">${list.map((a) => `<div class="ach ${got[a.id] ? 'got' : ''}"><b>${a.name}</b><span>${a.desc}</span></div>`).join('')}${locked.map((a) => `<div class="ach locked"><b>${a.name} <i class="new">FULL GAME</i></b><span>${a.desc}</span></div>`).join('')}</div></details>`;
+    const nx = KK.ach.next ? KK.ach.next() : null;
+    const row = (a) => { const p = !got[a.id] && KK.ach.progress ? KK.ach.progress(a) : null; return `<div class="ach ${got[a.id] ? 'got' : ''}"><b>${a.name}</b><span>${a.desc}</span>${p ? `<div class="achprog" data-ach="${a.id}"><i style="width:${p.pct}%"></i></div><small data-achtxt="${a.id}">${p.txt}</small>` : ''}</div>`; };
+    return `<details class="achbox" ${UI.achOpen ? 'open' : ''}><summary>🏆 ACHIEVEMENTS ${n}/${list.length}${KK.DEMO_CAP ? ` (+${locked.length} more in the full game)` : ''}${nx ? ` · NEXT: ${nx.def.name} ${nx.txt}` : ''}</summary><div class="achlist">${list.map(row).join('')}${locked.map((a) => `<div class="ach locked"><b>${a.name} <i class="new">FULL GAME</i></b><span>${a.desc}</span></div>`).join('')}</div></details>`;
   }
   /** "+X% damage & gold" that the pending Renown would add (Fame), for the retire button. */
   function renownWorth() {
