@@ -154,6 +154,7 @@
   }
   KK.on('hit', ({ e, dmg, crit, ult }) => {
     if (e.windup > 0 || e.pile > 0) return; // keep telegraphs and the bone pile readable
+    if (e.heart && !crit) return; // the finale boss shows only its big hits
     if (crit) {
       dmgText(e, dmg, '#ffd34a', 1, 'c');
       FX.stop(0.035);
@@ -253,7 +254,7 @@
     const b = KK.F.biomeOf(floor);
     if (biomeChange) FX.banner(b.name.toUpperCase(), 'FLOOR ' + floor, '#ffffff', 3, { subCol: b.pal.accent });
     else if (boss) { /* the boss's own banner names the floor */ }
-    else FX.banner('FLOOR ' + floor, null, '#ffffff', 1.4, { big: false });
+    // plain floors: the HUD floor label already updates
   });
   KK.on('bossSpawn', ({ boss }) => {
     FX.banner(boss.def.name.toUpperCase(), 'FLOOR ' + KK.S.floor + ' BOSS', '#ff6b6b', 1.8, { subCol: '#ffd76a' });
@@ -371,7 +372,7 @@
   KK.on('regroup', () => FX.alert('THE PARTY REGROUPS (10 MIN)', '#ffb4a0', 2.4));
   KK.on('trophy', ({ floor }) => {
     const x = W.partyX - 20;
-    FX.banner(floor === 100 ? 'HEART OF THE KEEP' : 'DEPTH TROPHY', floor === 100 ? 'FLOOR 100: x1.05 FOREVER' : 'FLOOR ' + floor + ': x1.05 FOREVER', '#ffd76a', 2.6, { subCol: '#fff6c9' });
+    FX.banner('DEPTH TROPHY', 'FLOOR ' + floor + ': x1.05 FOREVER', '#ffd76a', 2.6, { subCol: '#fff6c9' });
     FX.ring(x, 40, 4, 110, '#ffd76a', 0.8, 2);
     FX.burst(x, 40, 40, ['#ffd76a', '#fff6c9', '#ffffff'], { spd: 140, grav: -20, life: 1.2 });
   });

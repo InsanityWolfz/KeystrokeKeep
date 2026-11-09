@@ -170,7 +170,7 @@
         b.drawImage(stoneTint(spr.c), gx, gy, sw, sh);
         const spr2 = { w: sw, h: sh };
         b.globalCompositeOperation = 'lighter'; glow(gx + spr2.w / 2, gy + spr2.h / 2, 30 + Math.sin(t * 2) * 3, '#ff7a2e', 0.25); b.globalCompositeOperation = 'source-over';
-        KK.font.draw(b, 'EMBER COLOSSUS - SEALED', gx + spr2.w / 2, gy - 6, '#ffb070');
+        KK.font.draw(b, 'EMBER COLOSSUS - SEALED', gx + spr2.w / 2, Math.max(gy - 6, 7), '#ffb070');
         if (Math.floor(t * 2) % 2) { b.fillStyle = '#ffb347'; b.fillRect(gx + Math.round(spr2.w * 0.38), gy + Math.round(spr2.h * 0.28), 2, 2); b.fillRect(gx + Math.round(spr2.w * 0.6), gy + Math.round(spr2.h * 0.28), 2, 2); }
       }
     }
@@ -489,6 +489,17 @@
       if (ready) { b.globalCompositeOperation = 'lighter'; glow(x, by + 1, 6, '#7ee8f6', 0.5); b.globalCompositeOperation = 'source-over'; }
     }
   }
+  const heartCache = new WeakMap();
+  function heartTint(c) {
+    let out = heartCache.get(c);
+    if (out) return out;
+    out = document.createElement('canvas'); out.width = c.width; out.height = c.height;
+    const g = out.getContext('2d', { willReadFrequently: true });
+    g.drawImage(c, 0, 0);
+    g.globalCompositeOperation = 'source-atop'; g.globalAlpha = 0.55; g.fillStyle = '#8a0f24'; g.fillRect(0, 0, c.width, c.height);
+    heartCache.set(c, out);
+    return out;
+  }
   const stoneCache = new WeakMap();
   function stoneTint(c) {
     let out = stoneCache.get(c);
@@ -530,6 +541,11 @@
       const k2 = 1 - Math.min(1, e.pile / 1.5);
       const hh = Math.max(Math.round(spr.h * 0.35), Math.round(spr.h * k2));
       b.drawImage(e.hollowed ? hollowTint(spr.c) : spr.c, 0, spr.h - hh, spr.w, hh, dxp, Math.round(y) + spr.h - hh, spr.w, hh);
+    } else if (e.heart) {
+      const hw = spr.w * 2, hh = spr.h * 2, hx = Math.round(x - hw / 2), hy = Math.round(W.GROUND + sy - hh + (e.def.fly ? -4 : 0));
+      b.globalCompositeOperation = 'lighter'; glow(x, hy + hh * 0.45, 40 + Math.sin(t * 3) * 6, '#ff3355', 0.35); b.globalCompositeOperation = 'source-over';
+      for (const [ox, oy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) b.drawImage(spr.dark || spr.c, hx + ox, hy + oy, hw, hh);
+      b.drawImage(heartTint(spr.c), hx, hy, hw, hh);
     } else b.drawImage(e.shell > 0 ? stoneTint(spr.c) : e.hollowed ? hollowTint(spr.c) : spr.c, dxp, Math.round(y));
     if ((e.windup > 0 || (e.boss && (e.fightT || 0) > 165)) && Math.floor(t * 4) % 2) { b.globalAlpha = 0.55 * k; b.drawImage(spr.white, dxp, Math.round(y)); b.globalAlpha = 1; }
     if (e.flash > 0) { b.globalAlpha = 0.9 * k; b.drawImage(spr.white, dxp, Math.round(y)); }

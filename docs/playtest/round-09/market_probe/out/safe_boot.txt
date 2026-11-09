@@ -359,3 +359,43 @@
   0.09 loadFile
   0.33 tray: fake (no icon shown)
   0.47 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+ 13.02 finish
+2026-11-09T21:04:34.295Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.06 uiohook start() blocked (dummy)
+  0.10 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.10 pre installed {"identifier":"1"}
+  0.10 loadFile
+  0.35 tray: fake (no icon shown)
+  0.44 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+ 14.03 finish
+2026-11-09T21:04:48.553Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.35 tray: fake (no icon shown)
+  0.45 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+ 14.03 finish
+2026-11-09T21:05:02.801Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.33 tray: fake (no icon shown)
+  0.43 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+ 14.02 finish
+2026-11-09T21:05:17.050Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.34 tray: fake (no icon shown)
+  0.44 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+ 13.02 finish
+2026-11-09T21:05:30.299Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.34 tray: fake (no icon shown)
+  0.43 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}

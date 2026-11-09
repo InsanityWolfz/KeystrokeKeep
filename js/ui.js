@@ -91,7 +91,7 @@
     const calmLine = W.cautious ? `Training on floor ${S.floor}: gathering strength` : (camp > 0 && S.campFloor) ? `Regrouping below floor ${S.campFloor}${S.campLevels > lvls ? ` · +${S.campLevels - lvls} levels to go` : ''}` : '';
     const hintMin = 10;
     const nearGlimpse = KK.DEMO_CAP && !S.glimpseDone && (S.bossBlock === KK.DEMO_CAP || S.maxFloorRun >= 38); // don't pull players off the road to the Glimpse
-    setText('#hud-farm', blocked && g >= hintMin && !nearGlimpse ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Regrouping: next try in ${Math.ceil(regroup / 60)}m. Level up!` : blocked ? '⚠ Boss too strong: farming. Level up!' : calmLine);
+    setText('#hud-farm', blocked && g >= hintMin && !nearGlimpse && A.canRetire() ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Regrouping: next try in ${Math.ceil(regroup / 60)}m. Level up!` : blocked ? '⚠ Boss too strong: farming. Level up!' : calmLine);
     $('#hud-farm').classList.toggle('hidden', (!blocked && !calmLine) || KK.fx.banners.length > 0);
     $('#hud-farm').classList.toggle('calm', !blocked && !!calmLine);
     const pill = $('#hud-demo');
@@ -99,7 +99,7 @@
       const om = S.omen && D.OMENS.find((o) => o.id === S.omen);
       const starOn = om && S.omen === S.omenStar && A.dailyOpen();
       setText(pill, KK.DEMO_CAP ? 'DEMO · ENDS AT FLOOR 40' + (S.demoLaps ? ` · BEST ${U.fmtTime(S.bestCapTime)} · ${S.demoLaps} CLEAR${S.demoLaps > 1 ? 'S' : ''}` : '') + ' · ♥ WISHLIST' : om ? (starOn ? '★ ' : '◆ ') + om.name.toUpperCase() + (starOn ? ` · ★ FLOOR ${A.sealFloor()}` : (S.omen === S.omenStar && S.sealDay === KK.today() ? ' · ★ SEALED' : '')) : '');
-      pill.classList.toggle('hidden', (!KK.DEMO_CAP && !om) || KK.fx.banners.length > 0 || KK.fx.alerts.length > 0);
+      pill.classList.toggle('hidden', (!KK.DEMO_CAP && !om) || KK.fx.banners.length > 0 || KK.fx.alerts.length > 0 || !!S.glimpse);
       pill.title = KK.DEMO_CAP ? 'Wishlist Keystroke Keep on Steam' : om ? om.desc + (starOn ? ` Omen of the Day: reach floor ${A.sealFloor()} for +${A.sealValue()} Renown.` : '') : '';
       pill.classList.toggle('omen', !KK.DEMO_CAP);
     }
@@ -153,6 +153,7 @@
   // ---------------------------------------------------------------- panel
   UI.toggle = (tab) => (UI.tab === tab ? UI.close() : UI.open(tab));
   UI.open = function (tab) {
+    if (UI.tab !== tab) $('#panel-body').scrollTop = 0;
     UI.tab = tab;
     $('#panel').classList.remove('closed');
     $$('.ptab').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
@@ -311,10 +312,10 @@
         ${statRow('Chests opened', fmt(st.chests))}${statRow('Retreats', fmt(st.wipes))}
         ${KK.DEMO_CAP ? '' : statRow('Seals of the Day', S.seals || 0)}
       </div></div>
-      ${codexHTML()}
-      ${achHTML()}
       <div class="ph"><div><h3>HALL OF LEGENDS</h3><div class="sub">Permanent upgrades bought with Renown.</div></div><div class="res-pill renown" id="legacy-renown">♛ ${S.renown}</div></div>
-      <div class="grid">${D.LEGACY.map((d) => upCard(d, S.legacy[d.id] || 0, 'renown', 'legacy')).join('')}</div>`;
+      <div class="grid">${D.LEGACY.map((d) => upCard(d, S.legacy[d.id] || 0, 'renown', 'legacy')).join('')}</div>
+      ${codexHTML()}
+      ${achHTML()}`;
   }
   function codexHTML() {
     const S = KK.S, m = KK.mods();
@@ -487,6 +488,7 @@
       <p style="font-size:12px;color:var(--muted)">Resets: gold, hero levels, recruits, Forge, relics, floor.<br>Keeps: Renown, Legacy, Workshop upgrades, Embers.</p>
       <div class="row"><button class="buy" data-x="no" style="background:#3a2f4f;color:#fff;box-shadow:none">NOT YET</button><button class="buy renown" data-x="yes">${redelve ? 'RE-DELVE' : 'RETIRE'}</button></div>`,
     (m, close) => {
+      const live = setInterval(() => { const bv = m.querySelector('.bigval'); if (!document.body.contains(m)) return clearInterval(live); if (bv) bv.textContent = '+' + A.renownGain() + ' RENOWN'; }, 500);
       m.querySelector('[data-x=no]').onclick = close;
       m.querySelector('[data-x=yes]').onclick = () => {
         close();
@@ -573,6 +575,7 @@
   KK.on('achievement', ({ def }) => {
     UI.dirty = true;
     if (!def || (KK.DEMO_CAP && !def.demo)) return;
+    if (def.big) { UI.toast(`🏆 ${def.name}!`, 'crown', 'epic', 6); return; } // capstones always toast
     achBatch.push(def.name);
     clearTimeout(achTimer);
     achTimer = setTimeout(() => {

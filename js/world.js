@@ -744,6 +744,11 @@
 
   W.recover = function () {
     const S = KK.S;
+    if (S.glimpse) {
+      S.glimpse = false; W.sealedX = 0;
+      if (!S.demoDone) { S.demoDone = true; KK.emit('demoComplete'); }
+      S.floor = KK.DEMO_CAP - 3; // recover() steps back one more below
+    }
     S.floor = Math.max(KK.mods().startFloor, S.floor - 1); // a retreat never undoes Head Start
     W.wave = 0; W.door = null; W.chest = null; W.boss = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
