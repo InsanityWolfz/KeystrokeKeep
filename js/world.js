@@ -74,8 +74,10 @@
   W.spawnWave = function () {
     const S = KK.S, f = S.floor, b = F.biomeOf(f);
     const x0 = W.partyX + SPAWN_AHEAD;
-    if (S.glimpse) {
-      const n = W.wave === 0 ? 3 : 2;
+    if (S.glimpse && S.floor > KK.DEMO_CAP) {
+      if (!W.sealedX) W.sealedX = W.partyX + 330;
+      W.wave = W.waves - 1; // a single wave, then the statue
+      const n = 3;
       for (let i = 0; i < n; i++) makeEnemy(b.monsters[(W.wave + i) % b.monsters.length], x0 + i * 15, KK.DEMO_CAP - 2, { hpMult: 0.3 });
       W.wave++;
       KK.emit('wave', { wave: W.wave });
@@ -192,7 +194,7 @@
   W.sanctuaryReact = function (vigil) {
     const c = W.heroes.find((x) => x.id === 'cleric' && !x.dead);
     if (!c || (c.ultCd > 0 && !vigil)) return;
-    c.ultCd = 25;
+    c.ultCd = D.HEROES.cleric.ult.cd;
     W.castUlt(c, true);
   };
   W.healHero = function (h, amt, src) {
@@ -350,7 +352,7 @@
       else { W.chest.openT += dt; if (W.chest.openT > 0.5) openChest(); }
     } else if (W.door) {
       walkParty(dt, speedMult);
-      if (W.partyX >= W.door.x - 4) { W.trans = 0.9; W.transFloorDone = false; KK.emit('door'); }
+      if (W.partyX >= W.door.x - 4 && !(KK.S.glimpse && (W.glimpseHold = (W.glimpseHold === undefined ? 3 : W.glimpseHold) - dt) > 0)) { W.glimpseHold = undefined; W.trans = 0.9; W.transFloorDone = false; KK.emit('door'); }
     } else if (!W.enemies.some((e) => !e.dead)) {
       // between waves
       W.enemies = W.enemies.filter((e) => !e.dead || e.deathT < 1);
@@ -363,6 +365,10 @@
         if (!W.chest || W.chest.opened) { W.spawnWave(); W.chestRolled = false; }
       } else {
         W.door = { x: W.partyX + 85, t: 0 };
+        if (S.glimpse && W.door) {
+          W.door.x = Math.max(W.door.x, (W.sealedX || W.door.x + 60) - 60);
+          if (!S.demoDone) { S.demoDone = true; KK.emit('glimpseDoor'); KK.emit('demoComplete', { atStatue: true }); }
+        }
         KK.emit('floorClear', { floor: S.floor });
       }
       walkParty(dt, speedMult);
@@ -476,7 +482,8 @@
     const S = KK.S;
     if (e.sigT === undefined) e.sigT = { ratking: 0.8, broodmother: 1.0, embergolem: 0, magmalord: 1.0 }[e.key];
     if (e.sigT === undefined) return;
-    if (KK.fx && KK.fx.banners && KK.fx.banners.length) { e.sigT = Math.max(e.sigT, 0.5); return; }
+    const gated = KK.fx && KK.fx.banners && KK.fx.banners.length;
+    if (gated && !(e.key === 'ratking' && (e.summonStage || 0) >= 1)) { e.sigT = Math.max(e.sigT, 0.5); if (e.key !== 'ratking') return; }
     e.sigT -= dt;
     if (e.voidT !== undefined && e.voidT < 2.4 && e.sigT < 0.5) e.sigT = 0.5;
     const living = W.heroes.filter((h) => !h.dead);
@@ -484,7 +491,9 @@
     if (e.key === 'ratking') {
       // Royal Summons: an opener, then one wave at 60% and one at 30% HP; max 4 rats alive
       const stage = e.summonStage || 0;
-      const due = (stage === 0 && e.sigT <= 0) || (stage === 1 && e.hp / e.maxHp < 0.6) || (stage === 2 && e.hp / e.maxHp < 0.3);
+      // HP stages fire even if the opener was skipped (fast fights)
+      const frac = e.hp / e.maxHp;
+      const due = (stage === 0 && (e.sigT <= 0 || frac < 0.6)) || (stage === 1 && frac < 0.6) || (stage === 2 && frac < 0.3);
       if (!due) return;
       e.summonStage = stage + 1;
       const alive = W.enemies.filter((o) => o.summon && !o.dead).length;
@@ -683,7 +692,7 @@
     if (S.glimpse) {
       // leaving the sealed floor: back to the demo's last floors, then the wishlist card
       S.glimpse = false; W.sealedX = 0;
-      S.demoDone = true; KK.emit('demoComplete');
+      if (!S.demoDone) { S.demoDone = true; KK.emit('demoComplete'); }
       S.floor = KK.DEMO_CAP - 4;
     } else if (KK.DEMO_CAP && S.floor >= KK.DEMO_CAP && !S.demoDone && !S.glimpseDone) {
       // Glimpse of the Depths: the first clear of floor 40 opens one sealed Magma floor
@@ -692,7 +701,6 @@
       if (tm > 0 && (!S.bestCapTime || tm < S.bestCapTime)) S.bestCapTime = tm;
       S.demoLaps = (S.demoLaps || 0) + 1;
       S.floor = KK.DEMO_CAP; // -> 41 below
-      W.sealedX = W.partyX + 230;
       KK.emit('glimpse');
     } else if (KK.DEMO_CAP && S.floor >= KK.DEMO_CAP) {
       if (!S.runCapCleared) {

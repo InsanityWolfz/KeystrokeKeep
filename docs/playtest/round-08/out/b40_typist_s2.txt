@@ -1,0 +1,31 @@
+=== R6 probe typist s2 2400m: maxEver 181, retires 33, renown life 876, ach 36/39, trophies 17, codex 28/28, wipes 82, fame x900.7, unspent embers 43433
+beats per 30 min from h1: 9 6 5 6 7 1 1 3 1 2 3 0 4 0 1 3 0 3 1 0 1 2 0 0 2 1 0 1 2 1 3 0 0 1 0 1 0 0 1 0 1 1 1 0 0 4 2 0 0 0 0 1 0 1 2 1 0 1 0 0 1 0 1 2 0 0 0 1 0 2 0 0 0 0 0 0 0 2 0
+AFTER 8h: 48 beats {"SEAL":4,"CODEX":24,"TROPHY":7,"ACH":7,"OMEN":2,"LANTERN":4}; longest gap 225 min (from 35h57); empty 2h windows 2/17
+longest stretch with no new depth record (30-min snapshots): 4.0 h from 36h00
+codex: 2h30 H-Magma Lord r1, 4h01 The Hollow r2, 5h45 H-Goblin Warlord r3, 7h19 H-Magma Lord r4, 8h39 H-Ember Colossus r5, 9h42 H-Ember Colossus r6, 10h20 H-Bone King r7, 11h45 The Heart of the Keep r8, 13h04 The Heart of the Keep r9, 14h36 The Heart of the Keep r10, 15h35 The Heart of the Keep r11, 16h08 The Heart of the Keep r12, 18h40 H-Bone King r13, 20h12 H-Brood Mother r14, 21h38 The Hollow r15, 22h18 H-Magma Lord r16, 23h50 H-Magma Lord r17, 24h13 H-Rat King r18, 26h33 The Heart of the Keep r19, 28h14 H-Rat King r20, 28h35 H-Brood Mother r21, 29h38 H-Bone King r22, 31h24 The Heart of the Keep r23, 32h06 H-Rat King r24, 32h39 H-Brood Mother r25, 34h30 H-Bone King r26, 35h57 The Heart of the Keep r27, 39h42 H-Brood Mother r28
+trophies: f75@1h31 f80@1h37 f85@2h01 f90@2h23 f95@2h36 f100@3h02 f105@3h53 f110@4h50 f115@5h58 f120@7h03 f125@8h50 f130@9h36 f140@11h36 f150@15h19 f160@21h26 f170@28h01 f180@35h41
+retires (33): 0h26 f40 +30, 0h51 f59 +46, 1h16 f73 +47, 1h41 f81 +31, 2h06 f89 +35, 2h37 f96 +33, 3h10 f100 +22, 3h56 f106 +32, 4h58 f110 +22, 6h01 f116 +35, 7h11 f120 +24, 8h00 f120 +0, 8h50 f125 +34, 9h36 f130 +33, 10h13 f135 +33, 11h36 f140 +36, 12h56 f145 +36, 14h28 f149 +30, 15h27 f150 +7, 16h00 f144 +0, 18h34 f154 +31, 20h06 f158 +32, 21h34 f160 +16, 23h37 f164 +33, 24h02 f152 +0, 26h26 f167 +25, 28h09 f170 +26, 29h27 f174 +34, 31h16 f177 +27, 32h00 f163 +0, 34h18 f179 +18, 35h49 f180 +9, 39h51 f181 +9
+SIG totals: {"chargeWarn":195,"warCharge":188,"reassemble":34,"bossEnrage":29,"royalSummons":47,"webShot":280,"webbed":273,"webTorn":155,"magmaShell":144,"shellCrack":56,"lavaRain":303,"regroup":20,"seal":5,"voidWarn":1121,"voidSlam":1091}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking           1 |    1 |   0 |   0 |   28.6 |  16 | royalSummons 3 [100%] @3.3
+  boneking          3 |    3 |   0 |   0 |    7.3 |   2 | reassemble 1 [100%] @5.1 | rise->death med 2.17s, <0.5s 0/3, <1.5s(still stunned) 0/3
+  broodmother       7 |    6 |   1 |   0 |    2.7 |   1 | webShot 0 [43%] @3.5; webbed 0 [43%] @4.2; webTorn 0 [43%] @5.2
+  warlord           8 |    8 |   0 |   0 |    2.2 |   0 | chargeWarn 0 [38%] @3.2; warCharge 0 [25%] @5.3 | died mid-charge 1/8, fights with 0 charges 6/8
+  embergolem       33 |   33 |   0 |   0 |    1.9 |   0 | magmaShell 0 [15%] @3.0; shellCrack 0 [3%] @5.2
+  magmalord        32 |   32 |   0 |   0 |    2.0 |   0 | lavaRain 0 [16%] @3.5
+  hollow           32 |   32 |   0 |   0 |    2.0 |   1 | voidWarn 0 [25%] @4.0; voidSlam 0 [16%] @5.0
+  H-ratking        32 |   27 |   5 |   5 |    5.2 |   6 | voidWarn 1 [59%] @4.0; voidSlam 1 [59%] @5.0; royalSummons 1 [56%] @5.5
+  H-broodmother    41 |   26 |  15 |   5 |    9.5 |  13 | voidWarn 2 [76%] @4.0; voidSlam 2 [73%] @5.0; webShot 3 [73%] @5.5; webbed 2 [71%] @6.1; webTorn 1 [51%] @7.0; regroup 0 [7%] @29.0
+  H-embergolem     46 |   26 |  20 |   2 |   12.9 |   9 | voidWarn 2 [80%] @4.0; voidSlam 1 [76%] @5.0; magmaShell 1 [76%] @5.5; shellCrack 1 [50%] @7.5; regroup 0 [11%] @17.7
+  H-magmalord      61 |   31 |  30 |   5 |    5.3 |  13 | voidWarn 2 [79%] @4.0; voidSlam 2 [75%] @5.0; lavaRain 3 [74%] @5.5; regroup 0 [11%] @25.2
+  H-boneking       43 |   29 |  14 |   5 |   13.5 |  11 | voidWarn 2 [79%] @4.0; voidSlam 2 [74%] @5.0; reassemble 1 [72%] @11.2; regroup 0 [5%] @180.0 | rise->death med 3.40s, <0.5s 0/29, <1.5s(still stunned) 0/29
+  HEART            32 |   27 |   5 |   2 |    3.4 |   2 | voidWarn 0 [47%] @4.0; voidSlam 0 [41%] @5.0; regroup 0 [3%] @61.3
+  H-warlord        41 |   30 |  11 |   5 |    9.2 |   6 | chargeWarn 2 [78%] @2.9; warCharge 2 [73%] @4.1; voidWarn 1 [73%] @4.0; voidSlam 1 [71%] @5.0; regroup 0 [5%] @29.3 | died mid-charge 10/30, fights with 0 charges 11/41
+ACH: first_boss 0h04 | flow 0h00 | full_party 0h15 | retire1 0h26 | gatekeeper 0h35 | rat 0h04 | epic 0h21 | caverns 0h10 | comeback 0h20 | echo 2h40 | ult_boss 0h55 | revive 0h20 | speed60 1h01 | blitz 23h48 | magma 0h35 | void 1h01 | hollow 1h11 | hollowed6 3h25 | f100 3h02 | codex28 39h42 | seals7 NO | seals30 NO | f150 15h19 | f125 8h50 | retire10 6h01 | omen1 0h51 | omen10 23h37 | deep90 2h50 | legacy_all 7h12 | crucible10 4h55 | lv100 0h58 | chests100 5h01 | rats25 3h23 | idle50 NO | keys10k 1h17 | keys100k 13h06 | flow1h 1h59 | flow10h 16h10 | ults1k 3h17
+R8 SEALS 5 (star offered 5, taken 5, free re-delves 4): 0.9h f44/rec59 4min, 8.2h f105/rec120 13min, 16.3h f135/rec150 17min, 24.4h f149/rec164 21min, 32.7h f162/rec177 36min
+R8 LANTERN L1@6.1h L2@11.1h L3@13.7h L4@17.9h L5@27.7h | first f70 1.1h (237 embers) | blocked-but-affordable glances (badge shows, card hidden) 0
+R8 SIG under banner: royalSummons 0/47, reassemble 8/34, webShot 0/280, chargeWarn 7/195, magmaShell 0/144, lavaRain 0/303 | alerts 540, while a banner shows 17
+R8 FIGHTS (key: fights | saw own move | kills | kills with NO move | med s from spawn to first move): ratking 1|100%|1|0|3.4  boneking 3|100%|3|0|5.2  broodmother 7|43%|6|4|3.6  warlord 8|38%|8|5|3.2  embergolem 33|15%|33|28|3.1  magmalord 32|16%|32|27|3.6  hollow 64|0%|59|59|NaN  H-ratking 32|56%|27|14|5.6  H-broodmother 41|73%|26|11|5.6  H-embergolem 46|76%|26|11|5.6  H-magmalord 61|74%|31|16|5.6  H-boneking 43|72%|29|0|11.3  H-warlord 41|78%|30|9|2.9
+R8 WEB shots 280 webbed 273: torn by ult 30, by keys 125, other 0, expired 114, KO 4; med web 1.00s
+R8 VOID gaps med s: hollow 12.0 (n87), H-ratking 12.0 (n137), H-broodmother 12.0 (n137), H-embergolem 12.0 (n97), H-magmalord 13.1 (n154), H-boneking 12.0 (n147), H-warlord 13.1 (n123) | Hollowed charge ticks 9638, voidT frozen 539
+R8 REKILL boss kills 311, re-kills of a floor beaten this delve 0

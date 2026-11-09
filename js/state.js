@@ -148,7 +148,6 @@
       KK.emit('keycoin', { amount: g });
     }
     if (m.hotkey && kind === 'key' && S.keyCounter % 60 === 0) KK.emit('hotkey');
-    S.runInputs = (S.runInputs || 0);
     const after = KK.fervorTier();
     if (after !== before) KK.emit('fervorTier', { from: before, to: after });
     KK.emit('activity', { kind });
@@ -304,13 +303,14 @@
   A.sealFloor = () => Math.max(40, (KK.S.renownFloor || 0) - 15);
   A.claimSeal = () => { const S = KK.S; S.sealDay = KK.today(); S.seals = (S.seals || 0) + 1; S.renown += 10; S.renownLifetime += 10; KK.dirty(); KK.emit('seal', { n: S.seals }); };
   A.canRedelve = () => !!(KK.DEMO_CAP && KK.S.demoDone && KK.S.maxFloorRun >= 20) || (A.dailyOpen() && KK.S.freeDelveDay !== KK.today() && A.renownGain() <= 0 && KK.S.maxFloorRun >= 20);
-  A.canRetire = () => A.renownGain() > 0 || A.canRedelve();
+  A.canRetire = () => !KK.S.glimpse && (A.renownGain() > 0 || A.canRedelve());
   /** What the retire button should ask for when nothing can be earned yet. */
   A.retireHint = () => (KK.DEMO_CAP && KK.S.demoDone ? (KK.S.renownLifetime >= KK.DEMO_RENOWN_CAP ? 'DEMO RENOWN MAXED: BEAT YOUR BEST TIME' : 'CLEAR FLOOR ' + KK.DEMO_CAP + ' AGAIN FOR +6 RENOWN') : 'REACH FLOOR ' + A.retireTarget() + ' TO EARN RENOWN');
   A.retire = () => {
     const S = KK.S;
     const gain = A.renownGain();
     if (gain <= 0 && !A.canRedelve()) return false;
+    if (S.glimpse) { S.glimpse = false; if (KK.world) KK.world.sealedX = 0; if (KK.DEMO_CAP && !S.demoDone) { S.demoDone = true; KK.emit('demoComplete'); } }
     S.renown += gain; S.renownLifetime += gain; S.retires++;
     S.runTime = 0; S.runCapCleared = false; S.bossWounds = {}; S.bossLosses = 0; S.campUntil = 0; S.campFloor = 0; S.campLevels = 0; S.slain = {}; S.graceSaves = {}; S.regroupUntil = 0;
     S.incomeRate = 0; S.incomeAvg = 0; // a fresh delve doesn't keep the old run's income
@@ -373,6 +373,7 @@
         while (F.renownFor(rf) < fresh.renownLifetime && rf < 400) rf++;
         fresh.renownFloor = rf;
       }
+      if (fresh.glimpse && fresh.floor <= 40) fresh.glimpse = false;
       if (!fresh.settings.lowGpuMigrated) { if (fresh.settings.lowGpu === true) fresh.settings.lowGpu = 'auto'; fresh.settings.lowGpuMigrated = true; }
       if (!fresh.settings.calmMigrated) { if (fresh.settings.volume === 0.3) fresh.settings.volume = 0.2; fresh.settings.calmMigrated = true; }
       if ((fresh.workshop.dynamo || 0) > 6) { for (let l = 6; l < fresh.workshop.dynamo; l++) fresh.embers = (fresh.embers || 0) + Math.ceil(150 * Math.pow(1.6, l)); fresh.workshop.dynamo = 6; }

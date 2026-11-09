@@ -167,7 +167,8 @@
         const gx = Math.round(sxw(W.sealedX) - spr.w / 2), gy = W.GROUND - spr.h + sy;
         b.drawImage(stoneTint(spr.c), gx, gy);
         b.globalCompositeOperation = 'lighter'; glow(gx + spr.w / 2, gy + spr.h / 2, 26 + Math.sin(t * 2) * 3, '#ff7a2e', 0.25); b.globalCompositeOperation = 'source-over';
-        KK.font.draw(b, 'SEALED', gx + spr.w / 2, gy - 6, '#ffb070');
+        KK.font.draw(b, 'EMBER COLOSSUS - SEALED', gx + spr.w / 2, gy - 6, '#ffb070');
+        if (Math.floor(t * 2) % 2) { b.fillStyle = '#ffb347'; b.fillRect(gx + Math.round(spr.w * 0.38), gy + Math.round(spr.h * 0.28), 1, 1); b.fillRect(gx + Math.round(spr.w * 0.6), gy + Math.round(spr.h * 0.28), 1, 1); }
       }
     }
     for (const p of W.props) {
@@ -297,7 +298,9 @@
       b.fillStyle = '#e04848'; b.fillRect(bx, by, Math.ceil(bw * W.boss.hp / W.boss.maxHp), 3);
       b.fillStyle = '#ff9a9a'; b.fillRect(bx, by, Math.ceil(bw * W.boss.hp / W.boss.maxHp), 1);
       const bs = W.boss, mv = bs.shell > 0 ? ' - SHELLED' : bs.chPhase ? ' - CHARGING' : bs.pile > 0 ? ' - REASSEMBLING' : bs.voidWarn ? ' - VOID SLAM' : '';
-      KK.font.draw(b, bs.def.name.toUpperCase() + (bs.wounded ? ' (WOUNDED)' : '') + mv, bx + bw / 2, by + 6, '#ffb4b4');
+      const lbl = bs.def.name.toUpperCase() + (bs.wounded ? ' (WOUNDED)' : '') + mv;
+      const lw = 4 * lbl.length - 1;
+      KK.font.draw(b, lbl, Math.min(bx + bw / 2, Wd - 3 - lw / 2), by + 6, '#ffb4b4');
       // enrage timer: a thin bar that fills toward the 3-minute retreat
       const ek = Math.min(1, (W.boss.fightT || 0) / 180);
       if (ek > 0.33) { b.fillStyle = '#000'; b.fillRect(bx - 1, by - 3, bw + 2, 2); b.fillStyle = ek > 0.85 ? '#ff6b6b' : '#ffb070'; b.fillRect(bx, by - 3, Math.ceil(bw * ek), 1); }
@@ -335,7 +338,7 @@
     // ---- alerts (never dropped, on a plate, over the party)
     if (FX.alerts.length) {
       const a = FX.alerts[FX.alerts.length - 1];
-      const ax = Math.round(sxw(W.partyX - 10)), ay = FX.banners.length ? 8 : 24;
+      const ax = Math.round(sxw(W.partyX - 10)), ay = FX.banners.length ? 46 : 24; // below the banner band (and clear of the HUD floor label)
       const w = a.str.length * 4 + 8;
       b.globalAlpha = Math.min(1, (a.life - a.t) / 0.2);
       b.fillStyle = '#000000cc'; b.fillRect(ax - w / 2, ay - 4, w, 11);

@@ -1,0 +1,28 @@
+  0.2s [stderr] Debugger attached.
+  0.5s [main] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+  0.5s booted; probe: undefined
+  1.5s [main] [capture] MARK 2026-11-09T20:12:17.541Z G1 IN
+  1.5s [main] [capture] probe {"s":1.4,"fps":59,"floor":16,"tier":2,"fervor":82,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  2.5s [main] [capture] probe {"s":2.4,"fps":58,"floor":16,"tier":2,"fervor":90,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  2.6s [main] [capture] ev 2.5 fervorTier 2->3
+  2.7s [main] [capture] MARK 2026-11-09T20:12:18.749Z FLOW STATE banner (S1 freeze point)
+  2.8s shot g1_2.8.png
+  3.4s [main] [capture] ev 3.3 ult knight
+  3.5s [main] [capture] probe {"s":3.4,"fps":58,"floor":16,"tier":3,"fervor":94,"sparks":125,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"FLOW STATE!","alert":"","ultTurn":"archer","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  4.4s shot g1_4.4.png
+  4.5s [main] [capture] ev 4.4 ult archer
+  4.5s [main] [capture] probe {"s":4.4,"fps":59,"floor":16,"tier":3,"fervor":100,"sparks":101,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"FLOW STATE!","alert":"","ultTurn":"mage","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  5.5s [main] [capture] probe {"s":5.4,"fps":59,"floor":16,"tier":3,"fervor":100,"sparks":106,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"mage","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  6.5s [main] [capture] ev 6.4 ult mage
+  6.5s [main] [capture] probe {"s":6.4,"fps":58,"floor":16,"tier":3,"fervor":100,"sparks":100,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  7.3s [main] [capture] ev 7.3 meteorLand 
+  7.5s [main] [capture] probe {"s":7.4,"fps":59,"floor":16,"tier":3,"fervor":100,"sparks":106,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  8.1s [main] [capture] MARK 2026-11-09T20:12:24.135Z METEOR lands
+  8.3s shot g1_8.2.png
+  8.5s [main] [capture] probe {"s":8.4,"fps":59,"floor":16,"tier":3,"fervor":100,"sparks":111,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  9.5s [main] [capture] MARK 2026-11-09T20:12:25.549Z G1 OUT
+  9.5s [main] [capture] probe {"s":9.4,"fps":60,"floor":16,"tier":3,"fervor":100,"sparks":117,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 10.5s [main] [capture] probe {"s":10.4,"fps":60,"floor":16,"tier":3,"fervor":100,"sparks":117,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 11.5s [main] [capture] probe {"s":11.4,"fps":61,"floor":16,"tier":3,"fervor":100,"sparks":117,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 11.8s [main] [capture] ev 11.7 floor 17
+ 12.1s [stderr] Waiting for the debugger to disconnect...

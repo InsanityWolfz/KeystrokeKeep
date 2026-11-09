@@ -1,0 +1,1 @@
+{"seed":11,"cues":[{"t":0,"do":"floor","v":50},{"t":0,"do":"sparks","v":20},{"t":0,"do":"warp","v":4},{"t":5,"do":"warp","v":1},{"t":14,"do":"autotype","v":true}]}

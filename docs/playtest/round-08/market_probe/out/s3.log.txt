@@ -1,0 +1,21 @@
+  0.2s [stderr] Debugger attached.
+  1.0s [main] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+  1.0s booted; probe: undefined
+  1.6s [main] [capture] ev 1.4 relicOffer 
+  2.0s [main] [capture] probe {"s":1.8,"fps":61,"floor":29,"tier":3,"fervor":100,"sparks":11,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":true,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  3.0s [main] [capture] probe {"s":2.8,"fps":60,"floor":29,"tier":3,"fervor":100,"sparks":11,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":true,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  3.1s [main] [capture] MARK 2026-11-09T20:20:23.901Z OFFER OPEN (still)
+  4.1s [main] [capture] probe {"s":3.8,"fps":60,"floor":29,"tier":3,"fervor":99,"sparks":11,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":true,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  4.1s shot s3_4.png
+  5.0s [main] [capture] probe {"s":4.8,"fps":60,"floor":29,"tier":3,"fervor":96,"sparks":11,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":true,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  6.0s [main] [capture] probe {"s":5.8,"fps":61,"floor":29,"tier":3,"fervor":93,"sparks":11,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":true,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  7.0s [main] [capture] probe {"s":6.8,"fps":61,"floor":29,"tier":3,"fervor":89,"sparks":11,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":true,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  7.5s shot s3_7.4.png
+  8.0s [main] [capture] probe {"s":7.8,"fps":60,"floor":29,"tier":3,"fervor":86,"sparks":11,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":true,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  8.1s [main] [capture] ev 7.9 relicPicked echo
+  8.1s [main] [capture] MARK 2026-11-09T20:20:28.906Z PICK
+  9.0s [main] [capture] probe {"s":8.8,"fps":60,"floor":29,"tier":3,"fervor":82,"sparks":11,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 10.0s [main] [capture] probe {"s":9.8,"fps":60,"floor":29,"tier":3,"fervor":79,"sparks":11,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 10.3s [main] [capture] ev 10.1 fervorTier 3->2
+ 10.6s [main] [capture] MARK 2026-11-09T20:20:31.396Z END
+ 11.0s [stderr] Waiting for the debugger to disconnect...

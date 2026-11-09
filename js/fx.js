@@ -216,7 +216,6 @@
       FX.light(W.partyX - 20, 30, 120, 1.2, '#ffe9a0');
     }
   });
-  KK.on('echo', () => {});
   KK.on('slamLand', ({ x }) => {
     FX.shake(2, 0.25);
     FX.ring(x, W.GROUND, 3, 75, '#ffe9b0', 0.5, 2);
@@ -251,7 +250,7 @@
     else FX.banner('FLOOR ' + floor, null, '#ffffff', 1.4, { big: false });
   });
   KK.on('bossSpawn', ({ boss }) => {
-    FX.banner(boss.def.name.toUpperCase(), 'BOSS', '#ff6b6b', 2.6, { subCol: '#ffd76a' });
+    FX.banner(boss.def.name.toUpperCase(), 'BOSS', '#ff6b6b', 1.8, { subCol: '#ffd76a' });
     FX.shake(2, 1.6);
     FX.flash('#300010', 0.5);
   });
@@ -293,7 +292,7 @@
     FX.pillar(h.x, milestone ? '#ffd76a' : '#fff6c9', milestone ? 1.2 : 0.6, milestone ? 14 : 8);
     FX.burst(h.x, h.y - 8, milestone ? 30 : 8, ['#ffd76a', '#ffffff'], { spd: milestone ? 110 : 50, grav: -50, life: 0.8 });
     FX.text(h.x, h.y - 24, to - from > 1 ? `LV ${to} (+${to - from})` : 'LV ' + to, '#ffd76a', 1, { life: 1.0, vy: -18 });
-    if (milestone && !W.boss && performance.now() - (FX.lastMilestone || -1e9) > 180000) {
+    if (milestone && !W.boss && !KK.S.glimpse && performance.now() - (FX.lastMilestone || -1e9) > 180000) {
       FX.lastMilestone = performance.now();
       FX.banner(KK.DATA.HEROES[id].name.toUpperCase() + ' LV ' + Math.floor(to / 10) * 10, 'x' + KK.BAL.dmgMile + ' DAMAGE!', '#ffd76a', 2, { slot: 'lvl', subCol: '#fff' });
       FX.flash('#ffd76a', 0.25);
@@ -332,7 +331,7 @@
     FX.burst(x, W.GROUND - 30, 4, ['#ffd76a', '#fff'], { spd: 30, life: 0.4 });
   });
   KK.on('royalSummons', ({ e }) => FX.moveAlert('summon', e, 'SQUEAK! THE RAT KING SUMMONS', '#ffd76a', 1.2));
-  KK.on('webShot', ({ e }) => FX.moveAlert('web', e, 'WEB SHOT! TYPE: AN ULTIMATE TEARS IT', '#f2f2f2', 1.2));
+  KK.on('webShot', ({ e }) => FX.moveAlert('web', e, 'WEB SHOT! TYPE TO TEAR IT', '#f2f2f2', 1.2));
   KK.on('webbed', ({ h }) => FX.text(h.x, h.y - 22, 'WEBBED', '#f2f2f2', 1, { life: 1.2, vy: -8 }));
   KK.on('webTorn', ({ h }) => { FX.text(h.x, h.y - 22, 'WEB TORN!', '#7ee8f6', 1, { life: 1.0, vy: -12 }); FX.burst(h.x, h.y - 8, 10, ['#f2f2f2', '#7ee8f6'], { spd: 60, life: 0.4 }); });
   KK.on('magmaShell', ({ e }) => FX.moveAlert('shell', e, 'MAGMA SHELL! TYPE: AN ULTIMATE CRACKS IT', '#ffb070', 1.4));
@@ -340,7 +339,7 @@
   KK.on('lavaRain', ({ e }) => FX.moveAlert('lava', e, 'LAVA RAIN!', '#ff7a2e', 1.0));
   KK.on('lavaMark', ({ x, t }) => { FX.light(x, W.GROUND, 14, t, '#ff5a2e', 0.8); FX.ring(x, W.GROUND, 2, 8, '#ff5a2e', t, 1); });
   KK.on('lavaLand', ({ x }) => FX.burst(x, W.GROUND - 2, 12, ['#ff5a2e', '#ffb347', '#ffe08a'], { spd: 80, up: -50, life: 0.6, floor: true }));
-  KK.on('glimpse', () => setTimeout(() => FX.alert('THE MAGMA DEPTHS: A SEALED BOSS WAITS IN THE FULL GAME', '#ffb070', 3.5), 2600));
+  KK.on('glimpseDoor', () => FX.alert('SEALED: THE EMBER COLOSSUS WAITS IN THE FULL GAME', '#ffb070', 3.2));
   KK.on('chargeWarn', ({ e }) => { FX.moveAlert('charge', e, 'WAR CHARGE!', '#ff9a9a', 1.0); e.windup = 1.0; });
   KK.on('warCharge', ({ e }) => {
     FX.shake(3, 0.3);

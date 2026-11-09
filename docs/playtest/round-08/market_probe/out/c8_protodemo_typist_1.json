@@ -1,0 +1,444 @@
+{
+ "args": "--proto --min 120 --demo --profile typist --seed 1 --retire nudge --omen random --out docs/playtest/round-08/market_probe/out/c8_protodemo_typist_1.json",
+ "full": false,
+ "simHours": 2,
+ "perHour": {
+  "0": {
+   "toast": {
+    "tutorial: sparks": 1,
+    "tutorial: first ult": 1,
+    "tutorial: flow": 1,
+    "achievement (batched)": 5,
+    "hero can be recruited": 3,
+    "relic dropped": 4,
+    "tutorial: rat": 1,
+    "tutorial: retire": 1,
+    "demo sealed (new best)": 2
+   },
+   "popup": {
+    "FOCUSED": 33,
+    "EARTHSHATTER!": 104,
+    "IN THE ZONE": 41,
+    "TREASURE! +#": 32,
+    "LV #": 661,
+    "FLOW!": 42,
+    "ARROW STORM!": 87,
+    "+#": 19,
+    "+# EMBERS": 23,
+    "GOLDEN RAT! +#": 4,
+    "KO": 7,
+    "SECOND WIND!": 27,
+    "METEOR!": 60,
+    "WEBBED": 12,
+    "WEB TORN!": 10,
+    "SANCTUARY!": 8,
+    "WAR CHARGE!": 15
+   },
+   "sound": {
+    "ultKnight": 16,
+    "zone": 11,
+    "flow": 6,
+    "chest": 32,
+    "recruit": 15,
+    "bossIntro": 12,
+    "milestone": 16,
+    "bossKill": 11,
+    "offer": 19,
+    "rat": 14,
+    "relic": 15,
+    "ratCaught": 4,
+    "slam": 9,
+    "meteor": 27,
+    "wipe": 2,
+    "ui": 10,
+    "deny": 16,
+    "retire": 4
+   },
+   "loudSound": {
+    "ultKnight": 16,
+    "bossIntro": 12,
+    "bossKill": 11,
+    "slam": 9,
+    "meteor": 27
+   },
+   "flashFaint": {
+    "#ffffff": 138,
+    "#ffd76a": 24,
+    "#300010": 19,
+    "#c472ff": 15,
+    "#ffb347": 60,
+    "#5a0010": 2,
+    "#fff6c9": 8
+   },
+   "hud": {
+    "gold pulse": 748
+   },
+   "secs": {
+    "ZONE vignette": 749.199999999976,
+    "big banner on screen": 162.19999999999337,
+    "FLOW vignette (pulsing)": 1597.4999999992044,
+    "alert plate on screen (4 Hz text blink)": 21.366666666666887,
+    "boss white flicker (2 Hz)": 16.49999999999998,
+    "any sound started (seconds with >=1)": 224
+   },
+   "banner": {
+    "FLOW STATE!": 6,
+    "WREN JOINS!": 3,
+    "FLOOR #": 10,
+    "THE RAT KING": 3,
+    "VICTORY!": 10,
+    "SIR CLANK LV #": 3,
+    "THE BONE KING": 3,
+    "MOSSY CAVERNS": 13,
+    "MORTIMER JOINS!": 3,
+    "RETREAT!": 1,
+    "SISTER PELL JOINS!": 2,
+    "MORTIMER LV #": 2,
+    "BROOD MOTHER": 2,
+    "SISTER PELL LV #": 3,
+    "GOBLIN WARLORD": 2,
+    "MAGMA DEPTHS": 1,
+    "THE CRYPT": 1
+   },
+   "screen": {
+    "floor fade to black": 195
+   },
+   "minorBanner": {
+    "FLOOR #": 166,
+    "RETREAT!": 1,
+    "SISTER PELL JOINS!": 2,
+    "BROOD MOTHER": 3,
+    "VICTORY!": 9,
+    "GOBLIN WARLORD": 2,
+    "WREN JOINS!": 2,
+    "THE RAT KING": 2,
+    "THE BONE KING": 2,
+    "MORTIMER JOINS!": 1
+   },
+   "toastPlayer": {
+    "recruit": 15,
+    "relic acquired": 15,
+    "retire / omen": 4
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 3,
+    "THE BONE KING REASSEMBLES!": 5,
+    "WEB SHOT! TYPE: AN ULTIMATE TEARS IT": 3,
+    "WAR CHARGE!": 3,
+    "THE MAGMA DEPTHS: A SEALED BOSS WAITS IN THE FULL GAME": 1
+   },
+   "protoDowngraded": {
+    "RETREAT!": 1,
+    "LV milestone": 6,
+    "SISTER PELL JOINS!": 3,
+    "FLOOR #": 9,
+    "BROOD MOTHER": 3,
+    "VICTORY!": 9,
+    "GOBLIN WARLORD": 2,
+    "WREN JOINS!": 2,
+    "THE RAT KING": 2,
+    "MORTIMER JOINS!": 2,
+    "THE BONE KING": 2
+   },
+   "event": {
+    "glimpse start": 1
+   },
+   "modal": {
+    "demo complete card": 1
+   }
+  },
+  "1": {
+   "secs": {
+    "FLOW vignette (pulsing)": 1746.1666666657359,
+    "ZONE vignette": 877.6666666665258,
+    "boss white flicker (2 Hz)": 9.299999999999978,
+    "alert plate on screen (4 Hz text blink)": 32.50000000000072,
+    "big banner on screen": 135.33333333332823,
+    "any sound started (seconds with >=1)": 308
+   },
+   "popup": {
+    "LV #": 1160,
+    "METEOR!": 79,
+    "TREASURE! +#": 66,
+    "SECOND WIND!": 32,
+    "EARTHSHATTER!": 98,
+    "IN THE ZONE": 40,
+    "ARROW STORM!": 91,
+    "FLOW!": 43,
+    "WAR CHARGE!": 9,
+    "SANCTUARY!": 2,
+    "+#": 42,
+    "+# EMBERS": 49,
+    "FOCUSED": 20,
+    "WEBBED": 10,
+    "GOLDEN RAT! +#": 7,
+    "WEB TORN!": 5
+   },
+   "screen": {
+    "floor fade to black": 368
+   },
+   "minorBanner": {
+    "FLOOR #": 339,
+    "GOBLIN WARLORD": 9,
+    "VICTORY!": 31,
+    "WREN JOINS!": 7,
+    "THE RAT KING": 9,
+    "THE BONE KING": 8,
+    "BROOD MOTHER": 7,
+    "SISTER PELL JOINS!": 1
+   },
+   "flashFaint": {
+    "#c472ff": 32,
+    "#ffb347": 86,
+    "#ffffff": 178,
+    "#ffd76a": 31,
+    "#300010": 42,
+    "#fff6c9": 2
+   },
+   "sound": {
+    "relic": 32,
+    "chest": 66,
+    "meteor": 29,
+    "deny": 9,
+    "slam": 3,
+    "offer": 42,
+    "retire": 11,
+    "zone": 11,
+    "recruit": 32,
+    "milestone": 17,
+    "ultKnight": 15,
+    "rat": 14,
+    "flow": 6,
+    "bossIntro": 15,
+    "bossKill": 15,
+    "ratCaught": 7,
+    "ui": 5
+   },
+   "toastPlayer": {
+    "relic acquired": 32,
+    "retire / omen": 11,
+    "recruit": 32
+   },
+   "hud": {
+    "gold pulse": 1119
+   },
+   "protoDowngraded": {
+    "LV milestone": 12,
+    "FLOOR #": 32,
+    "GOBLIN WARLORD": 9,
+    "VICTORY!": 33,
+    "WREN JOINS!": 9,
+    "MORTIMER JOINS!": 9,
+    "THE RAT KING": 9,
+    "THE BONE KING": 8,
+    "SISTER PELL JOINS!": 7,
+    "BROOD MOTHER": 7
+   },
+   "loudSound": {
+    "meteor": 29,
+    "slam": 3,
+    "ultKnight": 15,
+    "bossIntro": 15,
+    "bossKill": 15
+   },
+   "alert": {
+    "SQUEAK! THE RAT KING SUMMONS": 6,
+    "THE BONE KING REASSEMBLES!": 10,
+    "WEB SHOT! TYPE: AN ULTIMATE TEARS IT": 5,
+    "WAR CHARGE!": 4
+   },
+   "banner": {
+    "SISTER PELL JOINS!": 3,
+    "FLOW STATE!": 6,
+    "MOSSY CAVERNS": 10,
+    "FLOOR #": 10,
+    "BROOD MOTHER": 3,
+    "VICTORY!": 9,
+    "SIR CLANK LV #": 4,
+    "SISTER PELL LV #": 1,
+    "GOBLIN WARLORD": 2,
+    "WREN JOINS!": 2,
+    "MORTIMER JOINS!": 2,
+    "THE RAT KING": 2,
+    "THE BONE KING": 2,
+    "WREN LV #": 1
+   },
+   "toast": {
+    "relic dropped": 3
+   }
+  },
+  "2": {
+   "secs": {
+    "ZONE vignette": 0.03333333333333333,
+    "any sound started (seconds with >=1)": 0
+   }
+  }
+ },
+ "firsts": [
+  [
+   0,
+   "toast tutorial: sparks"
+  ],
+  [
+   0.1,
+   "loud sound ultKnight"
+  ],
+  [
+   0.1,
+   "toast tutorial: first ult"
+  ],
+  [
+   0.3,
+   "banner FLOW STATE!"
+  ],
+  [
+   0.3,
+   "toast tutorial: flow"
+  ],
+  [
+   0.3,
+   "toast achievement (batched)"
+  ],
+  [
+   0.5,
+   "toast hero can be recruited"
+  ],
+  [
+   2,
+   "banner WREN JOINS!"
+  ],
+  [
+   2.5,
+   "banner FLOOR #"
+  ],
+  [
+   2.9,
+   "banner THE RAT KING"
+  ],
+  [
+   2.9,
+   "loud sound bossIntro"
+  ],
+  [
+   2.9,
+   "alert SQUEAK! THE RAT KING SUMMONS"
+  ],
+  [
+   3.2,
+   "banner VICTORY!"
+  ],
+  [
+   3.2,
+   "loud sound bossKill"
+  ],
+  [
+   3.2,
+   "toast relic dropped"
+  ],
+  [
+   3.6,
+   "toast tutorial: rat"
+  ],
+  [
+   6,
+   "banner SIR CLANK LV #"
+  ],
+  [
+   7.4,
+   "toast tutorial: retire"
+  ],
+  [
+   7.6,
+   "banner THE BONE KING"
+  ],
+  [
+   7.9,
+   "loud sound slam"
+  ],
+  [
+   8.2,
+   "alert THE BONE KING REASSEMBLES!"
+  ],
+  [
+   8.4,
+   "banner MOSSY CAVERNS"
+  ],
+  [
+   10,
+   "banner MORTIMER JOINS!"
+  ],
+  [
+   10.8,
+   "loud sound meteor"
+  ],
+  [
+   11,
+   "banner RETREAT!"
+  ],
+  [
+   18,
+   "banner SISTER PELL JOINS!"
+  ],
+  [
+   20,
+   "banner MORTIMER LV #"
+  ],
+  [
+   21.7,
+   "banner BROOD MOTHER"
+  ],
+  [
+   21.7,
+   "alert WEB SHOT! TYPE: AN ULTIMATE TEARS IT"
+  ],
+  [
+   24,
+   "banner SISTER PELL LV #"
+  ],
+  [
+   28.2,
+   "banner GOBLIN WARLORD"
+  ],
+  [
+   28.2,
+   "alert WAR CHARGE!"
+  ],
+  [
+   29.6,
+   "glimpse"
+  ],
+  [
+   29.6,
+   "banner MAGMA DEPTHS"
+  ],
+  [
+   29.6,
+   "alert THE MAGMA DEPTHS: A SEALED BOSS WAITS IN THE FULL GAME"
+  ],
+  [
+   30.2,
+   "modal demo complete"
+  ],
+  [
+   31,
+   "banner THE CRYPT"
+  ],
+  [
+   40.8,
+   "toast demo sealed (new best)"
+  ],
+  [
+   96,
+   "banner WREN LV #"
+  ]
+ ],
+ "final": {
+  "floor": 14,
+  "maxFloorEver": 40,
+  "retires": 15,
+  "bossKills": 61,
+  "wipes": 2,
+  "glimpseDone": true,
+  "demoDone": true
+ }
+}

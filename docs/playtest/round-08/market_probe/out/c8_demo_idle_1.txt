@@ -1,0 +1,4 @@
+--min 120 --demo --profile idle --seed 1 --retire nudge --omen random --out docs/playtest/round-08/market_probe/out/c8_demo_idle_1.json {"floor":36,"maxFloorEver":40,"retires":6,"bossKills":25,"wipes":2,"glimpseDone":true,"demoDone":true}
+hour alert banner minorBanner toast toastPlayer modal flashStrong flashSoft flashFaint shake sound loudSound hud popup secsWithSound
+0 5 42 88 12 11 1 0 0 49 0 98 22 529 262 82
+1 23 99 151 8 35 1 0 0 118 0 266 61 697 677 225

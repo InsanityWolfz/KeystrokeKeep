@@ -27,11 +27,11 @@
     { id: 'speed60', name: 'Speedrunner', desc: 'Beat the floor-60 boss within 10 minutes of a new delve.', on: 'kill', test: (c) => c.ev.e.boss && c.S.floor === 60 && (c.S.runTime || 0) < 600 && c.S.retires >= 1 },
     { id: 'blitz', name: 'Blitz', desc: 'Defeat 8 bosses within 10 minutes.', on: 'kill', test: (c) => { if (!c.ev.e.boss) return false; const now = c.S.stats.playTime || 0; c.P.bossTimes = (c.P.bossTimes || []).filter((x) => now - x < 600); c.P.bossTimes.push(now); return c.P.bossTimes.length >= 8; } },
     // depth
-    { id: 'magma', name: 'Fire Below', desc: 'Reach the Magma Depths.', on: 'floor', test: (c) => c.ev.floor >= 41 },
+    { id: 'magma', name: 'Fire Below', desc: 'Reach the Magma Depths.', on: 'floor', test: (c) => c.ev.floor >= 41 && !c.S.glimpse },
     { id: 'void', name: 'Into the Void', desc: 'Reach the Hollow Void.', on: 'floor', test: (c) => c.ev.floor >= 61 },
     { id: 'hollow', name: 'Hollow Victory', desc: 'Defeat The Hollow.', on: 'kill', test: (c) => c.ev.e.key === 'hollow' },
     { id: 'hollowed6', name: 'Echoes of the Deep', desc: 'Defeat all six Hollowed bosses.', on: 'kill', test: (c) => { if (!c.ev.e.hollowed) return false; const s = new Set(c.P.hollowed || []); s.add(c.ev.e.key); c.P.hollowed = [...s]; return s.size >= 6; } },
-    { id: 'f100', name: 'Heart of the Keep', desc: 'Reach floor 100.', on: 'floor', test: (c) => c.S.maxFloorEver >= 100 },
+    { id: 'f100', name: 'Heart of the Keep', desc: 'Defeat the Heart of the Keep on floor 100.', on: 'kill', test: (c) => !!c.ev.e.heart || (c.ev.e.boss && c.S.floor >= 100) },
     { id: 'codex28', name: 'Hollow Scholar', desc: 'Complete every rank of the Hollow Codex.', on: 'codex', test: () => KK.mods().codexRanks >= KK.DATA.CODEX_MAX },
     { id: 'seals7', name: 'Faithful', desc: 'Earn 7 Seals of the Day.', on: 'seal', test: (c) => (c.S.seals || 0) >= 7 },
     { id: 'seals30', name: 'Devout', desc: 'Earn 30 Seals of the Day.', on: 'seal', test: (c) => (c.S.seals || 0) >= 30 },

@@ -1,0 +1,5 @@
+
+[capture] ready {"seed":7,"size":"L","juice":"full","cues":8}
+[capture] js cue failed EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self'".
+
+[capture] MARK 2026-11-09T20:07:05.913Z FLOW-METEOR START

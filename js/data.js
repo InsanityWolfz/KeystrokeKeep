@@ -149,7 +149,6 @@
 
   // Depth trophies: permanent x1.05 damage & gold for each record depth reached
   // Hollow Codex: each late boss (The Hollow + 6 Hollowed) ranks up at these kill counts, x1.03 each
-  const CODEX_RANKS = [3, 10, 20, 40]; // legacy per-boss thresholds (old saves)
   const CODEX_EVERY = 8, CODEX_MAX = 28; // one rank per 8 Hollowed kills
   const TROPHIES = [75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 140, 150, 160, 170, 180, 190, 200];
 
@@ -160,5 +159,5 @@
     { at: 90, name: 'FLOW STATE', mult: 2.2 },
   ];
 
-  KK.DATA = { HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES, CODEX_RANKS, CODEX_EVERY, CODEX_MAX };
+  KK.DATA = { HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES, CODEX_EVERY, CODEX_MAX };
 })();

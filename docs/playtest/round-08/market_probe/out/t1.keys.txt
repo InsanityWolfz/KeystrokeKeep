@@ -1,0 +1,2 @@
+9.0s hotkey Ctrl+Shift+Alt+8
+12.0s hotkey Ctrl+Shift+Alt+8

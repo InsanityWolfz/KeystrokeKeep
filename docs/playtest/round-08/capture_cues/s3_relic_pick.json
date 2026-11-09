@@ -1,0 +1,13 @@
+{ "seed": 7,
+  "_shot": "S3 (still) + G-relic (3 s GIF): three relic cards open in the Relics panel above the strip, then a pick and the purple relic burst.",
+  "_run": "node docs/playtest/round-08/capture_cues/stage.js s3 [--display <id>]; KK_CAPTURE=1 KK_CAPTURE_SAVE=docs/playtest/round-08/capture_cues/saves/s3_f29_relic.json KK_CAPTURE_SCRIPT=<this file> npx electron .",
+  "_cut": "Still: between OFFER OPEN and PICK (the panel holds 5 s). GIF: PICK -1 s .. +2 s. For a spreadsheet/editor behind the strip, put it on the same monitor before you start (the window is transparent above the strip unless KK_CAPTURE_BG is set).",
+  "cues": [
+  { "t": 0,   "do": "relicOffer" },
+  { "t": 1.2, "do": "openPanel", "v": "relics" },
+  { "t": 1.5, "do": "mark", "v": "OFFER OPEN (still)" },
+  { "t": 6.5, "do": "pickRelic", "v": 1 },
+  { "t": 6.5, "do": "mark", "v": "PICK" },
+  { "t": 8.0, "do": "openPanel", "v": "" },
+  { "t": 9.0, "do": "mark", "v": "END" }
+] }

@@ -1,0 +1,11 @@
+--min 480 --profile typist --seed 6 --retire nudge --omen random --out docs/playtest/round-08/market_probe/out/c8_full_typist_6.json {"floor":97,"maxFloorEver":140,"retires":13,"bossKills":112,"wipes":11,"glimpseDone":false,"demoDone":false}
+hour alert banner minorBanner toast toastPlayer modal flashStrong flashSoft flashFaint shake sound loudSound hud popup secsWithSound
+0 13 83 113 24 20 0 0 0 310 0 323 96 575 1097 293
+1 21 92 153 13 27 0 0 0 475 0 363 103 693 1801 333
+2 20 79 135 12 24 0 0 0 405 0 321 109 752 1699 297
+3 20 79 135 6 23 0 0 0 331 0 353 106 695 1643 321
+4 18 64 108 6 17 0 0 0 295 0 321 88 674 1495 304
+5 17 54 88 6 15 0 0 0 510 0 283 95 616 1322 264
+6 28 95 167 9 28 0 0 0 785 0 368 117 862 2206 338
+7 24 57 102 3 12 0 0 0 425 0 264 96 630 1296 246
+8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0

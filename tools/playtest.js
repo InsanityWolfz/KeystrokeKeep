@@ -54,6 +54,7 @@ KK.on('ult', ({ id }) => { ults++; ultBy[id] = (ultBy[id] || 0) + 1; });
 KK.on('chest', () => chests++);
 KK.on('ratSpawn', () => ratSpawns++);
 KK.on('floor', ({ floor }) => {
+  if (KK.S.glimpse) return;
   const b = F.biomeOf(floor).name;
   if (!biomeReached[b]) { biomeReached[b] = t; ev(`>> reached biome ${b} (floor ${floor})`); }
 });

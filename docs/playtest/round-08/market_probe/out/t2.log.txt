@@ -1,0 +1,37 @@
+  0.3s [stderr] Debugger attached.
+  3.8s [main] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+  3.8s booted; probe: undefined
+  3.8s main undefined => {"code":-32602,"message":"Invalid parameters","data":"Failed to deserialize params.expression - BINDINGS: mandatory field missing at position 37"}
+  3.8s main (()=>{const g=process.mainModule.require('electron').globalShortcut;return [0 => undefined
+  3.8s main undefined => {"code":-32602,"message":"Invalid parameters","data":"Failed to deserialize params.expression - BINDINGS: mandatory field missing at position 37"}
+  3.8s main undefined => {"code":-32602,"message":"Invalid parameters","data":"Failed to deserialize params.expression - BINDINGS: mandatory field missing at position 37"}
+  3.8s main JSON.stringify(process.mainModule.require('electron').BrowserWindow.getAllWindows()[0].getBounds()) => "{\"x\":2560,\"y\":1053,\"width\":1920,\"height\":310}"
+  4.1s shot t2_4.png
+  4.1s main undefined => {"code":-32602,"message":"Invalid parameters","data":"Failed to deserialize params.expression - BINDINGS: mandatory field missing at position 37"}
+  4.8s [main] [capture] probe {"s":4.5,"fps":60,"floor":12,"tier":0,"fervor":0,"sparks":0,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":20,"banner":"","alert":"","ultTurn":"knight","toasts":1,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  5.0s main undefined => {"code":-32602,"message":"Invalid parameters","data":"Failed to deserialize params.expression - BINDINGS: mandatory field missing at position 37"}
+  5.5s [main] [capture] ev 5.1 floor 13
+  5.8s [main] [capture] probe {"s":5.5,"fps":60,"floor":13,"tier":0,"fervor":0,"sparks":0,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":20,"banner":"FLOOR 13","alert":"","ultTurn":"knight","toasts":1,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  6.0s main undefined => {"code":-32602,"message":"Invalid parameters","data":"Failed to deserialize params.expression - BINDINGS: mandatory field missing at position 37"}
+  6.4s [main] [capture] MARK 2026-11-09T20:09:14.905Z FLOW-METEOR START
+  6.8s [main] [capture] probe {"s":6.5,"fps":60,"floor":13,"tier":3,"fervor":100,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"FLOOR 13","alert":"","ultTurn":"knight","toasts":1,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  7.1s shot t2_7.png
+  7.1s main undefined => {"code":-32602,"message":"Invalid parameters","data":"Failed to deserialize params.expression - BINDINGS: mandatory field missing at position 37"}
+  7.8s [main] [capture] probe {"s":7.5,"fps":60,"floor":13,"tier":3,"fervor":100,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":1,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  8.0s main undefined => {"code":-32602,"message":"Invalid parameters","data":"Failed to deserialize params.expression - BINDINGS: mandatory field missing at position 37"}
+  8.0s hotkey 8 (main send kk:capture) => true
+  8.8s [main] [capture] probe {"s":8.5,"fps":10,"floor":13,"tier":3,"fervor":100,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":true,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":1,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+  9.6s shot t2_9.5.png
+  9.8s [main] [capture] probe {"s":9.5,"fps":0,"floor":13,"tier":3,"fervor":100,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":true,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":1,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 10.8s [main] [capture] probe {"s":10.5,"fps":0,"floor":13,"tier":3,"fervor":100,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":true,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":1,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 11.0s hotkey 8 (main send kk:capture) => true
+ 11.1s [main] [capture] ev 10.7 floor 14
+ 11.8s [main] [capture] probe {"s":11.5,"fps":50,"floor":14,"tier":3,"fervor":100,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"FLOOR 14","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 12.0s shot t2_12.png
+ 12.0s main '+g.isRegistered('Control+Shift+Alt+K')})() => undefined
+ 12.8s [main] [capture] probe {"s":12.5,"fps":60,"floor":14,"tier":3,"fervor":100,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 13.8s [main] [capture] probe {"s":13.5,"fps":60,"floor":14,"tier":3,"fervor":100,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 14.8s [main] [capture] probe {"s":14.5,"fps":61,"floor":14,"tier":3,"fervor":100,"sparks":150,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"knight","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 15.7s [main] [capture] ev 15.3 ult knight
+ 15.8s [main] [capture] probe {"s":15.5,"fps":60,"floor":14,"tier":3,"fervor":100,"sparks":125,"calm":false,"combat":true,"vol":0.6,"sound":true,"music":false,"size":"L","paused":false,"kkPaused":false,"warp":1,"banner":"","alert":"","ultTurn":"archer","toasts":0,"modal":"","tab":"","offer":false,"omen":null,"glimpse":false,"demo":0,"boss":"","bodyBg":"rgb(0, 255, 0)","lowGpu":"auto"}
+ 16.0s [stderr] Waiting for the debugger to disconnect...

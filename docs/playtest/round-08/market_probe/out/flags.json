@@ -1,0 +1,1 @@
+{"seed":3,"cues":[{"t":2,"do":"size","v":"S"},{"t":2.5,"do":"rat"},{"t":3,"do":"toast","v":"cue toast"},{"t":4,"do":"juice","v":"full"},{"t":5,"do":"openPanel","v":"settings"},{"t":6.5,"do":"openPanel","v":""}]}

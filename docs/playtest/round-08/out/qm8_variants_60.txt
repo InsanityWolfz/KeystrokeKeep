@@ -1,0 +1,6 @@
+qm      h1 retreats 2.7 [1,5,0,3,5,0,3,3,2,5]  maxFloor 24.1  archer 6.6m mage 23.3m cleric 45.4m (10/10)  f40 0.0 (0/10)  unspent gold (x cheapest level) 8.4  saving-for-recruit min 4.0  lv@end k39 a28 c2 m17
+qv_0.1  h1 retreats 2.7 [1,5,0,3,5,1,3,3,1,5]  maxFloor 24.0  archer 6.6m mage 23.3m cleric 45.6m (10/10)  f40 0.0 (0/10)  unspent gold (x cheapest level) 8.3  saving-for-recruit min 3.8  lv@end k41 a30 c3 m18
+qv_0.5  h1 retreats 2.7 [4,4,1,2,5,0,4,2,4,1]  maxFloor 27.2  archer 4.8m mage 23.3m cleric 45.0m (8/10)  f40 0.0 (0/10)  unspent gold (x cheapest level) 1.7  saving-for-recruit min 4.7  lv@end k48 a38 c11 m26
+qv_1    h1 retreats 2.4 [4,3,1,2,2,2,3,2,2,3]  maxFloor 26.9  archer 4.2m mage 23.9m cleric 46.5m (5/10)  f40 0.0 (0/10)  unspent gold (x cheapest level) 0.7  saving-for-recruit min 4.6  lv@end k48 a37 c0 m26
+qv_0.5_0.25 h1 retreats 1.2 [2,1,0,1,4,0,2,0,2,0]  maxFloor 32.2  archer 4.8m mage 21.6m cleric 43.9m (10/10)  f40 0.0 (0/10)  unspent gold (x cheapest level) 1.7  saving-for-recruit min 4.3  lv@end k56 a46 c19 m34
+manual  h1 retreats 1.8 [3,2,0,2,2,0,4,3,0,2]  maxFloor 35.4  archer 5.1m mage 26.7m cleric 42.7m (10/10)  f40 0.0 (0/10)  unspent gold (x cheapest level) 1.9  saving-for-recruit min 8.0  lv@end k55 a44 c18 m33

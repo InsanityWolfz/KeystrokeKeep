@@ -1,0 +1,10 @@
+--proto --min 480 --profile idle --seed 6 --retire nudge --omen random --out docs/playtest/round-08/market_probe/out/c8_protofull_idle_6.json {"floor":101,"maxFloorEver":106,"retires":11,"bossKills":76,"wipes":4,"glimpseDone":false,"demoDone":false}
+hour alert banner minorBanner toast toastPlayer modal flashStrong flashSoft flashFaint shake sound loudSound hud popup secsWithSound
+0 4 39 84 13 10 0 0 0 39 0 80 19 546 219 76
+1 11 51 79 9 17 0 0 0 72 0 146 40 409 571 140
+2 13 57 117 7 22 0 0 0 94 0 153 39 540 824 146
+3 15 56 103 7 20 0 0 0 96 0 134 36 491 771 129
+4 12 41 83 7 15 0 0 0 102 0 172 39 417 757 160
+5 14 66 126 6 23 0 0 0 103 0 142 30 570 928 131
+6 6 9 18 5 2 0 0 0 92 0 84 33 127 251 77
+7 9 36 70 5 13 0 0 0 96 0 109 39 321 546 103

@@ -1,0 +1,14 @@
+{ "seed": 7,
+  "_shot": "G5 (demo page / DCF + Next Fest event posts): the Goblin Warlord falls, the strip turns into the Magma Depths, the party reaches a stone-sealed Ember Colossus (SEALED), then the DEMO COMPLETE / wishlist card. Demo build: KK_DEMO=1.",
+  "_run": "node docs/playtest/round-08/capture_cues/stage.js g5 [--display <id>]; KK_DEMO=1 KK_CAPTURE=1 KK_CAPTURE_SAVE=docs/playtest/round-08/capture_cues/saves/g5_demo_f38.json KK_CAPTURE_SCRIPT=<this file> npx electron .",
+  "_cut": "Clip A (3 s): VICTORY over the Warlord -> MAGMA DEPTHS / FLOOR 41 banner. Clip B (4-6 s): the door, the grey SEALED colossus, the SEALED alert. Still: the DEMO COMPLETE card (KK_CAPTURE_TOASTS=0 does not hide it; it is a modal). Boss/glimpse times drift by a few seconds between takes: cut on the banners, not on the MARK lines.",
+  "cues": [
+  { "t": 0,   "do": "floor", "v": 40 },
+  { "t": 0,   "do": "autotype", "v": true },
+  { "t": 0,   "do": "warp", "v": 3 },
+  { "t": 0.2, "do": "mark", "v": "to the Warlord at 3x" },
+  { "t": 14,  "do": "warp", "v": 1 },
+  { "t": 14.1,"do": "mark", "v": "1x: Warlord fight; glimpse expected ~t20-30" },
+  { "t": 34,  "do": "autotype", "v": false },
+  { "t": 60,  "do": "mark", "v": "END" }
+] }

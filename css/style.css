@@ -454,3 +454,5 @@ body.native #panel { border-bottom: 0; }
 .res.spark.callout { animation: none; box-shadow: inset 0 0 0 1px var(--spark), 0 0 10px var(--spark); }
 
 body:not(.native) .demo-pill:not(.omen), .demo-pill:not(.omen) { pointer-events: auto; cursor: pointer; }
+
+.omen.starred { box-shadow: inset 0 0 0 2px #ffd76a, 0 0 12px #ffd76a66; }

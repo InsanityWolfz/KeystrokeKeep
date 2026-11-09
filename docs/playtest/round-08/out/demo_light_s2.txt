@@ -1,0 +1,24 @@
+=== R6 probe light s2 180m DEMO: maxEver 40, retires 17, renown life 120, ach 13/39, trophies 0, codex 0/28, wipes 3, fame x7.4, unspent embers 296
+beats per 30 min from h1: 0 0 0 2 0
+longest gap after h1: 95 min (from 1h00)
+codex: none
+trophies: 
+retires (17): 0h28 f25 +8, 0h51 f40 +22, 1h03 f40 +6, 1h14 f40 +6, 1h24 f40 +6, 1h34 f40 +6, 1h43 f40 +6, 1h51 f40 +6, 1h59 f40 +6, 2h06 f40 +6, 2h14 f40 +6, 2h20 f40 +6, 2h27 f40 +6, 2h34 f40 +6, 2h41 f40 +6, 2h47 f40 +6, 2h54 f40 +6
+SIG totals: {"chargeWarn":39,"warCharge":39,"reassemble":18,"bossEnrage":0,"royalSummons":6,"webShot":17,"webbed":17,"webTorn":4,"magmaShell":0,"shellCrack":0,"lavaRain":0,"regroup":0,"seal":0,"voidWarn":0,"voidSlam":0}
+BOSS (key: n | kills | wipes | enrage | med active-dur s | med swings | sig events per fight [median, % fights >=1] | first sig at s)
+  ratking          18 |   18 |   0 |   0 |    1.9 |   0 | royalSummons 0 [11%] @3.3
+  boneking         18 |   18 |   0 |   0 |    4.6 |   1 | reassemble 1 [100%] @3.1 | rise->death med 1.67s, <0.5s 0/18, <1.5s(still stunned) 0/18
+  broodmother      17 |   17 |   0 |   0 |    3.9 |   1 | webShot 0 [47%] @3.5; webbed 0 [41%] @4.1; webTorn 0 [12%] @33.4
+  warlord          16 |   16 |   0 |   0 |   11.7 |   5 | chargeWarn 1 [94%] @3.5; warCharge 1 [94%] @4.6 | died mid-charge 1/16, fights with 0 charges 1/16
+DEMO: card 0h50, laps 16, re-delves 16, lifetime 120, best 4.8m
+ACH: first_boss 0h06 | flow 0h00 | full_party 0h37 | retire1 0h28 | gatekeeper 0h50 | rat 0h04 | epic 0h34 | caverns 0h18 | comeback NO | echo 0h35 | ult_boss 0h18 | revive NO | speed60 NO | blitz NO | magma 0h50 | void NO | hollow NO | hollowed6 NO | f100 NO | codex28 NO | seals7 NO | seals30 NO | f150 NO | f125 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 NO | chests100 2h35 | rats25 2h54 | idle50 NO | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO
+R8 SEALS 0 (star offered 0, taken 0, free re-delves 0): 
+R8 LANTERN never | first f70 - | blocked-but-affordable glances (badge shows, card hidden) 0
+R8 SIG under banner: royalSummons 0/6, reassemble 6/18, webShot 0/17, chargeWarn 0/39 | alerts 45, while a banner shows 7
+R8 FIGHTS (key: fights | saw own move | kills | kills with NO move | med s from spawn to first move): ratking 18|11%|18|16|3.4  boneking 18|100%|18|0|3.1  broodmother 17|47%|17|9|3.6  warlord 16|94%|16|1|3.5
+R8 WEB shots 17 webbed 17: torn by ult 0, by keys 4, other 0, expired 13, KO 0; med web 2.53s
+R8 VOID gaps med s:  | Hollowed charge ticks 0, voidT frozen 0
+R8 FIRST3 (own move seen in the first 3 fights of each boss; spawn->end s): ratking Y48.4,Y10.9,n3.3  boneking Y35.2,Y39.5,Y3.4  broodmother Y54.1,Y15.2,Y5.7  warlord Y150.8,Y36.8,Y29.1
+R8 REKILL boss kills 69, re-kills of a floor beaten this delve 0
+R8 DEMO glimpse 50.6m (run 21.1m) | peek card 40.0m | full card 50.9m | magma ach 50.6m DURING GLIMPSE
+R8 GLIMPSE floor 41 for 21.8s; statue at +230, door at +657 -> party walks past statue after 9.2s; statue on screen (Wd 683/960/1280) 17.1/20.6/21.8s; alert at +2.7s on floor? true; banners MAGMA DEPTHS > FLOW STATE!; KOs 0 wipes 0 chests 0; after: maxRun 40 maxEver 40 laps 1 best 21.1m
