@@ -81,6 +81,7 @@
     document.documentElement.classList.toggle('blink', !!blinkT);
     setText('#hud-floor', 'FLOOR ' + S.floor);
     setText('#hud-biome', F.biomeOf(S.floor).name);
+    $('#hud-biome').classList.toggle('echo', !!F.biomeOf(S.floor).echo);
     setText('#hud-rate', S.incomeRate > 0.05 ? fmt(S.incomeRate) + '/s' : '');
     if (S.maxFloorRun !== UI._lastMax || W.boss || S.stats.bossKills !== UI._lastBK) { UI._lastMax = S.maxFloorRun; UI._lastBK = S.stats.bossKills; UI._lastMaxT = S.stats.playTime; }
     const stalled = !(KK.DEMO_CAP && S.demoDone) && S.stats.playTime - (UI._lastMaxT || 0) > 300 && A.renownGain() >= 10;

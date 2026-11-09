@@ -477,6 +477,7 @@
     ring: ['...kk...', '..kmmk..', '...kk...', '..kyyk..', '.ky..yk.', '.ky..yk.', '..kyyk..', '...kk...'],
     whetstone: ['........', '......kk', '....kkgk', '..kkggGk', 'kkgggGk.', 'kggGGk..', 'kkkkk...', '........'],
     skull: ['.kkkkk..', 'klllllk.', 'kkllkkk.', 'kkllkkk.', 'klllllk.', '.klklk..', '.kkkkk..', '........'],
+    root: ['...kk...', '..kemk..', '..kek...', '.kNNk...', 'kNnNNk..', 'kNk.kNk.', 'k..k.kNk', '...k..k.'],
     heart: ['.kk.kk..', 'krrkrrk.', 'krwrrrk.', 'krrrrrk.', '.krrrk..', '..krk...', '...k....', '........'],
     clock: ['..kkkk..', '.kwwwwk.', 'kwwkwwwk', 'kwwkwwwk', 'kwwwkkwk', 'kwwwwwwk', '.kwwwwk.', '..kkkk..'],
     chest: CHEST,
@@ -582,7 +583,8 @@
     const vk = { g: 'v', w: 'p', G: 'P', b: 'P', B: 'v', y: 'c', r: 'm', c: 'm', s: 'p', S: 'P' };
     S.frames.voidknight = [bake(KNIGHT, vk, true), bake(KNIGHT.slice(0, 13).concat(KNIGHT_LEGS), vk, true)];
 
-    S.frames.lasher = [bake(LASHER), bake(LASHER_B)];
+    const ls = { E: 'e' };
+    S.frames.lasher = [bake(LASHER, ls), bake(LASHER_B, ls)];
     S.frames.bloat = [bake(BLOAT), bake(BLOAT_B)];
     S.frames.sporeling = [bake(SPORELING), bake(SPORELING_B)];
     S.frames.warden = [bake(WARDEN), bake(WARDEN_B)];
@@ -600,7 +602,8 @@
 
     const rm = { R: 'E', r: 'e', Z: 'm', E: 'R', N: 'E', n: 'e' };
     S.frames.rootmother = [bossOf(LASHER, rm, { y: 'm', Y: 'R', r: 'e' }), bossOf(LASHER_B, rm, { y: 'm', Y: 'R', r: 'e' })];
-    S.frames.keeper = [bossOf(KEEPER, null, { y: 'Z', Y: 'y' }), bossOf(KEEPER_B, null, { y: 'Z', Y: 'y' })];
+    const kp = { P: 'N', v: 'R' };
+    S.frames.keeper = [bossOf(KEEPER, kp, { y: 'Z', Y: 'y', r: 'm' }), bossOf(KEEPER_B, kp, { y: 'Z', Y: 'y', r: 'm' })];
 
     S.chest = bake(CHEST);
     S.chestOpen = bake(CHEST_OPEN);

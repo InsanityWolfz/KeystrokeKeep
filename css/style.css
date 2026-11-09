@@ -475,3 +475,5 @@ body:not(.native) .demo-pill:not(.omen), .demo-pill:not(.omen) { pointer-events:
 .biome { color: #c9b8ea; }
 #hud-embers, .embers { text-shadow: 2px 2px 0 #000; }
 html.kk-calm .fervor.t3 #fv-tier { animation: none; }
+
+.biome.echo { color: #c472ff; }

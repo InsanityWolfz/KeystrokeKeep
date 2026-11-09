@@ -14,7 +14,8 @@
       forge: {}, workshop: {}, legacy: {},
       relics: [], relicOffer: null, relicQueue: [],
       omen: null, omenOffer: null, epicGiven: false, secondWind: 0,
-      seals: 0, sealDay: '', freeDelveDay: '', omenStar: null,
+      seals: 0, sealDay: '', freeDelveDay: '', omenStar: null, omenStarDay: '', sealPT: null, delveDay: '', daysPlayed: 0, lastDay: '',
+      codexKills: 0, slain: {}, bossWounds: {}, bossFirsts: {}, bannerFirsts: {}, bestMile: {},
       demoDone: false, glimpse: false, glimpseDone: false, demoPeek: false, runCapCleared: false, bestCapTime: 0, runTime: 0, demoSave: false, demoLaps: 0,
       ach: {}, achP: {}, runInputs: 0, lastForge: {}, codex: {},
       fervor: 0, keyCounter: 0,
@@ -389,6 +390,9 @@
         if (fresh[k] && typeof fresh[k] === 'object' && !Array.isArray(fresh[k])) fresh[k] = Object.assign(fresh[k], data[k]);
         else fresh[k] = data[k];
       }
+      // fields added after newState() was written (Codex kills, days played, Seal timing, slain floors,
+      // boss wounds, banner firsts...) were silently dropped on every load until R10: keep them all
+      for (const k in data) if (!(k in fresh)) fresh[k] = data[k];
       // A demo save opened by the full game: demo Renown counts as progress already made, so the
       // record is raised until it would have paid that much (no bonus Renown on top).
       if (fresh.demoSave && !KK.DEMO_CAP) {
