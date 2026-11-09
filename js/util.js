@@ -49,7 +49,7 @@
 
   // Tiny event bus: the simulation emits, render/fx/audio/ui listen.
   const handlers = {};
-  KK.on = (type, fn) => { (handlers[type] = handlers[type] || []).push(fn); };
+  KK.on = (type, fn) => { (handlers[type] = handlers[type] || []).push(fn); return () => { const h = handlers[type], i = h.indexOf(fn); if (i >= 0) h.splice(i, 1); }; };
   KK.emit = (type, data) => {
     const h = handlers[type];
     if (!h) return;

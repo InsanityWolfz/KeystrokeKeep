@@ -29,8 +29,10 @@
     'x': ['...', '#.#', '.#.', '#.#', '...'], ' ': ['...', '...', '...', '...', '...'],
     '<': ['..#', '.#.', '#..', '.#.', '..#'], '>': ['#..', '.#.', '..#', '.#.', '#..'],
     '(': ['.#.', '#..', '#..', '#..', '.#.'], ')': ['.#.', '..#', '..#', '..#', '.#.'],
+    '★': ['.#.', '###', '.#.', '#.#', '...'],
   };
-  const glyph = (ch) => G[ch] || G[ch.toUpperCase()] || G['?'];
+  const warned = {};
+  const glyph = (ch) => G[ch] || G[ch.toUpperCase()] || ((warned[ch] = warned[ch] || (console.warn('[font] no glyph for', JSON.stringify(ch)), 1)), G['?']);
 
   const cache = new Map();
   /** Renders text (with a 1px dark outline) to a cached canvas. Returns {c, w, h}. */

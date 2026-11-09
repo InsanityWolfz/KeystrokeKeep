@@ -51,7 +51,7 @@
   // dev: simulated bursty typing (~5 keys/s while "typing", short pauses)
   let autoTimer = null;
   I.autotype = function (on) {
-    clearTimeout(autoTimer);
+    if (autoTimer && autoTimer.cancel) autoTimer.cancel(); else clearTimeout(autoTimer);
     if (!on) return;
     let burst = 0;
     const tick = () => {
@@ -59,7 +59,7 @@
       I.event('key');
       burst--;
       const pause = burst === 0 ? U.rand(600, 2200) : U.rand(90, 260);
-      autoTimer = setTimeout(tick, pause);
+      autoTimer = KK.later ? KK.later(tick, pause) : setTimeout(tick, pause);
     };
     tick();
   };

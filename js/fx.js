@@ -120,6 +120,7 @@
   FX.busy = () => FX.banners.length > 0 || FX.coins.length > 0 || FX.parts.length > 30 || FX.flashA > 0.02 || FX.shakeT > 0;
   FX.banner = (text, sub, col = '#fff', life = 2.2, o = {}) => {
     if (FX.banners.some((b) => b.text === text)) return;
+    if (o.first) { const F = KK.S.bannerFirsts || (KK.S.bannerFirsts = {}); if (F[o.first]) { o = Object.assign({}, o, { big: false }); life = Math.min(life, 1.4); } F[o.first] = 1; }
     FX.bannerSeen = FX.bannerSeen || {};
     const now = performance.now();
     if (o.big !== false && !o.always && now - (FX.bannerSeen[text] || -1e9) < 1200000) { o = Object.assign({}, o, { big: false }); life = Math.min(life, 1.4); }
@@ -252,12 +253,12 @@
   });
   KK.on('floor', ({ floor, biomeChange, boss }) => {
     const b = KK.F.biomeOf(floor);
-    if (biomeChange) FX.banner(b.name.toUpperCase(), 'FLOOR ' + floor, '#ffffff', 3, { subCol: b.pal.accent });
+    if (biomeChange) FX.banner(b.name.toUpperCase(), 'FLOOR ' + floor, '#ffffff', 3, { subCol: b.pal.accent, first: 'biome:' + b.name });
     else if (boss) { /* the boss's own banner names the floor */ }
     // plain floors: the HUD floor label already updates
   });
   KK.on('bossSpawn', ({ boss }) => {
-    FX.banner(boss.def.name.toUpperCase(), 'FLOOR ' + KK.S.floor + ' BOSS', '#ff6b6b', 1.8, { subCol: '#ffd76a' });
+    FX.banner(boss.def.name.toUpperCase(), 'FLOOR ' + KK.S.floor + ' BOSS', '#ff6b6b', 1.8, { subCol: '#ffd76a', first: 'boss:' + boss.def.name });
     FX.shake(2, 1.6);
     FX.flash('#300010', 0.5);
   });
@@ -299,9 +300,13 @@
     FX.pillar(h.x, milestone ? '#ffd76a' : '#fff6c9', milestone ? 1.2 : 0.6, milestone ? 14 : 8);
     FX.burst(h.x, h.y - 8, milestone ? 30 : 8, ['#ffd76a', '#ffffff'], { spd: milestone ? 110 : 50, grav: -50, life: 0.8 });
     FX.text(h.x, h.y - 24, to - from > 1 ? `LV ${to} (+${to - from})` : 'LV ' + to, '#ffd76a', 1, { life: 1.0, vy: -18 });
+    const mile = Math.floor(to / 10) * 10, BM = KK.S.bestMile || (KK.S.bestMile = {});
+    const newBest = mile > (BM[id] || 0);
+    if (milestone) BM[id] = Math.max(BM[id] || 0, mile);
     if (milestone && !W.boss && !KK.S.glimpse && performance.now() - (FX.lastMilestone || -1e9) > 180000) {
       FX.lastMilestone = performance.now();
-      FX.banner(KK.DATA.HEROES[id].name.toUpperCase() + ' LV ' + Math.floor(to / 10) * 10, 'x' + KK.BAL.dmgMile + ' DAMAGE!', '#ffd76a', 2, { slot: 'lvl', subCol: '#fff' });
+      // big only for a level this hero has never reached, and past Lv 20 only every 50 levels
+      FX.banner(KK.DATA.HEROES[id].name.toUpperCase() + ' LV ' + mile, 'x' + KK.BAL.dmgMile + ' DAMAGE!', '#ffd76a', 2, { slot: 'lvl', subCol: '#fff', big: newBest && (mile <= 20 || mile % 50 === 0) });
       FX.flash('#ffd76a', 0.25);
       FX.shake(2, 0.2);
     }
@@ -314,7 +319,7 @@
       FX.ring(h.x, h.y - 8, 2, 50, '#ffffff', 0.6);
       FX.burst(h.x, h.y - 8, 30, ['#ffffff', '#ffd76a', '#7ee8f6'], { spd: 120, grav: -20, life: 1 });
     }, 50);
-    FX.banner(KK.DATA.HEROES[id].name.toUpperCase() + ' JOINS!', 'THE ' + KK.DATA.HEROES[id].cls.toUpperCase(), '#ffffff', 2.4, { subCol: '#7ee8f6' });
+    FX.banner(KK.DATA.HEROES[id].name.toUpperCase() + ' JOINS!', 'THE ' + KK.DATA.HEROES[id].cls.toUpperCase(), '#ffffff', 2.4, { subCol: '#7ee8f6', first: 'join:' + id });
     FX.flash('#ffffff', 0.3);
   });
   KK.on('relicPicked', () => {

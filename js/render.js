@@ -465,7 +465,7 @@
     }
     if (tier === 3) {
       if (walking) { b.globalAlpha = 0.18; b.drawImage(spr.gold, dxp - 6, y); b.globalAlpha = 0.32; b.drawImage(spr.gold, dxp - 3, y); }
-      b.globalAlpha = 0.55 + Math.sin(t * 8 + h.slot) * 0.25;
+      b.globalAlpha = KK.S.settings.calm ? 0.55 : 0.55 + Math.sin(t * 8 + h.slot) * 0.25;
       for (const [ox, oy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) b.drawImage(spr.gold, dxp + ox, y + oy);
       b.globalAlpha = 1;
     }
@@ -496,7 +496,7 @@
     out = document.createElement('canvas'); out.width = c.width; out.height = c.height;
     const g = out.getContext('2d', { willReadFrequently: true });
     g.drawImage(c, 0, 0);
-    g.globalCompositeOperation = 'source-atop'; g.globalAlpha = 0.55; g.fillStyle = '#8a0f24'; g.fillRect(0, 0, c.width, c.height);
+    g.globalCompositeOperation = 'source-atop'; g.globalAlpha = 0.4; g.fillStyle = '#d0203a'; g.fillRect(0, 0, c.width, c.height);
     heartCache.set(c, out);
     return out;
   }
@@ -542,7 +542,7 @@
       const hh = Math.max(Math.round(spr.h * 0.35), Math.round(spr.h * k2));
       b.drawImage(e.hollowed ? hollowTint(spr.c) : spr.c, 0, spr.h - hh, spr.w, hh, dxp, Math.round(y) + spr.h - hh, spr.w, hh);
     } else if (e.heart) {
-      const hw = spr.w * 2, hh = spr.h * 2, hx = Math.round(x - hw / 2), hy = Math.round(W.GROUND + sy - hh + (e.def.fly ? -4 : 0));
+      const hk = Math.min(1.6, (W.GROUND - 8) / spr.h), hw = Math.round(spr.w * hk), hh = Math.round(spr.h * hk), hx = Math.round(x - hw / 2), hy = Math.round(W.GROUND + sy - hh + (e.def.fly ? -4 : 0));
       b.globalCompositeOperation = 'lighter'; glow(x, hy + hh * 0.45, 40 + Math.sin(t * 3) * 6, '#ff3355', 0.35); b.globalCompositeOperation = 'source-over';
       for (const [ox, oy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) b.drawImage(spr.dark || spr.c, hx + ox, hy + oy, hw, hh);
       b.drawImage(heartTint(spr.c), hx, hy, hw, hh);

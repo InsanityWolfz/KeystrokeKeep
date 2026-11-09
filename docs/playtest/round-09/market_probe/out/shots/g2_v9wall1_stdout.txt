@@ -1,0 +1,8 @@
+
+[capture] ready {"seed":7,"size":"L","juice":"full","cues":11}
+[capture] MARK 2026-11-09T21:06:43.931Z BOSS IN
+[capture] MARK 2026-11-09T21:06:51.260Z SHELL (type now)
+[capture] MARK 2026-11-09T21:06:52.562Z CRACK
+
+--stderr--
+(electron) 'console-message' arguments are deprecated and will be removed. Please use Event<WebContentsConsoleMessageEventParams> object instead.

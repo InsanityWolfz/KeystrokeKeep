@@ -94,6 +94,7 @@
     setText('#hud-farm', blocked && g >= hintMin && !nearGlimpse && A.canRetire() ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Regrouping: next try in ${Math.ceil(regroup / 60)}m. Level up!` : blocked ? '⚠ Boss too strong: farming. Level up!' : calmLine);
     $('#hud-farm').classList.toggle('hidden', (!blocked && !calmLine) || KK.fx.banners.length > 0);
     $('#hud-farm').classList.toggle('calm', !blocked && !!calmLine);
+    document.documentElement.classList.toggle('kk-calm', !!S.settings.calm);
     const pill = $('#hud-demo');
     if (pill) {
       const om = S.omen && D.OMENS.find((o) => o.id === S.omen);
@@ -607,6 +608,7 @@
       <p>A tiny party of heroes lives in the strip at the bottom of your screen. They delve on their own, but <b style="color:var(--spark)">every key you type and every click you make</b> charges them up.</p>
       <p>${KK.native ? 'Just work normally. Typing and clicking <b>anywhere on your PC</b> counts.' : 'Type in the notepad (or anywhere on the page) and watch what happens.'}</p>
       <p style="font-size:12px;color:var(--muted)">🔒 Keystroke Keep only <b>counts</b> input. It never records what you type.</p>
+      <p style="font-size:12px;color:var(--muted)">It lives in your tray (the crown icon). Hide it any time with <b>Ctrl+Shift+Alt+K</b>. It never goes online.</p>
       <div class="row"><button class="buy big" data-x="go">START DELVING ⚔</button></div>`,
     (m, close) => { m.querySelector('[data-x=go]').onclick = () => { close(); onStart(); }; });
   };

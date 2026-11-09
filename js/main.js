@@ -48,7 +48,8 @@
       document.documentElement.classList.toggle('kk-paused', off); // also pauses CSS animations
       if (off) { if (!frozen) { frozen = true; KK.save(); } last = now; setTimeout(frame, 500); return; }
       frozen = false;
-      const dt = Math.min(0.25, (now - last) / 1000);
+      if (KK.onFrame) KK.onFrame(); // capture mode: the frame-locked clock
+      const dt = KK.fixedDt || Math.min(0.25, (now - last) / 1000);
       last = now;
       FX.update(dt);
       const simDt = dt * FX.timeScale() * KK.warp;

@@ -6,6 +6,9 @@
 const { app, BrowserWindow, screen, ipcMain, Tray, Menu, nativeImage, powerMonitor, globalShortcut, session } = require('electron');
 const path = require('path');
 const fs = require('fs');
+// The KK_* environment flags (self-test, capture, demo) are for development: a retail build ignores them
+// unless it is started with --kk-dev.
+if (app.isPackaged && !process.argv.includes('--kk-dev')) for (const k of Object.keys(process.env)) if (/^KK_/.test(k)) delete process.env[k];
 
 let win = null;
 let tray = null;
@@ -43,6 +46,22 @@ function targetDisplay() {
   const all = screen.getAllDisplays();
   return all.find((d) => d.id === state.displayId) || screen.getPrimaryDisplay();
 }
+// KK_CAPTURE_DISPLAY=secondary|<id>: capture runs dock on that monitor, whatever the staged save says
+let captureDisplay = null;
+function resolveCaptureDisplay() {
+  const v = process.env.KK_CAPTURE_DISPLAY;
+  if (!CAPTURE || !v) return;
+  const all = screen.getAllDisplays(), prim = screen.getPrimaryDisplay();
+  const d = v === 'secondary' ? all.find((x) => x.id !== prim.id) : all.find((x) => String(x.id) === v);
+  if (d) { captureDisplay = d.id; state.displayId = d.id; } else console.warn('[capture] KK_CAPTURE_DISPLAY: no such display', v);
+}
+// the saved monitor is known before the window exists, so the strip never flashes on the primary first
+function readSavedDisplay() {
+  try {
+    const st = JSON.parse(fs.readFileSync(path.join(app.getPath('userData'), 'saves', 'keystroke-keep.json'), 'utf8')).settings || {};
+    if (st.displayId != null && screen.getAllDisplays().some((d) => d.id === st.displayId)) state.displayId = st.displayId;
+  } catch (e) { /* no save yet: primary */ }
+}
 function dockBounds(height) {
   const { workArea } = targetDisplay();
   const h = Math.min(Math.max(80, Math.round(height)), workArea.height);
@@ -79,7 +98,8 @@ function createWindow() {
   applyOnTop();
   win.setVisibleOnAllWorkspaces(true);
   win.loadFile(path.join(__dirname, '..', 'index.html'));
-  win.once('ready-to-show', applyVisibility);
+  // first show waits for the renderer's settings (monitor, size), at most 2 s
+  win.once('ready-to-show', () => setTimeout(() => { firstShowOk = true; applyVisibility(); }, settingsSeen ? 0 : 2000));
   win.on('closed', () => { win = null; });
   screen.on('display-metrics-changed', redock);
   screen.on('display-removed', redock);
@@ -93,9 +113,9 @@ function applyOnTop() {
 }
 
 /** One source of truth for "should the strip be on screen / draw / make sound". */
-let lastActive = null;
+let lastActive = null, settingsSeen = false, firstShowOk = false;
 function applyVisibility() {
-  if (!win) return;
+  if (!win || !firstShowOk) return;
   const shouldShow = sys.userShown && !(state.autoHideFullscreen && sys.fullscreen);
   if (shouldShow && !win.isVisible()) win.showInactive();
   if (!shouldShow && win.isVisible()) win.hide();
@@ -372,8 +392,9 @@ ipcMain.on('kk:settings', (_e, s) => {
   if (typeof s.onTop === 'boolean' && s.onTop !== state.onTop) { state.onTop = s.onTop; applyOnTop(); }
   if (typeof s.autoHideFullscreen === 'boolean' && !CAPTURE) state.autoHideFullscreen = s.autoHideFullscreen;
   if (s.hideNoticeShown) hideNoticeShown = true;
-  if (s.displayId !== undefined && s.displayId !== state.displayId) { state.displayId = s.displayId; redock(); }
+  if (s.displayId !== undefined && s.displayId !== state.displayId && !captureDisplay) { state.displayId = s.displayId; redock(); }
   syncHook();
+  if (!settingsSeen) { settingsSeen = true; if (win && !win.isVisible()) setTimeout(() => { firstShowOk = true; applyVisibility(); }, 60); }
   applyVisibility();
 });
 
@@ -456,6 +477,7 @@ else {
     }
     // no network, ever: everything the game needs ships in the app folder
     session.defaultSession.webRequest.onBeforeRequest({ urls: ['http://*/*', 'https://*/*', 'ws://*/*', 'wss://*/*'] }, (_d, cb) => cb({ cancel: true }));
+    readSavedDisplay(); resolveCaptureDisplay();
     createWindow();
     app.on('second-instance', () => { sys.userShown = true; applyVisibility(); if (tray) { try { tray.displayBalloon({ title: 'Keystroke Keep', content: 'Already running: the strip is back.' }); } catch (e) { /* ignore */ } } });
     app.on('before-quit', flushSave);

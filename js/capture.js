@@ -19,6 +19,20 @@
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 
+  // frame-locked clock: performance.now() advances exactly 1/fps per drawn frame, and cue / autotype
+  // timers fire on frame boundaries, so the same seed and save give the same frames at any CPU load
+  const FPS = C.fps || 60;
+  let frameNo = 0;
+  const waiters = [];
+  performance.now = () => (frameNo * 1000) / FPS;
+  KK.fixedDt = 1 / FPS;
+  KK.onFrame = () => {
+    frameNo++;
+    for (let i = waiters.length - 1; i >= 0; i--) if (waiters[i].at <= frameNo) { const w = waiters.splice(i, 1)[0]; if (!w.dead) w.fn(); }
+  };
+  KK.later = (fn, ms) => { const w = { at: frameNo + Math.max(1, Math.round((ms * FPS) / 1000)), fn }; waiters.push(w); return { cancel: () => { w.dead = true; } }; };
+  const sleep = (sec) => new Promise((r) => KK.later(r, sec * 1000));
+
   const whenBooted = (fn) => (KK.booted ? fn() : setTimeout(() => whenBooted(fn), 50));
   whenBooted(() => {
     const S = KK.S, W = KK.world, UI = KK.ui;
@@ -88,15 +102,22 @@
       let last = 0;
       for (const c of cues) {
         const wait = Math.max(0, (c.t || 0) - (c.abs === false ? 0 : last));
-        if (wait) await new Promise((r) => setTimeout(r, wait * 1000));
+        if (wait) await sleep(wait);
         if (id !== runId) return;
         last = c.t || 0;
-        if (c.do === 'await') { await new Promise((r) => { const off = KK.on(c.v, () => { if (typeof off === 'function') off(); r(); }); setTimeout(r, (c.timeout || 30) * 1000); }); last = 0; continue; }
+        if (c.do === 'await') {
+          await new Promise((r) => {
+            let done = false, tm = null;
+            const off = KK.on(c.v, () => { if (done) return; done = true; off(); tm.cancel(); r(); });
+            tm = KK.later(() => { if (done) return; done = true; off(); if (N.mark) N.mark('await ' + c.v + ' TIMED OUT'); console.warn('[capture] await ' + c.v + ' TIMED OUT'); r(); }, (c.timeout || 30) * 1000);
+          });
+          last = 0; continue;
+        }
         const f = ops[c.do];
         if (f) f(c.v); else console.warn('[capture] unknown cue', c.do);
       }
     }
-    setTimeout(runScript, 600);
+    KK.later(runScript, 600);
     console.log('[capture] ready', JSON.stringify({ seed: C.seed, size: s.size, juice: C.juice, cues: ((C.script && C.script.cues) || []).length }));
   });
 })();

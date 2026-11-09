@@ -469,3 +469,9 @@ body:not(.native) .demo-pill:not(.omen), .demo-pill:not(.omen) { pointer-events:
 .ach.locked.earned .new { background: #8de88a; }
 
 .ach:not(.got) > b, .ach:not(.got) > span { opacity: .7; }
+
+/* R9: HUD contrast over bright biomes (lava brick) */
+.hud-center { background: rgba(10, 6, 16, .6); border-radius: 2px; padding: 2px 8px 3px; }
+.biome { color: #c9b8ea; }
+#hud-embers, .embers { text-shadow: 2px 2px 0 #000; }
+html.kk-calm .fervor.t3 #fv-tier { animation: none; }
