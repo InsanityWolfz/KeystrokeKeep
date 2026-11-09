@@ -76,6 +76,7 @@
     if (F.isBossFloor(f) && W.wave === W.waves - 1) {
       const key = F.bossFor(f);
       const boss = makeEnemy(key, x0 + 20, f);
+      if (f >= 70 && key !== 'hollow') { boss.def = Object.assign({}, boss.def, { name: 'Hollowed ' + boss.def.name }); boss.hollowed = true; }
       W.boss = boss;
       const minions = Math.min(2, Math.floor(f / 20));
       for (let i = 0; i < minions; i++) makeEnemy(U.pick(b.monsters), x0 - 14 - i * 14, f);
@@ -159,12 +160,20 @@
   };
 
   // ---------------------------------------------------------------- ultimates
+  W.ultTurn = 'knight';
+  W.passUlt = function () {
+    const ids = W.heroes.map((h) => h.id);
+    if (!ids.length) return;
+    const i = ids.indexOf(W.ultTurn);
+    W.ultTurn = ids[(i + 1) % ids.length];
+  };
   W.castUlt = function (h, free) {
     const S = KK.S, m = KK.mods();
     const def = D.HEROES[h.id];
     if (!free) {
       const cost = Math.ceil(def.ult.cost * m.ultCost);
       S.sparks -= cost;
+      S.embers = (S.embers || 0) + cost * 0.25; // every 4 Sparks spent bank 1 permanent Ember (Workshop currency)
       h.ultCd = def.ult.cd;
       W.ultGap = 1.1;
     }
@@ -290,6 +299,8 @@
     }
 
     // heroes
+    const turnHolder = W.heroes.find((h) => h.id === W.ultTurn);
+    if (!turnHolder || turnHolder.dead) W.passUlt();
     for (const h of W.heroes) {
       if (h.dead) continue;
       const def = D.HEROES[h.id];
@@ -297,13 +308,15 @@
       // regen when out of combat
       if (!engaged && !fe) h.hp = Math.min(h.maxHp, h.hp + h.maxHp * 0.06 * dt);
 
-      // ultimates (fueled by sparks)
-      const cost = Math.ceil(def.ult.cost * m.ultCost);
-      if (W.ultGap <= 0 && h.ultCd <= 0 && S.sparks >= cost) {
+      // ultimates (fueled by sparks), taken in turns so the cheap Earthshatter can't starve
+      // Meteor and Sanctuary: the hero whose turn it is saves up; a hero with nothing to do passes.
+      if (W.ultGap <= 0 && W.ultTurn === h.id) {
+        const cost = Math.ceil(def.ult.cost * m.ultCost);
         let want = false;
-        if (h.id === 'cleric') want = W.heroes.some((o) => o.dead || o.hp / o.maxHp < 0.4);
+        if (h.id === 'cleric') want = W.heroes.some((o) => o.dead || o.hp / o.maxHp < 0.55);
         else want = W.enemies.some((e) => !e.dead && e.active && e.x - h.x <= Math.max(def.range, 60));
-        if (want) W.castUlt(h);
+        if (!want || h.ultCd > 0) W.passUlt();
+        else if (S.sparks >= cost) { W.castUlt(h); W.passUlt(); }
       }
 
       h.atkT -= dt * m.aspd * speedMult;
@@ -405,13 +418,13 @@
         } else {
           e.lunge = 0.15;
           // bosses slam the whole party every 4th attack
-          if (e.boss && e.hits % 4 === 3) {
+          e.swings = (e.swings || 0) + 1;
+          if (e.boss && e.swings % 4 === 0) {
             for (const h of W.heroes) if (!h.dead) W.damageHero(h, e.atk * 0.6, e);
             KK.emit('bossSlam', { e });
           } else {
             W.damageHero(front, e.atk, e);
           }
-          e.hits++;
         }
       }
     }
@@ -489,6 +502,13 @@
     KK.emit('floor', { floor: S.floor, biomeChange: F.biomeOf(S.floor) !== F.biomeOf(S.floor - 1), boss: F.isBossFloor(S.floor) });
   };
 
+  // a Head Start bought at the very start of a delve moves the party down right away
+  KK.on('jumpFloor', ({ floor }) => {
+    W.wave = 0; W.door = null; W.chest = null; W.chestRolled = false; W.boss = null;
+    W.enemies = []; W.shots = [];
+    KK.emit('floor', { floor, biomeChange: true, boss: F.isBossFloor(floor) });
+  });
+
   W.recover = function () {
     const S = KK.S;
     S.floor = Math.max(1, S.floor - 1);
@@ -500,7 +520,7 @@
 
   W.spawnRat = function () {
     const view = KK.view ? KK.view : { left: W.partyX - 200, right: W.partyX + 400 };
-    W.rat = { x: view.right + 20, y: GROUND + 6, speed: 46, t: 0, life: ((view.right - view.left) + 60) / 46 };
+    W.rat = { x: view.right + 20, y: GROUND + 2, speed: 28, t: 0, life: ((view.right - view.left) + 60) / 28 };
     KK.emit('ratSpawn');
   };
   W.catchRat = function () {
@@ -534,7 +554,10 @@
 
   function autoBuy() {
     const S = KK.S, A = KK.actions;
-    // cheapest next level among owned heroes, keep buying while affordable
+    if (S.settings.autoLevel === false) return;
+    // saving up for a hero you can already recruit? leave the gold alone
+    if (D.PARTY_ORDER.some((id) => A.canRecruit(id) && S.gold < A.recruitCost(id))) return;
+    // frugal: only levels that cost at most 10% of current gold, cheapest first
     for (let i = 0; i < 20; i++) {
       let best = null, bestC = Infinity;
       for (const id of D.PARTY_ORDER) {
@@ -542,7 +565,7 @@
         const c = F.levelCost(id, S.heroes[id]);
         if (c < bestC) { bestC = c; best = id; }
       }
-      if (!best || bestC > S.gold) break;
+      if (!best || bestC > S.gold * 0.1) break;
       A.levelHero(best, 1);
     }
   }

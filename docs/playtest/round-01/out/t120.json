@@ -1,0 +1,583 @@
+{
+ "timeline": [
+  {
+   "t": "0h00m",
+   "floor": 1,
+   "max": 1,
+   "gold": "0",
+   "inc": "0/s",
+   "lv": "k1 a0 c0 m0",
+   "relics": 0,
+   "sparks": "0/150",
+   "renown": 0,
+   "tier": "IDLE"
+  },
+  {
+   "t": "0h05m",
+   "floor": 11,
+   "max": 11,
+   "gold": "262",
+   "inc": "3.1/s",
+   "lv": "k11 a1 c0 m0",
+   "relics": 0,
+   "sparks": "3/150",
+   "renown": 0,
+   "tier": "IDLE"
+  },
+  {
+   "t": "0h10m",
+   "floor": 22,
+   "max": 22,
+   "gold": "658",
+   "inc": "12/s",
+   "lv": "k25 a12 c0 m0",
+   "relics": 2,
+   "sparks": "26/150",
+   "renown": 0,
+   "tier": "FLOW STATE"
+  },
+  {
+   "t": "0h15m",
+   "floor": 29,
+   "max": 30,
+   "gold": "1.10K",
+   "inc": "15/s",
+   "lv": "k34 a22 c0 m1",
+   "relics": 2,
+   "sparks": "14/150",
+   "renown": 0,
+   "tier": "IDLE"
+  },
+  {
+   "t": "0h20m",
+   "floor": 34,
+   "max": 34,
+   "gold": "33.2K",
+   "inc": "167/s",
+   "lv": "k45 a32 c1 m5",
+   "relics": 3,
+   "sparks": "5/150",
+   "renown": 0,
+   "tier": "FLOW STATE"
+  },
+  {
+   "t": "0h25m",
+   "floor": 38,
+   "max": 38,
+   "gold": "14.7K",
+   "inc": "301/s",
+   "lv": "k56 a43 c1 m17",
+   "relics": 3,
+   "sparks": "21/150",
+   "renown": 0,
+   "tier": "FOCUSED"
+  },
+  {
+   "t": "0h30m",
+   "floor": 40,
+   "max": 40,
+   "gold": "34.7K",
+   "inc": "497/s",
+   "lv": "k63 a50 c4 m23",
+   "relics": 3,
+   "sparks": "0/150",
+   "renown": 0,
+   "tier": "FLOW STATE"
+  },
+  {
+   "t": "0h35m",
+   "floor": 40,
+   "max": 40,
+   "gold": "91.6K",
+   "inc": "151/s",
+   "lv": "k66 a53 c7 m27",
+   "relics": 3,
+   "sparks": "24/150",
+   "renown": 0,
+   "tier": "FOCUSED"
+  },
+  {
+   "t": "0h40m",
+   "floor": 19,
+   "max": 19,
+   "gold": "129",
+   "inc": "22/s",
+   "lv": "k32 a19 c0 m0",
+   "relics": 1,
+   "sparks": "1/150",
+   "renown": 0,
+   "tier": "IDLE"
+  },
+  {
+   "t": "0h45m",
+   "floor": 29,
+   "max": 30,
+   "gold": "142",
+   "inc": "86/s",
+   "lv": "k50 a37 c0 m11",
+   "relics": 2,
+   "sparks": "12/150",
+   "renown": 0,
+   "tier": "IN THE ZONE"
+  },
+  {
+   "t": "0h50m",
+   "floor": 37,
+   "max": 38,
+   "gold": "2.65K",
+   "inc": "107/s",
+   "lv": "k59 a47 c0 m20",
+   "relics": 3,
+   "sparks": "4/150",
+   "renown": 0,
+   "tier": "FOCUSED"
+  },
+  {
+   "t": "0h55m",
+   "floor": 39,
+   "max": 40,
+   "gold": "2.55K",
+   "inc": "366/s",
+   "lv": "k67 a54 c8 m28",
+   "relics": 3,
+   "sparks": "4/150",
+   "renown": 0,
+   "tier": "IN THE ZONE"
+  },
+  {
+   "t": "1h00m",
+   "floor": 46,
+   "max": 46,
+   "gold": "3.33K",
+   "inc": "1.38K/s",
+   "lv": "k77 a65 c18 m38",
+   "relics": 4,
+   "sparks": "16/150",
+   "renown": 0,
+   "tier": "FLOW STATE"
+  },
+  {
+   "t": "1h05m",
+   "floor": 49,
+   "max": 49,
+   "gold": "9.32K",
+   "inc": "1.91K/s",
+   "lv": "k82 a69 c23 m43",
+   "relics": 4,
+   "sparks": "5/150",
+   "renown": 0,
+   "tier": "IN THE ZONE"
+  },
+  {
+   "t": "1h10m",
+   "floor": 50,
+   "max": 50,
+   "gold": "42.9K",
+   "inc": "424/s",
+   "lv": "k88 a76 c29 m49",
+   "relics": 4,
+   "sparks": "1/150",
+   "renown": 0,
+   "tier": "FLOW STATE"
+  },
+  {
+   "t": "1h15m",
+   "floor": 53,
+   "max": 53,
+   "gold": "46.9K",
+   "inc": "2.30K/s",
+   "lv": "k93 a80 c33 m53",
+   "relics": 5,
+   "sparks": "24/150",
+   "renown": 0,
+   "tier": "IN THE ZONE"
+  },
+  {
+   "t": "1h20m",
+   "floor": 56,
+   "max": 56,
+   "gold": "165K",
+   "inc": "1.89K/s",
+   "lv": "k97 a84 c38 m57",
+   "relics": 5,
+   "sparks": "24/150",
+   "renown": 0,
+   "tier": "IDLE"
+  },
+  {
+   "t": "1h25m",
+   "floor": 57,
+   "max": 57,
+   "gold": "40.3K",
+   "inc": "7.76K/s",
+   "lv": "k100 a88 c41 m61",
+   "relics": 5,
+   "sparks": "1/150",
+   "renown": 0,
+   "tier": "IN THE ZONE"
+  },
+  {
+   "t": "1h30m",
+   "floor": 58,
+   "max": 58,
+   "gold": "198K",
+   "inc": "3.54K/s",
+   "lv": "k103 a90 c43 m63",
+   "relics": 5,
+   "sparks": "5/150",
+   "renown": 0,
+   "tier": "FOCUSED"
+  },
+  {
+   "t": "1h35m",
+   "floor": 59,
+   "max": 59,
+   "gold": "59.7K",
+   "inc": "824/s",
+   "lv": "k104 a92 c45 m65",
+   "relics": 5,
+   "sparks": "21/150",
+   "renown": 0,
+   "tier": "FLOW STATE"
+  },
+  {
+   "t": "1h40m",
+   "floor": 60,
+   "max": 60,
+   "gold": "170K",
+   "inc": "4.71K/s",
+   "lv": "k106 a94 c47 m67",
+   "relics": 5,
+   "sparks": "20/150",
+   "renown": 0,
+   "tier": "IDLE"
+  },
+  {
+   "t": "1h45m",
+   "floor": 6,
+   "max": 6,
+   "gold": "9",
+   "inc": "10.8K/s",
+   "lv": "k7 a0 c0 m0",
+   "relics": 0,
+   "sparks": "9/150",
+   "renown": 39,
+   "tier": "FLOW STATE"
+  },
+  {
+   "t": "1h50m",
+   "floor": 32,
+   "max": 32,
+   "gold": "3.25K",
+   "inc": "650/s",
+   "lv": "k60 a47 c0 m21",
+   "relics": 2,
+   "sparks": "3/150",
+   "renown": 1,
+   "tier": "FOCUSED"
+  },
+  {
+   "t": "1h55m",
+   "floor": 45,
+   "max": 45,
+   "gold": "20.8K",
+   "inc": "11.0K/s",
+   "lv": "k83 a70 c23 m43",
+   "relics": 4,
+   "sparks": "20/150",
+   "renown": 1,
+   "tier": "IN THE ZONE"
+  },
+  {
+   "t": "2h00m",
+   "floor": 54,
+   "max": 54,
+   "gold": "6.75K",
+   "inc": "31.9K/s",
+   "lv": "k101 a88 c42 m62",
+   "relics": 5,
+   "sparks": "19/150",
+   "renown": 1,
+   "tier": "FOCUSED"
+  }
+ ],
+ "events": [
+  "0h00m  >> reached biome The Crypt (floor 2)",
+  "0h03m  recruit archer",
+  "0h04m  BOSS The Rat King down (floor 10)",
+  "0h05m  relic picked: whetstone",
+  "0h05m  first buy forge:armor",
+  "0h07m  first buy forge:blades",
+  "0h08m  first buy forge:swift",
+  "0h08m  BOSS The Bone King down (floor 20)",
+  "0h09m  relic picked: belt",
+  "0h09m  first buy forge:purse",
+  "0h09m  >> reached biome Mossy Caverns (floor 21)",
+  "0h13m  recruit mage",
+  "0h16m  first buy forge:keen",
+  "0h17m  BOSS Brood Mother down (floor 30)",
+  "0h18m  relic picked: luckycoin",
+  "0h19m  recruit cleric",
+  "0h35m  >>> RETIRE #1 from floor 40 +17 renown (lifetime 17)",
+  "0h36m  first buy legacy:lineage",
+  "0h36m  first buy legacy:treasury",
+  "0h36m  first buy legacy:quartermaster",
+  "0h36m  first buy legacy:veterans",
+  "0h36m  first buy legacy:headstart",
+  "0h36m  first buy legacy:zeal",
+  "0h36m  first buy legacy:recruiter",
+  "0h36m  first buy legacy:campfire",
+  "0h38m  BOSS The Rat King down (floor 10)",
+  "0h39m  relic picked: boots",
+  "0h39m  recruit archer",
+  "0h40m  BOSS The Bone King down (floor 20)",
+  "0h41m  relic picked: spacebar",
+  "0h44m  recruit mage",
+  "0h45m  BOSS Brood Mother down (floor 30)",
+  "0h46m  relic picked: coffee",
+  "0h54m  recruit cleric",
+  "0h56m  BOSS Goblin Warlord down (floor 40)",
+  "0h56m  >> reached biome Magma Depths (floor 41)",
+  "0h57m  relic picked: keycap",
+  "1h10m  BOSS Ember Colossus down (floor 50)",
+  "1h11m  relic picked: spacebar",
+  "1h44m  >>> RETIRE #2 from floor 60 +39 renown (lifetime 56)",
+  "1h45m  first buy legacy:collector",
+  "1h46m  recruit archer",
+  "1h46m  BOSS The Rat King down (floor 10)",
+  "1h47m  relic picked: keycap",
+  "1h47m  BOSS The Bone King down (floor 20)",
+  "1h48m  relic picked: boots",
+  "1h48m  recruit mage",
+  "1h49m  BOSS Brood Mother down (floor 30)",
+  "1h50m  relic picked: capslock",
+  "1h51m  recruit cleric",
+  "1h53m  BOSS Goblin Warlord down (floor 40)",
+  "1h54m  relic picked: luckycoin",
+  "1h58m  BOSS Ember Colossus down (floor 50)",
+  "1h59m  relic picked: lens"
+ ],
+ "retires": [
+  {
+   "at": 2148.533333332037,
+   "runMin": 35.80888888886728,
+   "maxFloor": 40,
+   "gain": 17
+  },
+  {
+   "at": 6294.666666691594,
+   "runMin": 69.1022222226593,
+   "maxFloor": 60,
+   "gain": 39
+  }
+ ],
+ "content": {
+  "forge:blades": {
+   "firstAffordable": 300.1666666666898,
+   "firstBought": 420.1666666667853,
+   "buys": 35
+  },
+  "forge:armor": {
+   "firstAffordable": 300.1666666666898,
+   "firstBought": 300.1666666666898,
+   "buys": 38
+  },
+  "forge:purse": {
+   "firstAffordable": 300.1666666666898,
+   "firstBought": 540.200000000166,
+   "buys": 25
+  },
+  "forge:swift": {
+   "firstAffordable": 300.1666666666898,
+   "firstBought": 480.16666666683307,
+   "buys": 23
+  },
+  "forge:keen": {
+   "firstAffordable": 480.16666666683307,
+   "firstBought": 960.4333333331172,
+   "buys": 16
+  },
+  "workshop:jar": {
+   "firstAffordable": null,
+   "firstBought": null,
+   "buys": 0
+  },
+  "workshop:overcharge": {
+   "firstAffordable": null,
+   "firstBought": null,
+   "buys": 0
+  },
+  "workshop:kindling": {
+   "firstAffordable": null,
+   "firstBought": null,
+   "buys": 0
+  },
+  "workshop:static": {
+   "firstAffordable": null,
+   "firstBought": null,
+   "buys": 0
+  },
+  "workshop:battery": {
+   "firstAffordable": null,
+   "firstBought": null,
+   "buys": 0
+  },
+  "legacy:lineage": {
+   "firstAffordable": 2161.099999998692,
+   "firstBought": 2161.099999998692,
+   "buys": 3
+  },
+  "legacy:treasury": {
+   "firstAffordable": 2161.099999998692,
+   "firstBought": 2161.099999998692,
+   "buys": 3
+  },
+  "legacy:quartermaster": {
+   "firstAffordable": 2161.099999998692,
+   "firstBought": 2161.099999998692,
+   "buys": 1
+  },
+  "legacy:veterans": {
+   "firstAffordable": 2161.099999998692,
+   "firstBought": 2161.099999998692,
+   "buys": 3
+  },
+  "legacy:headstart": {
+   "firstAffordable": 2161.099999998692,
+   "firstBought": 2161.099999998692,
+   "buys": 2
+  },
+  "legacy:zeal": {
+   "firstAffordable": 2161.099999998692,
+   "firstBought": 2161.099999998692,
+   "buys": 2
+  },
+  "legacy:recruiter": {
+   "firstAffordable": 2161.099999998692,
+   "firstBought": 2161.099999998692,
+   "buys": 1
+  },
+  "legacy:campfire": {
+   "firstAffordable": 2161.099999998692,
+   "firstBought": 2161.099999998692,
+   "buys": 2
+  },
+  "legacy:collector": {
+   "firstAffordable": 2161.099999998692,
+   "firstBought": 6302.16666669169,
+   "buys": 1
+  },
+  "recruit:knight": {
+   "firstAffordable": null,
+   "firstBought": null,
+   "buys": 0
+  },
+  "recruit:archer": {
+   "firstAffordable": 180.13333333332568,
+   "firstBought": 180.13333333332568,
+   "buys": 3
+  },
+  "recruit:mage": {
+   "firstAffordable": 780.333333333281,
+   "firstBought": 780.333333333281,
+   "buys": 3
+  },
+  "recruit:cleric": {
+   "firstAffordable": 1140.5333333329534,
+   "firstBought": 1140.5333333329534,
+   "buys": 3
+  }
+ },
+ "relicStats": {
+  "whetstone": {
+   "offered": 2,
+   "picked": 1
+  },
+  "luckycoin": {
+   "offered": 8,
+   "picked": 2
+  },
+  "spacebar": {
+   "offered": 5,
+   "picked": 2
+  },
+  "boots": {
+   "offered": 3,
+   "picked": 2
+  },
+  "coffee": {
+   "offered": 4,
+   "picked": 1
+  },
+  "belt": {
+   "offered": 6,
+   "picked": 1
+  },
+  "keycap": {
+   "offered": 4,
+   "picked": 2
+  },
+  "capslock": {
+   "offered": 1,
+   "picked": 1
+  },
+  "enter": {
+   "offered": 1,
+   "picked": 0
+  },
+  "fang": {
+   "offered": 3,
+   "picked": 0
+  },
+  "oil": {
+   "offered": 1,
+   "picked": 0
+  },
+  "map": {
+   "offered": 1,
+   "picked": 0
+  },
+  "lens": {
+   "offered": 3,
+   "picked": 1
+  },
+  "echo": {
+   "offered": 0,
+   "picked": 0
+  },
+  "glass": {
+   "offered": 2,
+   "picked": 0
+  },
+  "flowpend": {
+   "offered": 0,
+   "picked": 0
+  },
+  "hotkey": {
+   "offered": 0,
+   "picked": 0
+  }
+ },
+ "biomeReached": {
+  "The Crypt": 19.266666666666783,
+  "Mossy Caverns": 542.4333333334973,
+  "Magma Depths": 3395.0666666642364
+ },
+ "bossKills": {
+  "The Rat King": 3,
+  "The Bone King": 3,
+  "Brood Mother": 3,
+  "Goblin Warlord": 2,
+  "Ember Colossus": 2
+ },
+ "tierTime": [
+  1098.466666666325,
+  1303.7999999994715,
+  1329.4666666661149,
+  3468.26666666417
+ ],
+ "emptyGlances": 18,
+ "glances": 120,
+ "maxDrought": 240,
+ "longestStall": 296.266666670439
+}

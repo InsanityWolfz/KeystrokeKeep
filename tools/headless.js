@@ -23,5 +23,6 @@ module.exports = function load(opts = {}) {
   for (const f of ['util', 'data', 'state', 'world']) {
     vm.runInContext(fs.readFileSync(path.join(__dirname, '..', 'js', f + '.js'), 'utf8'), ctx, { filename: f + '.js' });
   }
+  ctx.KK.rng = ctx.Math.random; // seeded generator for harness-side randomness
   return ctx.KK;
 };

@@ -353,3 +353,22 @@ body.native #toasts { bottom: calc(var(--strip-h) + 12px); }
 }
 body.native .modal-back { background: transparent; place-items: end center; padding-bottom: calc(var(--strip-h) + 12px); }
 body.native #panel { border-bottom: 0; }
+
+/* ---------------- Round 1 playtest fixes ---------------- */
+/* fixed panel height so tabs and the close button don't jump between tabs */
+.panel-body { height: min(330px, calc(100vh - var(--strip-h) - 120px)); max-height: none; }
+.res-pill { font: 13px var(--font-px); color: #ffb070; background: #0006; border: 2px solid #000; padding: 4px 10px; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.res-pill.renown { color: #e9a2ff; }
+.res-pill img { width: 18px; height: 18px; }
+.res.spark.paused .val { color: var(--muted); }
+.hbtn.mute { font-size: 15px; line-height: 1; }
+.ocard.sel { transform: translateY(-8px) scale(1.04); outline: 3px solid #fff; }
+.offer-actions { display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 10px; pointer-events: auto; }
+.offer-actions .buy[disabled] { opacity: .55; }
+.hbtn .badge.epic { background: var(--epic); }
+.hbtn .badge.spark { background: #ff9a3a; color: #000; }
+/* narrow screens: biome name under the floor, so the fervor box never covers it */
+@media (max-width: 1280px) {
+  .floor-line { flex-direction: column; gap: 0; align-items: center; }
+  .fervor { width: 150px; }
+}

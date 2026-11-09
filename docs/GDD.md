@@ -178,6 +178,7 @@ All synthesized at runtime with WebAudio in the prototype. A composer pass comes
 **This week (do it now; it's the long pole):**
 * Pay the Steam Direct fee and create the store page. Page review takes days, and wishlists only accumulate while the page is live.
 * **Check the Steamworks Next Fest registration and demo-submission deadlines today** and plan backward from them.
+* **Playtest round 1 (market tester) reports**, from Valve's page for the Feb 2027 fest (not yet verified): **Jan 10 is the registration deadline**, the demo and a *public* store page should be reviewed by about **Jan 18** to make the press preview (Feb 11), **Feb 1** is the final cutoff, and the fest runs **Feb 22 – Mar 1**. A game only gets one Next Fest. If confirmed, the demo-lock milestone below can move to about Jan 18, but the store page must be live well before that.
 
 | Week of | Goal |
 |---|---|

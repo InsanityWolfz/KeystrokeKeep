@@ -1,0 +1,13 @@
+=== NOVELTY  profile=typist seed=2 480m stuck=8m  maxFloorEver=109 retires=8  maxSparks=94  walking 54% of time
+ults per owned-minute: knight 4.40 (2111)  archer 1.50 (709)  mage 0.08 (37)  cleric 0.02 (10)
+
+novelty (any)   per 10 min, hour 1:  37 8 6 10 3 10
+novelty (MAJOR) per 10 min, hour 1:  10 2 1 2 0 1
+novelty (any)   per 30 min, h1-h8: 9 7 3 2 0 0 0 0 0 0 0 0 0 0
+novelty (MAJOR) per 30 min, h1-h8: 1 2 1 0 0 0 0 0 0 0 0 0 0 0
+longest gap with NO novelty: hour 1 11.3 min (from 0h42m46s), after hour 1 319.6 min (from 2h40m22s)
+longest gap with no MAJOR novelty: hour 1 16.7 min (from 0h38m44s), after hour 1 349.8 min (from 2h10m09s)
+last novelty of any kind: 2h40m22s (boss kill The Hollow); total 95 firsts, 20 major
+recurring glance moments per 30 min (boss/offer/rat/recruit/milestone/retire): 30 44 50 22 51 26 66 73 19 23 60 12 75 59 28 10
+never appeared: up:workshop:jar, up:workshop:overcharge, up:workshop:kindling, up:workshop:static, up:workshop:battery
+legacy fully maxed: quartermaster@0h39m01s, recruiter@0h39m01s, collector@1h12m02s, zeal@3h06m03s, campfire@3h06m03s, veterans@6h08m09s, headstart@6h52m11s (of 7 capped rows)

@@ -36,7 +36,7 @@
       live.push(p);
     }
     FX.parts = live;
-    FX.texts = FX.texts.filter((t) => { t.life -= dt; t.y += t.vy * dt; t.vy *= 0.9; if (t.bump > 0) t.bump -= dt; return t.life > 0; });
+    FX.texts = FX.texts.filter((t) => { t.life -= dt; t.y = Math.max(15, t.y + t.vy * dt); t.vy *= 0.9; if (t.bump > 0) t.bump -= dt; return t.life > 0; });
     FX.rings = FX.rings.filter((r) => (r.t += dt) < r.life);
     FX.lights = FX.lights.filter((l) => (l.t += dt) < l.life);
     FX.beams = FX.beams.filter((b) => (b.t += dt) < b.life);
@@ -93,15 +93,19 @@
     }
   };
   FX.text = function (x, y, str, col = '#fff', scale = 1, o = {}) {
-    if (FX.texts.length > 60) FX.texts.shift();
+    if (FX.texts.length > 14) FX.texts.shift();
     FX.texts.push({ x: x + U.rand(-2, 2), y, str: String(str), col, scale, life: o.life || 0.85, max: o.life || 0.85, vy: o.vy !== undefined ? o.vy : -38, pop: !!o.pop, bump: 0 });
   };
   FX.ring = (x, y, r0, r1, col, life = 0.5, w = 1) => FX.rings.push({ x, y, r0, r1, col, life, t: 0, w });
   FX.light = (x, y, r, life, col = '#ffd27a', a = 1) => FX.lights.push({ x, y, r, life, t: 0, col, a });
-  FX.shake = (amp, dur) => { if (amp >= FX.shakeAmp * (FX.shakeT > 0 ? 1 : 0)) { FX.shakeAmp = amp; } FX.shakeT = Math.max(FX.shakeT, dur); };
-  FX.flash = (col, a = 0.6) => { FX.flashCol = col; FX.flashA = Math.max(FX.flashA, a); };
-  FX.stop = (s) => { FX.hitstop = Math.max(FX.hitstop, s); };
-  FX.slowmo = (f, dur) => { FX.slowF = f; FX.slowT = dur; };
+  // Calm mode (Settings): this lives on screen all day, so flashes/shake/hitstop can be turned way down.
+  const calm = () => !!(KK.S && KK.S.settings.calm);
+  FX.shake = (amp, dur) => { if (calm()) return; if (amp >= FX.shakeAmp * (FX.shakeT > 0 ? 1 : 0)) { FX.shakeAmp = amp; } FX.shakeT = Math.max(FX.shakeT, dur); };
+  FX.flash = (col, a = 0.6) => { if (calm()) a = Math.min(a, 0.06); FX.flashCol = col; FX.flashA = Math.max(FX.flashA, a); };
+  FX.stop = (s) => { if (calm()) return; FX.hitstop = Math.max(FX.hitstop, s); };
+  FX.slowmo = (f, dur) => { if (calm()) return; FX.slowF = f; FX.slowT = dur; };
+  /** Anything animating that deserves full frame rate? (main.js drops to an idle fps otherwise) */
+  FX.busy = () => FX.banners.length > 0 || FX.coins.length > 0 || FX.parts.length > 30 || FX.flashA > 0.02 || FX.shakeT > 0;
   FX.banner = (text, sub, col = '#fff', life = 2.2, o = {}) => {
     if (FX.banners.some((b) => b.text === text)) return;
     // minor banners (plain floor numbers) are skipped when something else is showing
@@ -130,7 +134,7 @@
     if (prev) { prev.val += dmg; prev.str = fmt(prev.val) + (kind === 'c' ? '!' : ''); prev.life = prev.max; prev.bump = 0.08; return; }
     stagger = (stagger + 1) % 3;
     FX.texts.push({ key, val: dmg, x: e.x + (stagger - 1) * 5, y: headY(e) - stagger * 2, str: fmt(dmg) + (kind === 'c' ? '!' : ''), col, scale, life: 0.8, max: 0.8, vy: -30, pop: kind === 'c', bump: 0 });
-    if (FX.texts.length > 50) FX.texts.shift();
+    if (FX.texts.length > 14) FX.texts.shift();
   }
   KK.on('hit', ({ e, dmg, crit, ult }) => {
     if (crit) {
@@ -151,8 +155,8 @@
     FX.debris(spr, e.x, e.y + (e.def.fly ? 0 : 0), false, e.boss);
     const n = e.boss ? 26 : Math.max(1, Math.min(6, Math.round(Math.log10(gold + 1) * 1.6)));
     FX.coinBurst(e.x, e.y - e.def.h / 2, n);
-    FX.text(e.x, headY(e) - 6, '+' + fmt(gold), '#fbd14b', 1, { life: 1.1, vy: -22 });
     if (e.boss) {
+      FX.text(e.x, headY(e) - 6, '+' + fmt(gold), '#fbd14b', 1, { life: 1.6, vy: -22 });
       FX.slowmo(0.25, 0.9);
       FX.flash('#ffffff', 0.85);
       FX.shake(6, 0.8);
@@ -192,21 +196,21 @@
     FX.light(h.x, h.y - 8, 50, 0.6, '#7ee8f6');
     if (id === 'cleric') {
       for (const o of W.heroes) { FX.pillar(o.x, '#ffe9a0', 1.1, 12); FX.ring(o.x, o.y - 8, 2, 26, '#ffe9a0', 0.7); }
-      FX.flash('#fff6c9', 0.35);
+      FX.flash('#fff6c9', 0.15);
       FX.light(W.partyX - 20, 30, 120, 1.2, '#ffe9a0');
     }
   });
   KK.on('echo', ({ h }) => FX.text(h.x, h.y - 32, 'ECHO!', '#c472ff', 1, { life: 1.2 }));
   KK.on('slamLand', ({ x }) => {
-    FX.shake(4, 0.35);
+    FX.shake(2, 0.25);
     FX.ring(x, W.GROUND, 3, 75, '#ffe9b0', 0.5, 2);
     FX.burst(x, W.GROUND, 26, ['#9a8a7a', '#c9b8a0', '#6b5f55'], { spd: 120, up: -60, life: 0.9, floor: true });
-    FX.flash('#ffffff', 0.2);
+    FX.flash('#ffffff', 0.07);
   });
   KK.on('skyarrowLand', ({ x, y }) => FX.burst(x, y, 4, ['#ffe9b0', '#fff'], { spd: 50, up: -30, life: 0.35 }));
   KK.on('meteorLand', ({ x, y }) => {
-    FX.shake(6, 0.5);
-    FX.flash('#ffb347', 0.55);
+    FX.shake(3.5, 0.4);
+    FX.flash('#ffb347', 0.22);
     FX.ring(x, y, 4, 90, '#ffb347', 0.6, 2);
     FX.ring(x, y, 2, 50, '#fff', 0.35, 1);
     FX.light(x, y - 10, 140, 1.0, '#ff9a3a');
@@ -239,10 +243,16 @@
     FX.banner('RETREAT!', 'THE PARTY FALLS BACK A FLOOR', '#ff6b6b', 2.4, { subCol: '#ffb4a0' });
     FX.flash('#5a0010', 0.6);
   });
+  let lastFlowParty = -1e9;
   KK.on('fervorTier', ({ from, to }) => {
     if (to <= from) return;
     const x = W.partyX - 20;
-    if (to === 3) {
+    if (to === 3 && performance.now() - lastFlowParty < 600000) {
+      FX.text(x, 22, 'FLOW!', '#ffd76a', 1, { life: 1.4, vy: -10 });
+      FX.ring(x, 40, 4, 80, '#ffd76a', 0.6, 1);
+      FX.light(x, 34, 120, 1.0, '#ffd76a');
+    } else if (to === 3) {
+      lastFlowParty = performance.now();
       FX.banner('FLOW STATE!', 'x' + KK.powerMult().toFixed(1) + ' POWER', '#ffd76a', 2.0, { slot: 'flow', subCol: '#fff6c9' });
       FX.flash('#ffd76a', 0.45);
       FX.ring(x, 40, 4, 110, '#ffd76a', 0.7, 2);

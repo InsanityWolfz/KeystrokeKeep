@@ -6,7 +6,7 @@ Each round lives in `docs/playtest/round-NN/` (one report per tester + `SUMMARY.
 ## Round procedure (for the lead / orchestrator)
 
 1. Read this file + the last round's `SUMMARY.md`. Next round number = highest existing `round-NN` + 1.
-2. Make sure the browser preview server is up (`keystroke-keep` in `.claude/launch.json`, http://127.0.0.1:5173). Only **Tester 4** may drive the browser.
+2. Bump the `?v=rNN` asset version in `index.html`. Make sure the browser preview server is up (`keystroke-keep` in `.claude/launch.json`, http://127.0.0.1:5173). Only **Tester 4** may drive the browser.
 3. Spawn the 4 testers **in parallel**, each with: its brief below, the round number, the "Fixed since last round" list, and the open backlog. Each writes `docs/playtest/round-NN/<id>.md` and returns its top findings.
 4. Triage: merge duplicates, score each finding (impact on reviews/retention × confidence ÷ cost). Pick a fix set that fits one round (typically 4–8 changes). Prefer root-cause fixes over band-aids. Record the rest in the backlog with a reason.
 5. Implement. Keep the code style (vanilla JS, `KK` namespace, sim DOM-free).
@@ -21,7 +21,7 @@ Each round lives in `docs/playtest/round-NN/` (one report per tester + `SUMMARY.
 * `require('./tools/headless')({ seed, bal })` returns a live `KK` in node, for custom scenario scripts. Put scratch scripts in your round folder, never in `js/`.
 * `node tools/sim.js` (older, simpler balance sim).
 * Source: `js/*.js` (data in `js/data.js`, economy in `js/state.js`, combat in `js/world.js`, UI in `js/ui.js`), desktop shell in `electron/`, design in `docs/GDD.md`.
-* Tester 4 only: the browser pane at http://127.0.0.1:5173 (fake desktop + dev tools: autotype, time warp, +gold, +floors, rat). Clear the save with `localStorage.clear()` + reload for a fresh start.
+* Tester 4 only: the browser pane at http://127.0.0.1:5173 (fake desktop + dev tools: autotype, time warp, +gold, +floors, rat). Fresh start: run `KK.resetting = true; localStorage.clear(); location.reload()` (a plain `localStorage.clear()` gets re-saved by the unload handler). Asset URLs carry `?v=rNN`; the lead bumps it each round so the browser never runs stale code. Dev server: `python tools/serve.py` (no-cache). The page blocks all fetches by CSP, so don't probe with `fetch()`.
 
 ## Report format (every tester)
 
@@ -78,12 +78,33 @@ Take screenshots of problems and describe them precisely (what, where, which pan
 
 Format: `- [round found] [severity] item: status/reason`
 
-- [R0] [major] Spark Workshop is never affordable for an active typist: ultimates drain Sparks as fast as they come (0% time at cap, Workshop "never affordable" in a 90-min typist run). Open.
-- [R0] [major] First retire (≈25 Renown) buys every Legacy upgrade at once; Renown creates no choices. Open.
-- [R0] [minor] Monsters/bosses of the Void biome are never seen in a 90-min session. Open (may be fine).
+### Fixed
+- [R0/R1] Workshop never affordable → Embers currency (R1).
+- [R0/R1] First retire bought every Legacy upgrade → repriced (R1); re-check.
+- [R1] Re-retire Renown exploit, shallow farming optimal → record-based Renown (R1).
+- [R1] Offline > online → 80% cap (R1).
+- [R1] Meteor/Sanctuary starved → ult round-robin (R1).
+- [R1] Content ends at The Hollow → Hollowed bosses cycle from floor 70 (R1, partial: see finale below).
+- [R1] 160 fps render, audio never suspends, focus stealing, Google Fonts, relic misclicks, offline modal, FLOW spam → fixed (R1).
+
+### Open (ranked)
+- [R1] [major] Economy check: first retire for typists drifted to ~1h50 (8-min-stall policy); the typist/idle Renown gap widened (108 vs 13). Verify the prestige hook timing and fairness.
+- [R1] [major] Auto-hide when a fullscreen app/game is in front (Windows `SHQueryUserNotificationState` via a tiny native call, e.g. koffi). Market T3 F2.
+- [R1] [major] Saves to a JSON file in userData (atomic write + backups), same format for demo → full game; later Steam Cloud + achievements (~40) + rich presence. Market T3 F7.
+- [R1] [major] Code signing + VirusTotal check + store FAQ about the input hook; an in-game "what we count" panel. Market T3 F3.
+- [R1] [major] Endgame: floor-100 finale ("Heart of the Keep"), then Depth II loop with one affix per cycle; Legacy tier 2 at 150 lifetime Renown. Auditor F1/F8.
+- [R1] [major] Make the typing → power link readable in 5 seconds: ult charge pips over heroes, "YOUR TYPING → METEOR!" callouts on first ults, "FLOW today" HUD stat, shareable end-of-day card. Market F8, auditor ideas.
+- [R1] [minor] Boss signature moves (e.g. The Hollow drains Fervor); Golem/Ember Colossus need a second animation frame. Auditor F7.
+- [R1] [minor] Typing relics give idle players nothing: give them an idle fallback (e.g. Caps Lock: "Fervor never drops below 25"); rework Backspace Boots. Auditor F5.
+- [R1] [minor] Demo scope: cap at floor 40 + 1 retire? decide before Next Fest build. Auditor F4.
+- [R1] [minor] Compact single-row HUD at size S; enemy outlines for contrast in Magma/Void. Player F6/F7.
+- [R1] [minor] Content protection toggle (hide from screen capture/Teams) and an AppBar mode that reserves screen space. Market F2 (post-fest).
+- [R1] [minor] Retire flow could be Retire → Spend Renown → Begin delve (Legacy now applies immediately, so lower priority). Player F8.
+- [R1] [info] Next Fest dates per market tester (from Valve's Feb 2027 page, unverified by the lead): Jan 10 = registration deadline; demo + public store page due ~Jan 18 for press preview; Feb 1 final; fest Feb 22 – Mar 1. Verify in Steamworks.
 
 ## Round history
 
 | Round | Date | Headline changes | Commit |
 |---|---|---|---|
-| R0 | 2026-11-09 | Prototype v0.1 + playtest harness | 6e4709e |
+| R0 | 2026-11-09 | Prototype v0.1 + playtest harness | 6e4709e, 2c070ea |
+| R1 | 2026-11-09 | Record-based Renown, Embers, offline cap, ult rotation, Hollowed bosses, 30 fps cap + power/audio suspend, no network, calm mode, two-step relic pick | (this round) |

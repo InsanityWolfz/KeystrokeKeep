@@ -17,6 +17,7 @@ const SESSIONS = +args.sessions || 1, OFFLINE_H = +args.offline || 0;
 const KK = load({ seed: SEED, bal: args.bal ? JSON.parse(args.bal) : undefined });
 const S = () => KK.S, A = KK.actions, D = KK.DATA, F = KK.F, U = KK.U;
 KK.world.reset();
+const rnd = KK.rng; // seeded: same --seed, same run
 
 let t = 0; // total active seconds
 const fmtT = (s) => `${Math.floor(s / 3600)}h${String(Math.floor(s / 60) % 60).padStart(2, '0')}m`;
@@ -46,7 +47,8 @@ KK.on('kill', ({ e }) => {
   if (e.boss) { bossKills[e.def.name] = (bossKills[e.def.name] || 0) + 1; ev(`BOSS ${e.def.name} down (floor ${S().floor})`); }
 });
 KK.on('wipe', ({ floor }) => { wipes++; });
-KK.on('ult', () => ults++);
+const ultBy = {};
+KK.on('ult', ({ id }) => { ults++; ultBy[id] = (ultBy[id] || 0) + 1; });
 KK.on('chest', () => chests++);
 KK.on('ratSpawn', () => ratSpawns++);
 KK.on('floor', ({ floor }) => {
@@ -70,8 +72,8 @@ function activity(dt) {
   typeSwitch -= dt;
   if (typeSwitch <= 0) {
     typing = !typing;
-    if (PROFILE === 'burst') typeSwitch = typing ? 5 + Math.random() * 10 : 60 + Math.random() * 120;
-    else typeSwitch = typing ? 20 + Math.random() * 40 : 15 + Math.random() * (PROFILE === 'heavy' ? 10 : 40);
+    if (PROFILE === 'burst') typeSwitch = typing ? 5 + rnd() * 10 : 60 + rnd() * 120;
+    else typeSwitch = typing ? 20 + rnd() * 40 : 15 + rnd() * (PROFILE === 'heavy' ? 10 : 40);
   }
   if (typing) {
     keyAcc += dt * (PROFILE === 'heavy' ? 6 : 4);
@@ -86,7 +88,7 @@ function affordables() {
     if (s.heroes[id]) { const c = F.levelCost(id, s.heroes[id]); if (c <= s.gold) out.push(['level', id, c, 'gold']); }
   }
   for (const d of D.FORGE) { const l = s.forge[d.id] || 0; const c = F.upCost(d, l); if (l < d.max && c <= s.gold) out.push(['forge', d.id, c, 'gold']); }
-  for (const d of D.WORKSHOP) { const l = s.workshop[d.id] || 0; const c = F.upCost(d, l); if (l < d.max && c <= s.sparks) out.push(['workshop', d.id, c, 'sparks']); }
+  for (const d of D.WORKSHOP) { const l = s.workshop[d.id] || 0; const c = F.upCost(d, l); if (l < d.max && c <= (s.embers || 0)) out.push(['workshop', d.id, c, 'embers']); }
   for (const d of D.LEGACY) { const l = s.legacy[d.id] || 0; const c = d.cost(l); if (l < d.max && c <= s.renown) out.push(['legacy', d.id, c, 'renown']); }
   return out;
 }
@@ -109,7 +111,7 @@ function smartSpend() {
   for (const id of D.PARTY_ORDER) if (A.canRecruit(id) && s.gold >= A.recruitCost(id)) A.recruit(id);
   let changed = true;
   while (changed) { changed = false; for (const d of D.LEGACY) if (A.buyLegacy(d.id)) changed = true; }
-  for (const d of D.WORKSHOP) { const c = F.upCost(d, s.workshop[d.id] || 0); if (s.sparks - c > 60) A.buyWorkshop(d.id); }
+  for (let k = 0; k < 50; k++) { let did = false; for (const d of D.WORKSHOP) if (A.buyWorkshop(d.id)) did = true; if (!did) break; }
   for (let i = 0; i < 400; i++) {
     let did = false;
     for (const d of D.FORGE) { const c = F.upCost(d, s.forge[d.id] || 0); if ((s.forge[d.id] || 0) < d.max && c < s.gold * 0.4) { A.buyForge(d.id); did = true; } }
@@ -121,16 +123,16 @@ function smartSpend() {
 }
 function greedySpend(random) {
   for (let i = 0; i < 2000; i++) {
-    const list = affordables().filter((x) => !(x[3] === 'sparks' && S().sparks - x[2] < 40));
+    const list = affordables();
     if (!list.length) break;
-    const pick = random ? list[Math.floor(Math.random() * list.length)] : list.sort((a, b) => a[2] - b[2])[0];
+    const pick = random ? list[Math.floor(rnd() * list.length)] : list.sort((a, b) => a[2] - b[2])[0];
     if (!doBuy(pick)) break;
   }
 }
 function pickRelic() {
   const s = S();
   if (!s.relicOffer) return;
-  const id = STRAT === 'random' ? s.relicOffer[Math.floor(Math.random() * s.relicOffer.length)] : s.relicOffer[0];
+  const id = STRAT === 'random' ? s.relicOffer[Math.floor(rnd() * s.relicOffer.length)] : s.relicOffer[0];
   A.pickRelic(id);
 }
 
@@ -211,7 +213,8 @@ L.push(`glances with NOTHING affordable: ${emptyGlances}/${glances}  longest dro
 L.push(`purchases per 10 min: ${buysPer10.map((x) => x || 0).join(', ')}`);
 L.push(`wipes ${wipes}  chests ${chests}  rats ${rats}/${ratSpawns} spawned  ults ${ults} (${(ults / (t / 60)).toFixed(1)}/min)`);
 L.push(`fervor time: IDLE ${pct(tierTime[0])}  FOCUSED ${pct(tierTime[1])}  ZONE ${pct(tierTime[2])}  FLOW ${pct(tierTime[3])}`);
-L.push(`sparks at cap ${pct(sparkCapTime)} of the time; ${sparksWasted} sparks wasted of ${s.stats.keys + s.stats.clicks} inputs`);
+L.push(`sparks at cap ${pct(sparkCapTime)} of the time; ${sparksWasted} sparks wasted of ${s.stats.keys + s.stats.clicks} inputs; embers banked ${Math.floor(s.embers || 0)} (unspent)`);
+L.push(`ults by hero: ${Object.entries(ultBy).map(([k, v]) => k + ' ' + v).join(', ')}`);
 L.push('', '--- content coverage (first affordable / first bought / buys) ---');
 for (const [k, c] of Object.entries(content)) {
   const fa = c.firstAffordable === null ? 'never' : fmtT(c.firstAffordable), fb = c.firstBought === null ? 'NEVER' : fmtT(c.firstBought);

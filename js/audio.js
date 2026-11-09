@@ -24,10 +24,18 @@
     A.applySettings();
     startMusic();
   };
+  // The audio device is fully suspended whenever we're silent (muted, hidden, screen locked),
+  // so the game never keeps Windows awake or burns CPU on inaudible notes.
+  A.shouldRun = function () {
+    const s = KK.S.settings;
+    return s.sound && s.volume > 0 && KK.powerState !== 'off' && !(typeof document !== 'undefined' && document.hidden);
+  };
   A.applySettings = function () {
     if (!A.ready) return;
     const s = KK.S.settings;
     const t = A.ctx.currentTime;
+    if (A.shouldRun()) { if (A.ctx.state === 'suspended') A.ctx.resume(); }
+    else if (A.ctx.state === 'running') A.ctx.suspend();
     master.gain.setTargetAtTime(s.sound ? s.volume * 0.9 : 0, t, 0.05);
     musicBus.gain.setTargetAtTime(s.music ? 0.55 : 0, t, 0.2);
     sfxBus.gain.setTargetAtTime(0.8, t, 0.05);
@@ -129,6 +137,7 @@
   function schedule() {
     if (!A.ready) return;
     const ctx = A.ctx;
+    if (ctx.state !== 'running' || !KK.S.settings.music) { nextT = ctx.currentTime + 0.1; return; }
     while (nextT < ctx.currentTime + 0.25) {
       const bar = Math.floor(step / 8) % 4, beat = step % 8;
       const ch = CHORDS[bar];
@@ -162,7 +171,7 @@
   KK.on('cast', () => p('cast'));
   KK.on('explode', () => p('explode'));
   KK.on('coinArrive', () => p('coin'));
-  KK.on('activity', () => p('spark'));
+  KK.on('activity', () => { if (KK.S.settings.keySound) p('spark'); });
   KK.on('kill', ({ e }) => { if (e.boss) { p('bossKill'); A.duck(2.5); } else p('die'); });
   KK.on('heroHit', () => p('hurt'));
   KK.on('heal', () => p('heal'));
@@ -173,7 +182,15 @@
   KK.on('bossSpawn', () => { p('bossIntro'); A.duck(2.2); });
   KK.on('bossSlam', () => p('slam'));
   KK.on('chest', () => p('chest'));
-  KK.on('fervorTier', ({ from, to }) => { A.intensity = to; if (to > from) { if (to === 3) p('flow'); else if (to === 2) p('zone'); } });
+  let lastFlowSfx = -1e9;
+  KK.on('fervorTier', ({ from, to }) => {
+    A.intensity = to;
+    if (to <= from) return;
+    if (to === 3 && performance.now() - lastFlowSfx > 600000) { lastFlowSfx = performance.now(); p('flow'); }
+    else if (to >= 2) p('zone');
+  });
+  if (typeof document !== 'undefined') document.addEventListener('visibilitychange', () => A.applySettings());
+  KK.on('power', () => A.applySettings());
   KK.on('wipe', () => p('wipe'));
   KK.on('door', () => p('door'));
   KK.on('relicPicked', () => p('relic'));

@@ -22,8 +22,14 @@
     $$('img[data-icon]').forEach((img) => { img.src = KK.SPR.iconURL[img.dataset.icon]; });
     // HUD buttons
     const hb = $('#hud-btns');
-    hb.innerHTML = TABS.map((t) => `<button class="hbtn" data-tab="${t.id}" data-tip="${t.label || 'Settings'}"><img src="${KK.SPR.iconURL[t.icon]}" alt=""></button>`).join('');
-    hb.addEventListener('click', (e) => { const btn = e.target.closest('.hbtn'); if (btn) { KK.audio.play('ui'); UI.toggle(btn.dataset.tab); } });
+    hb.innerHTML = `<button class="hbtn mute" data-mute="1" data-tip="Sound on/off"></button>` + TABS.map((t) => `<button class="hbtn" data-tab="${t.id}" data-tip="${t.label || 'Settings'}"><img src="${KK.SPR.iconURL[t.icon]}" alt=""></button>`).join('');
+    hb.addEventListener('click', (e) => {
+      const btn = e.target.closest('.hbtn');
+      if (!btn) return;
+      if (btn.dataset.mute) { UI.setSetting('sound', !KK.S.settings.sound); return; }
+      KK.audio.play('ui'); UI.toggle(btn.dataset.tab);
+    });
+    syncMute();
     // panel tabs
     $('#panel-tabs').innerHTML = TABS.map((t) => `<button class="ptab" data-tab="${t.id}">${icon(t.icon)}${t.label}<span class="badge hidden"></span></button>`).join('');
     $('#panel-tabs').addEventListener('click', (e) => { const b = e.target.closest('.ptab'); if (b) { KK.audio.play('ui'); UI.open(b.dataset.tab); } });
@@ -37,7 +43,7 @@
     UI.renderPips();
     KK.on('wave', UI.renderPips); KK.on('floor', UI.renderPips); KK.on('recovered', UI.renderPips); KK.on('floorClear', UI.renderPips);
     KK.on('coinArrive', () => pulse('#hud-gold'));
-    KK.on('relicOffer', () => setTimeout(UI.showOffer, 1400));
+    KK.on('relicOffer', () => setTimeout(() => UI.toast('The boss dropped a relic! Choose it in ◆ Relics when you have a moment.', 'gem', 'epic', 6), 1400));
     KK.on('dirty', () => { UI.dirty = true; });
     KK.on('retired', () => { UI.dirty = true; UI.close(); });
     setInterval(UI.slowUpdate, 250);
@@ -51,7 +57,8 @@
     shownGold += (S.gold - shownGold) * Math.min(1, dt * 8);
     if (Math.abs(S.gold - shownGold) < 1 || S.gold < shownGold) shownGold = S.gold;
     setText('#hud-gold .val', fmt(shownGold));
-    setText('#hud-spark .val', Math.floor(S.sparks) + '/' + m.sparkCap);
+    setText('#hud-spark .val', S.settings.countInput ? Math.floor(S.sparks) + '/' + m.sparkCap : 'PAUSED');
+    $('#hud-spark').classList.toggle('paused', !S.settings.countInput);
     $('#hud-spark .sparkbar i').style.width = (100 * S.sparks / m.sparkCap).toFixed(1) + '%';
     const t = KK.fervorTier();
     const fv = $('#hud-fervor');
@@ -103,8 +110,11 @@
     };
     const aff = anyAffordable();
     set('party', aff === 'recruit' ? 'NEW' : aff ? '!' : null, aff ? 'gold' : '');
-    set('relics', S.relicOffer ? '!' : null);
-    set('legacy', A.canRetire() && S.retires === 0 ? '♛' : null);
+    set('relics', S.relicOffer ? '!' : null, S.relicOffer ? 'epic' : '');
+    const legacyAff = D.LEGACY.some((d) => (S.legacy[d.id] || 0) < d.max && d.cost(S.legacy[d.id] || 0) <= S.renown);
+    set('legacy', legacyAff ? '!' : A.canRetire() && S.retires === 0 ? '♛' : null, 'epic');
+    const wsAff = D.WORKSHOP.some((d) => (S.workshop[d.id] || 0) < d.max && F.upCost(d, S.workshop[d.id] || 0) <= (S.embers || 0));
+    set('workshop', wsAff ? '!' : null, 'spark');
     const forgeAff = D.FORGE.some((d) => (S.forge[d.id] || 0) < d.max && F.upCost(d, S.forge[d.id] || 0) <= S.gold && S.heroes.archer);
     set('forge', forgeAff ? '!' : null, 'gold');
   }
@@ -136,6 +146,7 @@
   KK.on('resized', placeToasts);
 
   function buildPanel() {
+    if (!UI.tab) return;
     const body = $('#panel-body');
     body.innerHTML = ({ party: partyHTML, forge: forgeHTML, workshop: workshopHTML, relics: relicsHTML, legacy: legacyHTML, settings: settingsHTML })[UI.tab]();
     UI.dirty = false;
@@ -146,7 +157,7 @@
     const S = KK.S;
     $$('#panel-body [data-cost]').forEach((btn) => {
       const cur = btn.dataset.cur || 'gold';
-      const have = cur === 'gold' ? S.gold : cur === 'sparks' ? S.sparks : S.renown;
+      const have = cur === 'gold' ? S.gold : cur === 'embers' ? (S.embers || 0) : S.renown;
       btn.disabled = +btn.dataset.cost > have || btn.dataset.lock === '1';
     });
     if (UI.tab === 'party') {
@@ -161,12 +172,14 @@
         btn.dataset.cost = cost;
         btn.disabled = cost > S.gold || (UI.buyMult === 'max' && count === 0);
         btn.querySelector('.l').textContent = 'LEVEL UP' + (n > 1 ? ' x' + n : '');
-        btn.querySelector('.c').innerHTML = icon('coin') + ' ' + fmt(cost);
+        btn.querySelector('.c').innerHTML = icon('coin') + ' ' + fmt(Math.ceil(cost));
       }
     }
     if (UI.tab === 'legacy') {
       setText('#retire-gain', '+' + A.renownGain());
+      setText('#legacy-renown', '♛ ' + S.renown);
     }
+    if (UI.tab === 'workshop') setText('#ws-embers', fmt(Math.floor(S.embers || 0)));
   }
 
   function heroCard(id) {
@@ -201,13 +214,12 @@
   function upCard(def, lvl, cur, action) {
     const maxed = lvl >= def.max;
     const cost = cur === 'renown' ? def.cost(lvl) : F.upCost(def, lvl);
-    const curIcon = cur === 'gold' ? icon('coin') : cur === 'sparks' ? icon('spark') : '♛';
-    const m = KK.mods();
-    const tooBig = cur === 'sparks' && cost > m.sparkCap;
+    const curIcon = cur === 'gold' ? icon('coin') : cur === 'embers' ? icon('candle') : '♛';
+    const tooBig = false;
     return `<div class="card ${maxed ? 'maxed' : ''}"><div class="port"><img src="${KK.SPR.iconURL[def.icon]}" alt=""></div><div class="info">
       <div class="nm"><span>${def.name}</span><span class="lv">${maxed ? 'MAX' : 'LV ' + lvl}</span></div>
       <div class="desc">${def.desc(lvl)}</div>
-      ${maxed ? '<button class="buy" disabled><span>MAXED</span></button>' : `<button class="buy ${cur === 'sparks' ? 'spark' : cur === 'renown' ? 'renown' : ''}" data-action="${action}" data-id="${def.id}" data-cost="${cost}" data-cur="${cur}" data-lock="${tooBig ? 1 : 0}"><span>${tooBig ? 'NEEDS BIGGER JAR' : 'UPGRADE'}</span><span>${curIcon} ${fmt(cost)}</span></button>`}
+      ${maxed ? '<button class="buy" disabled><span>MAXED</span></button>' : `<button class="buy ${cur === 'embers' ? 'spark' : cur === 'renown' ? 'renown' : ''}" data-action="${action}" data-id="${def.id}" data-cost="${cost}" data-cur="${cur}" data-lock="${tooBig ? 1 : 0}"><span>UPGRADE</span><span>${curIcon} ${fmt(cost)}</span></button>`}
     </div></div>`;
   }
   function forgeHTML() {
@@ -217,8 +229,9 @@
   }
   function workshopHTML() {
     const S = KK.S;
-    return `<div class="ph"><div><h3>SPARK WORKSHOP</h3><div class="sub">Bought with Sparks from your keystrokes. <b style="color:var(--spark)">Never resets.</b> Spending Sparks here means fewer ultimates for now.</div></div></div>
-      <div class="grid">${D.WORKSHOP.map((d) => upCard(d, S.workshop[d.id] || 0, 'sparks', 'workshop')).join('')}</div>`;
+    return `<div class="ph"><div><h3>SPARK WORKSHOP</h3><div class="sub">Every 4 Sparks your heroes spend on ultimates leave behind 1 <b style="color:#ffb070">Ember</b>. Embers buy upgrades that <b style="color:var(--spark)">never reset</b>.</div></div>
+      <div class="res-pill">${icon('candle')} <span id="ws-embers">${fmt(Math.floor(S.embers || 0))}</span> EMBERS</div></div>
+      <div class="grid">${D.WORKSHOP.map((d) => upCard(d, S.workshop[d.id] || 0, 'embers', 'workshop')).join('')}</div>`;
   }
   function relicCard(id, count) {
     const r = D.RELICS.find((x) => x.id === id);
@@ -231,7 +244,7 @@
     const S = KK.S;
     const counts = {};
     for (const r of S.relics) counts[r] = (counts[r] || 0) + 1;
-    const offer = S.relicOffer ? `<button class="buy big" data-action="showoffer" style="margin-bottom:10px">◆ A RELIC IS WAITING. CHOOSE NOW!</button>` : '';
+    const offer = S.relicOffer ? `<button class="buy big" data-action="showoffer" style="margin-bottom:10px">◆ A RELIC IS WAITING. OPEN THE CHEST</button>` : '';
     return `<div class="ph"><div><h3>RELICS</h3><div class="sub">Bosses drop a choice of relics every 10 floors. They last until you retire.</div></div></div>
       ${offer}
       ${S.relics.length ? `<div class="relic-list">${Object.keys(counts).map((id) => relicCard(id, counts[id])).join('')}</div>` : '<div class="empty">No relics yet. Defeat the boss on floor 10!</div>'}`;
@@ -243,11 +256,11 @@
     return `<div class="legacy-top">
       <div class="retire-box">
         <h4>♛ RETIRE THE PARTY</h4>
-        <p>Your heroes retire to the tavern. Gold, levels, Forge and relics reset. You keep <b>Renown</b>, Legacy upgrades and all Spark upgrades.</p>
+        <p>Your heroes retire to the tavern. Gold, levels, Forge and relics reset. You keep <b>Renown</b>, Legacy upgrades and all Workshop upgrades. Renown is paid for <b>beating your deepest record</b> (floor ${S.renownFloor || 0}).</p>
         <p>Deepest floor this delve: <b>${S.maxFloorRun}</b> · Renown: <b style="color:#e9a2ff">${S.renown}</b> (lifetime ${S.renownLifetime}, +${Math.round(S.renownLifetime * 3)}% dmg &amp; gold)</p>
         <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
           <div class="gain" id="retire-gain">+${gain}</div>
-          <button class="buy renown big" data-action="retire" ${gain > 0 ? '' : 'disabled'} style="flex:1">${gain > 0 ? 'RETIRE FOR RENOWN' : 'REACH FLOOR 20 TO RETIRE'}</button>
+          <button class="buy renown big" data-action="retire" ${gain > 0 ? '' : 'disabled'} style="flex:1">${gain > 0 ? 'RETIRE FOR RENOWN' : 'REACH FLOOR ' + A.retireTarget() + ' TO EARN RENOWN'}</button>
         </div>
       </div>
       <div class="statbox">
@@ -257,7 +270,7 @@
         ${statRow('Gold earned', fmt(st.goldEarned))}${statRow('Golden rats', fmt(st.rats))}
         ${statRow('Deepest floor ever', S.maxFloorEver)}${statRow('Retirements', S.retires)}
       </div></div>
-      <div class="ph"><div><h3>HALL OF LEGENDS</h3><div class="sub">Permanent upgrades bought with Renown.</div></div></div>
+      <div class="ph"><div><h3>HALL OF LEGENDS</h3><div class="sub">Permanent upgrades bought with Renown.</div></div><div class="res-pill renown" id="legacy-renown">♛ ${S.renown}</div></div>
       <div class="grid">${D.LEGACY.map((d) => upCard(d, S.legacy[d.id] || 0, 'renown', 'legacy')).join('')}</div>`;
   }
   function settingsHTML() {
@@ -267,7 +280,11 @@
       <div class="setrow"><span>Sound effects</span><div class="opts">${opt('sound', true, 'ON')}${opt('sound', false, 'OFF')}</div></div>
       <div class="setrow"><span>Music</span><div class="opts">${opt('music', true, 'ON')}${opt('music', false, 'OFF')}</div></div>
       <div class="setrow"><span>Volume</span><input type="range" min="0" max="1" step="0.05" value="${s.volume}" data-action="vol"></div>
-      <div class="setrow"><span>Strip size</span><div class="opts">${opt('size', 'S', 'S')}${opt('size', 'M', 'M')}${opt('size', 'L', 'L')}</div></div>
+      <div class="setrow"><span>Keystroke blips</span><div class="opts">${opt('keySound', true, 'ON')}${opt('keySound', false, 'OFF')}</div></div>
+      <div class="setrow"><span>Calm mode<br><small style="color:var(--muted)">No screen shake, flashes or slow-mo.</small></span><div class="opts">${opt('calm', true, 'ON')}${opt('calm', false, 'OFF')}</div></div>
+      <div class="setrow"><span>Frame rate<br><small style="color:var(--muted)">Lower = less GPU &amp; battery. Drops further when idle.</small></span><div class="opts">${opt('fps', 15, '15')}${opt('fps', 30, '30')}${opt('fps', 60, '60')}</div></div>
+      <div class="setrow"><span>Strip size</span><div class="opts">${opt('size', 'auto', 'AUTO')}${opt('size', 'S', 'S')}${opt('size', 'M', 'M')}${opt('size', 'L', 'L')}</div></div>
+      ${KK.S.legacy.quartermaster ? `<div class="setrow"><span>Quartermaster auto-levels heroes</span><div class="opts">${opt('autoLevel', true, 'ON')}${opt('autoLevel', false, 'OFF')}</div></div>` : ''}
       <div class="setrow"><span>Count my keystrokes &amp; clicks<br><small style="color:var(--muted)">Only counts. Never records which keys.</small></span><div class="opts">${opt('countInput', true, 'ON')}${opt('countInput', false, 'PAUSED')}</div></div>
       <div class="setrow"><span>Reset all progress</span><button class="danger" data-action="reset">RESET SAVE</button></div>
       ${KK.native ? '<div class="setrow"><span>Close the strip (progress is saved)</span><button data-action="quit">QUIT GAME</button></div>' : ''}
@@ -292,11 +309,8 @@
       case 'quit': KK.save(); window.kkNative && window.kkNative.quit(); return;
       case 'set': {
         const k = el.dataset.k; let v = el.dataset.v;
-        if (v === 'true') v = true; else if (v === 'false') v = false;
-        S.settings[k] = v;
-        KK.audio.applySettings();
-        if (k === 'size') KK.render.resize();
-        KK.audio.play('ui'); UI.dirty = true; refreshPanel(); KK.save();
+        if (v === 'true') v = true; else if (v === 'false') v = false; else if (k === 'fps') v = +v;
+        UI.setSetting(k, v);
         return;
       }
     }
@@ -312,25 +326,56 @@
   }
 
   // ---------------------------------------------------------------- relic offer
+  UI.setSetting = function (k, v) {
+    const S = KK.S;
+    S.settings[k] = v;
+    if (k === 'sound' && v) KK.audio.init();
+    KK.audio.applySettings();
+    if (k === 'size') KK.render.resize();
+    KK.emit('setting', { k, v });
+    syncMute();
+    KK.audio.play('ui'); UI.dirty = true; refreshPanel(); KK.save();
+  };
+  function syncMute() {
+    const b = $('#hud-btns .mute');
+    if (b) b.textContent = KK.S.settings.sound ? '🔊' : '🔇';
+    const tb = $('#tb-sound');
+    if (tb) tb.textContent = KK.S.settings.sound ? '🔊' : '🔇';
+  }
+  UI.syncMute = syncMute;
+  let offerOpenedAt = 0, offerSel = null;
   UI.showOffer = function () {
     const S = KK.S, off = $('#relic-offer');
     if (!S.relicOffer) { off.classList.add('hidden'); return; }
+    offerOpenedAt = performance.now(); offerSel = null;
     off.innerHTML = `<div class="offer-title">◆ THE BOSS DROPPED A RELIC! CHOOSE ONE ◆</div>
       <div class="offer-cards">${S.relicOffer.map((id) => {
         const r = D.RELICS.find((x) => x.id === id);
         return `<div class="ocard ${r.rar}" data-relic="${id}"><img src="${r.rar === 'epic' && r.icon === 'gem' ? KK.SPR.iconURL.gemEpic : KK.SPR.iconURL[r.icon]}" alt="">
           <div class="onm rarity-${r.rar}">${r.name}</div><div class="orar rarity-${r.rar}">${D.RARITY[r.rar].label}</div><div class="odesc">${r.desc}</div></div>`;
       }).join('')}</div>
-      <button class="offer-later" data-later="1">decide later (it'll wait in ◆ Relics)</button>`;
+      <div class="offer-actions"><button class="buy" data-take="1" disabled>PICK A RELIC</button><button class="offer-later" data-later="1">decide later (it'll wait in ◆ Relics)</button></div>`;
     off.classList.remove('hidden');
     off.style.animation = 'none'; void off.offsetWidth; off.style.animation = '';
     if (UI.tab) UI.close();
   };
   function onOfferClick(e) {
     if (e.target.closest('[data-later]')) { $('#relic-offer').classList.add('hidden'); KK.audio.play('ui'); return; }
-    const card = e.target.closest('.ocard');
-    if (!card || card.classList.contains('picked')) return;
-    const id = card.dataset.relic;
+    if (performance.now() - offerOpenedAt < 600) return; // ignore clicks that were aimed at something else
+    const sel = e.target.closest('.ocard');
+    if (sel && !sel.classList.contains('picked')) {
+      // first click selects, TAKE confirms: one stray click can't lock in a relic
+      offerSel = sel.dataset.relic;
+      $$('.ocard').forEach((c) => c.classList.toggle('sel', c === sel));
+      const take = $('#relic-offer [data-take]');
+      const r = D.RELICS.find((x) => x.id === offerSel);
+      take.disabled = false; take.textContent = 'TAKE ' + r.name.toUpperCase();
+      KK.audio.play('ui');
+      return;
+    }
+    if (!e.target.closest('[data-take]') || !offerSel) return;
+    const id = offerSel;
+    const card = $(`.ocard[data-relic="${id}"]`);
     if (A.pickRelic(id)) {
       card.classList.add('picked');
       $$('.ocard').forEach((c) => { if (c !== card) c.style.opacity = '0.2'; });
@@ -378,7 +423,12 @@
       m.querySelector('[data-x=yes]').onclick = () => { KK.resetting = true; KK.wipeSave(); location.reload(); };
     });
   };
+  // Coming back to the PC shouldn't throw a modal over your work: auto-collect with a toast.
   UI.offline = function (secs, gold) {
+    KK.fx.coinBurst(W.partyX, 30, 20);
+    UI.toast(`Welcome back! While you were away (${U.fmtTime(secs)}) your heroes earned ${fmt(gold)} gold.`, 'coin', 'gold', 7);
+  };
+  UI.offlineModal = function (secs, gold) {
     UI.modal(`<h2>WELCOME BACK!</h2><p>You were away for <b>${U.fmtTime(secs)}</b>.<br>Your heroes kept delving and earned:</p>
       <div class="bigval">${icon('coin')} ${fmt(gold)}</div>
       <p style="font-size:12px;color:var(--muted)">Offline earnings run at ${Math.round(KK.mods().offline * 100)}% speed. Type and click to go full power!</p>
@@ -473,10 +523,7 @@
     // clock
     const clock = () => setText('#tb-clock', new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }));
     clock(); setInterval(clock, 10000);
-    $('#tb-sound').addEventListener('click', () => {
-      const s = KK.S.settings; s.sound = !s.sound; KK.audio.init(); KK.audio.applySettings();
-      $('#tb-sound').textContent = s.sound ? '🔊' : '🔇';
-    });
+    $('#tb-sound').addEventListener('click', () => UI.setSetting('sound', !KK.S.settings.sound));
     // dev tools
     $$('[data-warp]').forEach((b) => b.addEventListener('click', () => {
       KK.warp = +b.dataset.warp; $$('[data-warp]').forEach((x) => x.classList.toggle('on', x === b));

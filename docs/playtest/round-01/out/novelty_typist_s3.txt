@@ -1,0 +1,107 @@
+=== NOVELTY  profile=typist seed=3 300m stuck=8m  maxFloorEver=90 retires=5  maxSparks=82  walking 59% of time
+0h00m00s  minor  monster Cellar Rat
+0h00m06s  minor  first IN THE ZONE
+0h00m08s  minor  first ultimate Earthshatter
+0h00m10s  MAJOR  first FLOW STATE
+0h00m10s  minor  first treasure chest
+0h00m17s  MAJOR  biome The Crypt (floor 2)
+0h00m33s  minor  hero available archer
+0h00m54s  minor  monster Crypt Bat
+0h01m51s  minor  monster Skeleton
+0h02m00s  MAJOR  recruit Wren (archer)
+0h02m12s  minor  first ultimate Arrow Storm
+0h02m38s  minor  hero available mage
+0h03m00s  minor  knight LV10 milestone
+0h03m03s  minor  first wipe (RETREAT)
+0h03m31s  MAJOR  boss The Rat King (floor 10)
+0h03m42s  MAJOR  first relic offer
+0h03m42s  minor  relic seen Caps Lock Crown [rare]
+0h03m42s  minor  relic seen Treasure Map [rare]
+0h03m42s  minor  relic seen Hotkey Ring [epic]
+0h03m42s  MAJOR  first EPIC relic offered (Hotkey Ring)
+0h03m42s  minor  boss kill The Rat King
+0h03m49s  MAJOR  first golden rat
+0h04m33s  minor  first Hotkey Ring proc
+0h05m00s  minor  first buy forge:blades
+0h05m00s  minor  first buy forge:armor
+0h06m00s  minor  knight LV20 milestone
+0h06m13s  minor  hero available cleric
+0h07m00s  minor  archer LV10 milestone
+0h07m52s  MAJOR  retire unlocked
+0h08m00s  minor  first buy forge:swift
+0h08m03s  MAJOR  boss The Bone King (floor 20)
+0h08m45s  minor  relic seen Spacebar Shield [common]
+0h08m45s  minor  relic seen Critic's Lens [rare]
+0h08m45s  minor  relic seen Giant's Belt [common]
+0h08m45s  minor  boss kill The Bone King
+0h08m47s  MAJOR  biome Mossy Caverns (floor 21)
+0h08m48s  minor  monster Moss Slime
+0h10m56s  minor  monster Cave Spider
+0h11m00s  minor  first buy forge:purse
+0h11m00s  minor  knight LV30 milestone
+0h12m00s  MAJOR  recruit Mortimer (mage)
+0h12m00s  minor  archer LV20 milestone
+0h12m44s  minor  first ultimate Meteor
+0h13m47s  minor  monster Goblin
+0h15m00s  minor  first buy forge:keen
+0h15m27s  MAJOR  boss Brood Mother (floor 30)
+0h17m00s  minor  archer LV30 milestone
+0h18m25s  minor  relic seen Flow Pendant [epic]
+0h18m25s  minor  relic seen Vampire Fang [rare]
+0h18m25s  minor  boss kill Brood Mother
+0h22m00s  minor  mage LV10 milestone
+0h25m00s  MAJOR  recruit Sister Pell (cleric)
+0h30m00s  minor  mage LV20 milestone
+0h30m55s  MAJOR  boss Goblin Warlord (floor 40)
+0h36m24s  minor  relic seen Echo Rune [epic]
+0h36m24s  minor  relic seen Bottomless Coffee [common]
+0h36m24s  minor  boss kill Goblin Warlord
+0h36m26s  MAJOR  biome Magma Depths (floor 41)
+0h36m27s  minor  monster Fire Imp
+0h38m58s  minor  monster Magma Slime
+0h41m01s  minor  cleric LV10 milestone
+0h41m01s  minor  mage LV30 milestone
+0h44m20s  minor  monster Rock Golem
+0h45m16s  minor  first ultimate Sanctuary
+0h55m45s  MAJOR  boss Ember Colossus (floor 50)
+0h56m01s  minor  cleric LV20 milestone
+1h02m30s  MAJOR  first RETIRE + Hall of Legends
+1h03m01s  minor  first buy legacy:lineage
+1h03m01s  minor  first buy legacy:treasury
+1h03m01s  minor  first buy legacy:quartermaster
+1h03m01s  minor  first buy legacy:veterans
+1h03m01s  minor  first buy legacy:headstart
+1h03m01s  minor  first buy legacy:zeal
+1h03m01s  minor  first buy legacy:recruiter
+1h03m01s  minor  first buy legacy:campfire
+1h03m01s  minor  first buy legacy:collector
+1h04m39s  minor  relic seen Whetstone [common]
+1h06m47s  minor  relic seen Midnight Oil [rare]
+1h06m47s  minor  relic seen Backspace Boots [common]
+1h06m47s  minor  relic seen Lucky Coin [common]
+1h24m27s  minor  cleric LV30 milestone
+1h26m08s  minor  boss kill Ember Colossus
+1h42m45s  MAJOR  boss Magma Lord (floor 60)
+1h59m29s  minor  relic seen Clacky Keycap [rare]
+2h00m41s  minor  first keystroke coin
+2h06m36s  minor  boss kill Magma Lord
+2h06m39s  MAJOR  biome The Hollow Void (floor 61)
+2h06m39s  minor  monster Watcher
+2h08m16s  minor  monster Wraith
+2h10m53s  minor  monster Void Knight
+2h16m34s  MAJOR  boss The Hollow (floor 70)
+2h19m10s  minor  relic seen Glass Cannon [epic]
+2h19m10s  minor  boss kill The Hollow
+4h00m50s  minor  relic seen Enter Amulet [rare]
+4h02m15s  minor  first ECHO cast
+ults per owned-minute: knight 4.62 (1386)  archer 0.86 (252)  mage 0.08 (23)  cleric 0.02 (5)
+
+novelty (any)   per 10 min, hour 1:  37 13 2 8 4 2
+novelty (MAJOR) per 10 min, hour 1:  10 2 1 2 0 1
+novelty (any)   per 30 min, h1-h5: 16 2 9 0 0 0 2 0
+novelty (MAJOR) per 30 min, h1-h5: 1 1 2 0 0 0 0 0
+longest gap with NO novelty: hour 1 10.5 min (from 0h45m16s), after hour 1 101.7 min (from 2h19m10s)
+longest gap with no MAJOR novelty: hour 1 19.3 min (from 0h36m26s), after hour 1 163.4 min (from 2h16m34s)
+last novelty of any kind: 4h02m15s (first ECHO cast); total 95 firsts, 20 major
+recurring glance moments per 30 min (boss/offer/rat/recruit/milestone/retire): 28 23 51 50 31 51 32 45 37 70
+never appeared: up:workshop:jar, up:workshop:overcharge, up:workshop:kindling, up:workshop:static, up:workshop:battery

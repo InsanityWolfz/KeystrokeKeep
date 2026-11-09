@@ -13,6 +13,24 @@
   KK.nativeBoot = function () {
     try { N.setTrayIcon(KK.SPR.iconURL.crown); } catch (e) { /* ignore */ }
 
+    // One source of truth for settings: the save. The tray mirrors it and can change it.
+    const sync = () => { const s = KK.S.settings; N.syncSettings({ countInput: s.countInput !== false, sound: !!s.sound, onTop: s.onTop !== false, displayId: s.displayId }); };
+    sync();
+    KK.on('setting', sync);
+    if (N.onSetting) N.onSetting((m) => {
+      if (!m || !['countInput', 'sound', 'onTop', 'displayId'].includes(m.k)) return;
+      if (m.k === 'onTop' || m.k === 'displayId') { KK.S.settings[m.k] = m.v; KK.save(); return; }
+      KK.ui.setSetting(m.k, !!m.v);
+    });
+    if (N.onPower) N.onPower((p) => {
+      const was = KK.powerState;
+      KK.powerState = p;
+      KK.emit('power', p);
+      if (was === 'off' && p === 'on' && KK.powerOffAt) { KK.awayCheck && KK.awayCheck((Date.now() - KK.powerOffAt) / 1000); }
+      KK.powerOffAt = p === 'off' ? Date.now() : 0;
+    });
+    if (N.onBattery) N.onBattery((b) => { KK.onBattery = b; });
+
     // Grow the window upward while a panel / relic offer / modal / toast is showing.
     let lastH = 0;
     const measure = () => {

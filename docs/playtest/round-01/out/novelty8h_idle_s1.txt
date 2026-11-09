@@ -1,0 +1,13 @@
+=== NOVELTY  profile=idle seed=1 480m stuck=8m  maxFloorEver=90 retires=7  maxSparks=82  walking 46% of time
+ults per owned-minute: knight 0.06 (30)  archer 0.05 (25)  mage 0.00 (0)  cleric 0.01 (2)
+
+novelty (any)   per 10 min, hour 1:  17 8 11 2 7 5
+novelty (MAJOR) per 10 min, hour 1:  5 1 2 1 1 1
+novelty (any)   per 30 min, h1-h8: 6 5 10 6 5 2 3 0 0 1 0 0 0 1
+novelty (MAJOR) per 30 min, h1-h8: 1 0 3 1 2 0 1 0 0 0 0 0 0 0
+longest gap with NO novelty: hour 1 8.0 min (from 0h28m00s), after hour 1 145.1 min (from 5h30m45s)
+longest gap with no MAJOR novelty: hour 1 13.3 min (from 0h22m42s), after hour 1 229.9 min (from 4h10m08s)
+last novelty of any kind: 7h55m49s (relic seen Hotkey Ring [epic]); total 89 firsts, 19 major
+recurring glance moments per 30 min (boss/offer/rat/recruit/milestone/retire): 17 21 18 27 21 40 23 13 45 20 57 15 61 19 11 68
+never appeared: up:workshop:jar, up:workshop:overcharge, up:workshop:kindling, up:workshop:static, up:workshop:battery, hotkey, keycoin
+legacy fully maxed: quartermaster@0h47m01s, recruiter@1h48m02s, collector@4h13m06s, zeal@6h09m09s, campfire@6h09m09s (of 7 capped rows)

@@ -25,7 +25,9 @@
 
   R.resize = function () {
     const size = KK.S.settings.size;
-    let scale = size === 'S' ? 2 : size === 'L' ? 4 : 3;
+    // 'auto' keeps the strip to ~13% of the screen height (S on 1080p, M on 1440p, L on big 4K)
+    const autoScale = () => Math.max(2, Math.min(4, Math.floor(((window.screen && window.screen.height) || 1080) * 0.135 / H)));
+    let scale = size === 'S' ? 2 : size === 'L' ? 4 : size === 'M' ? 3 : autoScale();
     if (window.innerWidth < 700) scale = Math.min(scale, 2);
     R.scale = scale;
     const dpr = window.devicePixelRatio || 1;
@@ -237,9 +239,13 @@
       if (U.hash(s * 9.13 + 1) < 0.45) continue;
       const x = Math.round(s * FSEG - fpx + U.hash(s) * 100);
       if (x < -20 || x > Wd + 20) continue;
+      // never hide the fight: pillars in front of a hero or an active foe go mostly transparent
+      const blocks = W.heroes.some((h) => Math.abs(sxw(h.x) - x - 4) < 16) || W.enemies.some((e) => !e.dead && Math.abs(sxw(e.x) - x - 4) < 10 + e.def.w / 2);
+      b.globalAlpha = blocks ? 0.28 : 1;
       b.fillStyle = '#05030a'; b.fillRect(x, 0, 9, H);
       b.fillStyle = pal.wallLo; b.fillRect(x + 1, 0, 1, H);
       b.fillStyle = '#05030a'; b.fillRect(x - 2, 0, 13, 4); b.fillRect(x - 2, H - 6, 13, 6);
+      b.globalAlpha = 1;
     }
 
     // ---- rings, beams

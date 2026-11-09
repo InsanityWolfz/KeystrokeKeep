@@ -8,7 +8,7 @@
   KK.newState = function () {
     return {
       v: 1,
-      gold: 0, sparks: 0, renown: 0, renownLifetime: 0, retires: 0,
+      gold: 0, sparks: 0, embers: 0, renown: 0, renownLifetime: 0, retires: 0, renownFloor: 0,
       floor: 1, maxFloorRun: 1, maxFloorEver: 1, bossBlock: 0,
       heroes: { knight: 1, archer: 0, mage: 0, cleric: 0 },
       forge: {}, workshop: {}, legacy: {},
@@ -16,7 +16,7 @@
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
       stats: { kills: 0, bossKills: 0, keys: 0, clicks: 0, ults: 0, goldEarned: 0, playTime: 0, chests: 0, rats: 0, flowTime: 0, wipes: 0 },
-      settings: { sound: true, music: true, volume: 0.55, size: 'M', countInput: true },
+      settings: { sound: true, music: false, volume: 0.3, keySound: false, calm: false, fps: 30, size: 'auto', countInput: true },
       tutorial: {},
       lastSave: Date.now(),
       created: Date.now(),
@@ -29,7 +29,7 @@
   // Balance knobs (tools/sim.js can override these with BAL='{"hpG":1.2}')
   const B = KK.BAL = Object.assign({
     dmgLin: 0.45, dmgMile: 1.5, hpLin: 0.35, hpMile: 1.4, costG: 1.11,
-    eHp: 28, eHpG: 1.26, eAtk: 2.2, eAtkG: 1.14, eGold: 1.6, eGoldG: 1.185,
+    eHp: 28, eHpG: 1.27, eAtk: 2.2, eAtkG: 1.14, eGold: 1.6, eGoldG: 1.185,
   }, root.BAL_OVERRIDE || {});
   const F = KK.F = {
     heroDmg: (id, lvl) => D.HEROES[id].atk * (1 + B.dmgLin * (lvl - 1)) * Math.pow(B.dmgMile, Math.floor(lvl / 10)),
@@ -39,7 +39,7 @@
     enemyAtk: (f) => B.eAtk * Math.pow(B.eAtkG, f - 1),
     enemyGold: (f) => B.eGold * Math.pow(B.eGoldG, f - 1),
     upCost: (def, lvl) => Math.ceil(def.base * Math.pow(def.growth, lvl)),
-    renownFor: (maxFloor) => maxFloor < 20 ? 0 : Math.floor(Math.pow((maxFloor - 10) / 5, 1.6)),
+    renownFor: (maxFloor) => maxFloor < 20 ? 0 : Math.floor(Math.pow((maxFloor - 10) / 5, 1.9)),
     biomeOf: (f) => {
       let b = D.BIOMES[0];
       for (const bb of D.BIOMES) if (f >= bb.from) b = bb;
@@ -47,6 +47,8 @@
     },
     isBossFloor: (f) => f % 10 === 0,
     bossFor: (f) => {
+      // past the Hollow, the Void throws every old boss back at you, hollowed out
+      if (f >= 70) { const all = ['hollow', 'ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; return all[Math.floor((f - 70) / 10) % all.length]; }
       const b = F.biomeOf(f);
       const idx = Math.floor(((f - b.from) % 20) / 10);
       return b.bosses[Math.min(idx, b.bosses.length - 1)];
@@ -61,7 +63,7 @@
     const S = KK.S;
     const m = {
       dmg: 1, hp: 1, gold: 1, walk: 1, aspd: 1, ultCost: 1, ultPow: 1, fervDecay: 1, fervGain: 1,
-      sparkCap: 150, chest: 0.08, offline: 0.5, crit: 0.06, critMult: 2, lifesteal: 0, echo: 0, flowBonus: 0,
+      sparkCap: 150, chest: 0.08, offline: 0.4, crit: 0.06, critMult: 2, lifesteal: 0, echo: 0, flowBonus: 0,
       keyCoin: 0, hotkey: false, knightHp: 1, knightDmg: 1, heroCost: 1, startLvl: 0, startFloor: 1,
       relicChoices: 3, auto: false, idlePow: 0,
     };
@@ -69,6 +71,7 @@
     for (const def of D.FORGE) { const l = S.forge[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.WORKSHOP) { const l = S.workshop[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.LEGACY) { const l = S.legacy[def.id] || 0; if (l) def.apply(m, l); }
+    m.offline = Math.min(0.8, m.offline); // closing the game must never beat running it
     const fame = 1 + 0.03 * S.renownLifetime;
     m.dmg *= fame; m.gold *= fame;
     m.fame = fame;
@@ -76,19 +79,22 @@
     return m;
   };
 
+  // Tiers are sticky: you enter a tier at its threshold but only drop out 12 points below it,
+  // so a short pause doesn't flicker you in and out of FLOW (and replay its fanfare).
+  let curTier = 0;
   KK.fervorTier = function () {
     const f = KK.S.fervor, T = D.FERVOR_TIERS;
-    let t = 0;
-    for (let i = 0; i < T.length; i++) if (f >= T[i].at) t = i;
-    return t;
+    while (curTier < T.length - 1 && f >= T[curTier + 1].at) curTier++;
+    while (curTier > 0 && f < T[curTier].at - 12) curTier--;
+    return curTier;
   };
   /** Overall power multiplier from Fervor (applies to damage; speed gets half). */
   KK.powerMult = function () {
     const m = KK.mods(), t = KK.fervorTier();
     let mult = D.FERVOR_TIERS[t].mult;
     if (t === 3) mult += m.flowBonus;
-    if (t === 0) mult += m.idlePow;
-    return mult;
+    // Idle Battery is a floor, so starting to type can never make the party weaker
+    return Math.max(mult, 1 + m.idlePow);
   };
 
   // ---------------------------------------------------------------- activity (the hook)
@@ -101,10 +107,10 @@
     const before = KK.fervorTier();
     if (kind === 'key') {
       S.stats.keys++; S.keyCounter++;
-      S.fervor = Math.min(100, S.fervor + 2.2 * m.fervGain);
+      S.fervor = Math.min(100, S.fervor + 1.2 * m.fervGain);
     } else {
       S.stats.clicks++;
-      S.fervor = Math.min(100, S.fervor + 1.5 * m.fervGain);
+      S.fervor = Math.min(100, S.fervor + 0.9 * m.fervGain);
     }
     const cap = m.sparkCap;
     if (S.sparks < cap) S.sparks = Math.min(cap, S.sparks + 1);
@@ -120,7 +126,7 @@
   };
   KK.tickFervor = function (dt) {
     const S = KK.S, m = KK.mods();
-    if (KK.lastInputAgo() > 1.5 && S.fervor > 0) {
+    if (KK.lastInputAgo() > 3 && S.fervor > 0) {
       const before = KK.fervorTier();
       S.fervor = Math.max(0, S.fervor - 3.5 * m.fervDecay * dt);
       const after = KK.fervorTier();
@@ -192,7 +198,7 @@
     return true;
   }
   A.buyForge = (id) => buyUp(D.FORGE, 'forge', id, 'gold');
-  A.buyWorkshop = (id) => buyUp(D.WORKSHOP, 'workshop', id, 'sparks');
+  A.buyWorkshop = (id) => buyUp(D.WORKSHOP, 'workshop', id, 'embers');
   A.legacyCost = (id) => { const def = D.LEGACY.find((d) => d.id === id); return def.cost(KK.S.legacy[id] || 0); };
   A.buyLegacy = (id) => {
     const S = KK.S, def = D.LEGACY.find((d) => d.id === id);
@@ -202,6 +208,10 @@
     if (S.renown < c) return false;
     S.renown -= c;
     S.legacy[id] = l + 1;
+    KK.dirty();
+    const m = KK.mods();
+    if (id === 'headstart' && S.floor < m.startFloor && S.maxFloorRun <= m.startFloor) { S.floor = m.startFloor; S.maxFloorRun = Math.max(S.maxFloorRun, m.startFloor); KK.emit('jumpFloor', { floor: S.floor }); }
+    if (id === 'veterans') for (const h of D.PARTY_ORDER) if (S.heroes[h] && S.heroes[h] < 1 + m.startLvl) S.heroes[h] = 1 + m.startLvl;
     KK.dirty();
     KK.emit('upgrade', { store: 'legacy', id, lvl: l + 1 });
     return true;
@@ -229,13 +239,15 @@
     return true;
   };
 
-  A.renownGain = () => F.renownFor(KK.S.maxFloorRun);
+  A.renownGain = () => Math.max(0, F.renownFor(KK.S.maxFloorRun) - F.renownFor(KK.S.renownFloor || 0));
+  A.retireTarget = () => { const S = KK.S; let f = Math.max(20, S.maxFloorRun + 1); while (F.renownFor(f) - F.renownFor(S.renownFloor || 0) <= 0 && f < 2000) f++; return f; };
   A.canRetire = () => A.renownGain() > 0;
   A.retire = () => {
     const S = KK.S;
     const gain = A.renownGain();
     if (gain <= 0) return false;
     S.renown += gain; S.renownLifetime += gain; S.retires++;
+    S.renownFloor = Math.max(S.renownFloor || 0, S.maxFloorRun);
     S.gold = 0; S.forge = {}; S.relics = []; S.relicOffer = null; S.bossBlock = 0;
     KK.dirty();
     const m = KK.mods();
