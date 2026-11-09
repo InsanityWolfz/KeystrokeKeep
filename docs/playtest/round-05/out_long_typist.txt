@@ -1,0 +1,34 @@
+=== typist 40h x3 seeds, retire nudge, omen random ===
+--- base ---
+  1h00   f66.0 (65-67) R96 trophies 0.0 fame x6 ach 16.3 retires 2.0 wipes 6 (hollow 0) voidSlams 0 Sanct 7 oc 4.0
+  2h00   f101.0 (100-103) R247 trophies 6.0 fame x23 ach 20.7 retires 4.0 wipes 8 (hollow 2) voidSlams 41 Sanct 25 oc 5.7
+  4h00   f124.7 (121-128) R381 trophies 10.7 fame x58 ach 26.3 retires 7.7 wipes 10 (hollow 4) voidSlams 123 Sanct 63 oc 7.3
+  8h00   f147.3 (145-149) R536 trophies 13.0 fame x146 ach 29.0 retires 12.3 wipes 19 (hollow 13) voidSlams 282 Sanct 128 oc 9.7
+  16h00  f161.3 (160-164) R654 trophies 14.0 fame x282 ach 31.7 retires 17.3 wipes 161 (hollow 150) voidSlams 586 Sanct 454 oc 12.0
+  24h00  f169.0 (166-173) R719 trophies 14.0 fame x403 ach 32.3 retires 19.7 wipes 345 (hollow 324) voidSlams 948 Sanct 841 oc 13.7
+  32h00  f172.3 (170-177) R748 trophies 14.0 fame x471 ach 32.3 retires 20.7 wipes 661 (hollow 607) voidSlams 1364 Sanct 1564 oc 14.0
+  40h00  f177.0 (174-179) R789 trophies 14.0 fame x579 ach 33.0 retires 22.3 wipes 929 (hollow 855) voidSlams 1775 Sanct 2079 oc 15.0
+  blocked at a Hollowed boss: 1319-1523 min total; Sanctuary casts in Hollowed fights 1922 of 2079
+  f70       attempts   64  won 100%  win dur med 2s p90 4s  lost-fight dur med -s  slams/fight 0.3  Sanct/fight 0.2  deaths/fight 0.0
+  f80-99    attempts  127  won  98%  win dur med 2s p90 9s  lost-fight dur med 21s  slams/fight 0.6  Sanct/fight 0.4  deaths/fight 0.1
+  f100-129  attempts  182  won  90%  win dur med 5s p90 52s  lost-fight dur med 25s  slams/fight 2.0  Sanct/fight 1.1  deaths/fight 0.4
+  f130+     attempts 2678  won   5%  win dur med 21s p90 164s  lost-fight dur med 16s  slams/fight 1.6  Sanct/fight 2.1  deaths/fight 4.0
+  seed1 retires: 0h25 f40 +30 - 25m, 0h51 f65 +65 - 26m, 1h18 f81 +59 march 27m, 1h45 f100 +88 fever 27m, 2h12 f110 +54 march 27m, 2h39 f118 +47 storm 27m, 3h15 f123 +30 march 36m, 3h58 f128 +33 gilded 43m, 4h44 f130 +13 quiet 46m, 5h32 f135 +33 fever 48m, 6h05 f140 +36 storm 33m, 6h56 f145 +36 march 51m, 8h04 f149 +30 hoard 68m, 9h07 f150 +7 deep 63m, 11h56 f154 +31 glass 169m, 14h01 f158 +32 march 125m, 15h10 f160 +16 gilded 69m, 19h30 f164 +33 glass 260m, 20h56 f168 +36 deep 86m, 24h27 f170 +18 muster 211m, 33h19 f174 +34 quiet 532m, 38h17 f178 +36 storm 298m
+  achievements unlocked: 33-33/35
+  flow 0m, first_boss 4m, rat 4m, caverns 9m, full_party 15m, comeback 17m, epic 17m, retire1 26m, ult_boss 33m, gatekeeper 34m, speed40 34m, magma 34m, lv100 44m, echo 45m, void 48m, omen1 52m, blitz 59m, hollow 64m, keys10k 78m, f100 101m, flow1h 124m, hollowed6 144m, ults1k 150m, rats25 199m, chests100 200m, f125 239m, revive 285m, retire10 314m, crucible10 368m, deep90 380m, keys100k 781m, flow10h 950m, omen10 1897m, legacy_all NEVER, idle50 NEVER
+  trophy first reached (h): f75 1.1 f80 1.2 f85 1.3 f90 1.5 f95 1.6 f100 1.7 f105 2.1 f110 2.4 f115 2.8 f120 3.3 f125 4.0 f130 4.5 f140 6.0 f150 9.1
+--- noTrophy ---
+  1h00   f66.0 (65-67) R96 trophies 0.0 fame x6 ach 16.3 retires 2.0 wipes 6 (hollow 0) voidSlams 0 Sanct 7 oc 4.0
+  2h00   f99.3 (98-100) R239 trophies 0.0 fame x21 ach 20.7 retires 4.0 wipes 7 (hollow 1) voidSlams 36 Sanct 26 oc 6.0
+  4h00   f118.0 (116-119) R345 trophies 0.0 fame x45 ach 25.7 retires 7.3 wipes 9 (hollow 3) voidSlams 120 Sanct 67 oc 7.0
+  8h00   f136.0 (133-140) R456 trophies 0.0 fame x92 ach 29.7 retires 11.3 wipes 32 (hollow 26) voidSlams 309 Sanct 148 oc 9.0
+  16h00  f150.0 (150-150) R566 trophies 0.0 fame x172 ach 31.0 retires 15.7 wipes 146 (hollow 138) voidSlams 641 Sanct 423 oc 12.3
+  24h00  f160.0 (160-160) R645 trophies 0.0 fame x267 ach 32.0 retires 19.0 wipes 327 (hollow 306) voidSlams 1000 Sanct 768 oc 13.7
+  32h00  f162.3 (160-164) R664 trophies 0.0 fame x298 ach 32.0 retires 19.7 wipes 585 (hollow 563) voidSlams 1407 Sanct 1288 oc 14.0
+  40h00  f165.3 (164-167) R690 trophies 0.0 fame x341 ach 32.0 retires 20.7 wipes 834 (hollow 807) voidSlams 1859 Sanct 1678 oc 15.0
+  blocked at a Hollowed boss: 1423-1440 min total; Sanctuary casts in Hollowed fights 1626 of 1678
+  f70       attempts   59  won 100%  win dur med 2s p90 9s  lost-fight dur med -s  slams/fight 0.5  Sanct/fight 0.4  deaths/fight 0.0
+  f80-99    attempts  116  won  98%  win dur med 3s p90 21s  lost-fight dur med 23s  slams/fight 0.8  Sanct/fight 0.6  deaths/fight 0.1
+  f100-129  attempts  174  won  82%  win dur med 9s p90 103s  lost-fight dur med 23s  slams/fight 3.6  Sanct/fight 1.7  deaths/fight 0.8
+  f130+     attempts 2473  won   3%  win dur med 34s p90 211s  lost-fight dur med 16s  slams/fight 1.7  Sanct/fight 1.8  deaths/fight 4.0
+  seed1 retires: 0h25 f40 +30 - 25m, 0h51 f65 +65 - 26m, 1h18 f80 +55 march 27m, 1h45 f98 +82 fever 27m, 2h12 f104 +31 quiet 27m, 2h45 f109 +30 deep 33m, 3h14 f110 +6 glass 29m, 3h57 f116 +35 gilded 43m, 4h35 f120 +24 quiet 38m, 5h21 f125 +31 march 46m, 6h06 f130 +33 hoard 45m, 6h46 f135 +33 storm 40m, 7h38 f140 +36 muster 52m, 9h35 f145 +36 storm 117m, 11h05 f149 +33 deep 90m, 12h40 f150 +7 muster 95m, 16h24 f155 +39 glass 224m, 19h39 f159 +32 muster 195m, 21h18 f160 +8 storm 99m, 31h39 f164 +33 glass 621m, 34h14 f165 +8 march 155m

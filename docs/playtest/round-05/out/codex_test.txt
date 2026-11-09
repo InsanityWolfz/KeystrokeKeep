@@ -1,0 +1,40 @@
+=== typist s1 2400m: maxEver 167
+  Hollowed kills by key: hollow 21, H-broodmother 21, H-embergolem 21, H-magmalord 17, H-ratking 19, H-boneking 16, H-warlord 17
+  Codex rank-ups (thresholds 3/10/20/40): total 17 of 28; after 8h 10, after 16h 4; per 8h block: 7 / 6 / 1 / 2 / 1
+  rank-up times: 2h16 hollow#1, 3h25 H-broodmother#1, 4h07 H-embergolem#1, 4h51 H-ratking#1, 5h40 H-warlord#1, 6h01 H-magmalord#1, 7h07 H-boneking#1, 8h02 hollow#2, 11h23 H-broodmother#2, 12h48 H-embergolem#2, 14h26 H-ratking#2, 15h52 H-boneking#2, 15h56 H-warlord#2, 16h09 H-magmalord#2, 27h29 hollow#3, 28h03 H-broodmother#3, 38h08 H-embergolem#3
+  longest beat gap after 8h: current 1375m -> with Codex 624m; beats after 8h current 9 -> 19
+  run time to f60 (first delve that does it at r2:14m): min 2.0m; first <20m at retire #2, first <30m at retire #2; all: r2:14m r3:8m r4:6m r5:5m r6:4m r7:3m r8:3m r9:2m r10:3m r11:2m r12:2m r13:3m r14:2m r15:3m r16:3m r17:2m r18:3m r19:3m r20:3m r21:2m r22:2m r23:3m
+  run time to f80 (first delve that does it at r3:23m): min 3.9m; first <20m at retire #4, first <30m at retire #3; all: r3:23m r4:14m r5:12m r6:8m r7:6m r8:6m r9:4m r10:5m r11:4m r12:5m r13:5m r14:5m r15:5m r16:5m r17:4m r18:5m r19:5m r20:5m r21:5m r22:5m r23:5m
+  run time to f100 (first delve that does it at r6:22m): min 6.2m; first <20m at retire #7, first <30m at retire #6; all: r6:22m r7:19m r8:20m r9:11m r10:13m r11:10m r12:9m r13:8m r14:8m r15:8m r16:9m r17:6m r18:8m r19:8m r20:8m r21:7m r22:7m r23:8m
+  run time to f120 (first delve that does it at r10:60m): min 10.9m; first <20m at retire #13, first <30m at retire #12; all: r10:60m r11:47m r12:25m r13:17m r14:20m r15:18m r16:16m r17:11m r18:14m r19:13m r20:13m r21:12m r22:12m r23:12m
+  retire times: #1@0h28 #2@0h53 #3@1h18 #4@1h43 #5@2h08 #6@2h49 #7@3h18 #8@3h59 #9@4h46 #10@5h31 #11@6h40 #12@7h58 #13@9h00 #14@9h49 #15@11h14 #16@12h38 #17@14h19 #18@15h44 #19@17h05 #20@18h46 #21@26h10 #22@27h25 #23@38h02
+=== typist s2 2400m: maxEver 170
+  Hollowed kills by key: hollow 25, H-ratking 25, H-broodmother 26, H-embergolem 26, H-magmalord 21, H-boneking 22, H-warlord 21
+  Codex rank-ups (thresholds 3/10/20/40): total 21 of 28; after 8h 13, after 16h 9; per 8h block: 8 / 4 / 3 / 4 / 2
+  rank-up times: 1h54 hollow#1, 3h26 H-broodmother#1, 4h13 H-embergolem#1, 4h24 H-ratking#1, 5h01 H-boneking#1, 6h12 H-warlord#1, 6h35 H-magmalord#1, 7h13 hollow#2, 11h33 H-broodmother#2, 12h37 H-ratking#2, 13h13 H-embergolem#2, 14h51 H-boneking#2, 16h10 H-warlord#2, 16h23 H-magmalord#2, 23h12 hollow#3, 24h48 H-broodmother#3, 27h47 H-embergolem#3, 27h50 H-ratking#3, 31h57 H-boneking#3, 34h01 H-warlord#3, 37h39 H-magmalord#3
+  longest beat gap after 8h: current 738m -> with Codex 389m; beats after 8h current 13 -> 26
+  run time to f60 (first delve that does it at r2:11m): min 1.9m; first <20m at retire #2, first <30m at retire #2; all: r2:11m r3:7m r4:6m r5:4m r6:5m r7:3m r8:3m r9:3m r10:3m r11:2m r12:2m r13:2m r14:2m r15:2m r16:3m r17:3m r18:2m r19:2m r20:2m r21:2m r22:3m r23:3m r24:3m r25:3m r26:2m
+  run time to f80 (first delve that does it at r3:23m): min 3.9m; first <20m at retire #4, first <30m at retire #3; all: r3:23m r4:16m r5:8m r6:9m r7:8m r8:5m r9:6m r10:5m r11:5m r12:5m r13:5m r14:4m r15:5m r16:5m r17:5m r18:5m r19:5m r20:4m r21:5m r22:5m r23:5m r24:5m r25:5m r26:4m
+  run time to f100 (first delve that does it at r6:30m): min 5.6m; first <20m at retire #8, first <30m at retire #6; all: r6:30m r7:24m r8:15m r9:14m r10:13m r11:10m r12:8m r13:8m r14:7m r15:8m r16:8m r17:7m r18:8m r19:7m r20:7m r21:7m r22:7m r23:8m r24:7m r25:7m r26:6m
+  run time to f120 (first delve that does it at r10:56m): min 8.2m; first <20m at retire #13, first <30m at retire #12; all: r10:56m r11:42m r12:27m r13:14m r14:17m r15:15m r16:15m r17:12m r18:13m r19:11m r20:11m r21:12m r22:12m r23:11m r24:11m r25:11m r26:8m
+  retire times: #1@0h26 #2@0h51 #3@1h16 #4@1h43 #5@2h10 #6@2h41 #7@3h17 #8@4h07 #9@4h52 #10@6h03 #11@7h08 #12@8h19 #13@9h31 #14@10h08 #15@11h24 #16@13h04 #17@14h41 #18@15h59 #19@18h33 #20@19h54 #21@23h08 #22@24h14 #23@27h41 #24@31h22 #25@33h15 #26@37h33
+=== light s1 2400m: maxEver 150
+  Hollowed kills by key: hollow 24, H-broodmother 19, H-embergolem 20, H-ratking 19, H-boneking 15, H-warlord 15, H-magmalord 15
+  Codex rank-ups (thresholds 3/10/20/40): total 16 of 28; after 8h 13, after 16h 8; per 8h block: 3 / 5 / 3 / 4 / 1
+  rank-up times: 2h58 hollow#1, 6h30 H-ratking#1, 7h00 H-broodmother#1, 8h08 H-embergolem#1, 9h59 hollow#2, 10h09 H-boneking#1, 11h12 H-warlord#1, 12h28 H-magmalord#1, 19h42 H-ratking#2, 19h48 H-broodmother#2, 20h14 H-embergolem#2, 25h01 H-boneking#2, 25h08 H-warlord#2, 25h41 H-magmalord#2, 26h26 hollow#3, 36h41 H-embergolem#3
+  longest beat gap after 8h: current 474m -> with Codex 287m; beats after 8h current 18 -> 31
+  run time to f60 (first delve that does it at r2:18m): min 2.0m; first <20m at retire #2, first <30m at retire #2; all: r2:18m r3:11m r4:9m r5:6m r6:6m r7:5m r8:4m r9:3m r10:3m r11:3m r12:3m r13:2m r14:3m r15:2m r16:3m r17:3m r18:3m r19:2m r20:3m r21:2m r22:3m r23:2m r24:3m r25:3m r26:2m
+  run time to f80 (first delve that does it at r4:36m): min 4.1m; first <20m at retire #5, first <30m at retire #5; all: r4:36m r5:19m r6:15m r7:10m r8:9m r9:8m r10:7m r11:7m r12:7m r13:5m r14:6m r15:5m r16:6m r17:6m r18:5m r19:5m r20:6m r21:5m r22:6m r23:4m r24:5m r25:5m r26:5m
+  run time to f100 (first delve that does it at r7:50m): min 6.6m; first <20m at retire #13, first <30m at retire #11; all: r7:50m r8:42m r9:32m r10:33m r11:22m r12:25m r13:18m r14:16m r15:14m r16:13m r17:12m r18:10m r19:9m r20:10m r21:8m r22:10m r23:7m r24:8m r25:9m r26:9m
+  run time to f120 (first delve that does it at r14:84m): min 15.1m; first <20m at retire #21, first <30m at retire #19; all: r14:84m r15:69m r16:49m r17:34m r17:38m r17:43m r17:45m r18:32m r19:27m r20:27m r21:20m r22:18m r23:18m r24:15m r25:17m r26:18m
+  retire times: #1@0h39 #2@1h09 #3@1h34 #4@1h59 #5@2h46 #6@3h26 #7@4h14 #8@5h13 #9@6h21 #10@7h27 #11@8h51 #12@9h54 #13@11h32 #14@13h15 #15@14h49 #16@16h40 #17@18h09 #18@19h35 #19@21h30 #20@23h23 #21@24h54 #22@26h21 #23@27h29 #24@30h53 #25@32h57 #26@35h23
+=== idle s1 2400m: maxEver 117
+  Hollowed kills by key: hollow 23, H-embergolem 11, H-ratking 10, H-broodmother 11, H-magmalord 8, H-boneking 7, H-warlord 7
+  Codex rank-ups (thresholds 3/10/20/40): total 12 of 28; after 8h 11, after 16h 6; per 8h block: 1 / 5 / 2 / 1 / 3
+  rank-up times: 4h09 hollow#1, 11h16 H-embergolem#1, 12h35 hollow#2, 12h41 H-ratking#1, 14h04 H-broodmother#1, 15h56 H-magmalord#1, 17h11 H-boneking#1, 18h40 H-warlord#1, 30h20 hollow#3, 33h05 H-embergolem#2, 35h04 H-ratking#2, 35h24 H-broodmother#2
+  longest beat gap after 8h: current 273m -> with Codex 243m; beats after 8h current 19 -> 30
+  run time to f60 (first delve that does it at r2:21m): min 3.8m; first <20m at retire #3, first <30m at retire #2; all: r2:21m r3:15m r4:10m r5:7m r6:7m r7:6m r8:6m r9:6m r10:5m r11:6m r12:6m r13:5m r14:5m r15:4m r16:4m r17:5m r18:5m r19:5m r20:4m r21:4m r22:4m r23:4m r24:4m r25:4m
+  run time to f80 (first delve that does it at r4:44m): min 7.2m; first <20m at retire #5, first <30m at retire #5; all: r4:44m r5:19m r6:26m r7:20m r8:23m r9:21m r10:14m r11:17m r12:14m r13:12m r14:11m r15:10m r16:13m r17:12m r18:10m r19:11m r20:9m r21:8m r22:8m r23:7m r24:8m r25:7m
+  run time to f100 (first delve that does it at r14:75m): min 22.6m; first <20m at never, first <30m at retire #23; all: r14:75m r15:56m r16:81m r17:89m r18:44m r19:50m r20:40m r21:45m r22:33m r23:23m r24:24m r25:32m
+  run time to f120: never
+  retire times: #1@0h54 #2@1h35 #3@2h07 #4@3h03 #5@3h56 #6@4h36 #7@5h47 #8@6h45 #9@8h15 #10@9h40 #11@10h55 #12@12h25 #13@13h50 #14@15h22 #15@16h46 #16@18h06 #17@20h07 #18@22h39 #19@24h12 #20@26h02 #21@27h59 #22@30h13 #23@32h57 #24@34h55 #25@37h43

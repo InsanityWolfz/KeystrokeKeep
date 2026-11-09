@@ -359,7 +359,21 @@ if (process.platform === 'win32') app.setAppUserModelId('com.keystrokekeep.game'
 const gotLock = process.env.KK_SNAPSHOT ? true : app.requestSingleInstanceLock();
 if (!gotLock) app.quit();
 else {
-  app.whenReady().then(() => {
+  app.whenReady().then(async () => {
+    // One strip per PC, across the demo and the full game (their single-instance locks are
+    // separate because their folders differ): a named pipe both builds try to own.
+    if (!process.env.KK_SNAPSHOT && process.platform === 'win32') {
+      const owned = await new Promise((resolve) => {
+        const srv = require('net').createServer((c) => c.end());
+        srv.once('error', () => resolve(false));
+        srv.listen('\\\\.\\pipe\\keystroke-keep-instance', () => resolve(true));
+      });
+      if (!owned) {
+        require('electron').dialog.showMessageBoxSync({ type: 'info', title: 'Keystroke Keep', message: 'Keystroke Keep is already running (demo or full game).', detail: 'Look for the crown icon in the system tray. Quit it there before starting the other version.' });
+        app.quit();
+        return;
+      }
+    }
     // no network, ever: everything the game needs ships in the app folder
     session.defaultSession.webRequest.onBeforeRequest({ urls: ['http://*/*', 'https://*/*', 'ws://*/*', 'wss://*/*'] }, (_d, cb) => cb({ cancel: true }));
     createWindow();

@@ -1,0 +1,15 @@
+=== typist 8h x4 seeds, retire nudge, omen random ===
+--- base ---
+  1h00   f66.3 (65-67) R97 trophies 0.0 fame x6 ach 16.3 retires 2.0 wipes 7 (hollow 0) voidSlams 0 Sanct 8 oc 4.0
+  2h00   f100.8 (100-103) R248 trophies 6.0 fame x23 ach 20.5 retires 4.0 wipes 8 (hollow 1) voidSlams 41 Sanct 26 oc 5.8
+  4h00   f126.0 (121-130) R394 trophies 11.0 fame x62 ach 26.3 retires 7.8 wipes 10 (hollow 3) voidSlams 117 Sanct 64 oc 7.3
+  8h00   f146.8 (145-149) R537 trophies 13.0 fame x146 ach 29.3 retires 12.3 wipes 22 (hollow 15) voidSlams 287 Sanct 134 oc 9.5
+  blocked at a Hollowed boss: 20-55 min total; Sanctuary casts in Hollowed fights 124 of 134
+  f70       attempts   45  won 100%  win dur med 2s p90 12s  lost-fight dur med -s  slams/fight 0.7  Sanct/fight 0.4  deaths/fight 0.0
+  f80-99    attempts   87  won  98%  win dur med 4s p90 37s  lost-fight dur med 21s  slams/fight 1.3  Sanct/fight 0.7  deaths/fight 0.1
+  f100-129  attempts  109  won  83%  win dur med 15s p90 78s  lost-fight dur med 25s  slams/fight 3.7  Sanct/fight 2.0  deaths/fight 0.8
+  f130+     attempts   60  won  35%  win dur med 149s p90 306s  lost-fight dur med 23s  slams/fight 9.1  Sanct/fight 3.1  deaths/fight 3.2
+  seed1 retires: 0h25 f40 +30 - 25m, 0h51 f65 +65 - 26m, 1h18 f81 +59 march 27m, 1h45 f100 +88 fever 27m, 2h12 f110 +54 march 27m, 2h39 f118 +47 storm 27m, 3h15 f123 +30 march 36m, 3h58 f128 +33 gilded 43m, 4h44 f130 +13 quiet 46m, 5h32 f135 +33 fever 48m, 6h05 f140 +36 storm 33m, 6h56 f145 +36 march 51m
+  achievements unlocked: 29-30/35
+  flow 0m, first_boss 4m, rat 5m, caverns 9m, comeback 13m, epic 14m, full_party 16m, retire1 27m, ult_boss 27m, gatekeeper 35m, speed40 35m, magma 36m, echo 39m, lv100 45m, void 49m, omen1 53m, blitz 61m, hollow 66m, keys10k 79m, f100 103m, deep90 122m(2/4), flow1h 124m, hollowed6 146m, ults1k 155m, revive 198m(3/4), rats25 205m, chests100 219m, f125 234m, retire10 322m, crucible10 352m, omen10 NEVER, legacy_all NEVER, idle50 NEVER, keys100k NEVER, flow10h NEVER
+  trophy first reached (h): f75 1.1 f80 1.2 f85 1.3 f90 1.5 f95 1.6 f100 1.7 f105 2.2 f110 2.5 f115 2.9 f120 3.3 f125 3.9 f130 4.3 f140 6.1

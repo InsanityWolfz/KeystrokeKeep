@@ -1,0 +1,14 @@
+=== burst 8h x4 seeds, retire nudge, omen random ===
+--- base ---
+  1h00   f37.5 (33-40) R7 trophies 0.0 fame x1 ach 8.0 retires 0.5 wipes 12 (hollow 0) voidSlams 0 Sanct 13 oc 1.5
+  2h00   f66.8 (64-69) R80 trophies 0.0 fame x5 ach 15.3 retires 2.8 wipes 12 (hollow 0) voidSlams 0 Sanct 21 oc 3.0
+  4h00   f91.3 (88-94) R200 trophies 3.8 fame x16 ach 19.0 retires 6.5 wipes 12 (hollow 0) voidSlams 85 Sanct 59 oc 5.0
+  8h00   f113.0 (110-117) R311 trophies 8.3 fame x36 ach 24.0 retires 10.3 wipes 12 (hollow 0) voidSlams 289 Sanct 145 oc 6.3
+  blocked at a Hollowed boss: 0-10 min total; Sanctuary casts in Hollowed fights 117 of 145
+  f70       attempts   32  won 100%  win dur med 23s p90 105s  lost-fight dur med -s  slams/fight 4.8  Sanct/fight 2.4  deaths/fight 0.0
+  f80-99    attempts   48  won 100%  win dur med 44s p90 177s  lost-fight dur med -s  slams/fight 9.2  Sanct/fight 3.6  deaths/fight 0.0
+  f100-129  attempts   19  won  95%  win dur med 168s p90 300s  lost-fight dur med 21s  slams/fight 19.2  Sanct/fight 8.1  deaths/fight 0.3
+  seed1 retires: 0h45 f30 +13 - 45m, 1h11 f48 +34 - 26m, 1h37 f63 +41 muster 26m, 2h07 f72 +31 fever 30m, 2h37 f80 +31 muster 30m, 3h11 f87 +30 gilded 34m, 3h52 f94 +32 march 41m, 4h53 f100 +30 embertide 61m, 5h48 f106 +32 quiet 55m, 7h05 f110 +22 muster 77m
+  achievements unlocked: 23-25/35
+  rat 6m, first_boss 7m, comeback 10m, caverns 19m, full_party 31m, revive 32m, epic 41m, retire1 52m, ult_boss 68m, gatekeeper 69m, magma 69m, omen1 81m, speed40 90m, echo 91m, lv100 100m, void 110m, hollow 139m, blitz 147m, rats25 195m, deep90 288m(1/4), chests100 291m, f100 301m, hollowed6 326m, retire10 423m, ults1k 438m(3/4), flow NEVER, f125 NEVER, omen10 NEVER, legacy_all NEVER, crucible10 NEVER, idle50 NEVER, keys10k NEVER, keys100k NEVER, flow1h NEVER, flow10h NEVER
+  trophy first reached (h): f75 2.5 f80 2.8 f85 3.3 f90 3.8 f95 4.4 f100 5.0 f105 5.9 f110 6.9 f115 7.2(1/4)

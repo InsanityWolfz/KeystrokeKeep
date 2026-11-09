@@ -1,0 +1,40 @@
+{
+  "mode": "sprites",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": true,
+  "cores": 32,
+  "switches": "",
+  "gpuInfoUpdates": 3,
+  "setup": "ok",
+  "knightAlphaAtBoot": 0,
+  "rebake": "ok",
+  "knightAlphaAfterRebake": 143,
+  "gpuInfo": {
+    "2d_canvas": "enabled",
+    "direct_rendering_display_compositor": "disabled_off_ok",
+    "gpu_compositing": "disabled_software",
+    "multiple_raster_threads": "enabled_on",
+    "opengl": "enabled_on",
+    "rasterization": "enabled",
+    "raw_draw": "disabled_off_ok",
+    "skia_graphite": "disabled_off",
+    "trees_in_viz": "disabled_off",
+    "video_decode": "enabled",
+    "video_encode": "enabled",
+    "webgl": "enabled_readback",
+    "webgpu": "enabled_readback",
+    "webnn": "disabled_off"
+  },
+  "canvasCensus": {
+    "colours": 156,
+    "heroes": [
+      {
+        "id": "knight",
+        "x": 132,
+        "dead": false
+      }
+    ]
+  },
+  "screenColours": 576
+}

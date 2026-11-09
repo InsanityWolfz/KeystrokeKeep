@@ -1,0 +1,20 @@
+// R5 probe: per-delve split times (f40 boss kill, f50, f60, f80 from delve start), Legacy levels, start floors.
+const { load, makePlayer, hm, avg, rg } = require('./econ5lib');
+const prof = process.argv[2] || 'typist', H = +(process.argv[3] || 8), seed = +(process.argv[4] || 1);
+const KK = load({ seed }); KK.world.reset();
+const P = makePlayer(KK, { profile: prof, retire: 'nudge', omen: 'random' });
+const runs = []; let cur = { start: 0, sf: 1 };
+KK.on('retired', () => { runs.push(cur); cur = { start: P.t, sf: KK.mods().startFloor }; });
+KK.on('kill', ({ e }) => { if (e.boss && KK.S.floor === 40 && cur.k40 === undefined) cur.k40 = (P.t - cur.start) / 60; if (e.boss && KK.S.floor === 60 && cur.k60 === undefined) cur.k60 = (P.t - cur.start) / 60; });
+KK.on('floor', ({ floor }) => { for (const f of [50, 80, 100]) if (floor === f && cur['f' + f] === undefined) cur['f' + f] = (P.t - cur.start) / 60; });
+const legAt = {};
+P.run(H * 3600, []);
+for (const h of []) ;
+runs.push(cur);
+console.log(`${prof} seed${seed} ${H}h: per delve [start floor | f40 boss kill | f50 | f60 boss | f80 | f100] minutes from delve start`);
+runs.forEach((r, i) => console.log(`  delve ${i + 1} @${hm(r.start)} sf${r.sf} | ${[r.k40, r.f50, r.k60, r.f80, r.f100].map((x) => x === undefined ? '-' : x.toFixed(1)).join(' | ')}`));
+console.log('legacy end', JSON.stringify(KK.S.legacy), 'renown unspent', KK.S.renown, 'lifetime', KK.S.renownLifetime);
+const capped = KK.DATA.LEGACY.filter((d) => d.max < 999); let need = 0;
+for (const d of capped) for (let l = 0; l < d.max; l++) need += d.cost(l);
+console.log('Renown to max every capped Legacy:', need, '| missing:', capped.filter((d) => (KK.S.legacy[d.id] || 0) < d.max).map((d) => `${d.id} ${KK.S.legacy[d.id] || 0}/${d.max}`).join(', '));
+console.log('workshop', JSON.stringify(KK.S.workshop), 'embers unspent', Math.floor(KK.S.embers), 'ach', Object.keys(P.ach).length);

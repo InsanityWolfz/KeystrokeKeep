@@ -1,0 +1,3 @@
+=== Second Wind on/off, typist, 8h x4, retire nudge, omen random ===
+default | 1h00 f66.3 R97 emb 3.5k oc4.0 | 4h00 f126.0 R394 emb 20.6k oc7.3 | 8h00 f146.8 R537 emb 50.6k oc9.5 | SW triggers/h 29.7 SW sparks/h 1627 SW lv 9.8 | first SW buy n/a
+no SW   | 1h00 f67.8 R101 emb 3.4k oc4.0 | 4h00 f126.3 R376 emb 18.0k oc7.5 | 8h00 f141.0 R498 emb 40.3k oc10.0 | SW triggers/h 0.0 SW sparks/h 0 SW lv 0.0 | first SW buy n/a

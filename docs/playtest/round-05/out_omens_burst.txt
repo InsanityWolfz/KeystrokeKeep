@@ -1,0 +1,12 @@
+=== omens forced every delve, burst, 8h x4, retire nudge ===
+none      | 4h00 f90.8 (+0.0) R188 (0%) wipes 12 | 8h00 f110.5 (+0.0) R295 (0%) wipes 12
+gilded    | 4h00 f91.0 (+0.3) R192 (2%) wipes 12 | 8h00 f112.0 (+1.5) R291 (-1%) wipes 12
+glass     | 4h00 f92.8 (+2.0) R202 (7%) wipes 12 | 8h00 f116.0 (+5.5) R330 (12%) wipes 18
+storm     | 4h00 f91.5 (+0.8) R201 (7%) wipes 12 | 8h00 f116.3 (+5.8) R325 (10%) wipes 13
+quiet     | 4h00 f94.5 (+3.8) R215 (14%) wipes 12 | 8h00 f117.0 (+6.5) R331 (12%) wipes 13
+fever     | 4h00 f90.8 (+0.0) R190 (1%) wipes 12 | 8h00 f113.5 (+3.0) R314 (6%) wipes 13
+embertide | 4h00 f89.8 (-1.0) R183 (-3%) wipes 12 | 8h00 f112.3 (+1.8) R305 (3%) wipes 12
+march     | 4h00 f92.8 (+2.0) R196 (4%) wipes 12 | 8h00 f114.0 (+3.5) R312 (6%) wipes 13
+hoard     | 4h00 f90.8 (+0.0) R191 (2%) wipes 12 | 8h00 f110.5 (+0.0) R291 (-1%) wipes 12
+muster    | 4h00 f91.5 (+0.8) R195 (4%) wipes 12 | 8h00 f112.8 (+2.3) R299 (1%) wipes 12
+deep      | 4h00 f88.0 (-2.8) R198 (5%) wipes 12 | 8h00 f109.8 (-0.8) R319 (8%) wipes 13

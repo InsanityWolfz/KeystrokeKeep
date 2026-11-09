@@ -101,12 +101,19 @@ Format: `- [round found] [severity] item: status/reason`
 ### Fixed in R4
 - Packaging (electron-builder, fuses, trimmed natives, icon), achievements (35), depth trophies, demo Renown cap + import conversion, omen balance + modal, Vigil Sanctuary + void slam, Head Start levels/retreat floor, Second Wind feedback, low-GPU mode, fullscreen false positives, save hardening (validated rotation, corrupt quarantine, retries, shutdown flush, one-time demo import).
 
+### Fixed in R5
+- Heal scaling, achievement bugs (Hands Off, Speedrunner, Blitz), ember floater amounts, re-delve banner, Head Start mid-delve levels, void slam readability (alert channel) and pacing, floor-100 boss + banner, Codex for week 2, two signature moves, demo/full instance lock.
+
 ### Open (ranked)
 - [R4] [check] Measure GPU/CPU with low-GPU mode on (default) incl. an iGPU laptop if possible; fullscreen filter vs real overlays; save edge cases on the packaged build (market probe in docs/playtest/round-04/market_probe).
 - [R3] [blocker, owner: user] Steamworks onboarding (fee/tax/bank), app id, Coming Soon page (~Nov 23), trailer (Jan 8), demo + page review submission (~Jan 12, deadline Jan 18). Set `KK.STORE_URL`.
 - [R3] [blocker, needs app id] Steamworks in main (steamworks-ffi-node or steamworks.js): init, achievements mirror of `S.ach` (full game only; demo grants on import), rich presence, Auto-Cloud on `%APPDATA%/Keystroke Keep/saves/*.json`, overlay test.
 - [R3] [blocker, owner: user] Code-signing certificate (Azure Artifact Signing or OV); then `win.azureSignOptions`/certificate config; VirusTotal + Microsoft submissions.
-- [R4] [major] Demo and full game can run at once (two strips, two hooks): shared single-instance lock across both.
+- [R5] [check] R5 market report arrived after the write-up: fold its findings in (power low-GPU on/off, fullscreen filters, save hardening, packaged build, store checklist + trailer shot list in round-05/market.md).
+- [R5] [major] Remaining signature moves: Rat King Royal Summons, Brood Mother Web Shot, Ember Colossus Magma Shell, Magma Lord Lava Rain (numbers in round-05/auditor.md).
+- [R5] [major] Week-2 layer beyond the Codex: Omen of the Day (daily star omen, +10 Renown once a day), Void Lantern Workshop sink, trophies every 10 floors past 150.
+- [R5] [minor] Demo card: hold floor 40 in a victory pose until dismissed; sprite teasers; move the DEMO pill to .hud-right.
+- [R5] [minor] Progress display for counter achievements; chests/wipes in the stat box.
 - [R4] [minor] Mouse-move events wake the main process ~650 Hz (uiohook); post-fest Raw Input or a fork that drops moves.
 - [R4] [minor] Late-game number soup: rolling per-target totals above 1K/s; stacked floor labels on biome change; The Hollow sprite too small for a finale.
 - [R1] [minor] Boss signature moves for the early bosses; second frames for Golem/Ember Colossus; real boss + capsule art (artist).
@@ -121,4 +128,5 @@ Format: `- [round found] [severity] item: status/reason`
 | R1 | 2026-11-09 | Record-based Renown, Embers, offline cap, ult rotation, Hollowed bosses, 30 fps cap + power/audio suspend, no network, calm mode, two-step relic pick | eedfe92 |
 | R2 | 2026-11-09 | Ember Crucible, ult buff, compounding Fame, relic queue, charge bar, retire nudge, demo mode, fullscreen auto-hide, sleeping loop, CSS-animation GPU fix, hook off on pause | e4068a6 |
 | R3 | 2026-11-09 | Demo re-delve loop + card, Delve Omens, Sanctuary reaction, ligature fix, file saves, per-monitor fullscreen, baked demo flag, 24 fps, bar transitions removed | 220510d |
-| R4 | 2026-11-09 | Packaging + fuses, achievements, depth trophies, demo Renown cap, omen rebalance + modal, Vigil + void slam, low-GPU mode, save hardening | 40214c3 + (this round) |
+| R4 | 2026-11-09 | Packaging + fuses, achievements, depth trophies, demo Renown cap, omen rebalance + modal, Vigil + void slam, low-GPU mode, save hardening | 40214c3, d42bbc9 |
+| R5 | 2026-11-09 | Heal cap, Dynamo, Hollow Codex, War Charge + Reassemble, alert channel, Heart of the Keep, achievement fixes, demo cap 120, cross-build instance lock | (this round) |

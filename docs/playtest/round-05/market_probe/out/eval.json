@@ -1,0 +1,61 @@
+{
+  "mode": "eval",
+  "phases": {},
+  "childGone": [],
+  "lowGpuSwitch": false,
+  "cores": 32,
+  "switches": "",
+  "gpuInfoUpdates": 2,
+  "setup": "ok",
+  "gpuInfo": {
+    "2d_canvas": "enabled",
+    "direct_rendering_display_compositor": "disabled_off_ok",
+    "gpu_compositing": "enabled",
+    "multiple_raster_threads": "enabled_on",
+    "opengl": "enabled_on",
+    "rasterization": "enabled",
+    "raw_draw": "disabled_off_ok",
+    "skia_graphite": "disabled_off",
+    "trees_in_viz": "disabled_off",
+    "video_decode": "enabled",
+    "video_encode": "enabled",
+    "webgl": "enabled",
+    "webgpu": "enabled",
+    "webnn": "disabled_off"
+  },
+  "eval": {
+    "palKey": "k",
+    "palCol": "#1b1424",
+    "bakedNow": 6,
+    "bakedWhite": 6,
+    "loopFill": 4,
+    "hexFill": 4,
+    "iconURLlen": 390,
+    "palSample": [
+      [
+        "k",
+        "#1b1424"
+      ],
+      [
+        "K",
+        "#2e2440"
+      ],
+      [
+        "w",
+        "#f4f1ea"
+      ],
+      [
+        "g",
+        "#b4bccb"
+      ],
+      [
+        "G",
+        "#6b7487"
+      ],
+      [
+        "d",
+        "#454c5e"
+      ]
+    ]
+  }
+}

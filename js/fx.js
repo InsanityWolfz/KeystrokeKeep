@@ -5,7 +5,7 @@
   const KK = window.KK, U = KK.U;
   const W = KK.world;
   const FX = KK.fx = {
-    parts: [], texts: [], rings: [], lights: [], banners: [], coins: [], beams: [], pillars: [],
+    parts: [], texts: [], alerts: [], rings: [], lights: [], banners: [], coins: [], beams: [], pillars: [],
     shakeT: 0, shakeAmp: 0, flashA: 0, flashCol: '#fff', hitstop: 0, slowT: 0, slowF: 1,
   };
   const MAX_PARTS = 900;
@@ -36,6 +36,7 @@
       live.push(p);
     }
     FX.parts = live;
+    FX.alerts = FX.alerts.filter((a) => (a.t += dt) < a.life);
     FX.texts = FX.texts.filter((t) => { t.life -= dt; t.y = Math.max(15, t.y + t.vy * dt); t.vy *= 0.9; if (t.bump > 0) t.bump -= dt; return t.life > 0; });
     FX.rings = FX.rings.filter((r) => (r.t += dt) < r.life);
     FX.lights = FX.lights.filter((l) => (l.t += dt) < l.life);
@@ -96,6 +97,8 @@
     if (FX.texts.length > 14) FX.texts.shift();
     FX.texts.push({ x: x + U.rand(-2, 2), y, str: String(str), col, scale, life: o.life || 0.85, max: o.life || 0.85, vy: o.vy !== undefined ? o.vy : -38, pop: !!o.pop, bump: 0 });
   };
+  /** Important warnings: never dropped, drawn on top over the party. */
+  FX.alert = (str, col = '#fff', life = 1.2) => { FX.alerts = FX.alerts.filter((a) => a.str !== str); FX.alerts.push({ str, col, life, t: 0 }); };
   FX.ring = (x, y, r0, r1, col, life = 0.5, w = 1) => FX.rings.push({ x, y, r0, r1, col, life, t: 0, w });
   FX.light = (x, y, r, life, col = '#ffd27a', a = 1) => FX.lights.push({ x, y, r, life, t: 0, col, a });
   // Calm mode (Settings): this lives on screen all day, so flashes/shake/hitstop can be turned way down.
@@ -137,6 +140,7 @@
     if (FX.texts.length > 14) FX.texts.shift();
   }
   KK.on('hit', ({ e, dmg, crit, ult }) => {
+    if (e.windup > 0) return;
     if (crit) {
       dmgText(e, dmg, '#ffd34a', 1, 'c');
       FX.stop(0.035);
@@ -313,15 +317,27 @@
     FX.coinBurst(x, W.GROUND - 30, 1);
     FX.burst(x, W.GROUND - 30, 4, ['#ffd76a', '#fff'], { spd: 30, life: 0.4 });
   });
+  KK.on('chargeWarn', ({ e }) => { FX.alert('WAR CHARGE!', '#ff9a9a', 1.0); e.windup = 1.0; });
+  KK.on('warCharge', ({ e }) => {
+    FX.shake(3, 0.3);
+    FX.burst(e.x - 8, W.GROUND, 20, ['#9a8a7a', '#c9b8a0', '#ff6b6b'], { spd: 110, up: -50, life: 0.7, floor: true });
+    FX.text(e.x, e.y - e.def.h - 6, 'WAR CHARGE!', '#ff8a8a', 1, { life: 1.0, vy: -14 });
+  });
+  KK.on('reassemble', ({ e }) => {
+    FX.burst(e.x, e.y - e.def.h / 2, 30, ['#e8e2d0', '#b8b098', '#ffffff'], { spd: 90, up: -40, life: 0.9, floor: true });
+    FX.text(e.x, e.y - e.def.h - 6, 'REASSEMBLES!', '#e8e2d0', 1, { life: 1.4, vy: -12 });
+  });
   KK.on('voidWarn', ({ e }) => {
-    FX.text(e.x, e.y - e.def.h - 10, '!! VOID SLAM !!', '#c472ff', 1, { life: 1.0, vy: 0 });
+    FX.alert('VOID SLAM INCOMING', '#e0b0ff', 1.1); e.windup = 1.0;
     FX.ring(W.partyX - 20, W.GROUND, 4, 80, '#a24cff', 1.0, 2);
   });
-  KK.on('voidSlam', () => {
-    FX.flash('#5a1aa0', 0.3); FX.shake(3, 0.35);
+  KK.on('voidSlam', ({ e }) => {
+    e.slams = (e.slams || 0) + 1;
+    if (e.slams <= 3) { FX.flash('#5a1aa0', 0.3); FX.shake(3, 0.35); } // long fights: damp the noise after a few
     FX.ring(W.partyX - 20, W.GROUND, 3, 110, '#c472ff', 0.6, 2);
     FX.burst(W.partyX - 20, W.GROUND - 4, 30, ['#c472ff', '#6a2cff', '#ffffff'], { spd: 120, up: -50, life: 0.8, floor: true });
   });
+  KK.on('bossEnrage', () => FX.alert('THE BOSS IS TOO STRONG: RETREAT', '#ff9a9a', 2.0));
   KK.on('trophy', ({ floor }) => {
     const x = W.partyX - 20;
     FX.banner(floor === 100 ? 'HEART OF THE KEEP' : 'DEPTH TROPHY', floor === 100 ? 'FLOOR 100: x1.05 FOREVER' : 'FLOOR ' + floor + ': x1.05 FOREVER', '#ffd76a', 2.6, { subCol: '#fff6c9' });
@@ -332,8 +348,8 @@
     const h = W.heroes.find((x) => !x.dead);
     if (h) FX.text(h.x, h.y - 30, 'SECOND WIND!', '#ffb070', 1, { life: 1.4, vy: -12 });
   });
-  KK.on('kill', ({ e }) => { if (e.boss) setTimeout(() => FX.text(e.x, headY(e) - 14, '+10 EMBERS', '#ffb070', 1, { life: 1.4, vy: -14 }), 300); });
-  KK.on('ratCaught', ({ x, y }) => setTimeout(() => FX.text(x, y - 26, '+25 EMBERS', '#ffb070', 1, { life: 1.4, vy: -12 }), 300));
+  KK.on('kill', ({ e }) => { if (e.boss) setTimeout(() => FX.text(e.x, headY(e) - 14, '+' + Math.round(10 * KK.mods().emberGain) + ' EMBERS', '#ffb070', 1, { life: 1.4, vy: -14 }), 300); });
+  KK.on('ratCaught', ({ x, y }) => setTimeout(() => FX.text(x, y - 26, '+' + Math.round(25 * KK.mods().emberGain) + ' EMBERS', '#ffb070', 1, { life: 1.4, vy: -12 }), 300));
   KK.on('poke', ({ e }) => FX.burst(e.x, e.y - e.def.h / 2, 6, ['#ffffff', '#7ee8f6'], { spd: 80, life: 0.3 }));
 
   // keystroke energy: a spark rises from the floor and flies into the party

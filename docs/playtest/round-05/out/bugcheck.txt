@@ -1,0 +1,6 @@
+Blitz after restart with 4 stale boss kills + 1 new kill: unlocked=true (bossTimes now [5000,5100,5200,5300,12])
+Hands Off after a single click this delve: unlocked=false (runInputs 1)
+Hands Off with input counting PAUSED and a click: unlocked=true
+Crucible 10 + Ember Tide: boss kill pays 50 Embers (floater says +10), rat pays 125 (floater says +25)
+Demo re-delve at the Renown cap: retire() returned "redelve" -> banner text "+redelve RENOWN"
+Head Start 8 start floor: 41 (Speedrunner and Gatekeeper need the floor-40 boss)

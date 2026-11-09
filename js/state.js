@@ -15,7 +15,7 @@
       relics: [], relicOffer: null, relicQueue: [],
       omen: null, omenOffer: null, epicGiven: false, secondWind: 0,
       demoDone: false, runCapCleared: false, bestCapTime: 0, runTime: 0, demoSave: false, demoLaps: 0,
-      ach: {}, achP: {}, runInputs: 0, lastForge: {},
+      ach: {}, achP: {}, runInputs: 0, lastForge: {}, codex: {},
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
       stats: { kills: 0, bossKills: 0, keys: 0, clicks: 0, ults: 0, goldEarned: 0, playTime: 0, chests: 0, rats: 0, flowTime: 0, wipes: 0 },
@@ -27,7 +27,7 @@
   };
 
   KK.S = KK.newState();
-  KK.DEMO_RENOWN_CAP = 48; // 30 for the first clear + 3 re-clears; then best time is the score
+  KK.DEMO_RENOWN_CAP = 120; // first clear 30 + 15 re-clears (~2 h typist); then best time is the score. The full game converts it on import.
   KK.STORE_URL = ''; // e.g. 'steam://openurl/https://store.steampowered.com/app/<appid>' once the page exists
 
   // Next Fest demo mode: ?demo in the browser, --kk-demo / KK_DEMO=1 for the desktop build.
@@ -62,7 +62,7 @@
     isBossFloor: (f) => f % 10 === 0,
     bossFor: (f) => {
       // past the Hollow, the Void throws every old boss back at you, hollowed out
-      if (f === 70) return 'hollow';
+      if (f === 70 || f === 100) return 'hollow';
       if (f >= 80) { const six = ['ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; return six[(Math.floor((f - 80) / 10) + 2 * (KK.S.retires || 0)) % six.length]; }
       const b = F.biomeOf(f);
       const idx = Math.floor(((f - b.from) % 20) / 10);
@@ -80,13 +80,16 @@
       dmg: 1, hp: 1, gold: 1, walk: 1, aspd: 1, ultCost: 1, ultPow: 1, fervDecay: 1, fervGain: 1,
       sparkCap: 150, chest: 0.08, offline: 0.4, offlineCap: 0.8, emberGain: 1, crit: 0.06, critMult: 2, lifesteal: 0, echo: 0, flowBonus: 0,
       keyCoin: 0, hotkey: false, knightHp: 1, knightDmg: 1, heroCost: 1, startLvl: 0, startFloor: 1,
-      relicChoices: 3, auto: false, idlePow: 0, secondWind: 0, eHp: 1, eAtk: 1, renownMult: 1,
+      relicChoices: 3, auto: false, idlePow: 0, secondWind: 0, dynamo: 0, eHp: 1, eAtk: 1, renownMult: 1,
     };
     for (const r of S.relics) { const def = D.RELICS.find((x) => x.id === r); if (def) def.apply(m); }
     for (const def of D.FORGE) { const l = S.forge[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.WORKSHOP) { const l = S.workshop[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.LEGACY) { const l = S.legacy[def.id] || 0; if (l) def.apply(m, l); }
     if (S.omen) { const o = D.OMENS.find((x) => x.id === S.omen); if (o) o.apply(m); }
+    m.codexRanks = 0;
+    for (const k in (S.codex || {})) m.codexRanks += D.CODEX_RANKS.filter((n) => S.codex[k] >= n).length;
+    if (m.codexRanks) { const c = Math.pow(1.03, m.codexRanks); m.dmg *= c; m.gold *= c; }
     m.trophies = D.TROPHIES.filter((f) => S.maxFloorEver >= f).length;
     if (m.trophies) { const t = Math.pow(1.05, m.trophies); m.dmg *= t; m.gold *= t; }
     m.offline = Math.min(m.offlineCap, m.offline); // closing the game must never beat running it
@@ -112,8 +115,8 @@
     const m = KK.mods(), t = KK.fervorTier();
     let mult = D.FERVOR_TIERS[t].mult;
     if (t === 3) mult += m.flowBonus;
-    // Idle Battery is a floor, so starting to type can never make the party weaker
-    return Math.max(mult, 1 + m.idlePow);
+    // Idle Battery and Dynamo are a floor, so starting to type can never make the party weaker
+    return Math.max(mult, 1 + m.idlePow + m.dynamo);
   };
 
   // ---------------------------------------------------------------- activity (the hook)
@@ -237,7 +240,7 @@
     KK.dirty();
     const m = KK.mods();
     if (id === 'headstart' && S.floor < m.startFloor && S.maxFloorRun <= m.startFloor) { S.floor = m.startFloor; S.maxFloorRun = Math.max(S.maxFloorRun, m.startFloor); KK.emit('jumpFloor', { floor: S.floor }); }
-    if (id === 'veterans') for (const h of D.PARTY_ORDER) if (S.heroes[h] && S.heroes[h] < 1 + m.startLvl) S.heroes[h] = 1 + m.startLvl;
+    if (id === 'veterans' || id === 'headstart') for (const h of D.PARTY_ORDER) if (S.heroes[h] && S.heroes[h] < 1 + m.startLvl) S.heroes[h] = 1 + m.startLvl;
     KK.dirty();
     KK.emit('upgrade', { store: 'legacy', id, lvl: l + 1 });
     return true;

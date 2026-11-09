@@ -317,6 +317,16 @@
 
     // ---- banners
     if (FX.banners.length) drawBanner2(FX.banners[0]);
+    // ---- alerts (never dropped, on a plate, over the party)
+    if (FX.alerts.length) {
+      const a = FX.alerts[FX.alerts.length - 1];
+      const ax = Math.round(sxw(W.partyX - 10)), ay = 24;
+      const w = a.str.length * 4 + 8;
+      b.globalAlpha = Math.min(1, (a.life - a.t) / 0.2);
+      b.fillStyle = '#000000cc'; b.fillRect(ax - w / 2, ay - 4, w, 11);
+      KK.font.draw(b, a.str, ax, ay, Math.floor(a.t * 8) % 2 ? '#ffffff' : a.col);
+      b.globalAlpha = 1;
+    }
 
     // ---- full-screen flash / transitions
     if (FX.flashA > 0) { b.globalAlpha = Math.min(1, FX.flashA); b.fillStyle = FX.flashCol; b.fillRect(0, 0, Wd, H); b.globalAlpha = 1; }

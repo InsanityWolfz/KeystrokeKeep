@@ -430,3 +430,9 @@ body.native #panel { border-bottom: 0; }
 .omen .up { color: #8de88a; font-size: 12px; }
 .omen .down { color: #ff9a9a; font-size: 12px; }
 .buy .l, .buy span { white-space: nowrap; }
+
+.omen .new { font-style: normal; font-size: 9px; background: #7ee8f6; color: #000; padding: 0 3px; margin-left: 4px; }
+
+/* Round 5: digits in the pixel font misread at 12px */
+.omen .up, .omen .down, .card .desc, .demo-stats span { font-size: 14px; }
+.demo-pill { align-self: center; }

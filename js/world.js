@@ -76,8 +76,9 @@
     const x0 = W.partyX + SPAWN_AHEAD;
     if (F.isBossFloor(f) && W.wave === W.waves - 1) {
       const key = F.bossFor(f);
-      const boss = makeEnemy(key, x0 + 20, f);
-      if (f >= 70 && key !== 'hollow') { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
+      const boss = makeEnemy(key, x0 + 20, f, f === 100 ? { hpMult: 1.5 } : undefined);
+      if (f === 100) { boss.def = Object.assign({}, boss.def, { name: 'The Heart of the Keep' }); boss.heart = true; }
+      else if (f >= 70 && key !== 'hollow') { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
       W.boss = boss;
       const minions = Math.min(2, Math.floor(f / 20));
       for (let i = 0; i < minions; i++) makeEnemy(U.pick(b.monsters), x0 - 14 - i * 14, f);
@@ -119,12 +120,25 @@
 
   W.killEnemy = function (e) {
     const S = KK.S, m = KK.mods();
+    // The Bone King (and his Hollowed self) pulls himself back together once per fight
+    if (e.boss && e.key === 'boneking' && !e.reassembled) {
+      e.reassembled = true; e.hp = e.maxHp * 0.25; e.stun = 1.5;
+      KK.emit('reassemble', { e });
+      return;
+    }
     e.dead = true; e.hp = 0;
     const gold = e.gold * m.gold;
     KK.gainGold(gold, 'kill');
     S.stats.kills++;
     if (e.boss) {
       S.stats.bossKills++;
+      if (e.hollowed || e.key === 'hollow') {
+        const ck = e.key === 'hollow' && !e.hollowed ? 'hollow' : 'h_' + e.key;
+        S.codex = S.codex || {};
+        S.codex[ck] = (S.codex[ck] || 0) + 1;
+        const rank = D.CODEX_RANKS.indexOf(S.codex[ck]);
+        if (rank >= 0) { KK.dirty(); KK.emit('codex', { name: e.def.name, rank: rank + 1 }); }
+      }
       KK.gainEmbers(10);
       W.boss = null;
       S.bossBlock = 0;
@@ -341,7 +355,8 @@
         let low = null;
         for (const o of W.heroes) if (!o.dead && o.hp / o.maxHp < 0.92 && (!low || o.hp / o.maxHp < low.hp / low.maxHp)) low = o;
         if (low) {
-          const amt = F.heroDmg('cleric', S.heroes.cleric) * 3.2 * m.dmg * pm;
+          // a regular heal tops up at most 25% of max HP, so danger (void slams, HP banes) stays real
+          const amt = Math.min(F.heroDmg('cleric', S.heroes.cleric) * 3.2 * m.dmg * pm, low.maxHp * 0.25);
           W.healHero(low, amt, h);
           h.cast = 0.3;
           KK.emit('healBeam', { from: h, to: low });
@@ -422,18 +437,40 @@
       if (e.stun > 0) { e.stun -= dt; prevX = e.x; continue; }
       if (frozen || !front) { prevX = e.x; continue; }
       const reach = front.x + e.def.w / 2 + e.def.range;
+      // Goblin Warlord (and his Hollowed self): War Charge. Backs off, winds up, charges the line.
+      if (e.boss && e.key === 'warlord') {
+        e.chT = (e.chT === undefined ? 1.5 : e.chT) - dt;
+        if (e.chPhase === 'back') { e.x += 60 * dt; e.moving = true; if ((e.chP -= dt) <= 0) { e.chPhase = 'wind'; e.chP = 1.0; KK.emit('chargeWarn', { e }); } prevX = e.x; continue; }
+        if (e.chPhase === 'wind') { e.moving = false; if ((e.chP -= dt) <= 0) e.chPhase = 'go'; prevX = e.x; continue; }
+        if (e.chPhase === 'go') {
+          e.x -= 120 * dt; e.moving = true;
+          if (e.x <= reach) {
+            e.x = reach; e.chPhase = null;
+            W.damageHero(front, e.atk * 2, e);
+            W.partyX -= 16; // the line is shoved back
+            KK.emit('warCharge', { e });
+          }
+          prevX = e.x; continue;
+        }
+        if (e.chT <= 0 && e.x <= reach + 2) { e.chT = 10; e.chPhase = 'back'; e.chP = 0.5; }
+      }
       const limit = Math.max(reach, prevX + 12);
       if (e.x > limit) { e.x = Math.max(limit, e.x - e.def.speed * dt); e.moving = true; }
       else e.moving = false;
       prevX = e.x;
       e.atkT -= dt;
       if (e.flashCool > 0) e.flashCool -= dt;
+      if (e.windup > 0) e.windup -= dt;
+      if (e.boss && e.active) {
+        e.fightT = (e.fightT || 0) + dt;
+        if (e.fightT > 180 && !W.wipeT) { KK.emit('bossEnrage', { e }); W.wipe(); } // too strong for now: retreat and farm
+      }
       if (e.boss && (e.hollowed || e.key === 'hollow') && e.active) {
         e.voidT = (e.voidT === undefined ? 5 : e.voidT) - dt;
         if (e.voidT <= 1 && !e.voidWarn) { e.voidWarn = true; KK.emit('voidWarn', { e }); }
         if (e.voidT <= 0) {
-          e.voidT = 8; e.voidWarn = false;
-          for (const h of W.heroes) if (!h.dead) W.damageHero(h, h.maxHp * 0.45, e);
+          e.voidT = 12; e.voidWarn = false;
+          for (const h of W.heroes) if (!h.dead) W.damageHero(h, h.maxHp * 0.55, e);
           KK.emit('voidSlam', { e });
           if (!e.vigil) { e.vigil = true; W.sanctuaryReact(true); }
           else if (W.heroes.some((h) => !h.dead && h.hp / h.maxHp < 0.5)) W.sanctuaryReact();

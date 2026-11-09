@@ -1,0 +1,48 @@
+=== R5 probe idle s1 180m retire=nudge omen=random DEMO: maxEver 40, retires 11, renown life 48 (unspent 0), keys 0, FLOW 0m, ults 76, trophies 0, ach 12/35, fame x3.0
+  0h00  MAJOR  biome The Crypt
+  0h03  MAJOR  first golden rat
+  0h04  ACH    ach rat
+  0h05  MAJOR  recruit archer
+  0h05  MAJOR  boss The Rat King (f10)
+  0h07  MAJOR  first relic offer
+  0h07  ACH    ach first_boss
+  0h07  ACH    ach comeback
+  0h14  MAJOR  retire unlocked
+  0h16  MAJOR  boss The Bone King (f20)
+  0h18  ACH    ach caverns
+  0h18  MAJOR  biome Mossy Caverns
+  0h20  MAJOR  recruit mage
+  0h32  ACH    ach full_party
+  0h32  MAJOR  recruit cleric
+  0h35  MAJOR  boss Brood Mother (f30)
+  0h42  MAJOR  first EPIC offered
+  0h43  ACH    ach epic
+  0h55  MAJOR  boss Goblin Warlord (f40)
+  0h55  ACH    ach revive
+  0h55  MAJOR  first REVIVE
+  0h59  ACH    ach gatekeeper
+  1h00  ACH    ach retire1
+  1h00  MAJOR  first RETIRE
+  1h26  ACH    ach speed40
+  1h37  ACH    ach echo
+  2h54  ACH    ach rats25
+per 30 min from h1: MAJOR            1 0 0 0 0
+per 30 min from h1: +OMEN+TROPHY     1 0 0 0 0
+per 30 min from h1: +ACH             3 1 0 1 0
+empty 30-min windows h2-5 / h5-8 / h8-end: no ACH 4/8 0/6 - | with ACH 2/8 0/6 -
+longest gap after h1: maj+omen+trophy 120m (from 1h00) | +ach 77m (from 1h37)
+last MAJOR 1h00; last new OMEN — (0); trophies 
+retires (11): 1h00 f40 +30, 1h16 f40 +6, 1h27 f40 +6, 1h39 f40 +6, 1h50 f40 +0, 2h00 f40 +0, 2h10 f40 +0, 2h20 f40 +0, 2h31 f40 +0, 2h41 f40 +0, 2h53 f40 +0
+SANCTUARY: casts 29 (9.7/h; boss fights 29), revives 1; fights with Pell 25, with a cast 24 (96%), reaching 4 swings 24
+SECOND WIND: lvl 2, triggers 0, bonus Sparks 0 of 0 (0.0%)
+EMBERS: ult 524, boss 536, rat 876, unspent 172
+SATURATION: capped Legacy all max —, Workshop capped all max —, Head Start 8 —
+BOSS FIGHTS (key: n | kills | wipes | median dur s | median swings | % reaching swing 4 | n per hour bucket h0..):
+  ratking           2 |    1 |   1 |   32.5 |  18 | 100% | 2 0 0 0
+  boneking         13 |   12 |   1 |    6.8 |   2 |  23% | 2 5 6 0
+  broodmother      14 |   12 |   2 |   14.8 |   8 |  93% | 3 5 6 0
+  warlord          11 |   11 |   0 |   44.1 |  25 | 100% | 1 5 5 0
+per 30 min snapshot (t hs startFloor maxEver renown life ach trophies): 0h00 hs0 f1 max1 r0/0 a0 t0 | 0h30 hs0 f1 max26 r0/0 a4 t0 | 1h00 hs0 f1 max40 r0/0 a8 t0 | 1h30 hs2 f11 max40 r0/42 a10 t0 | 2h00 hs2 f11 max40 r0/48 a11 t0 | 2h30 hs2 f11 max40 r0/48 a11 t0 | 3h00 hs2 f11 max40 r0/48 a12 t0
+DEMO: card 0h59, laps 11, sealed 10, re-delves 11, Renown after card +48, lifetime 48, best 8.6m; retire() return values: [30,6,6,6,"redelve","redelve","redelve","redelve","redelve","redelve","redelve"]
+ACH: first_boss 0h07 | flow NO | full_party 0h32 | retire1 1h00 | gatekeeper 0h59 | rat 0h04 | epic 0h43 | caverns 0h18 | comeback 0h07 | echo 1h37 | ult_boss NO | revive 0h55 | speed40 1h26 | blitz NO | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | f125 NO | retire10 NO | omen1 NO | omen10 NO | deep90 NO | legacy_all NO | crucible10 NO | lv100 NO | chests100 NO | rats25 2h54 | idle50 NO | keys10k NO | keys100k NO | flow1h NO | flow10h NO | ults1k NO
+end heroes {"knight":62,"archer":51,"mage":40,"cleric":37} workshop {"crucible":4,"overcharge":3,"kindling":2,"static":2} legacy {"veterans":2,"headstart":2,"battery":2,"zeal":2,"campfire":1,"lineage":1,"treasury":1,"quartermaster":1}

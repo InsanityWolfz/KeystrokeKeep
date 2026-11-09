@@ -1,0 +1,8 @@
+=== omens forced every delve, typist, 8h x4, retire nudge ===
+none      | 4h00 f122.8 (+0.0) R372 (0%) wipes 14 | 8h00 f144.0 (+0.0) R514 (0%) wipes 51
+glass     | 4h00 f128.0 (+5.3) R406 (9%) wipes 25 | 8h00 f147.0 (+3.0) R539 (5%) wipes 101
+march     | 4h00 f126.0 (+3.3) R386 (4%) wipes 17 | 8h00 f144.8 (+0.8) R515 (0%) wipes 68
+quiet     | 4h00 f123.3 (+0.5) R374 (0%) wipes 12 | 8h00 f145.0 (+1.0) R523 (2%) wipes 41
+deep      | 4h00 f121.0 (-1.8) R391 (5%) wipes 17 | 8h00 f140.5 (-3.5) R534 (4%) wipes 43
+storm     | 4h00 f130.0 (+7.3) R419 (13%) wipes 15 | 8h00 f148.5 (+4.5) R548 (7%) wipes 55
+gilded    | 4h00 f123.3 (+0.5) R375 (1%) wipes 11 | 8h00 f145.0 (+1.0) R524 (2%) wipes 28

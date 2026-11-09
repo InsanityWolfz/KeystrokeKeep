@@ -1,0 +1,542 @@
+{
+  "mode": "perf",
+  "phases": {
+    "idle": {
+      "visible": true,
+      "drawPerSec": 10.4,
+      "timeoutsPerSec": 10.4,
+      "domMutationsPerSec": 12.4,
+      "targetFps": 10,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 0,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.25,
+      "wsMB": 417,
+      "privMB": 320,
+      "kk3d": {
+        "avg": 3.13,
+        "min": 1.96,
+        "max": 6.33
+      },
+      "dwm3d": {
+        "avg": 19.46,
+        "min": 13.49,
+        "max": 25.63
+      },
+      "kkCtxSw": {
+        "avg": 1989.36,
+        "min": 1070,
+        "max": 5987
+      },
+      "dwmCtxSw": {
+        "avg": 590.82,
+        "min": 580,
+        "max": 614
+      },
+      "kkGpuAll": {
+        "avg": 3.15,
+        "min": 1.97,
+        "max": 6.4
+      },
+      "cpuMachinePct": {
+        "avg": 2.45,
+        "min": 0.749,
+        "max": 4.507
+      },
+      "sys3d": {
+        "avg": 41.33,
+        "min": 30.21,
+        "max": 51.86
+      },
+      "dwmCpuMachinePct": {
+        "avg": 2.59,
+        "min": 0,
+        "max": 19.504
+      },
+      "cpuOneCorePct": {
+        "avg": 4.91,
+        "min": 1.5,
+        "max": 9.01
+      },
+      "dwmCpuOneCorePct": {
+        "avg": 5.18,
+        "min": 0,
+        "max": 39.01
+      }
+    },
+    "typing_24fps_default": {
+      "visible": true,
+      "drawPerSec": 23.7,
+      "timeoutsPerSec": 29.5,
+      "domMutationsPerSec": 36.8,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 3,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x326",
+      "heapMB": 9.5,
+      "cpuPct": 0.62,
+      "wsMB": 443,
+      "privMB": 368,
+      "kk3d": {
+        "avg": 5.52,
+        "min": 3.3,
+        "max": 7.09
+      },
+      "dwm3d": {
+        "avg": 18.15,
+        "min": 13.15,
+        "max": 22.83
+      },
+      "kkCtxSw": {
+        "avg": 3618.09,
+        "min": 2448,
+        "max": 5187
+      },
+      "dwmCtxSw": {
+        "avg": 643.09,
+        "min": 601,
+        "max": 677
+      },
+      "kkGpuAll": {
+        "avg": 5.57,
+        "min": 3.31,
+        "max": 7.18
+      },
+      "cpuMachinePct": {
+        "avg": 13.94,
+        "min": 8.179,
+        "max": 18.724
+      },
+      "sys3d": {
+        "avg": 36.85,
+        "min": 28.78,
+        "max": 42.73
+      },
+      "dwmCpuMachinePct": {
+        "avg": 10.46,
+        "min": 5.242,
+        "max": 18.697
+      },
+      "cpuOneCorePct": {
+        "avg": 27.87,
+        "min": 16.36,
+        "max": 37.45
+      },
+      "dwmCpuOneCorePct": {
+        "avg": 20.92,
+        "min": 10.48,
+        "max": 37.39
+      }
+    },
+    "typing_muted": {
+      "visible": true,
+      "drawPerSec": 23.8,
+      "timeoutsPerSec": 29.4,
+      "domMutationsPerSec": 29.1,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.5,
+      "wsMB": 455,
+      "privMB": 359,
+      "kk3d": {
+        "avg": 5.12,
+        "min": 3.49,
+        "max": 7.41
+      },
+      "dwm3d": {
+        "avg": 18.37,
+        "min": 11.11,
+        "max": 24.52
+      },
+      "kkCtxSw": {
+        "avg": 2528.73,
+        "min": 2294,
+        "max": 3058
+      },
+      "dwmCtxSw": {
+        "avg": 572,
+        "min": 412,
+        "max": 630
+      },
+      "kkGpuAll": {
+        "avg": 5.15,
+        "min": 3.51,
+        "max": 7.45
+      },
+      "cpuMachinePct": {
+        "avg": 6.88,
+        "min": 4.507,
+        "max": 11.246
+      },
+      "sys3d": {
+        "avg": 39.23,
+        "min": 24.6,
+        "max": 51.04
+      },
+      "dwmCpuMachinePct": {
+        "avg": 1.57,
+        "min": 0,
+        "max": 3.749
+      },
+      "cpuOneCorePct": {
+        "avg": 13.75,
+        "min": 9.01,
+        "max": 22.49
+      },
+      "dwmCpuOneCorePct": {
+        "avg": 3.13,
+        "min": 0,
+        "max": 7.5
+      }
+    },
+    "typing_30fps": {
+      "visible": true,
+      "drawPerSec": 29.7,
+      "timeoutsPerSec": 35.3,
+      "domMutationsPerSec": 29.1,
+      "targetFps": 30,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "running",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.59,
+      "wsMB": 564,
+      "privMB": 392,
+      "kk3d": {
+        "avg": 5.88,
+        "min": 4.45,
+        "max": 7.56
+      },
+      "dwm3d": {
+        "avg": 19.11,
+        "min": 14.53,
+        "max": 22.66
+      },
+      "kkCtxSw": {
+        "avg": 3198.18,
+        "min": 2921,
+        "max": 3732
+      },
+      "dwmCtxSw": {
+        "avg": 601.55,
+        "min": 499,
+        "max": 652
+      },
+      "kkGpuAll": {
+        "avg": 5.91,
+        "min": 4.48,
+        "max": 7.61
+      },
+      "cpuMachinePct": {
+        "avg": 8.26,
+        "min": 5.23,
+        "max": 10.453
+      },
+      "sys3d": {
+        "avg": 40.33,
+        "min": 30.73,
+        "max": 46.51
+      },
+      "dwmCpuMachinePct": {
+        "avg": 0.07,
+        "min": 0,
+        "max": 0.745
+      },
+      "cpuOneCorePct": {
+        "avg": 16.53,
+        "min": 10.46,
+        "max": 20.91
+      },
+      "dwmCpuOneCorePct": {
+        "avg": 0.14,
+        "min": 0,
+        "max": 1.49
+      }
+    },
+    "hidden_tray": {
+      "visible": false,
+      "drawPerSec": 0,
+      "timeoutsPerSec": 2,
+      "domMutationsPerSec": 0,
+      "targetFps": 0,
+      "kkPaused": true,
+      "vis": "visible",
+      "audio": "suspended",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.04,
+      "wsMB": 511,
+      "privMB": 334,
+      "kk3d": {
+        "avg": 0,
+        "min": 0,
+        "max": 0
+      },
+      "dwm3d": {
+        "avg": 11.35,
+        "min": 4.79,
+        "max": 18.81
+      },
+      "kkCtxSw": {
+        "avg": 227.55,
+        "min": 143,
+        "max": 872
+      },
+      "dwmCtxSw": {
+        "avg": 534.64,
+        "min": 240,
+        "max": 571
+      },
+      "kkGpuAll": {
+        "avg": 0,
+        "min": 0,
+        "max": 0
+      },
+      "cpuMachinePct": {
+        "avg": 0.82,
+        "min": 0,
+        "max": 4.479
+      },
+      "sys3d": {
+        "avg": 23.09,
+        "min": 8.29,
+        "max": 40.34
+      },
+      "dwmCpuMachinePct": {
+        "avg": 0.2,
+        "min": 0,
+        "max": 2.242
+      },
+      "cpuOneCorePct": {
+        "avg": 1.63,
+        "min": 0,
+        "max": 8.96
+      },
+      "dwmCpuOneCorePct": {
+        "avg": 0.41,
+        "min": 0,
+        "max": 4.48
+      }
+    },
+    "locked_visible": {
+      "visible": true,
+      "drawPerSec": 0,
+      "timeoutsPerSec": 2,
+      "domMutationsPerSec": 0,
+      "targetFps": 0,
+      "kkPaused": true,
+      "vis": "visible",
+      "audio": "suspended",
+      "fervorTier": 1,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.01,
+      "wsMB": 509,
+      "privMB": 334,
+      "kk3d": {
+        "avg": 0,
+        "min": 0,
+        "max": 0
+      },
+      "dwm3d": {
+        "avg": 16.69,
+        "min": 13.57,
+        "max": 18.34
+      },
+      "kkCtxSw": {
+        "avg": 156.45,
+        "min": 137,
+        "max": 202
+      },
+      "dwmCtxSw": {
+        "avg": 550,
+        "min": 397,
+        "max": 577
+      },
+      "kkGpuAll": {
+        "avg": 0,
+        "min": 0,
+        "max": 0
+      },
+      "cpuMachinePct": {
+        "avg": 0.2,
+        "min": 0,
+        "max": 0.748
+      },
+      "sys3d": {
+        "avg": 35.35,
+        "min": 26.83,
+        "max": 39.2
+      },
+      "dwmCpuMachinePct": {
+        "avg": 16.55,
+        "min": 6.726,
+        "max": 25.196
+      },
+      "cpuOneCorePct": {
+        "avg": 0.41,
+        "min": 0,
+        "max": 1.5
+      },
+      "dwmCpuOneCorePct": {
+        "avg": 33.1,
+        "min": 13.45,
+        "max": 50.39
+      }
+    }
+  },
+  "childGone": [],
+  "lowGpuSwitch": false,
+  "cores": 2,
+  "switches": "",
+  "gpuInfoUpdates": 3,
+  "baselineNoKK": {
+    "kk3d": {
+      "avg": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dwm3d": {
+      "avg": 16.83,
+      "min": 7.26,
+      "max": 24.77
+    },
+    "kkCtxSw": {
+      "avg": 53.45,
+      "min": 42,
+      "max": 78
+    },
+    "dwmCtxSw": {
+      "avg": 619.18,
+      "min": 597,
+      "max": 637
+    },
+    "kkGpuAll": {
+      "avg": 0,
+      "min": 0,
+      "max": 0
+    },
+    "cpuMachinePct": {
+      "avg": 0.07,
+      "min": 0,
+      "max": 0.76
+    },
+    "sys3d": {
+      "avg": 35.25,
+      "min": 13.78,
+      "max": 50.86
+    },
+    "dwmCpuMachinePct": {
+      "avg": 4.55,
+      "min": 2.275,
+      "max": 7.574
+    },
+    "cpuOneCorePct": {
+      "avg": 0.14,
+      "min": 0,
+      "max": 1.52
+    },
+    "dwmCpuOneCorePct": {
+      "avg": 9.1,
+      "min": 4.55,
+      "max": 15.15
+    }
+  },
+  "setup": "ok",
+  "knightAlphaAtBoot": 143,
+  "window": {
+    "bounds": {
+      "x": 0,
+      "y": 1200,
+      "width": 2560,
+      "height": 192
+    },
+    "exStyle": {
+      "hex": "0x8280028",
+      "layered": true,
+      "transparent": true,
+      "noRedirBitmap": true,
+      "topmost": true,
+      "toolwindow": false,
+      "noActivate": true
+    },
+    "displays": [
+      {
+        "id": 3462733201,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2560,
+          "height": 1440
+        },
+        "scale": 1.5,
+        "hz": 160
+      },
+      {
+        "id": 44500887,
+        "bounds": {
+          "x": -1920,
+          "y": 340,
+          "width": 1920,
+          "height": 1080
+        },
+        "scale": 1,
+        "hz": 75
+      },
+      {
+        "id": 2904106817,
+        "bounds": {
+          "x": 2560,
+          "y": 331,
+          "width": 1920,
+          "height": 1080
+        },
+        "scale": 1,
+        "hz": 144
+      }
+    ]
+  },
+  "affinity": "196608",
+  "scanMsEach": 0.14349800000000001,
+  "topLevelWindows": {
+    "all": 265,
+    "visible": 32
+  }
+}

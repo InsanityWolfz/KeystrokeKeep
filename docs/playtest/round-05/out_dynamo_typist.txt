@@ -1,0 +1,24 @@
+=== typist 8h x3 seeds, retire nudge, omen random ===
+--- dynamo4 ---
+  1h00   f66.0 (62-69) R96 trophies 0.0 fame x6 ach 17.0 retires 2.0 wipes 6 (hollow 0) voidSlams 0 Sanct 8 oc 4.0
+  2h00   f102.7 (99-109) R256 trophies 6.0 fame x24 ach 20.3 retires 4.0 wipes 9 (hollow 2) voidSlams 37 Sanct 35 oc 5.3
+  4h00   f126.3 (125-129) R395 trophies 11.0 fame x62 ach 26.3 retires 7.7 wipes 13 (hollow 7) voidSlams 125 Sanct 79 oc 7.0
+  8h00   f143.3 (140-145) R513 trophies 13.0 fame x128 ach 29.0 retires 11.3 wipes 43 (hollow 37) voidSlams 297 Sanct 183 oc 8.3
+  blocked at a Hollowed boss: 44-117 min total; Sanctuary casts in Hollowed fights 173 of 183
+  f70       attempts   31  won 100%  win dur med 2s p90 13s  lost-fight dur med -s  slams/fight 0.8  Sanct/fight 0.5  deaths/fight 0.0
+  f80-99    attempts   61  won  97%  win dur med 3s p90 38s  lost-fight dur med 31s  slams/fight 1.3  Sanct/fight 0.9  deaths/fight 0.1
+  f100-129  attempts   93  won  69%  win dur med 20s p90 117s  lost-fight dur med 23s  slams/fight 3.7  Sanct/fight 2.2  deaths/fight 1.4
+  f130+     attempts   93  won  14%  win dur med 123s p90 273s  lost-fight dur med 23s  slams/fight 4.3  Sanct/fight 2.6  deaths/fight 3.7
+  achievements unlocked: 28-30/35
+  flow 0m, first_boss 4m, rat 4m, caverns 9m, full_party 15m, comeback 17m, epic 17m, ult_boss 19m, retire1 25m, echo 30m, gatekeeper 34m, speed40 34m, magma 34m, lv100 44m, void 47m, omen1 51m, blitz 60m, hollow 65m, keys10k 78m, f100 105m, ults1k 125m, flow1h 125m, hollowed6 138m, revive 175m, rats25 198m, f125 222m, deep90 227m(1/3), chests100 240m, retire10 353m, crucible10 415m(2/3), omen10 NEVER, legacy_all NEVER, idle50 NEVER, keys100k NEVER, flow10h NEVER
+  trophy first reached (h): f75 1.1 f80 1.2 f85 1.3 f90 1.4 f95 1.6 f100 1.8 f105 2.0 f110 2.3 f115 2.5 f120 3.0 f125 3.7 f130 4.3 f140 6.1
+--- dynamo6 ---
+  1h00   f69.0 (67-71) R107 trophies 0.0 fame x6 ach 17.3 retires 2.0 wipes 6 (hollow 0) voidSlams 1 Sanct 9 oc 3.7
+  2h00   f97.7 (95-100) R233 trophies 5.3 fame x20 ach 21.0 retires 4.0 wipes 7 (hollow 1) voidSlams 47 Sanct 29 oc 5.0
+  4h00   f125.0 (125-125) R391 trophies 11.0 fame x61 ach 27.3 retires 7.7 wipes 13 (hollow 6) voidSlams 124 Sanct 71 oc 7.0
+  8h00   f146.3 (145-149) R539 trophies 13.0 fame x148 ach 29.3 retires 12.0 wipes 44 (hollow 37) voidSlams 299 Sanct 157 oc 8.0
+  blocked at a Hollowed boss: 61-88 min total; Sanctuary casts in Hollowed fights 147 of 157
+  f70       attempts   32  won 100%  win dur med 2s p90 23s  lost-fight dur med -s  slams/fight 0.8  Sanct/fight 0.4  deaths/fight 0.0
+  f80-99    attempts   62  won  98%  win dur med 4s p90 70s  lost-fight dur med 25s  slams/fight 1.9  Sanct/fight 0.9  deaths/fight 0.1
+  f100-129  attempts   88  won  76%  win dur med 16s p90 110s  lost-fight dur med 23s  slams/fight 3.8  Sanct/fight 1.9  deaths/fight 1.0
+  f130+     attempts  106  won  15%  win dur med 101s p90 241s  lost-fight dur med 21s  slams/fight 3.7  Sanct/fight 1.9  deaths/fight 3.7

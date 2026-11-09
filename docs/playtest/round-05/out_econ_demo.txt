@@ -1,0 +1,23 @@
+typist seed1 retires: 0h27+30 0h37+6 0h44+6 0h51+6 0h59+0 1h06+0 1h13+0 1h21+0 1h28+0 1h35+0 1h42+0 1h49+0 1h56+0 2h03+0 2h10+0 2h17+0 2h24+0 2h31+0 2h38+0 2h45+0 2h52+0 2h59+0 | legacy {"lineage":3,"treasury":3,"quartermaster":1,"veterans":1,"headstart":1,"zeal":1,"recruiter":1}
+DEMO typist 3h x3: card 26-31 min | lifetime Renown @1h 48-48 @2h 48-48 @3h 48-48 end 48-48 | cap 48 reached at 51-56 min | laps 21-22 | best f40 5.4-5.6 min
+  achievements (min, 3 seeds): flow 0, first_boss 4, rat 4, caverns 9, full_party 15, comeback 17, revive 17(1/3), epic 17, ult_boss 21, gatekeeper 28, retire1 28, speed40 37, blitz 38, echo 49, keys10k 77, flow1h 129, chests100 140, ults1k 175(2/3)
+idle seed1 retires: 1h18+30 1h34+6 1h47+6 1h58+6 2h08+0 2h18+0 2h29+0 2h40+0 2h51+0 | legacy {"lineage":3,"treasury":3,"quartermaster":1,"veterans":1,"headstart":1,"zeal":1,"recruiter":1}
+DEMO idle 3h x3: card 65-93 min | lifetime Renown @1h 0-13 @2h 48-48 @3h 48-48 end 48-48 | cap 48 reached at 99-118 min | laps 8-12 | best f40 7.7-8.9 min
+  achievements (min, 3 seeds): rat 4, first_boss 7, comeback 15, caverns 20, full_party 33, revive 35, epic 52, retire1 54, gatekeeper 76, echo 77, speed40 103, ult_boss 108(2/3), blitz 116
+burst seed1 retires: 0h45+13 1h06+17 1h20+6 1h32+6 1h42+6 1h52+0 2h01+0 2h11+0 2h20+0 2h29+0 2h38+0 2h47+0 2h56+0 | legacy {"lineage":3,"treasury":3,"quartermaster":1,"veterans":3,"headstart":1}
+DEMO burst 3h x3: card 64-68 min | lifetime Renown @1h 0-13 @2h 48-48 @3h 48-48 end 48-48 | cap 48 reached at 97-106 min | laps 11-13 | best f40 7.6-8.4 min
+  achievements (min, 3 seeds): rat 4, first_boss 7, comeback 11, caverns 19, full_party 30, revive 32, retire1 51, epic 51, gatekeeper 66, ult_boss 68, echo 101, speed40 101, blitz 102, rats25 179(1/3)
+
+IMPORT typist: load ok=true demoSave true->false lifetime 48 renown 0 renownFloor 40->49 (renownFor 49) floor 10 maxRun 10 demoDone false headstart 1 (max 8) ach 17
+  retireTarget 50 renownGain now 0
+  second load renownFloor 49 (unchanged = true)
+  importer full-game: +1h f100 R251 | +2h f117 R346 | +4h f132 R444 | first full retire 0h26 f81 +105
+  full-only same total time (3h demo-equivalent + Xh): +1h f125 R381 | +2h f132 R432 | +4h f143 R514 ; full-only at 3h: f117 R330
+
+IMPORT idle: load ok=true demoSave true->false lifetime 48 renown 0 renownFloor 40->49 (renownFor 49) floor 39 maxRun 39 demoDone false headstart 1 (max 8) ach 12
+  retireTarget 50 renownGain now 0
+  second load renownFloor 49 (unchanged = true)
+  importer full-game: +1h f70 R111 | +2h f80 R144 | +4h f97 R229 | first full retire 0h17 f60 +30
+  full-only same total time (3h demo-equivalent + Xh): +1h f89 R181 | +2h f94 R215 | +4h f102 R255 ; full-only at 3h: f77 R138
+
+EDGE lifetime 400 -> renownFloor 128 (renownFor 406)

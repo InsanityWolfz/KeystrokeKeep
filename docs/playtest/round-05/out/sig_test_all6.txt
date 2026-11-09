@@ -1,0 +1,82 @@
+=== typist s1 480m
+  base         maxEver 125, retires 12, renown 391, ach 30, sanct casts 111, wipes(boss) 2; sig casts {}
+  all6         maxEver 120, retires 11, renown 355, ach 29, sanct casts 135, wipes(boss) 4; sig casts {"ratking":54,"boneking":6,"broodmother":85,"warlord":37,"embergolem":67,"embergolem_crack":39,"magmalord":80}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    H-boneking      4/0/41.7                      4/0/239.4                     
+    H-broodmother   6/0/60.2                      5/0/35.4                      
+    H-embergolem    5/0/62.7                      5/0/46.7                      
+    H-magmalord     4/0/142.7                     5/1/122.0                     
+    H-ratking       5/0/33.1                      6/0/43.1                      
+    H-warlord       3/0/19.6                      3/0/62.2                      
+    boneking        5/1/6.2                       3/0/5.0                       
+    broodmother     7/1/2.8                       9/3/3.4                       
+    embergolem      12/0/2.6                      11/0/2.3                      
+    hollow          9/0/4.2                       10/0/9.6                      
+    magmalord       10/0/4.2                      10/0/2.6                      
+    ratking         1/0/14.6                      1/0/16.6                      
+    warlord         7/0/3.2                       7/0/2.6                       
+=== typist s2 480m
+  base         maxEver 120, retires 11, renown 356, ach 28, sanct casts 129, wipes(boss) 2; sig casts {}
+  all6         maxEver 122, retires 11, renown 358, ach 30, sanct casts 117, wipes(boss) 2; sig casts {"ratking":52,"boneking":7,"broodmother":139,"warlord":56,"embergolem":72,"embergolem_crack":31,"magmalord":74}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    H-boneking      4/0/216.6                     4/0/87.6                      
+    H-broodmother   6/0/83.7                      6/0/147.3                     
+    H-embergolem    5/0/54.7                      5/0/132.7                     
+    H-magmalord     4/0/114.5                     4/0/187.1                     
+    H-ratking       6/0/14.7                      5/0/35.0                      
+    H-warlord       3/0/60.6                      3/0/65.0                      
+    boneking        3/0/5.1                       3/0/6.7                       
+    broodmother     8/2/2.7                       8/2/3.4                       
+    embergolem      11/0/2.5                      11/0/2.9                      
+    hollow          10/0/19.7                     10/0/11.6                     
+    magmalord       10/0/4.1                      10/0/4.2                      
+    ratking         1/0/17.7                      1/0/20.8                      
+    warlord         8/0/3.0                       8/0/2.8                       
+=== idle s1 480m
+  base         maxEver 90, retires 8, renown 194, ach 18, sanct casts 101, wipes(boss) 4; sig casts {}
+  all6         maxEver 90, retires 9, renown 196, ach 19, sanct casts 160, wipes(boss) 8; sig casts {"ratking":76,"boneking":6,"broodmother":82,"warlord":36,"embergolem":108,"embergolem_crack":4,"magmalord":66}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    H-broodmother   2/0/133.2                     1/0/384.4                     
+    H-embergolem    2/0/206.3                     1/0/476.4                     
+    H-magmalord     1/0/-                         1/0/-                         
+    H-ratking       1/0/176.5                     2/0/-                         
+    H-warlord       1/0/-                         -                             
+    boneking        5/1/10.0                      12/7/5.6                      
+    broodmother     11/2/3.2                      9/0/3.7                       
+    embergolem      8/0/17.4                      8/0/48.0                      
+    hollow          6/0/74.2                      6/0/111.3                     
+    magmalord       7/0/21.2                      7/0/42.9                      
+    ratking         2/1/32.5                      3/1/41.7                      
+    warlord         8/0/6.9                       9/0/6.9                       
+=== burst s1 480m
+  base         maxEver 100, retires 9, renown 245, ach 21, sanct casts 112, wipes(boss) 4; sig casts {}
+  all6         maxEver 90, retires 8, renown 197, ach 19, sanct casts 113, wipes(boss) 8; sig casts {"ratking":72,"boneking":6,"broodmother":59,"warlord":68,"embergolem":99,"embergolem_crack":17,"magmalord":74}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    H-broodmother   1/0/91.2                      1/0/159.0                     
+    H-embergolem    2/0/128.1                     2/0/249.5                     
+    H-magmalord     1/0/296.6                     2/1/-                         
+    H-ratking       2/0/189.1                     1/0/593.6                     
+    H-warlord       1/0/328.5                     1/0/-                         
+    boneking        6/1/6.3                       8/2/52.0                      
+    broodmother     9/2/3.7                       12/4/4.4                      
+    embergolem      8/0/11.2                      7/0/29.1                      
+    hollow          6/0/104.9                     5/0/131.2                     
+    magmalord       7/0/11.2                      6/0/33.3                      
+    ratking         3/1/22.5                      3/1/22.6                      
+    warlord         9/0/4.9                       8/0/7.4                       
+=== typist s1 180m DEMO
+  base         maxEver 40, retires 20, renown 48, ach 18, sanct casts 29, wipes(boss) 2, best f40 5.4m laps 20; sig casts {}
+  all6         maxEver 40, retires 21, renown 48, ach 16, sanct casts 26, wipes(boss) 3, best f40 5.1m laps 21; sig casts {"ratking":2,"boneking":21,"broodmother":46,"warlord":40}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    boneking        22/1/4.0                      21/0/4.8                      
+    broodmother     22/1/6.3                      24/3/6.8                      
+    ratking         1/0/14.6                      1/0/16.6                      
+    warlord         20/0/18.1                     21/0/13.8                     
+=== idle s1 180m DEMO
+  base         maxEver 40, retires 11, renown 48, ach 12, sanct casts 29, wipes(boss) 4, best f40 8.6m laps 11; sig casts {}
+  all6         maxEver 40, retires 11, renown 48, ach 10, sanct casts 21, wipes(boss) 8, best f40 8.4m laps 10; sig casts {"ratking":11,"boneking":12,"broodmother":39,"warlord":62}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    boneking        13/1/6.8                      18/7/9.2                      
+    broodmother     14/2/14.8                     10/0/15.3                     
+    ratking         2/1/32.5                      3/1/41.7                      
+    warlord         11/0/44.1                     10/0/47.2                     

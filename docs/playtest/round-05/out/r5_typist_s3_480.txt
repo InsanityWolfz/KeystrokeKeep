@@ -1,0 +1,106 @@
+=== R5 probe typist s3 480m retire=nudge omen=random: maxEver 129, retires 11, renown life 402 (unspent 1), keys 61957, FLOW 260m, ults 3275, trophies 11, ach 31/35, fame x65.0
+  0h00  MAJOR  biome The Crypt
+  0h00  ACH    ach flow
+  0h00  MAJOR  first FLOW
+  0h03  MAJOR  first golden rat
+  0h04  MAJOR  recruit archer
+  0h04  ACH    ach rat
+  0h04  MAJOR  boss The Rat King (f10)
+  0h04  MAJOR  first relic offer
+  0h04  ACH    ach first_boss
+  0h07  MAJOR  retire unlocked
+  0h08  MAJOR  boss The Bone King (f20)
+  0h08  ACH    ach caverns
+  0h08  MAJOR  biome Mossy Caverns
+  0h12  MAJOR  recruit mage
+  0h14  ACH    ach full_party
+  0h14  MAJOR  recruit cleric
+  0h14  ACH    ach revive
+  0h14  MAJOR  first REVIVE
+  0h16  MAJOR  boss Brood Mother (f30)
+  0h20  MAJOR  first EPIC offered
+  0h20  ACH    ach comeback
+  0h21  ACH    ach epic
+  0h27  ACH    ach retire1
+  0h27  MAJOR  first RETIRE
+  0h35  MAJOR  boss Goblin Warlord (f40)
+  0h36  ACH    ach gatekeeper
+  0h36  ACH    ach speed40
+  0h36  ACH    ach magma
+  0h36  MAJOR  biome Magma Depths
+  0h42  MAJOR  boss Ember Colossus (f50)
+  0h52  ACH    ach omen1
+  0h52  OMEN   new omen embertide
+  0h54  ACH    ach ult_boss
+  1h01  ACH    ach lv100
+  1h04  MAJOR  boss Magma Lord (f60)
+  1h05  ACH    ach void
+  1h05  MAJOR  biome The Hollow Void
+  1h12  MAJOR  boss The Hollow (f70)
+  1h12  MAJOR  first VOID SLAM
+  1h15  ACH    ach hollow
+  1h16  ACH    ach keys10k
+  1h17  OMEN   new omen storm
+  1h32  TROPHY trophy f75
+  1h35  TROPHY trophy f80
+  1h36  MAJOR  boss The Hollowed Rat King (f80)
+  1h40  TROPHY trophy f85
+  1h42  OMEN   new omen glass
+  1h51  ACH    ach blitz
+  1h56  MAJOR  boss The Hollowed Brood Mother (f80)
+  2h04  ACH    ach flow1h
+  2h05  TROPHY trophy f90
+  2h06  MAJOR  boss The Hollowed Goblin Warlord (f90)
+  2h23  MAJOR  boss The Hollowed Ember Colossus (f80)
+  2h28  MAJOR  boss The Hollowed Magma Lord (f90)
+  2h35  TROPHY trophy f95
+  2h40  ACH    ach ults1k
+  2h43  TROPHY trophy f100
+  2h43  ACH    ach f100
+  2h43  OMEN   new omen march
+  2h53  ACH    ach rats25
+  2h55  MAJOR  boss The Hollowed Bone King (f90)
+  2h56  ACH    ach hollowed6
+  3h06  ACH    ach chests100
+  3h22  TROPHY trophy f105
+  3h54  TROPHY trophy f110
+  4h00  OMEN   new omen deep
+  4h10  ACH    ach deep90
+  5h11  TROPHY trophy f115
+  6h10  TROPHY trophy f120
+  6h12  ACH    ach crucible10
+  6h22  ACH    ach retire10
+  6h22  OMEN   new omen gilded
+  7h04  TROPHY trophy f125
+  7h04  ACH    ach f125
+  7h09  OMEN   new omen fever
+  7h10  ACH    ach legacy_all
+  7h13  ACH    ach echo
+per 30 min from h1: MAJOR            4 2 3 1 0 0 0 0 0 0 0 0 0 0 0
+per 30 min from h1: +OMEN+TROPHY     5 6 4 4 1 1 1 0 1 0 2 0 2 0 0
+per 30 min from h1: +ACH             9 7 5 8 2 1 2 0 1 0 4 0 5 0 0
+empty 30-min windows h2-5 / h5-8 / h8-end: no ACH 1/8 3/6 1 | with ACH 1/8 3/6 1/1
+longest gap after h1: maj+omen+trophy 71m (from 4h00) | +ach 61m (from 4h10)
+last MAJOR 2h55; last new OMEN 7h09 (7); trophies f75@1h32 f80@1h35 f85@1h40 f90@2h05 f95@2h35 f100@2h43 f105@3h22 f110@3h54 f115@5h11 f120@6h10 f125@7h04
+retires (11): 0h27 f40 +30, 0h52 f59 +46, 1h17 f73 +47, 1h42 f86 +52, 2h13 f93 +33, 2h43 f100 +34, 3h25 f106 +32, 4h00 f112 +33, 5h23 f117 +33, 6h22 f122 +30, 7h09 f127 +32
+SANCTUARY: casts 112 (14.0/h; boss fights 109), revives 2; fights with Pell 77, with a cast 38 (49%), reaching 4 swings 38
+SECOND WIND: lvl 10, triggers 241, bonus Sparks 13776 of 75733 (18.2%)
+EMBERS: ult 45948, boss 1811, rat 3560, unspent 2682
+SATURATION: capped Legacy all max 7h10, Workshop capped all max —, Head Start 8 4h01
+BOSS FIGHTS (key: n | kills | wipes | median dur s | median swings | % reaching swing 4 | n per hour bucket h0..):
+  ratking           1 |    1 |   0 |   12.3 |   5 | 100% | 1 0 0 0 0 0 0 0 0
+  boneking          3 |    3 |   0 |    7.7 |   3 |  33% | 3 0 0 0 0 0 0 0 0
+  broodmother       7 |    5 |   2 |    2.9 |   4 |  57% | 5 2 0 0 0 0 0 0 0
+  warlord           7 |    7 |   0 |    2.8 |   1 |  29% | 2 2 2 1 0 0 0 0 0
+  embergolem       11 |   11 |   0 |    2.5 |   1 |  18% | 1 3 2 1 1 1 1 1 0
+  magmalord        10 |   10 |   0 |    3.6 |   1 |  20% | 0 3 2 1 1 1 1 1 0
+  hollow           10 |   10 |   0 |    5.8 |   2 |  40% | 0 3 2 1 1 1 1 1 0
+  H-ratking         6 |    6 |   0 |   51.2 |  30 |  50% | 0 1 1 0 1 1 1 1 0
+  H-broodmother     6 |    6 |   0 |   49.2 |  29 |  83% | 0 1 0 2 0 1 1 1 0
+  H-warlord         4 |    4 |   0 |  169.4 | 101 | 100% | 0 0 1 1 0 1 1 0 0
+  H-embergolem      6 |    6 |   0 |   39.6 |  23 |  67% | 0 0 1 1 1 0 2 1 0
+  H-magmalord       5 |    5 |   0 |   46.4 |  27 |  80% | 0 0 1 1 1 0 1 1 0
+  H-boneking        4 |    4 |   0 |   70.6 |  42 | 100% | 0 0 1 0 1 1 0 1 0
+per 30 min snapshot (t hs startFloor maxEver renown life ach trophies): 0h00 hs0 f1 max1 r0/0 a0 t0 | 0h30 hs2 f11 max40 r1/30 a9 t0 | 1h00 hs3 f16 max59 r1/76 a14 t0 | 1h30 hs4 f21 max73 r2/123 a18 t0 | 2h00 hs5 f26 max86 r0/175 a19 t3 | 2h30 hs6 f31 max93 r3/208 a20 t4 | 3h00 hs7 f36 max100 r1/242 a24 t6 | 3h30 hs7 f36 max106 r2/274 a25 t7 | 4h00 hs7 f36 max111 r2/274 a25 t8 | 4h30 hs8 f41 max112 r0/307 a26 t8 | 5h00 hs8 f41 max112 r0/307 a26 t8 | 5h30 hs8 f41 max117 r4/340 a26 t9 | 6h00 hs8 f41 max117 r4/340 a26 t9 | 6h30 hs8 f41 max122 r2/370 a28 t10 | 7h00 hs8 f41 max122 r2/370 a28 t10 | 7h30 hs8 f41 max127 r1/402 a31 t11 | 8h00 hs8 f41 max129 r1/402 a31 t11
+ACH: first_boss 0h04 | flow 0h00 | full_party 0h14 | retire1 0h27 | gatekeeper 0h36 | rat 0h04 | epic 0h21 | caverns 0h08 | comeback 0h20 | echo 7h13 | ult_boss 0h54 | revive 0h14 | speed40 0h36 | blitz 1h51 | magma 0h36 | void 1h05 | hollow 1h15 | hollowed6 2h56 | f100 2h43 | f125 7h04 | retire10 6h22 | omen1 0h52 | omen10 NO | deep90 4h10 | legacy_all 7h10 | crucible10 6h12 | lv100 1h01 | chests100 3h06 | rats25 2h53 | idle50 NO | keys10k 1h16 | keys100k NO | flow1h 2h04 | flow10h NO | ults1k 2h40
+end heroes {"knight":284,"archer":273,"mage":261,"cleric":246} workshop {"crucible":10,"overcharge":9,"kindling":10,"static":7} legacy {"veterans":10,"headstart":8,"battery":3,"zeal":5,"campfire":4,"lineage":6,"quartermaster":1,"treasury":6,"recruiter":1,"collector":1}

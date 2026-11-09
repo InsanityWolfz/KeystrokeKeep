@@ -1,0 +1,48 @@
+=== idle s1 480m
+  base         maxEver 90, retires 8, renown 194, ach 18, sanct casts 101, wipes(boss) 4; sig casts {}
+  all6         maxEver 89, retires 9, renown 180, ach 18, sanct casts 92, wipes(boss) 9; sig casts {"ratking":90,"boneking":7,"broodmother":67,"warlord":34,"embergolem":73,"magmalord":49,"embergolem_crack":1}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    H-broodmother   2/0/133.2                     1/0/-                         
+    H-embergolem    2/0/206.3                     1/0/456.4                     
+    H-magmalord     1/0/-                         -                             
+    H-ratking       1/0/176.5                     1/0/690.8                     
+    H-warlord       1/0/-                         -                             
+    boneking        5/1/10.0                      14/8/10.3                     
+    broodmother     11/2/3.2                      8/0/4.6                       
+    embergolem      8/0/17.4                      7/0/30.6                      
+    hollow          6/0/74.2                      5/0/119.5                     
+    magmalord       7/0/21.2                      6/0/59.1                      
+    ratking         2/1/32.5                      4/1/23.7                      
+    warlord         8/0/6.9                       8/0/11.5                      
+=== burst s1 480m
+  base         maxEver 100, retires 9, renown 245, ach 21, sanct casts 112, wipes(boss) 4; sig casts {}
+  all6         maxEver 97, retires 9, renown 227, ach 20, sanct casts 128, wipes(boss) 7; sig casts {"ratking":49,"boneking":5,"broodmother":69,"warlord":57,"embergolem":79,"embergolem_crack":8,"magmalord":99}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    H-broodmother   1/0/91.2                      1/0/234.5                     
+    H-embergolem    2/0/128.1                     2/0/122.7                     
+    H-magmalord     1/0/296.6                     3/2/223.0                     
+    H-ratking       2/0/189.1                     1/0/386.2                     
+    H-warlord       1/0/328.5                     1/0/-                         
+    boneking        6/1/6.3                       7/2/12.1                      
+    broodmother     9/2/3.7                       11/2/3.6                      
+    embergolem      8/0/11.2                      7/0/33.0                      
+    hollow          6/0/104.9                     5/0/93.6                      
+    magmalord       7/0/11.2                      6/0/56.6                      
+    ratking         3/1/22.5                      3/1/22.6                      
+    warlord         9/0/4.9                       9/0/6.1                       
+=== idle s1 180m DEMO
+  base         maxEver 40, retires 11, renown 48, ach 12, sanct casts 29, wipes(boss) 4, best f40 8.6m laps 11; sig casts {}
+  all6         maxEver 40, retires 11, renown 48, ach 10, sanct casts 22, wipes(boss) 8, best f40 8.6m laps 9; sig casts {"ratking":13,"boneking":12,"broodmother":32,"warlord":55}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    boneking        13/1/6.8                      18/7/8.5                      
+    broodmother     14/2/14.8                     9/0/16.0                      
+    ratking         2/1/32.5                      4/1/23.7                      
+    warlord         11/0/44.1                     9/0/52.9                      
+=== burst s1 180m DEMO
+  base         maxEver 40, retires 12, renown 48, ach 11, sanct casts 29, wipes(boss) 4, best f40 8.2m laps 11; sig casts {}
+  all6         maxEver 40, retires 11, renown 48, ach 12, sanct casts 39, wipes(boss) 5, best f40 7.5m laps 10; sig casts {"ratking":6,"boneking":12,"broodmother":44,"warlord":50}
+    boss            base: n/wipes/median s        all6: n/wipes/median s        
+    boneking        14/1/7.1                      14/2/8.2                      
+    broodmother     13/2/13.9                     13/2/13.5                     
+    ratking         3/1/22.5                      3/1/22.6                      
+    warlord         11/0/39.2                     10/0/48.0                     
