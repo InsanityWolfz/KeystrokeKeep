@@ -119,6 +119,7 @@ function startFullscreenWatch() {
       next: u32.func('__stdcall', 'GetWindow', 'intptr', ['intptr', 'uint32']),
       vis: u32.func('__stdcall', 'IsWindowVisible', 'int', ['intptr']),
       iconic: u32.func('__stdcall', 'IsIconic', 'int', ['intptr']),
+      zoomed: u32.func('__stdcall', 'IsZoomed', 'int', ['intptr']),
       rect: u32.func('__stdcall', 'GetWindowRect', 'int', ['intptr', koffi.out(koffi.pointer(RECT))]),
       mon: u32.func('__stdcall', 'MonitorFromWindow', 'intptr', ['intptr', 'uint32']),
       monInfo: u32.func('__stdcall', 'GetMonitorInfoW', 'int', ['intptr', koffi.inout(koffi.pointer(MONINFO))]),
@@ -146,10 +147,14 @@ function startFullscreenWatch() {
         const isCloaked = W.cloaked(h, 14, cl, 4) === 0 && cl[0] !== 0;
         const n2 = W.cls(h, buf, 256);
         const cname = buf.toString('utf16le', 0, n2 * 2);
-        if (!isCloaked && !(ex & WS_EX_TOOLWINDOW) && !SHELL.has(cname)) {
+        // overlays (click-through dimmers, recorder HUDs) never count; neither do no-activate topmost popups
+        const overlay = (ex & 0x20) || ((ex & WS_EX_TOPMOST) && (ex & 0x08000000));
+        if (!isCloaked && !overlay && !(ex & WS_EX_TOOLWINDOW) && !SHELL.has(cname)) {
           const r = {}; W.rect(h, r);
           const covers = r.left <= M.left && r.top <= M.top && r.right >= M.right && r.bottom >= M.bottom;
-          if (covers) { fs = true; break; }
+          // a maximized / resizable window that happens to fill a taskbar-less monitor is not fullscreen
+          const style = Number(W.exstyle(h, -16));
+          if (covers && !W.zoomed(h) && !(style & 0x00040000)) { fs = true; break; }
           if (!(ex & WS_EX_TOPMOST)) break; // the first normal window on this monitor decides
         }
       }
@@ -197,7 +202,7 @@ function rebuildTray() {
   if (!tray) return;
   const displays = screen.getAllDisplays();
   const cur = targetDisplay();
-  tray.setToolTip((state.countInput ? 'Keystroke Keep: counting keystrokes (never which keys)' : 'Keystroke Keep: input counting PAUSED') + (sys.userShown ? '' : ' · strip hidden'));
+  tray.setToolTip((state.countInput ? 'Keystroke Keep: counting keystrokes (nothing typed is stored)' : 'Keystroke Keep: input counting PAUSED') + (sys.userShown ? '' : ' · strip hidden'));
   tray.setContextMenu(Menu.buildFromTemplate([
     { label: 'Keystroke Keep', enabled: false },
     { type: 'separator' },
@@ -257,35 +262,75 @@ function validSave(text) {
   if (typeof text !== 'string' || text.length < 2 || text.length > 5e6) return false;
   try { const o = JSON.parse(text); return !!o && typeof o === 'object' && typeof o.v === 'number'; } catch (e) { return false; }
 }
-function writeSave(text) {
+const sleepSync = (ms) => { try { Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms); } catch (e) { /* ignore */ } };
+/** rename with retries: antivirus / OneDrive / backup tools briefly lock files on Windows */
+function renameRetry(a, b) {
+  for (let i = 0, wait = 20; ; i++, wait *= 2) {
+    try { fs.renameSync(a, b); return; } catch (e) {
+      if (i >= 4 || !['EPERM', 'EACCES', 'EBUSY'].includes(e.code)) throw e;
+      sleepSync(wait);
+    }
+  }
+}
+let lastSaveText = null;
+function writeSave(text, durable) {
   if (!validSave(text)) return false;
+  lastSaveText = text;
   fs.mkdirSync(saveDir(), { recursive: true });
   if (Date.now() - lastBackup > 10 * 60 * 1000 && fs.existsSync(savePath())) {
     lastBackup = Date.now();
-    for (let i = 3; i > 1; i--) { try { if (fs.existsSync(backupPath(i - 1))) fs.copyFileSync(backupPath(i - 1), backupPath(i)); } catch (e) { /* ignore */ } }
-    try { fs.copyFileSync(savePath(), backupPath(1)); } catch (e) { /* ignore */ }
+    let cur = null;
+    try { cur = fs.readFileSync(savePath(), 'utf8'); } catch (e) { /* ignore */ }
+    if (validSave(cur)) {
+      // only a good main file joins the backup ring
+      for (let i = 3; i > 1; i--) { try { if (fs.existsSync(backupPath(i - 1))) fs.copyFileSync(backupPath(i - 1), backupPath(i)); } catch (e) { /* ignore */ } }
+      try { fs.copyFileSync(savePath(), backupPath(1)); } catch (e) { /* ignore */ }
+    }
   }
   const tmp = savePath() + '.tmp';
-  fs.writeFileSync(tmp, text, 'utf8');
-  fs.renameSync(tmp, savePath());
+  const fd = fs.openSync(tmp, 'w');
+  try { fs.writeSync(fd, text, 0, 'utf8'); if (durable) fs.fsyncSync(fd); } finally { fs.closeSync(fd); }
+  renameRetry(tmp, savePath());
   return true;
 }
+const importMarker = () => path.join(saveDir(), 'demo-imported.flag');
+let loadSource = 'none';
 function readSave() {
-  // the full game picks up a demo save on its first launch
   const order = [savePath(), backupPath(1), backupPath(2), backupPath(3)];
-  if (!IS_DEMO && !process.env.KK_SNAPSHOT) order.push(demoSavePath());
-  for (const p of order) {
-    try { const t = fs.readFileSync(p, 'utf8'); if (validSave(t)) return t; } catch (e) { /* try the next one */ }
+  for (let i = 0; i < order.length; i++) {
+    const p = order[i];
+    let t = null;
+    try { t = fs.readFileSync(p, 'utf8'); } catch (e) { continue; }
+    if (validSave(t)) { loadSource = i === 0 ? 'main' : 'backup'; return t; }
+    if (i === 0) { try { renameRetry(p, path.join(saveDir(), `keystroke-keep.corrupt-${Date.now()}.json`)); } catch (e) { /* ignore */ } }
+  }
+  // the full game imports a demo save once, and only when it has never had a save of its own
+  if (!IS_DEMO && !process.env.KK_SNAPSHOT && !fs.existsSync(importMarker())) {
+    try {
+      const t = fs.readFileSync(demoSavePath(), 'utf8');
+      if (validSave(t)) {
+        fs.mkdirSync(saveDir(), { recursive: true });
+        fs.writeFileSync(importMarker(), String(Date.now()));
+        loadSource = 'demo';
+        return t;
+      }
+    } catch (e) { /* no demo save */ }
   }
   return null;
 }
 ipcMain.on('kk:loadSave', (e) => { e.returnValue = readSave(); });
+ipcMain.on('kk:saveInfo', (e) => { e.returnValue = loadSource; });
 ipcMain.on('kk:save', (_e, text) => { try { writeSave(text); } catch (err) { console.warn('[KK] save failed', err.message); } });
-ipcMain.on('kk:saveSync', (e, text) => { try { e.returnValue = writeSave(text); } catch (err) { e.returnValue = false; } });
+ipcMain.on('kk:saveSync', (e, text) => { try { e.returnValue = writeSave(text, true); } catch (err) { e.returnValue = false; } });
 ipcMain.on('kk:wipeSave', (e) => {
   for (const p of [savePath(), backupPath(1), backupPath(2), backupPath(3)]) { try { fs.unlinkSync(p); } catch (err) { /* ignore */ } }
+  // a reset must never resurrect an old demo save
+  try { fs.mkdirSync(saveDir(), { recursive: true }); fs.writeFileSync(importMarker(), 'reset ' + Date.now()); } catch (err) { /* ignore */ }
+  lastSaveText = null;
   e.returnValue = true;
 });
+// Windows shutdown / logoff: write the last known save durably
+const flushSave = () => { if (lastSaveText) { try { writeSave(lastSaveText, true); } catch (e) { /* ignore */ } } };
 // the renderer tells us its saved settings at boot and whenever they change
 ipcMain.on('kk:settings', (_e, s) => {
   if (!s || typeof s !== 'object') return;
@@ -302,6 +347,15 @@ ipcMain.on('kk:settings', (_e, s) => {
 // self-test runs use their own profile so they never touch the player's real save
 if (process.env.KK_SNAPSHOT) app.setPath('userData', app.getPath('userData') + '-selftest');
 
+// Low-GPU mode (default): DirectComposition off measured 5% -> 0% GPU while typing for a
+// transparent always-on-top strip. Read from the save before the GPU process starts.
+try {
+  const t = fs.readFileSync(path.join(app.getPath('appData'), IS_DEMO ? 'Keystroke Keep Demo' : 'Keystroke Keep', 'saves', 'keystroke-keep.json'), 'utf8');
+  const lowGpu = JSON.parse(t).settings.lowGpu;
+  if (lowGpu !== false && process.platform === 'win32') app.commandLine.appendSwitch('disable-direct-composition');
+} catch (e) { if (process.platform === 'win32') app.commandLine.appendSwitch('disable-direct-composition'); }
+if (process.platform === 'win32') app.setAppUserModelId('com.keystrokekeep.game');
+
 const gotLock = process.env.KK_SNAPSHOT ? true : app.requestSingleInstanceLock();
 if (!gotLock) app.quit();
 else {
@@ -309,6 +363,8 @@ else {
     // no network, ever: everything the game needs ships in the app folder
     session.defaultSession.webRequest.onBeforeRequest({ urls: ['http://*/*', 'https://*/*', 'ws://*/*', 'wss://*/*'] }, (_d, cb) => cb({ cancel: true }));
     createWindow();
+    app.on('before-quit', flushSave);
+    win.on('session-end', flushSave);
     // stop drawing and audio while locked, asleep, hidden or behind a fullscreen app; cap fps on battery
     const sysSet = (k, v) => () => { sys[k] = v; applyVisibility(); };
     powerMonitor.on('lock-screen', sysSet('locked', true));

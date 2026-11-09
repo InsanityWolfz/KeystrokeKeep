@@ -23,7 +23,8 @@ Each round lives in `docs/playtest/round-NN/` (one report per tester + `SUMMARY.
 * `npx electron docs/playtest/round-02/market_probe` (T3): measures GPU/DWM/fps of the real Electron shell under its own profile; briefly opens a fullscreen test window.
 * Desktop self-test: `KK_SNAPSHOT=out.png [KK_SNAPSHOT_JS=...] [KK_DEMO=1] npx electron .` uses a separate `-selftest` profile (never touches the real save).
 * Demo mode: `?demo` in the browser, `KK_DEMO=1` for Electron, `--demo` for playtest.js. `playtest.js --retire nudge` retires like the in-game nudge; `--omen first|none|random`.
-* Market probe (T3): `npx electron docs/playtest/round-03/market_probe` (`KK_PROBE=2|3` for extra experiments).
+* Market probe (T3): `npx electron docs/playtest/round-04/market_probe` (modes in its README/probe.js; uses its own %APPDATA%/kk-market-probe-r4 folders).
+* Packaged build: `npm run dist` / `npm run dist:demo` → `dist/*/win-unpacked/*.exe`.
 * Source: `js/*.js` (data in `js/data.js`, economy in `js/state.js`, combat in `js/world.js`, UI in `js/ui.js`), desktop shell in `electron/`, design in `docs/GDD.md`.
 * Tester 4 only: the browser pane at http://127.0.0.1:5173 (fake desktop + dev tools: autotype, time warp, +gold, +floors, rat). Fresh start: run `KK.resetting = true; localStorage.clear(); location.reload()` (a plain `localStorage.clear()` gets re-saved by the unload handler). Asset URLs carry `?v=rNN`; the lead bumps it each round so the browser never runs stale code. Dev server: `python tools/serve.py` (no-cache). The page blocks all fetches by CSP, so don't probe with `fetch()`.
 
@@ -97,20 +98,20 @@ Format: `- [round found] [severity] item: status/reason`
 ### Fixed in R3
 - Dead demo end (re-delve loop, repeatable +6, best time), demoDone persistence, ligature "Aoor" bug, Delve Omens, Hollow at f70, Sanctuary reaction, ult-turn spin, Second Wind, Overcharge growth, CSS bar transitions (GPU), 24 fps default, per-monitor fullscreen scan, baked demo flag + explicit save folders + demo→full import, file saves with backups.
 
+### Fixed in R4
+- Packaging (electron-builder, fuses, trimmed natives, icon), achievements (35), depth trophies, demo Renown cap + import conversion, omen balance + modal, Vigil Sanctuary + void slam, Head Start levels/retreat floor, Second Wind feedback, low-GPU mode, fullscreen false positives, save hardening (validated rotation, corrupt quarantine, retries, shutdown flush, one-time demo import).
+
 ### Open (ranked)
-- [R3] [blocker-check] Re-measure GPU (typing ≤5% @24 fps, idle <3%) and multi-monitor fullscreen with `docs/playtest/round-03/market_probe`.
-- [R3] [blocker, Next Fest] Packaging: electron-builder 26.x "dir" target for Steam, asarUnpack for uiohook-napi + koffi, full + demo builds (`--config.extraMetadata.kkDemo=true`). ~1 day, by Nov 20.
-- [R3] [blocker, Next Fest] Steamworks (steamworks-ffi-node or steamworks.js) in main only: init, rich presence, achievements (tracked in demo, granted in full game from the shared save). ~1.5 days, by Dec 18. Steam Auto-Cloud on `%APPDATA%/Keystroke Keep/saves`.
-- [R3] [blocker, Next Fest] Code signing (Azure Artifact Signing or OV cert; sign exe + .node files), VirusTotal + Microsoft false-positive submissions. Start Nov 13, signed build by Jan 9.
-- [R3] [major, owner: user] Steamworks onboarding (fee, tax, bank) now; Coming Soon page submitted ~Nov 23 (public ~Dec 3); trailer by Jan 8; demo + store page review submission ~Jan 12 (deadline Jan 18). Set `KK.STORE_URL` once the app id exists.
-- [R1] [major] Achievements: data table + checker (sim-testable) + toast; top 5 in round-02/market.md; ~35 for 1.0.
-- [R2] [major] Store capsule/trailer plan (round-02/market.md F5); capture mode (60 fps, no idle drop, fixed crop) for GIFs/trailer.
-- [R1] [major] Endgame beyond omens: floor-100 finale boss, depth trophies 75/100/110/120/125, Legacy tier 2.
-- [R3] [minor] Sanctuary as reaction may be invisible for strong typist parties; consider a scripted Sanctuary at each boss's 50% HP.
-- [R1] [minor] Boss signature moves; second frames for Golem/Ember Colossus; real boss + capsule art (artist).
-- [R1] [minor] Idle fallbacks for typing relics; Backspace Boots rework.
-- [R1] [minor] Compact HUD at size S; enemy outlines; pixel mute icon; biome-change stacked floor labels; identical commons in consecutive offers.
-- [R1] [minor] Content-protection toggle; AppBar mode; rebindable hide hotkey; private-memory measurement (~500 MB working set summed).
+- [R4] [check] Measure GPU/CPU with low-GPU mode on (default) incl. an iGPU laptop if possible; fullscreen filter vs real overlays; save edge cases on the packaged build (market probe in docs/playtest/round-04/market_probe).
+- [R3] [blocker, owner: user] Steamworks onboarding (fee/tax/bank), app id, Coming Soon page (~Nov 23), trailer (Jan 8), demo + page review submission (~Jan 12, deadline Jan 18). Set `KK.STORE_URL`.
+- [R3] [blocker, needs app id] Steamworks in main (steamworks-ffi-node or steamworks.js): init, achievements mirror of `S.ach` (full game only; demo grants on import), rich presence, Auto-Cloud on `%APPDATA%/Keystroke Keep/saves/*.json`, overlay test.
+- [R3] [blocker, owner: user] Code-signing certificate (Azure Artifact Signing or OV); then `win.azureSignOptions`/certificate config; VirusTotal + Microsoft submissions.
+- [R4] [major] Demo and full game can run at once (two strips, two hooks): shared single-instance lock across both.
+- [R4] [minor] Mouse-move events wake the main process ~650 Hz (uiohook); post-fest Raw Input or a fork that drops moves.
+- [R4] [minor] Late-game number soup: rolling per-target totals above 1K/s; stacked floor labels on biome change; The Hollow sprite too small for a finale.
+- [R1] [minor] Boss signature moves for the early bosses; second frames for Golem/Ember Colossus; real boss + capsule art (artist).
+- [R1] [minor] Idle fallbacks for typing relics; Backspace Boots rework; repeated commons across offers.
+- [R1] [minor] Compact HUD at size S; enemy outlines; pixel mute icon; rebindable hide hotkey; content-protection toggle; AppBar mode.
 
 ## Round history
 
@@ -119,4 +120,5 @@ Format: `- [round found] [severity] item: status/reason`
 | R0 | 2026-11-09 | Prototype v0.1 + playtest harness | 6e4709e, 2c070ea |
 | R1 | 2026-11-09 | Record-based Renown, Embers, offline cap, ult rotation, Hollowed bosses, 30 fps cap + power/audio suspend, no network, calm mode, two-step relic pick | eedfe92 |
 | R2 | 2026-11-09 | Ember Crucible, ult buff, compounding Fame, relic queue, charge bar, retire nudge, demo mode, fullscreen auto-hide, sleeping loop, CSS-animation GPU fix, hook off on pause | e4068a6 |
-| R3 | 2026-11-09 | Demo re-delve loop + card, Delve Omens, Sanctuary reaction, ligature fix, file saves, per-monitor fullscreen, baked demo flag, 24 fps, bar transitions removed | (this round) |
+| R3 | 2026-11-09 | Demo re-delve loop + card, Delve Omens, Sanctuary reaction, ligature fix, file saves, per-monitor fullscreen, baked demo flag, 24 fps, bar transitions removed | 220510d |
+| R4 | 2026-11-09 | Packaging + fuses, achievements, depth trophies, demo Renown cap, omen rebalance + modal, Vigil + void slam, low-GPU mode, save hardening | 40214c3 + (this round) |

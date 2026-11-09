@@ -19,6 +19,7 @@
       KK.ui.welcome(() => { KK.audio.init(); KK.fx.banner('FLOOR 1', 'THE CRYPT', '#ffffff', 2.4, { subCol: '#c9b8ea' }); });
     } else {
       awayCheck((Date.now() - (KK.S.lastSave || Date.now())) / 1000);
+      try { const src = window.kkNative && window.kkNative.saveInfo && window.kkNative.saveInfo(); if (src === 'backup') setTimeout(() => KK.ui.toast('Your save was damaged, so it was restored from a backup.', 'shield', 'gold', 8), 2000); if (src === 'demo') setTimeout(() => KK.ui.toast('Welcome to the full game! Your demo progress came with you.', 'crown', 'epic', 8), 2000); } catch (e) { /* ignore */ }
       KK.ui.renderPips();
       if (KK.S.omenOffer) setTimeout(KK.ui.chooseOmen, 1500); // an omen choice pending at quit is never lost
     }
@@ -32,7 +33,7 @@
       let fps = set;
       if (KK.onBattery) fps = Math.min(fps, 20);
       // nobody's typing and nothing exciting is happening: drop to a slow idle animation
-      if (KK.lastInputAgo() > 45 && !W.boss && KK.fervorTier() === 0 && !KK.fx.busy()) fps = Math.min(fps, 10);
+      if (KK.lastInputAgo() > 45 && !W.boss && KK.fervorTier() === 0) fps = Math.min(fps, KK.fx.busy() ? 15 : 10);
       return fps;
     };
     // A sleeping timer loop (not requestAnimationFrame, which wakes at the monitor's refresh

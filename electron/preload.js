@@ -18,4 +18,5 @@ contextBridge.exposeInMainWorld('kkNative', {
   saveFile: (json) => ipcRenderer.send('kk:save', String(json)),
   saveFileSync: (json) => ipcRenderer.sendSync('kk:saveSync', String(json)),
   wipeFile: () => ipcRenderer.sendSync('kk:wipeSave'),
+  saveInfo: () => ipcRenderer.sendSync('kk:saveInfo'),
 });

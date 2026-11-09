@@ -38,22 +38,38 @@
       "assets/**",
       "electron/**",
       "package.json",
-      "!**/*.map"
+      "!**/*.map",
+      "!node_modules/koffi/{doc,vendor}/**",
+      "!node_modules/@koromix/*/**/*.lib",
+      "!node_modules/uiohook-napi/{src,libuiohook}/**",
+      "!node_modules/uiohook-napi/prebuilds/{darwin-*,linux-*,win32-arm64}/**",
+      "!node_modules/koffi/src/**/*.{cc,hh,c,h,cpp,S,asm,txt}"
     ],
     "asar": true,
     "asarUnpack": [
-      "node_modules/uiohook-napi/**",
-      "node_modules/koffi/**"
+      "**/*.node"
     ],
     "win": {
       "target": [
         "dir"
       ],
-      "icon": "build/icon.png"
+      "icon": "build/icon.png",
+      "signExts": [
+        ".node"
+      ]
     },
     "electronLanguages": [
       "en-US"
     ],
-    "npmRebuild": false
+    "npmRebuild": false,
+    "electronFuses": {
+      "runAsNode": false,
+      "enableNodeOptionsEnvironmentVariable": false,
+      "enableNodeCliInspectArguments": false,
+      "enableEmbeddedAsarIntegrityValidation": true,
+      "onlyLoadAppFromAsar": true,
+      "enableCookieEncryption": false,
+      "grantFileProtocolExtraPrivileges": true
+    }
   }
 }

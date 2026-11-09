@@ -19,7 +19,7 @@
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
       stats: { kills: 0, bossKills: 0, keys: 0, clicks: 0, ults: 0, goldEarned: 0, playTime: 0, chests: 0, rats: 0, flowTime: 0, wipes: 0 },
-      settings: { sound: true, music: false, volume: 0.3, keySound: false, calm: false, fps: 24, size: 'auto', countInput: true },
+      settings: { sound: true, music: false, volume: 0.3, keySound: false, calm: false, fps: 24, lowGpu: true, size: 'auto', countInput: true },
       tutorial: {},
       lastSave: Date.now(),
       created: Date.now(),
