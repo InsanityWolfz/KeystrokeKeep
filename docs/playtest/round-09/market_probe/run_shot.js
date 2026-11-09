@@ -16,10 +16,10 @@ const a = process.argv.slice(2); const [shot, take] = a; const has = (k) => a.in
 const sh = SHOTS[shot]; if (!sh) throw new Error('shot?');
 const OUT = path.join(__dirname, 'out', 'shots'); fs.mkdirSync(OUT, { recursive: true });
 const save = JSON.parse(fs.readFileSync(path.join(SH, 'saves', sh.save), 'utf8'));
-save.settings = Object.assign(save.settings || {}, { displayId: DISPLAY, countInput: false });
+save.settings = Object.assign(save.settings || {}, { displayId: DISPLAY }); // countInput stays as staged: the hook is a dummy in the launcher; countInput:false would also mute autotype
 if (val('lastsave') === 'old') save.lastSave = Date.now() - 3600 * 1000;
 const saveP = path.join(OUT, `${shot}_${take}_save.json`); fs.writeFileSync(saveP, JSON.stringify(save));
-const scriptP = path.join(SH, sh.script);
+const scriptP = val('script') ? path.resolve(val('script')) : path.join(SH, sh.script);
 const secs = +(val('secs') || sh.secs);
 const shotsAt = []; for (let f = 60; f <= secs * 60; f += 120) shotsAt.push(f);
 const cfg = { name: `${shot}_${take}`, secs, displayId: DISPLAY, det: has('det'), shotsAt, pngAt: (val('png') || '').split(',').filter(Boolean).map(Number), out: path.join(OUT, `${shot}_${take}.json`) };

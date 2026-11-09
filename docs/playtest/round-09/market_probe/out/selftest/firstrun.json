@@ -1,0 +1,676 @@
+{
+ "name": "firstrun",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K"
+  ],
+  "balloons": [],
+  "hookStart": 0,
+  "evals": [
+   {
+    "t": 2.5,
+    "id": "firstrun",
+    "v": "{\"modal\":\"KEYSTROKE KEEP\\n\\nYour work is their adventure.\\n\\nA tiny party of heroes lives in the strip at the bottom of your screen. They delve on their own, but every key you type and every click you make charges them up.\\n\\nJust work normally. Typing and clicking anywhere on your PC counts.\\n\\n🔒 Keystroke Keep only counts input. It never records what you type.\\n\\nSTART DELVING ⚔\",\"settings\":{\"sound\":true,\"music\":false,\"volume\":0.2,\"keySound\":false,\"calm\":true,\"combatSfx\":false,\"fps\":24,\"lowGpu\":\"auto\",\"size\":\"auto\",\"countInput\":true},\"toasts\":[]}"
+   },
+   {
+    "t": 3,
+    "id": "a11y_default",
+    "v": {
+     "#fv-mult": {
+      "color": "rgb(241, 233, 255)",
+      "crMedian": 14.19,
+      "crP90bright": 13.13,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "x1.0"
+     },
+     "#fv-tier": {
+      "color": "rgb(201, 184, 234)",
+      "crMedian": 9.78,
+      "crP90bright": 8.48,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "IDLE"
+     },
+     "#hud-biome": {
+      "color": "rgb(169, 155, 199)",
+      "crMedian": 6.03,
+      "crP90bright": 5.94,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "The Crypt"
+     },
+     "#hud-demo": "hidden",
+     "#hud-embers": {
+      "color": "rgb(255, 176, 112)",
+      "crMedian": 9.92,
+      "crP90bright": 9.3,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": false,
+      "text": "0"
+     },
+     "#hud-floor": {
+      "color": "rgb(255, 255, 255)",
+      "crMedian": 16.7,
+      "crP90bright": 15.45,
+      "font": "Silkscreen",
+      "hPx": 22,
+      "px": "17px",
+      "shadow": true,
+      "text": "FLOOR 1"
+     },
+     "#hud-gold .val": {
+      "color": "rgb(251, 209, 75)",
+      "crMedian": 11.39,
+      "crP90bright": 10.54,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "0"
+     },
+     "#hud-rate": "hidden",
+     "#hud-spark .val": {
+      "color": "rgb(126, 232, 246)",
+      "crMedian": 12.52,
+      "crP90bright": 10.86,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "0/150"
+     },
+     ".hbtn": {
+      "color": "rgb(0, 0, 0)",
+      "crMedian": 1.26,
+      "crP90bright": 1.36,
+      "font": "Silkscreen",
+      "hPx": 38,
+      "px": "15px",
+      "shadow": false,
+      "text": "🔊"
+     },
+     "canvasScale": 1,
+     "size": "auto",
+     "stripH": 128
+    }
+   },
+   {
+    "t": 3.5,
+    "id": "clickStart",
+    "v": true
+   },
+   {
+    "t": 6,
+    "id": "afterStart",
+    "v": "{\"banner\":\"\",\"toasts\":[],\"title\":\"Keystroke Keep\"}"
+   },
+   {
+    "t": 6.5,
+    "id": "setS",
+    "v": 1
+   },
+   {
+    "t": 7.5,
+    "id": "a11y_S",
+    "v": {
+     "#fv-mult": {
+      "color": "rgb(241, 233, 255)",
+      "crMedian": 15.13,
+      "crP90bright": 13.13,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "x1.0"
+     },
+     "#fv-tier": {
+      "color": "rgb(201, 184, 234)",
+      "crMedian": 9.17,
+      "crP90bright": 8.48,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "IDLE"
+     },
+     "#hud-biome": {
+      "color": "rgb(169, 155, 199)",
+      "crMedian": 6.52,
+      "crP90bright": 6.03,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "The Crypt"
+     },
+     "#hud-demo": "hidden",
+     "#hud-embers": {
+      "color": "rgb(255, 176, 112)",
+      "crMedian": 9.92,
+      "crP90bright": 8.61,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": false,
+      "text": "0"
+     },
+     "#hud-floor": {
+      "color": "rgb(255, 255, 255)",
+      "crMedian": 17.81,
+      "crP90bright": 15.45,
+      "font": "Silkscreen",
+      "hPx": 22,
+      "px": "17px",
+      "shadow": true,
+      "text": "FLOOR 1"
+     },
+     "#hud-gold .val": {
+      "color": "rgb(251, 209, 75)",
+      "crMedian": 11.39,
+      "crP90bright": 10.54,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "0"
+     },
+     "#hud-rate": "hidden",
+     "#hud-spark .val": {
+      "color": "rgb(126, 232, 246)",
+      "crMedian": 12.52,
+      "crP90bright": 10.86,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "0/150"
+     },
+     ".hbtn": {
+      "color": "rgb(0, 0, 0)",
+      "crMedian": 1.26,
+      "crP90bright": 1.36,
+      "font": "Silkscreen",
+      "hPx": 38,
+      "px": "15px",
+      "shadow": false,
+      "text": "🔊"
+     },
+     "canvasScale": 1,
+     "size": "S",
+     "stripH": 128
+    }
+   },
+   {
+    "t": 8,
+    "id": "setM",
+    "v": 1
+   },
+   {
+    "t": 9,
+    "id": "a11y_M",
+    "v": {
+     "#fv-mult": {
+      "color": "rgb(241, 233, 255)",
+      "crMedian": 12.85,
+      "crP90bright": 9.21,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "x1.0"
+     },
+     "#fv-tier": {
+      "color": "rgb(201, 184, 234)",
+      "crMedian": 8.81,
+      "crP90bright": 6.13,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "IDLE"
+     },
+     "#hud-biome": {
+      "color": "rgb(169, 155, 199)",
+      "crMedian": 6.67,
+      "crP90bright": 6.03,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "The Crypt"
+     },
+     "#hud-demo": "hidden",
+     "#hud-embers": {
+      "color": "rgb(255, 176, 112)",
+      "crMedian": 8.63,
+      "crP90bright": 7.58,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": false,
+      "text": "0"
+     },
+     "#hud-floor": {
+      "color": "rgb(255, 255, 255)",
+      "crMedian": 16.7,
+      "crP90bright": 15.45,
+      "font": "Silkscreen",
+      "hPx": 22,
+      "px": "17px",
+      "shadow": true,
+      "text": "FLOOR 1"
+     },
+     "#hud-gold .val": {
+      "color": "rgb(251, 209, 75)",
+      "crMedian": 9.31,
+      "crP90bright": 8.19,
+      "font": "Silkscreen",
+      "hPx": 20,
+      "px": "15px",
+      "shadow": true,
+      "text": "1.2"
+     },
+     "#hud-rate": "hidden",
+     "#hud-spark .val": {
+      "color": "rgb(126, 232, 246)",
+      "crMedian": 7.46,
+      "crP90bright": 4.8,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "0/150"
+     },
+     ".hbtn": {
+      "color": "rgb(0, 0, 0)",
+      "crMedian": 1.38,
+      "crP90bright": 1.6,
+      "font": "Silkscreen",
+      "hPx": 38,
+      "px": "15px",
+      "shadow": false,
+      "text": "🔊"
+     },
+     "canvasScale": 1,
+     "size": "M",
+     "stripH": 192
+    }
+   },
+   {
+    "t": 9.5,
+    "id": "setL",
+    "v": 1
+   },
+   {
+    "t": 10.5,
+    "id": "a11y_L",
+    "v": {
+     "#fv-mult": {
+      "color": "rgb(241, 233, 255)",
+      "crMedian": 13.71,
+      "crP90bright": 12.27,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "x1.0"
+     },
+     "#fv-tier": {
+      "color": "rgb(201, 184, 234)",
+      "crMedian": 9.78,
+      "crP90bright": 9.78,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "IDLE"
+     },
+     "#hud-biome": {
+      "color": "rgb(169, 155, 199)",
+      "crMedian": 6.95,
+      "crP90bright": 6.52,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "The Crypt"
+     },
+     "#hud-demo": "hidden",
+     "#hud-embers": {
+      "color": "rgb(255, 176, 112)",
+      "crMedian": 5.17,
+      "crP90bright": 4.24,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": false,
+      "text": "0"
+     },
+     "#hud-floor": {
+      "color": "rgb(255, 255, 255)",
+      "crMedian": 17.81,
+      "crP90bright": 16.7,
+      "font": "Silkscreen",
+      "hPx": 22,
+      "px": "17px",
+      "shadow": true,
+      "text": "FLOOR 1"
+     },
+     "#hud-gold .val": {
+      "color": "rgb(251, 209, 75)",
+      "crMedian": 10.41,
+      "crP90bright": 9.72,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "1.2"
+     },
+     "#hud-rate": "hidden",
+     "#hud-spark .val": {
+      "color": "rgb(126, 232, 246)",
+      "crMedian": 9.84,
+      "crP90bright": 7.81,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "0/150"
+     },
+     ".hbtn": {
+      "color": "rgb(0, 0, 0)",
+      "crMedian": 1.35,
+      "crP90bright": 2.16,
+      "font": "Silkscreen",
+      "hPx": 38,
+      "px": "15px",
+      "shadow": false,
+      "text": "🔊"
+     },
+     "canvasScale": 1,
+     "size": "L",
+     "stripH": 256
+    }
+   },
+   {
+    "t": 11,
+    "id": "f45",
+    "v": 1
+   },
+   {
+    "t": 13,
+    "id": "a11y_L_magma",
+    "v": {
+     "#fv-mult": {
+      "color": "rgb(241, 233, 255)",
+      "crMedian": 15.13,
+      "crP90bright": 4.05,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "x1.0"
+     },
+     "#fv-tier": {
+      "color": "rgb(201, 184, 234)",
+      "crMedian": 8.08,
+      "crP90bright": 3.1,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "IDLE"
+     },
+     "#hud-biome": {
+      "color": "rgb(169, 155, 199)",
+      "crMedian": 6.21,
+      "crP90bright": 1.56,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "Magma Depths"
+     },
+     "#hud-demo": "hidden",
+     "#hud-embers": {
+      "color": "rgb(255, 176, 112)",
+      "crMedian": 8.93,
+      "crP90bright": 2.07,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": false,
+      "text": "0"
+     },
+     "#hud-floor": {
+      "color": "rgb(255, 255, 255)",
+      "crMedian": 18.5,
+      "crP90bright": 8.07,
+      "font": "Silkscreen",
+      "hPx": 22,
+      "px": "17px",
+      "shadow": true,
+      "text": "FLOOR 45"
+     },
+     "#hud-gold .val": {
+      "color": "rgb(251, 209, 75)",
+      "crMedian": 11.79,
+      "crP90bright": 2.54,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "1.2"
+     },
+     "#hud-rate": "hidden",
+     "#hud-spark .val": {
+      "color": "rgb(126, 232, 246)",
+      "crMedian": 13.07,
+      "crP90bright": 2.62,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "0/150"
+     },
+     ".hbtn": {
+      "color": "rgb(0, 0, 0)",
+      "crMedian": 1.23,
+      "crP90bright": 2.53,
+      "font": "Silkscreen",
+      "hPx": 38,
+      "px": "15px",
+      "shadow": false,
+      "text": "🔊"
+     },
+     "canvasScale": 1,
+     "size": "L",
+     "stripH": 256
+    }
+   },
+   {
+    "t": 13.2,
+    "id": "setS2",
+    "v": 1
+   },
+   {
+    "t": 14,
+    "id": "a11y_S_magma",
+    "v": {
+     "#fv-mult": {
+      "color": "rgb(241, 233, 255)",
+      "crMedian": 14.69,
+      "crP90bright": 2.67,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "x1.0"
+     },
+     "#fv-tier": {
+      "color": "rgb(201, 184, 234)",
+      "crMedian": 9.49,
+      "crP90bright": 1.73,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "IDLE"
+     },
+     "#hud-biome": {
+      "color": "rgb(169, 155, 199)",
+      "crMedian": 6.26,
+      "crP90bright": 2.32,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": true,
+      "text": "Magma Depths"
+     },
+     "#hud-demo": "hidden",
+     "#hud-embers": {
+      "color": "rgb(255, 176, 112)",
+      "crMedian": 8.93,
+      "crP90bright": 4.61,
+      "font": "Silkscreen",
+      "hPx": 14,
+      "px": "11px",
+      "shadow": false,
+      "text": "0"
+     },
+     "#hud-floor": {
+      "color": "rgb(255, 255, 255)",
+      "crMedian": 14.9,
+      "crP90bright": 3.77,
+      "font": "Silkscreen",
+      "hPx": 22,
+      "px": "17px",
+      "shadow": true,
+      "text": "FLOOR 45"
+     },
+     "#hud-gold .val": {
+      "color": "rgb(251, 209, 75)",
+      "crMedian": 11.79,
+      "crP90bright": 2.14,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "1.2"
+     },
+     "#hud-rate": "hidden",
+     "#hud-spark .val": {
+      "color": "rgb(126, 232, 246)",
+      "crMedian": 12.15,
+      "crP90bright": 5.82,
+      "font": "Silkscreen",
+      "hPx": 19,
+      "px": "15px",
+      "shadow": true,
+      "text": "0/150"
+     },
+     ".hbtn": {
+      "color": "rgb(0, 0, 0)",
+      "crMedian": 1.23,
+      "crP90bright": 4.22,
+      "font": "Silkscreen",
+      "hPx": 38,
+      "px": "15px",
+      "shadow": false,
+      "text": "🔊"
+     },
+     "canvasScale": 1,
+     "size": "S",
+     "stripH": 128
+    }
+   }
+  ]
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-selftest",
+ "log": [
+  "  0.08 shown at {\"x\":2560,\"y\":1171,\"width\":1920,\"height\":192}",
+  "  0.09 pre installed {\"identifier\":\"1\"}",
+  "  0.09 loadFile",
+  "  0.33 tray: fake (no icon shown)",
+  "  2.65 png 2.6s {\"width\":1920,\"height\":568}",
+  "  5.54 png 5.5s {\"width\":1920,\"height\":128}",
+  "  7.64 png 7.6s {\"width\":1920,\"height\":128}",
+  " 13.54 png 13.5s {\"width\":1920,\"height\":128}",
+  " 14.54 png 14.5s {\"width\":1920,\"height\":128}",
+  " 15.03 finish"
+ ],
+ "page": {
+  "f": 348,
+  "t0f": 0,
+  "ev": [
+   {
+    "f": 76,
+    "r": 3230,
+    "v": 3230,
+    "e": "BANNER FLOOR 1 / THE CRYPT"
+   }
+  ],
+  "dig": [
+   "60|1|1|100.2|1|22|0|0|0|",
+   "120|1|1|126.2|1|12|0|0|0|",
+   "180|1|2|133.3|2|22|1|0|0|",
+   "240|1|2|194.1|2|22|1|0|0|",
+   "300|45|1|255.2|2|1966646|1|0|0|"
+  ],
+  "hashes": [],
+  "det": false,
+  "fpsReal": [
+   25,
+   24,
+   24,
+   24,
+   24,
+   24,
+   24,
+   24,
+   24,
+   24,
+   24,
+   24,
+   24,
+   24
+  ],
+  "t0r": 258.19999998807907,
+  "t0v": 258.19999998807907,
+  "boot": {
+   "gold": 0,
+   "lastSave": 1794258022503,
+   "toastsDom": [],
+   "modal": "KEYSTROKE KEEP"
+  },
+  "hooked": true
+ }
+}

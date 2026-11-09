@@ -1,0 +1,16 @@
+{ "seed": 7,
+  "_shot": "G2 v9 (proposed): event-anchored. Jumps straight to the Ember Colossus wave, then every beat waits on the game event, so the cut points no longer drift with frame timing.",
+  "_cut": "BOSS IN .. VICTORY. For a real-typing take, delete the 'sparks full' cue after SHELL and type ~5 keys when the plate shows.",
+  "cues": [
+  { "t": 0, "do": "floor", "v": 50 },
+  { "t": 0, "do": "sparks", "v": 20 },
+  { "t": 0.1, "do": "wave" },
+  { "do": "await", "v": "bossSpawn", "timeout": 20 },
+  { "t": 0, "do": "mark", "v": "BOSS IN" },
+  { "do": "await", "v": "magmaShell", "timeout": 30 },
+  { "t": 0, "do": "mark", "v": "SHELL (type now)" },
+  { "t": 0.8, "do": "sparks", "v": "full" },
+  { "do": "await", "v": "shellCrack", "timeout": 20 },
+  { "t": 0, "do": "mark", "v": "CRACK" },
+  { "t": 12, "do": "mark", "v": "END" }
+] }

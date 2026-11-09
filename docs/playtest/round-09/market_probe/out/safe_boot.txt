@@ -101,3 +101,261 @@
   0.27 loadFile
   0.79 tray: fake (no icon shown)
   0.93 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+ 13.05 finish
+2026-11-09T20:49:18.458Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.10 uiohook start() blocked (dummy)
+  0.25 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.26 pre installed {"identifier":"1"}
+  0.26 loadFile
+  0.65 tray: fake (no icon shown)
+  0.80 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+ 13.05 finish
+2026-11-09T20:49:31.744Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.06 uiohook start() blocked (dummy)
+  0.10 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.10 pre installed {"identifier":"1"}
+  0.10 loadFile
+  0.36 tray: fake (no icon shown)
+  0.45 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":2}
+  2.52 png at frame 121 (asked 120)
+  7.29 png at frame 400 (asked 400)
+ 15.03 finish
+2026-11-09T20:49:46.988Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.06 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.34 tray: fake (no icon shown)
+  0.44 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":2}
+  2.55 png at frame 121 (asked 120)
+  7.30 png at frame 400 (asked 400)
+ 15.02 finish
+2026-11-09T20:50:02.232Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.33 tray: fake (no icon shown)
+  0.42 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":2}
+ 15.04 finish
+2026-11-09T20:50:19.710Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.08 uiohook start() blocked (dummy)
+  0.11 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.12 pre installed {"identifier":"1"}
+  0.12 loadFile
+  0.52 tray: fake (no icon shown)
+  0.89 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":2}
+ 15.04 finish
+2026-11-09T20:50:34.981Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.06 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.35 tray: fake (no icon shown)
+  0.44 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":2}
+ 15.03 finish
+2026-11-09T20:50:50.270Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.12 uiohook start() blocked (dummy)
+  3.30 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  3.30 pre installed {"identifier":"1"}
+  3.30 loadFile
+  3.61 tray: fake (no icon shown)
+  4.22 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":2}
+ 15.06 finish
+2026-11-09T20:51:06.355Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.11 uiohook start() blocked (dummy)
+  0.57 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.57 pre installed {"identifier":"1"}
+  0.57 loadFile
+  0.78 tray: fake (no icon shown)
+  1.02 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+  3.05 png at frame 120 (asked 120)
+  7.73 png at frame 401 (asked 400)
+ 16.04 png at frame 901 (asked 900)
+ 46.05 finish
+2026-11-09T20:51:55.947Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.10 uiohook start() blocked (dummy)
+  0.41 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.41 pre installed {"identifier":"1"}
+  0.41 loadFile
+  0.68 tray: fake (no icon shown)
+  0.94 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+  3.09 png at frame 120 (asked 120)
+  8.04 png at frame 400 (asked 400)
+ 16.76 png at frame 900 (asked 900)
+ 46.06 finish
+2026-11-09T20:52:46.272Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.12 uiohook start() blocked (dummy)
+  0.31 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.31 pre installed {"identifier":"1"}
+  0.31 loadFile
+  0.70 tray: fake (no icon shown)
+  0.86 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+ 46.11 finish
+2026-11-09T20:53:37.252Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.12 uiohook start() blocked (dummy)
+  0.34 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.35 pre installed {"identifier":"1"}
+  0.35 loadFile
+  0.69 tray: fake (no icon shown)
+  0.88 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+ 46.06 finish
+2026-11-09T20:54:25.047Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.12 uiohook start() blocked (dummy)
+  0.99 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.99 pre installed {"identifier":"1"}
+  0.99 loadFile
+  1.22 tray: fake (no icon shown)
+  1.67 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+ 46.06 finish
+2026-11-09T20:55:11.535Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.10 uiohook start() blocked (dummy)
+  0.16 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.17 pre installed {"identifier":"1"}
+  0.17 loadFile
+  0.61 tray: fake (no icon shown)
+  0.77 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+ 46.05 finish
+2026-11-09T20:55:57.992Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.10 uiohook start() blocked (dummy)
+  0.16 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.17 pre installed {"identifier":"1"}
+  0.17 loadFile
+  0.63 tray: fake (no icon shown)
+  0.75 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":8}
+  2.80 png at frame 121 (asked 120)
+  7.45 png at frame 401 (asked 400)
+ 15.75 png at frame 900 (asked 900)
+ 66.05 finish
+2026-11-09T20:57:04.267Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.34 tray: fake (no icon shown)
+  0.44 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":8}
+  2.52 png at frame 120 (asked 120)
+  7.35 png at frame 400 (asked 400)
+ 16.20 png at frame 901 (asked 900)
+ 66.03 finish
+2026-11-09T20:58:10.755Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.10 uiohook start() blocked (dummy)
+  0.25 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.25 pre installed {"identifier":"1"}
+  0.25 loadFile
+  0.63 tray: fake (no icon shown)
+  0.77 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":8}
+ 66.05 finish
+2026-11-09T20:59:17.038Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.34 tray: fake (no icon shown)
+  0.44 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":8}
+2026-11-09T21:00:22.181Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe2
+  0.08 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.33 tray: fake (no icon shown)
+ 66.02 finish
+2026-11-09T21:00:23.274Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.08 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.33 tray: fake (no icon shown)
+  0.41 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":8}
+  2.65 png 2.6s {"width":1920,"height":568}
+  5.54 png 5.5s {"width":1920,"height":128}
+  7.64 png 7.6s {"width":1920,"height":128}
+ 13.54 png 13.5s {"width":1920,"height":128}
+ 14.54 png 14.5s {"width":1920,"height":128}
+ 15.03 finish
+2026-11-09T21:00:57.236Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe2
+  0.08 ABORT show refused, bounds on primary {"x":0,"y":1200,"width":2560,"height":192}
+  0.09 finish
+  0.09 collect failed No target available
+  0.09 pre install failed target closed while handling command
+  0.09 loadFile
+2026-11-09T21:01:13.804Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe2
+  0.05 loadFile (no probe)
+  0.31 ABORT show refused, bounds on primary {"x":0,"y":1200,"width":2560,"height":192}
+  0.31 finish
+  0.31 collect failed No target available
+ 66.03 finish
+2026-11-09T21:01:29.535Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.06 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.34 tray: fake (no icon shown)
+  0.44 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":8}
+ 66.02 finish
+2026-11-09T21:02:42.273Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.34 tray: fake (no icon shown)
+  0.42 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+  2.14 png at frame 100 (asked 100)
+  7.24 png at frame 400 (asked 400)
+ 14.02 finish
+2026-11-09T21:02:56.521Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.32 tray: fake (no icon shown)
+  0.43 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+  2.20 png at frame 101 (asked 100)
+  7.39 png at frame 401 (asked 400)
+ 14.02 finish
+2026-11-09T21:03:10.772Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.33 tray: fake (no icon shown)
+  0.43 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+ 14.02 finish
+2026-11-09T21:03:25.026Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.06 uiohook start() blocked (dummy)
+  0.10 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.10 pre installed {"identifier":"1"}
+  0.10 loadFile
+  0.36 tray: fake (no icon shown)
+  0.46 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}
+ 13.02 finish
+2026-11-09T21:03:38.279Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.35 tray: fake (no icon shown)
+  0.44 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+ 14.02 finish
+2026-11-09T21:03:52.524Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.37 tray: fake (no icon shown)
+  0.47 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+ 14.03 finish
+2026-11-09T21:04:06.777Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.33 tray: fake (no icon shown)
+  0.44 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":9}
+ 14.02 finish
+2026-11-09T21:04:21.027Z start C:\Development\KeystrokeKeep\node_modules\electron\dist\electron.exe C:\Development\KeystrokeKeep\docs\playtest\round-09\market_probe\safe
+  0.05 uiohook start() blocked (dummy)
+  0.09 shown at {"x":2560,"y":1171,"width":1920,"height":192}
+  0.09 pre installed {"identifier":"1"}
+  0.09 loadFile
+  0.33 tray: fake (no icon shown)
+  0.47 [page] [capture] ready {"seed":7,"size":"L","juice":"full","cues":7}

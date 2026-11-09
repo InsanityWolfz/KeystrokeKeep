@@ -32,7 +32,9 @@
   KK.STORE_URL = ''; // e.g. 'steam://openurl/https://store.steampowered.com/app/<appid>' once the page exists
 
   // Next Fest demo mode: ?demo in the browser, --kk-demo / KK_DEMO=1 for the desktop build.
-  KK.today = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
+  KK.today = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  /** Days the game has been played on (new Hollowed bosses join the rotation one per day). */
+  KK.dayTick = () => { const S = KK.S, t = KK.today(); if (S.lastDay !== t) { if (!S.lastDay || t > S.lastDay) S.daysPlayed = (S.daysPlayed || 0) + 1; S.lastDay = t; } };
   KK.DEMO_CAP = (function () {
     try {
       if (root.kkNative && root.kkNative.demo) return 40;
@@ -65,7 +67,7 @@
     bossFor: (f) => {
       // past the Hollow, the Void throws every old boss back at you, hollowed out
       if (f === 70 || f === 100) return 'hollow';
-      if (f >= 80) { const six = ['ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; return six[(Math.floor((f - 80) / 10) + 2 * (KK.S.retires || 0)) % six.length]; }
+      if (f >= 80) { const six = ['ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; const pool = six.slice(0, Math.max(2, Math.min(6, (KK.S.daysPlayed || 1) + 1))); return pool[(Math.floor((f - 80) / 10) + 2 * (KK.S.retires || 0)) % pool.length]; }
       const b = F.biomeOf(f);
       const idx = Math.floor(((f - b.from) % 20) / 10);
       return b.bosses[Math.min(idx, b.bosses.length - 1)];
@@ -91,7 +93,8 @@
     if (S.omen) { const o = D.OMENS.find((x) => x.id === S.omen); if (o) o.apply(m); }
     // old saves kept per-boss counts: fold them into the total once
     if (S.codex && Object.keys(S.codex).length && !S.codexKills) { S.codexKills = Object.values(S.codex).reduce((a, b) => a + b, 0); S.codex = {}; }
-    m.codexRanks = Math.min(D.CODEX_MAX, Math.floor((S.codexKills || 0) / D.CODEX_EVERY));
+    const ck = S.codexKills || 0;
+    m.codexRanks = Math.min(D.CODEX_MAX, Math.min(28, Math.floor(ck / D.CODEX_EVERY)) + Math.floor(Math.max(0, ck - 28 * D.CODEX_EVERY) / 16));
     if (m.codexRanks) { const c = Math.pow(1.03, m.codexRanks); m.dmg *= c; m.gold *= c; }
     m.trophies = D.TROPHIES.filter((f) => S.maxFloorEver >= f).length;
     if (m.trophies) { const t = Math.pow(1.05, m.trophies); m.dmg *= t; m.gold *= t; }
@@ -301,10 +304,11 @@
   // demo: once the cap is beaten, a 0-Renown "re-delve" restarts the run (new relics, beat your best time)
   // Omen of the Day: one starred omen per calendar day; reaching (record - 5) under it pays a Seal (10 + record/10 Renown)
   A.starOmen = () => { let h = 0; for (const c of KK.today()) h = (h * 31 + c.charCodeAt(0)) >>> 0; return D.OMENS[h % D.OMENS.length].id; };
-  A.dailyOpen = () => !KK.DEMO_CAP && KK.S.retires >= 2 && KK.S.sealDay !== KK.today();
+  // a Seal needs a new calendar day (not an earlier one) AND an hour of play since the last Seal
+  A.dailyOpen = () => { const S = KK.S, t = KK.today(); return !KK.DEMO_CAP && S.retires >= 2 && S.sealDay !== t && !(S.sealDay && t < S.sealDay) && (S.stats.playTime - (S.sealPT || -1e9)) >= 3600; };
   A.sealFloor = () => Math.max(40, (KK.S.renownFloor || 0) - 5);
   A.sealValue = () => 10 + Math.floor((KK.S.renownFloor || 0) / 10);
-  A.claimSeal = () => { const S = KK.S; const v = A.sealValue(); S.sealDay = KK.today(); S.seals = (S.seals || 0) + 1; S.renown += v; S.renownLifetime += v; KK.dirty(); KK.emit('seal', { n: S.seals, v }); };
+  A.claimSeal = () => { const S = KK.S; const v = A.sealValue() * (S.omen === S.omenStar && S.omenStarDay === KK.today() ? 2 : 1); S.sealDay = KK.today(); S.sealPT = S.stats.playTime; S.seals = (S.seals || 0) + 1; S.renown += v; S.renownLifetime += v; KK.dirty(); KK.emit('seal', { n: S.seals, v }); };
   A.canRedelve = () => !!(KK.DEMO_CAP && KK.S.demoDone && KK.S.maxFloorRun >= 20) || (A.dailyOpen() && KK.S.freeDelveDay !== KK.today() && A.renownGain() <= 0 && KK.S.maxFloorRun >= 20);
   A.canRetire = () => !KK.S.glimpse && (A.renownGain() > 0 || A.canRedelve());
   /** What the retire button should ask for when nothing can be earned yet. */

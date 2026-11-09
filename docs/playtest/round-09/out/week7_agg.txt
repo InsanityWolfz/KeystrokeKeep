@@ -1,0 +1,180 @@
+
+== g300 / typist (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     146.5  145.5  13.0   6.8  28.5       6/6@9    14.0     6.7    5.5   2.0     11.5      563       56 [70]
+  2     156.7   10.2   1.0   4.3   1.5      6/6@26     0.0     1.2    0.3   1.5      3.5      100      71 [104]          1133       198   87    38.8    0/6
+  3     162.3    5.7   1.0   3.2   1.7      6/6@36     0.0     0.8    0.5   1.5      3.2       74      76 [135]           487       415   63     3.3    5/6
+  4     172.3   10.0   0.8   5.0   2.0      6/6@26     0.0     0.8    0.5   0.0      3.8      111      77 [140]           384       405   48    17.3    4/6
+  5     177.2    4.8   0.7   3.3   0.5      6/6@43     0.0     0.0    0.7   0.0      2.3       62     103 [170]           580       369   56     6.2    4/6
+  6     182.3    5.2   0.3   3.3   0.5      6/6@44     0.0     0.2    0.2   0.0      2.8       82     116 [181]           173       533   33     0.7    6/6
+  7     188.8    6.5   0.3   2.0   2.0      6/6@44     0.0     0.2    0.2   0.0      2.8       88     128 [216]           363       411   51     2.5    5/6
+days with no milestone except a Seal: none
+ach by day 7: 36.7 / 39  missing (count of seeds): seals30:6 idle50:6 omen10:1 legacy_all:1
+
+== g300 / burst (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     111.8  110.8   8.3   2.3  21.2      6/6@12    14.0     6.0    2.3   0.0     10.0      327       48 [61]
+  2     127.5   15.7   3.2   3.0   3.5      6/6@27     0.0     1.3    0.2   0.3      4.2      112       64 [92]           729       246   71    13.7    4/6
+  3     135.5    8.0   0.5   2.2   0.7      6/6@31     0.0     0.3    0.3   0.5      2.7       79     100 [135]           943       270   72    11.0    3/6
+  4     145.8   10.3   1.0   2.8   1.0      6/6@29     0.0     1.2    0.5   0.2      3.2      100      85 [115]           526       444   58     8.0    2/6
+  5     150.7    4.8   0.8   2.8   1.5      6/6@43     0.0     0.3    0.3   0.0      2.7       63      72 [104]           361       353   57    13.0    4/6
+  6     155.5    4.8   0.2   2.5   1.0      6/6@45     0.0     0.2    0.0   0.7      2.2       59     119 [170]           241       427   42     1.8    4/6
+  7     160.5    5.0   1.0   2.7   1.5      6/6@49     0.0     0.0    0.3   0.5      2.7       69      93 [174]           595       373   59    11.7    3/6
+days with no milestone except a Seal: none
+ach by day 7: 30.3 / 39  missing (count of seeds): flow:5 codex28:6 seals30:6 omen10:4 deep90:1 legacy_all:6 idle50:6 keys100k:6 flow1h:6 flow10h:6
+
+== g300 / idle (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     105.5  104.5   7.0   1.7  20.7      6/6@14    13.7     6.0    2.2   0.0      9.5      292       41 [56]
+  2     119.0   13.5   2.7   2.2   1.3      6/6@25     0.3     1.7    0.0   0.0      3.5       97       60 [70]           752       323   71     7.3    2/6
+  3     125.8    6.8   1.3   1.7   1.0      6/6@38     0.0     0.3    0.2   0.0      2.5       66     116 [158]           535       334   61     6.5    3/6
+  4     132.8    7.0   1.0   2.0   0.7      6/6@38     0.0     0.3    0.3   0.0      2.3       66      88 [107]           386       414   60     4.2    1/6
+  5     139.7    6.8   0.5   2.2   0.7      6/6@35     0.0     0.7    0.0   0.0      2.5       73     104 [141]           229       436   41     0.8    5/6
+  6     142.7    3.0   0.5   1.5   0.5      6/6@44     0.0     0.3    0.3   0.0      1.8       42     133 [179]           228       423   47     1.8    4/6
+  7     146.5    3.8   0.3   2.0   1.7      6/6@56     0.0     0.3    0.5   0.0      2.2       51     114 [180]           121       382   32     1.2    4/6
+days with no milestone except a Seal: none
+ach by day 7: 26.5 / 39  missing (count of seeds): flow:6 blitz:4 codex28:6 seals30:6 legacy_all:6 crucible10:6 keys10k:6 keys100k:6 flow1h:6 flow10h:6 ults1k:6 f150:4 deep90:3 ult_boss:3 omen10:1
+
+== g60 / typist (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     149.0  148.0  13.2   8.0  30.0       6/6@8    14.0     7.3    5.3   1.8     12.5      583       67 [80]
+  2     159.3   10.3   1.3   4.3   1.2      6/6@24     0.0     1.0    0.3   2.8      3.8      105       65 [96]           814       190   77    30.0    2/6
+  3     167.8    8.5   0.8   5.0   1.2      6/6@25     0.0     0.5    0.7   0.3      4.0       98       66 [88]           807       373   67    20.5    4/6
+  4     178.5   10.7   0.7   5.5   0.8      6/6@22     0.0     0.2    0.2   0.0      4.0      120      79 [122]           449       346   58     1.5    6/6
+  5     181.5    3.0   0.8   3.3   0.8      6/6@58     0.0     0.3    0.3   0.0      2.3       54      88 [148]           717       314   68    12.8    4/6
+  6     187.5    6.0   0.2   1.7   1.0      6/6@30     0.0     0.0    0.8   0.0      3.2       84     139 [200]           290       455   40     0.2    6/6
+  7     192.8    5.3   0.8   0.2   1.7      6/6@45     0.0     0.5    0.2   0.0      3.0       77     140 [199]           457       434   41     3.3    6/6
+days with no milestone except a Seal: none
+ach by day 7: 36.7 / 39  missing (count of seeds): seals30:6 idle50:6 legacy_all:1 omen10:1
+
+== g60 / burst (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     119.7  118.7   9.8   3.2  23.0      6/6@11    14.0     7.3    2.2   0.0     11.7      367       48 [56]
+  2     131.7   12.0   2.2   3.2   2.7      6/6@25     0.0     1.0    0.7   1.0      3.7      106       71 [93]           609       191   65    32.7    2/6
+  3     141.2    9.5   0.5   3.2   1.0      6/6@26     0.0     0.3    0.8   0.0      3.3       90     100 [134]           773       445   51    13.3    5/6
+  4     150.3    9.2   1.2   3.2   1.3      6/6@26     0.0     0.5    0.2   0.2      3.5       92      90 [122]           712       430   52     4.2    4/6
+  5     154.5    4.2   0.3   2.5   1.3      6/6@42     0.0     0.3    0.0   0.8      2.3       57     120 [155]           615       349   61    11.8    5/6
+  6     159.2    4.7   0.3   3.3   0.2      6/6@52     0.0     0.2    0.2   1.3      2.8       61       68 [99]          2104       462   68    13.3    3/6
+  7     165.3    6.2   0.7   3.2   1.0      6/6@51     0.0     0.0    0.2   1.5      3.0       78      84 [117]           367       466   48     3.5    3/6
+days with no milestone except a Seal: none
+ach by day 7: 30.5 / 39  missing (count of seeds): flow:6 codex28:6 seals30:6 omen10:2 legacy_all:6 idle50:6 keys100k:6 flow1h:6 flow10h:6 deep90:1
+
+== g60 / idle (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     112.7  111.7   8.3   2.3  23.2      6/6@10    14.0     7.0    2.7   0.0     10.3      330       68 [82]
+  2     126.7   14.0   2.7   2.7   1.7      6/6@26     0.0     0.8    0.0   0.0      3.7      109      89 [107]           339       393   44     2.3    4/6
+  3     135.3    8.7   1.0   2.5   0.7      6/6@29     0.0     1.3    0.2   0.0      3.2       83     116 [158]           745       366   58     3.2    5/6
+  4     141.8    6.5   0.8   2.2   0.5      6/6@41     0.0     0.3    0.3   0.0      2.5       66     102 [147]          1024       467   47     2.7    3/6
+  5     147.8    6.0   0.5   2.5   0.8      6/6@42     0.0     0.0    0.0   0.3      2.5       72     111 [143]           336       391   34    10.2    3/6
+  6     151.8    4.0   0.5   2.5   0.8      6/6@54     0.0     0.3    0.3   0.7      2.3       54     100 [132]           645       328   57    11.8    3/6
+  7     156.3    4.5   0.2   2.7   1.3      6/6@46     0.0     0.0    0.0   0.0      2.5       58     100 [108]           694       353   58    13.5    3/6
+days with no milestone except a Seal: none
+ach by day 7: 29.0 / 39  missing (count of seeds): flow:6 codex28:6 seals30:6 legacy_all:6 crucible10:6 keys10k:6 keys100k:6 flow1h:6 flow10h:6 ults1k:5 omen10:1
+
+== nooff / typist (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     149.0  148.0  13.2   8.0  30.0       6/6@8    14.0     7.3    5.3   1.8     12.5      583       67 [80]
+  2     159.3   10.3   1.2   4.8   1.0      6/6@20     0.0     0.7    0.3   2.5      4.2      106       56 [66]             0         0    1    29.2    1/6
+  3     168.2    8.8   0.7   4.7   1.3      6/6@40     0.0     0.5    0.2   0.7      3.8       98       69 [84]             0         0    1     0.0    6/6
+  4     176.0    7.8   1.0   5.2   1.2      6/6@28     0.0     0.8    0.3   0.0      4.0       96      90 [127]             0         0    1     7.5    5/6
+  5     181.7    5.7   0.8   4.5   0.5      6/6@34     0.0     0.2    0.3   0.0      3.2       79       81 [94]             0         0    1    16.0    4/6
+  6     187.0    5.3   0.2   0.8   1.0      6/6@37     0.0     0.2    0.5   0.0      3.0       77     183 [211]             0         0    1     0.2    6/6
+  7     190.7    3.7   0.7   0.0   1.5      6/6@44     0.0     0.2    0.7   0.0      2.8       63     143 [187]             0         0    1    13.3    4/6
+days with no milestone except a Seal: s2d6(rec+8) s4d6(rec+6)
+ach by day 7: 36.5 / 39  missing (count of seeds): seals30:6 legacy_all:2 idle50:6 omen10:1
+
+== nooff / burst (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     119.7  118.7   9.8   3.2  23.0      6/6@11    14.0     7.3    2.2   0.0     11.7      367       48 [56]
+  2     133.3   13.7   2.2   3.3   3.3      6/6@25     0.0     1.0    1.0   1.0      3.8      116       73 [91]             0         0    3    32.3    1/6
+  3     140.7    7.3   0.8   3.2   0.7      6/6@27     0.0     0.3    0.3   0.0      3.3       75       76 [89]             0         0    1     6.3    4/6
+  4     148.8    8.2   0.5   3.0   0.8      6/6@35     0.0     0.7    0.0   0.2      3.3       80      94 [127]             0         0    2    10.3    4/6
+  5     152.8    4.0   0.7   3.0   1.8      6/6@40     0.0     0.2    0.0   0.8      2.7       58      99 [153]             0         0    4    23.7    2/6
+  6     158.2    5.3   0.7   2.7   0.2      6/6@47     0.0     0.2    0.2   1.3      2.7       63      99 [144]             0         0    1     3.7    4/6
+  7     164.5    6.3   0.3   3.7   1.3      6/6@46     0.0     0.3    0.7   1.3      3.2       83      84 [115]             0         0    2     3.5    5/6
+days with no milestone except a Seal: none
+ach by day 7: 31.2 / 39  missing (count of seeds): codex28:6 seals30:6 legacy_all:6 idle50:6 keys100k:6 flow1h:6 flow10h:6 flow:5
+
+== nooff / idle (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     112.7  111.7   8.3   2.3  23.2      6/6@10    14.0     7.0    2.7   0.0     10.3      330       68 [82]
+  2     126.7   14.0   2.8   2.7   1.3      6/6@27     0.0     1.0    0.2   0.0      3.7      107      77 [101]             0         0    1     2.2    3/6
+  3     134.0    7.3   0.8   2.0   0.7      6/6@35     0.0     0.8    0.0   0.0      2.7       77     128 [176]             0         0    1     4.0    3/6
+  4     139.7    5.7   0.8   2.7   1.0      6/6@31     0.0     0.5    0.2   0.0      2.7       63      90 [122]             0         0    3    21.0    3/6
+  5     146.8    7.2   0.2   2.0   0.5      6/6@40     0.0     0.3    0.3   0.7      2.7       74      95 [112]             0         0    0     1.2    5/6
+  6     150.5    3.7   0.8   3.0   1.2      6/6@48     0.0     0.2    0.2   0.2      2.8       54      78 [128]             0         0    2    31.3    2/6
+  7     156.0    5.5   0.2   2.7   1.5      6/6@47     0.0     0.0    0.3   0.2      2.5       64     113 [165]             0         0    1    12.2    5/6
+days with no milestone except a Seal: none
+ach by day 7: 29.3 / 39  missing (count of seeds): flow:6 codex28:6 seals30:6 legacy_all:6 crucible10:6 keys10k:6 keys100k:6 flow1h:6 flow10h:6 ults1k:3 omen10:1
+
+== random / typist (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     149.0  148.0  13.2   8.3  29.8      6/6@11    14.0     6.8    5.8   1.7     13.0      583       59 [76]
+  2     158.8    9.8   0.8   4.3   1.2      5/6@34     0.0     1.0    0.2   2.3      4.2       93       51 [77]           887       212   77    21.8    1/6
+  3     165.0    6.2   1.0   4.5   1.3      2/6@36     0.0     0.8    0.2   1.0      3.7       63      78 [142]           933       195   66    41.2    3/6
+  4     171.7    6.7   0.8   4.7   1.2      2/6@21     0.0     0.5    0.2   0.0      3.5       65      98 [158]           490       420   50     3.5    5/6
+  5     177.7    6.0   0.3   3.3   0.5      2/6@40     0.0     0.3    0.3   0.0      2.8       61     131 [233]           342       447   42     0.3    6/6
+  6     182.3    4.7   0.5   2.5   1.0      4/6@31     0.0     0.2    0.5   0.0      3.3       61     106 [154]           357       310   53    13.0    5/6
+  7     185.8    3.5   0.5   0.3   0.2      3/6@37     0.0     0.0    0.0   0.0      2.5       43     195 [240]           503       421   58    14.2    5/6
+days with no milestone except a Seal: s2d7(rec+5) s1d7(rec+1) s3d7(rec+1)
+ach by day 7: 35.2 / 39  missing (count of seeds): seals7:6 seals30:6 idle50:6 legacy_all:3 omen10:2
+
+== random / burst (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     117.2  116.2   9.3   3.3  23.0      6/6@17    14.0     6.7    2.7   0.0     11.8      360       57 [85]
+  2     130.7   13.5   2.5   3.2   3.5      4/6@23     0.0     1.3    0.3   1.0      4.0       96       57 [72]           861       210   86    28.0    2/6
+  3     141.3   10.7   1.0   3.0   0.3      4/6@28     0.0     0.2    0.5   0.0      3.5       91      95 [113]           482       291   65     8.5    3/6
+  4     148.3    7.0   0.5   3.2   1.2      5/6@39     0.0     0.3    0.5   0.3      3.2       72      94 [130]           625       275   68    19.3    4/6
+  5     150.5    2.2   0.5   2.0   1.3      2/6@53     0.0     0.3    0.2   0.7      2.2       28     130 [196]           510       412   47    20.5    2/6
+  6     156.0    5.5   0.2   3.0   0.5      3/6@41     0.0     0.2    0.2   1.5      2.5       56      99 [154]           711       429   40    14.3    5/6
+  7     159.2    3.2   0.7   2.5   0.2      4/6@47     0.0     0.3    0.0   1.0      2.3       39     114 [148]         10284       458   53     2.5    5/6
+days with no milestone except a Seal: none
+ach by day 7: 30.0 / 39  missing (count of seeds): codex28:6 seals7:6 seals30:6 omen10:2 legacy_all:6 idle50:5 keys100k:6 flow1h:6 flow10h:6 flow:5
+
+== random / idle (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     112.7  111.7   8.3   2.8  23.5      6/6@13    14.0     6.5    2.2   0.0     11.0      329       58 [79]
+  2     123.3   10.7   2.3   2.2   1.2      3/6@37     0.0     1.5    0.3   0.0      3.7       80       78 [99]           535       362   40    15.5    3/6
+  3     131.2    7.8   1.2   2.2   0.7      3/6@42     0.0     0.8    0.3   0.0      2.8       62      95 [121]           795       353   54     4.3    4/6
+  4     137.8    6.7   0.5   2.3   0.7      5/6@37     0.0     0.7    0.3   0.2      2.8       62     103 [126]           534       372   57     3.7    3/6
+  5     143.8    6.0   0.5   2.7   0.7      3/6@40     0.0     0.3    0.2   0.8      2.8       58     111 [133]         51197       347   51    19.0    3/6
+  6     147.8    4.0   0.7   2.7   0.5      1/6@39     0.0     0.0    0.2   0.0      2.5       30     124 [178]           813       355   72    16.3    1/6
+  7     150.5    2.7   0.0   1.7   0.5      3/6@51     0.0     0.0    0.2   0.0      2.0       33     128 [183]           685       412   56     4.8    4/6
+days with no milestone except a Seal: none
+ach by day 7: 27.7 / 39  missing (count of seeds): flow:6 codex28:6 seals7:6 seals30:6 legacy_all:6 crucible10:6 keys10k:6 keys100k:6 flow1h:6 flow10h:6 ults1k:4 f150:3 omen10:1
+
+== offemb / typist (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     149.0  148.0  13.2   8.0  30.0       6/6@8    14.0     7.3    5.3   1.8     12.5      583       67 [80]
+  2     159.3   10.3   1.3   4.3   1.2      6/6@24     0.0     1.0    0.3   2.8      3.8      105       65 [96]           814       190   77    30.0    2/6
+  3     167.8    8.5   0.8   5.0   1.2      6/6@25     0.0     0.5    0.7   0.3      4.0       98       66 [88]           807       373   67    20.5    4/6
+  4     178.5   10.7   0.7   5.5   0.8      6/6@22     0.0     0.2    0.2   0.0      4.0      120      79 [122]           449       346   58     1.5    6/6
+  5     181.5    3.0   0.8   3.3   0.8      6/6@58     0.0     0.3    0.3   0.0      2.3       54      88 [148]           717       314   68    12.8    4/6
+  6     187.5    6.0   0.2   1.7   1.0      6/6@30     0.0     0.0    0.8   0.0      3.2       84     139 [200]           290       455   40     0.2    6/6
+  7     192.8    5.3   0.8   0.2   1.7      6/6@45     0.0     0.5    0.2   0.0      3.0       77     140 [199]           457       434   41     3.3    6/6
+days with no milestone except a Seal: none
+ach by day 7: 36.7 / 39  missing (count of seeds): seals30:6 idle50:6 omen10:1 legacy_all:1
+
+== offemb / burst (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     119.7  118.7   9.8   3.2  23.0      6/6@11    14.0     7.3    2.2   0.0     11.7      367       48 [56]
+  2     131.7   12.0   2.2   3.2   2.7      6/6@25     0.0     1.0    0.7   1.0      3.7      106       71 [93]           609       191   65    32.7    2/6
+  3     141.2    9.5   0.5   3.2   1.0      6/6@26     0.0     0.3    0.8   0.0      3.3       90     100 [134]           773       445   51    13.3    5/6
+  4     150.3    9.2   1.2   3.2   1.3      6/6@26     0.0     0.5    0.2   0.2      3.5       92      90 [122]           712       430   52     4.2    4/6
+  5     154.5    4.2   0.3   2.5   1.3      6/6@42     0.0     0.3    0.0   0.8      2.3       57     120 [155]           615       349   61    11.8    5/6
+  6     159.2    4.7   0.3   3.3   0.2      6/6@52     0.0     0.2    0.2   1.3      2.8       61       68 [99]          2104       462   68    13.3    3/6
+  7     165.3    6.2   0.7   3.2   1.0      6/6@51     0.0     0.0    0.2   1.5      3.0       78      84 [117]           367       466   48     3.5    3/6
+days with no milestone except a Seal: none
+ach by day 7: 30.5 / 39  missing (count of seeds): flow:6 codex28:6 seals30:6 legacy_all:6 idle50:6 keys100k:6 flow1h:6 flow10h:6 omen10:2 deep90:1
+
+== offemb / idle (6 seeds) ==
+day  floor(end)  +rec  troph codex  ach  seal@runMin  newBoss newOmen legMax wsMax  retires  renown+  gapMile(max min)  offline: x-gold  onlineMin lv  peak15  ret<15
+  1     112.7  111.7   8.3   2.3  23.2      6/6@10    14.0     7.0    2.7   0.0     10.3      330       68 [82]
+  2     126.7   14.0   2.7   2.7   1.7      6/6@26     0.0     0.8    0.0   0.0      3.7      109      89 [107]           339       393   44     2.3    4/6
+  3     135.3    8.7   1.0   2.5   0.7      6/6@29     0.0     1.3    0.2   0.0      3.2       83     116 [158]           745       366   58     3.2    5/6
+  4     141.8    6.5   0.8   2.2   0.5      6/6@41     0.0     0.3    0.3   0.0      2.5       66     102 [147]          1024       467   47     2.7    3/6
+  5     147.8    6.0   0.5   2.5   0.8      6/6@42     0.0     0.0    0.0   0.3      2.5       72     111 [143]           336       391   34    10.2    3/6
+  6     151.8    4.0   0.5   2.5   0.8      6/6@54     0.0     0.3    0.3   0.7      2.3       54     100 [132]           645       328   57    11.8    3/6
+  7     156.3    4.5   0.2   2.7   1.3      6/6@46     0.0     0.0    0.0   0.0      2.5       58     100 [108]           694       353   58    13.5    3/6
+days with no milestone except a Seal: none
+ach by day 7: 29.0 / 39  missing (count of seeds): flow:6 codex28:6 seals30:6 legacy_all:6 crucible10:6 keys10k:6 keys100k:6 flow1h:6 flow10h:6 ults1k:5 omen10:1

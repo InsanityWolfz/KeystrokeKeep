@@ -154,7 +154,8 @@
       S.bossLosses = 0;
       if (e.hollowed || e.key === 'hollow') {
         S.codexKills = (S.codexKills || 0) + 1;
-        if (S.codexKills % D.CODEX_EVERY === 0 && S.codexKills / D.CODEX_EVERY <= D.CODEX_MAX) { KK.dirty(); KK.emit('codex', { name: e.def.name, rank: S.codexKills / D.CODEX_EVERY }); }
+        const before = KK.mods().codexRanks; KK.dirty(); const after = KK.mods().codexRanks;
+        if (after > before) KK.emit('codex', { name: e.def.name, rank: after });
       }
       KK.gainEmbers(10);
       W.boss = null;
@@ -722,7 +723,7 @@
     else if (S.campFloor && S.floor + 1 >= S.campFloor && (S.campUntil || 0) > S.stats.playTime) S.floor--;
     S.floor++;
     if (S.floor > S.maxFloorRun && !S.glimpse) S.maxFloorRun = S.floor;
-    if (S.omen && S.omen === S.omenStar && S.omenStarDay === KK.today() && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
+    if (S.omen && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
     if (S.floor > S.maxFloorEver && !S.glimpse) {
       S.maxFloorEver = S.floor;
       if (D.TROPHIES.includes(S.floor)) { KK.dirty(); KK.emit('trophy', { floor: S.floor, n: D.TROPHIES.indexOf(S.floor) + 1 }); }
@@ -788,7 +789,7 @@
 
   function autoBuy() {
     const S = KK.S, A = KK.actions;
-    if (S.settings.autoLevel !== false) for (const id of ['blades', 'armor', 'purse']) { const d = D.FORGE.find((x) => x.id === id); if (F.upCost(d, S.forge[id] || 0) <= S.gold * 0.25) A.buyForge(id); }
+    if (S.settings.autoLevel !== false) for (const d of D.FORGE) { if ((S.forge[d.id] || 0) < d.max && F.upCost(d, S.forge[d.id] || 0) <= S.gold * 0.25) A.buyForge(d.id); }
     if (S.settings.autoLevel === false) return;
     for (const id of D.PARTY_ORDER) if (A.canRecruit(id) && S.gold >= A.recruitCost(id)) A.recruit(id);
     // close to affording a recruit (within ~2 minutes of income)? save for it

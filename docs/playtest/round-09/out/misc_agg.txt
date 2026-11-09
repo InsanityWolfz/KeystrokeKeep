@@ -1,0 +1,40 @@
+--- Quartermaster, full game, 8 h (6 seeds) ---
+idle    manual    max floor @1/2/4/8h 25.7 / 40.7 / 77.8 / 104.8  renown 286.3  wipes 6.3  QM bought at - h
+idle    qm        max floor @1/2/4/8h 25.7 / 40.0 / 67.5 / 89.7  renown 205.0  wipes 4.5  QM bought at 1.7 h
+idle    qm5       max floor @1/2/4/8h 25.7 / 41.8 / 76.3 / 103.5  renown 269.8  wipes 9.0  QM bought at 1.7 h
+idle    manual60  max floor @1/2/4/8h 36.0 / 59.3 / 89.7 / 112.0  renown 320.2  wipes 8.2  QM bought at - h
+idle    qm60      max floor @1/2/4/8h 36.0 / 51.7 / 78.5 / 99.5  renown 255.2  wipes 2.5  QM bought at 1.1 h
+idle    qm5_60    max floor @1/2/4/8h 36.0 / 60.0 / 90.0 / 112.7  renown 326.3  wipes 9.3  QM bought at 1.1 h
+typist  manual    max floor @1/2/4/8h 47.7 / 91.0 / 123.7 / 146.3  renown 553.3  wipes 20.5  QM bought at - h
+typist  qm        max floor @1/2/4/8h 47.0 / 81.7 / 111.2 / 136.2  renown 471.5  wipes 15.7  QM bought at 0.9 h
+typist  qm5       max floor @1/2/4/8h 49.5 / 91.3 / 122.8 / 143.8  renown 537.8  wipes 24.0  QM bought at 0.9 h
+typist  manual60  max floor @1/2/4/8h 68.0 / 101.8 / 127.8 / 147.2  renown 559.0  wipes 23.5  QM bought at - h
+typist  qm60      max floor @1/2/4/8h 61.8 / 90.7 / 118.5 / 140.7  renown 512.0  wipes 11.0  QM bought at 0.4 h
+typist  qm5_60    max floor @1/2/4/8h 69.0 / 104.2 / 129.7 / 148.5  renown 564.7  wipes 22.0  QM bought at 0.4 h
+--- demo hint follower, 180 min (10 seeds) ---
+idle   h25g60      glimpse 87.0 (10/10)  early retires 1.0  renown@180 93.2  e.g. 75m f40 +30
+idle   h10g60      glimpse 75.5 (10/10)  early retires 1.0  renown@180 97.4  e.g. 43m f28 +11
+idle   h10n40g60   glimpse 73.9 (10/10)  early retires 0.8  renown@180 96.0  e.g. 42m f30 +13
+idle   offg60      glimpse 78.5 (10/10)  early retires 0.0  renown@180 89.4  e.g. 
+idle   h25g300     glimpse 125.7 (10/10)  early retires 1.0  renown@180 52.6  e.g. 105m f38 +26
+idle   h10g300     glimpse 113.3 (10/10)  early retires 1.1  renown@180 51.8  e.g. 75m f29 +12
+idle   h10n40g300  glimpse 111.3 (10/10)  early retires 0.8  renown@180 50.4  e.g. 65m f28 +11
+idle   offg300     glimpse 122.8 (10/10)  early retires 0.0  renown@180 45.6  e.g. 
+burst  h25g60      glimpse 73.6 (10/10)  early retires 1.0  renown@180 110.0  e.g. 61m f40 +30
+burst  h10g60      glimpse 70.2 (10/10)  early retires 1.0  renown@180 110.8  e.g. 40m f28 +11
+burst  h10n40g60   glimpse 66.2 (10/10)  early retires 0.3  renown@180 108.6  e.g. 
+burst  offg60      glimpse 66.2 (10/10)  early retires 0.0  renown@180 108.0  e.g. 
+burst  h25g300     glimpse 114.4 (10/10)  early retires 1.0  renown@180 59.4  e.g. 100m f39 +28
+burst  h10g300     glimpse 106.5 (10/10)  early retires 1.3  renown@180 62.2  e.g. 65m f27 +10
+burst  h10n40g300  glimpse 102.6 (10/10)  early retires 0.9  renown@180 61.2  e.g. 65m f27 +10
+burst  offg300     glimpse 109.9 (10/10)  early retires 0.0  renown@180 54.0  e.g. 
+--- Seal farming, 8 h after an honest day 1 (6 seeds) ---
+honest      typist  renown 199.0  max floor 168.5  seals 1.0  seal renown 40.3  Devout 0/6
+honest      idle    renown 149.8  max floor 133.5  seals 1.0  seal renown 36.0  Devout 0/6
+farm        typist  renown 795.8  max floor 151.5  seals 31.3  seal renown 776.7  Devout 6/6
+farm        idle    renown 791.7  max floor 116.7  seals 36.7  seal renown 784.7  Devout 6/6
+farm_gap    typist  renown 402.0  max floor 172.8  seals 7.5  seal renown 207.0  Devout 0/6
+farm_gap    idle    renown 323.8  max floor 139.3  seals 7.0  seal renown 170.0  Devout 0/6
+farm_gap2h  typist  renown 276.3  max floor 168.7  seals 4.0  seal renown 116.8  Devout 0/6
+farm_gap2h  idle    renown 210.8  max floor 133.8  seals 4.0  seal renown 102.3  Devout 0/6
+stale star: delves flipped 12 / 12  reached Seal floor 10  paid in stale delve 0  stale claims total 0

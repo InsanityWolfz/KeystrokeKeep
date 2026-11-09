@@ -1,0 +1,15 @@
+{ "seed": 7,
+  "_shot": "G5 v9 (proposed, KK_DEMO=1): event-anchored Warlord -> Glimpse -> SEALED -> DEMO COMPLETE card.",
+  "cues": [
+  { "t": 0, "do": "floor", "v": 40 },
+  { "t": 0, "do": "autotype", "v": true },
+  { "t": 0.1, "do": "wave" },
+  { "do": "await", "v": "bossSpawn", "timeout": 20 },
+  { "t": 0, "do": "mark", "v": "WARLORD IN" },
+  { "do": "await", "v": "glimpse", "timeout": 60 },
+  { "t": 0, "do": "mark", "v": "GLIMPSE (clip A ends ~+3 s)" },
+  { "do": "await", "v": "glimpseDoor", "timeout": 40 },
+  { "t": 0, "do": "mark", "v": "SEALED (clip B)" },
+  { "t": 0, "do": "autotype", "v": false },
+  { "t": 8, "do": "mark", "v": "END" }
+] }

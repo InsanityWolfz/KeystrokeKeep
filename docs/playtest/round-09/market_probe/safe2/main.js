@@ -57,9 +57,9 @@ class SafeBW extends real.BrowserWindow {
     const dbg = this.webContents.debugger;
     const PRE = fs.readFileSync(path.join(__dirname, 'pre.js'), 'utf8').replace('__CFG__', JSON.stringify({ det: !!CFG.det, shotsAt: CFG.shotsAt || [], fps: 60, capture: process.env.KK_CAPTURE === '1' }));
     const lu = super.loadURL.bind(this);
-    this._ready = within(lu('about:blank').then(() => { dbg.attach('1.3'); return dbg.sendCommand('Page.enable'); }).then(() => dbg.sendCommand('Page.addScriptToEvaluateOnNewDocument', { source: PRE })), 5000).then((r) => log('pre installed ' + JSON.stringify(r)), (e) => log('pre install failed ' + e.message));
+    this._ready = CFG.noclamp ? Promise.resolve() : within(lu('about:blank').then(() => { dbg.attach('1.3'); return dbg.sendCommand('Page.enable'); }).then(() => dbg.sendCommand('Page.addScriptToEvaluateOnNewDocument', { source: PRE })), 5000).then((r) => log('pre installed ' + JSON.stringify(r)), (e) => log('pre install failed ' + e.message));
     const lf = super.loadFile.bind(this);
-    this.loadFile = (...a) => this._ready.then(() => { log('loadFile'); return lf(...a); });
+    this.loadFile = CFG.noclamp ? (...a) => { log('loadFile (no probe)'); return lf(...a); } : (...a) => this._ready.then(() => { log('loadFile'); return lf(...a); });
     this.webContents.on('console-message', (e, _l, msg) => { const m = e && e.message !== undefined ? e.message : msg; if (/^\[(capture|KK|kk9)\]/.test(String(m)) || /error/i.test(String(m))) log('[page] ' + m); });
   }
 }

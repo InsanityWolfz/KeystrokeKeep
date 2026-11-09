@@ -14,6 +14,7 @@
     KK.input.init();
     if (KK.native && KK.nativeBoot) KK.nativeBoot();
     KK.booted = true;
+    KK.dayTick(); setInterval(KK.dayTick, 60000);
 
     if (!had) {
       KK.ui.welcome(() => { KK.audio.init(); KK.fx.banner('FLOOR 1', 'THE CRYPT', '#ffffff', 2.4, { subCol: '#c9b8ea' }); });

@@ -1,0 +1,132 @@
+{
+ "name": "s4_det2",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: input counting PAUSED",
+   "Keystroke Keep: input counting PAUSED"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-capture",
+ "log": [
+  "  0.08 uiohook start() blocked (dummy)",
+  "  0.11 shown at {\"x\":2560,\"y\":1171,\"width\":1920,\"height\":192}",
+  "  0.12 pre installed {\"identifier\":\"1\"}",
+  "  0.12 loadFile",
+  "  0.52 tray: fake (no icon shown)",
+  "  0.89 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":2}",
+  " 15.04 finish"
+ ],
+ "page": {
+  "f": 823,
+  "t0f": 121,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue mark \"OMENS UP (still)\""
+   },
+   {
+    "f": 637,
+    "r": 10920,
+    "v": 10617,
+    "e": "cue mark \"END\""
+   }
+  ],
+  "dig": [
+   "60|1|1|75.6|1|22|0|0|0|",
+   "120|1|1|75.6|1|22|0|0|0|",
+   "180|1|1|75.6|1|22|0|0|0|",
+   "240|1|1|75.6|1|22|0|0|0|",
+   "300|1|1|75.6|1|22|0|0|0|",
+   "360|1|1|75.6|1|22|0|0|0|",
+   "420|1|1|75.6|1|22|0|0|0|",
+   "480|1|1|75.6|1|22|0|0|0|",
+   "540|1|1|75.6|1|22|0|0|0|",
+   "600|1|1|75.6|1|22|0|0|0|",
+   "660|1|1|75.6|1|22|0|0|0|"
+  ],
+  "hashes": [
+   [
+    60,
+    "53664cc5"
+   ],
+   [
+    180,
+    "83d9e675"
+   ],
+   [
+    300,
+    "caa43a05"
+   ],
+   [
+    420,
+    "5e6e0f05"
+   ],
+   [
+    540,
+    "e2c57705"
+   ],
+   [
+    660,
+    "e448da25"
+   ]
+  ],
+  "det": true,
+  "fpsReal": [
+   58,
+   58,
+   58,
+   57,
+   58,
+   59,
+   59,
+   59,
+   59,
+   59,
+   60,
+   59,
+   59,
+   59
+  ],
+  "boot": {
+   "gold": 0,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 2885.900000035763,
+  "t0v": 2071.766666690512
+ }
+}

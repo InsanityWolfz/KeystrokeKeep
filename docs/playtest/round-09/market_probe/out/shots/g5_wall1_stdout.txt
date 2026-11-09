@@ -1,0 +1,8 @@
+
+[capture] ready {"seed":7,"size":"L","juice":"full","cues":8}
+[capture] MARK 2026-11-09T20:55:59.581Z to the Warlord at 3x
+[capture] MARK 2026-11-09T20:56:13.486Z 1x: Warlord fight; glimpse expected ~t20-30
+[capture] MARK 2026-11-09T20:56:59.407Z END
+
+--stderr--
+(electron) 'console-message' arguments are deprecated and will be removed. Please use Event<WebContentsConsoleMessageEventParams> object instead.

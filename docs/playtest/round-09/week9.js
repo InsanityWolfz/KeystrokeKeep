@@ -51,9 +51,9 @@ KK.on('upgrade', ({ store, id, lvl }) => {
 { const or = A.retire; A.retire = function () { const f = KK.S.maxFloorRun, rt = (KK.S.runTime || 0) / 60; const r = or.apply(this, arguments); if (r && cur && cur.firstRet === undefined) cur.firstRet = { floor: f, min: +((sim() - cur.t0) / 60).toFixed(0), runMin: +rt.toFixed(0) }; return r; }; }
 KK.on('retired', ({ gain }) => { if (cur) { cur.retires++; cur.renownRet += gain || 0; } });
 let lastRec = 0;
-let sessE0 = 0, sessT0 = 0;
+let sessE0 = 0, sessT0 = 0, prevE0 = 0, prevT0 = 0;
 function startDay(hours, offlineInfo) {
-  sessE0 = P.embersEarned; sessT0 = sim();
+  prevE0 = sessE0; prevT0 = sessT0; sessE0 = P.embersEarned; sessT0 = sim();
   cur = { day, hours, t0: sim(), floor0: KK.S.maxFloorEver, ren0: KK.S.renownLifetime, retires: 0, renownRet: 0, ev: {}, omens: [], gapNew: 0, gapMile: 0, offline: offlineInfo || null,
     ach0: Object.keys(KK.S.ach).length };
   lastNewT = sim(); lastMileT = sim();
@@ -84,7 +84,7 @@ function offline(hours) {
   // cost of the next 10 levels on the cheapest hero, for scale
   KK.gainGold(gold, 'offline');
   let emb = 0;
-  if (args.offember) { const er = (P.embersEarned - sessE0) / Math.max(1, sim() - sessT0); emb = er * secs * m.offline * +args.offember; S.embers = (S.embers || 0) + emb; }
+  if (args.offember) { const er = (P.embersEarned - prevE0) / Math.max(1, sim() - prevT0); /* rate of the session that just ended */ emb = er * secs * m.offline * +args.offember; S.embers = (S.embers || 0) + emb; }
   P.spend();
   const lv1 = D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0);
   return { emb: Math.round(emb), gold: +gold.toPrecision(3), goldBefore: +g0.toPrecision(3), ratio: g0 > 0 ? +(gold / g0).toFixed(1) : null, onlineMin: onlineMin && +onlineMin.toFixed(0), offlinePct: +(m.offline * 100).toFixed(0), levels: lv1 - lv0, floor: f0, runMin: +((S.runTime || 0) / 60).toFixed(0), retireGain: A.renownGain() };

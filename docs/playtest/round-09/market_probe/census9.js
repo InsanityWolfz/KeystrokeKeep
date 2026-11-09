@@ -105,6 +105,22 @@ Module._load = function (req) {
         return ob(text, sub, col, life, op);
       };
     }
+    if (arg('proto9')) {
+      // P9: (a) hero LV milestone banners big only above that hero's best-ever milestone; (b) boss-name and "X JOINS!" banners
+      //     big only the first time in the save (else minor); (c) move alerts at most once per 15 min per move.
+      const bestMile = {}; const seen = {}; const ob = FX.banner;
+      FX.banner = (text, sub, col, life, op = {}) => {
+        if (op.big !== false && !op.always) {
+          const mm = /^(.+) LV (\d+)$/.exec(text);
+          let minor = false;
+          if (mm) { const lv = +mm[2]; if ((bestMile[mm[1]] || 0) >= lv) minor = true; else bestMile[mm[1]] = lv; }
+          else if (/ JOINS!$/.test(text) || / BOSS$/.test(sub || '')) { if (seen[text]) minor = true; seen[text] = 1; }
+          if (minor) { bump('proto9Downgraded', norm(text)); return ob(text, sub, col, Math.min(life || 2, 1.4), Object.assign({}, op, { big: false })); }
+        }
+        return ob(text, sub, col, life, op);
+      };
+      FX.moveAlert = (type, e, str, col, life) => { e.alerted = e.alerted || {}; const now = simMs(); FX.moveSeen = FX.moveSeen || {}; if (e.alerted[type] || now - (FX.moveSeen[type] || -1e9) < 900000) return; e.alerted[type] = true; FX.moveSeen[type] = now; FX.alert(str, col, life); };
+    }
     FX.text = (x, y, str, col, scale, op = {}) => { if ((op.life || 0.85) >= 1.0) bump('popup', norm(str)); return o.text(x, y, str, col, scale, op); };
     // ---- ui.js mirror (current rules)
     const T = new Set(); const once = (k, fn) => { if (!T.has(k)) { T.add(k); fn(); } };

@@ -1,0 +1,9 @@
+build	prof	h	alerts	bigBanners	bigExclFloorBiome	toasts	toastsNonTutorial	strongFlash	faintFlash	shakes	SFX	loudSFX	ultBooms	softBoom	minorBanners	achHeld	secsSound	goldPulse	flowPulseS	heroPulseS	plateS	bannerS	modals
+demo	idle	h1	5	23	22	12	9	0	44	0	83	11	0	7	98	0	75	538	0	0	6	49	1
+demo	idle	h2	16	25	22	8	8	0	106	0	189	32	0	8	180	0	179	638	0	0	22	52	1
+demo	typist	h1	15	32	29	17	12	0	386	0	396	25	0	193	249	3	375	790	0	1655	20	69	1
+demo	typist	h2	22	9	9	4	4	0	394	0	438	18	0	164	462	0	413	1132	0	1777	26	18	0
+full	idle	h1	5	23	22	12	9	0	44	0	83	11	0	7	98	2	75	538	0	0	6	49	0
+full	idle	h7+h8	7	13	11	3	3	0	67	0	89	20	0	5	53	0	83	217	0	0	10	26	0
+full	typist	h1	16	46	40	16	11	0	358	0	340	21	0	191	170	11	327	671	0	1576	19	98	0
+full	typist	h7+h8	11	28	25	5	5	0	547	0	392	22	0	236	134	0	373	669	0	2444	14	54	0

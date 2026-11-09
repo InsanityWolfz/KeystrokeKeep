@@ -89,8 +89,9 @@
     const regroup = (S.regroupUntil || 0) - S.stats.playTime, camp = (S.campUntil || 0) - S.stats.playTime;
     const lvls = D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0);
     const calmLine = W.cautious ? `Training on floor ${S.floor}: gathering strength` : (camp > 0 && S.campFloor) ? `Regrouping below floor ${S.campFloor}${S.campLevels > lvls ? ` · +${S.campLevels - lvls} levels to go` : ''}` : '';
-    const hintMin = KK.DEMO_CAP && !S.demoDone ? 25 : 10; // in the demo, don't pull players off the road to the Glimpse
-    setText('#hud-farm', blocked && g >= hintMin ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Regrouping: next try in ${Math.ceil(regroup / 60)}m. Level up!` : blocked ? '⚠ Boss too strong: farming. Level up!' : calmLine);
+    const hintMin = 10;
+    const nearGlimpse = KK.DEMO_CAP && !S.glimpseDone && (S.bossBlock === KK.DEMO_CAP || S.maxFloorRun >= 38); // don't pull players off the road to the Glimpse
+    setText('#hud-farm', blocked && g >= hintMin && !nearGlimpse ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Regrouping: next try in ${Math.ceil(regroup / 60)}m. Level up!` : blocked ? '⚠ Boss too strong: farming. Level up!' : calmLine);
     $('#hud-farm').classList.toggle('hidden', (!blocked && !calmLine) || KK.fx.banners.length > 0);
     $('#hud-farm').classList.toggle('calm', !blocked && !!calmLine);
     const pill = $('#hud-demo');
@@ -479,7 +480,7 @@
     const redelve = gain <= 0;
     const best = KK.S.bestCapTime ? U.fmtTime(KK.S.bestCapTime) : null;
     UI.modal((redelve ? `<h2>♛ RE-DELVE?</h2>
-      <p>A fresh run with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}${KK.DEMO_CAP ? '' : ` Free once a day: this delve pays no Renown, but today's ★ omen pays <b>+${A.sealValue()} Renown</b> at floor ${A.sealFloor()}.`}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
+      <p>A fresh run with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}${KK.DEMO_CAP ? '' : ` Free once a day: this delve pays no Renown, but today's ★ omen doubles today's Seal: <b>+${A.sealValue() * 2} Renown</b> at floor ${A.sealFloor()} (any omen earns +${A.sealValue()}).`}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
       <p>Sir Clank and friends hang up their swords. A new generation starts the delve, stronger for it.</p>
       <div class="bigval">+${gain} RENOWN</div>`) + `
       ${KK.S.relicOffer ? `<p style="color:#ff9a9a">You have ${1 + (KK.S.relicQueue || []).length} unopened relic chest${(KK.S.relicQueue || []).length ? 's' : ''}. ${(KK.S.relicQueue || []).length ? 'They' : 'It'} will be lost.</p>` : ''}
@@ -509,7 +510,7 @@
       const o = D.OMENS.find((x) => x.id === id);
       const [up, down] = o.desc.split(/, but /i);
       const seen = ((S.achP && S.achP.omens) || []).includes(id);
-      const star = id === S.omenStar ? `<i class="new star">★ OMEN OF THE DAY: FLOOR ${A.sealFloor()} = +${A.sealValue()} RENOWN</i>` : '';
+      const star = id === S.omenStar ? `<i class="new star">★ OMEN OF THE DAY: SEAL x2 (+${A.sealValue() * 2} RENOWN AT FLOOR ${A.sealFloor()})</i>` : '';
       return `<button class="omen ${id === S.omenStar ? 'starred' : ''}" data-omen="${id}"><img src="${KK.SPR.iconURL[o.icon]}" alt=""><b>${o.name}${seen ? '' : ' <i class="new">NEW</i>'}</b>${star}<span class="up">▲ ${up.replace(/\.$/, '')}</span>${down ? `<span class="down">▼ ${down.replace(/\.$/, '')}</span>` : ''}</button>`;
     };
     UI.modal(`<h2>CHOOSE AN OMEN</h2>
@@ -542,7 +543,9 @@
   // Coming back to the PC shouldn't throw a modal over your work: auto-collect with a toast.
   UI.offline = function (secs, gold) {
     KK.fx.coinBurst(W.partyX, 30, 20);
-    UI.toast(`Welcome back! While you were away (${U.fmtTime(secs)}) your heroes earned ${fmt(gold)} gold.`, 'coin', 'gold', 7);
+    const lv = A.heroCost('knight', 'max').count;
+    if (gold > KK.S.incomeRate * 1800) UI.holdNudgeUntil = KK.S.stats.playTime + 600;
+    UI.toast(`Welcome back! While you were away (${U.fmtTime(secs)}) your heroes earned ${fmt(gold)} gold${lv > 2 ? ` (about +${lv} levels ready in ⚔ Party)` : ''}.`, 'coin', 'gold', 7);
   };
   // the strip freezes the moment the demo ends (the party stays at the sealed statue), the card follows
   KK.on('demoComplete', () => { UI.demoOpen = true; KK.paused = true; });
@@ -631,7 +634,7 @@
     setInterval(() => {
       const g = A.renownGain();
       const key = 'retireNudge' + KK.S.retires;
-      if (UI.demoOpen || (KK.DEMO_CAP && !KK.S.demoDone)) return;
+      if (UI.demoOpen || (KK.DEMO_CAP && !KK.S.demoDone) || (UI.holdNudgeUntil || 0) > KK.S.stats.playTime) return;
       const runMin = (KK.S.runTime || 0) / 60;
       if (g >= 30 && !T()[key] && (runMin > 25 || (KK.S.retires === 0 && KK.S.maxFloorRun >= 40))) {
         once(key, () => UI.toast(`Retiring now earns +${g} Renown (${renownWorth().toLowerCase()}). Your next party gets back here fast. Open ♛ Legacy.`, 'crown', 'epic', 9));

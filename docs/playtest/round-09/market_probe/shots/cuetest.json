@@ -1,0 +1,15 @@
+{ "seed": 7, "_shot": "R9 check of the R8 cue fixes: js via the shell, flow emits, juice sets both flags, wave, await.",
+  "cues": [
+  { "t": 0, "do": "js", "v": "KK.fx.banner('JS CUE OK', 'VIA SHELL', '#fff', 1.5)" },
+  { "t": 1.0, "do": "flow" },
+  { "t": 3.0, "do": "juice", "v": "companion" },
+  { "t": 3.2, "do": "js", "v": "KK.fx.alert('JUICE CALM=' + KK.S.settings.calm + ' COMBAT=' + KK.S.settings.combatSfx)" },
+  { "t": 3.5, "do": "juice", "v": "full" },
+  { "t": 3.7, "do": "js", "v": "KK.fx.alert('JUICE2 CALM=' + KK.S.settings.calm + ' COMBAT=' + KK.S.settings.combatSfx)" },
+  { "t": 3.9, "do": "floor", "v": 30 },
+  { "t": 4.0, "do": "wave" },
+  { "do": "await", "v": "bossSpawn", "timeout": 10 },
+  { "t": 0, "do": "mark", "v": "BOSS (await ok)" },
+  { "do": "await", "v": "neverHappens", "timeout": 2 },
+  { "t": 0, "do": "mark", "v": "after timeout" }
+] }

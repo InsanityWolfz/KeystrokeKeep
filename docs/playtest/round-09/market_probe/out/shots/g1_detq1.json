@@ -1,0 +1,228 @@
+{
+ "name": "g1_detq1",
+ "abortReason": null,
+ "recorded": {
+  "tooltip": [
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)",
+   "Keystroke Keep: counting keystrokes (nothing typed is stored)"
+  ],
+  "menu": [
+   "Keystroke Keep",
+   "separator",
+   "Hide strip  (Ctrl+Shift+Alt+K)",
+   "Count keystrokes & clicks",
+   "Sound",
+   "Always on top",
+   "Hide during fullscreen apps & games",
+   "Display",
+   "separator",
+   "Open dev tools",
+   "Quit"
+  ],
+  "shortcuts": [
+   "Control+Shift+Alt+K",
+   "Control+Shift+Alt+0",
+   "Control+Shift+Alt+1",
+   "Control+Shift+Alt+2",
+   "Control+Shift+Alt+3",
+   "Control+Shift+Alt+4",
+   "Control+Shift+Alt+5",
+   "Control+Shift+Alt+6",
+   "Control+Shift+Alt+7",
+   "Control+Shift+Alt+8",
+   "Control+Shift+Alt+9"
+  ],
+  "balloons": [],
+  "hookStart": 1
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-capture",
+ "log": [
+  "  0.05 uiohook start() blocked (dummy)",
+  "  0.09 shown at {\"x\":2560,\"y\":1171,\"width\":1920,\"height\":192}",
+  "  0.09 pre installed {\"identifier\":\"1\"}",
+  "  0.09 loadFile",
+  "  0.33 tray: fake (no icon shown)",
+  "  0.43 [page] [capture] ready {\"seed\":7,\"size\":\"L\",\"juice\":\"full\",\"cues\":9}",
+  " 14.02 finish"
+ ],
+ "page": {
+  "f": 790,
+  "t0f": 36,
+  "ev": [
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue floor 16"
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 0,
+    "r": 0,
+    "v": 0,
+    "e": "cue autotype true"
+   },
+   {
+    "f": 26,
+    "r": 427,
+    "v": 417,
+    "e": "cue mark \"G1 IN\""
+   },
+   {
+    "f": 93,
+    "r": 1606,
+    "v": 1550,
+    "e": "BANNER FLOW STATE! / x2.5 POWER"
+   },
+   {
+    "f": 93,
+    "r": 1606,
+    "v": 1550,
+    "e": "fervorTier 2->3"
+   },
+   {
+    "f": 98,
+    "r": 1677,
+    "v": 1617,
+    "e": "cue mark \"FLOW STATE banner (S1 freeze point)\""
+   },
+   {
+    "f": 130,
+    "r": 2244,
+    "v": 2167,
+    "e": "TOAST-call 🏆 Achievement: Flow State"
+   },
+   {
+    "f": 225,
+    "r": 3882,
+    "v": 3750,
+    "e": "ult knight"
+   },
+   {
+    "f": 272,
+    "r": 4673,
+    "v": 4517,
+    "e": "cue sparks \"full\""
+   },
+   {
+    "f": 314,
+    "r": 5416,
+    "v": 5233,
+    "e": "ult archer"
+   },
+   {
+    "f": 356,
+    "r": 6121,
+    "v": 5917,
+    "e": "cue mark \"METEOR lands\""
+   },
+   {
+    "f": 478,
+    "r": 8232,
+    "v": 7967,
+    "e": "BANNER FLOOR 17 (minor)"
+   },
+   {
+    "f": 478,
+    "r": 8232,
+    "v": 7967,
+    "e": "floor 17"
+   },
+   {
+    "f": 507,
+    "r": 8711,
+    "v": 8433,
+    "e": "cue mark \"G1 OUT\""
+   },
+   {
+    "f": 520,
+    "r": 8935,
+    "v": 8650,
+    "e": "cue autotype false"
+   },
+   {
+    "f": 604,
+    "r": 10393,
+    "v": 10067,
+    "e": "ult mage"
+   },
+   {
+    "f": 657,
+    "r": 11298,
+    "v": 10950,
+    "e": "meteorLand "
+   }
+  ],
+  "dig": [
+   "60|16|1|94.6|1|643|0|150|87.2|",
+   "120|16|2|131.9|2|1714|18|150|94.4|",
+   "180|16|2|174.3|2|1714|18|150|100|",
+   "240|16|2|216.6|2|357|35|126|100|",
+   "300|16|3|259|2|1607|51|150|100|",
+   "360|16|3|301.4|0|0|78|124|100|",
+   "420|16|3|343.7|0|0|78|129|100|",
+   "480|17|0|382|0|0|78|134|100|",
+   "540|17|1|420.7|1|1092|78|138|100|",
+   "600|17|1|463|1|593|78|138|100|",
+   "660|17|1|504|0|0|97|88|100|",
+   "720|17|1|530.1|0|0|97|88|98.2|"
+  ],
+  "hashes": [
+   [
+    60,
+    "c20371f5"
+   ],
+   [
+    180,
+    "1f56335"
+   ],
+   [
+    300,
+    "aacaad5"
+   ],
+   [
+    420,
+    "dfb96495"
+   ],
+   [
+    540,
+    "869e7b65"
+   ],
+   [
+    660,
+    "32634195"
+   ]
+  ],
+  "det": true,
+  "fpsReal": [
+   59,
+   58,
+   58,
+   58,
+   59,
+   58,
+   59,
+   58,
+   59,
+   59,
+   59,
+   59,
+   59
+  ],
+  "boot": {
+   "gold": 0,
+   "lastSave": 4102444800000,
+   "toastsDom": [],
+   "modal": ""
+  },
+  "hooked": true,
+  "t0r": 977.5,
+  "t0v": 671.8666666547456
+ }
+}

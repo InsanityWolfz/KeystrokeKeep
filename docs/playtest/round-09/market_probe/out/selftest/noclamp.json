@@ -1,0 +1,21 @@
+{
+ "name": "noclamp",
+ "abortReason": "show refused, bounds on primary {\"x\":0,\"y\":1200,\"width\":2560,\"height\":192}",
+ "recorded": {
+  "tooltip": [],
+  "menu": null,
+  "shortcuts": [
+   "Control+Shift+Alt+K"
+  ],
+  "balloons": [],
+  "hookStart": 0
+ },
+ "userData": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-r9-selftest",
+ "log": [
+  "  0.05 loadFile (no probe)",
+  "  0.31 ABORT show refused, bounds on primary {\"x\":0,\"y\":1200,\"width\":2560,\"height\":192}",
+  "  0.31 finish",
+  "  0.31 collect failed No target available"
+ ],
+ "page": null
+}
