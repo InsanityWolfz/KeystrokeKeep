@@ -1,0 +1,49 @@
+=== R4 probe light s1 480m retire=nudge omen=random: maxEver 103, retires 9, renown 258, keys 22734, FLOW 50m, ults 1290, kills 3647, gold 5.24e+12, fame x24.5
+  0h00  MAJOR first FLOW
+  0h00  MAJOR biome The Crypt
+  0h03  MAJOR first golden rat
+  0h04  MAJOR boss The Rat King (f10)
+  0h05  MAJOR recruit archer
+  0h05  MAJOR first relic offer
+  0h05  MAJOR first EPIC offered
+  0h10  MAJOR retire unlocked
+  0h10  MAJOR boss The Bone King (f20)
+  0h14  MAJOR biome Mossy Caverns
+  0h18  MAJOR recruit mage
+  0h19  MAJOR recruit cleric
+  0h21  MAJOR first REVIVE
+  0h24  MAJOR boss Brood Mother (f30)
+  0h39  MAJOR first RETIRE
+  0h52  MAJOR boss Goblin Warlord (f40)
+  0h54  MAJOR biome Magma Depths
+  1h06  MAJOR boss Ember Colossus (f50)
+  1h12  OMEN  new omen quiet
+  1h36  MAJOR boss Magma Lord (f60)
+  1h38  MAJOR biome The Hollow Void
+  1h44  OMEN  new omen march
+  2h01  MAJOR boss The Hollow (f70)
+  2h09  OMEN  new omen storm
+  2h43  MAJOR boss The Hollowed Brood Mother (f80)
+  3h11  MAJOR boss The Hollowed Ember Colossus (f80)
+  3h24  OMEN  new omen hoard
+  3h42  MAJOR boss The Hollowed Rat King (f80)
+  4h03  MAJOR boss The Hollowed Bone King (f90)
+  4h51  MAJOR boss The Hollowed Goblin Warlord (f90)
+  5h28  OMEN  new omen embertide
+  6h01  MAJOR boss The Hollowed Magma Lord (f90)
+MAJOR per 30 min h1-end:           1 2 1 1 1 1 1 1 0 0 1 0 0 0 0
+MAJOR+OMEN per 30 min h1-end:      2 3 2 1 2 1 1 1 1 0 1 0 0 0 0
+MAJOR+OMEN+ACH per 30 min h1-end:  4 6 3 1 2 3 1 2 2 0 3 0 0 0 0
+longest gap after h1: MAJOR 118m (from 6h01) | +OMEN 118m (from 6h01) | +ACH 102m (from 6h17)
+last MAJOR 6h01; last new OMEN 5h28 (5 distinct omens picked)
+retires: 0h39 f40 +30, 1h12 f54 +32, 1h44 f65 +33, 2h09 f74 +31, 2h50 f82 +32, 3h24 f89 +31, 4h28 f96 +33, 5h28 f100 +20, 7h18 f103 +16
+floors first reached: 50@1h05 55@1h28 60@1h35 65@1h44 70@2h00 75@2h31 80@2h42 85@3h16 90@4h02 95@4h21 100@5h20
+f70 bosses: 2h01 r3 The Hollow | 2h23 r4 The Hollow | 3h02 r5 The Hollow | 3h34 r6 The Hollow | 4h36 r7 The Hollow | 5h36 r8 The Hollow | 7h25 r9 The Hollow
+SANCTUARY: casts 7 (in boss fights 3), revives 6; boss fights with Pell 56, with a cast 2; hard fights (KO/wipe/slam<50%) 4, with a cast 2; heroDowns with Pell 22, slams leaving <50% 18, wipes with Pell 4; fights where nobody dropped below 50%: 51/56; party min HP when boss crosses 50%: median 0.94, <0.9 in 12/53
+ULTS: knight 548 (39%), archer 459 (33%), mage 388 (28%), cleric 7
+SECOND WIND: lvl 9, triggers 216, bonus keys 5004, bonus Sparks 10008 of 32717 total (30.6%)
+HOTKEY: procs 0, free casts 0, banked 0, released from bank 0, overflow(lost) 0
+EPIC@f30 (first kill with epicGiven=false): 0h29 r0 epic=true
+longest continuous FLOW: 0.6 min
+ACH: first_boss 0h05 | flow 0h00 | full_party 0h19 | rat 0h04 | epic 0h15 | caverns 0h14 | retire1 0h39 | gatekeeper 0h54 | comeback 0h05 | echo 4h35 | meteor3 0h28 | ult_boss 0h14 | revive 0h21 | speed40 1h20 | blitz 1h54 | flow10 NO | hotkey25 NO | relics8 NO | magma 0h54 | void 1h38 | hollow 2h02 | hollowed6 6h05 | f100 5h20 | f125 NO | f150 NO | retire10 NO | renown500 NO | omen1 1h12 | omen10 NO | deep100 NO | legacy_all NO | overcharge10 NO | crucible10 NO | lv100 1h30 | lv300 NO | chests100 NO | rats25 3h33 | keys10k 3h32 | keys100k NO | keys1m NO | flow1h NO | flow10h NO | ults1k 6h17 | idle50 NO | kills100k NO
+end heroes {"knight":200,"archer":189,"mage":177,"cleric":162} workshop {"crucible":9,"kindling":9,"overcharge":8,"static":6} legacy {"veterans":7,"headstart":7,"battery":3,"zeal":5,"campfire":4,"lineage":4,"quartermaster":1,"treasury":3,"recruiter":1}

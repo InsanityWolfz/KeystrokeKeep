@@ -1,0 +1,5 @@
+=== HP sensitivity, idle, 8 h, 4 seeds, nudge, no omens ===
+default        | 2h00 f59.8 R77 | 4h00 f85.3 R172 | 8h00 f100.5 R237 | wipes 11 (after retire 2: 0.0)
+no Rivet Armor | 2h00 f64.8 R72 | 4h00 f88.0 R167 | 8h00 f100.8 R241 | wipes 32 (after retire 2: 15.8)
+enemy atk x2   | 2h00 f58.5 R68 | 4h00 f85.5 R171 | 8h00 f101.0 R245 | wipes 31 (after retire 2: 0.5)
+enemy atk x3   | 2h00 f47.3 R37 | 4h00 f81.5 R154 | 8h00 f101.3 R242 | wipes 59 (after retire 2: 4.8)

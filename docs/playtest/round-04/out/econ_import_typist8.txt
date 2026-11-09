@@ -1,0 +1,2 @@
+demo typist 8 h: lifetime Renown 540, renownFloor 40, fame x148.5
+then full game 2 h: 1h00 f152 R1126 | 2h00 f168 R1255 | first full retire 0h23 f130 +389

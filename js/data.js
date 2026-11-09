@@ -26,7 +26,7 @@
     cleric: {
       name: 'Sister Pell', cls: 'Cleric', role: 'healer', hp: 44, atk: 4, spd: 1.2, range: 100,
       recruit: 4000, unlockFloor: 18, lvlCost: 400,
-      ult: { name: 'Sanctuary', cost: 40, cd: 12, desc: 'Fully heals the party and revives the fallen.' },
+      ult: { name: 'Sanctuary', cost: 0, cd: 25, free: true, desc: 'Free: answers the first boss slam of every fight and any knockout. Fully heals the party and revives the fallen.' },
       blurb: 'Patches up whatever is left of the others.',
     },
   };
@@ -113,8 +113,8 @@
   const WORKSHOP = [
     { id: 'crucible', name: 'Ember Crucible', icon: 'spark', base: 60, growth: 1.6, max: 10, desc: (l) => `+15% Embers from every source per level (now +${15 * l}%)`, apply: (m, l) => { m.emberGain *= 1 + 0.15 * l; } },
     { id: 'overcharge', name: 'Overcharge', icon: 'gem', base: 100, growth: 1.6, max: 999, desc: (l) => `Ultimate damage x1.3 per level (now x${Math.pow(1.3, l).toFixed(2)})`, apply: (m, l) => { m.ultPow *= Math.pow(1.3, l); } },
-    { id: 'kindling', name: 'Second Wind', icon: 'candle', base: 90, growth: 1.55, max: 10, needsTyping: true, desc: (l) => `After a break of 60s+, your next ${4 * l} keys each give +2 extra Sparks`, apply: (m, l) => { m.secondWind += 4 * l; } },
-    { id: 'static', name: 'Static Coins', icon: 'keycap', base: 140, growth: 1.75, max: 8, desc: (l) => `Each keystroke: +1% chance per level to mint a coin (now ${l}%)`, apply: (m, l) => { m.keyCoin += 0.01 * l; } },
+    { id: 'kindling', name: 'Second Wind', icon: 'candle', base: 120, growth: 1.55, max: 10, needsTyping: 'FOR TYPISTS WHO PAUSE', desc: (l) => `After a break of 30s+, your next ${4 * l} keys each give +2 extra Sparks`, apply: (m, l) => { m.secondWind += 4 * l; } },
+    { id: 'static', name: 'Static Coins', icon: 'keycap', base: 140, growth: 1.75, max: 8, needsTyping: true, desc: (l) => `Each keystroke: +1% chance per level to mint a coin (now ${l}%)`, apply: (m, l) => { m.keyCoin += 0.01 * l; } },
   ];
 
   // Renown upgrades (permanent)
@@ -123,7 +123,7 @@
     { id: 'treasury', name: 'Royal Treasury', icon: 'coin', max: 999, cost: (l) => 2 + 2 * l, desc: (l) => `+25% gold per level (now +${25 * l}%)`, apply: (m, l) => { m.gold *= 1 + 0.25 * l; } },
     { id: 'quartermaster', name: 'Quartermaster', icon: 'hammer', max: 1, cost: () => 6, desc: () => 'Automatically levels your heroes with spare gold (toggle in Settings).', apply: (m, l) => { if (l) m.auto = true; } },
     { id: 'veterans', name: 'Veteran Recruits', icon: 'shield', max: 10, cost: (l) => 3 + 2 * l, desc: (l) => `Heroes join at +10 levels per rank (now +${10 * l})`, apply: (m, l) => { m.startLvl += 10 * l; } },
-    { id: 'headstart', name: 'Head Start', icon: 'boots', get max() { return KK.DEMO_CAP ? 2 : 8; }, cost: (l) => 3 + 2 * l, desc: (l) => `Begin each delve 5 floors deeper (now floor ${1 + 5 * Math.min(l, KK.DEMO_CAP ? 2 : 8)})`, apply: (m, l) => { m.startFloor += 5 * (KK.DEMO_CAP ? Math.min(l, 2) : l); } },
+    { id: 'headstart', name: 'Head Start', icon: 'boots', get max() { return KK.DEMO_CAP ? 2 : 8; }, cost: (l) => 3 + 2 * l, desc: (l) => `Begin each delve 5 floors deeper, heroes 8 levels higher (now floor ${1 + 5 * Math.min(l, KK.DEMO_CAP ? 2 : 8)}, +${8 * Math.min(l, KK.DEMO_CAP ? 2 : 8)} levels)`, apply: (m, l) => { const k = KK.DEMO_CAP ? Math.min(l, 2) : l; m.startFloor += 5 * k; m.startLvl += 8 * k; } },
     { id: 'zeal', name: 'Zealous Spirit', icon: 'candle', max: 5, cost: (l) => 4 + 2 * l, desc: (l) => `Fervor drains 12% slower per rank (now -${Math.round((1 - Math.pow(0.88, l)) * 100)}%)`, apply: (m, l) => { m.fervDecay *= Math.pow(0.88, l); } },
     { id: 'recruiter', name: 'Recruiter', icon: 'heart', max: 1, cost: () => 8, desc: () => 'Recruiting heroes costs 75% less.', apply: (m, l) => { if (l) m.heroCost *= 0.25; } },
     { id: 'campfire', name: 'Warm Campfire', icon: 'clock', max: 4, cost: (l) => 4 + 2 * l, desc: (l) => `Offline earnings +10 points per rank (now ${40 + 10 * l}% of online, max 80%)`, apply: (m, l) => { m.offline += 0.1 * l; } },
@@ -134,16 +134,19 @@
   // Delve Omens: from the 2nd retire on, each new delve picks 1 of 3 modifiers (or none). Not in the demo.
   const OMENS = [
     { id: 'gilded', name: 'Gilded Delve', icon: 'coin', desc: 'Gold x2, but monsters have +40% HP.', apply: (m) => { m.gold *= 2; m.eHp *= 1.4; } },
-    { id: 'glass', name: 'Glass Delve', icon: 'gem', desc: 'Party damage x1.6, but party HP x0.65.', apply: (m) => { m.dmg *= 1.6; m.hp *= 0.65; } },
+    { id: 'glass', name: 'Glass Delve', icon: 'gem', desc: 'Party damage x1.6, but party HP x0.65 and attacks 20% slower.', apply: (m) => { m.dmg *= 1.6; m.hp *= 0.65; m.aspd *= 0.8; } },
     { id: 'storm', name: 'Storm Front', icon: 'spark', desc: 'Ultimates cost 30% less and hit 50% harder, but Fervor drains twice as fast.', apply: (m) => { m.ultCost *= 0.7; m.ultPow *= 1.5; m.fervDecay *= 2; } },
     { id: 'quiet', name: 'Quiet Halls', icon: 'clock', desc: 'The party fights at x1.35 even when you are not typing, but Fervor builds half as fast.', apply: (m) => { m.idlePow = Math.max(m.idlePow, 0.35); m.fervGain *= 0.5; } },
     { id: 'fever', name: 'Treasure Fever', icon: 'map', desc: 'Treasure chests x3, but monsters hit 25% harder.', apply: (m) => { m.chest *= 3; m.eAtk *= 1.25; } },
     { id: 'embertide', name: 'Ember Tide', icon: 'candle', desc: 'Embers x2, but gold x0.85.', apply: (m) => { m.emberGain *= 2; m.gold *= 0.85; } },
     { id: 'march', name: 'Forced March', icon: 'boots', desc: 'Walk 50% faster and attack 15% faster, but party HP x0.85.', apply: (m) => { m.walk *= 1.5; m.aspd *= 1.15; m.hp *= 0.85; } },
     { id: 'hoard', name: 'Relic Hoard', icon: 'gem', desc: 'Bosses offer one extra relic, but monsters have +20% HP.', apply: (m) => { m.relicChoices += 1; m.eHp *= 1.2; } },
-    { id: 'muster', name: "Veterans' Muster", icon: 'shield', desc: 'Heroes join 15 levels higher, but gold x0.8.', apply: (m) => { m.startLvl += 15; m.gold *= 0.8; } },
-    { id: 'deep', name: 'Deep Omen', icon: 'crown', desc: 'Renown x1.25 this delve, but monsters have +30% HP and hit 30% harder.', apply: (m) => { m.renownMult *= 1.25; m.eHp *= 1.3; m.eAtk *= 1.3; } },
+    { id: 'muster', name: "Veterans' Muster", icon: 'shield', desc: 'Keep all Forge upgrades from your last delve, but gold x0.8.', apply: (m) => { m.gold *= 0.8; } },
+    { id: 'deep', name: 'Deep Omen', icon: 'crown', desc: 'Renown x1.12 this delve, but monsters have +30% HP and hit 30% harder.', apply: (m) => { m.renownMult *= 1.12; m.eHp *= 1.3; m.eAtk *= 1.3; } },
   ];
+
+  // Depth trophies: permanent x1.05 damage & gold for each record depth reached
+  const TROPHIES = [75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 140, 150];
 
   const FERVOR_TIERS = [
     { at: 0, name: 'IDLE', mult: 1.0 },
@@ -152,5 +155,5 @@
     { at: 90, name: 'FLOW STATE', mult: 2.2 },
   ];
 
-  KK.DATA = { HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS };
+  KK.DATA = { HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES };
 })();

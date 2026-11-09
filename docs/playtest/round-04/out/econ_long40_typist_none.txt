@@ -1,0 +1,12 @@
+=== long typist, 40 h, 3 seeds, retire nudge, omens none ===
+seed1 omens {"none":24} last retires: 23h44 f155 +8 - (165m), 26h41 f159 +32 - (177m), 29h27 f160 +8 - (166m), 31h18 f164 +33 - (111m), 33h39 f165 +8 - (141m), 38h38 f169 +34 - (299m)
+4h00   f117 (115-119) R333 fame x42 oc7.0 | last 4h: +48/retire, runs 31m
+8h00   f135 (135-135) R452 fame x88 oc8.3 | last 4h: +30/retire, runs 52m
+12h00  f146 (144-148) R529 fame x139 oc10.0 | last 4h: +29/retire, runs 97m
+16h00  f151 (149-154) R569 fame x176 oc11.0 | last 4h: +20/retire, runs 98m
+20h00  f156 (152-160) R606 fame x217 oc12.0 | last 4h: +18/retire, runs 130m
+24h00  f159 (155-162) R629 fame x247 oc13.0 | last 4h: +20/retire, runs 150m
+28h00  f161 (159-165) R651 fame x278 oc13.0 | last 4h: +22/retire, runs 225m
+32h00  f163 (160-166) R668 fame x304 oc14.0 | last 4h: +10/retire, runs 160m
+36h00  f165 (163-167) R681 fame x326 oc14.0 | last 4h: +14/retire, runs 350m
+40h00  f168 (165-169) R704 fame x368 oc14.0 | last 4h: +22/retire, runs 205m

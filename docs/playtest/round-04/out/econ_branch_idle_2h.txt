@@ -1,0 +1,12 @@
+=== one delve per omen from the state at the first retire after 2 h, idle, 4 seeds ===
+none       gain 30.8 (30-32) run 38.8m  Renown/h 49.2 (0%)  floor 77.5  Embers 178
+gilded     gain 30.8 (30-32) run 34.0m  Renown/h 54.6 (11%)  floor 77.5  Embers 207
+glass      gain 32.8 (30-38) run 28.3m  Renown/h 70.3 (43%)  floor 78.0  Embers 163
+storm      gain 30.8 (30-32) run 31.8m  Renown/h 58.3 (19%)  floor 77.5  Embers 154
+quiet      gain 30.8 (30-32) run 30.8m  Renown/h 60.5 (23%)  floor 77.5  Embers 185
+fever      gain 30.8 (30-32) run 36.8m  Renown/h 50.3 (2%)  floor 77.5  Embers 174
+embertide  gain 30.8 (30-32) run 38.8m  Renown/h 48.7 (-1%)  floor 77.5  Embers 370
+march      gain 31.8 (30-34) run 28.0m  Renown/h 68.4 (39%)  floor 77.8  Embers 171
+hoard      gain 30.8 (30-32) run 35.8m  Renown/h 52.5 (7%)  floor 77.5  Embers 190
+muster     gain 28.8 (24-31) run 38.5m  Renown/h 46.0 (-7%)  floor 77.0  Embers 194
+deep       gain 31.0 (30-32) run 37.0m  Renown/h 53.2 (8%)  floor 76.0  Embers 172

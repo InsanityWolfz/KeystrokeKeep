@@ -1,0 +1,3 @@
+=== omens forced, typist, 8 h, 4 seeds, retire nudge (relic pick: smart) ===
+deep      | 6h00 f128.8 (128-130)  R434  emb 26.4k oc8.0 ret 10.0 wipes 8 | 8h00 f135.0 (134-137)  R491  emb 36.8k oc8.5 ret 12.0 wipes 12
+glass     | 6h00 f131.3 (130-135)  R427  emb 26.4k oc8.0 ret 10.0 wipes 18 | 8h00 f138.0 (135-140)  R470  emb 36.0k oc8.0 ret 11.3 wipes 39

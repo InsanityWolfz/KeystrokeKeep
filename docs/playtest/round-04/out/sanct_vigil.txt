@@ -1,0 +1,12 @@
+live  typist s1: Sanctuary 5 (0.6/h), boss fights with a cast 1/64 (2%), revives 3, wipes w/ Pell 3, maxEver 119, renown 349
+live  typist s2: Sanctuary 7 (0.9/h), boss fights with a cast 1/68 (1%), revives 1, wipes w/ Pell 0, maxEver 120, renown 355
+live  heavy s1: Sanctuary 34 (4.3/h), boss fights with a cast 6/79 (8%), revives 2, wipes w/ Pell 2, maxEver 130, renown 419
+live  idle s1: Sanctuary 28 (3.5/h), boss fights with a cast 2/38 (5%), revives 27, wipes w/ Pell 2, maxEver 88, renown 190
+live  idle s2: Sanctuary 20 (2.5/h), boss fights with a cast 1/38 (3%), revives 18, wipes w/ Pell 1, maxEver 89, renown 189
+live  burst s1: Sanctuary 6 (0.8/h), boss fights with a cast 1/41 (2%), revives 5, wipes w/ Pell 3, maxEver 90, renown 198
+VIGIL typist s1: Sanctuary 42 (5.3/h), boss fights with a cast 36/68 (53%), revives 3, wipes w/ Pell 3, maxEver 120, renown 337
+VIGIL typist s2: Sanctuary 40 (5.0/h), boss fights with a cast 38/64 (59%), revives 1, wipes w/ Pell 0, maxEver 118, renown 331
+VIGIL heavy s1: Sanctuary 46 (5.8/h), boss fights with a cast 41/78 (53%), revives 2, wipes w/ Pell 2, maxEver 130, renown 426
+VIGIL idle s1: Sanctuary 44 (5.5/h), boss fights with a cast 36/47 (77%), revives 2, wipes w/ Pell 3, maxEver 90, renown 209
+VIGIL idle s2: Sanctuary 58 (7.3/h), boss fights with a cast 33/44 (75%), revives 18, wipes w/ Pell 1, maxEver 90, renown 200
+VIGIL burst s1: Sanctuary 36 (4.5/h), boss fights with a cast 31/43 (72%), revives 5, wipes w/ Pell 3, maxEver 93, renown 194

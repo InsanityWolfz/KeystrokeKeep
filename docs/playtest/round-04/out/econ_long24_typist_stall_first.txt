@@ -1,0 +1,8 @@
+=== long typist, 24 h, 3 seeds, retire stall, omens none ===
+seed1 omens {"none":12} last retires: 10h56 f140 +69 - (112m), 13h36 f141 +7 - (160m), 16h00 f142 +7 - (144m), 18h04 f145 +22 - (124m), 19h49 f147 +15 - (105m), 21h53 f150 +22 - (124m)
+4h00   f104 (103-105) R226 fame x19 oc7.0 | last 4h: +100/retire, runs 86m
+8h00   f123 (120-129) R355 fame x48 oc8.0 | last 4h: +49/retire, runs 82m
+12h00  f135 (130-140) R455 fame x91 oc10.0 | last 4h: +41/retire, runs 99m
+16h00  f140 (139-142) R488 fame x110 oc11.0 | last 4h: +17/retire, runs 132m
+20h00  f147 (145-150) R541 fame x150 oc12.0 | last 4h: +24/retire, runs 119m
+24h00  f149 (147-151) R556 fame x163 oc13.0 | last 4h: +13/retire, runs 170m

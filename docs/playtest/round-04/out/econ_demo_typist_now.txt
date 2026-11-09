@@ -1,0 +1,17 @@
+=== DEMO typist, 3 h, 5 seeds, re-delve now ===
+seed1 retires: 0h26 +30 (26m), 0h35 +6 (9m), 0h43 +6 (8m), 0h51 +6 (8m), 0h58 +6 (7m), 1h05 +6 (7m), 1h13 +6 (8m), 1h19 +6 (6m), 1h25 +6 (6m), 1h31 +6 (6m), 1h37 +6 (6m), 1h43 +6 (6m), 1h49 +6 (6m), 1h54 +6 (5m), 1h59 +6 (5m), 2h04 +6 (5m), 2h10 +6 (6m), 2h15 +6 (5m), 2h20 +6 (5m), 2h25 +6 (5m), 2h30 +6 (5m), 2h35 +6 (5m), 2h40 +6 (5m), 2h45 +6 (5m), 2h50 +6 (5m), 2h55 +6 (5m)
+seed1 laps to f40 (min): 7.5 7.2 7.1 5.7 6.0 6.6 4.8 5.2 4.8 5.1 4.7 4.8 4.2 4.5 4.4 4.6 4.1 4.5 4.4 4.4 4.3 4.4 4.3 4.3 4.2 4.2
+seed1 end: workshop {"crucible":8,"overcharge":6,"kindling":7,"static":5} embers 883 heroes {"knight":95,"archer":84,"mage":73,"cleric":58} renown unspent 7
+card (f40 boss) 26-29 min | 1st retire 26-30 min | re-delves 25-26 | mean lap 5.0-5.1 min | best 4.1-4.2 min
+lifetime Renown @1h 48-54 @2h 102-114 @3h 174-180 | relic offers/h 28-29 | Embers/h 4033-4291 | unspent Embers end 155-1454
+Legacy first bought (min) / final level:
+  lineage        26-30     lv 6-6  (max 999)
+  treasury       26-30     lv 6-6  (max 999)
+  quartermaster  26-30     lv 1-1  (max 1)
+  veterans       26-30     lv 4-4  (max 10)
+  headstart      26-30     lv 2-2  (max 2)
+  zeal           26-30     lv 3-3  (max 5)
+  recruiter      26-30     lv 1-1  (max 1)
+  campfire       85-90     lv 2-2  (max 4)
+  battery        85-90     lv 3-3  (max 3)
+  collector      n/a       lv 0-0  (max 1)

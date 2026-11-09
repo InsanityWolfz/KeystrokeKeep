@@ -28,6 +28,18 @@ Then open http://127.0.0.1:5173.
 * There's a fake notepad to type into.
 * The dev window has simulated typing, time warp (up to 60x), +gold, +sparks, +5 floors and a golden-rat spawn.
 
+## Build for Steam
+
+```
+npm run dist        # full game  -> dist/full/win-unpacked/Keystroke Keep.exe
+npm run dist:demo   # demo build -> dist/demo/win-unpacked (demo flag baked in, cap floor 40)
+npm run icon        # re-render build/icon.png from the pixel-art crown
+```
+
+* Unsigned for now (code signing is on the Next Fest checklist).
+* Saves: `%APPDATA%/Keystroke Keep/saves` (demo: `Keystroke Keep Demo`), atomic writes + 3 backups; the full game imports a demo save on first launch.
+* Steam depot: upload the `win-unpacked` folder; launch `Keystroke Keep.exe`.
+
 ## How it plays
 
 * **Gold (idle):** heroes auto-fight and earn gold whether or not you're active. Spend it in ⚔ Party and ⚒ Forge.

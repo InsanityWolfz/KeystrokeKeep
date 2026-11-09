@@ -1,0 +1,15 @@
+thr 0.5 typist s1: Sanctuary 5 (0.6/h), boss fights with a cast 1/64 (2%), revives 3, wipes w/ Pell 3, maxEver 119
+thr 0.5 typist s2: Sanctuary 7 (0.9/h), boss fights with a cast 1/68 (1%), revives 1, wipes w/ Pell 0, maxEver 120
+thr 0.5 heavy s1: Sanctuary 34 (4.3/h), boss fights with a cast 6/79 (8%), revives 2, wipes w/ Pell 2, maxEver 130
+thr 0.5 idle s1: Sanctuary 28 (3.5/h), boss fights with a cast 2/38 (5%), revives 27, wipes w/ Pell 2, maxEver 88
+thr 0.5 burst s1: Sanctuary 6 (0.8/h), boss fights with a cast 1/41 (2%), revives 5, wipes w/ Pell 3, maxEver 90
+thr 0.75 typist s1: Sanctuary 86 (10.8/h), boss fights with a cast 10/66 (15%), revives 3, wipes w/ Pell 3, maxEver 115
+thr 0.75 typist s2: Sanctuary 23 (2.9/h), boss fights with a cast 4/63 (6%), revives 1, wipes w/ Pell 0, maxEver 116
+thr 0.75 heavy s1: Sanctuary 89 (11.1/h), boss fights with a cast 16/82 (20%), revives 2, wipes w/ Pell 2, maxEver 135
+thr 0.75 idle s1: Sanctuary 40 (5.0/h), boss fights with a cast 3/38 (8%), revives 27, wipes w/ Pell 2, maxEver 87
+thr 0.75 burst s1: Sanctuary 53 (6.6/h), boss fights with a cast 7/44 (16%), revives 5, wipes w/ Pell 3, maxEver 92
+thr 0.85 typist s1: Sanctuary 101 (12.6/h), boss fights with a cast 19/64 (30%), revives 3, wipes w/ Pell 3, maxEver 116
+thr 0.85 typist s2: Sanctuary 110 (13.8/h), boss fights with a cast 23/64 (36%), revives 1, wipes w/ Pell 0, maxEver 119
+thr 0.85 heavy s1: Sanctuary 143 (17.9/h), boss fights with a cast 31/79 (39%), revives 2, wipes w/ Pell 2, maxEver 130
+thr 0.85 idle s1: Sanctuary 108 (13.5/h), boss fights with a cast 19/43 (44%), revives 27, wipes w/ Pell 2, maxEver 90
+thr 0.85 burst s1: Sanctuary 102 (12.8/h), boss fights with a cast 15/46 (33%), revives 5, wipes w/ Pell 3, maxEver 97

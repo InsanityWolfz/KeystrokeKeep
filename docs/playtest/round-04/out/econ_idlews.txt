@@ -1,0 +1,6 @@
+=== idle Workshop policies, 8 h, 4 seeds, retire nudge ===
+none             | 4h00 f85.5 R174 | 8h00 f102.3 R251 | seed1 ws {}
+cheapest-all     | 4h00 f86.0 R173 | 8h00 f102.8 R257 | seed1 ws {"crucible":5,"kindling":5,"overcharge":4,"static":3}
+skip tagged (SW) | 4h00 f87.3 R174 | 8h00 f101.3 R244 | seed1 ws {"crucible":6,"overcharge":5,"static":3}
+oc+crucible      | 4h00 f87.3 R184 | 8h00 f104.3 R258 | seed1 ws {"crucible":7,"overcharge":6}
+oc only          | 4h00 f86.8 R179 | 8h00 f103.8 R258 | seed1 ws {"overcharge":6}

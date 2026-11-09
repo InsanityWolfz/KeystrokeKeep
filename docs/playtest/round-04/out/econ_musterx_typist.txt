@@ -1,0 +1,5 @@
+=== Muster variants forced every delve, typist, 8 h, 4 seeds ===
+none       | 6h00 f129.3 R414 | 8h00 f135.5 R452
+now        | 6h00 f128.5 R404 | 8h00 f134.5 R449
+keepForge  | 6h00 f129.5 R413 | 8h00 f138.0 R462
+halfLevels | 6h00 f127.5 R398 | 8h00 f135.3 R444

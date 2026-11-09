@@ -20,6 +20,7 @@
     } else {
       awayCheck((Date.now() - (KK.S.lastSave || Date.now())) / 1000);
       KK.ui.renderPips();
+      if (KK.S.omenOffer) setTimeout(KK.ui.chooseOmen, 1500); // an omen choice pending at quit is never lost
     }
 
     // Frame pacing: this sits on screen all day, so we never render at the monitor's refresh
@@ -51,7 +52,7 @@
       const simDt = dt * FX.timeScale() * KK.warp;
       // fixed-ish substeps keep the sim stable at high warp / low fps
       const steps = Math.max(1, Math.ceil(simDt / (1 / 30)));
-      for (let i = 0; i < steps; i++) W.update(simDt / steps);
+      if (!KK.paused) for (let i = 0; i < steps; i++) W.update(simDt / steps);
       KK.render.draw(dt);
       KK.ui.update(dt);
       setTimeout(frame, Math.max(1, 1000 / fps - (performance.now() - now)));

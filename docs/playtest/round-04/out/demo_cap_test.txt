@@ -1,0 +1,4 @@
+cap none typist demo 180m -> lifetime 162, re-delves 23: full game Void 0h03 | The Hollow 0h06 | f100 0h45 | last MAJOR 0h57
+cap none idle demo 180m -> lifetime 78, re-delves 8: full game Void 0h17 | The Hollow 0h44 | f100 — | last MAJOR 4h03
+cap 60 typist demo 180m -> lifetime 60, re-delves 21: full game Void 0h09 | The Hollow 0h14 | f100 1h55 | last MAJOR 2h11
+cap 60 idle demo 180m -> lifetime 60, re-delves 8: full game Void 0h38 | The Hollow 0h47 | f100 — | last MAJOR 4h28

@@ -1,0 +1,2 @@
+=== omens forced, idle, 8 h, 4 seeds, retire nudge (relic pick: smart) ===
+glass     | 6h00 f99.5 (96-105)  R233  emb 1.8k oc3.8 ret 7.8 wipes 11 | 8h00 f106.3 (104-110)  R269  emb 2.3k oc4.0 ret 9.3 wipes 11

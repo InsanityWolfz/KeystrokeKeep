@@ -1,0 +1,39 @@
+{
+  "mode": "save:all-corrupt-with-demo",
+  "phases": {},
+  "switches": "",
+  "before": {
+    "full": {
+      "keystroke-keep.json": "corrupt(11B)"
+    },
+    "demo": {
+      "keystroke-keep.json": 31
+    }
+  },
+  "setup": "ok",
+  "loaded": {
+    "floor": 31,
+    "demoCap": 0,
+    "ls": null
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r4\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "keystroke-keep.bak1.json": "corrupt(11B)",
+      "keystroke-keep.json": 31
+    },
+    "demo": {
+      "keystroke-keep.json": 31
+    }
+  },
+  "files": {
+    "full": {
+      "keystroke-keep.bak1.json": "corrupt(11B)",
+      "keystroke-keep.json": 31
+    },
+    "demo": {
+      "keystroke-keep.json": 31
+    }
+  },
+  "mainBytes": 906
+}

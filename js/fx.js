@@ -271,7 +271,8 @@
   KK.on('levelUp', ({ id, from, to }) => {
     const h = W.heroes.find((x) => x.id === id);
     if (!h) return;
-    const milestone = Math.floor(to / 10) > Math.floor(from / 10);
+    const step = to >= 100 ? 50 : 10; // past Lv 100 only every 50 levels is a milestone moment
+    const milestone = Math.floor(to / step) > Math.floor(from / step);
     FX.pillar(h.x, milestone ? '#ffd76a' : '#fff6c9', milestone ? 1.2 : 0.6, milestone ? 14 : 8);
     FX.burst(h.x, h.y - 8, milestone ? 30 : 8, ['#ffd76a', '#ffffff'], { spd: milestone ? 110 : 50, grav: -50, life: 0.8 });
     FX.text(h.x, h.y - 24, to - from > 1 ? `LV ${to} (+${to - from})` : 'LV ' + to, '#ffd76a', 1, { life: 1.0, vy: -18 });
@@ -312,6 +313,27 @@
     FX.coinBurst(x, W.GROUND - 30, 1);
     FX.burst(x, W.GROUND - 30, 4, ['#ffd76a', '#fff'], { spd: 30, life: 0.4 });
   });
+  KK.on('voidWarn', ({ e }) => {
+    FX.text(e.x, e.y - e.def.h - 10, '!! VOID SLAM !!', '#c472ff', 1, { life: 1.0, vy: 0 });
+    FX.ring(W.partyX - 20, W.GROUND, 4, 80, '#a24cff', 1.0, 2);
+  });
+  KK.on('voidSlam', () => {
+    FX.flash('#5a1aa0', 0.3); FX.shake(3, 0.35);
+    FX.ring(W.partyX - 20, W.GROUND, 3, 110, '#c472ff', 0.6, 2);
+    FX.burst(W.partyX - 20, W.GROUND - 4, 30, ['#c472ff', '#6a2cff', '#ffffff'], { spd: 120, up: -50, life: 0.8, floor: true });
+  });
+  KK.on('trophy', ({ floor }) => {
+    const x = W.partyX - 20;
+    FX.banner(floor === 100 ? 'HEART OF THE KEEP' : 'DEPTH TROPHY', floor === 100 ? 'FLOOR 100: x1.05 FOREVER' : 'FLOOR ' + floor + ': x1.05 FOREVER', '#ffd76a', 2.6, { subCol: '#fff6c9' });
+    FX.ring(x, 40, 4, 110, '#ffd76a', 0.8, 2);
+    FX.burst(x, 40, 40, ['#ffd76a', '#fff6c9', '#ffffff'], { spd: 140, grav: -20, life: 1.2 });
+  });
+  KK.on('secondWind', () => {
+    const h = W.heroes.find((x) => !x.dead);
+    if (h) FX.text(h.x, h.y - 30, 'SECOND WIND!', '#ffb070', 1, { life: 1.4, vy: -12 });
+  });
+  KK.on('kill', ({ e }) => { if (e.boss) setTimeout(() => FX.text(e.x, headY(e) - 14, '+10 EMBERS', '#ffb070', 1, { life: 1.4, vy: -14 }), 300); });
+  KK.on('ratCaught', ({ x, y }) => setTimeout(() => FX.text(x, y - 26, '+25 EMBERS', '#ffb070', 1, { life: 1.4, vy: -12 }), 300));
   KK.on('poke', ({ e }) => FX.burst(e.x, e.y - e.def.h / 2, 6, ['#ffffff', '#7ee8f6'], { spd: 80, life: 0.3 }));
 
   // keystroke energy: a spark rises from the floor and flies into the party

@@ -1,0 +1,10 @@
+light s1 SecondWind on : kindling lvl 9, triggers 216, bonus Sparks 10008/32717, ults 1290, maxEver 103, renown 258
+light s1 SecondWind OFF: kindling lvl 8, triggers 0, bonus Sparks 0/23369, ults 991, maxEver 100, renown 253
+light s2 SecondWind on : kindling lvl 8, triggers 226, bonus Sparks 10752/33705, ults 1484, maxEver 106, renown 274
+light s2 SecondWind OFF: kindling lvl 8, triggers 0, bonus Sparks 0/23190, ults 889, maxEver 93, renown 211
+burst s1 SecondWind on : kindling lvl 7, triggers 211, bonus Sparks 7830/16627, ults 830, maxEver 90, renown 198
+burst s1 SecondWind OFF: kindling lvl 6, triggers 0, bonus Sparks 0/8786, ults 472, maxEver 94, renown 197
+burst s2 SecondWind on : kindling lvl 7, triggers 216, bonus Sparks 7984/16736, ults 673, maxEver 93, renown 218
+burst s2 SecondWind OFF: kindling lvl 6, triggers 0, bonus Sparks 0/9148, ults 565, maxEver 94, renown 200
+typist s1 SecondWind on : kindling lvl 10, triggers 0, bonus Sparks 0/60951, ults 2401, maxEver 119, renown 349
+typist s1 SecondWind OFF: kindling lvl 10, triggers 0, bonus Sparks 0/60951, ults 2401, maxEver 119, renown 349

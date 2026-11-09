@@ -1,0 +1,17 @@
+=== DEMO idle, 3 h, 5 seeds, re-delve now ===
+seed1 retires: 1h05 +30 (65m), 1h21 +6 (16m), 1h35 +6 (14m), 1h46 +6 (11m), 1h56 +6 (10m), 2h06 +6 (10m), 2h16 +6 (10m), 2h24 +6 (8m), 2h32 +6 (8m), 2h40 +6 (8m), 2h48 +6 (8m), 2h55 +6 (7m)
+seed1 laps to f40 (min): 14.9 12.6 9.9 9.0 8.5 8.5 7.1 7.3 6.9 6.6 6.0
+seed1 end: workshop {"crucible":4,"kindling":3,"overcharge":3,"static":1} embers 239 heroes {"knight":67,"archer":57,"mage":45,"cleric":31} renown unspent 0
+card (f40 boss) 65-85 min | 1st retire 42-68 min | re-delves 11-14 | mean lap 8.2-8.8 min | best 6.0-6.4 min
+lifetime Renown @1h 0-13 @2h 48-54 @3h 90-102 | relic offers/h 14-15 | Embers/h 326-388 | unspent Embers end 73-239
+Legacy first bought (min) / final level:
+  lineage        42-68     lv 3-4  (max 999)
+  treasury       42-68     lv 3-3  (max 999)
+  quartermaster  42-68     lv 1-1  (max 1)
+  veterans       42-68     lv 3-3  (max 10)
+  headstart      65-79     lv 2-2  (max 2)
+  zeal           65-135    lv 2-2  (max 5)
+  recruiter      65-68     lv 0-1  (max 1)
+  campfire       142-158   lv 2-2  (max 4)
+  battery        126-158   lv 2-3  (max 3)
+  collector      n/a       lv 0-0  (max 1)

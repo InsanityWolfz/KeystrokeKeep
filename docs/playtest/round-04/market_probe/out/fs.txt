@@ -1,0 +1,22 @@
+H27P22S__electronFs_same                             PASS hidden->hidden hid@1 back@0.6 q2 by=Chrome_WidgetWin_1[covers]
+H27P22S__electronFs_other                            PASS visible->visible hid@null back@0 q5 by=-
+H27P22S__borderless_same                             PASS hidden->hidden hid@0 back@1.1 q2 by=WindowsForms10.Window.8.app.0.3c28fba_r13_ad1[covers]
+H27P22S__maximized_same                              PASS visible->visible hid@null back@0 q5 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1
+H27P22S__bigframe_same(maximized,no-taskbar)         FAIL visible->hidden hid@0 back@0.71 q5 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1[covers]
+H27P22S__topmostOverlay_same                         FAIL visible->hidden hid@1 back@0.41 q2 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1[covers][top]
+ASUSVP247__electronFs_same                           FAIL hidden->flicker hid@1 back@0 q5 by=Chrome_WidgetWin_1
+ASUSVP247__electronFs_other                          PASS visible->visible hid@null back@0 q2 by=Chrome_WidgetWin_1
+ASUSVP247__borderless_same                           PASS hidden->hidden hid@0 back@1.01 q5 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1[covers]
+ASUSVP247__maximized_same                            PASS visible->visible hid@null back@0 q5 by=WindowsForms10.Window.8.app.0.3c28fba_r13_ad1
+ASUSVP247__bigframe_same(maximized,no-taskbar)       FAIL visible->hidden hid@0.8 back@0.4 q5 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1[covers]
+ASUSVP247__topmostOverlay_same                       FAIL visible->hidden hid@0.8 back@0.2 q5 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1[covers][top]
+HP25x__electronFs_same                               PASS hidden->hidden hid@1 back@0.61 q5 by=Chrome_WidgetWin_1[covers]
+HP25x__electronFs_other                              PASS visible->visible hid@null back@0 q2 by=-
+HP25x__borderless_same                               PASS hidden->hidden hid@0 back@0.81 q5 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1[covers]
+HP25x__maximized_same                                PASS visible->visible hid@null back@0 q5 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1
+HP25x__bigframe_same(maximized,no-taskbar)           FAIL visible->hidden hid@0.8 back@0.2 q5 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1[covers]
+HP25x__topmostOverlay_same                           FAIL visible->hidden hid@0.8 back@0.2 q5 by=WindowsForms10.Window.8.app.0.f97473_r13_ad1[covers][top]
+H27P22S__fs_then_focus_other                         PASS hidden->hidden hid@1.3 back@0 q2 by=Chrome_WidgetWin_1[covers]
+ASUS_VP247__fs_then_focus_other                      PASS hidden->hidden hid@0.8 back@0 q5 by=Chrome_WidgetWin_1[covers]
+HP_25x__fs_then_focus_other                          PASS hidden->hidden hid@0.5 back@0.51 q5 by=Chrome_WidgetWin_1[covers]
+[probe] done fs

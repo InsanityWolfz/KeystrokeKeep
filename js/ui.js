@@ -38,6 +38,7 @@
     $('#panel-body').addEventListener('input', onPanelInput);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') UI.close(); });
     $('#relic-offer').addEventListener('click', onOfferClick);
+    $('#hud-farm').addEventListener('click', () => { if (A.renownGain() > 0) UI.open('legacy'); else UI.open('party'); });
     setupDesktop();
     // wave pips
     UI.renderPips();
@@ -81,7 +82,13 @@
     const g = A.renownGain();
     setText('#hud-farm', blocked && g >= 10 ? `Stuck? ♛ Retire: +${g} Renown` : '⚠ Boss too strong: farming. Level up!');
     $('#hud-farm').classList.toggle('hidden', !blocked || KK.fx.banners.length > 0);
-    const pill = $('#hud-demo'); if (pill) pill.classList.toggle('hidden', !KK.DEMO_CAP);
+    const pill = $('#hud-demo');
+    if (pill) {
+      const om = S.omen && D.OMENS.find((o) => o.id === S.omen);
+      setText(pill, KK.DEMO_CAP ? 'DEMO · ENDS AT FLOOR 40' + (S.demoLaps ? ` · BEST ${U.fmtTime(S.bestCapTime)}` : '') : om ? '◆ ' + om.name.toUpperCase() : '');
+      pill.classList.toggle('hidden', !KK.DEMO_CAP && !om);
+      pill.classList.toggle('omen', !KK.DEMO_CAP);
+    }
     setText('#np-count', fmt(S.stats.keys) + ' keystrokes · ' + U.fmtTime(S.stats.flowTime) + ' in FLOW');
     badges();
     if (UI.tab) refreshPanel();
@@ -212,7 +219,7 @@
     return `<div class="card">${port}<div class="info">
       <div class="nm"><span>${def.name}</span><span class="lv">LV ${lvl}</span></div>
       <div class="stats"><span>${id === 'cleric' ? '✚' : '⚔'} ${fmt(dmg)}</span><span>♥ ${fmt(hp)}</span><span style="color:var(--muted)">LV ${next}: x${KK.BAL.dmgMile}</span></div>
-      <div class="ultline">⚡${Math.ceil(def.ult.cost * m.ultCost)} ${def.ult.name}: ${def.ult.desc}</div>
+      <div class="ultline">${def.ult.free ? 'FREE' : '⚡' + Math.ceil(def.ult.cost * m.ultCost)} ${def.ult.name}: ${def.ult.desc}</div>
       <button class="buy" data-action="lvl" data-id="${id}" data-cost="0"><span class="l">LEVEL UP</span><span class="c"></span></button>
     </div></div>`;
   }
@@ -229,7 +236,7 @@
     const tooBig = false;
     return `<div class="card ${maxed ? 'maxed' : ''}"><div class="port"><img src="${KK.SPR.iconURL[def.icon]}" alt=""></div><div class="info">
       <div class="nm"><span>${def.name}</span><span class="lv">${maxed ? 'MAX' : 'LV ' + lvl}</span></div>
-      <div class="desc">${def.desc(lvl)}${def.needsTyping ? ' <span class="tag">NEEDS TYPING</span>' : ''}</div>
+      <div class="desc">${def.desc(lvl)}${def.needsTyping ? ` <span class="tag">${def.needsTyping === true ? 'NEEDS TYPING' : def.needsTyping}</span>` : ''}</div>
       ${maxed ? '<button class="buy" disabled><span>MAXED</span></button>' : `<button class="buy ${cur === 'embers' ? 'spark' : cur === 'renown' ? 'renown' : ''}" data-action="${action}" data-id="${def.id}" data-cost="${cost}" data-cur="${cur}" data-lock="${tooBig ? 1 : 0}"><span>UPGRADE</span><span>${curIcon} ${fmt(cost)}</span></button>`}
     </div></div>`;
   }
@@ -269,7 +276,7 @@
       <div class="retire-box">
         <h4>♛ RETIRE THE PARTY</h4>
         <p>Your heroes retire to the tavern. Gold, levels, Forge and relics reset. You keep <b>Renown</b>, Legacy upgrades and all Workshop upgrades. Renown is paid for <b>beating your deepest record</b> (${S.renownFloor ? 'floor ' + S.renownFloor : 'no record yet'}).</p>
-        <p>Deepest floor this delve: <b>${S.maxFloorRun}</b> · Renown: <b style="color:#e9a2ff">${S.renown}</b> (lifetime ${S.renownLifetime}, +${fmt(Math.round((S.renownLifetime ? KK.mods().fame : 1) * 100 - 100))}% dmg &amp; gold)${S.omen ? `<br>Omen this delve: <b style="color:#ffd76a">${D.OMENS.find((o) => o.id === S.omen).name}</b>` : ''}</p>
+        <p>Deepest floor this delve: <b>${S.maxFloorRun}</b> · Renown: <b style="color:#e9a2ff">${S.renown}</b> (lifetime ${S.renownLifetime}, Fame x${fmt(S.renownLifetime ? KK.mods().fame : 1)} dmg &amp; gold${KK.mods().trophies ? `, ${KK.mods().trophies} depth troph${KK.mods().trophies > 1 ? 'ies' : 'y'}` : ''})${S.omen ? `<br>Omen this delve: <b style="color:#ffd76a">${D.OMENS.find((o) => o.id === S.omen).name}</b>` : ''}</p>
         <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
           <div><div class="gain" id="retire-gain">+${gain}</div><div class="worth" id="retire-worth">${renownWorth()}</div></div>
           <button class="buy renown big" data-action="retire" ${A.canRetire() ? '' : 'disabled'} style="flex:1">${gain > 0 ? 'RETIRE FOR RENOWN' : A.canRetire() ? 'RE-DELVE (NEW RUN, NEW RELICS)' : A.retireHint()}</button>
@@ -282,8 +289,16 @@
         ${statRow('Gold earned', fmt(st.goldEarned))}${statRow('Golden rats', fmt(st.rats))}
         ${statRow('Deepest floor ever', S.maxFloorEver)}${statRow('Retirements', S.retires)}
       </div></div>
+      ${achHTML()}
       <div class="ph"><div><h3>HALL OF LEGENDS</h3><div class="sub">Permanent upgrades bought with Renown.</div></div><div class="res-pill renown" id="legacy-renown">♛ ${S.renown}</div></div>
       <div class="grid">${D.LEGACY.map((d) => upCard(d, S.legacy[d.id] || 0, 'renown', 'legacy')).join('')}</div>`;
+  }
+  function achHTML() {
+    if (!KK.ach) return '';
+    const S = KK.S, got = S.ach || {};
+    const list = KK.ach.LIST.filter((a) => !KK.DEMO_CAP || a.demo);
+    const n = list.filter((a) => got[a.id]).length;
+    return `<details class="achbox"><summary>🏆 ACHIEVEMENTS ${n}/${list.length}${KK.DEMO_CAP ? ' (demo set: they unlock on Steam in the full game)' : ''}</summary><div class="achlist">${list.map((a) => `<div class="ach ${got[a.id] ? 'got' : ''}"><b>${a.name}</b><span>${a.desc}</span></div>`).join('')}</div></details>`;
   }
   /** "+X% damage & gold" that the pending Renown would add (Fame), for the retire button. */
   function renownWorth() {
@@ -420,7 +435,7 @@
     UI.modal(`<h2>♛ RETIRE THE PARTY?</h2>
       <p>Sir Clank and friends hang up their swords. A new generation starts the delve, stronger for it.</p>
       <div class="bigval">+${gain} RENOWN</div>
-      ${KK.S.relicOffer ? `<p style="color:#ff9a9a">You have ${1 + (KK.S.relicQueue || []).length} unopened relic chest(s). They will be lost.</p>` : ''}
+      ${KK.S.relicOffer ? `<p style="color:#ff9a9a">You have ${1 + (KK.S.relicQueue || []).length} unopened relic chest${(KK.S.relicQueue || []).length ? 's' : ''}. ${(KK.S.relicQueue || []).length ? 'They' : 'It'} will be lost.</p>` : ''}
       <p style="font-size:12px;color:var(--muted)">Resets: gold, hero levels, recruits, Forge, relics, floor.<br>Keeps: Renown, Legacy, Workshop upgrades, Embers.</p>
       <div class="row"><button class="buy" data-x="no" style="background:#3a2f4f;color:#fff;box-shadow:none">NOT YET</button><button class="buy renown" data-x="yes">RETIRE</button></div>`,
     (m, close) => {
@@ -442,12 +457,14 @@
   UI.chooseOmen = function () {
     const S = KK.S;
     if (!S.omenOffer) return;
+    KK.paused = true; // the dungeon waits while you choose
     const card = (id) => {
       const o = D.OMENS.find((x) => x.id === id);
-      return `<button class="omen" data-omen="${id}"><img src="${KK.SPR.iconURL[o.icon]}" alt=""><b>${o.name}</b><span>${o.desc}</span></button>`;
+      const [up, down] = o.desc.split(/, but /i);
+      return `<button class="omen" data-omen="${id}"><img src="${KK.SPR.iconURL[o.icon]}" alt=""><b>${o.name}</b><span class="up">▲ ${up.replace(/\.$/, '')}</span>${down ? `<span class="down">▼ ${down.replace(/\.$/, '')}</span>` : ''}</button>`;
     };
     UI.modal(`<h2>CHOOSE AN OMEN</h2>
-      <p style="font-size:13px">Every new delve can carry one omen: a twist that lasts until you retire.</p>
+      <p style="font-size:13px">Every new delve can carry one omen: a twist that lasts until you retire. (The dungeon waits while you choose.)</p>
       <div class="omens">${S.omenOffer.map(card).join('')}</div>
       <div class="row"><button class="buy" data-omen="" style="background:#3a2f4f;color:#fff;box-shadow:none">NO OMEN</button></div>`,
     (m, close) => {
@@ -456,11 +473,12 @@
         if (!b) return;
         const id = b.dataset.omen || null;
         A.pickOmen(id);
+        KK.paused = false;
         close();
         KK.audio.play('relic');
         const o = id && D.OMENS.find((x) => x.id === id);
         UI.toast(o ? `Omen: ${o.name}. Spend your Renown in the Hall of Legends!` : 'No omen this time. Spend your Renown in the Hall of Legends!', 'crown', 'epic', 5);
-        setTimeout(() => UI.open('legacy'), 400);
+        setTimeout(() => { UI.open('legacy'); const h = $('.achbox') || $('#legacy-renown'); if (h) h.scrollIntoView({ block: 'start' }); }, 400);
       });
     });
   };
@@ -500,6 +518,9 @@
       m.querySelector('[data-x=wish]').onclick = () => { UI.openStore(); done(); };
     });
   }, 2500));
+  KK.on('achievement', ({ def }) => { if (def && (!KK.DEMO_CAP || def.demo)) UI.toast(`🏆 Achievement: ${def.name}`, 'crown', 'gold', 5); UI.dirty = true; });
+  KK.on('trophy', ({ floor, n }) => UI.toast(floor === 100 ? 'HEART OF THE KEEP! Depth trophy: x1.05 damage & gold forever.' : `Depth trophy for floor ${floor}: x1.05 damage & gold forever (${n} total).`, 'crown', 'gold', 6));
+  KK.on('omenPicked', () => { UI.dirty = true; });
   KK.on('demoSealed', ({ time }) => UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The depths are sealed in the demo: re-delve in ♛ Legacy for +6 Renown.`, 'crown', 'epic', 8));
   /** Steam store page (set KK.STORE_URL once the page exists). */
   UI.openStore = function () {

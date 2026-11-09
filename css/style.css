@@ -415,3 +415,18 @@ body.native #panel { border-bottom: 0; }
 .demo-stats div { background: #1f1630; border: 2px solid #000; padding: 6px 2px; display: flex; flex-direction: column; }
 .demo-stats b { font: 16px var(--font-px); color: #ffd76a; }
 .demo-stats span { font-size: 11px; color: var(--muted); }
+
+/* Round 4 */
+.demo-pill.omen { color: #ffd76a; }
+.achbox { margin: 8px 0 12px; background: #1f1630; border: 2px solid #000; padding: 6px 10px; }
+.achbox summary { cursor: pointer; font: 13px var(--font-px); color: #ffd76a; }
+.achlist { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px; margin-top: 8px; }
+.ach { background: #0006; border: 1px solid #000; padding: 4px 6px; opacity: .45; display: flex; flex-direction: column; }
+.ach.got { opacity: 1; box-shadow: inset 0 0 0 1px #ffd76a66; }
+.ach b { font: 11px var(--font-px); color: #fff; }
+.ach span { font-size: 11px; color: var(--muted); }
+
+.farm-tag { background: #120d1ae6; border: 1px solid #000; box-shadow: inset 0 0 0 1px #6b3a3a; padding: 1px 6px; font-size: 11px; pointer-events: auto; cursor: pointer; display: inline-block; }
+.omen .up { color: #8de88a; font-size: 12px; }
+.omen .down { color: #ff9a9a; font-size: 12px; }
+.buy .l, .buy span { white-space: nowrap; }

@@ -1,0 +1,43 @@
+{
+  "mode": "save:rename-locked",
+  "phases": {},
+  "switches": "",
+  "before": {
+    "full": {
+      "keystroke-keep.json": 60
+    },
+    "demo": "no dir"
+  },
+  "setup": "ok",
+  "loaded": {
+    "floor": 60,
+    "demoCap": 0,
+    "ls": null
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r4\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "keystroke-keep.bak1.json": 60,
+      "keystroke-keep.json": 60
+    },
+    "demo": "no dir"
+  },
+  "lockedWrite": {
+    "returnValue": false,
+    "mainFloorNow": 60,
+    "tmpLeft": true
+  },
+  "afterUnlockWrite": {
+    "returnValue": true,
+    "mainFloorNow": 62,
+    "tmpLeft": false
+  },
+  "files": {
+    "full": {
+      "keystroke-keep.bak1.json": 60,
+      "keystroke-keep.json": 62
+    },
+    "demo": "no dir"
+  },
+  "mainBytes": 43
+}

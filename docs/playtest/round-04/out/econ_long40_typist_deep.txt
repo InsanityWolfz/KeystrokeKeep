@@ -1,0 +1,12 @@
+=== long typist, 40 h, 3 seeds, retire nudge, omens deep ===
+seed1 omens {"deep":23} last retires: 18h04 f160 +30 deep (93m), 23h21 f164 +41 deep (317m), 29h23 f167 +31 deep (362m), 33h19 f168 +10 deep (236m), 37h31 f169 +11 deep (252m), 39h04 f170 +11 deep (93m)
+4h00   f121 (120-122) R425 fame x75 oc7.0 | last 4h: +56/retire, runs 27m
+8h00   f140 (140-140) R577 fame x184 oc8.7 | last 4h: +30/retire, runs 47m
+12h00  f150 (149-150) R670 fame x307 oc10.0 | last 4h: +28/retire, runs 74m
+16h00  f154 (154-155) R711 fame x382 oc11.3 | last 4h: +33/retire, runs 137m
+20h00  f161 (160-163) R781 fame x554 oc12.0 | last 4h: +27/retire, runs 103m
+24h00  f165 (164-166) R826 fame x698 oc12.7 | last 4h: +34/retire, runs 204m
+28h00  f166 (164-168) R836 fame x736 oc13.0 | last 4h: +7/retire, runs 198m
+32h00  f169 (167-170) R861 fame x834 oc13.7 | last 4h: +19/retire, runs 237m
+36h00  f170 (168-173) R878 fame x916 oc14.0 | last 4h: +18/retire, runs 175m
+40h00  f171 (170-173) R886 fame x948 oc14.0 | last 4h: +4/retire, runs 173m

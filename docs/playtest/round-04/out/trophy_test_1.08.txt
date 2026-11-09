@@ -1,0 +1,16 @@
+baseline   typist s1: maxEver 119 retires 10 |  | MAJOR+OMEN per 30m h1-8: 3 3 2 2 2 0 0 1 0 0 1 0 0 0 | empty 30-min windows h2-5: 2/6, h5-8: 5/6 | longest gap 99m
+TROPHY x1.08 typist s1: maxEver 127 retires 11 | 75@1h16 85@2h10 95@2h59 100@3h35 105@4h12 110@4h51 115@5h09 120@6h01 125@6h54 | MAJOR+OMEN+TROPHY per 30m h1-8: 5 2 3 3 1 2 2 1 1 0 2 2 0 0 | empty 30-min windows h2-5: 0/6, h5-8: 3/6 | longest gap 66m
+baseline   typist s2: maxEver 120 retires 11 |  | MAJOR+OMEN per 30m h1-8: 4 2 2 1 2 2 0 1 0 0 0 0 0 0 | empty 30-min windows h2-5: 1/6, h5-8: 6/6 | longest gap 201m
+TROPHY x1.08 typist s2: maxEver 123 retires 11 | 75@1h34 85@2h08 95@3h08 100@3h22 105@3h56 110@4h44 115@5h40 120@6h52 | MAJOR+OMEN+TROPHY per 30m h1-8: 4 2 4 2 3 2 0 2 0 2 0 2 0 0 | empty 30-min windows h2-5: 1/6, h5-8: 4/6 | longest gap 69m
+baseline   typist s3: maxEver 120 retires 10 |  | MAJOR+OMEN per 30m h1-8: 4 2 4 1 1 1 0 1 0 1 0 0 0 0 | empty 30-min windows h2-5: 1/6, h5-8: 5/6 | longest gap 133m
+TROPHY x1.08 typist s3: maxEver 122 retires 12 | 75@1h34 85@2h04 95@2h45 100@3h11 105@3h59 110@4h54 115@6h51 120@7h38 | MAJOR+OMEN+TROPHY per 30m h1-8: 4 4 3 2 3 1 1 1 0 0 1 1 0 1 | empty 30-min windows h2-5: 0/6, h5-8: 3/6 | longest gap 79m
+baseline   heavy s1: maxEver 130 retires 11 |  | MAJOR+OMEN per 30m h1-8: 3 3 3 0 1 0 0 0 0 1 0 0 0 0 | empty 30-min windows h2-5: 4/6, h5-8: 5/6 | longest gap 147m
+TROPHY x1.08 heavy s1: maxEver 139 retires 13 | 75@1h00 85@1h23 95@1h52 100@1h59 105@2h35 110@3h12 115@3h59 120@4h35 125@5h20 130@6h16 | MAJOR+OMEN+TROPHY per 30m h1-8: 6 4 2 2 2 1 1 1 1 0 1 1 0 1 | empty 30-min windows h2-5: 0/6, h5-8: 2/6 | longest gap 56m
+baseline   light s1: maxEver 103 retires 9 |  | MAJOR+OMEN per 30m h1-8: 2 3 2 1 2 1 1 1 1 0 1 0 0 0 | empty 30-min windows h2-5: 0/6, h5-8: 4/6 | longest gap 118m
+TROPHY x1.08 light s1: maxEver 110 retires 10 | 75@2h31 85@3h31 95@4h37 100@5h21 105@6h22 110@7h38 | MAJOR+OMEN+TROPHY per 30m h1-8: 2 3 2 3 1 1 2 1 2 1 2 0 0 2 | empty 30-min windows h2-5: 0/6, h5-8: 2/6 | longest gap 72m
+baseline   burst s1: maxEver 90 retires 8 |  | MAJOR+OMEN per 30m h1-8: 2 2 2 1 1 2 0 1 0 1 0 2 0 1 | empty 30-min windows h2-5: 1/6, h5-8: 3/6 | longest gap 69m
+TROPHY x1.08 burst s1: maxEver 97 retires 9 | 75@3h00 85@4h46 95@7h18 | MAJOR+OMEN+TROPHY per 30m h1-8: 2 2 2 1 2 2 0 3 1 0 2 1 2 0 | empty 30-min windows h2-5: 1/6, h5-8: 2/6 | longest gap 49m
+baseline   idle s1: maxEver 88 retires 7 |  | MAJOR+OMEN per 30m h1-8: 3 2 2 1 2 0 2 0 1 1 1 0 0 0 | empty 30-min windows h2-5: 2/6, h5-8: 3/6 | longest gap 97m
+TROPHY x1.08 idle s1: maxEver 90 retires 8 | 75@3h56 85@5h03 | MAJOR+OMEN+TROPHY per 30m h1-8: 3 2 2 1 2 1 2 1 2 1 0 1 0 1 | empty 30-min windows h2-5: 0/6, h5-8: 2/6 | longest gap 62m
+baseline   idle s2: maxEver 89 retires 7 |  | MAJOR+OMEN per 30m h1-8: 3 2 0 3 1 1 2 0 1 1 1 0 1 0 | empty 30-min windows h2-5: 2/6, h5-8: 2/6 | longest gap 53m
+TROPHY x1.08 idle s2: maxEver 88 retires 7 | 75@4h00 85@5h29 | MAJOR+OMEN+TROPHY per 30m h1-8: 3 2 0 3 1 1 2 0 2 1 1 0 0 0 | empty 30-min windows h2-5: 2/6, h5-8: 3/6 | longest gap 105m

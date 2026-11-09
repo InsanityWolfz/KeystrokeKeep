@@ -1,0 +1,116 @@
+{
+  "mode": "save:rotation",
+  "phases": {},
+  "switches": "",
+  "before": {
+    "full": {
+      "keystroke-keep.json": 100
+    },
+    "demo": "no dir"
+  },
+  "setup": "ok",
+  "loaded": {
+    "floor": 100,
+    "demoCap": 0,
+    "ls": null
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r4\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "keystroke-keep.bak1.json": 100,
+      "keystroke-keep.json": 100
+    },
+    "demo": "no dir"
+  },
+  "rotation": [
+    {
+      "wrote": [
+        101,
+        101.5
+      ],
+      "ok": [
+        true,
+        true
+      ],
+      "files": {
+        "keystroke-keep.bak1.json": 100,
+        "keystroke-keep.bak2.json": 100,
+        "keystroke-keep.json": 101.5
+      }
+    },
+    {
+      "wrote": [
+        102,
+        102.5
+      ],
+      "ok": [
+        true,
+        true
+      ],
+      "files": {
+        "keystroke-keep.bak1.json": 101.5,
+        "keystroke-keep.bak2.json": 100,
+        "keystroke-keep.bak3.json": 100,
+        "keystroke-keep.json": 102.5
+      }
+    },
+    {
+      "wrote": [
+        103,
+        103.5
+      ],
+      "ok": [
+        true,
+        true
+      ],
+      "files": {
+        "keystroke-keep.bak1.json": 102.5,
+        "keystroke-keep.bak2.json": 101.5,
+        "keystroke-keep.bak3.json": 100,
+        "keystroke-keep.json": 103.5
+      }
+    },
+    {
+      "wrote": [
+        104,
+        104.5
+      ],
+      "ok": [
+        true,
+        true
+      ],
+      "files": {
+        "keystroke-keep.bak1.json": 103.5,
+        "keystroke-keep.bak2.json": 102.5,
+        "keystroke-keep.bak3.json": 101.5,
+        "keystroke-keep.json": 104.5
+      }
+    },
+    {
+      "wrote": [
+        105,
+        105.5
+      ],
+      "ok": [
+        true,
+        true
+      ],
+      "files": {
+        "keystroke-keep.bak1.json": 104.5,
+        "keystroke-keep.bak2.json": 103.5,
+        "keystroke-keep.bak3.json": 102.5,
+        "keystroke-keep.json": 105.5
+      }
+    }
+  ],
+  "files": {
+    "full": {
+      "keystroke-keep.bak1.json": 104.5,
+      "keystroke-keep.bak2.json": 103.5,
+      "keystroke-keep.bak3.json": 102.5,
+      "keystroke-keep.json": 105.5
+    },
+    "demo": "no dir"
+  },
+  "mainBytes": 46
+}

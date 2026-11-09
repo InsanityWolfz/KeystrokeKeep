@@ -1,0 +1,2 @@
+demo idle 8 h: lifetime Renown 396, renownFloor 40, fame x62.6
+then full game 2 h: 1h00 f120 R721 | 2h00 f133 R805 | first full retire 0h26 f105 +238

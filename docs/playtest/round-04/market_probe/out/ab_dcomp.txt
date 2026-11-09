@@ -1,0 +1,16 @@
+== switches: 
+idle                                         3d 2.82 (1.87-5.08) dwm 14.26 draws 13.3 ctx 1184 cpu 0.22 cpuTM 0.15 gpuAll 2.84 sys3d 29.14 dwmCpu 0.02 dom 24.7 anims 0 inner 2560x192 priv 298
+typing24                                     3d 5.51 (3.71-10.11) dwm 17.24 draws 23.7 ctx 3360 cpu 0.42 cpuTM 0.53 gpuAll 5.54 sys3d 33.92 dwmCpu 0.68 dom 43.3 anims 1 inner 2560x246 priv 347
+[probe] done quick
+== switches: disable-direct-composition
+idle                                         3d 0 (0-0) dwm 17.64 draws 12.1 ctx 996 cpu 0.29 cpuTM 0.24 gpuAll 0 sys3d 30.15 dwmCpu 0.02 dom 24.4 anims 0 inner 2560x192 priv 241
+typing24                                     3d 0 (0-0) dwm 15.22 draws 23.8 ctx 1800 cpu 0.55 cpuTM 0.55 gpuAll 0 sys3d 23.07 dwmCpu 0.56 dom 43.4 anims 0 inner 2560x192 priv 236
+[probe] done quick
+== switches: 
+idle                                         3d 2.4 (1.85-4.28) dwm 14.6 draws 11.7 ctx 1454 cpu 0.22 cpuTM 0.32 gpuAll 2.42 sys3d 29.25 dwmCpu 0.84 dom 24.3 anims 0 inner 2560x192 priv 294
+typing24                                     3d 5.06 (2.68-9.5) dwm 16.94 draws 23.7 ctx 2084 cpu 0.43 cpuTM 0.44 gpuAll 5.1 sys3d 32.96 dwmCpu 0.05 dom 44.9 anims 0 inner 2560x192 priv 303
+[probe] done quick
+== switches: disable-direct-composition
+idle                                         3d 0 (0-0) dwm 17.48 draws 12.1 ctx 1060 cpu 0.3 cpuTM 0.3 gpuAll 0 sys3d 29.32 dwmCpu 0.41 dom 24.3 anims 0 inner 2560x192 priv 266
+typing24                                     3d 0 (0-0) dwm 17.88 draws 23.8 ctx 2299 cpu 0.5 cpuTM 0.54 gpuAll 0 sys3d 27.73 dwmCpu 0.07 dom 42.8 anims 0 inner 2560x192 priv 273
+[probe] done quick

@@ -1,0 +1,19 @@
+=== DEMO idle, 8 h, 2 seeds, re-delve now ===
+seed1 lifetime Renown by hour: 1h 0 (lineage ) 2h 54 (lineage ) 3h 96 (lineage ) 4h 156 (lineage ) 6h 276 (lineage ) 8h 396 (lineage ) | fame x62.6 | laps last 6.0/6.0/6.0m
+seed1 retires: 1h05 +30 (65m), 1h21 +6 (16m), 1h35 +6 (14m), 1h46 +6 (11m), 1h56 +6 (10m), 2h06 +6 (10m), 2h16 +6 (10m), 2h24 +6 (8m), 2h32 +6 (8m), 2h40 +6 (8m), 2h48 +6 (8m), 2h55 +6 (7m), 3h02 +6 (7m), 3h09 +6 (7m), 3h16 +6 (7m), 3h22 +6 (6m), 3h29 +6 (7m), 3h35 +6 (6m), 3h41 +6 (6m), 3h47 +6 (6m), 3h53 +6 (6m), 3h59 +6 (6m), 4h05 +6 (6m), 4h11 +6 (6m), 4h17 +6 (6m), 4h23 +6 (6m), 4h29 +6 (6m), 4h35 +6 (6m), 4h41 +6 (6m), 4h47 +6 (6m), 4h53 +6 (6m), 4h59 +6 (6m), 5h05 +6 (6m), 5h11 +6 (6m), 5h17 +6 (6m), 5h23 +6 (6m), 5h29 +6 (6m), 5h35 +6 (6m), 5h41 +6 (6m), 5h47 +6 (6m), 5h53 +6 (6m), 5h59 +6 (6m), 6h05 +6 (6m), 6h11 +6 (6m), 6h17 +6 (6m), 6h23 +6 (6m), 6h29 +6 (6m), 6h35 +6 (6m), 6h41 +6 (6m), 6h47 +6 (6m), 6h53 +6 (6m), 6h59 +6 (6m), 7h05 +6 (6m), 7h11 +6 (6m), 7h17 +6 (6m), 7h23 +6 (6m), 7h29 +6 (6m), 7h35 +6 (6m), 7h41 +6 (6m), 7h47 +6 (6m), 7h53 +6 (6m), 7h59 +6 (6m)
+seed1 laps to f40 (min): 14.9 12.6 9.9 9.0 8.5 8.5 7.1 7.3 6.9 6.6 6.0 6.1 5.7 5.6 5.2 5.6 5.4 5.3 5.1 5.3 5.1 5.1 5.1 4.8 5.1 4.9 5.0 5.0 5.0 4.8 5.0 4.9 4.7 4.8 4.8 4.9 5.0 4.9 4.8 4.8 4.9 4.7 5.0 4.8 5.0 5.0 4.8 4.9 4.9 4.9 4.8 4.9 4.8 4.8 4.8 4.8 4.8 4.8 4.7 4.8 4.6
+seed1 end: workshop {"crucible":6,"kindling":6,"overcharge":5,"static":4} embers 230 heroes {"knight":91,"archer":0,"mage":0,"cleric":0} renown unspent 12
+seed2 lifetime Renown by hour: 1h 13 (lineage ) 2h 54 (lineage ) 3h 102 (lineage ) 4h 156 (lineage ) 6h 276 (lineage ) 8h 396 (lineage ) | fame x62.6 | laps last 6.0/6.0/6.0m
+card (f40 boss) 65-68 min | 1st retire 42-65 min | re-delves 62-63 | mean lap 5.6-5.7 min | best 4.6-4.6 min
+lifetime Renown @1h 0-13 @2h 54-54 @3h 96-102 | relic offers/h 24-24 | Embers/h 591-595 | unspent Embers end 230-262
+Legacy first bought (min) / final level:
+  lineage        42-65     lv 9-9  (max 999)
+  treasury       42-65     lv 9-9  (max 999)
+  quartermaster  42-65     lv 1-1  (max 1)
+  veterans       42-65     lv 9-9  (max 10)
+  headstart      65-69     lv 2-2  (max 2)
+  zeal           65-126    lv 5-5  (max 5)
+  recruiter      65-253    lv 1-1  (max 1)
+  campfire       142-152   lv 4-4  (max 4)
+  battery        126-152   lv 3-3  (max 3)
+  collector      n/a       lv 0-0  (max 1)

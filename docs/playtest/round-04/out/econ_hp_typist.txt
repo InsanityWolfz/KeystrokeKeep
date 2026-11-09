@@ -1,0 +1,5 @@
+=== HP sensitivity, typist, 8 h, 4 seeds, nudge, no omens ===
+default        | 2h00 f97.0 R225 | 4h00 f117.8 R339 | 8h00 f135.5 R452 | wipes 8 (after retire 2: 1.8)
+no Rivet Armor | 2h00 f90.0 R194 | 4h00 f109.0 R289 | 8h00 f122.5 R371 | wipes 179 (after retire 2: 171.0)
+enemy atk x2   | 2h00 f93.3 R209 | 4h00 f116.0 R327 | 8h00 f132.5 R436 | wipes 46 (after retire 2: 32.5)
+enemy atk x3   | 2h00 f98.0 R232 | 4h00 f115.0 R325 | 8h00 f130.0 R419 | wipes 95 (after retire 2: 74.0)

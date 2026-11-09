@@ -1,0 +1,4 @@
+=== omen choice, typist, 8 h, 4 seeds; rank = deep>glass>storm>embertide>fever>hoard>gilded>march ===
+none   | 2h00 f97.0 R225 | 4h00 f117.8 R339 | 6h00 f129.3 R414 | 8h00 f135.5 R452 | picks {"none":40}
+random | 2h00 f97.3 R229 | 4h00 f118.5 R342 | 6h00 f129.0 R417 | 8h00 f138.3 R480 | picks {"gilded":4,"quiet":4,"deep":4,"embertide":4,"glass":5,"muster":3,"hoard":6,"fever":5,"march":4,"storm":5}
+rank   | 2h00 f99.8 R239 | 4h00 f120.0 R355 | 6h00 f130.5 R429 | 8h00 f137.8 R479 | picks {"embertide":7,"storm":8,"glass":8,"deep":9,"fever":6,"hoard":3}

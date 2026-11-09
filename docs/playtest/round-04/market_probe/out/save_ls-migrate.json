@@ -1,0 +1,29 @@
+{
+  "mode": "save:ls-migrate",
+  "phases": {},
+  "switches": "",
+  "before": {
+    "full": "no dir",
+    "demo": "no dir"
+  },
+  "setup": "ok",
+  "loaded": {
+    "floor": 17,
+    "demoCap": 0,
+    "ls": 17
+  },
+  "savePath": "C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r4\\AppData\\Keystroke Keep\\saves\\keystroke-keep.json",
+  "afterFirstSave": {
+    "full": {
+      "keystroke-keep.json": 17
+    },
+    "demo": "no dir"
+  },
+  "files": {
+    "full": {
+      "keystroke-keep.json": 17
+    },
+    "demo": "no dir"
+  },
+  "mainBytes": 907
+}

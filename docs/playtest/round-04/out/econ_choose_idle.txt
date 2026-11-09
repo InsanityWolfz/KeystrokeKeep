@@ -1,0 +1,4 @@
+=== omen choice, idle, 8 h, 4 seeds; rank = deep>glass>quiet>march>storm>fever>hoard>gilded>embertide ===
+none   | 2h00 f59.8 R77 | 4h00 f85.3 R172 | 6h00 f94.5 R208 | 8h00 f100.5 R237 | picks {"none":31}
+random | 2h00 f60.5 R78 | 4h00 f86.0 R173 | 6h00 f97.3 R219 | 8h00 f102.8 R257 | picks {"muster":5,"deep":2,"embertide":4,"quiet":4,"march":2,"storm":5,"hoard":3,"gilded":3,"fever":3,"glass":1}
+rank   | 2h00 f63.0 R76 | 4h00 f87.3 R174 | 6h00 f97.3 R232 | 8h00 f102.8 R263 | picks {"quiet":7,"glass":8,"deep":13,"gilded":1,"march":3}

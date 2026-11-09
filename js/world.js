@@ -106,7 +106,7 @@
   W.damageEnemy = function (e, dmg, opts = {}) {
     if (e.dead) return;
     e.hp -= dmg;
-    e.flash = 0.09;
+    if (!(e.flashCool > 0)) { e.flash = 0.09; e.flashCool = 0.25; } // capped so tints stay visible
     e.kb = Math.min(4, e.kb + (opts.kb !== undefined ? opts.kb : (opts.crit ? 3 : 1.5)));
     e.hits++;
     if (opts.src) {
@@ -147,9 +147,9 @@
   };
 
   /** Sister Pell answers a crisis on her own: a free Sanctuary, then a long cooldown. */
-  W.sanctuaryReact = function () {
+  W.sanctuaryReact = function (vigil) {
     const c = W.heroes.find((x) => x.id === 'cleric' && !x.dead);
-    if (!c || c.ultCd > 0) return;
+    if (!c || (c.ultCd > 0 && !vigil)) return;
     c.ultCd = 25;
     W.castUlt(c, true);
   };
@@ -314,6 +314,7 @@
 
     if (W.hotkeyBank > 0 && W.enemies.some((e) => !e.dead && e.active)) { W.hotkeyBank--; KK.emit('hotkey'); }
     S.runTime = (S.runTime || 0) + dt;
+    if (KK.ach) KK.ach.tick(dt);
     // heroes
     const turnHolder = W.heroes.find((h) => h.id === W.ultTurn && h.id !== 'cleric');
     if (!turnHolder || turnHolder.dead) W.passUlt();
@@ -329,8 +330,7 @@
       if (W.ultGap <= 0 && W.ultTurn === h.id) {
         const cost = Math.ceil(def.ult.cost * m.ultCost);
         let want = false;
-        if (h.id === 'cleric') want = W.heroes.some((o) => o.dead || o.hp / o.maxHp < (W.boss && !W.boss.dead ? 0.8 : 0.55));
-        else want = W.enemies.some((e) => !e.dead && e.active && e.x - h.x <= Math.max(def.range, 60));
+        want = W.enemies.some((e) => !e.dead && e.active && e.x - h.x <= Math.max(def.range, 60));
         if (h.ultCd > 0) W.passUlt();
         else if (want && S.sparks >= cost) { W.castUlt(h); W.passUlt(); }
       }
@@ -427,6 +427,18 @@
       else e.moving = false;
       prevX = e.x;
       e.atkT -= dt;
+      if (e.flashCool > 0) e.flashCool -= dt;
+      if (e.boss && (e.hollowed || e.key === 'hollow') && e.active) {
+        e.voidT = (e.voidT === undefined ? 5 : e.voidT) - dt;
+        if (e.voidT <= 1 && !e.voidWarn) { e.voidWarn = true; KK.emit('voidWarn', { e }); }
+        if (e.voidT <= 0) {
+          e.voidT = 8; e.voidWarn = false;
+          for (const h of W.heroes) if (!h.dead) W.damageHero(h, h.maxHp * 0.45, e);
+          KK.emit('voidSlam', { e });
+          if (!e.vigil) { e.vigil = true; W.sanctuaryReact(true); }
+          else if (W.heroes.some((h) => !h.dead && h.hp / h.maxHp < 0.5)) W.sanctuaryReact();
+        }
+      }
       if (e.atkT <= 0 && e.x - front.x <= e.def.w / 2 + e.def.range + 3) {
         e.atkT = e.atkSpd * U.rand(0.9, 1.1);
         if (e.def.ranged) {
@@ -438,7 +450,8 @@
           if (e.boss && e.swings % 4 === 0) {
             for (const h of W.heroes) if (!h.dead) W.damageHero(h, e.atk * 0.6, e);
             KK.emit('bossSlam', { e });
-            if (W.heroes.some((h) => !h.dead && h.hp / h.maxHp < 0.5)) W.sanctuaryReact();
+            if (!e.vigil) { e.vigil = true; W.sanctuaryReact(true); }
+            else if (W.heroes.some((h) => !h.dead && h.hp / h.maxHp < 0.5)) W.sanctuaryReact();
           } else {
             W.damageHero(front, e.atk, e);
           }
@@ -517,13 +530,17 @@
         S.runCapCleared = true;
         const tm = S.runTime || 0;
         if (tm > 0 && (!S.bestCapTime || tm < S.bestCapTime)) S.bestCapTime = tm;
+        S.demoLaps = (S.demoLaps || 0) + 1;
         if (!S.demoDone) { S.demoDone = true; KK.emit('demoComplete'); } else KK.emit('demoSealed', { time: tm });
       }
       S.floor = KK.DEMO_CAP - 4;
     } else if (KK.DEMO_CAP && S.runCapCleared && S.floor >= KK.DEMO_CAP - 1) S.floor = KK.DEMO_CAP - 4;
     S.floor++;
     if (S.floor > S.maxFloorRun) S.maxFloorRun = S.floor;
-    if (S.floor > S.maxFloorEver) S.maxFloorEver = S.floor;
+    if (S.floor > S.maxFloorEver) {
+      S.maxFloorEver = S.floor;
+      if (D.TROPHIES.includes(S.floor)) { KK.dirty(); KK.emit('trophy', { floor: S.floor, n: D.TROPHIES.indexOf(S.floor) + 1 }); }
+    }
     W.wave = 0; W.door = null; W.chest = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
     for (const h of W.heroes) if (h.dead) { h.dead = false; h.hp = h.maxHp * 0.5; }
@@ -540,7 +557,7 @@
 
   W.recover = function () {
     const S = KK.S;
-    S.floor = Math.max(1, S.floor - 1);
+    S.floor = Math.max(KK.mods().startFloor, S.floor - 1); // a retreat never undoes Head Start
     W.wave = 0; W.door = null; W.chest = null; W.boss = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
     for (const h of W.heroes) { h.dead = false; h.hp = h.maxHp; }

@@ -180,7 +180,9 @@
   KK.on('kill', ({ e }) => { if (e.boss) { p('bossKill'); A.duck(2.5); } else p('die'); });
   KK.on('heroHit', () => p('hurt'));
   KK.on('heal', () => p('heal'));
-  KK.on('levelUp', ({ from, to }) => p(Math.floor(to / 10) > Math.floor(from / 10) ? 'milestone' : 'levelup'));
+  KK.on('levelUp', ({ from, to }) => { const st = to >= 100 ? 50 : 10; p(Math.floor(to / st) > Math.floor(from / st) ? 'milestone' : 'levelup'); });
+  KK.on('voidWarn', () => p('deny'));
+  KK.on('voidSlam', () => p('slam'));
   KK.on('recruit', () => p('recruit'));
   KK.on('ult', ({ id }) => p({ knight: 'ultKnight', archer: 'ultArcher', mage: 'ultMage', cleric: 'ultCleric' }[id]));
   KK.on('meteorLand', () => p('meteor'));

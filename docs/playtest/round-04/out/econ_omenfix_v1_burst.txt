@@ -1,0 +1,5 @@
+=== omens forced, burst, 8 h, 4 seeds, retire nudge (relic pick: smart) ===
+none      | 6h00 f99.0 (97-100) (+0.0) R233 (0%) emb 7.2k oc5.8 ret 7.8 wipes 12 | 8h00 f107.8 (106-110) (+0.0) R275 (0%) emb 10.6k oc6.0 ret 9.3 wipes 12
+deep      | 6h00 f98.5 (97-100) (-0.5) R243 (4%) emb 7.3k oc5.8 ret 8.0 wipes 12 | 8h00 f107.0 (105-109) (-0.8) R290 (5%) emb 10.7k oc6.0 ret 9.8 wipes 12
+glass     | 6h00 f102.8 (100-106) (+3.8) R257 (10%) emb 7.1k oc5.5 ret 8.3 wipes 12 | 8h00 f111.3 (110-113) (+3.5) R299 (9%) emb 10.5k oc6.0 ret 9.8 wipes 12
+muster    | 6h00 f98.5 (97-100) (-0.5) R235 (1%) emb 6.9k oc5.5 ret 8.0 wipes 12 | 8h00 f106.5 (100-110) (-1.3) R264 (-4%) emb 10.1k oc6.0 ret 9.3 wipes 12

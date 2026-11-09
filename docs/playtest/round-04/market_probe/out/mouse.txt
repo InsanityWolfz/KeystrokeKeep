@@ -1,0 +1,8 @@
+idle_hookOn_noMouse                          3d 2.32 (2-3.16) dwm 17.28 draws 14.6 ctx 3867 cpu 0.19 cpuTM 0.16 gpuAll 2.33 sys3d 36.54 dwmCpu 0.06 dom 24.4 anims 0 inner 2560x192 priv 313
+mouseMoving_hookOn                           3d 3.78 (1.28-8.42) dwm 17.47 draws 14.9 ctx 4936 cpu 0.29 cpuTM 0.25 gpuAll 3.81 sys3d 35.35 dwmCpu 0.09 dom 29.1 anims 0 inner 2560x192 priv 321
+mouseMoving_hookRemoved_countingPaused       3d 3.03 (1.8-7.74) dwm 17.73 draws 11.7 ctx 2908 cpu 0.25 cpuTM 0.29 gpuAll 3.05 sys3d 37.01 dwmCpu 0.12 dom 24.7 anims 0 inner 2560x192 priv 307
+[probe] done mouse
+idle_hookOn_noMouse jsMoves undefined ctx 3866.57 cpuTM 0.16
+mouseMoving_hookOn jsMoves 5042 ctx 4936.29 cpuTM 0.25
+mouseMoving_hookRemoved_countingPaused jsMoves 0 ctx 2908 cpuTM 0.29
+MOVES 5056 MOVES 5053

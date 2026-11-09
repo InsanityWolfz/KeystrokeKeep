@@ -1,0 +1,12 @@
+=== omens forced, idle, 8 h, 4 seeds, retire nudge (relic pick: smart) ===
+none      | 6h00 f94.5 (90-96) (+0.0) R208 (0%) emb 1.6k oc3.5 ret 7.5 wipes 11 | 8h00 f100.5 (100-102) (+0.0) R237 (0%) emb 2.3k oc4.3 ret 8.8 wipes 11
+gilded    | 6h00 f96.8 (94-99) (+2.3) R223 (7%) emb 1.6k oc3.8 ret 7.5 wipes 11 | 8h00 f102.8 (102-103) (+2.3) R246 (4%) emb 2.2k oc4.0 ret 8.8 wipes 11
+glass     | 6h00 f103.5 (100-107) (+9.0) R256 (23%) emb 1.8k oc3.8 ret 8.0 wipes 11 | 8h00 f109.5 (108-111) (+9.0) R288 (21%) emb 2.5k oc4.0 ret 9.5 wipes 11
+storm     | 6h00 f97.3 (97-98) (+2.8) R226 (9%) emb 1.8k oc3.8 ret 7.8 wipes 11 | 8h00 f103.5 (102-105) (+3.0) R254 (7%) emb 2.4k oc4.3 ret 9.3 wipes 11
+quiet     | 6h00 f100.0 (100-100) (+5.5) R237 (14%) emb 1.7k oc3.5 ret 7.8 wipes 11 | 8h00 f105.0 (103-106) (+4.5) R269 (13%) emb 2.2k oc4.0 ret 9.3 wipes 11
+fever     | 6h00 f97.8 (97-99) (+3.3) R227 (9%) emb 1.6k oc3.5 ret 7.8 wipes 11 | 8h00 f101.8 (100-103) (+1.3) R249 (5%) emb 2.2k oc4.0 ret 9.3 wipes 11
+embertide | 6h00 f93.3 (90-97) (-1.3) R202 (-3%) emb 3.0k oc4.8 ret 7.3 wipes 11 | 8h00 f101.0 (100-104) (+0.5) R238 (1%) emb 4.3k oc5.5 ret 8.8 wipes 11
+march     | 6h00 f99.0 (98-100) (+4.5) R230 (10%) emb 1.6k oc3.8 ret 7.8 wipes 11 | 8h00 f104.5 (101-106) (+4.0) R266 (12%) emb 2.3k oc4.0 ret 9.5 wipes 11
+hoard     | 6h00 f94.0 (90-96) (-0.5) R213 (2%) emb 1.7k oc3.8 ret 7.5 wipes 11 | 8h00 f102.8 (100-106) (+2.3) R250 (5%) emb 2.2k oc4.0 ret 9.0 wipes 11
+muster    | 6h00 f93.3 (90-96) (-1.3) R199 (-5%) emb 1.6k oc3.8 ret 7.0 wipes 11 | 8h00 f99.3 (97-100) (-1.3) R237 (0%) emb 2.2k oc4.0 ret 8.8 wipes 11
+deep      | 6h00 f97.5 (94-100) (+3.0) R266 (28%) emb 1.8k oc3.5 ret 8.8 wipes 11 | 8h00 f104.3 (102-106) (+3.8) R306 (29%) emb 2.4k oc4.5 ret 10.0 wipes 11

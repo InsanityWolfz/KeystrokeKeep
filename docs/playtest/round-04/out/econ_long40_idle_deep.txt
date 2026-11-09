@@ -1,0 +1,12 @@
+=== long idle, 40 h, 3 seeds, retire nudge, omens deep ===
+seed1 omens {"deep":24} last retires: 24h15 f124 +8 deep (144m), 26h26 f125 +7 deep (131m), 28h47 f127 +16 deep (141m), 32h23 f128 +8 deep (216m), 35h56 f129 +7 deep (213m), 38h58 f130 +8 deep (182m)
+4h00   f84 (83-85) R183 fame x13 oc3.0 | last 4h: +31/retire, runs 36m
+8h00   f104 (102-106) R310 fame x35 oc4.7 | last 4h: +32/retire, runs 48m
+12h00  f113 (110-115) R376 fame x55 oc5.0 | last 4h: +22/retire, runs 81m
+16h00  f118 (117-118) R408 fame x67 oc6.0 | last 4h: +12/retire, runs 103m
+20h00  f120 (119-121) R424 fame x75 oc6.0 | last 4h: +7/retire, runs 106m
+24h00  f122 (121-123) R439 fame x82 oc6.7 | last 4h: +11/retire, runs 124m
+28h00  f124 (122-125) R453 fame x89 oc7.0 | last 4h: +7/retire, runs 153m
+32h00  f125 (123-127) R464 fame x95 oc7.0 | last 4h: +10/retire, runs 156m
+36h00  f127 (126-129) R479 fame x104 oc7.3 | last 4h: +9/retire, runs 189m
+40h00  f129 (127-130) R489 fame x111 oc8.0 | last 4h: +8/retire, runs 184m

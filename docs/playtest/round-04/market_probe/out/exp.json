@@ -1,0 +1,446 @@
+{
+  "mode": "exp",
+  "phases": {
+    "A_typing24_default": {
+      "visible": true,
+      "drawPerSec": 23.8,
+      "timeoutsPerSec": 29.3,
+      "domMutationsPerSec": 34.3,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 2,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.34,
+      "wsMB": 402,
+      "privMB": 311,
+      "kk3d": {
+        "avg": 5.07,
+        "min": 4.14,
+        "max": 7.66
+      },
+      "dwm3d": {
+        "avg": 17.44,
+        "min": 12.29,
+        "max": 22.12
+      },
+      "kkCtxSw": {
+        "avg": 1801.56,
+        "min": 1598,
+        "max": 2172
+      },
+      "dwmCtxSw": {
+        "avg": 502,
+        "min": 285,
+        "max": 679
+      }
+    },
+    "B_typing24_ignoreMouseOff_noLayeredStyle": {
+      "visible": true,
+      "drawPerSec": 23.7,
+      "timeoutsPerSec": 29.2,
+      "domMutationsPerSec": 30.2,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 1,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.33,
+      "wsMB": 420,
+      "privMB": 326,
+      "kk3d": {
+        "avg": 5.08,
+        "min": 3.07,
+        "max": 9.32
+      },
+      "dwm3d": {
+        "avg": 16.57,
+        "min": 9.21,
+        "max": 23.76
+      },
+      "kkCtxSw": {
+        "avg": 1843.11,
+        "min": 1616,
+        "max": 2310
+      },
+      "dwmCtxSw": {
+        "avg": 497.33,
+        "min": 343,
+        "max": 681
+      }
+    },
+    "C_typing24_canvasHidden_HUDonly": {
+      "visible": true,
+      "drawPerSec": 23.8,
+      "timeoutsPerSec": 29.3,
+      "domMutationsPerSec": 38.6,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.25,
+      "wsMB": 415,
+      "privMB": 317,
+      "kk3d": {
+        "avg": 2.7,
+        "min": 1.29,
+        "max": 5.62
+      },
+      "dwm3d": {
+        "avg": 13.31,
+        "min": 5.44,
+        "max": 21.69
+      },
+      "kkCtxSw": {
+        "avg": 1649.44,
+        "min": 1393,
+        "max": 2085
+      },
+      "dwmCtxSw": {
+        "avg": 483.67,
+        "min": 198,
+        "max": 665
+      }
+    },
+    "D_typing24_HUDhidden_canvasOnly": {
+      "visible": true,
+      "drawPerSec": 23.8,
+      "timeoutsPerSec": 29.3,
+      "domMutationsPerSec": 40.7,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.24,
+      "wsMB": 415,
+      "privMB": 279,
+      "kk3d": {
+        "avg": 3.74,
+        "min": 3.39,
+        "max": 4.14
+      },
+      "dwm3d": {
+        "avg": 15.78,
+        "min": 13.04,
+        "max": 18.91
+      },
+      "kkCtxSw": {
+        "avg": 1609.33,
+        "min": 1495,
+        "max": 1859
+      },
+      "dwmCtxSw": {
+        "avg": 473.67,
+        "min": 361,
+        "max": 618
+      }
+    },
+    "E_typing24_noPerFrameHudWrites": {
+      "visible": true,
+      "drawPerSec": 23.7,
+      "timeoutsPerSec": 29.2,
+      "domMutationsPerSec": 29.9,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.24,
+      "wsMB": 405,
+      "privMB": 293,
+      "kk3d": {
+        "avg": 4.43,
+        "min": 2.49,
+        "max": 9.61
+      },
+      "dwm3d": {
+        "avg": 15.61,
+        "min": 7.97,
+        "max": 25.02
+      },
+      "kkCtxSw": {
+        "avg": 2431.78,
+        "min": 1640,
+        "max": 6573
+      },
+      "dwmCtxSw": {
+        "avg": 489.33,
+        "min": 300,
+        "max": 615
+      }
+    },
+    "F_typing24_backing1x": {
+      "visible": true,
+      "drawPerSec": 23.8,
+      "timeoutsPerSec": 29.3,
+      "domMutationsPerSec": 38.3,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "854x64",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.31,
+      "wsMB": 408,
+      "privMB": 285,
+      "kk3d": {
+        "avg": 4.57,
+        "min": 3.81,
+        "max": 7.48
+      },
+      "dwm3d": {
+        "avg": 17.77,
+        "min": 12.16,
+        "max": 20.6
+      },
+      "kkCtxSw": {
+        "avg": 1848.22,
+        "min": 1731,
+        "max": 2267
+      },
+      "dwmCtxSw": {
+        "avg": 504.56,
+        "min": 241,
+        "max": 625
+      }
+    },
+    "G_typing12": {
+      "visible": true,
+      "drawPerSec": 12,
+      "timeoutsPerSec": 17.6,
+      "domMutationsPerSec": 39.1,
+      "targetFps": 12,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.27,
+      "wsMB": 404,
+      "privMB": 291,
+      "kk3d": {
+        "avg": 2.77,
+        "min": 1.79,
+        "max": 5.95
+      },
+      "dwm3d": {
+        "avg": 14.56,
+        "min": 9.77,
+        "max": 19.11
+      },
+      "kkCtxSw": {
+        "avg": 1316,
+        "min": 1109,
+        "max": 1835
+      },
+      "dwmCtxSw": {
+        "avg": 509.56,
+        "min": 343,
+        "max": 641
+      }
+    },
+    "H_typing24_halfWidthWindow": {
+      "visible": true,
+      "drawPerSec": 23.7,
+      "timeoutsPerSec": 29.2,
+      "domMutationsPerSec": 38.7,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "1708x256",
+      "cssW": "1281px",
+      "dpr": 1.5,
+      "inner": "1280x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.32,
+      "wsMB": 404,
+      "privMB": 280,
+      "kk3d": {
+        "avg": 3.88,
+        "min": 2.71,
+        "max": 6.99
+      },
+      "dwm3d": {
+        "avg": 15.53,
+        "min": 9.46,
+        "max": 18.7
+      },
+      "kkCtxSw": {
+        "avg": 1923.78,
+        "min": 1639,
+        "max": 2484
+      },
+      "dwmCtxSw": {
+        "avg": 511.67,
+        "min": 250,
+        "max": 682
+      }
+    },
+    "I_expWindow_transparent_typing24": {
+      "visible": true,
+      "drawPerSec": 23.7,
+      "timeoutsPerSec": 29.2,
+      "domMutationsPerSec": 41,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.31,
+      "wsMB": 560,
+      "privMB": 436,
+      "kk3d": {
+        "avg": 4.79,
+        "min": 3.81,
+        "max": 6.64
+      },
+      "dwm3d": {
+        "avg": 18.37,
+        "min": 14.87,
+        "max": 22.95
+      },
+      "kkCtxSw": {
+        "avg": 1872.11,
+        "min": 1643,
+        "max": 2238
+      },
+      "dwmCtxSw": {
+        "avg": 581.44,
+        "min": 506,
+        "max": 629
+      }
+    },
+    "J_expWindow_OPAQUE_typing24": {
+      "visible": true,
+      "drawPerSec": 23.7,
+      "timeoutsPerSec": 29.2,
+      "domMutationsPerSec": 41.3,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3420x256",
+      "cssW": "2565px",
+      "dpr": 1.5,
+      "inner": "2564x196",
+      "heapMB": 9.5,
+      "cpuPct": 0.32,
+      "wsMB": 564,
+      "privMB": 436,
+      "kk3d": {
+        "avg": 4.59,
+        "min": 2.67,
+        "max": 7.87
+      },
+      "dwm3d": {
+        "avg": 18.31,
+        "min": 12.74,
+        "max": 23.02
+      },
+      "kkCtxSw": {
+        "avg": 2714.44,
+        "min": 1723,
+        "max": 8504
+      },
+      "dwmCtxSw": {
+        "avg": 573.44,
+        "min": 511,
+        "max": 650
+      }
+    }
+  },
+  "setup": "ok",
+  "exStyleIgnoreTrue": {
+    "hex": "0x8280028",
+    "layered": true,
+    "transparent": true,
+    "noRedirBitmap": true,
+    "topmost": true,
+    "toolwindow": false,
+    "noActivate": true
+  },
+  "exStyleIgnoreFalse": {
+    "hex": "0x8200008",
+    "layered": false,
+    "transparent": false,
+    "noRedirBitmap": true,
+    "topmost": true,
+    "toolwindow": false,
+    "noActivate": true
+  },
+  "backing": {
+    "before": "3416x256",
+    "after": "854x64"
+  },
+  "exStyle_transparent": {
+    "hex": "0x8280028",
+    "layered": true,
+    "transparent": true,
+    "noRedirBitmap": true,
+    "topmost": true,
+    "toolwindow": false,
+    "noActivate": true
+  },
+  "exStyle_opaque": {
+    "hex": "0x8280128",
+    "layered": true,
+    "transparent": true,
+    "noRedirBitmap": true,
+    "topmost": true,
+    "toolwindow": false,
+    "noActivate": true
+  }
+}

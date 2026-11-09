@@ -170,7 +170,8 @@ function step() {
   if (s.sparks >= m.sparkCap - 0.5) { sparkCapTime += dt; }
   if (t >= nextGlance) { nextGlance = t + GLANCE; glance(); }
   if (s.maxFloorRun > lastMax) { longestStall = Math.max(longestStall, t - lastMaxT); lastMax = s.maxFloorRun; lastMaxT = t; }
-  const nudge = RETIRE === 'nudge' && A.renownGain() >= 30 && (t - runStart > 25 * 60 || S().retires === 0 && s.maxFloorRun >= 40);
+  const demoWait = KK.DEMO_CAP && !s.demoDone;
+  const nudge = RETIRE === 'nudge' && !demoWait && (A.renownGain() >= 30 && (t - runStart > 25 * 60 || s.retires === 0 && s.maxFloorRun >= 40) || (KK.DEMO_CAP && s.runCapCleared && A.renownGain() > 0));
   if ((t - lastMaxT > STUCK || nudge) && A.renownGain() > 0) {
     const gain = A.retire();
     retires.push({ at: t, runMin: (t - runStart) / 60, maxFloor: lastMax, gain });
@@ -238,6 +239,8 @@ L.push('', '--- world ---');
 L.push(`biomes reached: ${Object.entries(biomeReached).map(([b, at]) => `${b}@${fmtT(at)}`).join(', ') || 'only the first'}`);
 L.push(`bosses killed: ${Object.entries(bossKills).map(([b, n]) => `${b} x${n}`).join(', ') || 'none'}`);
 L.push(`monsters never seen: ${Object.values(D.MONSTERS).filter((m) => !seen[m.name]).map((m) => m.name).join(', ') || 'none'}`);
+L.push(`achievements: ${Object.keys(s.ach || {}).length}/${KK.ach ? KK.ach.LIST.length : 0}  ${Object.keys(s.ach || {}).join(' ')}`);
+L.push(`trophies: ${KK.mods().trophies || 0}  demo laps: ${s.demoLaps || 0}  best f40: ${s.bestCapTime ? (s.bestCapTime / 60).toFixed(1) + ' min' : '-'}`);
 L.push(`END ${fmtT(t)}: floor ${s.floor} maxEver ${s.maxFloorEver} retires ${s.retires} renownLifetime ${s.renownLifetime} kills ${s.stats.kills}`);
 console.log(L.join('\n'));
 if (args.json) require('fs').writeFileSync(args.json, JSON.stringify({ timeline, events, retires, content, relicStats, biomeReached, bossKills, tierTime, emptyGlances, glances, maxDrought, longestStall }, null, 1));

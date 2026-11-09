@@ -7,15 +7,53 @@
   "scripts": {
     "start": "electron .",
     "serve": "python tools/serve.py 5173",
-    "sim": "node tools/sim.js 120 typist 60"
+    "sim": "node tools/sim.js 120 typist 60",
+    "dist": "electron-builder --win dir",
+    "dist:demo": "electron-builder --win dir --config.extraMetadata.kkDemo=true --config.productName=\"Keystroke Keep Demo\" --config.directories.output=dist/demo",
+    "icon": "electron tools/make-icon.js"
   },
   "devDependencies": {
     "@fontsource/pixelify-sans": "^5.3.0",
     "@fontsource/silkscreen": "^5.3.0",
-    "electron": "^45.2.3"
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0"
   },
   "dependencies": {
     "koffi": "^3.3.7",
     "uiohook-napi": "^1.5.5"
+  },
+  "productName": "Keystroke Keep",
+  "author": "Keystroke Keep",
+  "build": {
+    "appId": "com.keystrokekeep.game",
+    "productName": "Keystroke Keep",
+    "directories": {
+      "output": "dist/full",
+      "buildResources": "build"
+    },
+    "files": [
+      "index.html",
+      "css/**",
+      "js/**",
+      "assets/**",
+      "electron/**",
+      "package.json",
+      "!**/*.map"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/uiohook-napi/**",
+      "node_modules/koffi/**"
+    ],
+    "win": {
+      "target": [
+        "dir"
+      ],
+      "icon": "build/icon.png"
+    },
+    "electronLanguages": [
+      "en-US"
+    ],
+    "npmRebuild": false
   }
 }

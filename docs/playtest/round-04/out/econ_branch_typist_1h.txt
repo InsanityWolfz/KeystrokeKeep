@@ -1,0 +1,12 @@
+=== one delve per omen from the state at the first retire after 1 h, typist, 4 seeds ===
+none       gain 69.8 (59-88) run 27.0m  Renown/h 154.9 (0%)  floor 95.5  Embers 1812
+gilded     gain 60.0 (48-84) run 27.0m  Renown/h 133.3 (-14%)  floor 93.5  Embers 2010
+glass      gain 83.3 (74-89) run 27.0m  Renown/h 184.9 (19%)  floor 98.3  Embers 1863
+storm      gain 74.8 (70-82) run 27.0m  Renown/h 166.0 (7%)  floor 96.5  Embers 1930
+quiet      gain 53.3 (44-59) run 27.0m  Renown/h 118.3 (-24%)  floor 92.0  Embers 1866
+fever      gain 73.3 (58-89) run 27.0m  Renown/h 162.7 (5%)  floor 96.3  Embers 1915
+embertide  gain 57.8 (54-62) run 27.0m  Renown/h 128.3 (-17%)  floor 93.0  Embers 3680
+march      gain 64.5 (58-74) run 27.0m  Renown/h 143.3 (-8%)  floor 94.5  Embers 1926
+hoard      gain 64.0 (53-88) run 27.0m  Renown/h 142.2 (-8%)  floor 94.3  Embers 1844
+muster     gain 61.3 (44-89) run 27.0m  Renown/h 136.0 (-12%)  floor 93.8  Embers 1834
+deep       gain 59.8 (43-83) run 27.0m  Renown/h 132.7 (-14%)  floor 91.0  Embers 1871

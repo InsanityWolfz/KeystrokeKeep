@@ -1,0 +1,5 @@
+A typist s1: boss fights with Pell 64; min party HP <0.9 in 53%, <0.8 33%, <0.7 16%, <0.5 5%, KO 3%; Sanctuary casts 5, revives 3; per hour 0.6
+A typist s2: boss fights with Pell 68; min party HP <0.9 in 60%, <0.8 31%, <0.7 16%, <0.5 3%, KO 1%; Sanctuary casts 7, revives 1; per hour 0.9
+A heavy s1: boss fights with Pell 79; min party HP <0.9 in 52%, <0.8 37%, <0.7 24%, <0.5 11%, KO 4%; Sanctuary casts 34, revives 2; per hour 4.3
+A idle s1: boss fights with Pell 38; min party HP <0.9 in 71%, <0.8 26%, <0.7 5%, <0.5 5%, KO 3%; Sanctuary casts 28, revives 27; per hour 3.5
+A burst s1: boss fights with Pell 41; min party HP <0.9 in 66%, <0.8 27%, <0.7 15%, <0.5 7%, KO 7%; Sanctuary casts 6, revives 5; per hour 0.8

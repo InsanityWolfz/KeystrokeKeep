@@ -1,0 +1,325 @@
+{
+  "mode": "perf",
+  "phases": {
+    "idle": {
+      "visible": true,
+      "drawPerSec": 13.2,
+      "timeoutsPerSec": 13.2,
+      "domMutationsPerSec": 13.2,
+      "targetFps": 10,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "running",
+      "fervorTier": 0,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": -0.1,
+      "wsMB": 499,
+      "privMB": 324,
+      "kk3d": {
+        "avg": 3.81,
+        "min": 2.4,
+        "max": 6.34
+      },
+      "dwm3d": {
+        "avg": 16.33,
+        "min": 14.82,
+        "max": 19.12
+      },
+      "kkCtxSw": {
+        "avg": 2678.8,
+        "min": 1270,
+        "max": 6818
+      },
+      "dwmCtxSw": {
+        "avg": 553.2,
+        "min": 361,
+        "max": 622
+      }
+    },
+    "typing_24fps_default": {
+      "visible": true,
+      "drawPerSec": 23.6,
+      "timeoutsPerSec": 29.2,
+      "domMutationsPerSec": 37.6,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "running",
+      "fervorTier": 1,
+      "runningAnims": 1,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x246",
+      "heapMB": 9.5,
+      "cpuPct": 0.58,
+      "wsMB": 498,
+      "privMB": 336,
+      "kk3d": {
+        "avg": 5.87,
+        "min": 4.53,
+        "max": 8.27
+      },
+      "dwm3d": {
+        "avg": 15.59,
+        "min": 13.04,
+        "max": 18.97
+      },
+      "kkCtxSw": {
+        "avg": 2789.6,
+        "min": 2018,
+        "max": 3773
+      },
+      "dwmCtxSw": {
+        "avg": 524.8,
+        "min": 373,
+        "max": 723
+      }
+    },
+    "typing_muted": {
+      "visible": true,
+      "drawPerSec": 23.8,
+      "timeoutsPerSec": 29.6,
+      "domMutationsPerSec": 35.8,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "suspended",
+      "fervorTier": 3,
+      "runningAnims": 2,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x286",
+      "heapMB": 9.5,
+      "cpuPct": 0.46,
+      "wsMB": 501,
+      "privMB": 336,
+      "kk3d": {
+        "avg": 6.64,
+        "min": 4.16,
+        "max": 8.61
+      },
+      "dwm3d": {
+        "avg": 17.88,
+        "min": 9.16,
+        "max": 23.12
+      },
+      "kkCtxSw": {
+        "avg": 2879,
+        "min": 1720,
+        "max": 3676
+      },
+      "dwmCtxSw": {
+        "avg": 576.2,
+        "min": 282,
+        "max": 670
+      }
+    },
+    "typing_30fps": {
+      "visible": true,
+      "drawPerSec": 29.8,
+      "timeoutsPerSec": 35.6,
+      "domMutationsPerSec": 30,
+      "targetFps": 30,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "running",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.39,
+      "wsMB": 507,
+      "privMB": 336,
+      "kk3d": {
+        "avg": 5.45,
+        "min": 4.98,
+        "max": 5.81
+      },
+      "dwm3d": {
+        "avg": 18.08,
+        "min": 15.19,
+        "max": 19.5
+      },
+      "kkCtxSw": {
+        "avg": 2442,
+        "min": 2390,
+        "max": 2565
+      },
+      "dwmCtxSw": {
+        "avg": 632.4,
+        "min": 621,
+        "max": 642
+      }
+    },
+    "hidden_tray": {
+      "visible": false,
+      "drawPerSec": 0,
+      "timeoutsPerSec": 2,
+      "domMutationsPerSec": 0,
+      "targetFps": 0,
+      "kkPaused": true,
+      "vis": "visible",
+      "audio": "suspended",
+      "fervorTier": 3,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.01,
+      "wsMB": 506,
+      "privMB": 328,
+      "kk3d": {
+        "avg": 0,
+        "min": 0,
+        "max": 0
+      },
+      "dwm3d": {
+        "avg": 14.54,
+        "min": 14.19,
+        "max": 14.86
+      },
+      "kkCtxSw": {
+        "avg": 172.6,
+        "min": 163,
+        "max": 189
+      },
+      "dwmCtxSw": {
+        "avg": 580.2,
+        "min": 572,
+        "max": 590
+      }
+    },
+    "locked_visible": {
+      "visible": true,
+      "drawPerSec": 0,
+      "timeoutsPerSec": 2,
+      "domMutationsPerSec": 0,
+      "targetFps": 0,
+      "kkPaused": true,
+      "vis": "visible",
+      "audio": "suspended",
+      "fervorTier": 2,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.01,
+      "wsMB": 500,
+      "privMB": 328,
+      "kk3d": {
+        "avg": 0,
+        "min": 0,
+        "max": 0
+      },
+      "dwm3d": {
+        "avg": 11.37,
+        "min": 7.84,
+        "max": 14.28
+      },
+      "kkCtxSw": {
+        "avg": 174,
+        "min": 162,
+        "max": 198
+      },
+      "dwmCtxSw": {
+        "avg": 576.6,
+        "min": 568,
+        "max": 585
+      }
+    }
+  },
+  "baselineNoKK": {
+    "kk3d": {
+      "avg": 0,
+      "min": 0,
+      "max": 0
+    },
+    "dwm3d": {
+      "avg": 7.48,
+      "min": 3.14,
+      "max": 13.03
+    },
+    "kkCtxSw": {
+      "avg": 3.8,
+      "min": 3,
+      "max": 7
+    },
+    "dwmCtxSw": {
+      "avg": 455.4,
+      "min": 194,
+      "max": 593
+    }
+  },
+  "setup": "ok",
+  "window": {
+    "bounds": {
+      "x": 0,
+      "y": 760,
+      "width": 2560,
+      "height": 632
+    },
+    "exStyle": {
+      "hex": "0x8280028",
+      "layered": true,
+      "transparent": true,
+      "noRedirBitmap": true,
+      "topmost": true,
+      "toolwindow": false,
+      "noActivate": true
+    },
+    "displays": [
+      {
+        "id": 3462733201,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2560,
+          "height": 1440
+        },
+        "scale": 1.5,
+        "hz": 160
+      },
+      {
+        "id": 44500887,
+        "bounds": {
+          "x": -1920,
+          "y": 340,
+          "width": 1920,
+          "height": 1080
+        },
+        "scale": 1,
+        "hz": 75
+      },
+      {
+        "id": 2904106817,
+        "bounds": {
+          "x": 2560,
+          "y": 331,
+          "width": 1920,
+          "height": 1080
+        },
+        "scale": 1,
+        "hz": 144
+      }
+    ]
+  },
+  "scanMsEach": 0.08764200000000001,
+  "topLevelWindows": {
+    "all": 265,
+    "visible": 32
+  }
+}

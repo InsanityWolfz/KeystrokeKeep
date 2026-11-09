@@ -1,0 +1,12 @@
+=== long typist, 40 h, 3 seeds, retire nudge, omens rank ===
+seed1 omens {"embertide":2,"storm":3,"glass":8,"deep":6,"fever":2} last retires: 16h53 f158 +32 glass (95m), 18h44 f159 +8 fever (111m), 20h36 f160 +8 glass (112m), 25h57 f164 +33 storm (321m), 28h12 f166 +17 glass (135m), 30h44 f170 +34 glass (152m)
+4h00   f119 (118-120) R349 fame x46 oc7.0 | last 4h: +50/retire, runs 28m
+8h00   f138 (135-140) R483 fame x107 oc9.0 | last 4h: +31/retire, runs 57m
+12h00  f148 (145-150) R561 fame x169 oc10.7 | last 4h: +30/retire, runs 96m
+16h00  f153 (150-154) R602 fame x212 oc12.0 | last 4h: +27/retire, runs 134m
+20h00  f158 (154-160) R644 fame x267 oc13.0 | last 4h: +27/retire, runs 156m
+24h00  f161 (160-164) R674 fame x312 oc13.3 | last 4h: +22/retire, runs 130m
+28h00  f164 (160-168) R696 fame x353 oc14.0 | last 4h: +22/retire, runs 305m
+32h00  f167 (164-170) R724 fame x411 oc14.3 | last 4h: +20/retire, runs 316m
+36h00  f168 (164-170) R731 fame x427 oc14.3 | last 4h: +7/retire, runs 357m
+40h00  f170 (168-173) R753 fame x477 oc14.7 | last 4h: +22/retire, runs 441m

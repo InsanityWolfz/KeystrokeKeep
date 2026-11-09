@@ -1,0 +1,19 @@
+=== DEMO typist, 8 h, 2 seeds, re-delve now ===
+seed1 lifetime Renown by hour: 1h 54 (lineage ) 2h 114 (lineage ) 3h 180 (lineage ) 4h 252 (lineage ) 6h 396 (lineage ) 8h 540 (lineage ) | fame x148.5 | laps last 5.0/5.0/5.0m
+seed1 retires: 0h26 +30 (26m), 0h35 +6 (9m), 0h43 +6 (8m), 0h51 +6 (8m), 0h58 +6 (7m), 1h05 +6 (7m), 1h13 +6 (8m), 1h19 +6 (6m), 1h25 +6 (6m), 1h31 +6 (6m), 1h37 +6 (6m), 1h43 +6 (6m), 1h49 +6 (6m), 1h54 +6 (5m), 1h59 +6 (5m), 2h04 +6 (5m), 2h10 +6 (6m), 2h15 +6 (5m), 2h20 +6 (5m), 2h25 +6 (5m), 2h30 +6 (5m), 2h35 +6 (5m), 2h40 +6 (5m), 2h45 +6 (5m), 2h50 +6 (5m), 2h55 +6 (5m), 3h00 +6 (5m), 3h05 +6 (5m), 3h10 +6 (5m), 3h15 +6 (5m), 3h20 +6 (5m), 3h25 +6 (5m), 3h30 +6 (5m), 3h35 +6 (5m), 3h40 +6 (5m), 3h45 +6 (5m), 3h50 +6 (5m), 3h55 +6 (5m), 4h00 +6 (5m), 4h05 +6 (5m), 4h10 +6 (5m), 4h15 +6 (5m), 4h20 +6 (5m), 4h25 +6 (5m), 4h30 +6 (5m), 4h35 +6 (5m), 4h40 +6 (5m), 4h45 +6 (5m), 4h50 +6 (5m), 4h55 +6 (5m), 5h00 +6 (5m), 5h05 +6 (5m), 5h10 +6 (5m), 5h15 +6 (5m), 5h20 +6 (5m), 5h25 +6 (5m), 5h30 +6 (5m), 5h35 +6 (5m), 5h40 +6 (5m), 5h45 +6 (5m), 5h50 +6 (5m), 5h55 +6 (5m), 6h00 +6 (5m), 6h05 +6 (5m), 6h10 +6 (5m), 6h15 +6 (5m), 6h20 +6 (5m), 6h25 +6 (5m), 6h30 +6 (5m), 6h35 +6 (5m), 6h40 +6 (5m), 6h45 +6 (5m), 6h50 +6 (5m), 6h55 +6 (5m), 7h00 +6 (5m), 7h05 +6 (5m), 7h10 +6 (5m), 7h15 +6 (5m), 7h20 +6 (5m), 7h25 +6 (5m), 7h30 +6 (5m), 7h35 +6 (5m), 7h40 +6 (5m), 7h45 +6 (5m), 7h50 +6 (5m), 7h55 +6 (5m)
+seed1 laps to f40 (min): 7.5 7.2 7.1 5.7 6.0 6.6 4.8 5.2 4.8 5.1 4.7 4.8 4.2 4.5 4.4 4.6 4.1 4.5 4.4 4.4 4.3 4.4 4.3 4.3 4.2 4.2 4.1 4.1 4.3 4.1 4.3 4.1 4.4 4.2 4.3 4.3 4.1 4.4 4.3 4.1 4.0 4.0 4.1 3.9 4.2 4.0 4.1 3.9 4.0 4.2 4.1 4.1 4.1 4.0 3.8 4.3 3.9 3.9 4.2 4.1 4.0 4.1 4.1 3.9 3.7 4.0 4.2 4.1 4.0 3.8 4.1 3.7 4.0 4.1 4.1 3.7 4.1 4.0 3.8 3.9 4.2 4.0 3.9 4.0 4.1 4.0
+seed1 end: workshop {"crucible":10,"overcharge":9,"kindling":9,"static":7} embers 4524 heroes {"knight":131,"archer":120,"mage":109,"cleric":101} renown unspent 3
+seed2 lifetime Renown by hour: 1h 48 (lineage ) 2h 108 (lineage ) 3h 180 (lineage ) 4h 252 (lineage ) 6h 396 (lineage ) 8h 540 (lineage ) | fame x148.5 | laps last 5.0/5.0/5.0m
+card (f40 boss) 26-28 min | 1st retire 26-29 min | re-delves 86-86 | mean lap 4.3-4.4 min | best 3.6-3.7 min
+lifetime Renown @1h 48-54 @2h 108-114 @3h 180-180 | relic offers/h 33-34 | Embers/h 5058-5126 | unspent Embers end 3630-4524
+Legacy first bought (min) / final level:
+  lineage        26-29     lv 12-12  (max 999)
+  treasury       26-29     lv 12-12  (max 999)
+  quartermaster  26-29     lv 1-1  (max 1)
+  veterans       26-29     lv 10-10  (max 10)
+  headstart      26-29     lv 2-2  (max 2)
+  zeal           26-29     lv 5-5  (max 5)
+  recruiter      26-29     lv 1-1  (max 1)
+  campfire       85-87     lv 4-4  (max 4)
+  battery        85-87     lv 3-3  (max 3)
+  collector      n/a       lv 0-0  (max 1)

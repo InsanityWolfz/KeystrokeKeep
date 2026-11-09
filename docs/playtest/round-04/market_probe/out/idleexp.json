@@ -1,0 +1,207 @@
+{
+  "mode": "idleexp",
+  "phases": {
+    "idle_a": {
+      "visible": true,
+      "drawPerSec": 10,
+      "timeoutsPerSec": 9.9,
+      "domMutationsPerSec": 24,
+      "targetFps": 10,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 0,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.13,
+      "wsMB": 393,
+      "privMB": 300,
+      "kk3d": {
+        "avg": 1.89,
+        "min": 1.24,
+        "max": 2.49
+      },
+      "dwm3d": {
+        "avg": 16.3,
+        "min": 11.87,
+        "max": 17.34
+      },
+      "kkCtxSw": {
+        "avg": 961.89,
+        "min": 914,
+        "max": 1010
+      },
+      "dwmCtxSw": {
+        "avg": 600.22,
+        "min": 579,
+        "max": 637
+      }
+    },
+    "idle_b_repeat": {
+      "visible": true,
+      "drawPerSec": 15.2,
+      "timeoutsPerSec": 15.2,
+      "domMutationsPerSec": 24.8,
+      "targetFps": 10,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 0,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.16,
+      "wsMB": 402,
+      "privMB": 309,
+      "kk3d": {
+        "avg": 3.39,
+        "min": 1.89,
+        "max": 6.51
+      },
+      "dwm3d": {
+        "avg": 17.96,
+        "min": 16.41,
+        "max": 22.63
+      },
+      "kkCtxSw": {
+        "avg": 1292.33,
+        "min": 909,
+        "max": 2055
+      },
+      "dwmCtxSw": {
+        "avg": 656.56,
+        "min": 632,
+        "max": 685
+      }
+    },
+    "idle_c_noBlinkToggle": {
+      "visible": true,
+      "drawPerSec": 10,
+      "timeoutsPerSec": 10,
+      "domMutationsPerSec": 24.2,
+      "targetFps": 24,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 0,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.15,
+      "wsMB": 399,
+      "privMB": 297,
+      "kk3d": {
+        "avg": 2.78,
+        "min": 1.86,
+        "max": 5.96
+      },
+      "dwm3d": {
+        "avg": 17.94,
+        "min": 16.48,
+        "max": 22.76
+      },
+      "kkCtxSw": {
+        "avg": 2777.33,
+        "min": 938,
+        "max": 15820
+      },
+      "dwmCtxSw": {
+        "avg": 640.67,
+        "min": 601,
+        "max": 687
+      }
+    },
+    "idle_d_noBlink_6fps": {
+      "visible": true,
+      "drawPerSec": 6,
+      "timeoutsPerSec": 6,
+      "domMutationsPerSec": 24.3,
+      "targetFps": 6,
+      "kkPaused": false,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 0,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.09,
+      "wsMB": 400,
+      "privMB": 296,
+      "kk3d": {
+        "avg": 1.92,
+        "min": 1.27,
+        "max": 4.77
+      },
+      "dwm3d": {
+        "avg": 16.64,
+        "min": 13.66,
+        "max": 21.92
+      },
+      "kkCtxSw": {
+        "avg": 822.22,
+        "min": 674,
+        "max": 1406
+      },
+      "dwmCtxSw": {
+        "avg": 628.78,
+        "min": 601,
+        "max": 652
+      }
+    },
+    "idle_e_frameLoopFrozen_windowShown": {
+      "visible": true,
+      "drawPerSec": 0,
+      "timeoutsPerSec": 2,
+      "domMutationsPerSec": 0,
+      "targetFps": 0,
+      "kkPaused": true,
+      "vis": "visible",
+      "audio": "none",
+      "fervorTier": 0,
+      "runningAnims": 0,
+      "canvas": "3416x256",
+      "cssW": "2562px",
+      "dpr": 1.5,
+      "inner": "2560x192",
+      "heapMB": 9.5,
+      "cpuPct": 0.01,
+      "wsMB": 395,
+      "privMB": 291,
+      "kk3d": {
+        "avg": 0,
+        "min": 0,
+        "max": 0
+      },
+      "dwm3d": {
+        "avg": 14.37,
+        "min": 13.91,
+        "max": 14.81
+      },
+      "kkCtxSw": {
+        "avg": 999.56,
+        "min": 155,
+        "max": 5233
+      },
+      "dwmCtxSw": {
+        "avg": 612.22,
+        "min": 586,
+        "max": 644
+      }
+    }
+  },
+  "switches": "",
+  "setup": "ok"
+}

@@ -14,7 +14,8 @@
       forge: {}, workshop: {}, legacy: {},
       relics: [], relicOffer: null, relicQueue: [],
       omen: null, omenOffer: null, epicGiven: false, secondWind: 0,
-      demoDone: false, runCapCleared: false, bestCapTime: 0, runTime: 0,
+      demoDone: false, runCapCleared: false, bestCapTime: 0, runTime: 0, demoSave: false, demoLaps: 0,
+      ach: {}, achP: {}, runInputs: 0, lastForge: {},
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
       stats: { kills: 0, bossKills: 0, keys: 0, clicks: 0, ults: 0, goldEarned: 0, playTime: 0, chests: 0, rats: 0, flowTime: 0, wipes: 0 },
@@ -26,6 +27,7 @@
   };
 
   KK.S = KK.newState();
+  KK.DEMO_RENOWN_CAP = 48; // 30 for the first clear + 3 re-clears; then best time is the score
   KK.STORE_URL = ''; // e.g. 'steam://openurl/https://store.steampowered.com/app/<appid>' once the page exists
 
   // Next Fest demo mode: ?demo in the browser, --kk-demo / KK_DEMO=1 for the desktop build.
@@ -85,6 +87,8 @@
     for (const def of D.WORKSHOP) { const l = S.workshop[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.LEGACY) { const l = S.legacy[def.id] || 0; if (l) def.apply(m, l); }
     if (S.omen) { const o = D.OMENS.find((x) => x.id === S.omen); if (o) o.apply(m); }
+    m.trophies = D.TROPHIES.filter((f) => S.maxFloorEver >= f).length;
+    if (m.trophies) { const t = Math.pow(1.05, m.trophies); m.dmg *= t; m.gold *= t; }
     m.offline = Math.min(m.offlineCap, m.offline); // closing the game must never beat running it
     // Fame: +3% per lifetime Renown, compounding gently so late retires still push the wall
     const fame = (1 + 0.03 * S.renownLifetime) * Math.pow(1.004, S.renownLifetime);
@@ -118,7 +122,7 @@
   KK.addActivity = function (kind) {
     const S = KK.S, m = KK.mods();
     if (!S.settings.countInput) return;
-    if (m.secondWind > 0 && KK.lastInputAgo() >= 60 && kind === 'key') S.secondWind = m.secondWind;
+    if (m.secondWind > 0 && KK.lastInputAgo() >= 30 && kind === 'key') { S.secondWind = m.secondWind; KK.emit('secondWind', { keys: m.secondWind }); }
     lastInputT = KK.simTime || 0;
     const before = KK.fervorTier();
     if (kind === 'key') {
@@ -138,6 +142,7 @@
       KK.emit('keycoin', { amount: g });
     }
     if (m.hotkey && kind === 'key' && S.keyCounter % 60 === 0) KK.emit('hotkey');
+    S.runInputs = (S.runInputs || 0);
     const after = KK.fervorTier();
     if (after !== before) KK.emit('fervorTier', { from: before, to: after });
     KK.emit('activity', { kind });
@@ -243,6 +248,7 @@
     if (!S.omenOffer || (id && !S.omenOffer.includes(id))) return false;
     S.omen = id || null;
     S.omenOffer = null;
+    if (id === 'muster') S.forge = Object.assign({}, S.lastForge || {});
     KK.dirty();
     const m = KK.mods();
     for (const h of D.PARTY_ORDER) if (S.heroes[h] && S.heroes[h] < 1 + m.startLvl) S.heroes[h] = 1 + m.startLvl;
@@ -281,7 +287,7 @@
     const S = KK.S;
     // demo: the record can't go past 40, so each re-clear of floor 40 pays a small, repeatable +6
     const record = Math.max(0, Math.floor((F.renownFor(S.maxFloorRun) - F.renownFor(S.renownFloor || 0)) * KK.mods().renownMult));
-    if (KK.DEMO_CAP && S.demoDone) return Math.max(record, S.runCapCleared ? 6 : 0);
+    if (KK.DEMO_CAP && S.demoDone) return Math.max(record, S.runCapCleared && S.renownLifetime < KK.DEMO_RENOWN_CAP ? Math.min(6, KK.DEMO_RENOWN_CAP - S.renownLifetime) : 0);
     return record;
   };
   A.retireTarget = () => { const S = KK.S; let f = Math.max(20, S.maxFloorRun + 1); while (F.renownFor(f) - F.renownFor(S.renownFloor || 0) <= 0 && f < 2000) f++; return f; };
@@ -289,7 +295,7 @@
   A.canRedelve = () => !!(KK.DEMO_CAP && KK.S.demoDone && KK.S.maxFloorRun >= 20);
   A.canRetire = () => A.renownGain() > 0 || A.canRedelve();
   /** What the retire button should ask for when nothing can be earned yet. */
-  A.retireHint = () => (KK.DEMO_CAP && KK.S.demoDone ? 'CLEAR FLOOR ' + KK.DEMO_CAP + ' AGAIN FOR +6 RENOWN' : 'REACH FLOOR ' + A.retireTarget() + ' TO EARN RENOWN');
+  A.retireHint = () => (KK.DEMO_CAP && KK.S.demoDone ? (KK.S.renownLifetime >= KK.DEMO_RENOWN_CAP ? 'DEMO RENOWN MAXED: BEAT YOUR BEST TIME' : 'CLEAR FLOOR ' + KK.DEMO_CAP + ' AGAIN FOR +6 RENOWN') : 'REACH FLOOR ' + A.retireTarget() + ' TO EARN RENOWN');
   A.retire = () => {
     const S = KK.S;
     const gain = A.renownGain();
@@ -299,8 +305,12 @@
     S.incomeRate = 0; S.incomeAvg = 0; // a fresh delve doesn't keep the old run's income
     // Delve Omens: from the 2nd retire on, the next delve offers 3 omens (not in the demo)
     S.omen = null;
-    S.omenOffer = !KK.DEMO_CAP && S.retires >= 2 ? U.shuffle(D.OMENS.map((o) => o.id)).slice(0, 3) : null;
+    const prevOffer = S.lastOmenOffer || [];
+    const pool = D.OMENS.map((o) => o.id).filter((id) => !prevOffer.includes(id));
+    S.omenOffer = !KK.DEMO_CAP && S.retires >= 2 ? U.shuffle(pool).slice(0, 3) : null;
+    if (S.omenOffer) S.lastOmenOffer = S.omenOffer.slice();
     S.renownFloor = Math.max(S.renownFloor || 0, S.maxFloorRun);
+    S.lastForge = Object.assign({}, S.forge);
     S.gold = 0; S.forge = {}; S.relics = []; S.relicOffer = null; S.relicQueue = []; S.bossBlock = 0;
     KK.dirty();
     const m = KK.mods();
@@ -320,6 +330,7 @@
     if (KK.resetting) return;
     try {
       KK.S.lastSave = Date.now();
+      if (KK.DEMO_CAP) KK.S.demoSave = true;
       const json = JSON.stringify(KK.S);
       const fs = fileStore();
       if (fs) { if (sync === true) fs.saveFileSync(json); else fs.saveFile(json); return; }
@@ -339,6 +350,14 @@
         if (data[k] === undefined) continue;
         if (fresh[k] && typeof fresh[k] === 'object' && !Array.isArray(fresh[k])) fresh[k] = Object.assign(fresh[k], data[k]);
         else fresh[k] = data[k];
+      }
+      // A demo save opened by the full game: demo Renown counts as progress already made, so the
+      // record is raised until it would have paid that much (no bonus Renown on top).
+      if (fresh.demoSave && !KK.DEMO_CAP) {
+        fresh.demoSave = false; fresh.demoDone = false; fresh.runCapCleared = false;
+        let rf = fresh.renownFloor || 0;
+        while (F.renownFor(rf) < fresh.renownLifetime && rf < 400) rf++;
+        fresh.renownFloor = rf;
       }
       if (fresh.workshop.jar) {
         let refund = 0;

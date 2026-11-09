@@ -1,0 +1,6 @@
+{
+  "mode": "lsseed",
+  "phases": {},
+  "switches": "",
+  "fatal": "Error: ENOTEMPTY, Directory not empty: 'C:\\Users\\SHAUN\\AppData\\Roaming\\kk-market-probe-r4\\userData'\n    at Object.rmSync (node:fs:1282:18)\n    at lsSeed (C:\\Development\\KeystrokeKeep\\docs\\playtest\\round-04\\market_probe\\probe.js:431:6)\n    at C:\\Development\\KeystrokeKeep\\docs\\playtest\\round-04\\market_probe\\probe.js:447:37"
+}

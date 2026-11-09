@@ -21,7 +21,7 @@ module.exports = function load(opts = {}) {
   if (opts.bal) ctx.BAL_OVERRIDE = opts.bal;
   if (opts.demo) ctx.KK_DEMO_CAP = 40;
   vm.createContext(ctx);
-  for (const f of ['util', 'data', 'state', 'world']) {
+  for (const f of ['util', 'data', 'state', 'world', 'achievements']) {
     vm.runInContext(fs.readFileSync(path.join(__dirname, '..', 'js', f + '.js'), 'utf8'), ctx, { filename: f + '.js' });
   }
   ctx.KK.rng = ctx.Math.random; // seeded generator for harness-side randomness

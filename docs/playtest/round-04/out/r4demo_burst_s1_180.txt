@@ -1,0 +1,33 @@
+=== R4 probe burst s1 180m retire=nudge omen=random DEMO: maxEver 40, retires 11, renown 84, keys 3349, FLOW 0m, ults 218, kills 2401, gold 9.86e+6, fame x4.9
+  0h00  MAJOR biome The Crypt
+  0h03  MAJOR first golden rat
+  0h04  MAJOR boss The Rat King (f10)
+  0h05  MAJOR recruit archer
+  0h06  MAJOR first relic offer
+  0h06  MAJOR first EPIC offered
+  0h17  MAJOR retire unlocked
+  0h18  MAJOR boss The Bone King (f20)
+  0h20  MAJOR biome Mossy Caverns
+  0h31  MAJOR recruit cleric
+  0h31  MAJOR first REVIVE
+  0h34  MAJOR recruit mage
+  0h34  MAJOR boss Brood Mother (f30)
+  0h41  MAJOR first RETIRE
+  1h14  MAJOR boss Goblin Warlord (f40)
+MAJOR per 30 min h1-end:           1 0 0 0 0
+MAJOR+OMEN per 30 min h1-end:      1 0 0 0 0
+MAJOR+OMEN+ACH per 30 min h1-end:  3 1 2 1 0
+longest gap after h1: MAJOR 105m (from 1h14) | +OMEN 105m (from 1h14) | +ACH 33m (from 1h18)
+last MAJOR 1h14; last new OMEN — (0 distinct omens picked)
+retires: 0h41 f30 +13, 1h19 f40 +17, 1h34 f40 +6, 1h48 f40 +6, 2h01 f40 +6, 2h11 f40 +6, 2h23 f40 +6, 2h33 f40 +6, 2h42 f40 +6, 2h50 f40 +6, 2h58 f40 +6
+floors first reached: 
+f70 bosses: 
+SANCTUARY: casts 6 (in boss fights 1), revives 5; boss fights with Pell 23, with a cast 1; hard fights (KO/wipe/slam<50%) 4, with a cast 1; heroDowns with Pell 17, slams leaving <50% 12, wipes with Pell 3; fights where nobody dropped below 50%: 20/23; party min HP when boss crosses 50%: median 0.94, <0.9 in 5/20
+ULTS: knight 99 (43%), archer 85 (37%), mage 44 (19%), cleric 6
+SECOND WIND: lvl 4, triggers 77, bonus keys 780, bonus Sparks 1560 of 4909 total (31.8%)
+HOTKEY: procs 0, free casts 0, banked 0, released from bank 0, overflow(lost) 0
+EPIC@f30 (first kill with epicGiven=false): 0h59 r1 epic=true
+longest continuous FLOW: 0.0 min
+DEMO: card at 1h18, sealed toasts 9 (1h33 run 13.3m, 1h47 run 12.6m, 2h00 run 11.0m, 2h10 run 9.1m, 2h22 run 10.1m, 2h32 run 9.2m, 2h41 run 6.8m, 2h49 run 7.0m, 2h57 run 6.7m), re-delves 10, Renown after card +71, bestCapTime 6.7m; legacy {"veterans":3,"headstart":2,"battery":3,"zeal":3,"campfire":2,"lineage":2,"treasury":2,"quartermaster":1}
+ACH: first_boss 0h06 | flow NO | full_party 0h34 | rat 0h04 | epic 1h00 | caverns 0h20 | retire1 0h41 | gatekeeper 1h18 | comeback 0h06 | echo 1h52 | meteor3 2h23 | ult_boss NO | revive 0h31 | speed40 2h10 | blitz NO | flow10 NO | hotkey25 NO | relics8 NO | magma NO | void NO | hollow NO | hollowed6 NO | f100 NO | f125 NO | f150 NO | retire10 2h50 | renown500 NO | omen1 NO | omen10 NO | deep100 NO | legacy_all NO | overcharge10 NO | crucible10 NO | lv100 NO | lv300 NO | chests100 NO | rats25 NO | keys10k NO | keys100k NO | keys1m NO | flow1h NO | flow10h NO | ults1k NO | idle50 NO | kills100k NO
+end heroes {"knight":39,"archer":31,"mage":0,"cleric":0} workshop {"crucible":5,"kindling":4,"overcharge":4,"static":2} legacy {"veterans":3,"headstart":2,"battery":3,"zeal":3,"campfire":2,"lineage":2,"treasury":2,"quartermaster":1}

@@ -1,0 +1,17 @@
+=== R4 probe typist s1 1440m retire=nudge omen=new: maxEver 142, retires 20, renown 513, keys 183989, FLOW 837m, ults 6615, kills 10086, gold 2.96e+17, fame x127.0
+MAJOR per 30 min h1-end:           3 1 2 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+MAJOR+OMEN per 30 min h1-end:      4 2 3 1 2 0 2 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+MAJOR+OMEN+ACH per 30 min h1-end:  9 3 3 1 4 1 4 0 0 2 0 2 0 0 2 0 1 0 0 0 0 1 2 0 1 2 0 0 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0
+longest gap after h1: MAJOR 1186m (from 4h14) | +OMEN 618m (from 13h41) | +ACH 310m (from 17h54)
+last MAJOR 4h14; last new OMEN 13h41 (10 distinct omens picked)
+retires: 0h28 f40 +30, 0h53 f57 +40, 1h18 f69 +38, 1h43 f82 +50, 2h14 f89 +31, 3h03 f96 +33, 4h00 f100 +20, 4h46 f106 +32, 5h38 f110 +22, 6h43 f115 +36, 8h21 f118 +22, 10h13 f120 +12, 12h14 f125 +31, 13h41 f129 +26, 14h59 f130 +7, 16h25 f135 +33, 18h10 f137 +14, 19h49 f139 +14, 21h28 f140 +8, 23h04 f142 +14
+floors first reached: 50@0h42 55@0h49 60@1h07 65@1h11 70@1h28 75@1h32 80@1h37 85@2h08 90@2h44 95@2h59 100@3h52 105@4h42 110@5h30 115@6h43 120@10h05 125@12h14 130@14h51 135@16h25 140@21h20
+f70 bosses: 1h28 r3 The Hollow | 1h54 r4 The Hollow | 2h22 r5 The Hollow | 3h10 r6 The Hollow | 4h06 r7 The Hollow | 4h52 r8 The Hollow | 5h44 r9 The Hollow | 6h48 r10 The Hollow | 8h25 r11 The Hollow | 10h18 r12 The Hollow | 12h19 r13 The Hollow | 13h46 r14 The Hollow | 15h03 r15 The Hollow | 16h29 r16 The Hollow | 18h14 r17 The Hollow | 19h53 r18 The Hollow | 21h31 r19 The Hollow | 23h08 r20 The Hollow
+SANCTUARY: casts 92 (in boss fights 88), revives 3; boss fights with Pell 155, with a cast 7; hard fights (KO/wipe/slam<50%) 9, with a cast 7; heroDowns with Pell 15, slams leaving <50% 254, wipes with Pell 3; fights where nobody dropped below 50%: 146/155; party min HP when boss crosses 50%: median 0.97, <0.9 in 16/111
+ULTS: knight 2881 (35%), archer 2732 (33%), mage 2570 (31%), cleric 92
+SECOND WIND: lvl 10, triggers 0, bonus keys 0, bonus Sparks 0 of 183989 total (0.0%)
+HOTKEY: procs 107, free casts 107, banked 1, released from bank 1, overflow(lost) 0
+EPIC@f30 (first kill with epicGiven=false): 0h20 r0 epic=true
+longest continuous FLOW: 3.4 min
+ACH: first_boss 0h03 | flow 0h00 | full_party 0h15 | rat 0h04 | epic 0h21 | caverns 0h08 | retire1 0h28 | gatekeeper 0h37 | comeback 0h08 | echo 0h21 | meteor3 0h14 | ult_boss 0h08 | revive 0h15 | speed40 0h37 | blitz 1h25 | flow10 NO | hotkey25 15h46 | relics8 11h54 | magma 0h37 | void 1h08 | hollow 1h29 | hollowed6 4h14 | f100 3h52 | f125 12h14 | f150 NO | retire10 6h43 | renown500 23h04 | omen1 0h53 | omen10 13h41 | deep100 5h51 | legacy_all 8h22 | overcharge10 9h24 | crucible10 6h33 | lv100 1h02 | lv300 17h54 | chests100 3h11 | rats25 3h20 | keys10k 1h14 | keys100k 13h00 | keys1m NO | flow1h 1h58 | flow10h 16h26 | ults1k 4h06 | idle50 NO | kills100k NO
+end heroes {"knight":307,"archer":296,"mage":284,"cleric":269} workshop {"crucible":10,"overcharge":13,"kindling":10,"static":8} legacy {"veterans":10,"headstart":8,"battery":3,"zeal":5,"campfire":4,"lineage":9,"quartermaster":1,"treasury":9,"recruiter":1,"collector":1}

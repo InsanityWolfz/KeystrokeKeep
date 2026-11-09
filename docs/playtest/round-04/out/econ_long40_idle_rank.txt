@@ -1,0 +1,12 @@
+=== long idle, 40 h, 3 seeds, retire nudge, omens rank ===
+seed1 omens {"quiet":3,"glass":7,"deep":6,"storm":1,"march":5,"fever":1} last retires: 26h08 f121 +6 march (132m), 28h19 f122 +6 march (131m), 31h07 f123 +7 deep (168m), 34h09 f124 +7 glass (182m), 36h40 f125 +6 glass (151m), 39h42 f126 +8 deep (182m)
+4h00   f86 (84-87) R173 fame x12 oc2.7 | last 4h: +32/retire, runs 38m
+8h00   f102 (100-106) R267 fame x26 oc4.0 | last 4h: +26/retire, runs 68m
+12h00  f111 (110-113) R314 fame x37 oc5.0 | last 4h: +20/retire, runs 74m
+16h00  f115 (112-119) R342 fame x45 oc5.7 | last 4h: +11/retire, runs 122m
+20h00  f118 (116-120) R358 fame x49 oc6.0 | last 4h: +9/retire, runs 118m
+24h00  f120 (118-121) R373 fame x54 oc6.7 | last 4h: +7/retire, runs 146m
+28h00  f122 (120-124) R386 fame x59 oc7.0 | last 4h: +7/retire, runs 145m
+32h00  f123 (121-125) R394 fame x62 oc7.0 | last 4h: +7/retire, runs 168m
+36h00  f124 (122-126) R401 fame x65 oc7.0 | last 4h: +7/retire, runs 188m
+40h00  f125 (123-127) R410 fame x69 oc8.0 | last 4h: +7/retire, runs 232m
