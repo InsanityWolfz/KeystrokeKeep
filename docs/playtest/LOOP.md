@@ -120,7 +120,15 @@ Format: `- [round found] [severity] item: status/reason`
 ### Fixed in R9
 - Achievement progress counters + NEXT line, Glimpse staging (door before the statue, wipe ends it), Rat King one-shot guard, clock-proof Seals (new day + 1 h play, any omen, star doubles), Hollowed rotation by days played, Codex 40, trophies to 300, full-Forge Quartermaster, Heart of the Keep visuals + capstone toasts, Legacy order, launch flash on the primary monitor, KK_CAPTURE_DISPLAY, retail ignores KK_* flags, frame-locked capture clock + adopted v9 shots, star glyph, first-ever-only big banners, calm FLOW outline, HUD contrast plate.
 
+### Fixed in R10
+- Biome 5 The Heartroot + Echoed Depths (built), save load keeps every field (Codex kills, days played, Seal timing, slain floors, boss wounds, banner firsts were lost on reload), Hollowed rotation by slot, Echoed opens by day, Seal needs today's delve + star x1.5, Root Ward rare from f90, Lockdown holds the rotation (10 keys break it), Warden guard in contact only, Sporelings next frame, readable roots/vines, echoed violet look, Keeper colours, audio RNG stream, fixed capture schedule, duplicate recruit toast removed.
+
 ### Open (ranked)
+- [R10] [check, gate] Market: G2 and G5 3/3 identical with audio ON (audio RNG stream + fixed schedule from R10 part 3, unverified); safe launcher only.
+- [R10] [major] Idle players spend 81% of hours 8-40 in the Heartroot: zero-art Deep Heartroot sub-bands f121-130 / f141-150 (round-10/auditor.md F4).
+- [R10] [minor] Banner burst at f150 and each echo band (trophy + boss + VICTORY + biome in 8 s); after f200 Hollowed Rootmother/Keeper + 2 achievements; status text vs damage numbers column; relic chest 'take + next'; echo-band achievements; Seal play gap 2 h.
+- [R10] [tool] tools/headless + playtest.js never call KK.dayTick (daysPlayed stays 1); add a --days option.
+- [R10] [capture] G6 Rootmother shot (draft in round-10/market.md).
 - [R9] [major, launch] Biome 5 "The Heartroot" (f101-150: Root Lasher / Spore Bloat / Heart Warden, Rootmother f120 + Keeper f140) + "Echoed Depths" (f151+, old palettes cycle every 10 floors, hollowTint). Full spec: round-09/auditor.md F4. Build before R10 testing.
 - [R9] [major, store] Store copy v2 corrections (round-09/auditor.md F3): 39 achievements, trophies to 300, FLOW multiplier, Hollowed from f80, Codex 40 (update again after Biome 5).
 - [R9] [check, gate] Market: capture must run at 59-61 real fps (part 4 ran 3.3x fast; fixed in part 5, unverified) and S3/G5 takes 3/3 identical state digests; safe launcher in round-09/market_probe/safe, never the primary display. Rebuild dist/ before any packaged check.
@@ -158,4 +166,5 @@ Format: `- [round found] [severity] item: status/reason`
 | R6 | 2026-11-09 | Enrage keeps wounds + regroup, all six boss signature moves, Codex per 8 kills, Dynamo 10%, digit font, achievements open state, quiet first-hour retreats, handoff/save hardening | ce6b6d1, 3adcda5, 4eb20cb |
 | R7 | 2026-11-09 | Calm strip (combat sfx off, rationed booms/alerts/toasts), caution rule (idle hour 1: 7.9 -> 1.8 retreats), week-2 layer (Omen of the Day, Seals, Void Lantern, trophies to 200), capture mode, re-delve softlock fix | 056ad04, 51f84d5 |
 | R8 | 2026-11-09 | Glimpse of the Depths (+ fixes), keys-only caution, Quartermaster/Seal/Lantern/Fervor economy, banner + loud-sound + toast rationing, capture await/wave/js cues + 5 store shot scripts | 592ac10, 1d627b7, fb104c5 |
-| R9 | 2026-11-09 | Achievement counters, Glimpse staging + wipe, clock-proof Seals, Codex 40 / trophies 300, Heart of the Keep finale, no launch flash, frame-locked capture, first-ever-only big banners, calm FLOW outline | e36437d, 847e0d4, 7fc2f20, e1046e5, 2c6e43d + (this round) |
+| R9 | 2026-11-09 | Achievement counters, Glimpse staging + wipe, clock-proof Seals, Codex 40 / trophies 300, Heart of the Keep finale, no launch flash, frame-locked capture, first-ever-only big banners, calm FLOW outline | e36437d, 847e0d4, 7fc2f20, e1046e5, 2c6e43d |
+| R10 | 2026-11-09 | Biome 5 The Heartroot + Echoed Depths, save-load field loss fixed, Hollowed rotation, Seal/Root Ward/Lockdown economy, readable roots + echoed look, audio RNG stream + fixed capture schedule | 51310be, 45278ee, c0ff1e2, cc956d7, cb50bfa + (this round) |
