@@ -161,6 +161,15 @@
     // ---- world props
     const sxw = (wx) => Math.round(wx - cx);
     if (W.door) drawDoor(sxw(W.door.x), sy, pal);
+    if (KK.S.glimpse && W.sealedX) {
+      const spr = KK.SPR.frame('embergolem', 0);
+      if (spr) {
+        const gx = Math.round(sxw(W.sealedX) - spr.w / 2), gy = W.GROUND - spr.h + sy;
+        b.drawImage(stoneTint(spr.c), gx, gy);
+        b.globalCompositeOperation = 'lighter'; glow(gx + spr.w / 2, gy + spr.h / 2, 26 + Math.sin(t * 2) * 3, '#ff7a2e', 0.25); b.globalCompositeOperation = 'source-over';
+        KK.font.draw(b, 'SEALED', gx + spr.w / 2, gy - 6, '#ffb070');
+      }
+    }
     for (const p of W.props) {
       if (p.opened !== undefined) {
         const spr = p.opened ? KK.SPR.chestOpen : KK.SPR.chest;

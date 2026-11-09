@@ -74,6 +74,13 @@
   W.spawnWave = function () {
     const S = KK.S, f = S.floor, b = F.biomeOf(f);
     const x0 = W.partyX + SPAWN_AHEAD;
+    if (S.glimpse) {
+      const n = W.wave === 0 ? 3 : 2;
+      for (let i = 0; i < n; i++) makeEnemy(b.monsters[(W.wave + i) % b.monsters.length], x0 + i * 15, KK.DEMO_CAP - 2, { hpMult: 0.3 });
+      W.wave++;
+      KK.emit('wave', { wave: W.wave });
+      return;
+    }
     if (F.isBossFloor(f) && W.wave === W.waves - 1 && !(S.slain && S.slain[f])) {
       const key = F.bossFor(f);
       const boss = makeEnemy(key, x0 + 20, f, f === 100 ? { hpMult: 1.5 } : undefined);
@@ -673,7 +680,21 @@
     } else W.cautious = 0;
     // demo: every delve ends on the floor-40 boss. Once it falls this run, the party farms 37-39
     // (the depths are sealed) until you re-delve. Best time to floor 40 is the demo's score.
-    if (KK.DEMO_CAP && S.floor >= KK.DEMO_CAP) {
+    if (S.glimpse) {
+      // leaving the sealed floor: back to the demo's last floors, then the wishlist card
+      S.glimpse = false; W.sealedX = 0;
+      S.demoDone = true; KK.emit('demoComplete');
+      S.floor = KK.DEMO_CAP - 4;
+    } else if (KK.DEMO_CAP && S.floor >= KK.DEMO_CAP && !S.demoDone && !S.glimpseDone) {
+      // Glimpse of the Depths: the first clear of floor 40 opens one sealed Magma floor
+      S.runCapCleared = true; S.glimpseDone = true; S.glimpse = true;
+      const tm = S.runTime || 0;
+      if (tm > 0 && (!S.bestCapTime || tm < S.bestCapTime)) S.bestCapTime = tm;
+      S.demoLaps = (S.demoLaps || 0) + 1;
+      S.floor = KK.DEMO_CAP; // -> 41 below
+      W.sealedX = W.partyX + 230;
+      KK.emit('glimpse');
+    } else if (KK.DEMO_CAP && S.floor >= KK.DEMO_CAP) {
       if (!S.runCapCleared) {
         S.runCapCleared = true;
         const tm = S.runTime || 0;
@@ -689,9 +710,9 @@
     if (S.bossBlock && S.floor + 1 >= S.bossBlock && (S.regroupUntil || 0) > S.stats.playTime) S.floor--;
     else if (S.campFloor && S.floor + 1 >= S.campFloor && (S.campUntil || 0) > S.stats.playTime) S.floor--;
     S.floor++;
-    if (S.floor > S.maxFloorRun) S.maxFloorRun = S.floor;
+    if (S.floor > S.maxFloorRun && !S.glimpse) S.maxFloorRun = S.floor;
     if (S.omen && S.omen === S.omenStar && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
-    if (S.floor > S.maxFloorEver) {
+    if (S.floor > S.maxFloorEver && !S.glimpse) {
       S.maxFloorEver = S.floor;
       if (D.TROPHIES.includes(S.floor)) { KK.dirty(); KK.emit('trophy', { floor: S.floor, n: D.TROPHIES.indexOf(S.floor) + 1 }); }
     }

@@ -340,6 +340,7 @@
   KK.on('lavaRain', ({ e }) => FX.moveAlert('lava', e, 'LAVA RAIN!', '#ff7a2e', 1.0));
   KK.on('lavaMark', ({ x, t }) => { FX.light(x, W.GROUND, 14, t, '#ff5a2e', 0.8); FX.ring(x, W.GROUND, 2, 8, '#ff5a2e', t, 1); });
   KK.on('lavaLand', ({ x }) => FX.burst(x, W.GROUND - 2, 12, ['#ff5a2e', '#ffb347', '#ffe08a'], { spd: 80, up: -50, life: 0.6, floor: true }));
+  KK.on('glimpse', () => setTimeout(() => FX.alert('THE MAGMA DEPTHS: A SEALED BOSS WAITS IN THE FULL GAME', '#ffb070', 3.5), 2600));
   KK.on('chargeWarn', ({ e }) => { FX.moveAlert('charge', e, 'WAR CHARGE!', '#ff9a9a', 1.0); e.windup = 1.0; });
   KK.on('warCharge', ({ e }) => {
     FX.shake(3, 0.3);

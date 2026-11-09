@@ -15,7 +15,7 @@
       relics: [], relicOffer: null, relicQueue: [],
       omen: null, omenOffer: null, epicGiven: false, secondWind: 0,
       seals: 0, sealDay: '', freeDelveDay: '', omenStar: null,
-      demoDone: false, runCapCleared: false, bestCapTime: 0, runTime: 0, demoSave: false, demoLaps: 0,
+      demoDone: false, glimpse: false, glimpseDone: false, demoPeek: false, runCapCleared: false, bestCapTime: 0, runTime: 0, demoSave: false, demoLaps: 0,
       ach: {}, achP: {}, runInputs: 0, lastForge: {}, codex: {},
       fervor: 0, keyCounter: 0,
       incomeRate: 0,

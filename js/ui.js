@@ -39,6 +39,7 @@
     $('#panel-body').addEventListener('toggle', (e) => { if (e.target.classList && e.target.classList.contains('achbox')) UI.achOpen = e.target.open; }, true);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') UI.close(); });
     $('#relic-offer').addEventListener('click', onOfferClick);
+    $('#hud-demo').addEventListener('click', () => { if (KK.DEMO_CAP) UI.openStore(); });
     $('#hud-farm').addEventListener('click', () => { if (A.renownGain() > 0) UI.open('legacy'); else UI.open('party'); $('#panel-body').scrollTop = 0; });
     setupDesktop();
     // wave pips
@@ -75,6 +76,7 @@
   UI.slowUpdate = function () {
     if (document.documentElement.classList.contains('kk-paused')) return;
     const S = KK.S;
+    if (KK.DEMO_CAP && !S.demoDone && !S.demoPeek && S.stats.playTime >= 2400 && !UI.demoOpen && !document.querySelector('#modal-root .modal')) { S.demoPeek = true; KK.emit('demoComplete', { peek: true }); }
     blinkT ^= 1;
     document.documentElement.classList.toggle('blink', !!blinkT);
     setText('#hud-floor', 'FLOOR ' + S.floor);
@@ -542,12 +544,13 @@
       <div class="row"><button class="buy" data-x="ok">COLLECT</button></div>`,
     (m, close) => { m.querySelector('[data-x=ok]').onclick = () => { close(); KK.audio.init(); KK.fx.coinBurst(W.partyX, 30, 30); KK.audio.play('chest'); }; });
   };
-  KK.on('demoComplete', () => setTimeout(() => {
+  KK.on('demoComplete', (ev) => setTimeout(() => {
+    const peek = !!(ev && ev.peek);
     UI.demoOpen = true;
     const S = KK.S, st = S.stats;
     const stat = (k, v) => `<div><b>${v}</b><span>${k}</span></div>`;
-    UI.modal(`<h2>DEMO COMPLETE!</h2>
-      <p>Your party conquered the Mossy Caverns in <b>${U.fmtTime(S.bestCapTime || st.playTime)}</b>.</p>
+    UI.modal(`<h2>${peek ? 'WHAT WAITS BELOW' : 'DEMO COMPLETE!'}</h2>
+      <p>${peek ? `Your party is still delving (floor ${S.maxFloorRun} so far). The demo ends at floor 40. Here's what waits below:` : `Your party conquered the Mossy Caverns in <b>${U.fmtTime(S.bestCapTime || st.playTime)}</b>.`}</p>
       <div class="demo-stats">${stat('keystrokes', fmt(st.keys))}${stat('ultimates', fmt(st.ults))}${stat('bosses', fmt(st.bossKills))}${stat('in FLOW', U.fmtTime(st.flowTime))}</div>
       <p><b style="color:#ff7a2e">The Magma Depths</b> and <b style="color:#c472ff">The Hollow Void</b>, 3 new bosses, 6 Hollowed returns, the Heart of the Keep, 60+ more floors, Delve Omens, the Hollow Codex and ${KK.ach ? KK.ach.LIST.length : 39} achievements wait in the full game. Your save carries over.</p>
       <p style="font-size:12px;color:var(--muted)">Keep the strip running: every re-delve rerolls your relics, a fresh clear of floor 40 pays +6 Renown, and your best time is your score.</p>
