@@ -1,0 +1,1 @@
+idle s1 180m: boss fights with Cleric 12, with a Sanctuary 0 (0%); boss-fight time 21.2 min, someone <80% 30% of it; Cleric holds the ult turn 7.7% of boss time (2929 frames); boss slams 187, avg Sparks at slam 10, slams with >=40 Sparks 7; Sanctuary total 0 (in boss fights 0)

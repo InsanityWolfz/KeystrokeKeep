@@ -1,0 +1,9 @@
+=== Workshop over a stall-8 day: typist, 8 h, 3 seeds ===
+none        deepest 4h f98.7  8h f111.0  R 292  ws(seed1) {}
+default     deepest 4h f106.3  8h f128.3  R 408  ws(seed1) {"crucible":9,"overcharge":10,"kindling":9,"static":7}
+noCrucible  deepest 4h f107.7  8h f124.3  R 370  ws(seed1) {"overcharge":9,"kindling":8,"static":6}
+noOver      deepest 4h f101.0  8h f116.0  R 308  ws(seed1) {"crucible":10,"kindling":10,"static":7}
+noStatic    deepest 4h f105.3  8h f123.3  R 363  ws(seed1) {"crucible":10,"overcharge":10,"kindling":10}
+noKindling  deepest 4h f107.3  8h f128.3  R 408  ws(seed1) {"crucible":10,"overcharge":11,"static":7}
+overOnly    deepest 4h f106.3  8h f123.3  R 376  ws(seed1) {"overcharge":11}
+staticOnly  deepest 4h f100.0  8h f118.3  R 343  ws(seed1) {"static":8}

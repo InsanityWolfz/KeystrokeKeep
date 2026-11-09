@@ -1,0 +1,10 @@
+=== Legacy value: 30 Renown (record f40), run 2, typist DEMO, 4 seeds: floor at 10/20/30/60 min ===
+buyAll     f40.0 / f40.0 / f40.0 / f40.0   {"lineage":1,"treasury":1,"quartermaster":1,"veterans":1,"headstart":1,"zeal":1,"recruiter":1} left 2
+lineageOnly f38.5 / f40.0 / f40.0 / f40.0   {"lineage":5} left 0
+lin+tre    f39.0 / f40.0 / f40.0 / f40.0   {"lineage":3,"treasury":3} left 6
+vet+lin    f40.0 / f40.0 / f40.0 / f40.0   {"veterans":4,"lineage":2} left 0
+vet2+lin   f40.0 / f40.0 / f40.0 / f40.0   {"veterans":2,"lineage":4} left 2
+head+lin   f35.5 / f40.0 / f40.0 / f40.0   {"headstart":4,"lineage":2} left 0
+head2+lin  f38.8 / f40.0 / f40.0 / f40.0   {"headstart":2,"lineage":4} left 2
+bat3+lin   f36.8 / f40.0 / f40.0 / f40.0   {"battery":3,"lineage":3} left 3
+nothing    f31.0 / f40.0 / f40.0 / f40.0   {} left 30

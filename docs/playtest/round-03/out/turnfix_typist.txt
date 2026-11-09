@@ -1,0 +1,2 @@
+typist 60m live rule        : ults knight 60 (25%)  archer 121 (50%)  mage 55 (23%)  cleric 6 (2%)  maxFloor 50.7  min-to-F30 18.9
+typist 60m PATCHED (hold turn): ults knight 99 (39%)  archer 90 (36%)  mage 61 (24%)  cleric 2 (1%)  maxFloor 51.7  min-to-F30 20.1

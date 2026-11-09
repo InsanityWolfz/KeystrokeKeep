@@ -1,0 +1,1 @@
+none       idle s1: floor@3h 77 floor@6h 95 renownLife 194 embers+ws 307 5/4/4/2 wipes 14 marks {"50":"1.58h","75":"2.89h"}

@@ -1,0 +1,4 @@
+warmStart off burst  deepest 4h f81.8  8h f99.8  embers/h 988
+warmStart off typist deepest 4h f107.3  8h f128.8  embers/h 4674
+warmStart on  burst  deepest 4h f87.0  8h f108.0  embers/h 1978
+warmStart on  typist deepest 4h f107.3  8h f128.8  embers/h 4674

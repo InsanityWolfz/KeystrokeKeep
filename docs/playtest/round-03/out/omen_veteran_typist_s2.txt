@@ -1,0 +1,1 @@
+veteran    typist s2: floor@3h 102 floor@6h 120 renownLife 355 embers+ws 353 9/9/9/6 wipes 9 marks {"50":"0.66h","75":"1.20h","100":"2.67h","110":"3.77h","120":"5.84h"}

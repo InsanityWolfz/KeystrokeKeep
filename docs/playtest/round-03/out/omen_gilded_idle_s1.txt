@@ -1,0 +1,1 @@
+gilded     idle s1: floor@3h 74 floor@6h 90 renownLife 194 embers+ws 424 5/4/4/3 wipes 6 marks {"50":"1.26h","75":"3.22h"}

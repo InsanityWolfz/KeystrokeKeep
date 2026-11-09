@@ -1,0 +1,16 @@
+=== pacing, 8 h, policy nudge, 5 seeds ===
+typist boss10 3-4m  boss20 6-10m  boss40 32-40m | nudge 23-31m (f6-6) | 1st retire 23-31m f40-40 +30-30 | run2 back to record 8.3m (8-9)
+       1h00: f61 (59-62) R81 | 2h00: f89 (84-93) R185 | 4h00: f109 (107-111) R286 | 8h00: f126 (125-130) R395 | embers/h 4742 ws lv 35.0
+       seed1 ws {"crucible":9,"overcharge":10,"kindling":9,"static":7}  retires 0h23/f40/+30 0h48/f60/+49 1h13/f75/+51 1h38/f85/+41 2h06/f92/+32 2h34/f99/+34 3h15/f105/+31 4h09/f110/+28 4h50/f116/+35 5h55/f120/+24 7h05/f125/+31
+heavy  boss10 2-4m  boss20 6-8m  boss40 26-32m | nudge 19-24m (f6-6) | 1st retire 19-24m f40-40 +30-30 | run2 back to record 6.7m (6-7)
+       1h00: f79 (75-81) R112 | 2h00: f103 (100-107) R240 | 4h00: f122 (120-123) R361 | 8h00: f139 (136-143) R471 | embers/h 9136 ws lv 40.0
+       seed1 ws {"crucible":10,"overcharge":12,"kindling":10,"static":8}  retires 0h20/f40/+30 0h45/f68/+75 1h10/f86/+70 1h35/f100/+67 2h00/f107/+37 2h25/f113/+34 3h17/f118/+30 3h59/f123/+30 4h58/f128/+33 6h04/f130/+13 7h13/f135/+33
+burst  boss10 6-8m  boss20 19-22m  boss40 61-83m | nudge 47-85m (f6-6) | 1st retire 43-66m f30-40 +13-30 | run2 back to record 13.6m (12-16)
+       1h00: f35 (30-40) R14 | 2h00: f60 (54-65) R77 | 4h00: f86 (82-89) R172 | 8h00: f102 (99-106) R253 | embers/h 1036 ws lv 22.8
+       seed1 ws {"crucible":6,"kindling":6,"overcharge":6,"static":4}  retires 0h47/f30/+13 1h25/f47/+31 1h57/f59/+32 2h26/f69/+32 2h55/f77/+30 3h44/f85/+33 4h46/f90/+23 5h43/f97/+33 7h10/f100/+15
+idle   boss10 6-8m  boss20 18-24m  boss40 75-80m | nudge 62-88m (f6-6) | 1st retire 46-62m f30-40 +13-30 | run2 back to record 14.8m (13-16)
+       1h00: f32 (30-39) R10 | 2h00: f58 (54-59) R60 | 4h00: f83 (80-85) R154 | 8h00: f98 (96-100) R227 | embers/h 504 ws lv 17.4
+       seed1 ws {"crucible":5,"kindling":5,"overcharge":5,"static":3}  retires 0h49/f30/+13 1h26/f47/+31 1h58/f59/+32 2h33/f69/+32 3h03/f77/+30 4h01/f85/+33 5h05/f90/+23 6h22/f95/+23 7h56/f100/+25
+typist/idle renown ratio: 1h00 7.77x  2h00 3.06x  4h00 1.86x  8h00 1.74x
+typist/idle depth  ratio: 1h00 1.92x  2h00 1.54x  4h00 1.32x  8h00 1.29x
+burst/idle  depth  ratio: 1h00 1.09x  2h00 1.04x  4h00 1.04x  8h00 1.04x

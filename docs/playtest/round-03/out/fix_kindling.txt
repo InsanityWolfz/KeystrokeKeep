@@ -1,0 +1,10 @@
+=== Kindling / Fervor-grace variants, 8 h, stall-8 retires, 4 seeds ===
+current        burst  deepest 4h f81.8  8h f99.8  R 241  fervor IDLE/FOC/ZONE/FLOW 74%/16%/8%/2%
+current        typist deepest 4h f107.3  8h f128.8  R 411  fervor IDLE/FOC/ZONE/FLOW 5%/13%/21%/62%
+current        idle   deepest 4h f80.3  8h f96.8  R 222  fervor IDLE/FOC/ZONE/FLOW 100%/0%/0%/0%
+afterglow      burst  deepest 4h f82.3  8h f100.0  R 241  fervor IDLE/FOC/ZONE/FLOW 80%/17%/3%/0%
+afterglow      typist deepest 4h f107.3  8h f126.3  R 371  fervor IDLE/FOC/ZONE/FLOW 4%/10%/19%/67%
+afterglow2     burst  deepest 4h f82.5  8h f100.0  R 242  fervor IDLE/FOC/ZONE/FLOW 78%/19%/3%/0%
+afterglow2     typist deepest 4h f108.3  8h f129.3  R 411  fervor IDLE/FOC/ZONE/FLOW 2%/6%/14%/78%
+grace8below60  burst  deepest 4h f81.8  8h f99.8  R 240  fervor IDLE/FOC/ZONE/FLOW 72%/17%/9%/2%
+grace8below60  typist deepest 4h f107.3  8h f128.8  R 411  fervor IDLE/FOC/ZONE/FLOW 5%/13%/21%/62%

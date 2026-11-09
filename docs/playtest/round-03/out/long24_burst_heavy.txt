@@ -1,0 +1,18 @@
+
+=== long run burst, 24 h, policy stall8, 3 seeds ===
+seed1 retires: 0h47 f30 +13 (47m), 2h27 f60 +66 (100m), 3h50 f80 +71 (83m), 5h01 f90 +44 (71m), 6h33 f98 +38 (92m), 7h48 f100 +10 (75m), 9h33 f110 +54 (105m), 11h58 f112 +11 (145m), 14h23 f113 +6 (145m), 16h22 f117 +24 (119m), 18h51 f118 +6 (149m), 20h35 f120 +12 (104m), 23h55 f121 +6 (200m)
+  4h00: deepest f82 (80-87)  lifetime R 150  fame x10.0  retires in window 2.7  avg gain +58  avg run 80m
+  8h00: deepest f100 (100-100)  lifetime R 242  fame x21.7  retires in window 3.3  avg gain +28  avg run 77m
+ 12h00: deepest f108 (105-112)  lifetime R 287  fame x30.3  retires in window 2.0  avg gain +22  avg run 108m
+ 16h00: deepest f112 (110-115)  lifetime R 302  fame x33.6  retires in window 2.0  avg gain +7  avg run 111m
+ 20h00: deepest f115 (113-118)  lifetime R 323  fame x39.1  retires in window 1.7  avg gain +12  avg run 128m
+ 24h00: deepest f118 (116-121)  lifetime R 343  fame x44.5  retires in window 2.3  avg gain +8  avg run 139m
+
+=== long run heavy, 24 h, policy stall8, 3 seeds ===
+seed1 retires: 1h17 f70 +112 (77m), 2h14 f100 +130 (57m), 4h08 f130 +177 (114m), 6h03 f140 +69 (115m), 7h53 f145 +36 (110m), 9h32 f150 +37 (99m), 11h30 f156 +47 (118m), 13h13 f160 +32 (103m), 16h17 f165 +41 (184m), 18h08 f167 +17 (111m), 21h07 f168 +8 (179m), 23h37 f169 +9 (150m)
+  4h00: deepest f123 (118-130)  lifetime R 242  fame x21.7  retires in window 2.0  avg gain +121  avg run 73m
+  8h00: deepest f140 (136-145)  lifetime R 490  fame x112.5  retires in window 3.3  avg gain +77  avg run 97m
+ 12h00: deepest f155 (154-156)  lifetime R 590  fame x197.9  retires in window 2.0  avg gain +50  avg run 104m
+ 16h00: deepest f161 (160-163)  lifetime R 643  fame x263.8  retires in window 1.3  avg gain +39  avg run 106m
+ 20h00: deepest f165 (162-167)  lifetime R 681  fame x326.9  retires in window 1.7  avg gain +26  avg run 150m
+ 24h00: deepest f167 (163-170)  lifetime R 701  fame x365.5  retires in window 1.7  avg gain +12  avg run 183m

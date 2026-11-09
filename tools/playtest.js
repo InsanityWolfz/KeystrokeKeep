@@ -14,6 +14,8 @@ for (let i = 2; i < process.argv.length; i++) {
 const MIN = +args.min || 120, PROFILE = args.profile || 'typist', GLANCE = +args.glance || 60;
 const STRAT = args.strategy || 'smart', STUCK = (+args.stuck || 8) * 60, SEED = +args.seed || 1;
 const SESSIONS = +args.sessions || 1, OFFLINE_H = +args.offline || 0;
+const RETIRE = args.retire || 'stall'; // stall: after --stuck min without a new record; nudge: like the in-game nudge (gain>=30 after 25 min) or stall
+const OMEN = args.omen || 'first'; // first | none | random
 const KK = load({ seed: SEED, bal: args.bal ? JSON.parse(args.bal) : undefined, demo: !!args.demo });
 const S = () => KK.S, A = KK.actions, D = KK.DATA, F = KK.F, U = KK.U;
 KK.world.reset();
@@ -129,6 +131,13 @@ function greedySpend(random) {
     if (!doBuy(pick)) break;
   }
 }
+function pickOmen() {
+  const s = S();
+  if (!s.omenOffer) return;
+  const id = OMEN === 'none' ? null : OMEN === 'random' ? s.omenOffer[Math.floor(rnd() * s.omenOffer.length)] : s.omenOffer[0];
+  A.pickOmen(id);
+  if (id) ev(`omen: ${id}`);
+}
 function pickRelic() {
   const s = S();
   if (!s.relicOffer) return;
@@ -143,6 +152,7 @@ function glance() {
   const meaningful = before.length > 0;
   if (!meaningful) { emptyGlances++; curDrought += GLANCE; maxDrought = Math.max(maxDrought, curDrought); } else curDrought = 0;
   pickRelic();
+  pickOmen();
   if (STRAT === 'smart') smartSpend(); else greedySpend(STRAT === 'random');
   // golden rat: a glancing player catches it if it's on screen
   if (KK.world.rat && KK.world.catchRat) { KK.world.catchRat(); rats++; }
@@ -160,7 +170,8 @@ function step() {
   if (s.sparks >= m.sparkCap - 0.5) { sparkCapTime += dt; }
   if (t >= nextGlance) { nextGlance = t + GLANCE; glance(); }
   if (s.maxFloorRun > lastMax) { longestStall = Math.max(longestStall, t - lastMaxT); lastMax = s.maxFloorRun; lastMaxT = t; }
-  if (t - lastMaxT > STUCK && A.canRetire()) {
+  const nudge = RETIRE === 'nudge' && A.renownGain() >= 30 && (t - runStart > 25 * 60 || S().retires === 0 && s.maxFloorRun >= 40);
+  if ((t - lastMaxT > STUCK || nudge) && A.renownGain() > 0) {
     const gain = A.retire();
     retires.push({ at: t, runMin: (t - runStart) / 60, maxFloor: lastMax, gain });
     ev(`>>> RETIRE #${s.retires} from floor ${lastMax} +${gain} renown (lifetime ${s.renownLifetime})`);

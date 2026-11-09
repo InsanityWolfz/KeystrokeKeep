@@ -1,0 +1,1 @@
+embertide  idle s1: floor@3h 65 floor@6h 87 renownLife 180 embers+ws 408 6/6/5/4 wipes 25 marks {"50":"1.93h","75":"3.90h"}

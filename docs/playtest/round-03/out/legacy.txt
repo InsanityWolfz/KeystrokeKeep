@@ -1,0 +1,12 @@
+Legacy prices: lineage 2/20lv=420; treasury 2/20lv=420; quartermaster 6/max1=6; veterans 3/max10=120; headstart 3/max8=80; zeal 4/max5=40; recruiter 8/max1=8; campfire 4/max4=28; battery 3/max3=15; collector 20/max1=20
+Sum of every first level: 55
+Cost to max every capped item: 317
+budget  13 (buy-all loop): 4/10 kinds, left 0: {"lineage":1,"treasury":1,"quartermaster":1,"veterans":1}
+budget  28 (buy-all loop): 7/10 kinds, left 0: {"lineage":1,"treasury":1,"quartermaster":1,"veterans":1,"headstart":1,"zeal":1,"recruiter":1}
+budget  30 (buy-all loop): 7/10 kinds, left 2: {"lineage":1,"treasury":1,"quartermaster":1,"veterans":1,"headstart":1,"zeal":1,"recruiter":1}
+budget  61 (buy-all loop): 10/10 kinds, left 2: {"lineage":2,"treasury":1,"quartermaster":1,"veterans":1,"headstart":1,"zeal":1,"recruiter":1,"campfire":1,"battery":1,"collector":1}
+budget 112 (buy-all loop): 10/10 kinds, left 3: {"lineage":3,"treasury":3,"quartermaster":1,"veterans":3,"headstart":2,"zeal":2,"recruiter":1,"campfire":2,"battery":2,"collector":1}
+budget 150 (buy-all loop): 10/10 kinds, left 3: {"lineage":4,"treasury":3,"quartermaster":1,"veterans":3,"headstart":3,"zeal":3,"recruiter":1,"campfire":3,"battery":3,"collector":1}
+budget 300 (buy-all loop): 10/10 kinds, left 3: {"lineage":6,"treasury":6,"quartermaster":1,"veterans":6,"headstart":6,"zeal":5,"recruiter":1,"campfire":4,"battery":3,"collector":1}
+renownFor: f20=3 f25=8 f30=13 f35=21 f39=28 f40=30 f50=51 f60=79 f70=112 f80=150 f90=194 f100=242 f110=296 f120=355 f150=561 f200=1003
+fame: R13=x1.5 R30=x2.1 R60=x3.6 R100=x6.0 R150=x10.0 R200=x15.6 R300=x33.1 R400=x64.2 R500=x117.8 R750=x469.2 R1000=x1679.1

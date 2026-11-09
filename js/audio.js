@@ -132,7 +132,12 @@
   let step = 0, nextT = 0, timer = null;
   function startMusic() {
     nextT = A.ctx.currentTime + 0.1;
-    timer = setInterval(schedule, 60);
+    // the scheduler only runs while music is actually audible
+    setInterval(() => {
+      const want = A.ready && A.ctx.state === 'running' && KK.S.settings.music;
+      if (want && !timer) { nextT = A.ctx.currentTime + 0.1; timer = setInterval(schedule, 60); }
+      if (!want && timer) { clearInterval(timer); timer = null; }
+    }, 1000);
   }
   function schedule() {
     if (!A.ready) return;

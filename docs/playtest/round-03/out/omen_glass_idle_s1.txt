@@ -1,0 +1,1 @@
+glass      idle s1: floor@3h 80 floor@6h 99 renownLife 222 embers+ws 403 5/4/4/3 wipes 14 marks {"50":"1.21h","75":"2.75h"}

@@ -1,0 +1,1 @@
+storm      typist s2: floor@3h 104 floor@6h 126 renownLife 393 embers+ws 3016 9/9/8/6 wipes 7 marks {"50":"0.62h","75":"1.10h","100":"2.58h","110":"3.19h","120":"4.80h"}

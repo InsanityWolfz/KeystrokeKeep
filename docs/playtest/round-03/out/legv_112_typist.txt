@@ -1,0 +1,10 @@
+=== Legacy value: 112 Renown (record f70), run 2, typist, 4 seeds: floor at 10/20/30/60 min ===
+buyAll     f63.5 / f77.3 / f82.0 / f90.5   {"lineage":3,"treasury":3,"quartermaster":1,"veterans":3,"headstart":2,"zeal":2,"recruiter":1,"campfire":2,"battery":2,"collector":1} left 3
+lineageOnly f56.0 / f76.5 / f83.8 / f94.0   {"lineage":10} left 2
+lin+tre    f60.8 / f79.5 / f86.8 / f96.5   {"lineage":7,"treasury":7} left 0
+vet+lin    f58.8 / f75.0 / f80.5 / f89.0   {"veterans":9,"lineage":3} left 1
+vet2+lin   f55.5 / f75.3 / f81.3 / f91.3   {"veterans":2,"lineage":9} left 14
+head+lin   f49.0 / f71.0 / f78.3 / f87.8   {"headstart":8,"lineage":5} left 2
+head2+lin  f57.0 / f74.8 / f81.8 / f91.3   {"headstart":2,"lineage":9} left 14
+bat3+lin   f56.0 / f76.5 / f83.3 / f93.0   {"battery":3,"lineage":9} left 7
+nothing    f48.3 / f67.0 / f74.5 / f83.5   {} left 112

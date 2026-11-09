@@ -58,10 +58,11 @@
   function makeEnemy(key, x, floor, opts = {}) {
     const def = D.MONSTERS[key];
     const isBoss = !!def.boss;
-    const hp = F.enemyHp(floor) * def.hp * (isBoss ? 9 : 1) * (opts.hpMult || 1);
+    const em = KK.mods();
+    const hp = F.enemyHp(floor) * def.hp * (isBoss ? 9 : 1) * (opts.hpMult || 1) * em.eHp;
     const e = {
       kind: 'enemy', key, def, uid: W.id++, x, y: GROUND - (def.fly ? 9 : 0),
-      hp, maxHp: hp, atk: F.enemyAtk(floor) * def.atk * (isBoss ? 2.4 : 1),
+      hp, maxHp: hp, atk: F.enemyAtk(floor) * def.atk * (isBoss ? 2.4 : 1) * em.eAtk,
       gold: F.enemyGold(floor) * def.gold * (isBoss ? 14 : 1),
       atkT: U.rand(0.6, 1.4), atkSpd: isBoss ? 1.6 : 1.3,
       boss: isBoss, dead: false, active: false, flash: 0, kb: 0, stun: 0, anim: Math.random() * 10, spawnT: 0, lunge: 0, hits: 0,
@@ -140,10 +141,18 @@
     if (h.hp <= 0) {
       h.hp = 0; h.dead = true;
       KK.emit('heroDown', { h });
+      W.sanctuaryReact();
       if (!W.heroes.some((x) => !x.dead)) W.wipe();
     }
   };
 
+  /** Sister Pell answers a crisis on her own: a free Sanctuary, then a long cooldown. */
+  W.sanctuaryReact = function () {
+    const c = W.heroes.find((x) => x.id === 'cleric' && !x.dead);
+    if (!c || c.ultCd > 0) return;
+    c.ultCd = 25;
+    W.castUlt(c, true);
+  };
   W.healHero = function (h, amt, src) {
     if (h.dead) return;
     const before = h.hp;
@@ -163,7 +172,7 @@
   // ---------------------------------------------------------------- ultimates
   W.ultTurn = 'knight';
   W.passUlt = function () {
-    const ids = W.heroes.map((h) => h.id);
+    const ids = W.heroes.filter((h) => h.id !== 'cleric').map((h) => h.id);
     if (!ids.length) return;
     const i = ids.indexOf(W.ultTurn);
     W.ultTurn = ids[(i + 1) % ids.length];
@@ -215,6 +224,7 @@
   KK.on('hotkey', () => {
     const h = W.heroes.find((x) => x.id === W.ultTurn && !x.dead) || W.heroes.find((x) => !x.dead);
     if (h && W.enemies.some((e) => !e.dead && e.active)) { W.castUlt(h, true); W.passUlt(); }
+    else W.hotkeyBank = Math.min(3, (W.hotkeyBank || 0) + 1);
   });
 
   // ---------------------------------------------------------------- main update
@@ -302,8 +312,10 @@
       walkParty(dt, speedMult);
     }
 
+    if (W.hotkeyBank > 0 && W.enemies.some((e) => !e.dead && e.active)) { W.hotkeyBank--; KK.emit('hotkey'); }
+    S.runTime = (S.runTime || 0) + dt;
     // heroes
-    const turnHolder = W.heroes.find((h) => h.id === W.ultTurn);
+    const turnHolder = W.heroes.find((h) => h.id === W.ultTurn && h.id !== 'cleric');
     if (!turnHolder || turnHolder.dead) W.passUlt();
     for (const h of W.heroes) {
       if (h.dead) continue;
@@ -319,8 +331,8 @@
         let want = false;
         if (h.id === 'cleric') want = W.heroes.some((o) => o.dead || o.hp / o.maxHp < (W.boss && !W.boss.dead ? 0.8 : 0.55));
         else want = W.enemies.some((e) => !e.dead && e.active && e.x - h.x <= Math.max(def.range, 60));
-        if (!want || h.ultCd > 0) W.passUlt();
-        else if (S.sparks >= cost) { W.castUlt(h); W.passUlt(); }
+        if (h.ultCd > 0) W.passUlt();
+        else if (want && S.sparks >= cost) { W.castUlt(h); W.passUlt(); }
       }
 
       h.atkT -= dt * m.aspd * speedMult;
@@ -426,6 +438,7 @@
           if (e.boss && e.swings % 4 === 0) {
             for (const h of W.heroes) if (!h.dead) W.damageHero(h, e.atk * 0.6, e);
             KK.emit('bossSlam', { e });
+            if (W.heroes.some((h) => !h.dead && h.hp / h.maxHp < 0.5)) W.sanctuaryReact();
           } else {
             W.damageHero(front, e.atk, e);
           }
@@ -497,11 +510,17 @@
 
   W.nextFloor = function () {
     const S = KK.S;
-    // demo: after the cap boss falls, the party keeps farming the floors just before it
+    // demo: every delve ends on the floor-40 boss. Once it falls this run, the party farms 37-39
+    // (the depths are sealed) until you re-delve. Best time to floor 40 is the demo's score.
     if (KK.DEMO_CAP && S.floor >= KK.DEMO_CAP) {
-      if (!S.demoDone) { S.demoDone = true; KK.emit('demoComplete'); }
+      if (!S.runCapCleared) {
+        S.runCapCleared = true;
+        const tm = S.runTime || 0;
+        if (tm > 0 && (!S.bestCapTime || tm < S.bestCapTime)) S.bestCapTime = tm;
+        if (!S.demoDone) { S.demoDone = true; KK.emit('demoComplete'); } else KK.emit('demoSealed', { time: tm });
+      }
       S.floor = KK.DEMO_CAP - 4;
-    } else if (KK.DEMO_CAP && S.demoDone && S.floor >= KK.DEMO_CAP - 1) S.floor = KK.DEMO_CAP - 4;
+    } else if (KK.DEMO_CAP && S.runCapCleared && S.floor >= KK.DEMO_CAP - 1) S.floor = KK.DEMO_CAP - 4;
     S.floor++;
     if (S.floor > S.maxFloorRun) S.maxFloorRun = S.floor;
     if (S.floor > S.maxFloorEver) S.maxFloorEver = S.floor;

@@ -1,0 +1,1 @@
+gilded     typist s1: floor@3h 102 floor@6h 124 renownLife 380 embers+ws 588 9/9/9/6 wipes 3 marks {"50":"0.55h","75":"1.09h","100":"2.59h","110":"3.73h","120":"5.32h"}

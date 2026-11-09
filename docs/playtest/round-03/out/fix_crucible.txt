@@ -1,0 +1,8 @@
+typist default        deepest 1h00 f58.3 | 4h00 f107.3 | 8h00 f128.8
+typist crucibleRush   deepest 1h00 f51.8 | 4h00 f104.5 | 8h00 f129.0
+typist noCrucible     deepest 1h00 f59.0 | 4h00 f107.8 | 8h00 f124.8
+typist overchargeOnly deepest 1h00 f58.0 | 4h00 f106.5 | 8h00 f122.8
+idle   default        deepest 1h00 f32.3 | 4h00 f80.3 | 8h00 f96.8
+idle   crucibleRush   deepest 1h00 f31.8 | 4h00 f77.5 | 8h00 f96.3
+idle   noCrucible     deepest 1h00 f30.0 | 4h00 f76.8 | 8h00 f95.0
+idle   overchargeOnly deepest 1h00 f30.0 | 4h00 f79.8 | 8h00 f98.5

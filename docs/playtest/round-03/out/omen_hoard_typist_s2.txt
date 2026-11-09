@@ -1,0 +1,1 @@
+hoard      typist s2: floor@3h 101 floor@6h 119 renownLife 331 embers+ws 2585 9/9/8/6 wipes 8 marks {"50":"0.76h","75":"1.24h","100":"2.81h","110":"4.13h"}

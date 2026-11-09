@@ -1,0 +1,1 @@
+deep       typist s2: floor@3h 103 floor@6h 119 renownLife 432 embers+ws 660 9/9/9/6 wipes 10 marks {"50":"0.76h","75":"1.27h","100":"2.60h","110":"3.91h"}

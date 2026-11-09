@@ -27,11 +27,11 @@
     let last = performance.now();
     KK.targetFps = function () {
       if (KK.powerState === 'off') return 0; // screen locked / system suspending
-      const set = +KK.S.settings.fps || 30;
+      const set = +KK.S.settings.fps || 24;
       let fps = set;
       if (KK.onBattery) fps = Math.min(fps, 20);
       // nobody's typing and nothing exciting is happening: drop to a slow idle animation
-      if (KK.lastInputAgo() > 45 && !W.boss && KK.fervorTier() === 0 && !KK.fx.busy()) fps = Math.min(fps, 12);
+      if (KK.lastInputAgo() > 45 && !W.boss && KK.fervorTier() === 0 && !KK.fx.busy()) fps = Math.min(fps, 10);
       return fps;
     };
     // A sleeping timer loop (not requestAnimationFrame, which wakes at the monitor's refresh
@@ -59,7 +59,7 @@
     setTimeout(frame, 16);
 
     setInterval(KK.save, 10000);
-    window.addEventListener('beforeunload', () => { if (!KK.resetting) KK.save(); });
+    window.addEventListener('beforeunload', () => { if (!KK.resetting) KK.save(true); });
     let hiddenAt = 0;
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) { hiddenAt = Date.now(); KK.save(); }

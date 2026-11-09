@@ -13,10 +13,12 @@
       heroes: { knight: 1, archer: 0, mage: 0, cleric: 0 },
       forge: {}, workshop: {}, legacy: {},
       relics: [], relicOffer: null, relicQueue: [],
+      omen: null, omenOffer: null, epicGiven: false, secondWind: 0,
+      demoDone: false, runCapCleared: false, bestCapTime: 0, runTime: 0,
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
       stats: { kills: 0, bossKills: 0, keys: 0, clicks: 0, ults: 0, goldEarned: 0, playTime: 0, chests: 0, rats: 0, flowTime: 0, wipes: 0 },
-      settings: { sound: true, music: false, volume: 0.3, keySound: false, calm: false, fps: 30, size: 'auto', countInput: true },
+      settings: { sound: true, music: false, volume: 0.3, keySound: false, calm: false, fps: 24, size: 'auto', countInput: true },
       tutorial: {},
       lastSave: Date.now(),
       created: Date.now(),
@@ -24,6 +26,7 @@
   };
 
   KK.S = KK.newState();
+  KK.STORE_URL = ''; // e.g. 'steam://openurl/https://store.steampowered.com/app/<appid>' once the page exists
 
   // Next Fest demo mode: ?demo in the browser, --kk-demo / KK_DEMO=1 for the desktop build.
   KK.DEMO_CAP = (function () {
@@ -57,7 +60,8 @@
     isBossFloor: (f) => f % 10 === 0,
     bossFor: (f) => {
       // past the Hollow, the Void throws every old boss back at you, hollowed out
-      if (f >= 70) { const all = ['hollow', 'ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; return all[(Math.floor((f - 70) / 10) + 3 * (KK.S.retires || 0)) % all.length]; }
+      if (f === 70) return 'hollow';
+      if (f >= 80) { const six = ['ratking', 'boneking', 'broodmother', 'warlord', 'embergolem', 'magmalord']; return six[(Math.floor((f - 80) / 10) + 2 * (KK.S.retires || 0)) % six.length]; }
       const b = F.biomeOf(f);
       const idx = Math.floor(((f - b.from) % 20) / 10);
       return b.bosses[Math.min(idx, b.bosses.length - 1)];
@@ -74,12 +78,13 @@
       dmg: 1, hp: 1, gold: 1, walk: 1, aspd: 1, ultCost: 1, ultPow: 1, fervDecay: 1, fervGain: 1,
       sparkCap: 150, chest: 0.08, offline: 0.4, offlineCap: 0.8, emberGain: 1, crit: 0.06, critMult: 2, lifesteal: 0, echo: 0, flowBonus: 0,
       keyCoin: 0, hotkey: false, knightHp: 1, knightDmg: 1, heroCost: 1, startLvl: 0, startFloor: 1,
-      relicChoices: 3, auto: false, idlePow: 0,
+      relicChoices: 3, auto: false, idlePow: 0, secondWind: 0, eHp: 1, eAtk: 1, renownMult: 1,
     };
     for (const r of S.relics) { const def = D.RELICS.find((x) => x.id === r); if (def) def.apply(m); }
     for (const def of D.FORGE) { const l = S.forge[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.WORKSHOP) { const l = S.workshop[def.id] || 0; if (l) def.apply(m, l); }
     for (const def of D.LEGACY) { const l = S.legacy[def.id] || 0; if (l) def.apply(m, l); }
+    if (S.omen) { const o = D.OMENS.find((x) => x.id === S.omen); if (o) o.apply(m); }
     m.offline = Math.min(m.offlineCap, m.offline); // closing the game must never beat running it
     // Fame: +3% per lifetime Renown, compounding gently so late retires still push the wall
     const fame = (1 + 0.03 * S.renownLifetime) * Math.pow(1.004, S.renownLifetime);
@@ -113,6 +118,7 @@
   KK.addActivity = function (kind) {
     const S = KK.S, m = KK.mods();
     if (!S.settings.countInput) return;
+    if (m.secondWind > 0 && KK.lastInputAgo() >= 60 && kind === 'key') S.secondWind = m.secondWind;
     lastInputT = KK.simTime || 0;
     const before = KK.fervorTier();
     if (kind === 'key') {
@@ -123,7 +129,9 @@
       S.fervor = Math.min(100, S.fervor + 0.9 * m.fervGain);
     }
     const cap = m.sparkCap;
-    if (S.sparks < cap) S.sparks = Math.min(cap, S.sparks + 1);
+    let gain = 1;
+    if (S.secondWind > 0 && kind === 'key') { S.secondWind--; gain += 2; }
+    if (S.sparks < cap) S.sparks = Math.min(cap, S.sparks + gain);
     if (m.keyCoin > 0 && kind === 'key' && Math.random() < m.keyCoin) {
       const g = Math.max(S.incomeRate * 3, F.enemyGold(S.floor) * m.gold);
       KK.gainGold(g, 'keycoin');
@@ -230,13 +238,25 @@
     return true;
   };
 
+  A.pickOmen = (id) => {
+    const S = KK.S;
+    if (!S.omenOffer || (id && !S.omenOffer.includes(id))) return false;
+    S.omen = id || null;
+    S.omenOffer = null;
+    KK.dirty();
+    const m = KK.mods();
+    for (const h of D.PARTY_ORDER) if (S.heroes[h] && S.heroes[h] < 1 + m.startLvl) S.heroes[h] = 1 + m.startLvl;
+    KK.dirty();
+    KK.emit('omenPicked', { id });
+    return true;
+  };
   A.rollRelics = () => {
     const S = KK.S, m = KK.mods();
     const pool = D.RELICS.filter((r) => !(r.unique && S.relics.includes(r.id)));
     const out = [];
-    if (S.retires === 0 && S.floor === 30) {
+    if (!S.epicGiven && S.floor === 30) {
       const epics = pool.filter((r) => r.rar === 'epic');
-      if (epics.length) { const e = U.pick(epics); out.push(e.id); pool.splice(pool.indexOf(e), 1); }
+      if (epics.length) { const e = U.pick(epics); out.push(e.id); pool.splice(pool.indexOf(e), 1); S.epicGiven = true; }
     }
     while (out.length < m.relicChoices && pool.length) {
       const pick = U.weighted(pool, (r) => D.RARITY[r.rar].w);
@@ -257,14 +277,29 @@
     return true;
   };
 
-  A.renownGain = () => Math.max(0, F.renownFor(KK.S.maxFloorRun) - F.renownFor(KK.S.renownFloor || 0));
+  A.renownGain = () => {
+    const S = KK.S;
+    // demo: the record can't go past 40, so each re-clear of floor 40 pays a small, repeatable +6
+    const record = Math.max(0, Math.floor((F.renownFor(S.maxFloorRun) - F.renownFor(S.renownFloor || 0)) * KK.mods().renownMult));
+    if (KK.DEMO_CAP && S.demoDone) return Math.max(record, S.runCapCleared ? 6 : 0);
+    return record;
+  };
   A.retireTarget = () => { const S = KK.S; let f = Math.max(20, S.maxFloorRun + 1); while (F.renownFor(f) - F.renownFor(S.renownFloor || 0) <= 0 && f < 2000) f++; return f; };
-  A.canRetire = () => A.renownGain() > 0;
+  // demo: once the cap is beaten, a 0-Renown "re-delve" restarts the run (new relics, beat your best time)
+  A.canRedelve = () => !!(KK.DEMO_CAP && KK.S.demoDone && KK.S.maxFloorRun >= 20);
+  A.canRetire = () => A.renownGain() > 0 || A.canRedelve();
+  /** What the retire button should ask for when nothing can be earned yet. */
+  A.retireHint = () => (KK.DEMO_CAP && KK.S.demoDone ? 'CLEAR FLOOR ' + KK.DEMO_CAP + ' AGAIN FOR +6 RENOWN' : 'REACH FLOOR ' + A.retireTarget() + ' TO EARN RENOWN');
   A.retire = () => {
     const S = KK.S;
     const gain = A.renownGain();
-    if (gain <= 0) return false;
+    if (gain <= 0 && !A.canRedelve()) return false;
     S.renown += gain; S.renownLifetime += gain; S.retires++;
+    S.runTime = 0; S.runCapCleared = false;
+    S.incomeRate = 0; S.incomeAvg = 0; // a fresh delve doesn't keep the old run's income
+    // Delve Omens: from the 2nd retire on, the next delve offers 3 omens (not in the demo)
+    S.omen = null;
+    S.omenOffer = !KK.DEMO_CAP && S.retires >= 2 ? U.shuffle(D.OMENS.map((o) => o.id)).slice(0, 3) : null;
     S.renownFloor = Math.max(S.renownFloor || 0, S.maxFloorRun);
     S.gold = 0; S.forge = {}; S.relics = []; S.relicOffer = null; S.relicQueue = []; S.bossBlock = 0;
     KK.dirty();
@@ -273,21 +308,29 @@
     S.floor = m.startFloor; S.maxFloorRun = m.startFloor;
     KK.dirty();
     KK.emit('retired', { gain });
-    return gain;
+    return gain || 'redelve';
   };
 
   // ---------------------------------------------------------------- save/load
-  KK.save = function () {
-    if (typeof localStorage === 'undefined' || KK.resetting) return;
+  // Desktop build: saves go to a JSON file (atomic write + rolling backups) through the
+  // preload bridge, so they survive cache clears and can sync with Steam Cloud later.
+  // Browser build: localStorage. A desktop player's old localStorage save is migrated once.
+  const fileStore = () => (root.kkNative && root.kkNative.saveFile ? root.kkNative : null);
+  KK.save = function (sync) {
+    if (KK.resetting) return;
     try {
       KK.S.lastSave = Date.now();
-      localStorage.setItem(SAVE_KEY, JSON.stringify(KK.S));
+      const json = JSON.stringify(KK.S);
+      const fs = fileStore();
+      if (fs) { if (sync === true) fs.saveFileSync(json); else fs.saveFile(json); return; }
+      if (typeof localStorage !== 'undefined') localStorage.setItem(SAVE_KEY, json);
     } catch (e) { console.warn('[KK] save failed', e); }
   };
   KK.load = function () {
-    if (typeof localStorage === 'undefined') return false;
     try {
-      const raw = localStorage.getItem(SAVE_KEY);
+      const fs = fileStore();
+      let raw = fs ? fs.loadFile() : null;
+      if (!raw && typeof localStorage !== 'undefined') raw = localStorage.getItem(SAVE_KEY);
       if (!raw) return false;
       const data = JSON.parse(raw);
       const fresh = KK.newState();
@@ -310,6 +353,7 @@
     } catch (e) { console.warn('[KK] load failed', e); return false; }
   };
   KK.wipeSave = function () {
+    try { const fs = fileStore(); if (fs) fs.wipeFile(); } catch (e) { /* ignore */ }
     try { localStorage.removeItem(SAVE_KEY); } catch (e) { /* ignore */ }
   };
 })();

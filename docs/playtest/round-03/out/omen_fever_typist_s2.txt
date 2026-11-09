@@ -1,0 +1,1 @@
+fever      typist s2: floor@3h 105 floor@6h 125 renownLife 361 embers+ws 1168 9/9/9/6 wipes 4 marks {"50":"0.55h","75":"1.02h","100":"2.43h","110":"3.43h","120":"4.77h"}

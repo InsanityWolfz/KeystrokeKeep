@@ -1,0 +1,1 @@
+typist s2 180m: boss fights with Cleric 21, with a Sanctuary 0 (0%); boss-fight time 22.9 min, someone <80% 16% of it; Cleric holds the ult turn 4.1% of boss time (1697 frames); boss slams 193, avg Sparks at slam 17, slams with >=40 Sparks 14; Sanctuary total 1 (in boss fights 0)

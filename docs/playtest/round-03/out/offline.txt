@@ -1,0 +1,12 @@
+=== offline payout (main.js: min(incomeRate, incomeAvg) x offline) vs online, 3 seeds ===
+typist fresh             offline/online avg 0.10x  (closing at the best moment: 0.20x)
+typist campfire 4        offline/online avg 0.21x  (closing at the best moment: 0.40x)
+typist campfire 4 + oil  offline/online avg 0.23x  (closing at the best moment: 0.49x)
+idle   fresh             offline/online avg 0.19x  (closing at the best moment: 0.40x)
+idle   campfire 4        offline/online avg 0.34x  (closing at the best moment: 0.71x)
+idle   campfire 4 + oil  offline/online avg 0.37x  (closing at the best moment: 0.77x)
+
+--- close the game 2/5/10 min after a retire (stall-8 typist, 2nd run) ---
+seed 1: 2m: inc 7.9K avg 1.9K pay/online 0.01x | 5m: inc 61.0K avg 16.4K pay/online 0.02x | 10m: inc 197.0K avg 66.2K pay/online 0.03x | 20m: inc 743.2K avg 223.3K pay/online 0.05x
+seed 2: 2m: inc 29.2K avg 6.2K pay/online 0.01x | 5m: inc 597.4K avg 129.7K pay/online 0.01x | 10m: inc 824.6K avg 399.7K pay/online 0.04x | 20m: inc 2.27M avg 948.4K pay/online 0.15x
+seed 3: 2m: inc 240.6K avg 42.2K pay/online 0.00x | 5m: inc 2.64M avg 815.4K pay/online 0.01x | 10m: inc 6.97M avg 4.97M pay/online 0.02x | 20m: inc 24.12M avg 11.51M pay/online 0.09x

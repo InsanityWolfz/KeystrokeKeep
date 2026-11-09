@@ -1,0 +1,13 @@
+=== Workshop value: typist, fresh save, 180 min, no retire, 4 seeds ===
+none          f@60m 51.8  f@180m 69.8  goldEarned 154.93M  embers earned 6722  ws(seed1) {}
+default       f@60m 57.8  f@180m 78.5  goldEarned 1.54B  embers earned 11394  ws(seed1) {"crucible":7,"overcharge":7,"kindling":7,"static":4}
+crucibleOnly  f@60m 51.8  f@180m 69.8  goldEarned 154.93M  embers earned 14374  ws(seed1) {"crucible":10}
+overOnly      f@60m 58.0  f@180m 78.3  goldEarned 810.76M  embers earned 6674  ws(seed1) {"overcharge":8}
+kindOnly      f@60m 52.3  f@180m 70.5  goldEarned 188.87M  embers earned 6703  ws(seed1) {"kindling":8}
+staticOnly    f@60m 57.0  f@180m 76.8  goldEarned 1.40B  embers earned 6613  ws(seed1) {"static":6}
+crucibleFirst f@60m 57.8  f@180m 78.5  goldEarned 1.54B  embers earned 11394  ws(seed1) {"crucible":7,"overcharge":7,"kindling":7,"static":4}
+overFirst     f@60m 58.5  f@180m 79.3  goldEarned 1.77B  embers earned 11506  ws(seed1) {"crucible":7,"overcharge":7,"kindling":7,"static":4}
+staticFirst   f@60m 57.3  f@180m 78.8  goldEarned 1.67B  embers earned 11486  ws(seed1) {"crucible":7,"static":5,"overcharge":7,"kindling":6}
+noCrucible    f@60m 59.0  f@180m 80.3  goldEarned 2.62B  embers earned 6566  ws(seed1) {"overcharge":7,"kindling":6,"static":4}
+noOver        f@60m 56.3  f@180m 75.3  goldEarned 1.14B  embers earned 12273  ws(seed1) {"crucible":8,"kindling":8,"static":5}
+noStatic      f@60m 56.5  f@180m 78.3  goldEarned 1.49B  embers earned 11652  ws(seed1) {"crucible":8,"overcharge":7,"kindling":7}

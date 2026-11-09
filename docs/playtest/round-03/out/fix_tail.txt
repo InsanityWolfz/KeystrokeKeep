@@ -1,0 +1,8 @@
+current          typist 8h00 f128 R408 | 16h00 f144 R505 | 24h00 f155 R595 | last 8h: avg gain +24, avg run 125m
+current          idle   8h00 f96 R216 | 16h00 f104 R260 | 24h00 f108 R283 | last 8h: avg gain +6, avg run 133m
+hpTaper122       typist 8h00 f139 R442 | 16h00 f168 R709 | 24h00 f181 R814 | last 8h: avg gain +51, avg run 131m
+hpTaper122       idle   8h00 f96 R216 | 16h00 f105 R265 | 24h00 f113 R315 | last 8h: avg gain +13, avg run 126m
+hpTaper125       typist 8h00 f138 R439 | 16h00 f152 R577 | 24h00 f159 R635 | last 8h: avg gain +16, avg run 121m
+hpTaper125       idle   8h00 f96 R216 | 16h00 f104 R265 | 24h00 f109 R288 | last 8h: avg gain +6, avg run 123m
+renownX2past100  typist 8h00 f153 R864 | 16h00 f1694 R106623 | 24h00 f2900 R10081761 | last 8h: avg gain +6637593, avg run 211m
+renownX2past100  idle   8h00 f96 R216 | 16h00 f105 R288 | 24h00 f117 R446 | last 8h: avg gain +32, avg run 103m

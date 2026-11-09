@@ -1,0 +1,1 @@
+quiet      idle s1: floor@3h 82 floor@6h 96 renownLife 222 embers+ws 50 5/4/4/3 wipes 11 marks {"50":"1.26h","75":"2.70h"}

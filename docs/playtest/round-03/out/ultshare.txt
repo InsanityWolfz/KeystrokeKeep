@@ -1,0 +1,6 @@
+=== damage share from ultimates by Overcharge level (typist, run at a mid-game save, 60 min, 2 seeds) ===
+overcharge  0 (x1.0, cumulative cost 0.0 Embers): ult share all 17%  boss 12%  floor@60m 60.0
+overcharge  8 (x8.2, cumulative cost 4.9K Embers): ult share all 77%  boss 62%  floor@60m 68.5
+overcharge 12 (x23.3, cumulative cost 25.8K Embers): ult share all 87%  boss 84%  floor@60m 76.5
+overcharge 16 (x66.5, cumulative cost 131.2K Embers): ult share all 96%  boss 96%  floor@60m 80.0
+overcharge 20 (x190.0, cumulative cost 664.9K Embers): ult share all 99%  boss 98%  floor@60m 86.0

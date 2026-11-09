@@ -1,0 +1,7 @@
+=== DPS bought by spending a budget on one hero (from level 1), relative to knight ===
+budget 1.0K: knight L26 1.00x  archer L17 0.78x  mage L9 0.44x  cleric L3 6.3
+budget 10.0K: knight L48 1.00x  archer L37 0.91x  mage L26 0.65x  cleric L13 32.0
+budget 1.00M: knight L92 1.00x  archer L81 1.03x  mage L70 0.90x  cleric L54 629.0
+budget 100.00M: knight L136 1.00x  archer L125 1.07x  mage L114 0.99x  cleric L98 5.7K
+budget 10.00B: knight L180 1.00x  archer L169 0.73x  mage L158 0.69x  cleric L143 63.2K
+budget 100.00T: knight L268 1.00x  archer L257 1.12x  mage L246 1.08x  cleric L231 3.91M

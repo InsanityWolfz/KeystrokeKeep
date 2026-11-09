@@ -1,0 +1,3 @@
+normal    maxFloor 41.2  min-to-F30 19.9  ults/run knight 53 archer 98 mage 33 cleric 6
+noult     maxFloor 38.0  min-to-F30 27.7  ults/run knight 0 archer 0 mage 0 cleric 0
+nofervor  maxFloor 31.4  min-to-F30 38.2  ults/run knight 74 archer 99 mage 23 cleric 5

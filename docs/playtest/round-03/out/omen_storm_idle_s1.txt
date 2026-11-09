@@ -1,0 +1,1 @@
+storm      idle s1: floor@3h 69 floor@6h 92 renownLife 194 embers+ws 271 4/4/4/2 wipes 19 marks {"50":"1.89h","75":"3.20h"}

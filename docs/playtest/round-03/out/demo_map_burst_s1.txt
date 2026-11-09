@@ -1,0 +1,91 @@
+=== DEMO MAP profile=burst seed=1 180 min (cap 40)
+  0m  NEW monster Cellar Rat; NEW FOCUSED; NEW ultimate Earthshatter; NEW IN THE ZONE; NEW biome The Crypt; NEW treasure chest
+  1m  NEW monster Crypt Bat
+  2m  NEW monster Skeleton
+  3m  NEW golden rat
+  4m  NEW boss The Rat King f10; WIPE f10
+  5m  NEW hero Wren; NEW buy workshop:crucible; NEW ultimate Arrow Storm
+  6m  NEW relic chest; NEW EPIC offered Hotkey Ring; boss down The Rat King f10
+  7m  pick fang; WIPE f12
+ 10m  WIPE f15
+ 11m  NEW buy forge:blades
+ 13m  WIPE f19
+ 14m  NEW retire unlocked (f20)
+ 15m  NEW buy forge:armor; NEW boss The Bone King f20; WIPE f20
+ 17m  NEW buy forge:purse; NEW buy forge:swift; WIPE f20
+ 19m  WIPE f20
+ 21m  NEW hero Mortimer; NEW buy workshop:overcharge; WIPE f20
+ 23m  RETIRE +3 Renown (lifetime 3); NEW first retire; NEW buy legacy:lineage
+ 26m  WIPE f7
+ 28m  WIPE f10
+ 30m  boss down The Rat King f10; WIPE f11
+ 31m  pick keycap; NEW buy workshop:kindling; boss down The Rat King f10
+ 32m  pick belt
+ 37m  boss down The Bone King f20; NEW biome Mossy Caverns; NEW monster Moss Slime; WIPE f21
+ 38m  pick whetstone
+ 39m  boss down The Bone King f20
+ 40m  pick belt
+ 41m  NEW ultimate Meteor; WIPE f23
+ 42m  NEW buy forge:keen
+ 43m  NEW monster Cave Spider
+ 45m  NEW monster Goblin
+ 46m  NEW hero Sister Pell
+ 48m  NEW boss Brood Mother f30; WIPE f30
+ 51m  boss down Brood Mother f30
+ 52m  pick whetstone
+ 61m  NEW boss Goblin Warlord f40
+ 63m  WIPE f40
+ 67m  boss down Goblin Warlord f40; *** DEMO COMPLETE card ***
+ 68m  pick whetstone; NEW buy workshop:static
+ 69m  RETIRE +27 Renown (lifetime 30); NEW buy legacy:treasury; NEW buy legacy:quartermaster; NEW buy legacy:veterans; NEW buy legacy:headstart; NEW buy legacy:zeal; NEW buy legacy:campfire
+ 70m  boss down The Rat King f10
+ 71m  pick whetstone
+ 73m  boss down The Bone King f20
+ 74m  pick luckycoin
+ 77m  boss down Brood Mother f30
+ 78m  pick coffee
+150m  NEW FLOW STATE
+
+--- every 5 min ---
+  0m  f1 max1 heroes 1 relics 0 renown 0/0 embers 0 retireBtn REACH FLOOR 20
+  5m  f9 max10 heroes 2 relics 0 renown 0/0 embers 8 retireBtn REACH FLOOR 20
+ 10m  f15 max15 heroes 2 relics 1 renown 0/0 embers 44 retireBtn REACH FLOOR 20
+ 15m  f20 max20 heroes 2 relics 1 renown 0/0 embers 77 retireBtn +3
+ 20m  f19 max20 heroes 2 relics 1 renown 0/0 embers 85 retireBtn +3
+ 25m  f5 max5 heroes 1 relics 0 renown 1/3 embers 41 retireBtn REACH FLOOR 21
+ 30m  f10 max10 heroes 2 relics 0 renown 1/3 embers 75 retireBtn REACH FLOOR 21
+ 35m  f18 max18 heroes 2 relics 2 renown 1/3 embers 40 retireBtn REACH FLOOR 21
+ 40m  f22 max22 heroes 3 relics 4 renown 1/3 embers 103 retireBtn +2
+ 45m  f27 max27 heroes 3 relics 4 renown 1/3 embers 55 retireBtn +7
+ 50m  f30 max30 heroes 4 relics 4 renown 1/3 embers 153 retireBtn +10
+ 55m  f34 max34 heroes 4 relics 5 renown 1/3 embers 117 retireBtn +16
+ 60m  f39 max39 heroes 4 relics 5 renown 1/3 embers 57 retireBtn +25
+ 65m  f40 max40 heroes 4 relics 5 renown 1/3 embers 111 retireBtn +27
+ 70m  f9 max9 heroes 2 relics 0 renown 2/30 embers 73 retireBtn REACH FLOOR 41
+ 75m  f24 max24 heroes 3 relics 2 renown 2/30 embers 132 retireBtn REACH FLOOR 41
+ 80m  f35 max35 heroes 4 relics 3 renown 2/30 embers 180 retireBtn REACH FLOOR 41
+ 85m  f38 max39 heroes 4 relics 3 renown 2/30 embers 33 retireBtn REACH FLOOR 41
+ 90m  f37 max39 heroes 4 relics 3 renown 2/30 embers 121 retireBtn REACH FLOOR 41
+ 95m  f37 max39 heroes 4 relics 3 renown 2/30 embers 20 retireBtn REACH FLOOR 41
+100m  f39 max39 heroes 4 relics 3 renown 2/30 embers 120 retireBtn REACH FLOOR 41
+105m  f37 max39 heroes 4 relics 3 renown 2/30 embers 144 retireBtn REACH FLOOR 41
+110m  f39 max39 heroes 4 relics 3 renown 2/30 embers 244 retireBtn REACH FLOOR 41
+115m  f38 max39 heroes 4 relics 3 renown 2/30 embers 87 retireBtn REACH FLOOR 41
+120m  f38 max39 heroes 4 relics 3 renown 2/30 embers 187 retireBtn REACH FLOOR 41
+125m  f39 max39 heroes 4 relics 3 renown 2/30 embers 235 retireBtn REACH FLOOR 41
+130m  f39 max39 heroes 4 relics 3 renown 2/30 embers 66 retireBtn REACH FLOOR 41
+135m  f37 max39 heroes 4 relics 3 renown 2/30 embers 90 retireBtn REACH FLOOR 41
+140m  f37 max39 heroes 4 relics 3 renown 2/30 embers 114 retireBtn REACH FLOOR 41
+145m  f38 max39 heroes 4 relics 3 renown 2/30 embers 150 retireBtn REACH FLOOR 41
+150m  f39 max39 heroes 4 relics 3 renown 2/30 embers 238 retireBtn REACH FLOOR 41
+155m  f38 max39 heroes 4 relics 3 renown 2/30 embers 20 retireBtn REACH FLOOR 41
+160m  f38 max39 heroes 4 relics 3 renown 2/30 embers 108 retireBtn REACH FLOOR 41
+165m  f39 max39 heroes 4 relics 3 renown 2/30 embers 208 retireBtn REACH FLOOR 41
+170m  f38 max39 heroes 4 relics 3 renown 2/30 embers 232 retireBtn REACH FLOOR 41
+175m  f38 max39 heroes 4 relics 3 renown 2/30 embers 16 retireBtn REACH FLOOR 41
+
+DEMO COMPLETE at  67m; after it (112 min): {"firsts":0,"relicOffers":3,"bosses":3,"renown":27,"levels":350,"forge":70,"workshop":7,"legacy":7,"retires":1,"rats":14,"ults":94,"sanct":0}
+Sanctuary casts before the card: 0; ults by hero before the card: {"knight":17,"archer":41,"mage":2}
+final: legacy {"lineage":2,"treasury":1,"quartermaster":1,"veterans":1,"headstart":1,"zeal":1,"campfire":1} workshop {"crucible":4,"overcharge":4,"kindling":4,"static":2} renown 2/30
+legacy rows never bought: recruiter(8), battery(3), collector(20)
+content never seen: mon:imp, mon:golem, mon:magslime, mon:eye, mon:wraith, mon:voidknight, boss:Ember Colossus, boss:Magma Lord, boss:The Hollow

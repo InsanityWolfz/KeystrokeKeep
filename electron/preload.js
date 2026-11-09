@@ -12,4 +12,10 @@ contextBridge.exposeInMainWorld('kkNative', {
   setTrayIcon: (dataURL) => ipcRenderer.send('kk:tray', dataURL),
   syncSettings: (s) => ipcRenderer.send('kk:settings', s),
   quit: () => ipcRenderer.send('kk:quit'),
+  openStore: (url) => ipcRenderer.send('kk:openStore', String(url)),
+  // save file (JSON text only; main validates and writes it atomically)
+  loadFile: () => ipcRenderer.sendSync('kk:loadSave'),
+  saveFile: (json) => ipcRenderer.send('kk:save', String(json)),
+  saveFileSync: (json) => ipcRenderer.sendSync('kk:saveSync', String(json)),
+  wipeFile: () => ipcRenderer.sendSync('kk:wipeSave'),
 });

@@ -191,7 +191,10 @@
 
   const ULT_TXT = { knight: 'EARTHSHATTER!', archer: 'ARROW STORM!', mage: 'METEOR!', cleric: 'SANCTUARY!' };
   KK.on('ult', ({ h, id }) => {
-    FX.text(h.x, h.y - 24, ULT_TXT[id], '#7ee8f6', 1, { life: 1.1, vy: -16 });
+    // an echo (or a quick second cast) updates the same label instead of overprinting it
+    const prev = FX.texts.find((tx) => tx.ultOf === h.uid && tx.life > 0.3);
+    if (prev) { prev.str = ULT_TXT[id].replace('!', '') + ' x2!'; prev.life = prev.max; }
+    else { FX.text(h.x, h.y - 24, ULT_TXT[id], '#7ee8f6', 1, { life: 1.1, vy: -16 }); FX.texts[FX.texts.length - 1].ultOf = h.uid; }
     FX.burst(h.x, h.y - 8, 14, ['#7ee8f6', '#ffffff', '#2f9cb8'], { spd: 70, grav: -30, life: 0.7 });
     FX.light(h.x, h.y - 8, 50, 0.6, '#7ee8f6');
     if (id === 'cleric') {
@@ -200,7 +203,7 @@
       FX.light(W.partyX - 20, 30, 120, 1.2, '#ffe9a0');
     }
   });
-  KK.on('echo', ({ h }) => FX.text(h.x, h.y - 32, 'ECHO!', '#c472ff', 1, { life: 1.2 }));
+  KK.on('echo', () => {});
   KK.on('slamLand', ({ x }) => {
     FX.shake(2, 0.25);
     FX.ring(x, W.GROUND, 3, 75, '#ffe9b0', 0.5, 2);

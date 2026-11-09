@@ -1,0 +1,13 @@
+=== demo variants, 120 min, nudge-or-stall-8 retires, 5 seeds ===
+current              typist demoComplete 32-40m | lifetime R 30-30 | retires 1-1 | after cap: relic offers/h 0.0, embers/h 3898, upgrades/h 28.8 | cap-boss lap NaNm | best run-to-cap NaNm
+current              burst  demoComplete 61-83m | lifetime R 30-30 | retires 1-2 | after cap: relic offers/h 2.2, embers/h 837, upgrades/h 70.8 | cap-boss lap NaNm | best run-to-cap NaNm
+current              idle   demoComplete 75-80m | lifetime R 30-30 | retires 1-2 | after cap: relic offers/h 3.4, embers/h 341, upgrades/h 88.9 | cap-boss lap NaNm | best run-to-cap NaNm
+loopBoss             typist demoComplete 32-40m | lifetime R 30-30 | retires 1-1 | after cap: relic offers/h 160.6, embers/h 6420, upgrades/h 48.8 | cap-boss lap 0.4m | best run-to-cap 10.4m
+loopBoss             burst  demoComplete 61-83m | lifetime R 30-30 | retires 1-2 | after cap: relic offers/h 71.7, embers/h 1904, upgrades/h 90.0 | cap-boss lap 1.0m | best run-to-cap 15.1m
+loopBoss             idle   demoComplete 75-80m | lifetime R 30-30 | retires 1-2 | after cap: relic offers/h 63.2, embers/h 1307, upgrades/h 109.0 | cap-boss lap 1.1m | best run-to-cap 14.0m
+loopBoss+freeRetire  typist demoComplete 32-40m | lifetime R 30-30 | retires 11-12 | after cap: relic offers/h 29.7, embers/h 4420, upgrades/h 336.8 | cap-boss lap 7.9m | best run-to-cap 6.5m
+loopBoss+freeRetire  burst  demoComplete 61-83m | lifetime R 30-30 | retires 4-6 | after cap: relic offers/h 16.9, embers/h 959, upgrades/h 189.5 | cap-boss lap 12.5m | best run-to-cap 12.6m
+loopBoss+freeRetire  idle   demoComplete 75-80m | lifetime R 30-30 | retires 4-5 | after cap: relic offers/h 15.7, embers/h 502, upgrades/h 174.6 | cap-boss lap 12.8m | best run-to-cap 14.1m
+cap50                typist demoComplete 37-45m | lifetime R 51-51 | retires 2-2 | after cap: relic offers/h 2.3, embers/h 3865, upgrades/h 81.5 | cap-boss lap NaNm | best run-to-cap NaNm
+cap50                burst  demoComplete 77-105m | lifetime R 51-51 | retires 2-3 | after cap: relic offers/h 8.5, embers/h 927, upgrades/h 181.0 | cap-boss lap NaNm | best run-to-cap NaNm
+cap50                idle   demoComplete 101-106m | lifetime R 51-51 | retires 2-3 | after cap: relic offers/h 12.5, embers/h 563, upgrades/h 222.7 | cap-boss lap NaNm | best run-to-cap NaNm

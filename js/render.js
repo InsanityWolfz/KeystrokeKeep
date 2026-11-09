@@ -31,7 +31,7 @@
     if (window.innerWidth < 700) scale = Math.min(scale, 2);
     R.scale = scale;
     const dpr = window.devicePixelRatio || 1;
-    pxScale = Math.max(1, Math.round(scale * dpr));
+    pxScale = Math.max(1, Math.floor(scale * dpr)); // never oversize the backing store
     Wd = Math.ceil(window.innerWidth / scale);
     buf.width = Wd; buf.height = H;
     light.width = Wd; light.height = H;
@@ -447,13 +447,14 @@
       const def = D.HEROES[h.id];
       const cost = Math.ceil(def.ult.cost * KK.mods().ultCost);
       const k = Math.min(1, KK.S.sparks / cost);
-      const bx = Math.round(x - 5), by = Math.round(y) - 6;
-      b.fillStyle = '#000'; b.fillRect(bx - 1, by - 1, 12, 4);
+      const bx = Math.round(x - 5), by = Math.round(h.y + sy) + 3; // under the feet, away from the HP bar
+      b.fillStyle = '#000'; b.fillRect(bx - 3, by - 1, 14, 4);
+      b.fillStyle = '#ffd34a'; b.fillRect(bx - 2, by, 1, 2); // spark pip
       b.fillStyle = '#123842'; b.fillRect(bx, by, 10, 2);
-      const full = k >= 1;
-      b.fillStyle = full ? (Math.floor(t * 6) % 2 ? '#ffffff' : '#7ee8f6') : '#7ee8f6';
+      const ready = k >= 1 && h.ultCd <= 0;
+      b.fillStyle = ready ? (Math.floor(t * 6) % 2 ? '#ffffff' : '#7ee8f6') : '#4fb8cc';
       b.fillRect(bx, by, Math.max(1, Math.round(10 * k)), 2);
-      if (full) { b.globalCompositeOperation = 'lighter'; glow(x, by + 1, 6, '#7ee8f6', 0.5); b.globalCompositeOperation = 'source-over'; }
+      if (ready) { b.globalCompositeOperation = 'lighter'; glow(x, by + 1, 6, '#7ee8f6', 0.5); b.globalCompositeOperation = 'source-over'; }
     }
   }
   // Hollowed bosses (floor 70+) get a void-purple tint so they read as new foes

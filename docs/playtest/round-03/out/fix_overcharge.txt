@@ -1,0 +1,6 @@
+overcharge growth 1.5 typist 4h00 f106 R242 | 8h00 f128 R408 | 16h00 f144 R505 | 24h00 f155 R595  | overcharge lv at end 14/14/15
+overcharge growth 1.5 idle   4h00 f80 R132 | 8h00 f96 R216 | 16h00 f104 R260 | 24h00 f108 R283  | overcharge lv at end 7/7/7
+overcharge growth 1.6 typist 4h00 f106 R242 | 8h00 f127 R393 | 16h00 f140 R488 | 24h00 f146 R531  | overcharge lv at end 13/13/13
+overcharge growth 1.6 idle   4h00 f79 R121 | 8h00 f96 R216 | 16h00 f106 R274 | 24h00 f111 R300  | overcharge lv at end 6/6/7
+overcharge growth 1.7 typist 4h00 f104 R226 | 8h00 f123 R361 | 16h00 f138 R476 | 24h00 f145 R526  | overcharge lv at end 12/12/12
+overcharge growth 1.7 idle   4h00 f79 R121 | 8h00 f96 R224 | 16h00 f107 R275 | 24h00 f111 R300  | overcharge lv at end 6/6/6

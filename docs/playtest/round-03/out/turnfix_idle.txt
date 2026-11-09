@@ -1,0 +1,2 @@
+idle 120m live rule        : ults knight 3 (13%)  archer 21 (83%)  mage 0 (0%)  cleric 1 (4%)  maxFloor 44.3  min-to-F30 47.0
+idle 120m PATCHED (hold turn): ults knight 6 (33%)  archer 6 (33%)  mage 6 (29%)  cleric 1 (5%)  maxFloor 44.0  min-to-F30 52.7

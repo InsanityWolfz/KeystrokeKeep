@@ -1,0 +1,1 @@
+fever      idle s1: floor@3h 74 floor@6h 90 renownLife 194 embers+ws 343 5/4/4/2 wipes 10 marks {"50":"1.40h","75":"3.46h"}

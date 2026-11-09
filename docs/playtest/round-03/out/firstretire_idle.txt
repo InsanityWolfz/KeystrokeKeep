@@ -1,0 +1,6 @@
+=== first-retire timing, idle, 4 seeds; later retires on 8-min stall ===
+stall 8      1st retire 64min f35 +22 | run2 back in 14.2min | deepest 2h/4h/8h 51/80/97 | renown 4h/8h 137/222
+nudge        1st retire 65min f40 +30 | run2 back in 15.8min | deepest 2h/4h/8h 58/79/97 | renown 4h/8h 128/226
+first at f30 1st retire 41min f30 +13 | run2 back in 15.4min | deepest 2h/4h/8h 58/82/97 | renown 4h/8h 127/219
+first at f40 1st retire 65min f40 +30 | run2 back in 15.8min | deepest 2h/4h/8h 58/79/97 | renown 4h/8h 128/226
+first at f50 1st retire 106min f50 +51 | run2 back in 14.9min | deepest 2h/4h/8h 53/80/96 | renown 4h/8h 131/223

@@ -1,0 +1,1 @@
+embertide  typist s2: floor@3h 103 floor@6h 123 renownLife 355 embers+ws 5618 10/11/10/8 wipes 8 marks {"50":"0.71h","75":"1.23h","100":"2.80h","110":"4.03h","120":"4.99h"}

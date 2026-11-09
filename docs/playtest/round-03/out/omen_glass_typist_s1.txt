@@ -1,0 +1,1 @@
+glass      typist s1: floor@3h 107 floor@6h 126 renownLife 393 embers+ws 890 9/9/9/6 wipes 9 marks {"50":"0.56h","75":"1.02h","100":"2.45h","110":"3.10h","120":"4.42h"}

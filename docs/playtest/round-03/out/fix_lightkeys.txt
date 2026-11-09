@@ -1,0 +1,12 @@
+=== Kindling-slot alternatives, 8 h, stall-8 retires, 4 seeds ===
+current         burst  deepest 4h f81.8  8h f99.8  R 241  embers/h 988  ws(seed1) {"crucible":6,"kindling":6,"overcharge":6,"static":4}
+current         typist deepest 4h f107.3  8h f128.8  R 411  embers/h 4674  ws(seed1) {"crucible":9,"overcharge":10,"kindling":9,"static":7}
+current         idle   deepest 4h f80.3  8h f96.8  R 222  embers/h 500  ws(seed1) {"crucible":5,"kindling":5,"overcharge":5,"static":3}
+kindlingSparks  burst  deepest 4h f81.3  8h f100.5  R 241  embers/h 1228  ws(seed1) {"crucible":7,"kindling":6,"overcharge":7,"static":4}
+kindlingSparks  typist deepest 4h f115.0  8h f135.5  R 446  embers/h 8414  ws(seed1) {"crucible":10,"overcharge":12,"kindling":10,"static":8}
+kindlingSparks  idle   deepest 4h f80.3  8h f96.8  R 222  embers/h 500  ws(seed1) {"crucible":5,"kindling":5,"overcharge":5,"static":3}
+kindlingRats    burst  deepest 4h f84.8  8h f102.5  R 255  embers/h 1167  ws(seed1) {"crucible":7,"kindling":6,"overcharge":7,"static":4}
+kindlingRats    typist deepest 4h f107.5  8h f130.0  R 409  embers/h 5055  ws(seed1) {"crucible":10,"overcharge":10,"kindling":9,"static":7}
+kindlingRats    idle   deepest 4h f76.8  8h f96.3  R 220  embers/h 575  ws(seed1) {"crucible":6,"kindling":5,"overcharge":6,"static":3}
+firstKeysDouble burst  deepest 4h f84.8  8h f104.5  R 265  embers/h 1579  ws(seed1) {"crucible":7,"kindling":7,"overcharge":7,"static":5}
+firstKeysDouble typist deepest 4h f115.0  8h f135.3  R 434  embers/h 6962  ws(seed1) {"crucible":10,"overcharge":11,"kindling":10,"static":7}

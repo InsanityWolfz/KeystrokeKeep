@@ -5,6 +5,7 @@
 // network requests at all (blocked below). Pausing input counting removes the hook entirely.
 const { app, BrowserWindow, screen, ipcMain, Tray, Menu, nativeImage, powerMonitor, globalShortcut, session } = require('electron');
 const path = require('path');
+const fs = require('fs');
 
 let win = null;
 let tray = null;
@@ -15,6 +16,11 @@ let desiredH = 192;
 const state = { countInput: true, sound: true, onTop: true, displayId: null, autoHideFullscreen: true };
 // what the OS is doing: the strip only draws/plays when someone can actually see it
 const sys = { userShown: true, locked: false, suspended: false, fullscreen: false };
+let pkg = {};
+try { pkg = require('../package.json'); } catch (e) { /* ignore */ }
+// Demo builds are baked at package time (electron-builder --config.extraMetadata.kkDemo=true);
+// the env var / flag only exist for development.
+const IS_DEMO = pkg.kkDemo === true || process.env.KK_DEMO === '1' || process.argv.includes('--kk-demo');
 const HIDE_HOTKEY = 'Control+Shift+Alt+K'; // not Ctrl+Alt+K: that is AltGr+K, which types a letter on some layouts
 let hotkeyOk = false;
 let hideNoticeShown = false;
@@ -53,7 +59,7 @@ function createWindow() {
       contextIsolation: true,
       nodeIntegration: false,
       backgroundThrottling: false,
-      additionalArguments: process.env.KK_DEMO === '1' || process.argv.includes('--kk-demo') ? ['--kk-demo'] : [],
+      additionalArguments: IS_DEMO ? ['--kk-demo'] : [],
     },
   });
   applyOnTop();
@@ -88,25 +94,74 @@ function toggleVisible() {
   applyVisibility();
   if (!sys.userShown && !hideNoticeShown && tray) {
     hideNoticeShown = true;
+    send('kk:setting', { k: 'hideNoticeShown', v: true });
     try {
       tray.displayBalloon({ title: 'Keystroke Keep is still running', content: `Your heroes keep delving. Click the crown in the tray${hotkeyOk ? ' or press Ctrl+Shift+Alt+K' : ''} to bring the strip back.` });
     } catch (e) { /* not supported */ }
   }
 }
 
-// Fullscreen watcher: SHQueryUserNotificationState reports a fullscreen app (QUNS_BUSY=2),
-// a fullscreen D3D game (3) or presentation mode (4) in front.
+// Fullscreen watcher, per monitor. Walk the top-level windows in z-order and look only at the
+// strip's own monitor: a window covering that whole monitor in front of everything normal means
+// fullscreen video / a borderless game. SHQueryUserNotificationState adds presentation mode (4)
+// and exclusive D3D games (3, primary monitor only), which don't show up as normal windows.
 function startFullscreenWatch() {
   if (process.platform !== 'win32') return;
-  let query;
+  let W;
   try {
     const koffi = require('koffi');
-    query = koffi.load('shell32.dll').func('int __stdcall SHQueryUserNotificationState(_Out_ int *pquns)');
+    const u32 = koffi.load('user32.dll'), sh32 = koffi.load('shell32.dll'), dwm = koffi.load('dwmapi.dll');
+    const RECT = koffi.struct('KK_RECT', { left: 'int32', top: 'int32', right: 'int32', bottom: 'int32' });
+    const MONINFO = koffi.struct('KK_MONINFO', { cbSize: 'uint32', rcMonitor: RECT, rcWork: RECT, dwFlags: 'uint32' });
+    W = {
+      koffi, MONINFO,
+      top: u32.func('__stdcall', 'GetTopWindow', 'intptr', ['intptr']),
+      next: u32.func('__stdcall', 'GetWindow', 'intptr', ['intptr', 'uint32']),
+      vis: u32.func('__stdcall', 'IsWindowVisible', 'int', ['intptr']),
+      iconic: u32.func('__stdcall', 'IsIconic', 'int', ['intptr']),
+      rect: u32.func('__stdcall', 'GetWindowRect', 'int', ['intptr', koffi.out(koffi.pointer(RECT))]),
+      mon: u32.func('__stdcall', 'MonitorFromWindow', 'intptr', ['intptr', 'uint32']),
+      monInfo: u32.func('__stdcall', 'GetMonitorInfoW', 'int', ['intptr', koffi.inout(koffi.pointer(MONINFO))]),
+      exstyle: u32.func('__stdcall', 'GetWindowLongPtrW', 'intptr', ['intptr', 'int']),
+      cls: u32.func('__stdcall', 'GetClassNameW', 'int', ['intptr', 'void *', 'int']),
+      cloaked: dwm.func('__stdcall', 'DwmGetWindowAttribute', 'int', ['intptr', 'uint32', koffi.out(koffi.pointer('uint32')), 'uint32']),
+      quns: sh32.func('__stdcall', 'SHQueryUserNotificationState', 'int', [koffi.out(koffi.pointer('int'))]),
+    };
   } catch (e) { console.warn('[KK] fullscreen detection unavailable:', e.message); return; }
-  const out = [0];
+  const SHELL = new Set(['Progman', 'WorkerW', 'Shell_TrayWnd', 'Shell_SecondaryTrayWnd']);
+  const WS_EX_TOPMOST = 0x8, WS_EX_TOOLWINDOW = 0x80, GW_HWNDNEXT = 2, MONITOR_NEAREST = 2;
+  const buf = Buffer.alloc(512);
+  const monitorRect = (m) => { const mi = { cbSize: W.koffi.sizeof(W.MONINFO) }; W.monInfo(m, mi); return { r: mi.rcMonitor, primary: (mi.dwFlags & 1) === 1 }; };
+  function scan() {
+    if (!win) return false;
+    const nh = win.getNativeWindowHandle();
+    const self = nh.length >= 8 ? Number(nh.readBigUInt64LE(0)) : nh.readUInt32LE(0);
+    const myMon = W.mon(self, MONITOR_NEAREST);
+    const { r: M, primary } = monitorRect(myMon);
+    let h = W.top(0), n = 0, fs = false;
+    while (h && n++ < 600) {
+      if (h !== self && W.vis(h) && !W.iconic(h) && W.mon(h, MONITOR_NEAREST) === myMon) {
+        const ex = Number(W.exstyle(h, -20));
+        const cl = [0];
+        const isCloaked = W.cloaked(h, 14, cl, 4) === 0 && cl[0] !== 0;
+        const n2 = W.cls(h, buf, 256);
+        const cname = buf.toString('utf16le', 0, n2 * 2);
+        if (!isCloaked && !(ex & WS_EX_TOOLWINDOW) && !SHELL.has(cname)) {
+          const r = {}; W.rect(h, r);
+          const covers = r.left <= M.left && r.top <= M.top && r.right >= M.right && r.bottom >= M.bottom;
+          if (covers) { fs = true; break; }
+          if (!(ex & WS_EX_TOPMOST)) break; // the first normal window on this monitor decides
+        }
+      }
+      h = W.next(h, GW_HWNDNEXT);
+    }
+    const q = [0];
+    const state = W.quns(q) === 0 ? q[0] : 0;
+    return fs || state === 4 || (state === 3 && primary);
+  }
   setInterval(() => {
     let fs = false;
-    try { if (query(out) === 0) fs = out[0] === 2 || out[0] === 3 || out[0] === 4; } catch (e) { /* ignore */ }
+    try { fs = scan(); } catch (e) { /* ignore */ }
     if (fs !== sys.fullscreen) { sys.fullscreen = fs; applyVisibility(); }
   }, 1500);
 }
@@ -142,7 +197,7 @@ function rebuildTray() {
   if (!tray) return;
   const displays = screen.getAllDisplays();
   const cur = targetDisplay();
-  tray.setToolTip(state.countInput ? 'Keystroke Keep: counting keystrokes (never which keys)' : 'Keystroke Keep: input counting PAUSED');
+  tray.setToolTip((state.countInput ? 'Keystroke Keep: counting keystrokes (never which keys)' : 'Keystroke Keep: input counting PAUSED') + (sys.userShown ? '' : ' · strip hidden'));
   tray.setContextMenu(Menu.buildFromTemplate([
     { label: 'Keystroke Keep', enabled: false },
     { type: 'separator' },
@@ -181,6 +236,56 @@ ipcMain.on('kk:ignoreMouse', (_e, ignore) => {
 });
 ipcMain.on('kk:tray', (_e, dataURL) => buildTray(dataURL));
 ipcMain.on('kk:quit', () => app.quit());
+// only ever opens the Steam store / steam:// links in the user's browser or client
+ipcMain.on('kk:openStore', (_e, url) => {
+  if (/^(https:\/\/store\.steampowered\.com\/|steam:\/\/)/.test(url)) require('electron').shell.openExternal(url);
+});
+
+// ---------------------------------------------------------------- save file
+// <userData>/saves/keystroke-keep.json, written atomically (tmp + rename), with a ring of
+// 3 backups rotated at most every 10 minutes. Loading falls back through the backups.
+// Explicit folder names (not the package name), so dev, packaged, demo and full builds agree:
+// %APPDATA%/Keystroke Keep/saves and %APPDATA%/Keystroke Keep Demo/saves. Self-tests use their own.
+const saveDir = () => process.env.KK_SNAPSHOT
+  ? path.join(app.getPath('userData'), 'saves')
+  : path.join(app.getPath('appData'), IS_DEMO ? 'Keystroke Keep Demo' : 'Keystroke Keep', 'saves');
+const demoSavePath = () => path.join(app.getPath('appData'), 'Keystroke Keep Demo', 'saves', 'keystroke-keep.json');
+const savePath = () => path.join(saveDir(), 'keystroke-keep.json');
+const backupPath = (i) => path.join(saveDir(), `keystroke-keep.bak${i}.json`);
+let lastBackup = 0;
+function validSave(text) {
+  if (typeof text !== 'string' || text.length < 2 || text.length > 5e6) return false;
+  try { const o = JSON.parse(text); return !!o && typeof o === 'object' && typeof o.v === 'number'; } catch (e) { return false; }
+}
+function writeSave(text) {
+  if (!validSave(text)) return false;
+  fs.mkdirSync(saveDir(), { recursive: true });
+  if (Date.now() - lastBackup > 10 * 60 * 1000 && fs.existsSync(savePath())) {
+    lastBackup = Date.now();
+    for (let i = 3; i > 1; i--) { try { if (fs.existsSync(backupPath(i - 1))) fs.copyFileSync(backupPath(i - 1), backupPath(i)); } catch (e) { /* ignore */ } }
+    try { fs.copyFileSync(savePath(), backupPath(1)); } catch (e) { /* ignore */ }
+  }
+  const tmp = savePath() + '.tmp';
+  fs.writeFileSync(tmp, text, 'utf8');
+  fs.renameSync(tmp, savePath());
+  return true;
+}
+function readSave() {
+  // the full game picks up a demo save on its first launch
+  const order = [savePath(), backupPath(1), backupPath(2), backupPath(3)];
+  if (!IS_DEMO && !process.env.KK_SNAPSHOT) order.push(demoSavePath());
+  for (const p of order) {
+    try { const t = fs.readFileSync(p, 'utf8'); if (validSave(t)) return t; } catch (e) { /* try the next one */ }
+  }
+  return null;
+}
+ipcMain.on('kk:loadSave', (e) => { e.returnValue = readSave(); });
+ipcMain.on('kk:save', (_e, text) => { try { writeSave(text); } catch (err) { console.warn('[KK] save failed', err.message); } });
+ipcMain.on('kk:saveSync', (e, text) => { try { e.returnValue = writeSave(text); } catch (err) { e.returnValue = false; } });
+ipcMain.on('kk:wipeSave', (e) => {
+  for (const p of [savePath(), backupPath(1), backupPath(2), backupPath(3)]) { try { fs.unlinkSync(p); } catch (err) { /* ignore */ } }
+  e.returnValue = true;
+});
 // the renderer tells us its saved settings at boot and whenever they change
 ipcMain.on('kk:settings', (_e, s) => {
   if (!s || typeof s !== 'object') return;
@@ -188,6 +293,7 @@ ipcMain.on('kk:settings', (_e, s) => {
   state.sound = s.sound !== false;
   if (typeof s.onTop === 'boolean' && s.onTop !== state.onTop) { state.onTop = s.onTop; applyOnTop(); }
   if (typeof s.autoHideFullscreen === 'boolean') state.autoHideFullscreen = s.autoHideFullscreen;
+  if (s.hideNoticeShown) hideNoticeShown = true;
   if (s.displayId !== undefined && s.displayId !== state.displayId) { state.displayId = s.displayId; redock(); }
   syncHook();
   applyVisibility();

@@ -1,0 +1,16 @@
+=== pacing, 8 h, policy stall8, 5 seeds ===
+typist boss10 3-4m  boss20 6-10m  boss40 26-33m | nudge 23-31m (f40-40) | 1st retire 46-121m f50-70 +51-112 | run2 back to record 11.2m (9-13)
+       1h00: f58 (56-60) R10 | 2h00: f76 (70-85) R91 | 4h00: f107 (101-113) R240 | 8h00: f129 (126-130) R410 | embers/h 4671 ws lv 35.0
+       seed1 ws {"crucible":9,"overcharge":10,"kindling":9,"static":7}  retires 0h46/f50/+51 1h38/f80/+99 2h54/f100/+92 4h25/f117/+95 5h48/f120/+18 7h00/f130/+64
+heavy  boss10 2-4m  boss20 6-8m  boss40 20-25m | nudge 19-24m (f40-40) | 1st retire 76-119m f70-80 +112-150 | run2 back to record 10.4m (9-12)
+       1h00: f66 (63-69) R0 | 2h00: f92 (80-98) R120 | 4h00: f121 (118-130) R252 | 8h00: f140 (136-145) R489 | embers/h 8927 ws lv 40.0
+       seed1 ws {"crucible":10,"overcharge":12,"kindling":10,"static":8}  retires 1h17/f70/+112 2h14/f100/+130 4h08/f130/+177 6h03/f140/+69 7h53/f145/+36
+burst  boss10 6-8m  boss20 19-22m  boss40 50-90m | nudge 47-85m (f40-47) | 1st retire 43-89m f30-50 +13-51 | run2 back to record 13.1m (11-15)
+       1h00: f36 (30-45) R8 | 2h00: f61 (56-68) R24 | 4h00: f81 (80-87) R150 | 8h00: f99 (98-100) R239 | embers/h 977 ws lv 22.0
+       seed1 ws {"crucible":6,"kindling":6,"overcharge":6,"static":4}  retires 0h47/f30/+13 2h27/f60/+66 3h50/f80/+71 5h01/f90/+44 6h33/f98/+38 7h48/f100/+10
+idle   boss10 6-8m  boss20 18-24m  boss40 69-80m | nudge 62-88m (f40-47) | 1st retire 46-106m f30-49 +13-49 | run2 back to record 14.4m (13-15)
+       1h00: f32 (30-39) R10 | 2h00: f52 (49-55) R35 | 4h00: f80 (78-81) R138 | 8h00: f96 (93-100) R221 | embers/h 480 ws lv 17.4
+       seed1 ws {"crucible":5,"kindling":5,"overcharge":5,"static":3}  retires 0h49/f30/+13 1h47/f50/+38 3h14/f76/+83 4h44/f88/+50 5h55/f90/+10 7h28/f96/+28
+typist/idle renown ratio: 1h00 0.98x  2h00 2.56x  4h00 1.74x  8h00 1.85x
+typist/idle depth  ratio: 1h00 1.82x  2h00 1.47x  4h00 1.34x  8h00 1.33x
+burst/idle  depth  ratio: 1h00 1.13x  2h00 1.17x  4h00 1.02x  8h00 1.03x

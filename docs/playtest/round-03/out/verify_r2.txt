@@ -1,0 +1,9 @@
+A. Crucible: typist crucible 0: 1676 Embers/45min | typist crucible 10: 4190 Embers/45min | idle crucible 0: 185 Embers/45min | idle crucible 10: 464 Embers/45min | all 10 levels cost 10899
+B1. Echo Rune: paid casts 92, echo events 100, total ult events 200 (expect echo == casts, ult == 2x)
+B2. Hotkey Ring: keys 3691, keys/60 = 62, procs 61, free casts 52 (85% of procs fire; the rest land out of combat)
+C. offline share: campfire 0: 40% -> Oil 60% | campfire 1: 50% -> Oil 70% | campfire 2: 60% -> Oil 80% | campfire 3: 70% -> Oil 90% | campfire 4: 80% -> Oil 100%
+D. Battery max 3; powerMult IDLE/FOCUSED/ZONE/FLOW: rank 0: 1.00/1.25/1.60/2.20 | rank 1: 1.08/1.25/1.60/2.20 | rank 2: 1.16/1.25/1.60/2.20 | rank 3: 1.24/1.25/1.60/2.20
+E. Head Start 2 bought mid-door (target floor 11): f6->f11, f6->f11, f5->f11, f6->f11, f7->f11
+F. bosses at floors 70/80/90/100/110 by retire count: r0: HOLLOW,rat,bone,brood,warl | r1: brood,warl,colos,magma,HOLLOW | r2: magma,HOLLOW,rat,bone,brood | r3: bone,brood,warl,colos,magma | r4: colos,magma,HOLLOW,rat,bone | r5: rat,bone,brood,warl,colos | r6: warl,colos,magma,HOLLOW,rat | r7: HOLLOW,rat,bone,brood,warl
+G. demo save: demoDone before save true -> after load undefined
+   after reload, 10 min of farming: floor-40 boss spawned 1x, demoComplete modal fired 1x

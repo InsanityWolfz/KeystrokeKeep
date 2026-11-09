@@ -1,0 +1,1 @@
+quiet      typist s2: floor@3h 99 floor@6h 120 renownLife 355 embers+ws 648 9/9/9/6 wipes 9 marks {"50":"0.67h","75":"1.51h","100":"3.05h","110":"3.69h","120":"5.57h"}

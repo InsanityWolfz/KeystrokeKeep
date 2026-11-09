@@ -10,6 +10,7 @@
   U.rand = (a = 0, b = 1) => a + Math.random() * (b - a);
   U.randi = (a, b) => Math.floor(a + Math.random() * (b - a + 1));
   U.pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  U.shuffle = (arr) => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; } return a; };
   U.chance = (p) => Math.random() < p;
   U.hash = (n) => { const x = Math.sin(n * 127.1 + 311.7) * 43758.5453123; return x - Math.floor(x); };
   U.hash2 = (a, b) => U.hash(a * 57.31 + b * 113.7);
