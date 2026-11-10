@@ -22,7 +22,7 @@
   // ---------------------------------------------------------------- setup
   W.reset = function () {
     W.enemies = []; W.shots = []; W.props = [];
-    W.wave = 0; W.door = null; W.chest = null; W.trans = 0; W.wipeT = 0; W.boss = null;
+    W.wave = 0; W.door = null; W.chest = null; W.node = null; W.trans = 0; W.wipeT = 0; W.boss = null;
     W.heroes = [];
     W.syncHeroes(true);
   };
@@ -34,7 +34,7 @@
     W.heroes = W.heroes.filter((h) => owned.includes(h.id));
     owned.forEach((id, slot) => {
       let h = W.heroes.find((x) => x.id === id);
-      const maxHp = F.heroHp(id, S.heroes[id]) * m.hp * (id === 'knight' ? m.knightHp : 1);
+      const maxHp = F.heroHp(id, S.heroes[id]) * m.hp * (id === 'knight' ? m.knightHp : 1) * KK.gearHp(id);
       if (!h) {
         h = { kind: 'hero', id, uid: W.id++, x: W.partyX - slot * SLOT - 30, y: GROUND, hp: maxHp, maxHp, atkT: U.rand(0, 0.5), ultCd: 2, dead: false, flash: 0, lunge: 0, anim: Math.random() * 10, jump: 0, cast: 0, joined: 1 };
         W.heroes.push(h);
@@ -111,7 +111,7 @@
   // ---------------------------------------------------------------- damage
   function heroDamage(h, mult = 1) {
     const S = KK.S, m = KK.mods();
-    let dmg = F.heroDmg(h.id, S.heroes[h.id]) * m.dmg * KK.powerMult() * mult;
+    let dmg = F.heroDmg(h.id, S.heroes[h.id]) * m.dmg * KK.powerMult() * mult * KK.gearDmg(h.id);
     if (h.id === 'knight') dmg *= m.knightDmg;
     const crit = Math.random() < m.crit;
     if (crit) dmg *= m.critMult;
@@ -298,6 +298,7 @@
       h.webbed -= 0.5;
       if (h.webbed <= 0) { h.webbed = 0; if (m.rootSparks) S.sparks = Math.min(m.sparkCap, S.sparks + m.rootSparks); KK.emit('webTorn', { h }); }
     }
+    if (W.node && W.node.at && !W.node.done) { W.node.work += D.GEAR.keyWork; W.node.keyed = (W.node.keyed || 0) + 1; }
     for (const h of W.heroes) if (h.locked > 0 && (h.lockKeys = (h.lockKeys || 0) + 1) >= 10) { h.locked = 0; h.lockKeys = 0; h.ultCd = 0; KK.emit('lockBroken', { h }); }
   });
   KK.on('hotkey', () => {
@@ -370,6 +371,18 @@
       const stopAt = W.chest.x - 12;
       if (W.partyX < stopAt) walkParty(dt, speedMult, false, stopAt);
       else { W.chest.openT += dt; if (W.chest.openT > 0.5) openChest(); }
+    } else if (W.node) {
+      // a node on the path: the party stops and works it; typing makes the work go faster
+      const nd = W.node, stopAt = nd.x - (nd.kind === 'fish' ? 21 : 13);
+      if (W.partyX < stopAt) walkParty(dt, speedMult, false, stopAt);
+      else {
+        W.walking = false;
+        nd.at = true;
+        nd.work += dt * (1 + 0.02 * KK.skillLevel(nd.kind));
+        nd.swingT -= dt;
+        if (nd.swingT <= 0) { nd.swingT = 0.5; if (front) front.lunge = 0.15; KK.emit('nodeHit', { node: nd }); }
+        if (nd.work >= nd.need) finishNode();
+      }
     } else if (W.door) {
       walkParty(dt, speedMult, false, KK.S.glimpse ? W.door.x - 4 : undefined);
       if (W.partyX >= W.door.x - 4 && !(KK.S.glimpse && (W.glimpseHold = (W.glimpseHold === undefined ? 3 : W.glimpseHold) - dt) > 0)) { W.glimpseHold = undefined; W.trans = 0.9; W.transFloorDone = false; KK.emit('door'); }
@@ -377,12 +390,17 @@
       // between waves
       W.enemies = W.enemies.filter((e) => !e.dead || e.deathT < 1);
       if (W.wave < W.waves) {
-        if (W.wave > 0 && !W.chestRolled && !F.isBossFloor(S.floor) && Math.random() < m.chest) {
-          W.chest = { x: W.partyX + 60, opened: false, openT: 0, t: 0 };
-          W.props.push(W.chest);
+        if (W.wave > 0 && !W.chestRolled && !F.isBossFloor(S.floor)) {
+          if (Math.random() < m.chest) {
+            W.chest = { x: W.partyX + 60, opened: false, openT: 0, t: 0 };
+            W.props.push(W.chest);
+          } else if (!S.glimpse && Math.random() < D.GEAR.chance) {
+            W.node = { node: true, kind: U.pick(['ore', 'wood', 'fish']), x: W.partyX + 55, work: 0, need: D.GEAR.work, swingT: 0.2, done: false, t: 0 };
+            W.props.push(W.node);
+          }
         }
         W.chestRolled = true;
-        if (!W.chest || W.chest.opened) { W.spawnWave(); W.chestRolled = false; }
+        if ((!W.chest || W.chest.opened) && !W.node) { W.spawnWave(); W.chestRolled = false; }
       } else {
         W.door = { x: S.glimpse && W.sealedX ? Math.max(W.partyX + 24, W.sealedX - 44) : W.partyX + 85, t: 0 };
         if (S.glimpse && W.door) {
@@ -406,6 +424,14 @@
       const def = D.HEROES[h.id];
       h.ultCd = Math.max(0, h.ultCd - dt);
       if (h.locked > 0) h.locked -= dt;
+      // cooked fish from the pack: a hero in trouble eats one
+      if (h.foodCd > 0) h.foodCd -= dt;
+      else if (S.mats && S.mats.fish > 0 && h.hp / h.maxHp < D.GEAR.eatBelow) {
+        S.mats.fish--; h.foodCd = D.GEAR.eatCd;
+        const before = h.hp; h.hp = Math.min(h.maxHp, h.hp + h.maxHp * D.GEAR.eatHeal);
+        S.stats.meals = (S.stats.meals || 0) + 1;
+        KK.emit('eat', { h, amt: h.hp - before });
+      }
       // regen when out of combat
       if (!engaged && !fe) h.hp = Math.min(h.maxHp, h.hp + h.maxHp * 0.06 * dt);
 
@@ -428,7 +454,7 @@
         for (const o of W.heroes) if (!o.dead && o.hp / o.maxHp < 0.92 && (!low || o.hp / o.maxHp < low.hp / low.maxHp)) low = o;
         if (low) {
           // a regular heal tops up at most 25% of max HP, so danger (void slams, HP banes) stays real
-          const amt = Math.min(F.heroDmg('cleric', S.heroes.cleric) * 3.2 * m.dmg * pm, low.maxHp * 0.25);
+          const amt = Math.min(F.heroDmg('cleric', S.heroes.cleric) * 3.2 * m.dmg * pm * KK.gearDmg('cleric'), low.maxHp * 0.25);
           W.healHero(low, amt, h);
           h.cast = 0.3;
           KK.emit('healBeam', { from: h, to: low });
@@ -699,6 +725,14 @@
     W.shots = out;
   }
 
+  function finishNode() {
+    const nd = W.node;
+    nd.done = true;
+    const n = KK.harvest(nd.kind, KK.S.floor);
+    KK.emit('nodeDone', { node: nd, n });
+    W.node = null;
+  }
+
   function openChest() {
     const S = KK.S, m = KK.mods();
     W.chest.opened = true;
@@ -762,7 +796,7 @@
       S.maxFloorEver = S.floor;
       if (D.trophyAt(S.floor)) { KK.dirty(); KK.emit('trophy', { floor: S.floor, n: D.trophyCount(S.floor) }); }
     }
-    W.wave = 0; W.door = null; W.chest = null; W.chestRolled = false;
+    W.wave = 0; W.door = null; W.chest = null; W.node = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
     for (const h of W.heroes) { h.webbed = 0; if (h.dead) { h.dead = false; h.hp = h.maxHp * 0.5; } }
     KK.emit('floor', { floor: S.floor, biomeChange: F.biomeOf(S.floor) !== F.biomeOf(S.floor - 1), boss: F.isBossFloor(S.floor) });
@@ -771,7 +805,7 @@
   // a Head Start bought at the very start of a delve moves the party down right away
   KK.on('jumpFloor', ({ floor }) => {
     W.trans = 0; W.transFloorDone = true;
-    W.wave = 0; W.door = null; W.chest = null; W.chestRolled = false; W.boss = null;
+    W.wave = 0; W.door = null; W.chest = null; W.node = null; W.chestRolled = false; W.boss = null;
     W.enemies = []; W.shots = [];
     KK.emit('floor', { floor, biomeChange: true, boss: F.isBossFloor(floor) });
   });
@@ -784,7 +818,7 @@
       S.floor = KK.DEMO_CAP - 3; // recover() steps back one more below
     }
     S.floor = Math.max(KK.mods().startFloor, S.floor - 1); // a retreat never undoes Head Start
-    W.wave = 0; W.door = null; W.chest = null; W.boss = null; W.chestRolled = false;
+    W.wave = 0; W.door = null; W.chest = null; W.node = null; W.boss = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];
     for (const h of W.heroes) { h.dead = false; h.hp = h.maxHp; h.webbed = 0; }
     W.wipeT = 0; W.floorLow = 1; if (!KK.S.glimpse) W.sealedX = 0;

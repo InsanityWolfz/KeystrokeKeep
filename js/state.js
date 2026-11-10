@@ -17,6 +17,7 @@
       seals: 0, sealDay: '', freeDelveDay: '', omenStar: null, omenStarDay: '', sealPT: null, delveDay: '', daysPlayed: 0, lastDay: '',
       codexKills: 0, slain: {}, bossWounds: {}, bossFirsts: {}, bannerFirsts: {}, bestMile: {},
       demoDone: false, glimpse: false, glimpseDone: false, demoPeek: false, runCapCleared: false, bestCapTime: 0, runTime: 0, demoSave: false, demoLaps: 0,
+      gear: {}, gearBest: {}, mats: { ore: 0, wood: 0, fish: 0 }, skills: { ore: 0, wood: 0, fish: 0 },
       ach: {}, achP: {}, runInputs: 0, lastForge: {}, codex: {},
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
@@ -127,6 +128,56 @@
     modsCache = m;
     return m;
   };
+
+  // ---------------------------------------------------------------- gear (prototype)
+  const G = D.GEAR;
+  KK.gearTier = (id) => (KK.S.gear && KK.S.gear[id]) || 0;
+  KK.gearDmg = (id) => Math.pow(G.dmg, KK.gearTier(id));
+  KK.gearHp = (id) => Math.pow(G.hp, KK.gearTier(id));
+  KK.skillLevel = (kind) => G.skillLevel(KK.S.skills && KK.S.skills[kind]);
+  /** Heroes make their own gear: the lowest tier goes first, front of the party before the back. */
+  KK.autoCraft = function () {
+    const S = KK.S;
+    S.gear = S.gear || {}; S.gearBest = S.gearBest || {};
+    let made = false;
+    for (let guard = 0; guard < 40; guard++) {
+      let best = null;
+      for (const id of D.PARTY_ORDER) {
+        if (!S.heroes[id]) continue;
+        const t = S.gear[id] || 0;
+        if (t >= G.tiers.length - 1) continue;
+        if ((S.mats[G.uses[id]] || 0) < G.cost[t + 1]) continue;
+        if (!best || t < (S.gear[best] || 0)) best = id;
+      }
+      if (!best) break;
+      const t = (S.gear[best] || 0) + 1;
+      S.mats[G.uses[best]] -= G.cost[t];
+      S.gear[best] = t;
+      const first = t > (S.gearBest[best] || 0);
+      if (first) S.gearBest[best] = t;
+      made = true;
+      KK.dirty();
+      KK.emit('gearUp', { id: best, tier: t, first });
+    }
+    return made;
+  };
+  /** A worked node: materials into the pack, one more toward the lifetime skill. */
+  KK.harvest = function (kind, floor) {
+    const S = KK.S;
+    S.mats = S.mats || { ore: 0, wood: 0, fish: 0 }; S.skills = S.skills || { ore: 0, wood: 0, fish: 0 };
+    let n = G.yieldAt(floor);
+    if (kind === 'fish') n = Math.min(n, G.fishCap - (S.mats.fish || 0));
+    S.mats[kind] = (S.mats[kind] || 0) + n;
+    const before = KK.skillLevel(kind);
+    S.skills[kind] = (S.skills[kind] || 0) + 1;
+    const after = KK.skillLevel(kind);
+    S.stats.nodes = (S.stats.nodes || 0) + 1;
+    KK.emit('harvest', { kind, n });
+    if (after > before) KK.emit('skillUp', { kind, level: after });
+    KK.autoCraft();
+    return n;
+  };
+  KK.on('recruit', () => KK.autoCraft()); // a new hero puts spare materials to use at once
 
   // Tiers are sticky: you enter a tier at its threshold but only drop out 12 points below it,
   // so a short pause doesn't flicker you in and out of FLOW (and replay its fanfare).
@@ -354,6 +405,7 @@
     if (gain <= 0 && !KK.DEMO_CAP) S.freeDelveDay = KK.today();
     S.renownFloor = Math.max(S.renownFloor || 0, S.maxFloorRun);
     S.lastForge = Object.assign({}, S.forge);
+    S.gear = {}; S.mats = { ore: 0, wood: 0, fish: 0 }; // gear goes with the party; skills stay
     S.gold = 0; S.forge = {}; S.relics = []; S.relicOffer = null; S.relicQueue = []; S.bossBlock = 0;
     KK.dirty();
     const m = KK.mods();

@@ -484,6 +484,58 @@
   };
 
   // ---------------------------------------------------------------- baking
+  // nodes the party works on the way down (gear prototype)
+  const TREE = [
+    '....keek....',
+    '..keeEeeek..',
+    '.keEeeeEeek.',
+    'keeeEeeeeEek',
+    'keEeeeEeeeek',
+    '.keeeEeeEek.',
+    '..kkeeeekk..',
+    '....knNk....',
+    '....knNk....',
+    '....knNk....',
+    '...kknNkk...',
+    '..kNnnNNNk..',
+  ];
+  const STUMP = [
+    '....kkkk....',
+    '...kLllLk...',
+    '...knNNNk...',
+    '..kNnnNNNk..',
+  ];
+  const ROCK = [
+    '.....kkkk.....',
+    '...kkgGGGkk...',
+    '..kgGGoGGGGk..',
+    '.kgGGGGGGoGdk.',
+    '.kGGoGGGGGGdk.',
+    'kgGGGGGoGGGddk',
+    'kGGGGGGGGGdddk',
+    'kkkkkkkkkkkkkk',
+  ];
+  const RUBBLE = [
+    '....kk....kk..',
+    '..kkGdk.kkGdk.',
+    '.kGddddkGddddk',
+    'kkkkkkkkkkkkkk',
+  ];
+  const POOL = [
+    '..kkkkkkkkkkkk..',
+    '.kBbbbcbbbbbbBk.',
+    'kBbbcbbbbgbbbbBk',
+    '.kBbbbbbcbbbbBk.',
+    '..kkkkkkkkkkkk..',
+  ];
+  // Gear tiers are palette swaps of the hero art: 0 Rags .. 5 Masterwork (2 is the original look)
+  const GEAR_SWAPS = {
+    knight: [{ g: 'n', G: 'N', w: 'l', b: 'L', B: 'N', y: 'L', r: 'N' }, { g: 'G', G: 'd', w: 'g', y: 'g', r: 'R', b: 'B' }, null, { g: 'c', G: 'C', b: 'B', B: 'v' }, { g: 'y', G: 'Y', w: 'Z', y: 'w', b: 'r', B: 'R' }, { g: 'p', G: 'P', w: 'm', y: 'c', b: 'v', B: 'K', r: 'c' }],
+    archer: [{ E: 'N', e: 'n', y: 'N' }, { E: 'd', e: 'G', y: 'g' }, null, { E: 'B', e: 'b' }, { E: 'Y', e: 'y', y: 'w', n: 'r' }, { E: 'P', e: 'p', y: 'c', n: 'c', w: 'c' }],
+    mage: [{ p: 'n', P: 'N', c: 'g', y: 'N' }, { p: 'G', P: 'd', c: 'b' }, null, { p: 'b', P: 'B' }, { p: 'r', P: 'R', n: 'y', y: 'w' }, { p: 'c', P: 'C', n: 'y', c: 'Z', y: 'w' }],
+    cleric: [{ w: 'L', y: 'N', g: 'N', G: 'N' }, { w: 'g', y: 'G', g: 'G', G: 'd' }, null, { y: 'c', g: 'c', G: 'C' }, { g: 'y', G: 'Y', y: 'o' }, { w: 'Z', y: 'm', g: 'p', G: 'P' }],
+  };
+
   const hasDOM = typeof document !== 'undefined';
   // baked-once canvases stay in CPU memory (willReadFrequently): GPU-backed ones can be wiped by a
   // context loss (e.g. low-GPU mode), which would leave every sprite blank
@@ -554,9 +606,9 @@
     return finalize(c);
   }
 
-  function hero(rows, legs) {
+  function hero(rows, legs, swap) {
     const b = rows.slice(0, rows.length - legs.length).concat(legs);
-    return [bake(rows), bake(b)];
+    return [bake(rows, swap), bake(b, swap)];
   }
 
   const S = KK.SPR = { frames: {}, icons: {}, iconURL: {}, bake, scaled };
@@ -605,6 +657,17 @@
     const kp = { P: 'N', v: 'R' };
     S.frames.keeper = [bossOf(KEEPER, kp, { y: 'Z', Y: 'y', r: 'm' }), bossOf(KEEPER_B, kp, { y: 'Z', Y: 'y', r: 'm' })];
 
+    // gear tiers: S.gearFrames[hero][tier] = [stand, step]
+    S.gearFrames = {}; S.gearPortraitURL = {};
+    const HERO_ART = { knight: [KNIGHT, KNIGHT_LEGS], archer: [ARCHER, ARCHER_LEGS], mage: [MAGE, MAGE_LEGS], cleric: [CLERIC, CLERIC_LEGS] };
+    for (const id in GEAR_SWAPS) {
+      S.gearFrames[id] = GEAR_SWAPS[id].map((sw) => (sw ? hero(HERO_ART[id][0], HERO_ART[id][1], sw) : S.frames[id]));
+      S.gearPortraitURL[id] = S.gearFrames[id].map((f) => scaled(f[0], 3).toDataURL());
+    }
+    S.nodes = {
+      wood: [bake(TREE), bake(STUMP)], ore: [bake(ROCK), bake(RUBBLE)],
+      fish: [bake(POOL), bake(POOL, { c: 'b', g: 'b' })],
+    };
     S.chest = bake(CHEST);
     S.chestOpen = bake(CHEST_OPEN);
 
@@ -618,5 +681,7 @@
     for (const id of ['knight', 'archer', 'mage', 'cleric']) S.portraitURL[id] = scaled(S.frames[id][0], 3).toDataURL();
   }
 
+  /** A hero's frames in the gear they are wearing now. */
+  S.heroFrames = (id) => { const t = (KK.S && KK.S.gear && KK.S.gear[id]) || 0; return (S.gearFrames && S.gearFrames[id] && S.gearFrames[id][t]) || S.frames[id]; };
   S.frame = (key, i) => { const f = S.frames[key]; return f ? f[i % f.length] : null; };
 })();

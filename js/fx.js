@@ -313,6 +313,37 @@
       FX.shake(2, 0.2);
     }
   });
+  // ---- gear prototype: nodes, auto-made gear, food
+  const NODE_COLS = { ore: ['#b4bccb', '#6b7487', '#f59a3a'], wood: ['#9a6238', '#5e3a24', '#6cd05a'], fish: ['#4a86e0', '#7ee8f6', '#ffffff'] };
+  KK.on('nodeHit', ({ node }) => {
+    FX.burst(node.x - 2, W.GROUND - (node.kind === 'fish' ? 1 : 7), 4, NODE_COLS[node.kind], { spd: 45, up: -40, grav: 200, life: 0.5, floor: true });
+  });
+  KK.on('nodeDone', ({ node, n }) => {
+    const G = KK.DATA.GEAR, nm = G.nodes[node.kind].name.toUpperCase();
+    FX.burst(node.x, W.GROUND - 6, 14, NODE_COLS[node.kind], { spd: 80, up: -60, grav: 200, life: 0.8, floor: true });
+    FX.text(node.x, W.GROUND - 22, n > 0 ? '+' + n + ' ' + nm : 'PACK FULL', NODE_COLS[node.kind][node.kind === 'wood' ? 2 : 0], 1, { life: 1.3, vy: -14 });
+  });
+  KK.on('skillUp', ({ kind, level }) => {
+    const h = W.frontHero(); if (!h) return;
+    FX.text(h.x + 10, h.y - 30, KK.DATA.GEAR.nodes[kind].skill.toUpperCase() + ' ' + level, '#9cff8a', 1, { life: 1.8, vy: -10 });
+  });
+  KK.on('eat', ({ h }) => {
+    FX.text(h.x, h.y - 22, 'ATE A FISH', '#9cff8a', 1, { life: 1.1, vy: -16 });
+    FX.burst(h.x, h.y - 8, 6, ['#9cff8a', '#ffffff'], { spd: 40, grav: -40, life: 0.6 });
+  });
+  KK.on('gearUp', ({ id, tier, first }) => {
+    setTimeout(() => {
+      const h = W.heroes.find((x) => x.id === id);
+      if (!h) return;
+      const G = KK.DATA.GEAR, name = KK.DATA.HEROES[id].name.toUpperCase();
+      FX.pillar(h.x, '#7ee8f6', 1.0, 12);
+      FX.ring(h.x, h.y - 8, 2, 36, '#7ee8f6', 0.6);
+      FX.burst(h.x, h.y - 8, 18, ['#7ee8f6', '#ffffff', '#ffd76a'], { spd: 90, grav: -30, life: 0.9 });
+      FX.text(h.x, h.y - 26, 'NEW GEAR', '#7ee8f6', 1, { life: 1.6, vy: -12 });
+      // a banner only the first time this hero ever reaches the tier, and never over a boss
+      if (first && !W.boss && !KK.S.glimpse) FX.banner(name + ': ' + G.tiers[tier].toUpperCase(), 'NEW GEAR  +25% DAMAGE AND HEALTH', '#7ee8f6', 2, { subCol: '#fff', big: false });
+    }, 350);
+  });
   KK.on('recruit', ({ id }) => {
     setTimeout(() => {
       const h = W.heroes.find((x) => x.id === id);

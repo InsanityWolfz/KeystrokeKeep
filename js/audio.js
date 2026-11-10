@@ -212,6 +212,7 @@
   KK.on('reassemble', () => p('heal'));
   KK.on('voidSlam', ({ e }) => { if ((e.slams || 0) <= 3) p('slam'); });
   KK.on('recruit', () => p('recruit'));
+  KK.on('gearUp', () => { if (!limited('gearUp', 20000)) p('levelup'); });
   KK.on('ult', ({ id }) => p({ knight: 'ultKnight', archer: 'ultArcher', mage: 'ultMage', cleric: 'ultCleric' }[id]));
   KK.on('meteorLand', () => p('meteor'));
   KK.on('bossSpawn', () => { p('bossIntro'); A.duck(2.2); });

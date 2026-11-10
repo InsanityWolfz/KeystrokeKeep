@@ -186,7 +186,18 @@
       }
     }
     for (const p of W.props) {
-      if (p.opened !== undefined) {
+      if (p.node) {
+        const spr = KK.SPR.nodes[p.kind][p.done ? 1 : 0];
+        const px = sxw(p.x) - Math.round(spr.w / 2);
+        const sunk = p.kind === 'fish' ? 3 : 0;
+        // a hit shakes the node one pixel
+        const jig = !p.done && p.at && p.swingT > 0.4 ? 1 : 0;
+        if (p.kind !== 'fish') shadow(sxw(p.x), W.GROUND + sy, 6);
+        b.drawImage(spr.c, px + jig, W.GROUND - spr.h + sy + sunk);
+        if (!p.done && p.kind === 'ore' && Math.sin(t * 5 + p.x) > 0.7) { b.fillStyle = '#ffe08a'; b.fillRect(px + 6, W.GROUND - spr.h + sy + 2, 1, 1); }
+        if (!p.done && p.kind === 'fish' && Math.sin(t * 3 + p.x) > 0.5) { b.fillStyle = '#b4bccb'; b.fillRect(px + 5 + Math.floor((t * 3) % 6), W.GROUND - 1 + sy, 2, 1); }
+        if (p === W.node && p.at && !p.done) bar(sxw(p.x) - 6, W.GROUND - spr.h - 4 + sy + sunk - (p.kind === 'fish' ? 6 : 0), 12, Math.min(1, p.work / p.need), '#fbd14b');
+      } else if (p.opened !== undefined) {
         const spr = p.opened ? KK.SPR.chestOpen : KK.SPR.chest;
         const bounce = !p.opened && p.openT > 0 ? Math.round(Math.abs(Math.sin(p.openT * 30)) * 2) : 0;
         shadow(sxw(p.x), W.GROUND + sy, 6);
@@ -470,7 +481,7 @@
   }
 
   function drawHero(h, x, sy, tier) {
-    const frames = KK.SPR.frames[h.id];
+    const frames = KK.SPR.heroFrames(h.id);
     if (!frames) return;
     const walking = W.walking && !h.dead && W.trans <= 0;
     const f = walking ? Math.floor(h.anim) % 2 : 0;
@@ -503,7 +514,7 @@
       b.fillStyle = '#6cd05a'; for (let i = 0; i < 4; i++) b.fillRect(vx + 2 + i * 3, vy + 6 + (i % 2) * 3, 1, 9 - (i % 2) * 3);
       b.fillStyle = '#9cff8a'; b.fillRect(vx + 4, vy + 7, 1, 1); b.fillRect(vx + 10, vy + 10, 1, 1);
     } else if (h.webbed > 0) { b.fillStyle = '#f2f2f2'; for (let i = 0; i < 6; i++) b.fillRect(Math.round(dxp + 2 + (i * 5) % 12), Math.round(y + 2 + (i * 7) % 12), 1, 1); b.fillRect(Math.round(dxp + 1), Math.round(y + 6), 12, 1); }
-    if (h.flash > 0) { b.globalAlpha = 0.8; b.drawImage(KK.SPR.frames[h.id][f].white, Math.round(dxp), Math.round(y)); b.globalAlpha = 1; }
+    if (h.flash > 0) { b.globalAlpha = 0.8; b.drawImage(frames[f].white, Math.round(dxp), Math.round(y)); b.globalAlpha = 1; }
     // mage orb / cleric halo glow
     if (h.id === 'mage') { b.globalCompositeOperation = 'lighter'; glow(dxp + 14, y + 2, 5 + (h.cast > 0 ? 4 : 0), '#7ee8f6', 0.6); b.globalCompositeOperation = 'source-over'; }
     // ultimate charge: the hero whose turn it is shows a bar that your typing fills
