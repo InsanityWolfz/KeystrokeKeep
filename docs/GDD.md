@@ -15,6 +15,27 @@
 
 ---
 
+## 0. Theme: the Clatter (added Nov 10)
+
+The heroes can't see the player. They live below the keys and hear the typing through the ceiling. They call it **the Clatter**, and each of them explains it differently:
+
+| Hero | What they think the Clatter is |
+|---|---|
+| Sir Clank | Weather. He hits harder when it is loud anyway. |
+| Wren | Something to count. She keeps the tally on her quiver. |
+| Mortimer | A phenomenon. Forty years of notes and he still can't predict it. |
+| Sister Pell | Someone listening. She prays to it. |
+
+What this decides:
+
+* **Fervor and Sparks** are the Clatter reaching them. Loud means strong.
+* **A day up here is a lifetime down there.** That is why a party retires and its heirs carry on, and why Renown and Legacy are inherited.
+* **Silence is an event.** Five quiet minutes, a return after a long gap, a late night and FLOW each get one short remark from a hero (`CHATTER` in `js/data.js`, timing in `js/fx.js`). At most one line every four minutes, never over a boss or a banner, and it can be turned off in Settings.
+* **Voice for all text:** menus and descriptions stay plain and short. Only the heroes speak in character, in capitals, a few words at a time.
+* **Names** come from work and keyboards (Spacebar Shield, Night Shift, Attention Span, Gold Watch) before fantasy stock (no Hollow/Ember/Abyss coinages, and never "delve").
+
+The dungeon itself stays a dungeon, so the existing art holds.
+
 ## 1. Pillars
 
 1. **Your activity is the fuel.** Typing and clicking anywhere on your PC charges your heroes. Being productive *feels* like playing. This is the hook; protect it above everything else.

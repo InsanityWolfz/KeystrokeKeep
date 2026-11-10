@@ -21,7 +21,7 @@
       fervor: 0, keyCounter: 0,
       incomeRate: 0,
       stats: { kills: 0, bossKills: 0, keys: 0, clicks: 0, ults: 0, goldEarned: 0, playTime: 0, chests: 0, rats: 0, flowTime: 0, wipes: 0 },
-      settings: { sound: true, music: false, volume: 0.2, keySound: false, calm: !!(root.kkNative), combatSfx: !root.kkNative, fps: 24, lowGpu: 'auto', size: 'auto', countInput: true },
+      settings: { sound: true, music: false, volume: 0.2, keySound: false, calm: !!(root.kkNative), combatSfx: !root.kkNative, fps: 24, lowGpu: 'auto', size: 'auto', countInput: true, chatter: true },
       tutorial: {},
       lastSave: Date.now(),
       created: Date.now(),
@@ -30,6 +30,7 @@
 
   KK.S = KK.newState();
   KK.DEMO_RENOWN_CAP = 120; // first clear 30 + 15 re-clears (~2 h typist); then best time is the score. The full game converts it on import.
+  KK.MAX_FLOOR = 2500; // the bottom: enemy health stops fitting in a number near floor 2900
   KK.STORE_URL = ''; // e.g. 'steam://openurl/https://store.steampowered.com/app/<appid>' once the page exists
 
   // Next Fest demo mode: ?demo in the browser, --kk-demo / KK_DEMO=1 for the desktop build.
@@ -75,6 +76,10 @@
       }
       let b = D.BIOMES[0];
       for (const bb of D.BIOMES) if (f >= bb.from) b = bb;
+      if (b.id === 'root' && ((f >= 121 && f <= 130) || (f >= 141 && f <= 150))) {
+        return echoCache.deep || (echoCache.deep = Object.assign({}, b, { name: 'The Deep Heartroot', art: 'rootdeep', deep: true,
+          pal: Object.assign({}, b.pal, { fog: '#070a06', wall: '#26211a', wallHi: '#363024', wallLo: '#181510', floor: '#2a2219', floorHi: '#3d3324', floorLo: '#14100b', accent: '#9cff8a', torch: '#9cff8a', dark: 0.62 }) }));
+      }
       return b;
     },
     isBossFloor: (f) => f % 10 === 0,
@@ -110,8 +115,9 @@
     if (S.codex && Object.keys(S.codex).length && !S.codexKills) { S.codexKills = Object.values(S.codex).reduce((a, b) => a + b, 0); S.codex = {}; }
     const ck = S.codexKills || 0;
     m.codexRanks = Math.min(D.CODEX_MAX, Math.min(28, Math.floor(ck / D.CODEX_EVERY)) + Math.floor(Math.max(0, ck - 28 * D.CODEX_EVERY) / 16));
-    if (m.codexRanks) { const c = Math.pow(1.03, m.codexRanks); m.dmg *= c; m.gold *= c; }
-    m.trophies = D.TROPHIES.filter((f) => S.maxFloorEver >= f).length;
+    m.codexExtra = Math.floor(Math.max(0, ck - D.CODEX_FULL) / D.CODEX_EXTRA_EVERY);
+    if (m.codexRanks) { const c = Math.pow(1.03, m.codexRanks) * Math.pow(1.01, m.codexExtra); m.dmg *= c; m.gold *= c; }
+    m.trophies = D.trophyCount(S.maxFloorEver);
     if (m.trophies) { const t = Math.pow(1.05, m.trophies); m.dmg *= t; m.gold *= t; }
     m.offline = Math.min(m.offlineCap, m.offline); // closing the game must never beat running it
     // Fame: +3% per lifetime Renown, compounding gently so late retires still push the wall
@@ -320,8 +326,8 @@
   // demo: once the cap is beaten, a 0-Renown "re-delve" restarts the run (new relics, beat your best time)
   // Omen of the Day: one starred omen per calendar day; reaching (record - 5) under it pays a Seal (10 + record/10 Renown)
   A.starOmen = () => { let h = 0; for (const c of KK.today()) h = (h * 31 + c.charCodeAt(0)) >>> 0; return D.OMENS[h % D.OMENS.length].id; };
-  // a Seal needs a new calendar day (not an earlier one) AND an hour of play since the last Seal
-  A.dailyOpen = () => { const S = KK.S, t = KK.today(); return !KK.DEMO_CAP && S.retires >= 2 && S.sealDay !== t && !(S.sealDay && t < S.sealDay) && (S.stats.playTime - (S.sealPT || -1e9)) >= 3600; };
+  // a Seal needs a new calendar day (not an earlier one) AND two hours of play since the last Seal
+  A.dailyOpen = () => { const S = KK.S, t = KK.today(); return !KK.DEMO_CAP && S.retires >= 2 && S.sealDay !== t && !(S.sealDay && t < S.sealDay) && (S.stats.playTime - (S.sealPT || -1e9)) >= 7200; };
   A.sealFloor = () => Math.max(40, (KK.S.renownFloor || 0) - 5);
   A.sealValue = () => 10 + Math.floor((KK.S.renownFloor || 0) / 10);
   A.claimSeal = () => { const S = KK.S; const v = A.sealValue() * (S.omen === S.omenStar && S.omenStarDay === KK.today() ? 1.5 : 1); const vv = Math.round(v); S.sealDay = KK.today(); S.sealPT = S.stats.playTime; S.seals = (S.seals || 0) + 1; S.renown += vv; S.renownLifetime += vv; KK.dirty(); KK.emit('seal', { n: S.seals, v: vv }); };

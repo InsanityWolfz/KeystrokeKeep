@@ -20,7 +20,7 @@
       KK.ui.welcome(() => { KK.audio.init(); KK.fx.banner('FLOOR 1', 'THE CRYPT', '#ffffff', 2.4, { subCol: '#c9b8ea' }); });
     } else {
       if (!(window.kkNative && window.kkNative.capture)) awayCheck((Date.now() - (KK.S.lastSave || Date.now())) / 1000);
-      try { const src = window.kkNative && window.kkNative.saveInfo && window.kkNative.saveInfo(); if (src === 'backup') setTimeout(() => KK.ui.toast('Your save was damaged, so it was restored from a backup.', 'shield', 'gold', 8), 2000); if (src === 'demo') setTimeout(() => KK.ui.toast('Welcome to the full game! Your demo progress came with you.', 'crown', 'epic', 8), 2000); } catch (e) { /* ignore */ }
+      try { const src = window.kkNative && window.kkNative.saveInfo && window.kkNative.saveInfo(); if (src === 'backup') setTimeout(() => KK.ui.toast('Your save was damaged, so it was restored from a backup.', 'shield', 'gold', 8), 2000); if (src === 'demo') setTimeout(() => KK.ui.toast('This is the full game. Your demo progress carried over.', 'crown', 'epic', 8), 2000); } catch (e) { /* ignore */ }
       KK.ui.renderPips();
       if (KK.S.omenOffer) setTimeout(KK.ui.chooseOmen, 1500); // an omen choice pending at quit is never lost
     }
@@ -54,13 +54,19 @@
       if (KK.onFrame) KK.onFrame(); // capture mode: the frame-locked clock
       const dt = KK.fixedDt || Math.min(0.25, (now - last) / 1000);
       last = now;
-      FX.update(dt);
-      const simDt = dt * FX.timeScale() * KK.warp;
-      // fixed-ish substeps keep the sim stable at high warp / low fps
-      const steps = Math.max(1, Math.ceil(simDt / (1 / 30)));
-      if (!KK.paused) for (let i = 0; i < steps; i++) W.update(simDt / steps);
-      KK.render.draw(dt);
-      KK.ui.update(dt);
+      // one bad frame must never stop the loop: the strip would sit frozen until a restart
+      try {
+        FX.update(dt);
+        const simDt = dt * FX.timeScale() * KK.warp;
+        // fixed-ish substeps keep the sim stable at high warp / low fps
+        const steps = Math.max(1, Math.ceil(simDt / (1 / 30)));
+        if (!KK.paused) for (let i = 0; i < steps; i++) W.update(simDt / steps);
+        KK.render.draw(dt);
+        KK.ui.update(dt);
+      } catch (e) {
+        if (!KK.frameErrors) console.error('[KK] frame error', e);
+        KK.frameErrors = (KK.frameErrors || 0) + 1;
+      }
       // capture mode keeps a fixed schedule (exactly fps frames a second against OBS); play mode subtracts the frame's work
       if (KK.fixedDt) { nextAt = Math.max((nextAt || now) + 1000 / fps, realNow() - 50); later(frame, Math.max(0, nextAt - realNow())); }
       else later(frame, Math.max(1, 1000 / fps - (realNow() - now)));

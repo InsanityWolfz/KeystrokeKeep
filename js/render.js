@@ -32,7 +32,7 @@
     R.scale = scale;
     const dpr = window.devicePixelRatio || 1;
     pxScale = Math.max(1, Math.floor(scale * dpr)); // never oversize the backing store
-    Wd = Math.ceil(window.innerWidth / scale);
+    Wd = Math.max(64, Math.ceil(window.innerWidth / scale)); // a window that is 0 px wide for a moment must not make 0 px canvases
     buf.width = Wd; buf.height = H;
     light.width = Wd; light.height = H;
     cvs.width = Wd * pxScale; cvs.height = H * pxScale;
@@ -92,7 +92,7 @@
       // roots crawling over the brick, with a faint pulse of the Heart in their veins
       for (let i = 0; i < 6; i++) {
         let x = Math.floor(U.hash(i * 6.1) * TW), y = 0;
-        while (y < TH) { g.fillStyle = '#4a2a14'; g.fillRect(x, y, 2, 1); g.fillStyle = '#2a170b'; g.fillRect(x, y + 1, 1, 1); if (U.hash2(i, y) > 0.7) eg.fillStyle = '#ff4f7a', eg.fillRect(x, y, 1, 1); y++; if (U.hash2(i * 3, y) > 0.6) x = (x + (U.hash2(y, i) > 0.5 ? 1 : -1) + TW) % TW; }
+        while (y < TH) { g.fillStyle = '#4a2a14'; g.fillRect(x, y, 2, 1); g.fillStyle = '#2a170b'; g.fillRect(x, y + 1, 1, 1); if (U.hash2(i, y) > 0.7) eg.fillStyle = p.accent, eg.fillRect(x, y, 1, 1); y++; if (U.hash2(i * 3, y) > 0.6) x = (x + (U.hash2(y, i) > 0.5 ? 1 : -1) + TW) % TW; }
       }
     }
     if (bi.id === 'void') {
@@ -116,6 +116,9 @@
     return { wall, emis, floor, TW, TH, FW, FH };
   }
 
+  /** Art for a biome; a variant with its own palette (the Deep Heartroot) is built the first time it is seen. */
+  const artOf = (bi) => biomeArt[bi.art || bi.id] || (biomeArt[bi.art || bi.id] = makeBiomeArt(bi));
+
   // ---------------------------------------------------------------- frame
   let t = 0;
   R.draw = function (dt) {
@@ -123,7 +126,7 @@
     const S = KK.S;
     const biome = F.biomeOf(S.floor);
     const pal = biome.pal;
-    const art = biomeArt[biome.id];
+    const art = artOf(biome);
     const tier = KK.fervorTier();
 
     // camera
@@ -237,7 +240,7 @@
     if (W.boss && !W.boss.dead) glow(sxw(W.boss.x), W.boss.y - W.boss.def.h / 2 + sy, 30 + Math.sin(t * 4) * 4, W.boss.hollowed ? '#a24cff' : '#ff3a3a', 0.18);
     // emissive biome layer (lava cracks / void stars)
     if (biome.id === 'magma' || biome.id === 'void' || biome.id === 'root' || biome.echo) {
-      const art = biome.echo ? biomeArt.void : biomeArt[biome.id];
+      const art = biome.echo ? biomeArt.void : artOf(biome);
       b.globalAlpha = 0.35 + Math.sin(t * 1.5) * 0.1;
       for (let x = -((px % art.TW) + art.TW) % art.TW; x < Wd; x += art.TW) b.drawImage(art.emis, x, sy);
       b.globalAlpha = 1;
@@ -329,6 +332,19 @@
       if (FX.banners.length && FX.banners[0].big) b.globalAlpha *= 0.35; // big banners stay readable
       KK.font.draw(b, tx.str, sxw(tx.x), Math.round(tx.y + sy - (tx.bump > 0 ? 1 : 0)), col, sc);
       b.globalAlpha = 1;
+    }
+
+    // ---- hero chatter: one line on a plate above the hero who said it
+    if (FX.say && !FX.alerts.length) {
+      const h = W.heroes.find((x) => x.uid === FX.say.uid);
+      if (h && !h.dead) {
+        const w = FX.say.str.length * 4 + 8;
+        const x = Math.round(U.clamp(sxw(h.x), w / 2 + 2, Wd - w / 2 - 2)), y = 26;
+        b.globalAlpha = Math.max(0, Math.min(1, FX.say.t / 0.2, (FX.say.life - FX.say.t) / 0.4)) * (FX.banners.length && FX.banners[0].big ? 0.35 : 1);
+        b.fillStyle = '#000000aa'; b.fillRect(x - w / 2, y - 4, w, 11);
+        KK.font.draw(b, FX.say.str, x, y, '#e8dcff');
+        b.globalAlpha = 1;
+      }
     }
 
     // ---- Flow vignette

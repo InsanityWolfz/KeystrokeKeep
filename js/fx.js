@@ -42,6 +42,8 @@
     FX.lights = FX.lights.filter((l) => (l.t += dt) < l.life);
     FX.beams = FX.beams.filter((b) => (b.t += dt) < b.life);
     FX.pillars = FX.pillars.filter((p) => (p.t += dt) < p.life);
+    if (FX.say && (FX.say.t += dt) >= FX.say.life) FX.say = null;
+    chatterTick();
     // banners play one at a time; a waiting queue makes the current one hurry up
     if (FX.banners.length) {
       const b0 = FX.banners[0];
@@ -388,7 +390,7 @@
   KK.on('regroup', () => FX.alert('THE PARTY REGROUPS (10 MIN)', '#ffb4a0', 2.4));
   KK.on('trophy', ({ floor }) => {
     const x = W.partyX - 20;
-    FX.banner('DEPTH TROPHY', 'FLOOR ' + floor + ': x1.05 FOREVER', '#ffd76a', 2.6, { subCol: '#fff6c9' });
+    if (floor % 10 !== 0) FX.banner('DEPTH TROPHY', 'FLOOR ' + floor + ': x1.05 FOREVER', '#ffd76a', 2.6, { subCol: '#fff6c9' });
     FX.ring(x, 40, 4, 110, '#ffd76a', 0.8, 2);
     FX.burst(x, 40, 40, ['#ffd76a', '#fff6c9', '#ffffff'], { spd: 140, grav: -20, life: 1.2 });
   });
@@ -415,4 +417,41 @@
     p.home = h ? { get x() { return h.x; }, get y() { return h.y - 8; } } : { x: W.partyX, y: 40 };
     setTimeout(() => sparkBudget--, 300);
   });
+
+  // ---------------------------------------------------------------- hero chatter
+  // The heroes can't see the player. They hear the typing overhead (the Clatter), and now and then
+  // one of them says something about it: one line at a time, at most one every 4 minutes, never
+  // over a boss fight or a banner. Lines live in data.js. No random numbers are drawn here, so a
+  // line never shifts the game's seeded stream (capture mode turns chatter off anyway).
+  FX.say = null;
+  let lastSayAt = -1e9, sayN = 0, lastAct = performance.now(), quietSaid = false, lateDay = '';
+  function say(kind, force) {
+    const S = KK.S;
+    if (S.settings.chatter === false || KK.paused || KK.capture) return false;
+    const now = performance.now();
+    if (!force && now - lastSayAt < 240000) return false;
+    if (W.boss || FX.banners.length || FX.alerts.length || FX.say) return false;
+    const living = W.heroes.filter((h) => !h.dead);
+    if (!living.length) return false;
+    const h = living[sayN % living.length], lines = (KK.DATA.CHATTER[kind] || {})[h.id];
+    if (!lines) return false;
+    FX.say = { uid: h.uid, str: lines[Math.floor(sayN / living.length) % lines.length], t: 0, life: 3.2 };
+    sayN++; lastSayAt = now;
+    return true;
+  }
+  FX.sayLine = say;
+  function chatterTick() {
+    const gap = performance.now() - lastAct;
+    // five minutes of silence gets one remark; nobody talks to an empty room after twenty
+    if (!quietSaid && gap > 300000 && gap < 1200000 && say('quiet')) quietSaid = true;
+  }
+  KK.on('activity', () => {
+    const now = performance.now(), gap = now - lastAct;
+    lastAct = now; quietSaid = false;
+    if (gap > 600000) { say('back'); return; }
+    const hr = new Date().getHours();
+    if ((hr >= 22 || hr < 5) && lateDay !== KK.today() && say('late')) lateDay = KK.today();
+  });
+  KK.on('fervorTier', ({ from, to }) => { if (to === 3 && to > from) setTimeout(() => say('flow'), 1800); });
+  KK.on('retired', () => setTimeout(() => say('heir', true), 5000));
 })();

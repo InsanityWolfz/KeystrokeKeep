@@ -21,7 +21,7 @@
     return items[items.length - 1];
   };
 
-  const SUF = ['', 'K', 'M', 'B', 'T', 'Qa', 'Qi', 'Sx', 'Sp', 'Oc', 'No', 'Dc', 'Ud', 'Dd', 'Td'];
+  const SUF = ['', 'K', 'M', 'B', 'T', 'Qa', 'Qi', 'Sx', 'Sp', 'Oc', 'No', 'Dc', 'Ud', 'Dd', 'Td', 'Qad', 'Qid', 'Sxd', 'Spd', 'Ocd', 'Nod', 'Vg'];
   U.fmt = (n) => {
     if (n === undefined || n === null || isNaN(n)) return '0';
     if (!isFinite(n)) return '∞';

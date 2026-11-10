@@ -47,7 +47,7 @@ npm run icon        # re-render build/icon.png from the pixel-art crown
 * **Fervor:** keep typing to climb Idle → Focused → In the Zone → **FLOW STATE** (x2.2 power, a lit-up dungeon, golden auras, drums kick in).
 * **Bosses** every 10 floors drop a **relic choice** (17 relics, mostly keyboard-themed).
 * **Golden rat** every few minutes: click it for a gold and Spark burst.
-* **Retire** at floor 20+ for Renown. Spend it in the Hall of Legends on permanent upgrades (Quartermaster auto-levels your heroes).
+* **Retire** at floor 20+ for Renown. Spend it in the Legacy tab on permanent upgrades (Quartermaster auto-levels your heroes).
 
 ## Project layout
 

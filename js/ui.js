@@ -46,7 +46,7 @@
     UI.renderPips();
     KK.on('wave', UI.renderPips); KK.on('floor', UI.renderPips); KK.on('recovered', UI.renderPips); KK.on('floorClear', UI.renderPips);
     KK.on('coinArrive', () => { if (performance.now() - (UI.lastPulse || 0) > 2000) { UI.lastPulse = performance.now(); pulse('#hud-gold'); } });
-    KK.on('relicOffer', () => { const S = KK.S; if ((S.relicQueue || []).length) return; if (performance.now() - (UI.lastRelicToast || -1e9) < 900000) return; UI.lastRelicToast = performance.now(); setTimeout(() => UI.toast('The boss dropped a relic! Choose it in ◆ Relics when you have a moment.', 'gem', 'epic', 6), 1400); });
+    KK.on('relicOffer', () => { const S = KK.S; if ((S.relicQueue || []).length) return; if (performance.now() - (UI.lastRelicToast || -1e9) < 900000) return; UI.lastRelicToast = performance.now(); setTimeout(() => UI.toast('The boss dropped a relic. Pick one in ◆ Relics.', 'gem', 'epic', 6), 1400); });
     KK.on('dirty', () => { UI.dirty = true; });
     KK.on('retired', () => { UI.dirty = true; UI.close(); });
     setInterval(UI.slowUpdate, 250);
@@ -89,10 +89,10 @@
     const g = A.renownGain();
     const regroup = (S.regroupUntil || 0) - S.stats.playTime, camp = (S.campUntil || 0) - S.stats.playTime;
     const lvls = D.PARTY_ORDER.reduce((a, id) => a + (S.heroes[id] || 0), 0);
-    const calmLine = W.cautious ? `Training on floor ${S.floor}: gathering strength` : (camp > 0 && S.campFloor) ? `Regrouping below floor ${S.campFloor}${S.campLevels > lvls ? ` · +${S.campLevels - lvls} levels to go` : ''}` : '';
+    const calmLine = W.cautious ? `Training on floor ${S.floor}` : (camp > 0 && S.campFloor) ? `Regrouping below floor ${S.campFloor}${S.campLevels > lvls ? ` · +${S.campLevels - lvls} levels to go` : ''}` : '';
     const hintMin = 10;
     const nearGlimpse = KK.DEMO_CAP && !S.glimpseDone && (S.bossBlock === KK.DEMO_CAP || S.maxFloorRun >= 38); // don't pull players off the road to the Glimpse
-    setText('#hud-farm', blocked && g >= hintMin && !nearGlimpse && A.canRetire() ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Regrouping: next try in ${Math.ceil(regroup / 60)}m. Level up!` : blocked ? '⚠ Boss too strong: farming. Level up!' : calmLine);
+    setText('#hud-farm', blocked && g >= hintMin && !nearGlimpse && A.canRetire() ? `Stuck? ♛ Retire: +${g} Renown` : regroup > 0 ? `Next boss try in ${Math.ceil(regroup / 60)}m. Level up.` : blocked ? '⚠ Boss too strong. Level up to beat it.' : calmLine);
     $('#hud-farm').classList.toggle('hidden', (!blocked && !calmLine) || KK.fx.banners.length > 0);
     $('#hud-farm').classList.toggle('calm', !blocked && !!calmLine);
     document.documentElement.classList.toggle('kk-calm', !!S.settings.calm);
@@ -248,7 +248,7 @@
   }
   function partyHTML() {
     const mult = (v, l) => `<button data-action="mult" data-v="${v}" class="${UI.buyMult === v ? 'on' : ''}">${l}</button>`;
-    return `<div class="ph"><div><h3>THE PARTY</h3><div class="sub">Gold levels heroes. Your Sparks fire their ultimates automatically.</div></div>
+    return `<div class="ph"><div><h3>THE PARTY</h3><div class="sub">Spend gold to level heroes. Sparks from your typing fire their ultimates.</div></div>
       <div class="buymult">${mult(1, 'x1')}${mult(10, 'x10')}${mult('max', 'MAX')}</div></div>
       <div class="grid">${['knight', 'archer', 'mage', 'cleric'].map(heroCard).join('')}</div>`;
   }
@@ -264,13 +264,13 @@
   }
   function forgeHTML() {
     const S = KK.S;
-    return `<div class="ph"><div><h3>THE FORGE</h3><div class="sub">Party-wide upgrades bought with gold. Resets when you retire.</div></div></div>
+    return `<div class="ph"><div><h3>THE FORGE</h3><div class="sub">Upgrades for the whole party, bought with gold. They reset when you retire.</div></div></div>
       <div class="grid">${D.FORGE.map((d) => upCard(d, S.forge[d.id] || 0, 'gold', 'forge')).join('')}</div>`;
   }
   function workshopHTML() {
     const S = KK.S;
     setTimeout(() => { for (const d of D.WORKSHOP) if (d.minFloor && S.maxFloorEver >= d.minFloor) S.tutorial['seen_' + d.id] = 1; }, 0);
-    return `<div class="ph"><div><h3>WORKSHOP</h3><div class="sub"><b style="color:#ffb070">Embers</b> come from Sparks spent on ultimates (1 per 4), from bosses and from golden rats. They buy upgrades that <b style="color:var(--spark)">never reset</b>.</div></div>
+    return `<div class="ph"><div><h3>WORKSHOP</h3><div class="sub"><b style="color:#ffb070">Embers</b> come from ultimates (1 for every 4 Sparks spent), bosses and golden rats. Workshop upgrades <b style="color:var(--spark)">never reset</b>.</div></div>
       <div class="res-pill">${icon('candle')} <span id="ws-embers">${fmt(Math.floor(S.embers || 0))}</span> EMBERS</div></div>
       <div class="grid">${D.WORKSHOP.filter((d) => !d.minFloor || S.maxFloorEver >= d.minFloor).map((d) => upCard(d, S.workshop[d.id] || 0, 'embers', 'workshop')).join('')}</div>`;
   }
@@ -289,7 +289,7 @@
     const offer = waiting ? `<button class="buy big" data-action="showoffer" style="margin-bottom:10px">◆ ${waiting > 1 ? waiting + ' RELIC CHESTS ARE' : 'A RELIC IS'} WAITING. OPEN THE CHEST</button>` : '';
     return `<div class="ph"><div><h3>RELICS</h3><div class="sub">Bosses drop a choice of relics every 10 floors. They last until you retire.</div></div></div>
       ${offer}
-      ${S.relics.length ? `<div class="relic-list">${Object.keys(counts).map((id) => relicCard(id, counts[id])).join('')}</div>` : '<div class="empty">No relics yet. Defeat the boss on floor 10!</div>'}`;
+      ${S.relics.length ? `<div class="relic-list">${Object.keys(counts).map((id) => relicCard(id, counts[id])).join('')}</div>` : '<div class="empty">No relics yet. The first boss is on floor 10.</div>'}`;
   }
   function legacyHTML() {
     const S = KK.S, gain = A.renownGain();
@@ -298,11 +298,11 @@
     return `<div class="legacy-top">
       <div class="retire-box">
         <h4>♛ RETIRE THE PARTY</h4>
-        <p>Your heroes retire to the tavern. Gold, levels, Forge and relics reset. You keep <b>Renown</b>, Legacy upgrades and all Workshop upgrades. Renown is paid for <b>beating your deepest record</b> (${S.renownFloor ? 'floor ' + S.renownFloor : 'no record yet'}).</p>
-        <p>Deepest floor this delve: <b>${S.maxFloorRun}</b> · Renown: <b style="color:#e9a2ff">${S.renown}</b> (lifetime ${S.renownLifetime}, Fame x${fmt(S.renownLifetime ? KK.mods().fame : 1)} dmg &amp; gold${KK.mods().trophies ? `, ${KK.mods().trophies} depth troph${KK.mods().trophies > 1 ? 'ies' : 'y'}` : ''})${S.omen ? `<br>Omen this delve: <b style="color:#ffd76a">${D.OMENS.find((o) => o.id === S.omen).name}</b>` : ''}</p>
+        <p>Retiring ends this run. Gold, hero levels, Forge upgrades and relics reset. You keep <b>Renown</b>, Legacy upgrades and Workshop upgrades. You earn Renown by <b>beating your deepest floor</b> (${S.renownFloor ? 'floor ' + S.renownFloor : 'no record yet'}).</p>
+        <p>Deepest floor this run: <b>${S.maxFloorRun}</b> · Renown: <b style="color:#e9a2ff">${S.renown}</b> (lifetime ${S.renownLifetime}, Fame x${fmt(S.renownLifetime ? KK.mods().fame : 1)} dmg &amp; gold${KK.mods().trophies ? `, ${KK.mods().trophies} depth troph${KK.mods().trophies > 1 ? 'ies' : 'y'}` : ''})${S.omen ? `<br>Omen this run: <b style="color:#ffd76a">${D.OMENS.find((o) => o.id === S.omen).name}</b>` : ''}</p>
         <div style="display:flex;align-items:center;gap:12px;margin-top:8px">
           <div><div class="gain" id="retire-gain">+${gain}</div><div class="worth" id="retire-worth">${renownWorth()}</div></div>
-          <button class="buy renown big" data-action="retire" ${A.canRetire() ? '' : 'disabled'} style="flex:1">${gain > 0 ? 'RETIRE FOR RENOWN' : A.canRetire() ? (KK.DEMO_CAP ? 'RE-DELVE (NEW RUN, NEW RELICS)' : '★ DAILY RE-DELVE: OMEN OF THE DAY') : A.retireHint()}</button>
+          <button class="buy renown big" data-action="retire" ${A.canRetire() ? '' : 'disabled'} style="flex:1">${gain > 0 ? 'RETIRE FOR RENOWN' : A.canRetire() ? (KK.DEMO_CAP ? 'NEW RUN, NEW RELICS' : '★ FREE DAILY RUN') : A.retireHint()}</button>
         </div>
       </div>
       <div class="statbox">
@@ -314,21 +314,21 @@
         ${statRow('Chests opened', fmt(st.chests))}${statRow('Retreats', fmt(st.wipes))}
         ${KK.DEMO_CAP ? '' : statRow('Seals of the Day', S.seals || 0)}
       </div></div>
-      <div class="ph"><div><h3>HALL OF LEGENDS</h3><div class="sub">Permanent upgrades bought with Renown.</div></div><div class="res-pill renown" id="legacy-renown">♛ ${S.renown}</div></div>
+      <div class="ph"><div><h3>LEGACY UPGRADES</h3><div class="sub">Permanent upgrades bought with Renown.</div></div><div class="res-pill renown" id="legacy-renown">♛ ${S.renown}</div></div>
       <div class="grid">${D.LEGACY.map((d) => upCard(d, S.legacy[d.id] || 0, 'renown', 'legacy')).join('')}</div>
       ${codexHTML()}
       ${achHTML()}`;
   }
   function codexHTML() {
     const S = KK.S, m = KK.mods();
-    const kills = S.codexKills || 0, rank = m.codexRanks || 0;
+    const kills = S.codexKills || 0, rank = m.codexRanks || 0, extra = m.codexExtra || 0;
     let body;
-    if (KK.DEMO_CAP) body = '<span class="muted">Full game: every 8 Hollowed boss kills from floor 70 adds a permanent x1.03 rank (40 ranks; the Heartroot bosses count too).</span>';
-    else if (S.maxFloorEver < 70) body = '<span class="muted">Locked: reach floor 70 to start the Hollow Codex.</span>';
+    if (KK.DEMO_CAP) body = '<span class="muted">In the full game, every 8 Hollowed boss kills from floor 70 add a permanent x1.03 rank. There are 40 ranks, and Heartroot bosses count too.</span>';
+    else if (S.maxFloorEver < 70) body = '<span class="muted">Reach floor 70 to start the Hollow Codex.</span>';
     else {
       const pips = Array.from({ length: D.CODEX_MAX }, (_, i) => `<i class="${i < rank ? 'on' : ''}"></i>`).join('');
-      const next = rank >= D.CODEX_MAX ? 'Complete!' : `next rank in ${(rank < 28 ? (rank + 1) * D.CODEX_EVERY : 28 * D.CODEX_EVERY + (rank - 27) * 16) - kills} Codex kills`;
-      body = `<b>Rank ${rank}/${D.CODEX_MAX}</b> · x${Math.pow(1.03, rank).toFixed(2)} damage &amp; gold · ${next}<div class="pips">${pips}</div>`;
+      const next = rank >= D.CODEX_MAX ? `+${extra} extra at x1.01 each · next in ${D.CODEX_FULL + (extra + 1) * D.CODEX_EXTRA_EVERY - kills} Codex kills` : `next rank in ${(rank < 28 ? (rank + 1) * D.CODEX_EVERY : 28 * D.CODEX_EVERY + (rank - 27) * 16) - kills} Codex kills`;
+      body = `<b>Rank ${rank}/${D.CODEX_MAX}</b> · x${(Math.pow(1.03, rank) * Math.pow(1.01, extra)).toFixed(2)} damage &amp; gold · ${next}<div class="pips">${pips}</div>`;
     }
     return `<div class="codexbox"><h4>HOLLOW CODEX</h4>${body}</div>`;
   }
@@ -359,14 +359,15 @@
       <div class="setrow"><span>Volume</span><input type="range" min="0" max="1" step="0.05" value="${s.volume}" data-action="vol"></div>
       <div class="setrow"><span>Combat sounds<br><small style="color:var(--muted)">Hits, coins and spells. Big moments always play.</small></span><div class="opts">${opt('combatSfx', true, 'ON')}${opt('combatSfx', false, 'OFF')}</div></div>
       <div class="setrow"><span>Keystroke blips</span><div class="opts">${opt('keySound', true, 'ON')}${opt('keySound', false, 'OFF')}</div></div>
-      <div class="setrow"><span>Calm mode<br><small style="color:var(--muted)">No screen shake, flashes or slow-mo. Turn OFF for full juice.</small></span><div class="opts">${opt('calm', true, 'ON')}${opt('calm', false, 'OFF (FULL JUICE)')}</div></div>
-      <div class="setrow"><span>Frame rate<br><small style="color:var(--muted)">Lower = less GPU &amp; battery. Drops further when idle.</small></span><div class="opts">${opt('fps', 15, '15')}${opt('fps', 24, '24')}${opt('fps', 30, '30')}${opt('fps', 60, '60')}</div></div>
-      ${KK.native ? `<div class="setrow"><span>Low-GPU mode<br><small style="color:var(--muted)">~0% GPU but about twice the CPU. AUTO = on for desktops, off on laptops. Applies after a restart.</small></span><div class="opts">${opt('lowGpu', 'auto', 'AUTO')}${opt('lowGpu', true, 'ON')}${opt('lowGpu', false, 'OFF')}</div></div>` : ''}
+      <div class="setrow"><span>Calm mode<br><small style="color:var(--muted)">No screen shake, flashes or slow motion.</small></span><div class="opts">${opt('calm', true, 'ON')}${opt('calm', false, 'OFF')}</div></div>
+      <div class="setrow"><span>Hero chatter<br><small style="color:var(--muted)">Now and then a hero says something about your typing.</small></span><div class="opts">${opt('chatter', true, 'ON')}${opt('chatter', false, 'OFF')}</div></div>
+      <div class="setrow"><span>Frame rate<br><small style="color:var(--muted)">Lower uses less GPU and battery. It drops further when you are idle.</small></span><div class="opts">${opt('fps', 15, '15')}${opt('fps', 24, '24')}${opt('fps', 30, '30')}${opt('fps', 60, '60')}</div></div>
+      ${KK.native ? `<div class="setrow"><span>Low-GPU mode<br><small style="color:var(--muted)">Uses almost no GPU but about twice the CPU. AUTO turns it on for desktops and off for laptops. Restart to apply.</small></span><div class="opts">${opt('lowGpu', 'auto', 'AUTO')}${opt('lowGpu', true, 'ON')}${opt('lowGpu', false, 'OFF')}</div></div>` : ''}
       <div class="setrow"><span>Strip size</span><div class="opts">${opt('size', 'auto', 'AUTO')}${opt('size', 'S', 'S')}${opt('size', 'M', 'M')}${opt('size', 'L', 'L')}</div></div>
       ${KK.S.legacy.quartermaster ? `<div class="setrow"><span>Quartermaster auto-levels heroes</span><div class="opts">${opt('autoLevel', true, 'ON')}${opt('autoLevel', false, 'OFF')}</div></div>` : ''}
-      <div class="setrow"><span>Count my keystrokes &amp; clicks<br><small style="color:var(--muted)">Only counts. Never records which keys.</small></span><div class="opts">${opt('countInput', true, 'ON')}${opt('countInput', false, 'PAUSED')}</div></div>
+      <div class="setrow"><span>Count my keystrokes &amp; clicks<br><small style="color:var(--muted)">It only counts them. It never records which keys you press.</small></span><div class="opts">${opt('countInput', true, 'ON')}${opt('countInput', false, 'PAUSED')}</div></div>
       <div class="setrow"><span>Reset all progress</span><button class="danger" data-action="reset">RESET SAVE</button></div>
-      ${KK.native ? '<div class="setrow"><span>Close the strip (progress is saved)</span><button data-action="quit">QUIT GAME</button></div>' : ''}
+      ${KK.native ? '<div class="setrow"><span>Close the strip. Your progress is saved.</span><button data-action="quit">QUIT GAME</button></div>' : ''}
     </div>`;
   }
 
@@ -430,13 +431,13 @@
     offerOpenedAt = performance.now(); offerSel = null;
     $('#toasts').innerHTML = '';
     const more = (S.relicQueue || []).length;
-    off.innerHTML = `<div class="offer-title">◆ THE BOSS DROPPED A RELIC! CHOOSE ONE ◆${more ? ` <span style="opacity:.7">(${more} more waiting)</span>` : ''}</div>
+    off.innerHTML = `<div class="offer-title">CHOOSE A RELIC${more ? ` <span style="opacity:.7">(${more} more waiting)</span>` : ''}</div>
       <div class="offer-cards">${S.relicOffer.map((id) => {
         const r = D.RELICS.find((x) => x.id === id);
         return `<div class="ocard ${r.rar}" data-relic="${id}"><img src="${r.rar === 'epic' && r.icon === 'gem' ? KK.SPR.iconURL.gemEpic : KK.SPR.iconURL[r.icon]}" alt="">
           <div class="onm rarity-${r.rar}">${r.name}</div><div class="orar rarity-${r.rar}">${D.RARITY[r.rar].label}</div><div class="odesc">${r.desc}</div></div>`;
       }).join('')}</div>
-      <div class="offer-actions"><button class="buy" data-take="1" disabled>PICK A RELIC</button><button class="offer-later" data-later="1">decide later (it'll wait in ◆ Relics)</button></div>`;
+      <div class="offer-actions"><button class="buy" data-take="1" disabled>PICK A RELIC</button><button class="offer-later" data-later="1">Later. It waits in ◆ Relics.</button></div>`;
     off.classList.remove('hidden');
     off.style.animation = 'none'; void off.offsetWidth; off.style.animation = '';
     if (UI.tab) UI.close();
@@ -462,7 +463,7 @@
       card.classList.add('picked');
       $$('.ocard').forEach((c) => { if (c !== card) c.style.opacity = '0.2'; });
       const r = D.RELICS.find((x) => x.id === id);
-      UI.toast(`Relic acquired: ${r.name}`, r.icon, r.rar === 'epic' ? 'epic' : 'gold');
+      UI.toast(`New relic: ${r.name}`, r.icon, r.rar === 'epic' ? 'epic' : 'gold');
       setTimeout(() => { if (KK.S.relicOffer) UI.showOffer(); else $('#relic-offer').classList.add('hidden'); }, 520);
     }
   }
@@ -482,13 +483,13 @@
     const gain = A.renownGain();
     const redelve = gain <= 0;
     const best = KK.S.bestCapTime ? U.fmtTime(KK.S.bestCapTime) : null;
-    UI.modal((redelve ? `<h2>♛ RE-DELVE?</h2>
-      <p>A fresh run with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}${KK.DEMO_CAP ? '' : ` Free once a day: this delve pays no Renown, and reaching floor ${A.sealFloor()} under any omen earns today's Seal: <b>+${A.sealValue()} Renown</b> (<b>+${Math.round(A.sealValue() * 1.5)}</b> under today's ★ omen).`}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
-      <p>Sir Clank and friends hang up their swords. A new generation starts the delve, stronger for it.</p>
+    UI.modal((redelve ? `<h2>♛ START A NEW RUN?</h2>
+      <p>You start again from the top with new relics.${best ? ` Beat your best: <b>${best}</b>.` : ''}${KK.DEMO_CAP ? '' : ` This free daily run pays no Renown for retiring. Reach floor ${A.sealFloor()} under any omen to earn today's Seal, worth <b>+${A.sealValue()} Renown</b>, or <b>+${Math.round(A.sealValue() * 1.5)}</b> under today's ★ omen.`}</p>` : `<h2>♛ RETIRE THE PARTY?</h2>
+      <p>A day up here is a lifetime down there. This party grows old and retires, and their heirs start from the top with all your permanent upgrades.</p>
       <div class="bigval">+${gain} RENOWN</div>`) + `
       ${KK.S.relicOffer ? `<p style="color:#ff9a9a">You have ${1 + (KK.S.relicQueue || []).length} unopened relic chest${(KK.S.relicQueue || []).length ? 's' : ''}. ${(KK.S.relicQueue || []).length ? 'They' : 'It'} will be lost.</p>` : ''}
       <p style="font-size:12px;color:var(--muted)">Resets: gold, hero levels, recruits, Forge, relics, floor.<br>Keeps: Renown, Legacy, Workshop upgrades, Embers.</p>
-      <div class="row"><button class="buy" data-x="no" style="background:#3a2f4f;color:#fff;box-shadow:none">NOT YET</button><button class="buy renown" data-x="yes">${redelve ? 'RE-DELVE' : 'RETIRE'}</button></div>`,
+      <div class="row"><button class="buy" data-x="no" style="background:#3a2f4f;color:#fff;box-shadow:none">NOT YET</button><button class="buy renown" data-x="yes">${redelve ? 'NEW RUN' : 'RETIRE'}</button></div>`,
     (m, close) => {
       const live = setInterval(() => { const bv = m.querySelector('.bigval'); if (!document.body.contains(m)) return clearInterval(live); if (bv) bv.textContent = '+' + A.renownGain() + ' RENOWN'; }, 500);
       m.querySelector('[data-x=no]').onclick = close;
@@ -497,9 +498,9 @@
         const g = A.retire();
         if (g) {
           W.partyX = W.partyX + 0; W.reset();
-          KK.fx.flash('#ffffff', 1); KK.fx.banner(typeof g === 'number' ? 'A NEW GENERATION RISES' : 'A NEW DELVE BEGINS', typeof g === 'number' ? '+' + g + ' RENOWN' + (KK.DEMO_CAP && KK.S.bestCapTime ? ' - BEAT ' + U.fmtTime(KK.S.bestCapTime) : '') : (KK.S.bestCapTime ? 'BEAT ' + U.fmtTime(KK.S.bestCapTime) : 'NEW RUN'), '#e9a2ff', 3, { subCol: '#fff' });
+          KK.fx.flash('#ffffff', 1); KK.fx.banner(typeof g === 'number' ? 'THE HEIRS SET OUT' : 'FRESH START', typeof g === 'number' ? '+' + g + ' RENOWN' + (KK.DEMO_CAP && KK.S.bestCapTime ? ' - BEAT ' + U.fmtTime(KK.S.bestCapTime) : '') : (KK.S.bestCapTime ? 'BEAT ' + U.fmtTime(KK.S.bestCapTime) : 'NEW RUN'), '#e9a2ff', 3, { subCol: '#fff' });
           if (KK.S.omenOffer) setTimeout(UI.chooseOmen, 1200);
-          else { UI.toast('Spend your Renown in the Hall of Legends!', 'crown', 'epic'); setTimeout(() => UI.open('legacy'), 900); }
+          else { UI.toast('Spend your Renown in ♛ Legacy.', 'crown', 'epic'); setTimeout(() => UI.open('legacy'), 900); }
           KK.save();
         }
       };
@@ -518,7 +519,7 @@
       return `<button class="omen ${id === S.omenStar ? 'starred' : ''}" data-omen="${id}"><img src="${KK.SPR.iconURL[o.icon]}" alt=""><b>${o.name}${seen ? '' : ' <i class="new">NEW</i>'}</b>${star}<span class="up">▲ ${up.replace(/\.$/, '')}</span>${down ? `<span class="down">▼ ${down.replace(/\.$/, '')}</span>` : ''}</button>`;
     };
     UI.modal(`<h2>CHOOSE AN OMEN</h2>
-      <p style="font-size:13px">Every new delve can carry one omen: a twist that lasts until you retire. (The dungeon waits while you choose.)</p>
+      <p style="font-size:13px">You can take one omen into each run. It lasts until you retire. The game is paused while you choose.</p>
       <div class="omens">${S.omenOffer.map(card).join('')}</div>
       <div class="row"><button class="buy" data-omen="" style="background:#3a2f4f;color:#fff;box-shadow:none">NO OMEN</button></div>`,
     (m, close) => {
@@ -531,13 +532,13 @@
         close();
         KK.audio.play('relic');
         const o = id && D.OMENS.find((x) => x.id === id);
-        UI.toast(o ? `Omen: ${o.name}. Spend your Renown in the Hall of Legends!` : 'No omen this time. Spend your Renown in the Hall of Legends!', 'crown', 'epic', 5);
+        UI.toast(o ? `Omen: ${o.name}. Spend your Renown in ♛ Legacy.` : 'No omen this time. Spend your Renown in ♛ Legacy.', 'crown', 'epic', 5);
         setTimeout(() => { UI.open('legacy'); const h = $('.achbox') || $('#legacy-renown'); if (h) h.scrollIntoView({ block: 'start' }); }, 400);
       });
     });
   };
   UI.confirmReset = function () {
-    UI.modal(`<h2>RESET EVERYTHING?</h2><p>This wipes your save completely. There is no undo.</p>
+    UI.modal(`<h2>RESET EVERYTHING?</h2><p>This deletes your save. You cannot undo it.</p>
       <div class="row"><button class="buy" data-x="no" style="background:#3a2f4f;color:#fff;box-shadow:none">CANCEL</button><button class="buy" data-x="yes" style="background:#e04848;color:#fff">WIPE SAVE</button></div>`,
     (m, close) => {
       m.querySelector('[data-x=no]').onclick = close;
@@ -549,7 +550,8 @@
     KK.fx.coinBurst(W.partyX, 30, 20);
     const lv = A.heroCost('knight', 'max').count;
     if (gold > KK.S.incomeRate * 1800) UI.holdNudgeUntil = KK.S.stats.playTime + 600;
-    UI.toast(`Welcome back! While you were away (${U.fmtTime(secs)}) your heroes earned ${fmt(gold)} gold${lv > 2 ? ` (about +${lv} levels ready in ⚔ Party)` : ''}.`, 'coin', 'gold', 7);
+    UI.toast(`It was quiet for ${U.fmtTime(secs)}. Your heroes earned ${fmt(gold)} gold while they waited${lv > 2 ? `, enough for about ${lv} levels in ⚔ Party` : ''}.`, 'coin', 'gold', 7);
+    if (KK.fx.sayLine) setTimeout(() => KK.fx.sayLine('away', true), 2500);
   };
   // the strip freezes the moment the demo ends (the party stays at the sealed statue), the card follows
   KK.on('demoComplete', () => { UI.demoOpen = true; KK.paused = true; });
@@ -558,14 +560,14 @@
     UI.demoOpen = true; KK.paused = true;
     const S = KK.S, st = S.stats;
     const stat = (k, v) => `<div><b>${v}</b><span>${k}</span></div>`;
-    UI.modal(`<h2>${peek ? 'WHAT WAITS BELOW' : 'DEMO COMPLETE!'}</h2>
-      <p>${peek ? `Your party is still delving (floor ${S.maxFloorRun} so far). The demo ends at floor 40. Here's what waits below:` : `Your party conquered the Mossy Caverns in <b>${U.fmtTime(S.bestCapTime || st.playTime)}</b>.`}</p>
+    UI.modal(`<h2>${peek ? 'AFTER THE DEMO' : 'DEMO COMPLETE'}</h2>
+      <p>${peek ? `Your party has reached floor ${S.maxFloorRun}. The demo ends at floor 40. This is what comes after it:` : `Your party cleared the Mossy Caverns in <b>${U.fmtTime(S.bestCapTime || st.playTime)}</b>.`}</p>
       ${peek ? '' : `<div class="demo-stats">${stat('keystrokes', fmt(st.keys))}${stat('ultimates', fmt(st.ults))}${stat('bosses', fmt(st.bossKills))}${stat('in FLOW', U.fmtTime(st.flowTime))}</div>`}
-      ${(() => { const n = KK.ach ? KK.ach.LIST.filter((a) => !a.demo && (S.ach || {})[a.id]).length : 0; return n ? `<p>You've already earned <b>${n} full-game achievement${n > 1 ? 's' : ''}</b>; they unlock when you buy.</p>` : ''; })()}
+      ${(() => { const n = KK.ach ? KK.ach.LIST.filter((a) => !a.demo && (S.ach || {})[a.id]).length : 0; return n ? `<p>You've already earned <b>${n} full-game achievement${n > 1 ? 's' : ''}</b>. They unlock in the full game.</p>` : ''; })()}
       ${ev && ev.atStatue ? '<p>The sealed <b style="color:#ff7a2e">Ember Colossus</b> you just saw waits on floor 50, with its Magma Shell.</p>' : ''}
-      <p><b style="color:#ff7a2e">The Magma Depths</b> and <b style="color:#c472ff">The Hollow Void</b>, the Heartroot and the Echoed Depths, 5 new bosses, 6 Hollowed returns, the Heart of the Keep, 250+ more floors, Delve Omens, the Hollow Codex and ${KK.ach ? KK.ach.LIST.length : 39} achievements wait in the full game. Your save carries over.</p>
-      <p style="font-size:12px;color:var(--muted)">${peek ? 'Reach floor 40 to glimpse the Magma Depths. Your party gets there on its own; typing gets you there faster.' : 'Keep the strip running: every re-delve rerolls your relics, a fresh clear of floor 40 pays +6 Renown, and your best time is your score.'}</p>
-      <div class="row"><button class="buy big" data-x="wish">♥ WISHLIST</button><button class="buy" data-x="ok" style="background:#3a2f4f;color:#fff;box-shadow:none">KEEP DELVING</button></div>`,
+      <p>The full game continues into <b style="color:#ff7a2e">the Magma Depths</b>, <b style="color:#c472ff">the Hollow Void</b> and the Heartroot, with 5 new bosses, 250+ more floors, omens and ${KK.ach ? KK.ach.LIST.length : 39} achievements. Your save carries over.</p>
+      <p style="font-size:12px;color:var(--muted)">${peek ? 'Reach floor 40 for a look at the Magma Depths. Your party gets there without help, and faster if you type.' : 'You can keep playing. Each new run gives different relics, clearing floor 40 again pays +6 Renown, and your best time is your score.'}</p>
+      <div class="row"><button class="buy big" data-x="wish">♥ WISHLIST</button><button class="buy" data-x="ok" style="background:#3a2f4f;color:#fff;box-shadow:none">KEEP PLAYING</button></div>`,
     (m, close) => {
       const done = () => { UI.demoOpen = false; close(); };
       m.querySelector('[data-x=ok]').onclick = done;
@@ -588,15 +590,16 @@
       UI.toast(`🏆 Achievement${achBatch.length > 1 ? 's' : ''}: ${achBatch.join(', ')}${extra}`, 'crown', 'gold', 5); achBatch = [];
     }, 600);
   });
-  KK.on('trophy', ({ floor, n }) => { if (floor !== 100) UI.toast(`Depth trophy for floor ${floor}: x1.05 damage & gold forever (${n} total).`, 'crown', 'gold', 6); });
+  KK.on('trophy', ({ floor, n }) => { if (floor !== 100) UI.toast(`Depth trophy for floor ${floor}: damage and gold x1.05 forever. You have ${n}.`, 'crown', 'gold', 6); });
   KK.on('omenPicked', () => { UI.dirty = true; });
-  KK.on('floor', ({ floor }) => { if (floor >= 70 && !KK.DEMO_CAP && !KK.S.tutorial.lantern) { KK.S.tutorial.lantern = 1; UI.toast('New in the Workshop: the Void Lantern softens void slams.', 'candle', 'spark', 6); } });
+  KK.on('floor', ({ floor }) => { if (floor >= 70 && !KK.DEMO_CAP && !KK.S.tutorial.lantern) { KK.S.tutorial.lantern = 1; UI.toast('New Workshop upgrade: the Void Lantern reduces void slam damage.', 'candle', 'spark', 6); } });
   KK.on('seal', ({ n, v }) => {
-    const show = () => { if (W.boss || KK.fx.banners.length) return setTimeout(show, 1500); KK.fx.banner('★ SEAL OF THE DAY', '+' + (v || 10) + ' RENOWN', '#ffd76a', 2.6, { subCol: '#fff' }); UI.toast(`★ Seal of the Day #${n}: +${v || 10} Renown. A new Omen of the Day tomorrow.`, 'crown', 'epic', 6); };
+    const show = () => { if (W.boss || KK.fx.banners.length) return setTimeout(show, 1500); KK.fx.banner('★ SEAL OF THE DAY', '+' + (v || 10) + ' RENOWN', '#ffd76a', 2.6, { subCol: '#fff' }); UI.toast(`★ Seal of the Day #${n}: +${v || 10} Renown. Tomorrow has a new Omen of the Day.`, 'crown', 'epic', 6); };
     show();
   });
-  KK.on('codex', ({ rank }) => UI.toast(`Hollow Codex rank ${rank}/${D.CODEX_MAX}: x1.03 damage & gold forever.${rank < D.CODEX_MAX ? ` Next rank in ${rank < 28 ? D.CODEX_EVERY : 16} Codex kills.` : ' The Codex is complete!'}`, 'gem', 'epic', 6));
-  KK.on('demoSealed', ({ time, prev }) => (time <= KK.S.bestCapTime + 0.01) && ((KK.S.demoLaps || 0) <= 2 || (prev || 1e9) - time >= 60) && UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The depths are sealed in the demo: ${KK.S.renownLifetime < KK.DEMO_RENOWN_CAP ? 're-delve in ♛ Legacy for +6 Renown' : 'Demo Renown is maxed: re-delve to beat your best time'}.`, 'crown', 'epic', 8));
+  KK.on('codex', ({ rank }) => UI.toast(`Hollow Codex rank ${rank}/${D.CODEX_MAX}: x1.03 damage & gold forever.${rank < D.CODEX_MAX ? ` Next rank in ${rank < 28 ? D.CODEX_EVERY : 16} Codex kills.` : ` All ${D.CODEX_MAX} ranks are done. From here every ${D.CODEX_EXTRA_EVERY} Codex kills add x1.01.`}`, 'gem', 'epic', 6));
+  KK.on('codexExtra', ({ extra }) => UI.toast(`Hollow Codex +${extra}: x1.01 damage & gold forever. Next in ${D.CODEX_EXTRA_EVERY} Codex kills.`, 'gem', 'epic', 5));
+  KK.on('demoSealed', ({ time, prev }) => (time <= KK.S.bestCapTime + 0.01) && ((KK.S.demoLaps || 0) <= 2 || (prev || 1e9) - time >= 60) && UI.toast(`Floor ${KK.DEMO_CAP} cleared in ${U.fmtTime(time)} (best ${U.fmtTime(KK.S.bestCapTime)}). The demo ends here. ${KK.S.renownLifetime < KK.DEMO_RENOWN_CAP ? 'Start a new run in ♛ Legacy for +6 Renown' : 'Demo Renown is maxed, so start a new run to beat your best time'}.`, 'crown', 'epic', 8));
   /** Steam store page (set KK.STORE_URL once the page exists). */
   UI.openStore = function () {
     const url = KK.STORE_URL;
@@ -606,11 +609,11 @@
   UI.welcome = function (onStart) {
     UI.modal(`<h2>KEYSTROKE KEEP</h2>
       <p style="font-size:15px"><i>Your work is their adventure.</i></p>
-      <p>A tiny party of heroes lives in the strip at the bottom of your screen. They delve on their own, but <b style="color:var(--spark)">every key you type and every click you make</b> charges them up.</p>
-      <p>${KK.native ? 'Just work normally. Typing and clicking <b>anywhere on your PC</b> counts.' : 'Type in the notepad (or anywhere on the page) and watch what happens.'}</p>
+      <p>A tiny party of heroes lives in the strip at the bottom of your screen. They can't see you. They hear your typing through the ceiling, and they call it the Clatter. They fight without your help, but <b style="color:var(--spark)">every key you type and every click you make</b> charges them up.</p>
+      <p>${KK.native ? 'Work as you normally do. Typing and clicking <b>anywhere on your PC</b> counts.' : 'Type in the notepad or anywhere on the page.'}</p>
       <p style="font-size:12px;color:var(--muted)">🔒 Keystroke Keep only <b>counts</b> input. It never records what you type.</p>
-      <p style="font-size:12px;color:var(--muted)">It lives in your tray (the crown icon). Hide it any time with <b>Ctrl+Shift+Alt+K</b>. It never goes online.</p>
-      <div class="row"><button class="buy big" data-x="go">START DELVING ⚔</button></div>`,
+      <p style="font-size:12px;color:var(--muted)">Look for the crown icon in your tray. <b>Ctrl+Shift+Alt+K</b> hides the strip. The game never goes online.</p>
+      <div class="row"><button class="buy big" data-x="go">START ⚔</button></div>`,
     (m, close) => { m.querySelector('[data-x=go]').onclick = () => { close(); onStart(); }; });
   };
   UI.toast = function (text, ic, cls = '', life = 3.6) {
@@ -627,12 +630,12 @@
   function hookTutorial() {
     const T = () => KK.S.tutorial;
     const once = (key, fn) => { if (!T()[key]) { T()[key] = 1; fn(); } };
-    KK.on('activity', () => { if (KK.S.stats.keys + KK.S.stats.clicks === 8) once('sparks', () => UI.toast('Each keystroke makes a Spark ⚡. Sparks fire ultimates!', 'spark', 'spark', 5)); });
-    KK.on('ult', () => once('ult', () => UI.toast('Your typing just powered an ultimate! The bar under a hero fills with your Sparks: full = next ultimate.', 'spark', 'spark', 6)));
-    KK.on('fervorTier', ({ to }) => { if (to === 3) once('flow', () => UI.toast('FLOW STATE! Keep typing to keep the dungeon lit.', 'spark', 'gold', 5)); });
+    KK.on('activity', () => { if (KK.S.stats.keys + KK.S.stats.clicks === 8) once('sparks', () => UI.toast('Each keystroke makes a Spark ⚡. Sparks fire ultimates.', 'spark', 'spark', 5)); });
+    KK.on('ult', () => once('ult', () => UI.toast('Your typing just fired an ultimate. The bar under each hero fills with Sparks, and a full bar fires the next one.', 'spark', 'spark', 6)));
+    KK.on('fervorTier', ({ to }) => { if (to === 3) once('flow', () => UI.toast('FLOW STATE. Keep typing to stay in it.', 'spark', 'gold', 5)); });
     KK.on('floor', ({ floor }) => {
-      for (const id of D.PARTY_ORDER) if (D.HEROES[id].unlockFloor === floor && !KK.S.heroes[id] && !T()['rec_' + id] && (T()['rec_' + id] = 1)) UI.toast(`${D.HEROES[id].name} the ${D.HEROES[id].cls} can be recruited in ⚔ Party!`, 'heart', 'gold', 5);
-      if (floor === 20 && KK.S.retires === 0) once('retire', () => UI.toast('You can now ♛ Retire for permanent Renown (when you get stuck).', 'crown', 'epic', 6));
+      for (const id of D.PARTY_ORDER) if (D.HEROES[id].unlockFloor === floor && !KK.S.heroes[id] && !T()['rec_' + id] && (T()['rec_' + id] = 1)) UI.toast(`${D.HEROES[id].name} the ${D.HEROES[id].cls} is ready to recruit in ⚔ Party.`, 'heart', 'gold', 5);
+      if (floor === 20 && KK.S.retires === 0) once('retire', () => UI.toast('You can now ♛ Retire for permanent Renown. Do it when you get stuck.', 'crown', 'epic', 6));
     });
     // the first time a retire is clearly worth it, say so once (players don't know they lose nothing)
     let runStartT = performance.now();
@@ -643,12 +646,12 @@
       if (UI.demoOpen || (KK.DEMO_CAP && !KK.S.demoDone) || (UI.holdNudgeUntil || 0) > KK.S.stats.playTime) return;
       const runMin = (KK.S.runTime || 0) / 60;
       if (g >= 30 && !T()[key] && (runMin > 25 || (KK.S.retires === 0 && KK.S.maxFloorRun >= 40))) {
-        once(key, () => UI.toast(`Retiring now earns +${g} Renown (${renownWorth().toLowerCase()}). Your next party gets back here fast. Open ♛ Legacy.`, 'crown', 'epic', 9));
+        once(key, () => UI.toast(`Retiring now earns +${g} Renown, which is ${renownWorth().toLowerCase()}. Your next party gets back here quickly. Open ♛ Legacy.`, 'crown', 'epic', 9));
       }
     }, 3000);
-    KK.on('ratSpawn', () => once('rat', () => UI.toast('A GOLDEN RAT! Click it before it escapes!', 'coin', 'gold', 5)));
+    KK.on('ratSpawn', () => once('rat', () => UI.toast('A golden rat. Click it before it gets away.', 'coin', 'gold', 5)));
     setInterval(() => {
-      if (anyAffordable() && !T().lvl) once('lvl', () => UI.toast('You can afford an upgrade. Open ⚔ Party!', 'sword', 'gold', 5));
+      if (anyAffordable() && !T().lvl) once('lvl', () => UI.toast('You can afford an upgrade. Open ⚔ Party.', 'sword', 'gold', 5));
     }, 2000);
     KK.on('levelUp', () => { T().lvl = 1; });
   }

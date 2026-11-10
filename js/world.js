@@ -90,7 +90,7 @@
       const key = F.bossFor(f);
       const boss = makeEnemy(key, x0 + 20, f, f === 100 ? { hpMult: 1.5 } : undefined);
       if (f === 100) { boss.def = Object.assign({}, boss.def, { name: 'The Heart of the Keep' }); boss.heart = true; }
-      else if (f >= 70 && key !== 'hollow' && !boss.def.root) { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
+      else if (f >= 70 && key !== 'hollow' && (!boss.def.root || f > 200)) { boss.def = Object.assign({}, boss.def, { name: 'The Hollowed ' + boss.def.name.replace(/^The /, '') }); boss.hollowed = true; }
       const wound = S.bossWounds && S.bossWounds[f];
       if (wound) { boss.hp = boss.maxHp * wound; boss.wounded = wound; }
       W.boss = boss;
@@ -164,8 +164,9 @@
       S.bossLosses = 0;
       if (e.hollowed || e.key === 'hollow' || e.def.root) {
         S.codexKills = (S.codexKills || 0) + 1;
-        const before = KK.mods().codexRanks; KK.dirty(); const after = KK.mods().codexRanks;
+        const m0 = KK.mods(), before = m0.codexRanks, xBefore = m0.codexExtra; KK.dirty(); const m1 = KK.mods(), after = m1.codexRanks;
         if (after > before) KK.emit('codex', { name: e.def.name, rank: after });
+        else if (m1.codexExtra > xBefore) KK.emit('codexExtra', { extra: m1.codexExtra });
       }
       KK.gainEmbers(10);
       W.boss = null;
@@ -754,12 +755,12 @@
     const wall = Math.max(S.bossBlock || 0, S.campFloor || 0);
     if (S.bossBlock && S.floor + 1 >= S.bossBlock && (S.regroupUntil || 0) > S.stats.playTime) S.floor--;
     else if (S.campFloor && S.floor + 1 >= S.campFloor && (S.campUntil || 0) > S.stats.playTime) S.floor--;
-    S.floor++;
+    S.floor = Math.min(S.floor + 1, KK.MAX_FLOOR);
     if (S.floor > S.maxFloorRun && !S.glimpse) S.maxFloorRun = S.floor;
     if (S.omen && S.delveDay === KK.today() && KK.actions.dailyOpen() && S.floor >= KK.actions.sealFloor()) KK.actions.claimSeal();
     if (S.floor > S.maxFloorEver && !S.glimpse) {
       S.maxFloorEver = S.floor;
-      if (D.TROPHIES.includes(S.floor)) { KK.dirty(); KK.emit('trophy', { floor: S.floor, n: D.TROPHIES.indexOf(S.floor) + 1 }); }
+      if (D.trophyAt(S.floor)) { KK.dirty(); KK.emit('trophy', { floor: S.floor, n: D.trophyCount(S.floor) }); }
     }
     W.wave = 0; W.door = null; W.chest = null; W.chestRolled = false;
     W.enemies = []; W.shots = [];

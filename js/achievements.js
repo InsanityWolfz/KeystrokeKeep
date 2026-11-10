@@ -8,29 +8,30 @@
   const KK = root.KK, D = KK.DATA;
 
   const HEROES = ['knight', 'archer', 'mage', 'cleric'];
+  const echoOf = (c, id) => { const b = KK.F.biomeOf(c.ev.floor); return !!b.echo && b.id === id && !c.S.glimpse; };
   // demo: part of the 5-achievement demo set. on: event name or 'poll' (checked once per second).
   const LIST = [
     // onboarding
     { id: 'first_boss', name: 'Cellar Door', desc: 'Defeat your first boss.', demo: true, on: 'kill', test: (c) => c.ev.e.boss },
     { id: 'flow', name: 'Flow State', desc: 'Reach FLOW STATE.', demo: true, on: 'fervorTier', test: (c) => c.ev.to === 3 },
-    { id: 'full_party', name: 'Fellowship', desc: 'Recruit all four heroes.', demo: true, on: 'recruit', test: (c) => HEROES.every((h) => c.S.heroes[h] > 0) },
-    { id: 'retire1', big: true, name: 'A New Generation', desc: 'Retire your party for the first time.', demo: true, on: 'retired', test: () => true },
+    { id: 'full_party', name: 'All Four', desc: 'Recruit all four heroes.', demo: true, on: 'recruit', test: (c) => HEROES.every((h) => c.S.heroes[h] > 0) },
+    { id: 'retire1', big: true, name: 'Gold Watch', desc: 'Retire your party for the first time.', demo: true, on: 'retired', test: () => true },
     { id: 'gatekeeper', big: true, name: 'Gatekeeper', desc: 'Defeat the boss of floor 40.', demo: true, on: 'kill', test: (c) => c.ev.e.boss && c.S.floor === 40 },
-    { id: 'rat', name: 'Gilded Whiskers', desc: 'Catch a golden rat.', on: 'ratCaught', test: () => true },
-    { id: 'epic', name: 'Epic Loot', desc: 'Take an epic relic.', on: 'relicPicked', test: (c) => { const r = D.RELICS.find((x) => x.id === c.ev.id); return !!r && r.rar === 'epic'; } },
+    { id: 'rat', name: 'Quick Hands', desc: 'Catch a golden rat.', on: 'ratCaught', test: () => true },
+    { id: 'epic', name: 'The Good Stuff', desc: 'Take an epic relic.', on: 'relicPicked', test: (c) => { const r = D.RELICS.find((x) => x.id === c.ev.id); return !!r && r.rar === 'epic'; } },
     { id: 'caverns', name: 'Into the Moss', desc: 'Reach the Mossy Caverns.', on: 'floor', test: (c) => c.ev.floor >= 21 },
     { id: 'comeback', name: 'Second Try', desc: 'Beat a boss that wiped your party before.', on: 'kill', test: (c) => c.ev.e.boss && c.ev.e.wasBlocking },
     { id: 'echo', name: 'Say It Twice', desc: 'Have an ultimate echo.', on: 'echo', test: () => true },
     // moments
     { id: 'ult_boss', name: 'Overkill', desc: 'Finish a boss with an ultimate.', on: 'kill', test: (c) => c.ev.e.boss && c.ev.e.lastUlt },
     { id: 'revive', name: 'Not Today', desc: 'Sanctuary brings a fallen hero back.', on: 'revive', test: () => true },
-    { id: 'speed60', name: 'Speedrunner', desc: 'Beat the floor-60 boss within 10 minutes of a new delve.', on: 'kill', test: (c) => c.ev.e.boss && c.S.floor === 60 && (c.S.runTime || 0) < 600 && c.S.retires >= 1 },
+    { id: 'speed60', name: 'Speedrunner', desc: 'Beat the floor 60 boss within 10 minutes of starting a run.', on: 'kill', test: (c) => c.ev.e.boss && c.S.floor === 60 && (c.S.runTime || 0) < 600 && c.S.retires >= 1 },
     { id: 'blitz', goal: 8, cur: (S, P) => P.blitzBest || 0, name: 'Blitz', desc: 'Defeat 8 bosses within 10 minutes.', on: 'kill', test: (c) => { if (!c.ev.e.boss) return false; const now = c.S.stats.playTime || 0; c.P.bossTimes = (c.P.bossTimes || []).filter((x) => now - x < 600); c.P.bossTimes.push(now); c.P.blitzBest = Math.max(c.P.blitzBest || 0, c.P.bossTimes.length); return c.P.bossTimes.length >= 8; } },
     // depth
     { id: 'magma', name: 'Fire Below', desc: 'Reach the Magma Depths.', on: 'floor', test: (c) => c.ev.floor >= 41 && !c.S.glimpse },
     { id: 'void', name: 'Into the Void', desc: 'Reach the Hollow Void.', on: 'floor', test: (c) => c.ev.floor >= 61 },
     { id: 'hollow', big: true, name: 'Hollow Victory', desc: 'Defeat The Hollow.', on: 'kill', test: (c) => c.ev.e.key === 'hollow' },
-    { id: 'hollowed6', goal: 6, cur: (S, P) => (P.hollowed || []).length, name: 'Echoes of the Deep', desc: 'Defeat all six Hollowed bosses.', on: 'kill', test: (c) => { if (!c.ev.e.hollowed) return false; const s = new Set(c.P.hollowed || []); s.add(c.ev.e.key); c.P.hollowed = [...s]; return s.size >= 6; } },
+    { id: 'hollowed6', goal: 6, cur: (S, P) => (P.hollowed || []).length, name: 'Six of Six', desc: 'Defeat all six Hollowed bosses.', on: 'kill', test: (c) => { if (!c.ev.e.hollowed || c.ev.e.def.root) return false; const s = new Set(c.P.hollowed || []); s.add(c.ev.e.key); c.P.hollowed = [...s]; return s.size >= 6; } },
     { id: 'f100', big: true, goal: 100, from: 61, cur: (S) => Math.min(S.maxFloorEver, 99), name: 'Heart of the Keep', desc: 'Defeat the Heart of the Keep on floor 100.', on: 'kill', test: (c) => !!c.ev.e.heart || (c.ev.e.boss && c.S.floor >= 100) },
     { id: 'codex28', big: true, get goal() { return D.CODEX_MAX; }, cur: () => KK.mods().codexRanks || 0, name: 'Hollow Scholar', desc: 'Complete every rank of the Hollow Codex.', on: 'codex', test: () => KK.mods().codexRanks >= KK.DATA.CODEX_MAX },
     { id: 'seals7', goal: 7, cur: (S) => S.seals || 0, name: 'Faithful', desc: 'Earn 7 Seals of the Day.', on: 'seal', test: (c) => (c.S.seals || 0) >= 7 },
@@ -38,24 +39,32 @@
     { id: 'heartroot', name: 'Root and Branch', desc: 'Reach the Heartroot.', on: 'floor', test: (c) => c.ev.floor >= 101 },
     { id: 'rootmother', name: 'Weed Killer', desc: 'Defeat the Rootmother.', on: 'kill', test: (c) => c.ev.e.key === 'rootmother' },
     { id: 'keeper', big: true, name: 'Keys to the Keep', desc: 'Defeat the Keeper.', on: 'kill', test: (c) => c.ev.e.key === 'keeper' },
-    { id: 'f125', goal: 125, from: 100, cur: (S) => S.maxFloorEver, name: 'Abyss Walker', desc: 'Reach floor 125.', on: 'floor', test: (c) => c.S.maxFloorEver >= 125 },
+    { id: 'f125', goal: 125, from: 100, cur: (S) => S.maxFloorEver, name: 'Still Going', desc: 'Reach floor 125.', on: 'floor', test: (c) => c.S.maxFloorEver >= 125 },
     { id: 'f150', big: true, goal: 150, from: 100, cur: (S) => S.maxFloorEver, name: 'Bottom of the Keep', desc: 'Reach floor 150.', on: 'floor', test: (c) => c.S.maxFloorEver >= 150 },
     { id: 'echo175', goal: 175, from: 150, cur: (S) => S.maxFloorEver, name: 'Down the Echo Well', desc: 'Reach floor 175 in the Echoed Depths.', on: 'floor', test: (c) => c.S.maxFloorEver >= 175 },
+    // the Echoed Depths: each old area comes back once (a new one opens per day played)
+    { id: 'echo_crypt', name: 'The Crypt, Again', desc: 'Reach the Echoed Crypt.', on: 'floor', test: (c) => echoOf(c, 'crypt') },
+    { id: 'echo_caverns', name: 'The Caverns, Again', desc: 'Reach the Echoed Caverns.', on: 'floor', test: (c) => echoOf(c, 'caverns') },
+    { id: 'echo_magma', name: 'The Magma, Again', desc: 'Reach the Echoed Magma.', on: 'floor', test: (c) => echoOf(c, 'magma') },
+    { id: 'echo_void', name: 'The Void, Again', desc: 'Reach the Echoed Void.', on: 'floor', test: (c) => echoOf(c, 'void') },
+    { id: 'echo_root', name: 'The Heartroot, Again', desc: 'Reach the Echoed Heartroot.', on: 'floor', test: (c) => echoOf(c, 'root') },
+    { id: 'h_rootmother', name: 'Grown Back', desc: 'Defeat the Hollowed Rootmother past floor 200.', on: 'kill', test: (c) => !!c.ev.e.hollowed && c.ev.e.key === 'rootmother' },
+    { id: 'h_keeper', big: true, name: 'Changed the Locks', desc: 'Defeat the Hollowed Keeper past floor 200.', on: 'kill', test: (c) => !!c.ev.e.hollowed && c.ev.e.key === 'keeper' },
     // prestige & omens
     { id: 'retire10', goal: 10, cur: (S, P) => P.bigRetires || 0, name: 'Dynasty', desc: 'Retire 10 times for 10+ Renown each.', on: 'retired', test: (c) => { if ((c.ev.gain || 0) >= 10) c.P.bigRetires = (c.P.bigRetires || 0) + 1; return (c.P.bigRetires || 0) >= 10; } },
-    { id: 'omen1', name: 'Ill Omen', desc: 'Start a delve under an omen.', on: 'omenPicked', test: (c) => !!c.ev.id },
-    { id: 'omen10', get goal() { return D.OMENS.length; }, cur: (S, P) => (P.omens || []).length, name: 'Augur', desc: 'Delve under all ten omens.', on: 'omenPicked', test: (c) => { if (!c.ev.id) return false; const s = new Set(c.P.omens || []); s.add(c.ev.id); c.P.omens = [...s]; return s.size >= D.OMENS.length; } },
-    { id: 'deep90', goal: 90, from: 40, cur: (S, P) => P.deepBest || 0, name: 'Against the Omens', desc: 'Reach floor 90 under the Deep Omen.', on: 'floor', test: (c) => { if (c.S.omen === 'deep') c.P.deepBest = Math.max(c.P.deepBest || 0, c.ev.floor); return c.S.omen === 'deep' && c.ev.floor >= 90; } },
-    { id: 'legacy_all', get goal() { return D.LEGACY.filter((d) => d.max < 999).length; }, cur: (S) => D.LEGACY.filter((d) => d.max < 999 && (S.legacy[d.id] || 0) >= d.max).length, name: 'Living Legend', desc: 'Max every capped Legacy upgrade.', on: 'upgrade', test: (c) => D.LEGACY.filter((d) => d.max < 999).every((d) => (c.S.legacy[d.id] || 0) >= d.max) },
+    { id: 'omen1', name: 'Ill Omen', desc: 'Start a run under an omen.', on: 'omenPicked', test: (c) => !!c.ev.id },
+    { id: 'omen10', get goal() { return D.OMENS.length; }, cur: (S, P) => (P.omens || []).length, name: 'Augur', desc: 'Play a run under each of the ten omens.', on: 'omenPicked', test: (c) => { if (!c.ev.id) return false; const s = new Set(c.P.omens || []); s.add(c.ev.id); c.P.omens = [...s]; return s.size >= D.OMENS.length; } },
+    { id: 'deep90', goal: 90, from: 40, cur: (S, P) => P.deepBest || 0, name: 'Against the Omens', desc: 'Reach floor 90 under the Long Way Down omen.', on: 'floor', test: (c) => { if (c.S.omen === 'deep') c.P.deepBest = Math.max(c.P.deepBest || 0, c.ev.floor); return c.S.omen === 'deep' && c.ev.floor >= 90; } },
+    { id: 'legacy_all', get goal() { return D.LEGACY.filter((d) => d.max < 999).length; }, cur: (S) => D.LEGACY.filter((d) => d.max < 999 && (S.legacy[d.id] || 0) >= d.max).length, name: 'Nothing Left to Buy', desc: 'Max every Legacy upgrade that has a top level.', on: 'upgrade', test: (c) => D.LEGACY.filter((d) => d.max < 999).every((d) => (c.S.legacy[d.id] || 0) >= d.max) },
     // workshop & economy
-    { id: 'crucible10', goal: 10, cur: (S) => S.workshop.crucible || 0, name: 'Forgemaster', desc: 'Max the Ember Crucible.', on: 'upgrade', test: (c) => (c.S.workshop.crucible || 0) >= 10 },
+    { id: 'crucible10', goal: 10, cur: (S) => S.workshop.crucible || 0, name: 'Full Blast', desc: 'Max the Bellows.', on: 'upgrade', test: (c) => (c.S.workshop.crucible || 0) >= 10 },
     { id: 'lv100', goal: 100, from: 30, cur: (S, P) => Math.max(P.lvBest || 0, ...HEROES.map((h) => S.heroes[h] || 0)), name: 'Centenarian', desc: 'Raise a hero to level 100.', on: 'levelUp', test: (c) => { c.P.lvBest = Math.max(c.P.lvBest || 0, c.ev.to); return c.ev.to >= 100; } },
-    { id: 'chests100', goal: 100, cur: (S) => S.stats.chests, name: 'Treasure Hunter', desc: 'Open 100 treasure chests.', on: 'chest', test: (c) => c.S.stats.chests >= 100 },
+    { id: 'chests100', goal: 100, cur: (S) => S.stats.chests, name: 'Hundred Chests', desc: 'Open 100 treasure chests.', on: 'chest', test: (c) => c.S.stats.chests >= 100 },
     { id: 'rats25', goal: 25, cur: (S) => S.stats.rats, name: 'Rat Catcher', desc: 'Catch 25 golden rats.', on: 'ratCaught', test: (c) => c.S.stats.rats >= 25 },
-    { id: 'idle50', name: 'Hands Off', desc: 'Reach floor 50 in a delve without typing.', on: 'floor', test: (c) => c.ev.floor >= 50 && (c.S.runInputs || 0) === 0 && c.S.retires >= 1 },
+    { id: 'idle50', name: 'Hands Off', desc: 'Reach floor 50 in one run without typing.', on: 'floor', test: (c) => c.ev.floor >= 50 && (c.S.runInputs || 0) === 0 && c.S.retires >= 1 },
     // the typing itself
     { id: 'keys10k', goal: 1e4, cur: (S) => S.stats.keys, name: 'Warming Up', desc: 'Type 10,000 keystrokes.', on: 'poll', test: (c) => c.S.stats.keys >= 1e4 },
-    { id: 'keys100k', goal: 1e5, cur: (S) => S.stats.keys, name: 'Wordsmith', desc: 'Type 100,000 keystrokes.', on: 'poll', test: (c) => c.S.stats.keys >= 1e5 },
+    { id: 'keys100k', goal: 1e5, cur: (S) => S.stats.keys, name: 'Worn Keycaps', desc: 'Type 100,000 keystrokes.', on: 'poll', test: (c) => c.S.stats.keys >= 1e5 },
     { id: 'flow1h', goal: 3600, cur: (S) => S.stats.flowTime, fmt: (v) => KK.U.fmtTime(v), name: 'Deep Work', desc: 'Spend an hour in FLOW STATE.', on: 'poll', test: (c) => c.S.stats.flowTime >= 3600 },
     { id: 'flow10h', goal: 36000, cur: (S) => S.stats.flowTime, fmt: (v) => KK.U.fmtTime(v), name: 'Monk Mode', desc: 'Spend ten hours in FLOW STATE.', on: 'poll', test: (c) => c.S.stats.flowTime >= 36000 },
     { id: 'ults1k', goal: 1000, cur: (S) => S.stats.ults, name: 'Spark Plug', desc: 'Cast 1,000 ultimates.', on: 'poll', test: (c) => c.S.stats.ults >= 1000 },

@@ -130,7 +130,7 @@ function toggleVisible() {
     hideNoticeShown = true;
     send('kk:setting', { k: 'hideNoticeShown', v: true });
     try {
-      tray.displayBalloon({ title: 'Keystroke Keep is still running', content: `Your heroes keep delving. Click the crown in the tray${hotkeyOk ? ' or press Ctrl+Shift+Alt+K' : ''} to bring the strip back.` });
+      tray.displayBalloon({ title: 'Keystroke Keep is still running', content: `Your heroes keep fighting. Click the crown in the tray${hotkeyOk ? ' or press Ctrl+Shift+Alt+K' : ''} to bring the strip back.` });
     } catch (e) { /* not supported */ }
   }
 }

@@ -2,7 +2,9 @@
 // pacing, decision droughts, dead content, wasted resources, stalls, prestige loop health.
 // Usage: node tools/playtest.js [--min 120] [--profile typist|idle|heavy|burst|afk] [--glance 60]
 //        [--strategy smart|greedy|random] [--stuck 8] [--seed 1] [--sessions 1] [--offline 0]
-//        [--json out.json] [--bal '{"eHpG":1.27}']
+//        [--json out.json] [--bal '{"eHpG":1.27}'] [--day 4]
+// --day H: a calendar day passes every H hours of play, so days played, Seals and the Omen of the Day
+// work as they do in the real game. Each new day the player takes the free daily run when it is offered.
 // --sessions N with --offline H: plays N sessions of --min minutes with H hours offline between them.
 const load = require('./headless');
 
@@ -16,8 +18,15 @@ const STRAT = args.strategy || 'smart', STUCK = (+args.stuck || 8) * 60, SEED = 
 const SESSIONS = +args.sessions || 1, OFFLINE_H = +args.offline || 0;
 const RETIRE = args.retire || 'stall'; // stall: after --stuck min without a new record; nudge: like the in-game nudge (gain>=30 after 25 min) or stall
 const OMEN = args.omen || 'first'; // first | none | random
+const DAY_H = +args.day || 0;
 const KK = load({ seed: SEED, bal: args.bal ? JSON.parse(args.bal) : undefined, demo: !!args.demo });
 const S = () => KK.S, A = KK.actions, D = KK.DATA, F = KK.F, U = KK.U;
+// calendar: day n is a real zero-padded date, like KK.today() in the game
+let dayN = 1;
+const dateOf = (n) => new Date(Date.UTC(2026, 10, 9 + n - 1)).toISOString().slice(0, 10);
+if (DAY_H) { KK.today = () => dateOf(dayN); KK.dayTick(); }
+const dayLog = [];
+KK.on('seal', ({ n, v }) => ev(`SEAL #${n} +${v} renown`));
 KK.world.reset();
 const rnd = KK.rng; // seeded: same --seed, same run
 
@@ -166,6 +175,16 @@ function step() {
   activity(dt);
   KK.world.update(dt);
   t += dt;
+  if (DAY_H && t >= dayN * DAY_H * 3600) {
+    dayLog.push({ day: dayN, maxEver: S().maxFloorEver, renown: S().renownLifetime, seals: S().seals || 0, ach: Object.keys(S().ach || {}).length, trophies: KK.mods().trophies || 0 });
+    dayN++; KK.dayTick();
+    // the morning ritual: take the free daily run (or retire for Renown) so today's Seal can be earned
+    if (A.dailyOpen() && A.canRetire()) {
+      const gain = A.retire();
+      retires.push({ at: t, runMin: (t - runStart) / 60, maxFloor: lastMax, gain: typeof gain === 'number' ? gain : 0 });
+      KK.world.reset(); runStart = t; lastMax = S().maxFloorRun; lastMaxT = t; pickOmen();
+    }
+  }
   const s = S(), m = KK.mods();
   tierTime[KK.fervorTier()] += dt;
   if (s.sparks >= m.sparkCap - 0.5) { sparkCapTime += dt; }
@@ -221,6 +240,10 @@ if (offlineLog.length) L.push('', '--- offline ---', ...offlineLog);
 L.push('', '--- prestige ---');
 for (const r of retires) L.push(`retire at ${fmtT(r.at)}: run ${r.runMin.toFixed(1)} min, max floor ${r.maxFloor}, +${r.gain} renown`);
 if (!retires.length) L.push('never retired');
+if (dayLog.length) {
+  L.push('', '--- by day (deepest floor ever / lifetime renown / seals / achievements / trophies) ---');
+  for (const d of dayLog) if (d.day <= 14 || d.day % 7 === 0) L.push(`day ${String(d.day).padStart(3)}: floor ${d.maxEver}  renown ${d.renown}  seals ${d.seals}  ach ${d.ach}  trophies ${d.trophies}`);
+}
 L.push('', '--- pacing ---');
 L.push(`longest stall (no new max floor): ${(Math.max(longestStall, t - lastMaxT) / 60).toFixed(1)} min`);
 L.push(`glances with NOTHING affordable: ${emptyGlances}/${glances}  longest drought: ${(maxDrought / 60).toFixed(1)} min`);

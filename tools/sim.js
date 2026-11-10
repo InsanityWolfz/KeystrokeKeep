@@ -41,12 +41,8 @@ function spendAll() {
       if (A.buyLegacy(id)) changed = true;
     }
   }
-  // workshop with sparks above a reserve
-  for (const id of ['jar', 'overcharge', 'kindling']) {
-    const def = D.WORKSHOP.find((d) => d.id === id);
-    const c = F.upCost(def, s.workshop[id] || 0);
-    if (s.sparks - c > 60) A.buyWorkshop(id);
-  }
+  // workshop: buy whatever the banked Embers afford
+  for (const def of D.WORKSHOP) A.buyWorkshop(def.id);
   for (let i = 0; i < 400; i++) {
     // forge if cheap relative to gold, else cheapest hero level
     let did = false;
