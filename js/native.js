@@ -49,6 +49,11 @@
       if (document.querySelector('#modal-root .modal')) extra = Math.max(extra, 440);
       const toasts = document.getElementById('toasts');
       if (toasts.children.length) extra = Math.max(extra, (UI_panelOpen() ? panel.getBoundingClientRect().height : 0) + toasts.getBoundingClientRect().height + 20);
+      // Keep room for a panel or modal at all times: resizing a transparent window on Windows
+      // moves it and then resizes it, so the strip blinked every time a menu opened or closed.
+      // The empty space above the strip is transparent and click-through (see passThrough below).
+      // Capture runs keep the tight window so recordings frame only the strip.
+      if (!KK.capture) extra = Math.max(extra, panel.getBoundingClientRect().height + 4, 440);
       const h = Math.ceil(strip + extra);
       if (h !== lastH) { lastH = h; N.setHeight(h); }
     };
