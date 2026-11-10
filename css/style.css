@@ -75,7 +75,7 @@ img.ico, canvas { image-rendering: pixelated; image-rendering: crisp-edges; }
 .tb-btns i.x:hover { background: #e81123; color: #fff; }
 .tb-btns i.x:hover::after { color: #fff; }
 
-.notepad { width: min(560px, 50vw); height: min(400px, calc(100vh - var(--strip-h) - 140px)); display: flex; flex-direction: column; }
+.notepad { width: min(560px, 50vw); height: min(400px, calc(var(--avail-h, 100vh) - var(--strip-h) - 140px)); display: flex; flex-direction: column; }
 .menubar { display: flex; gap: 16px; padding: 4px 12px; font-size: 12.5px; background: #fbfaf7; border-bottom: 1px solid #e2ddd5; }
 #notepad-text {
   flex: 1; border: 0; outline: none; resize: none; padding: 12px 14px;
@@ -356,7 +356,7 @@ body.native #panel { border-bottom: 0; }
 
 /* ---------------- Round 1 playtest fixes ---------------- */
 /* fixed panel height so tabs and the close button don't jump between tabs */
-.panel-body { height: min(330px, calc(100vh - var(--strip-h) - 120px)); max-height: none; }
+.panel-body { height: min(330px, calc(var(--avail-h, 100vh) - var(--strip-h) - 120px)); max-height: none; }
 .res-pill { font: 13px var(--font-px); color: #ffb070; background: #0006; border: 2px solid #000; padding: 4px 10px; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
 .res-pill.renown { color: #e9a2ff; }
 .res-pill img { width: 18px; height: 18px; }

@@ -33,8 +33,13 @@
 
     // Grow the window upward while a panel / relic offer / modal / toast is showing.
     let lastH = 0;
+    // Panel sizes come from the monitor, not the window: the window only grows to fit the panel,
+    // so sizing the panel from 100vh (= the strip alone) left it 0 px tall and clipped.
+    let lastAvail = 0;
     const measure = () => {
       if (document.documentElement.classList.contains('kk-paused')) return;
+      const avail = window.screen.availHeight || 0;
+      if (avail && avail !== lastAvail) { lastAvail = avail; document.documentElement.style.setProperty('--avail-h', avail + 'px'); }
       const strip = document.getElementById('strip').getBoundingClientRect().height;
       let extra = 0;
       const panel = document.getElementById('panel');
