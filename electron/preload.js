@@ -17,6 +17,7 @@ contextBridge.exposeInMainWorld('kkNative', {
   onBattery: (cb) => ipcRenderer.on('kk:battery', (_e, b) => cb(!!b)),
   setHeight: (h) => ipcRenderer.send('kk:height', h),
   ignoreMouse: (ignore) => ipcRenderer.send('kk:ignoreMouse', !!ignore),
+  onCursor: (cb) => ipcRenderer.on('kk:cursor', (_e, p) => cb(p && Number.isFinite(p.x) && Number.isFinite(p.y) ? { x: +p.x, y: +p.y } : null)),
   setTrayIcon: (dataURL) => ipcRenderer.send('kk:tray', dataURL),
   syncSettings: (s) => ipcRenderer.send('kk:settings', s),
   quit: () => ipcRenderer.send('kk:quit'),

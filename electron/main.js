@@ -117,7 +117,7 @@ let lastActive = null, settingsSeen = false, firstShowOk = false;
 function applyVisibility() {
   if (!win || !firstShowOk) return;
   const shouldShow = sys.userShown && !(state.autoHideFullscreen && sys.fullscreen);
-  if (shouldShow && !win.isVisible()) win.showInactive();
+  if (shouldShow && !win.isVisible()) { win.showInactive(); win.setIgnoreMouseEvents(lastIgnore, { forward: true }); }
   if (!shouldShow && win.isVisible()) win.hide();
   const active = shouldShow && !sys.locked && !sys.suspended;
   if (active !== lastActive) { lastActive = active; send('kk:power', active ? 'on' : 'off'); }
@@ -270,9 +270,27 @@ ipcMain.on('kk:height', (_e, h) => {
   desiredH = h;
   win.setBounds(dockBounds(h));
 });
+let lastIgnore = true;
 ipcMain.on('kk:ignoreMouse', (_e, ignore) => {
-  if (win) win.setIgnoreMouseEvents(!!ignore, { forward: true });
+  lastIgnore = !!ignore;
+  if (win) win.setIgnoreMouseEvents(lastIgnore, { forward: true });
 });
+// Click-through used to rely only on Chromium forwarding mouse moves while the window ignores the
+// mouse. On Windows that forwarding can die after the window is hidden and shown again (fullscreen
+// apps, the hide hotkey, minimising things), and then the strip never noticed the cursor and could
+// not be clicked. So main also watches the cursor itself and tells the page where it is.
+function startCursorWatch() {
+  let lastKey = '';
+  setInterval(() => {
+    if (!win || win.isDestroyed() || !win.isVisible()) { lastKey = ''; return; }
+    const p = screen.getCursorScreenPoint(), b = win.getBounds();
+    const inside = p.x >= b.x && p.x < b.x + b.width && p.y >= b.y && p.y < b.y + b.height;
+    const key = inside ? (p.x - b.x) + ',' + (p.y - b.y) : 'out';
+    if (key === lastKey) return;
+    lastKey = key;
+    send('kk:cursor', inside ? { x: p.x - b.x, y: p.y - b.y } : null);
+  }, 50);
+}
 ipcMain.on('kk:tray', (_e, dataURL) => buildTray(dataURL));
 ipcMain.on('kk:quit', () => app.quit());
 // only ever opens the Steam store / steam:// links in the user's browser or client
@@ -493,6 +511,7 @@ else {
     powerMonitor.on('on-ac', battery);
     win.webContents.on('did-finish-load', () => { battery(); lastActive = null; applyVisibility(); });
     startFullscreenWatch();
+    startCursorWatch();
     try { hotkeyOk = globalShortcut.register(HIDE_HOTKEY, toggleVisible); } catch (e) { hotkeyOk = false; }
     if (CAPTURE) {
       for (let d = 0; d <= 9; d++) { try { globalShortcut.register('Control+Shift+Alt+' + d, () => send('kk:capture', d)); } catch (e) { /* taken */ } }

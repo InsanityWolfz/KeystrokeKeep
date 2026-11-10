@@ -64,10 +64,10 @@
     // Transparent areas pass clicks through to whatever is behind the strip.
     let ignoring = null;
     const passThrough = (el) => !el || el === document.body || el === document.documentElement || el.id === 'toasts' || !!el.closest('#toasts') || el.id === 'relic-offer' || el.id === 'modal-root';
-    window.addEventListener('mousemove', (e) => {
-      const ig = passThrough(e.target);
-      if (ig !== ignoring) { ignoring = ig; N.ignoreMouse(ig); }
-    });
+    const setIgnore = (ig) => { if (ig !== ignoring) { ignoring = ig; N.ignoreMouse(ig); } };
+    window.addEventListener('mousemove', (e) => setIgnore(passThrough(e.target)));
+    // main's own cursor watch: keeps working when Windows stops forwarding mouse moves
+    if (N.onCursor) N.onCursor((p) => setIgnore(p ? passThrough(document.elementFromPoint(p.x, p.y)) : true));
     N.ignoreMouse(true);
   };
 })();
