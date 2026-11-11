@@ -484,12 +484,20 @@
   };
 
   // ---------------------------------------------------------------- baking
-  // Hero looks are palette swaps of the hero art, earned by level (LOOKS in data.js): 0 Rags .. 5 Masterwork (2 is the original)
+  // Hero looks are palette swaps of the hero art, earned by level (LOOKS in data.js): 0 Rags .. 11 Radiant (2 is the original)
   const GEAR_SWAPS = {
-    knight: [{ g: 'n', G: 'N', w: 'l', b: 'L', B: 'N', y: 'L', r: 'N' }, { g: 'G', G: 'd', w: 'g', y: 'g', r: 'R', b: 'B' }, null, { g: 'c', G: 'C', b: 'B', B: 'v' }, { g: 'y', G: 'Y', w: 'Z', y: 'w', b: 'r', B: 'R' }, { g: 'p', G: 'P', w: 'm', y: 'c', b: 'v', B: 'K', r: 'c' }],
-    archer: [{ E: 'N', e: 'n', y: 'N' }, { E: 'd', e: 'G', y: 'g' }, null, { E: 'B', e: 'b' }, { E: 'Y', e: 'y', y: 'w', n: 'r' }, { E: 'P', e: 'p', y: 'c', n: 'c', w: 'c' }],
-    mage: [{ p: 'n', P: 'N', c: 'g', y: 'N' }, { p: 'G', P: 'd', c: 'b' }, null, { p: 'b', P: 'B' }, { p: 'r', P: 'R', n: 'y', y: 'w' }, { p: 'c', P: 'C', n: 'y', c: 'Z', y: 'w' }],
-    cleric: [{ w: 'L', y: 'N', g: 'N', G: 'N' }, { w: 'g', y: 'G', g: 'G', G: 'd' }, null, { y: 'c', g: 'c', G: 'C' }, { g: 'y', G: 'Y', y: 'o' }, { w: 'Z', y: 'm', g: 'p', G: 'P' }],
+    knight: [{ g: 'n', G: 'N', w: 'l', b: 'L', B: 'N', y: 'L', r: 'N' }, { g: 'G', G: 'd', w: 'g', y: 'g', r: 'R', b: 'B' }, null, { g: 'c', G: 'C', b: 'B', B: 'v' }, { g: 'y', G: 'Y', w: 'Z', y: 'w', b: 'r', B: 'R' }, { g: 'p', G: 'P', w: 'm', y: 'c', b: 'v', B: 'K', r: 'c' },
+      { g: 'o', G: 'O', w: 'Z', b: 'R', B: 'K', y: 'z', r: 'z', c: 'Z' }, { g: 'w', G: 'g', b: 'c', B: 'C', y: 'c', r: 'c' }, { g: 'e', G: 'E', w: 'Z', b: 'N', B: 'K', y: 'n', r: 'm' },
+      { g: 'd', G: 'K', w: 'G', b: 'v', B: 'K', y: 'c', r: 'c' }, { g: 'm', G: 'R', b: 'w', B: 'g', r: 'w' }, { g: 'Z', G: 'y', b: 'w', B: 'l', y: 'c', r: 'c' }],
+    archer: [{ E: 'N', e: 'n', y: 'N' }, { E: 'd', e: 'G', y: 'g' }, null, { E: 'B', e: 'b' }, { E: 'Y', e: 'y', y: 'w', n: 'r' }, { E: 'P', e: 'p', y: 'c', n: 'c', w: 'c' },
+      { E: 'O', e: 'o', y: 'Z', n: 'z' }, { E: 'g', e: 'w', y: 'c', n: 'c' }, { y: 'm', n: 'e', N: 'E' },
+      { E: 'K', e: 'v', y: 'c', n: 'P' }, { E: 'R', e: 'm', y: 'w' }, { E: 'y', e: 'Z', y: 'c', n: 'w', N: 'l' }],
+    mage: [{ p: 'n', P: 'N', c: 'g', y: 'N' }, { p: 'G', P: 'd', c: 'b' }, null, { p: 'b', P: 'B' }, { p: 'r', P: 'R', n: 'y', y: 'w' }, { p: 'c', P: 'C', n: 'y', c: 'Z', y: 'w' },
+      { p: 'o', P: 'O', c: 'z', n: 'R', y: 'Z' }, { p: 'w', P: 'c', c: 'b', n: 'C', y: 'b' }, { p: 'e', P: 'E', c: 'Z', n: 'N', y: 'm' },
+      { p: 'v', P: 'K', c: 'm', n: 'P', y: 'c' }, { p: 'm', P: 'R', c: 'w', n: 'w', y: 'w' }, { p: 'Z', P: 'y', c: 'w', n: 'w', y: 'c' }],
+    cleric: [{ w: 'L', y: 'N', g: 'N', G: 'N' }, { w: 'g', y: 'G', g: 'G', G: 'd' }, null, { y: 'c', g: 'c', G: 'C' }, { g: 'y', G: 'Y', y: 'o' }, { w: 'Z', y: 'm', g: 'p', G: 'P' },
+      { w: 'o', y: 'Z', g: 'O', G: 'R' }, { w: 'c', y: 'w', g: 'C', G: 'B' }, { w: 'e', y: 'Z', g: 'E', G: 'N' },
+      { w: 'v', y: 'c', g: 'K', G: 'k' }, { w: 'm', y: 'w', g: 'R', G: 'R' }, { w: 'y', y: 'w', g: 'Z', G: 'Y' }],
   };
 
   const hasDOM = typeof document !== 'undefined';

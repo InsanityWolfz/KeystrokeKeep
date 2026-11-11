@@ -190,7 +190,8 @@
 
   // Looks: a hero's gear changes with their level, so a glance shows how strong the party is.
   // Looks only: the power comes from the levels themselves.
-  const LOOKS = { names: ['Rags', 'Patched', 'Standard Issue', 'Tempered', 'Gilded', 'Masterwork'], at: [1, 10, 25, 50, 100, 200] };
+  const LOOKS = { names: ['Rags', 'Patched', 'Standard Issue', 'Tempered', 'Gilded', 'Masterwork', 'Molten', 'Frosted', 'Overgrown', 'Midnight', 'Blossom', 'Radiant'],
+    at: [1, 10, 25, 50, 100, 200, 275, 350, 425, 500, 600, 700] };
   LOOKS.tierOf = (lvl) => { let t = 0; for (let i = 0; i < LOOKS.at.length; i++) if (lvl >= LOOKS.at[i]) t = i; return t; };
 
   KK.DATA = { LOOKS, CHATTER, HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES, trophyAt, trophyCount, CODEX_EVERY, CODEX_MAX, CODEX_FULL, CODEX_EXTRA_EVERY };
