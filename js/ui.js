@@ -15,6 +15,7 @@
     { id: 'workshop', label: 'Workshop', icon: 'candle' },
     { id: 'relics', label: 'Relics', icon: 'gem' },
     { id: 'legacy', label: 'Legacy', icon: 'crown' },
+    { id: 'report', label: 'Shift', icon: 'clock' },
     { id: 'settings', label: '', icon: 'gear' },
   ];
 
@@ -48,6 +49,9 @@
     KK.on('coinArrive', () => { if (performance.now() - (UI.lastPulse || 0) > 2000) { UI.lastPulse = performance.now(); pulse('#hud-gold'); } });
     KK.on('relicOffer', () => { const S = KK.S; if ((S.relicQueue || []).length) return; if (performance.now() - (UI.lastRelicToast || -1e9) < 900000) return; UI.lastRelicToast = performance.now(); setTimeout(() => UI.toast('The boss dropped a relic. Pick one in ◆ Relics.', 'gem', 'epic', 6), 1400); });
     KK.on('dirty', () => { UI.dirty = true; });
+    // today's report fills in while it is open
+    setInterval(() => { if (UI.tab === 'report' && UI.reportDay === KK.today()) { const img = $('#report-img'); if (img) img.src = KK.report.draw(UI.reportDay).toDataURL('image/png'); } }, 10000);
+    setTimeout(UI.shiftNudge, 20000); setInterval(UI.shiftNudge, 600000);
     KK.on('retired', () => { UI.dirty = true; UI.close(); });
     setInterval(UI.slowUpdate, 250);
     hookTutorial();
@@ -182,7 +186,7 @@
   function buildPanel() {
     if (!UI.tab) return;
     const body = $('#panel-body');
-    body.innerHTML = ({ party: partyHTML, forge: forgeHTML, workshop: workshopHTML, relics: relicsHTML, legacy: legacyHTML, settings: settingsHTML })[UI.tab]();
+    body.innerHTML = ({ party: partyHTML, forge: forgeHTML, workshop: workshopHTML, relics: relicsHTML, legacy: legacyHTML, report: reportHTML, settings: settingsHTML })[UI.tab]();
     UI.dirty = false;
     refreshPanel();
   }
@@ -352,6 +356,31 @@
     const pct = Math.round((fame(S.renownLifetime + g) / fame(S.renownLifetime) - 1) * 100);
     return `+${pct}% DMG & GOLD FOREVER`;
   }
+  /** Shift report: a picture of the day, to look at or share. Nothing to buy here. */
+  function reportHTML() {
+    const today = KK.today(), days = KK.report.days();
+    if (!days.includes(today)) days.push(today);
+    if (!UI.reportDay || !days.includes(UI.reportDay)) UI.reportDay = today;
+    const i = days.indexOf(UI.reportDay);
+    const has = !!(KK.S.days || {})[UI.reportDay];
+    return `<div class="ph"><div><h3>SHIFT REPORT</h3><div class="sub">One picture of your day: how much you typed and when, and how far the party got. It only ever counts keys. It never records which ones.</div></div>
+      <div class="buymult"><button data-action="rday" data-v="-1" ${i <= 0 ? 'disabled' : ''}>◀ EARLIER</button><button data-action="rday" data-v="1" ${i >= days.length - 1 ? 'disabled' : ''}>LATER ▶</button></div></div>
+      <div class="report"><img id="report-img" src="${KK.report.draw(UI.reportDay).toDataURL('image/png')}" alt="Shift report for ${UI.reportDay}">
+      <div class="report-btns"><button class="buy" data-action="rcopy" ${has ? '' : 'disabled'}><span>COPY IMAGE</span></button><button class="buy" data-action="rsave" ${has ? '' : 'disabled'}><span>SAVE PNG</span></button>
+      <span class="sub">${UI.reportDay === today ? 'Today so far. It fills in as you work.' : 'The last 35 days are kept.'}</span></div></div>`;
+  }
+  /** Once per day: say that yesterday's report is ready. */
+  UI.shiftNudge = function () {
+    const S = KK.S, today = KK.today();
+    const past = KK.report.days().filter((d) => d < today);
+    const last = past[past.length - 1];
+    if (!last || S.shiftSeen === last) return;
+    const d = S.days[last];
+    S.shiftSeen = last;
+    if (d.keys + d.clicks < 200) return; // nothing worth showing
+    UI.reportDay = last;
+    UI.toast(`Your last shift report is ready: ${d.keys.toLocaleString('en-US')} keystrokes, floor ${d.deep}. Open the clock tab to see it.`, 'clock', 'gold', 8);
+  };
   function settingsHTML() {
     const s = KK.S.settings;
     const opt = (key, v, l) => `<button data-action="set" data-k="${key}" data-v="${v}" class="${String(s[key]) === String(v) ? 'on' : ''}">${l}</button>`;
@@ -386,6 +415,9 @@
       case 'workshop': ok = A.buyWorkshop(id); break;
       case 'legacy': ok = A.buyLegacy(id); break;
       case 'showoffer': UI.showOffer(); return;
+      case 'rday': { const days = KK.report.days(); if (!days.includes(KK.today())) days.push(KK.today()); const i = days.indexOf(UI.reportDay) + (+el.dataset.v); if (days[i]) { UI.reportDay = days[i]; KK.audio.play('ui'); UI.dirty = true; refreshPanel(); } return; }
+      case 'rsave': KK.report.save(UI.reportDay); KK.audio.play('ui'); return;
+      case 'rcopy': KK.audio.play('ui'); KK.report.copy(UI.reportDay).then((ok) => UI.toast(ok ? 'Shift report copied. Paste it anywhere.' : 'Copying is not allowed here. Use SAVE PNG instead.', 'clock', ok ? 'gold' : '', 4)); return;
       case 'retire': UI.confirmRetire(); return;
       case 'reset': UI.confirmReset(); return;
       case 'quit': KK.save(); window.kkNative && window.kkNative.quit(); return;

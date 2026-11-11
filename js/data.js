@@ -194,5 +194,15 @@
     at: [1, 10, 25, 50, 100, 200, 275, 350, 425, 500, 600, 700] };
   LOOKS.tierOf = (lvl) => { let t = 0; for (let i = 0; i < LOOKS.at.length; i++) if (lvl >= LOOKS.at[i]) t = i; return t; };
 
-  KK.DATA = { LOOKS, CHATTER, HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES, trophyAt, trophyCount, CODEX_EVERY, CODEX_MAX, CODEX_FULL, CODEX_EXTRA_EVERY };
+  // Shift report: one remark about the day, in each hero's voice. {KEYS} and {FLOW} are filled in.
+  const SHIFT_LINES = {
+    loud: { knight: 'LOUDEST WEATHER IN WEEKS', archer: '{KEYS}. I COUNTED.', mage: 'A RECORD. PROBABLY.', cleric: 'IT HAD A LOT TO SAY' },
+    flow: { knight: '{FLOW} MINUTES OF THUNDER', archer: '{FLOW} MINUTES. NOT ONE PAUSE.', mage: 'UNBROKEN FOR {FLOW} MINUTES', cleric: "IT DIDN'T STOP FOR {FLOW} MINUTES" },
+    late: { knight: 'STILL STORMING AFTER DARK', archer: 'LOST COUNT AFTER DARK', mage: 'IT KEEPS ODD HOURS', cleric: 'IT STAYED UP WITH US' },
+    early: { knight: 'RAIN BEFORE BREAKFAST', archer: 'FIRST ONE BEFORE DAWN', mage: 'EARLIER THAN I PREDICTED', cleric: 'IT WOKE BEFORE WE DID' },
+    quiet: { knight: 'HARDLY A DRIZZLE', archer: 'ONLY {KEYS}. SLOW DAY.', mage: 'ALMOST NOTHING. NOTED.', cleric: 'IT RESTED. SO DID WE.' },
+    steady: { knight: 'FAIR WEATHER. GOOD WORK.', archer: '{KEYS} TODAY. I COUNTED.', mage: 'AS EXPECTED. ROUGHLY.', cleric: 'IT WAS WITH US ALL DAY' },
+  };
+
+  KK.DATA = { SHIFT_LINES, LOOKS, CHATTER, HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES, trophyAt, trophyCount, CODEX_EVERY, CODEX_MAX, CODEX_FULL, CODEX_EXTRA_EVERY };
 })();

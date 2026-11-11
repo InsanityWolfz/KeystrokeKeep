@@ -131,6 +131,56 @@
   /** Which look (0..5) a hero's level has earned. */
   KK.lookTier = (id) => D.LOOKS.tierOf((KK.S.heroes && KK.S.heroes[id]) || 1);
 
+  // ---------------------------------------------------------------- shift report (one record per calendar day)
+  // Counts only: how many keys and clicks in each half hour, never which ones.
+  const SHIFT_KEEP = 35;
+  KK.shiftDay = function (date) {
+    const S = KK.S, t = date || KK.today();
+    S.days = S.days || {};
+    let d = S.days[t];
+    if (!d && !date) {
+      d = S.days[t] = { keys: 0, clicks: 0, flow: 0, longFlow: 0, play: 0, floors: 0, deep: 0, boss: 0, retires: 0, ults: 0, h: new Array(48).fill(0), looks: null };
+      const all = Object.keys(S.days).sort();
+      while (all.length > SHIFT_KEEP) delete S.days[all.shift()];
+    }
+    return d || null;
+  };
+  let flowRun = 0;
+  KK.on('activity', ({ kind }) => {
+    const d = KK.shiftDay(), now = new Date();
+    if (kind === 'key') d.keys++; else d.clicks++;
+    d.h[now.getHours() * 2 + (now.getMinutes() >= 30 ? 1 : 0)]++;
+  });
+  KK.on('floorClear', () => { const d = KK.shiftDay(); d.floors++; d.deep = Math.max(d.deep, KK.S.floor); });
+  KK.on('kill', ({ e }) => { if (e.boss) KK.shiftDay().boss++; });
+  KK.on('ult', () => { KK.shiftDay().ults++; });
+  KK.on('retired', () => { KK.shiftDay().retires++; });
+  /** Once per sim-second (from tickIncome): play time, FLOW time and the party's look for the card. */
+  KK.shiftTick = function () {
+    const d = KK.shiftDay();
+    d.play++;
+    if (KK.fervorTier() === 3) { d.flow++; flowRun++; if (flowRun > d.longFlow) d.longFlow = flowRun; } else flowRun = 0;
+    d.deep = Math.max(d.deep, KK.S.floor);
+    d.looks = D.PARTY_ORDER.map((id) => (KK.S.heroes[id] ? KK.lookTier(id) : -1));
+  };
+  /** The day in one line, from the hero whose turn it is. */
+  KK.shiftLine = function (d, date) {
+    const L = D.SHIFT_LINES, total = d.keys + d.clicks;
+    const night = d.h.slice(44).reduce((a, b) => a + b, 0) + d.h.slice(0, 10).reduce((a, b) => a + b, 0); // 22:00-05:00
+    const dawn = d.h.slice(10, 14).reduce((a, b) => a + b, 0); // 05:00-07:00
+    let mood = 'steady';
+    if (total < 500) mood = 'quiet';
+    else if (d.longFlow >= 1200) mood = 'flow';
+    else if (night >= 300 && night > total * 0.15) mood = 'late';
+    else if (total >= 10000) mood = 'loud';
+    else if (dawn >= 200) mood = 'early';
+    const owned = D.PARTY_ORDER.filter((id, i) => !d.looks || d.looks[i] >= 0);
+    let hsh = 0; for (const c of String(date)) hsh = (hsh * 31 + c.charCodeAt(0)) >>> 0;
+    const hero = owned[hsh % owned.length] || 'knight';
+    const text = L[mood][hero].replace('{KEYS}', d.keys.toLocaleString('en-US')).replace('{FLOW}', Math.round(d.longFlow / 60));
+    return { hero, mood, text };
+  };
+
   // Tiers are sticky: you enter a tier at its threshold but only drop out 12 points below it,
   // so a short pause doesn't flicker you in and out of FLOW (and replay its fanfare).
   let curTier = 0;
@@ -206,6 +256,7 @@
     S.incomeRate = S.incomeRate * 0.97 + goldWindow * 0.03;
     S.incomeAvg = (S.incomeAvg || 0) * (599 / 600) + goldWindow / 600; // ~10-minute average, for offline pay
     goldWindow = 0;
+    KK.shiftTick();
   };
 
   const A = KK.actions = {};
