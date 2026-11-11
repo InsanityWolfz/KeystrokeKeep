@@ -186,18 +186,7 @@
       }
     }
     for (const p of W.props) {
-      if (p.node) {
-        const spr = KK.SPR.nodes[p.kind][p.done ? 1 : 0];
-        const px = sxw(p.x) - Math.round(spr.w / 2);
-        const sunk = p.kind === 'fish' ? 3 : 0;
-        // a hit shakes the node one pixel
-        const jig = !p.done && p.at && p.swingT > 0.4 ? 1 : 0;
-        if (p.kind !== 'fish') shadow(sxw(p.x), W.GROUND + sy, 6);
-        b.drawImage(spr.c, px + jig, W.GROUND - spr.h + sy + sunk);
-        if (!p.done && p.kind === 'ore' && Math.sin(t * 5 + p.x) > 0.7) { b.fillStyle = '#ffe08a'; b.fillRect(px + 6, W.GROUND - spr.h + sy + 2, 1, 1); }
-        if (!p.done && p.kind === 'fish' && Math.sin(t * 3 + p.x) > 0.5) { b.fillStyle = '#b4bccb'; b.fillRect(px + 5 + Math.floor((t * 3) % 6), W.GROUND - 1 + sy, 2, 1); }
-        if (p === W.node && p.at && !p.done) bar(sxw(p.x) - 6, W.GROUND - spr.h - 4 + sy + sunk - (p.kind === 'fish' ? 6 : 0), 12, Math.min(1, p.work / p.need), '#fbd14b');
-      } else if (p.opened !== undefined) {
+      if (p.opened !== undefined) {
         const spr = p.opened ? KK.SPR.chestOpen : KK.SPR.chest;
         const bounce = !p.opened && p.openT > 0 ? Math.round(Math.abs(Math.sin(p.openT * 30)) * 2) : 0;
         shadow(sxw(p.x), W.GROUND + sy, 6);

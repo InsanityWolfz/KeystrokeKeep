@@ -48,7 +48,6 @@
     KK.on('coinArrive', () => { if (performance.now() - (UI.lastPulse || 0) > 2000) { UI.lastPulse = performance.now(); pulse('#hud-gold'); } });
     KK.on('relicOffer', () => { const S = KK.S; if ((S.relicQueue || []).length) return; if (performance.now() - (UI.lastRelicToast || -1e9) < 900000) return; UI.lastRelicToast = performance.now(); setTimeout(() => UI.toast('The boss dropped a relic. Pick one in ◆ Relics.', 'gem', 'epic', 6), 1400); });
     KK.on('dirty', () => { UI.dirty = true; });
-    KK.on('harvest', () => { if (UI.tab === 'party') UI.dirty = true; });
     KK.on('retired', () => { UI.dirty = true; UI.close(); });
     setInterval(UI.slowUpdate, 250);
     hookTutorial();
@@ -226,8 +225,8 @@
 
   function heroCard(id) {
     const S = KK.S, def = D.HEROES[id], lvl = S.heroes[id], m = KK.mods();
-    const gt = KK.gearTier(id), GR = D.GEAR;
-    const port = `<div class="port"><img src="${(KK.SPR.gearPortraitURL && KK.SPR.gearPortraitURL[id][gt]) || KK.SPR.portraitURL[id]}" alt=""></div>`;
+    const lt = KK.lookTier(id), LK = D.LOOKS;
+    const port = `<div class="port"><img src="${(lvl && KK.SPR.gearPortraitURL && KK.SPR.gearPortraitURL[id][lt]) || KK.SPR.portraitURL[id]}" alt=""></div>`;
     if (!lvl) {
       const unlocked = S.maxFloorRun >= def.unlockFloor;
       const c = A.recruitCost(id);
@@ -238,32 +237,22 @@
         ${unlocked ? `<button class="buy" data-action="recruit" data-id="${id}" data-cost="${c}"><span>RECRUIT</span><span>${icon('coin')} ${fmt(c)}</span></button>` : `<button class="buy" disabled><span>LOCKED</span><span>FLOOR ${def.unlockFloor}</span></button>`}
       </div></div>`;
     }
-    const dmg = F.heroDmg(id, lvl) * m.dmg * (id === 'knight' ? m.knightDmg : 1) * KK.gearDmg(id);
-    const hp = F.heroHp(id, lvl) * m.hp * (id === 'knight' ? m.knightHp : 1) * KK.gearHp(id);
+    const dmg = F.heroDmg(id, lvl) * m.dmg * (id === 'knight' ? m.knightDmg : 1);
+    const hp = F.heroHp(id, lvl) * m.hp * (id === 'knight' ? m.knightHp : 1);
     const next = Math.ceil((lvl + 1) / 10) * 10;
-    const mat = GR.uses[id], have = Math.floor((S.mats && S.mats[mat]) || 0);
-    const gearLine = `<div class="gearline">Gear: <b>${GR.tiers[gt]}</b> (${gt}/${GR.tiers.length - 1})${gt < GR.tiers.length - 1 ? ` · next at ${GR.cost[gt + 1]} ${GR.nodes[mat].name.toLowerCase()} (has ${have})` : ' · best there is'}</div>`;
     return `<div class="card">${port}<div class="info">
       <div class="nm"><span>${def.name}</span><span class="lv">LV ${lvl}</span></div>
       <div class="stats"><span>${id === 'cleric' ? '✚' : '⚔'} ${fmt(dmg)}</span><span>♥ ${fmt(hp)}</span><span style="color:var(--muted)">LV ${next}: x${KK.BAL.dmgMile}</span></div>
-      ${gearLine}
+      <div class="gearline">Gear: <b>${LK.names[lt]}</b>${lt < LK.at.length - 1 ? ` · new gear at LV ${LK.at[lt + 1]}` : ''}</div>
       <div class="ultline">${def.ult.free ? 'FREE' : '⚡' + Math.ceil(def.ult.cost * m.ultCost)} ${def.ult.name}: ${def.ult.desc}</div>
       <button class="buy" data-action="lvl" data-id="${id}" data-cost="0"><span class="l">LEVEL UP</span><span class="c"></span></button>
     </div></div>`;
-  }
-  /** Pack and skills: nothing to click. The party gathers on the way down and makes its own gear. */
-  function packHTML() {
-    const S = KK.S, GR = D.GEAR;
-    const mats = S.mats || {}, sk = S.skills || {};
-    const row = (k) => `<span class="packitem"><b>${GR.nodes[k].name}</b> ${Math.floor(mats[k] || 0)}${k === 'fish' ? '/' + GR.fishCap : ''} · ${GR.nodes[k].skill} ${KK.skillLevel(k)}</span>`;
-    return `<div class="pack"><div class="packrow">${['ore', 'wood', 'fish'].map(row).join('')}</div>
-      <div class="sub">The party gathers as it goes, faster while you type, and makes its own gear. Fish heal a hurt hero. Gear goes when the party retires; skills stay.</div></div>`;
   }
   function partyHTML() {
     const mult = (v, l) => `<button data-action="mult" data-v="${v}" class="${UI.buyMult === v ? 'on' : ''}">${l}</button>`;
     return `<div class="ph"><div><h3>THE PARTY</h3><div class="sub">Spend gold to level heroes. Sparks from your typing fire their ultimates.</div></div>
       <div class="buymult">${mult(1, 'x1')}${mult(10, 'x10')}${mult('max', 'MAX')}</div></div>
-      <div class="grid">${['knight', 'archer', 'mage', 'cleric'].map(heroCard).join('')}</div>${packHTML()}`;
+      <div class="grid">${['knight', 'archer', 'mage', 'cleric'].map(heroCard).join('')}</div>`;
   }
   function upCard(def, lvl, cur, action) {
     const maxed = lvl >= def.max;

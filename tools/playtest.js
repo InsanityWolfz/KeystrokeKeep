@@ -53,24 +53,6 @@ let runStart = 0, wipes = 0, rats = 0, ratSpawns = 0, chests = 0, ults = 0;
 const timeline = [];
 
 KK.on('recruit', ({ id }) => ev(`recruit ${id}`));
-// gear prototype telemetry
-const gearLog = [], nodeCount = { ore: 0, wood: 0, fish: 0 }; let meals = 0, nodeTime = 0;
-KK.on('gearUp', ({ id, tier }) => { gearLog.push({ t, id, tier, floor: S().floor, run: S().retires }); ev(`GEAR ${id} -> ${D.GEAR.tiers[tier]} (tier ${tier}, floor ${S().floor})`); });
-KK.on('harvest', ({ kind }) => { nodeCount[kind]++; });
-KK.on('eat', () => { meals++; });
-KK.gearReport = () => {
-  const s = S();
-  console.log('\n== GEAR (prototype) ==');
-  console.log(`nodes worked: ore ${nodeCount.ore}, wood ${nodeCount.wood}, fish ${nodeCount.fish}  (time at nodes ${Math.round(nodeTime)} s = ${(100 * nodeTime / Math.max(1, t)).toFixed(1)}% of play)`);
-  console.log(`fish eaten: ${meals}   skills: mining ${KK.skillLevel('ore')}, woodcutting ${KK.skillLevel('wood')}, fishing ${KK.skillLevel('fish')}`);
-  console.log(`gear now: ${D.PARTY_ORDER.map((id) => id + ' ' + KK.gearTier(id)).join(', ')}   best ever: ${D.PARTY_ORDER.map((id) => id + ' ' + ((s.gearBest || {})[id] || 0)).join(', ')}`);
-  console.log(`pack: ore ${s.mats.ore}, wood ${s.mats.wood}, fish ${s.mats.fish}`);
-  const byRun = {};
-  for (const g of gearLog) (byRun[g.run] = byRun[g.run] || []).push(g);
-  for (const r of Object.keys(byRun).slice(0, 6)) console.log(`run ${+r + 1}: ${byRun[r].length} gear-ups, first at ${fmtT(byRun[r][0].t)}, last at ${fmtT(byRun[r][byRun[r].length - 1].t)}`);
-  const firstHour = gearLog.filter((g) => g.t <= 3600).length;
-  console.log(`gear-ups in hour 1: ${firstHour}; total: ${gearLog.length}`);
-};
 KK.on('kill', ({ e }) => {
   seen[e.def.name] = (seen[e.def.name] || 0) + 1;
   if (e.boss) { bossKills[e.def.name] = (bossKills[e.def.name] || 0) + 1; ev(`BOSS ${e.def.name} down (floor ${S().floor})`); }
@@ -192,7 +174,6 @@ let nextGlance = 0, nextSnap = 0;
 function step() {
   activity(dt);
   KK.world.update(dt);
-  if (KK.world.node && KK.world.node.at) nodeTime += dt;
   t += dt;
   if (DAY_H && t >= dayN * DAY_H * 3600) {
     dayLog.push({ day: dayN, maxEver: S().maxFloorEver, renown: S().renownLifetime, seals: S().seals || 0, ach: Object.keys(S().ach || {}).length, trophies: KK.mods().trophies || 0 });
@@ -286,5 +267,4 @@ L.push(`achievements: ${Object.keys(s.ach || {}).length}/${KK.ach ? KK.ach.LIST.
 L.push(`trophies: ${KK.mods().trophies || 0}  demo laps: ${s.demoLaps || 0}  best f40: ${s.bestCapTime ? (s.bestCapTime / 60).toFixed(1) + ' min' : '-'}`);
 L.push(`END ${fmtT(t)}: floor ${s.floor} maxEver ${s.maxFloorEver} retires ${s.retires} renownLifetime ${s.renownLifetime} kills ${s.stats.kills}`);
 console.log(L.join('\n'));
-KK.gearReport();
 if (args.json) require('fs').writeFileSync(args.json, JSON.stringify({ timeline, events, retires, content, relicStats, biomeReached, bossKills, tierTime, emptyGlances, glances, maxDrought, longestStall }, null, 1));

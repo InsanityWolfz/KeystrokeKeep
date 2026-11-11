@@ -188,22 +188,10 @@
     heir: { knight: ['MY FATHER HEARD IT TOO'], archer: ['MOTHER KEPT A TALLY'], mage: ['I HAVE THE OLD NOTES'], cleric: ['SAME SOUND AS THE STORIES'] },
   };
 
-  // Gear (prototype): the party works nodes it meets on the path (ore, wood, fish). Heroes make their
-  // own next gear tier as soon as they hold enough; nothing to click. Gear and materials go when the
-  // party retires. Skills count every node ever worked, never reset, and only speed the work up.
-  const GEAR = {
-    tiers: ['Rags', 'Patched', 'Standard Issue', 'Tempered', 'Gilded', 'Masterwork'],
-    cost: [0, 3, 6, 12, 24, 48],          // materials to reach each tier
-    dmg: 1.25, hp: 1.25,                  // per tier, for the hero wearing it
-    uses: { knight: 'ore', cleric: 'ore', archer: 'wood', mage: 'wood' },
-    nodes: { ore: { name: 'Ore', skill: 'Mining', verb: 'MINING' }, wood: { name: 'Wood', skill: 'Woodcutting', verb: 'CHOPPING' }, fish: { name: 'Fish', skill: 'Fishing', verb: 'FISHING' } },
-    chance: 0.3,                          // per gap between waves (two gaps on a normal floor)
-    work: 3,                              // seconds for an idle party; each keystroke takes 0.15 s off
-    keyWork: 0.15,
-    fishCap: 6, eatBelow: 0.4, eatHeal: 0.4, eatCd: 8,
-    yieldAt: (floor) => 1 + Math.floor(floor / 20),
-    skillLevel: (xp) => Math.min(99, Math.floor(Math.sqrt((xp || 0) * 1.5))),
-  };
+  // Looks: a hero's gear changes with their level, so a glance shows how strong the party is.
+  // Looks only: the power comes from the levels themselves.
+  const LOOKS = { names: ['Rags', 'Patched', 'Standard Issue', 'Tempered', 'Gilded', 'Masterwork'], at: [1, 10, 25, 50, 100, 200] };
+  LOOKS.tierOf = (lvl) => { let t = 0; for (let i = 0; i < LOOKS.at.length; i++) if (lvl >= LOOKS.at[i]) t = i; return t; };
 
-  KK.DATA = { GEAR, CHATTER, HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES, trophyAt, trophyCount, CODEX_EVERY, CODEX_MAX, CODEX_FULL, CODEX_EXTRA_EVERY };
+  KK.DATA = { LOOKS, CHATTER, HEROES, PARTY_ORDER, MONSTERS, BIOMES, RELICS, RARITY, FORGE, WORKSHOP, LEGACY, FERVOR_TIERS, OMENS, TROPHIES, trophyAt, trophyCount, CODEX_EVERY, CODEX_MAX, CODEX_FULL, CODEX_EXTRA_EVERY };
 })();
