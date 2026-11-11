@@ -4,7 +4,7 @@
 
 ## Play it
 
-**Real desktop strip (recommended):** double-click **`Play Keystroke Keep.bat`** (or **`Add Desktop Shortcut.bat`** once, to put a shortcut on your desktop), or run:
+**Real desktop strip (recommended):** double-click **`Play Keystroke Keep.bat`**, or run:
 
 ```
 npm start
